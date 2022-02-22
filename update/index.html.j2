@@ -1,0 +1,97 @@
+{% extends 'lab/index.html.j2' %}
+
+{% block html_head %}
+	{{ super() }}
+
+<link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+<link rel="stylesheet" href="entry.css">
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+	integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+	crossorigin="anonymous"></script>
+<script data-goatcounter="https://mauforonda.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+
+<script>
+$(document).ready(function() {          
+    $('.code_shower').on('click',function(){
+	var header = $(this);
+	var codecell = $(this).next()
+        codecell.slideToggle(0, function() {
+		if (codecell.is(':hidden')) {
+			header.text("{ · }");
+			header.css("border-radius", "25px");
+			header.css("width", "100%")
+			header.css("text-align", "center")
+			header.css("text-align", "center")
+		} else {
+			header.text("×");
+			header.css("width", "auto")
+			header.css("border-radius", "8px 0px 0px 8px")
+		}
+	});
+    });
+    $('.hidden_default').next().hide();
+});
+</script>
+{% endblock html_head %}
+
+{% block input %}
+{% if 'code_shown' in cell['metadata'].get('tags', []) %}
+	<div class="code_shower">×</div>
+{% else %}
+    	<div class="code_shower hidden_default">{ · }</div>
+{% endif %}
+
+{{ super() }}
+{% endblock input %}
+
+{% block output_prompt %}
+{% endblock output_prompt %}
+
+{% block in_prompt %}
+{% endblock in_prompt %}
+
+{% block footer %}
+
+<div class="footer">
+     <div class="contact">
+     	  <span class="contacto_tipo">contacto</span>
+	  <span class="contacto_valor">mauriforonda@gmail.com</span>
+	 </div>
+</div>
+
+
+<script>
+
+indexcall = document.createElement('div')
+indexcall.classList.add('indexcall')
+index_title = document.createElement('div')
+index_title.classList.add('index_title')
+indexcall_a = document.createElement('a')
+indexcall_a.textContent = 'Notas'
+indexcall_a.href = 'https://mauforonda.github.io/notas/'
+index_subtitle = document.createElement('div')
+index_subtitle.classList.add('index_subtitle')
+index_subtitle.textContent = 'de mauforonda'
+index_title.appendChild(indexcall_a)
+indexcall.appendChild(index_title)
+indexcall.appendChild(index_subtitle)
+document.body.prepend(indexcall)
+
+const images = document.querySelectorAll('.jp-RenderedImage.jp-OutputArea-output img');
+images.forEach((image) => image.onclick = () => {
+		       if (image.classList.contains("zoomed")){
+		       	 image.parentElement.style.height = "auto";
+		       } else {
+		       	  image.parentElement.style.height = image.offsetHeight + "px";
+		       	}
+		       image.classList.toggle('zoomed');
+		       if (image.classList.contains("zoomed")){
+		       	  image.parentElement.style.height = image.offsetHeight + "px";
+		       	}
+
+		       });
+
+</script>
+
+{% endblock footer %}
