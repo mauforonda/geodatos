@@ -1,3 +1,3 @@
 > Inventario de datos geográficos publicados por entidades de gobierno en Bolivia
 
-[mauforonda.github.io/geodatos](https://mauforonda.github.io/geodatos)
+[observablehq.com/@mauforonda/datos-geograficos-del-gobierno-boliviano](https://observablehq.com/@mauforonda/datos-geograficos-del-gobierno-boliviano)

@@ -13,15 +13,14 @@ jobs:
       - name: setup python
         uses: actions/setup-python@v1
         with:
-          python-version: '3.6'
+          python-version: '3.9'
       - name: setup python and locale
         run: |
           python -m pip install --upgrade pip
           pip install -r update/requirements.txt
       - name: update data
         run: |
-         jupyter nbconvert --to notebook --inplace --execute geodatos.ipynb
-         ./update/publish.sh geodatos.ipynb 
+         ./update/update.py
       - name: commit
         run: |
           git config --global user.email "geodatos-bot@example.com"
