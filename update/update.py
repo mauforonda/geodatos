@@ -81,9 +81,8 @@ def index() -> None:
     for gs in geoservers:
         df = index_geoserver(gs)
         dfs.append(df)
-        output = pd.concat(dfs)
-        output.sort_values(["sistema", "nombre"]).to_csv(CSV_OUTPUT, index=False)
-    return pd.concat(dfs)
+    output = pd.concat(dfs)
+    output.sort_values(["sistema", "nombre"]).to_csv(CSV_OUTPUT, index=False)
 
 
 session = start_session()
