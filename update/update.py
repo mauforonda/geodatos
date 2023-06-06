@@ -6,10 +6,14 @@ from requests.adapters import HTTPAdapter
 from urllib3.exceptions import InsecureRequestWarning
 import pandas as pd
 import json
+from datetime import datetime as dt
+import os
 
 requests.packages.urllib3.disable_warnings(category=InsecureRequestWarning)
 GEOSERVER_DIRECTORY = "update/geoservers.json"
 CSV_OUTPUT = "datos.csv"
+CSV_VISTO = "visto.csv"
+CSV_RECIENTE = "reciente.csv"
 MAX_RETRIES = 20
 TIMEOUT = 30
 
@@ -77,12 +81,41 @@ def index() -> None:
     with open(GEOSERVER_DIRECTORY, "r") as f:
         geoservers = json.load(f)
 
+    # find all available layers
     dfs = []
     for gs in geoservers:
         df = index_geoserver(gs)
         dfs.append(df)
     output = pd.concat(dfs)
     output.sort_values(["sistema", "nombre"]).to_csv(CSV_OUTPUT, index=False)
+
+    # find new layers
+    basic_columns = ["sistema", "nombre"]
+    if os.path.exists(CSV_VISTO):
+        visto = pd.read_csv(CSV_VISTO)
+        merged = output[basic_columns].merge(
+            visto, on=basic_columns, how="left", indicator=True
+        )
+        nuevo = merged[merged._merge == "left_only"][basic_columns]
+
+        # maintain a list of all seen layers
+        pd.concat([visto, nuevo]).sort_values(basic_columns).to_csv(
+            CSV_VISTO, index=False
+        )
+    else:
+        nuevo = output[basic_columns]
+        nuevo.sort_values(basic_columns).to_csv(CSV_VISTO, index=False)
+    # save a list of recently added layers
+    print(f'Nuevas capas: {nuevo.shape[0]}')
+    if nuevo.shape[0] > 0:
+        nuevo["encontrado"] = dt.now().strftime("%Y-%m-%d")
+        if os.path.exists(CSV_RECIENTE):
+            reciente = pd.read_csv(CSV_RECIENTE)
+            pd.concat([reciente, nuevo]).sort_values("encontrado", ascending=False).to_csv(
+                CSV_RECIENTE, index=False
+            )
+        else:
+            nuevo.to_csv(CSV_RECIENTE, index=False)
 
 
 session = start_session()
