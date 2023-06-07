@@ -91,6 +91,7 @@ def index() -> None:
 
     # find new layers
     basic_columns = ["sistema", "nombre"]
+    new_sources = []
     if os.path.exists(CSV_VISTO):
         visto = pd.read_csv(CSV_VISTO)
         merged = output[basic_columns].merge(
@@ -102,10 +103,13 @@ def index() -> None:
         pd.concat([visto, nuevo]).sort_values(basic_columns).to_csv(
             CSV_VISTO, index=False
         )
+        # did I update the source list
+        new_sources = [s for s in output.sistema.unique() if s not in visto.sistema.unique()]
     else:
         nuevo = output[basic_columns]
         nuevo.sort_values(basic_columns).to_csv(CSV_VISTO, index=False)
-    # save a list of recently added layers
+    # save a list of recently added layers, except from just added sources
+    nuevo = nuevo[~nuevo.sistema.isin(new_sources)]
     print(f'Nuevas capas: {nuevo.shape[0]}')
     if nuevo.shape[0] > 0:
         nuevo["encontrado"] = dt.now().strftime("%Y-%m-%d")
