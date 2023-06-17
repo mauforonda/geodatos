@@ -32,11 +32,11 @@ def index() -> None:
     # service-specific parameters
     services = {
         "wms": {
-            "url": "geoserver/ows?service=wms&request=GetCapabilities",
+            "url": "?service=wms&request=GetCapabilities",
             "layers": ["WMS_Capabilities", "Capability", "Layer", "Layer"],
         },
         "wfs": {
-            "url": "geoserver/ows?service=wfs&version=1.0.0&request=GetCapabilities",
+            "url": "?service=wfs&version=1.0.0&request=GetCapabilities",
             "layers": ["WFS_Capabilities", "FeatureTypeList", "FeatureType"],
         },
     }
@@ -45,9 +45,7 @@ def index() -> None:
         try:
             # fetch the data
             service = services[entry["service"]]
-            url = f'{entry["domain"]}/{service["url"]}'
-            if entry["encodeuri"]:
-                url = url.replace("&", "%26")
+            url = f'{entry["ows"]}{service["url"]}'
             response = session.get(url, timeout=TIMEOUT, verify=False)
 
             # select the list of layers
@@ -69,13 +67,13 @@ def index() -> None:
                             else _
                         )
                 df.insert(0, "sistema", entry["short_name"])
-                print(f'{entry["domain"]} -> {df.shape[0]} capas')
+                print(f'{entry["ows"]} -> {df.shape[0]} capas')
                 return df
             else:
-                print(f'{entry["domain"]} -> 0 capas')
+                print(f'{entry["ows"]} -> 0 capas')
                 return pd.DataFrame()
         except Exception as e:
-            print(f'{entry["domain"]} -> {e}')
+            print(f'{entry["ows"]} -> {e}')
             return pd.DataFrame()
 
     with open(GEOSERVER_DIRECTORY, "r") as f:
