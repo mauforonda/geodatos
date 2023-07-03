@@ -14,8 +14,8 @@ GEOSERVER_DIRECTORY = "update/geoservers.json"
 CSV_OUTPUT = "datos.csv"
 CSV_VISTO = "visto.csv"
 CSV_RECIENTE = "reciente.csv"
-MAX_RETRIES = 20
-TIMEOUT = 30
+MAX_RETRIES = 10
+TIMEOUT = 20
 
 
 def start_session() -> requests.sessions.Session:
