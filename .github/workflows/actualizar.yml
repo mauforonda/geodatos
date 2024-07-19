@@ -1,4 +1,4 @@
-name: Update
+name: Actualizar
 on:
   schedule:
     - cron: '0 4 * * *'
@@ -8,20 +8,20 @@ jobs:
     name: check, update and commit
     runs-on: ubuntu-latest
     steps:
-      - name: checkout
+      - name: Checkout
         uses: actions/checkout@master
       - name: setup python
-        uses: actions/setup-python@v1
+        uses: actions/setup-python@v5
         with:
-          python-version: '3.9'
-      - name: setup python and locale
+          python-version: '3.12'
+      - name: Python
         run: |
           python -m pip install --upgrade pip
-          pip install -r update/requirements.txt
-      - name: update data
+          pip install -r requirements.txt
+      - name: Actualizar
         run: |
-         ./update/update.py
-      - name: commit
+         ./actualizar.py
+      - name: Commit
         run: |
           git config --global user.email "geodatos-bot@example.com"
           git config --global user.name "geodatos-bot"
