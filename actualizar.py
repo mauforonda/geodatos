@@ -11,6 +11,7 @@ import os
 from itertools import chain
 import re
 from tqdm import tqdm
+import pytz
 
 """ 
 El objetivo de este programa es mantener un inventario de 
@@ -260,7 +261,9 @@ def consultar_geoserver(geoserver: dict, sesion: requests.sessions.Session):
         error = None
 
         # Una estampa de tiempo para posibles errores
-        timestamp = dt.datetime.now().isoformat(timespec="minutes")
+        timestamp = dt.datetime.now(pytz.timezone("America/La_Paz")).isoformat(
+            timespec="minutes"
+        )
 
         try:
             # Consultar el endpoint getCapabilities
@@ -404,7 +407,9 @@ def manejar_log(sesion_log: list):
         return pd.concat([log, rotos_log])
 
     # Una estampa de tiempo para eventos en el log
-    timestamp = dt.datetime.now().isoformat(timespec="minutes")
+    timestamp = dt.datetime.now(pytz.timezone("America/La_Paz")).isoformat(
+        timespec="minutes"
+    )
 
     # Consolido eventos en esta sesión con logs reunidos desde la primera corrida.
     log = consolidar_log(sesion_log)
@@ -417,7 +422,7 @@ def manejar_log(sesion_log: list):
     # Guardar el log
     log["tiempo"] = pd.to_datetime(log.tiempo)
     log.sort_values(["tiempo", "geoserver", "servicio"], na_position="first").to_csv(
-        LOG, index=False
+        LOG, index=False, date_format="%Y-%m-%d %H:%M %z"
     )
 
 
@@ -612,7 +617,7 @@ def manejar_capas(capas: dict):
         # Si el csv de registros históricos existe
         if os.path.exists(CAPAS):
             # Una estampa de tiempo para actualizar valores en las columnas de fecha
-            timestamp = dt.datetime.now().date().isoformat()
+            timestamp = pd.to_datetime(dt.datetime.now(pytz.timezone("America/La_Paz")))
 
             # Las columnas que comparamos para determinar si una capa disponible
             # está presente en el registro histórico
@@ -661,10 +666,8 @@ def manejar_capas(capas: dict):
             # del directorio. Sólo en capas removidas asigno un valor a la columna fecha_removido. En todos
             # estos casos declaro ambos servicios (wms, wfs) no disponibles.
 
-            capas_faltantes = (
-                preparar_capas_faltantes(
-                    historial, faltantes, columnas_indice, timestamp
-                )
+            capas_faltantes = preparar_capas_faltantes(
+                historial, faltantes, columnas_indice, timestamp
             )
 
             # Concatenar todas estas tablas en una sola
