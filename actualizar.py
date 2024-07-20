@@ -578,69 +578,36 @@ def manejar_capas(capas: dict):
             timestamp: str,
         ):
             """
-            Preparo 3 tablas:
-            - Capas en el historial que no haya podido consultar por errores,
-            usualmente porque el servidor o servicio estaban inaccesibles.
-            - Capas en servidores que ya no están en el directorio. En ambos casos
-            actualizo las columnas de disponibilidad.
-            - Capas que desaparecen de servidores y servicios accesibles. En estos casos
-            actualizo las columnas de disponibilidad de fecha_removido.
+            Asumo 3 escenarios:
+            1. Capas que faltan porque sus servidores están inaccesibles.
+            2. Capas que faltan porque sus servidores desaparecen del directorio.
+            3. Capas que faltan porque fueron removidas de su servidor.
+            En los 3 escenarios, ambos servicios (wms, wfs) no están disponibles.
+            Y sólo en el escenario 3 es correcto declarar que una capa ha sido removida
+            asignando un valor a la columna fecha_removido.
             """
 
-            # Capas en servidores y servicios inaccesibles
-            historial_con_errores = historial.query(
-                " & ".join(
-                    [
-                        f"((geoserver == '{i['geoserver']}') & ({i['servicio']}))"
-                        for i in sesion_log
-                        if i["evento"] == "error"
-                    ]
+            # Capas en el registro histórico que no están disponibles
+            historial_faltantes = filtrar_tabla(historial, faltantes, columnas_indice)
+            for servicio in ["wms", "wfs"]:
+                historial_faltantes.loc[:, servicio] = False
+
+            # Capas en esta tabla cuyos servidores están accesibles y siguen en el directorio
+            historial_faltantes.loc[
+                (
+                    ~historial_faltantes.geoserver.isin(
+                        [i["geoserver"] for i in sesion_log if i["evento"] == "error"]
+                    )
                 )
-            ).copy()
+                & (
+                    historial_faltantes.geoserver.isin(
+                        [g["nombre"] for g in geoservers]
+                    )
+                ),
+                "fecha_removido",
+            ] = timestamp
 
-            # Actualizar información de disponibilidad
-            for evento in sesion_log:
-                if evento == "error":
-                    historial_con_errores.loc[
-                        (historial_con_errores.geoserver == evento["geoserver"]),
-                        evento["servicio"],
-                    ] = False
-
-            historial_sin_errores = historial[
-                ~historial.index.isin(historial_con_errores.index)
-            ].copy()
-
-            geoservers_directorio = [geoserver["nombre"] for geoserver in geoservers]
-
-            # Capas en servidores que desaparecen del directorio !?
-            capas_en_geoservers_removidos = filtrar_tabla(
-                historial_sin_errores[
-                    ~historial_sin_errores.geoserver.isin(geoservers_directorio)
-                ],
-                faltantes,
-                columnas_indice,
-            )
-
-            # Actualizar información de disponibilidad
-            for servicio in ["wms", "wfs"]:
-                capas_en_geoservers_removidos.loc[:, servicio] = False
-
-            # Capas que desaparecen de servidores y servicios consultados
-            capas_removidas = filtrar_tabla(
-                historial_sin_errores[
-                    historial_sin_errores.geoserver.isin(geoservers_directorio)
-                ],
-                faltantes,
-                columnas_indice,
-            )
-
-            # Actualizar información de disponibilidad y fecha_removido
-            capas_removidas.loc[:, "fecha_removido"] = timestamp
-            for servicio in ["wms", "wfs"]:
-                capas_removidas.loc[:, servicio] = False
-
-            # Devolver ambas tablas
-            return historial_con_errores, capas_en_geoservers_removidos, capas_removidas
+            return historial_faltantes
 
         # Si el csv de registros históricos existe
         if os.path.exists(CAPAS):
@@ -690,16 +657,11 @@ def manejar_capas(capas: dict):
             )
 
             # Para capas que desaparecen, me interesan en particular aquellas que parecen haber sido
-            # removidas de un servidor, y las distingo de capas en servidores inaccesibles. Un servidor
-            # puede estar inaccesible porque presenta un error o porque fue eliminado del directorio de
-            # geoservers.
+            # removidas de un servidor, y las distingo de capas en servidores inaccesibles o que desaparecen
+            # del directorio. Sólo en capas removidas asigno un valor a la columna fecha_removido. En todos
+            # estos casos declaro ambos servicios (wms, wfs) no disponibles.
 
-            # Para casos donde el servidor está inaccesible, sólo actualizo las capas de disponibilidad
-            # (wms, wfs). Y en casos donde una capa parece haber sido removida, actualizo adicionalmente
-            # el campo de fecha_removido. Sería incorrecto asumir que cuando un servidor deja de ser
-            # accesible, sus capas hayan desaparecido.
-
-            capas_no_consultadas, capas_en_geoservers_removidos, capas_removidas = (
+            capas_faltantes = (
                 preparar_capas_faltantes(
                     historial, faltantes, columnas_indice, timestamp
                 )
@@ -708,9 +670,7 @@ def manejar_capas(capas: dict):
             # Concatenar todas estas tablas en una sola
             nuevo_historial = pd.concat(
                 [
-                    capas_en_geoservers_removidos,
-                    capas_no_consultadas,
-                    capas_removidas,
+                    capas_faltantes,
                     capas_iguales,
                     capas_nuevas,
                     capas_en_nuevos_geoservers,
