@@ -284,11 +284,11 @@ def consultar_geoserver(geoserver: dict, sesion: requests.sessions.Session):
 
         # Si ocurre un error de red
         except requests.exceptions.RequestException as e:
-            error = f"error de red: {str(e)}"
+            error = f"error de red: {type(e).__name__}"
 
         # Si ocurre cualquier otro tipo de error
         except Exception as e:
-            error = str(e)
+            error = f"{type(e).__name__}: {e.args}"
 
         # Adjuntar el error al log
         if error:
