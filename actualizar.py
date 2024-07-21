@@ -2,8 +2,6 @@
 
 import json
 import xmltodict
-import requests
-from requests.adapters import HTTPAdapter
 import urllib3
 import pandas as pd
 import datetime as dt
@@ -12,6 +10,7 @@ from itertools import chain
 import re
 from tqdm import tqdm
 import pytz
+from time import time
 
 """ 
 El objetivo de este programa es mantener un inventario de 
@@ -45,27 +44,28 @@ LOG = "log.csv"
 CAPAS = "capas.csv"
 
 
-def iniciarSesion(reintentos=3) -> requests.sessions.Session:
+def iniciarSesion() -> urllib3.poolmanager.PoolManager:
     """
     Crea una sesión con la cual realizar todas las consultas de red
     y deshabilita las advertencias que resultarían de consultas inseguras,
     necesarias para trabajar con servidores sin certificados válidos.
     """
-    sesion = requests.Session()
-    sesion.mount("http://", HTTPAdapter(max_retries=reintentos))
-    sesion.mount("https://", HTTPAdapter(max_retries=reintentos))
     urllib3.disable_warnings()
-    return sesion
+    return urllib3.PoolManager(
+        timeout=20,
+        retries=3,
+        cert_reqs="CERT_NONE",
+    )
 
 
-def consultar_geoserver(geoserver: dict, sesion: requests.sessions.Session):
+def consultar_geoserver(geoserver: dict, sesion: urllib3.poolmanager.PoolManager):
     """
     Consulta información de todas las capas disponibles en los servicios
     wms y wfs de un geoserver, que adjunta al diccionario capas.
     """
 
     def consultar_capabilities(
-        geoserver: dict, servicio: str, sesion: requests.sessions.Session
+        geoserver: dict, servicio: str, sesion: urllib3.poolmanager.PoolManager
     ):
         """
         Consulta el endpoint getCapabilities del servicio wms o wfs en un geoserver.
@@ -74,28 +74,19 @@ def consultar_geoserver(geoserver: dict, sesion: requests.sessions.Session):
         # Versiones predefinidas de servicios para tener respuestas con estructuras predecibles
         version = dict(wms="1.3.0", wfs="1.0.0")
 
+        inicio = time()
         # Realizar la consulta y devolver la respuesta
-        return sesion.get(
+        respuesta = sesion.request(
+            "GET",
             f"{geoserver["ows"]}?service={servicio}&version={version[servicio]}&request=GetCapabilities",
-            timeout=20,
-            verify=False,
         )
+        duracion = time() - inicio
+        return respuesta, duracion
 
-    def encontrar_capas(capabilities: requests.Response, servicio: str):
+    def encontrar_capas(capabilities: urllib3.response.HTTPResponse, servicio: str):
         """
         Encuentra y devuelve una lista de capas en una respuesta de getCapabilities.
         """
-
-        def asegurar_encoding(capabilities: requests.Response):
-            """
-            Convierte la respuesta de getCapabilities a UTF-8 si parece tener
-            otro encoding, usualmente ISO_8859-1.
-            """
-
-            if capabilities.encoding and capabilities.encoding != "UTF-8":
-                return capabilities.text.encode(capabilities.encoding).decode("UTF-8")
-            else:
-                return capabilities.text
 
         # La ubicación de la lista de capas en ambos servicios
         capas_en_capabilities = dict(
@@ -104,13 +95,14 @@ def consultar_geoserver(geoserver: dict, sesion: requests.sessions.Session):
         )
 
         # Convertir la respuesta a un diccionario en formato UTF-8
-        capas = xmltodict.parse(asegurar_encoding(capabilities))
+        # capas = xmltodict.parse(asegurar_encoding(capabilities))
+        lista_capas = xmltodict.parse(capabilities.data)
 
         # Navegar este diccionario hasta encontrar la lista de capas y devolverla
         for nivel in capas_en_capabilities[servicio]:
-            capas = capas.setdefault(nivel, {})
+            lista_capas = lista_capas.setdefault(nivel, {})
 
-        return capas
+        return lista_capas
 
     def procesar_capa(capas_geoserver: dict, capa: dict, servicio: str):
         """
@@ -249,7 +241,7 @@ def consultar_geoserver(geoserver: dict, sesion: requests.sessions.Session):
         capas_geoserver: dict,
         geoserver: dict,
         servicio: str,
-        sesion: requests.sessions.Session,
+        sesion: urllib3.poolmanager.PoolManager,
     ):
         """
         Consulta y procesa información de las capas disponibles en un servicio (wms o wfs)
@@ -267,10 +259,10 @@ def consultar_geoserver(geoserver: dict, sesion: requests.sessions.Session):
 
         try:
             # Consultar el endpoint getCapabilities
-            capabilities = consultar_capabilities(geoserver, servicio, sesion)
+            capabilities, duracion = consultar_capabilities(geoserver, servicio, sesion)
 
             # Si el servidor responde correctamente
-            if capabilities.status_code == 200:
+            if capabilities.status == 200:
                 # Encontrar en la respuesta la lista de capas
                 capas_servicio = encontrar_capas(capabilities, servicio)
 
@@ -283,7 +275,7 @@ def consultar_geoserver(geoserver: dict, sesion: requests.sessions.Session):
                 error = f"estatus de capabilities: {capabilities.status_code}"
 
         # Si ocurre un error de red
-        except requests.exceptions.RequestException as e:
+        except urllib3.exceptions.HTTPError as e:
             error = f"error de red: {type(e).__name__}"
 
         # Si ocurre cualquier otro tipo de error
@@ -310,7 +302,7 @@ def consultar_geoserver(geoserver: dict, sesion: requests.sessions.Session):
                     geoserver=geoserver["nombre"],
                     servicio=servicio,
                     evento="ok",
-                    descripcion=f"{capabilities.elapsed.total_seconds()} segundos",
+                    descripcion=f"{duracion:.3f} segundos",
                 )
             )
 
@@ -422,7 +414,7 @@ def manejar_log(sesion_log: list):
     # Guardar el log
     log["tiempo"] = pd.to_datetime(log.tiempo)
     log.sort_values(["tiempo", "geoserver", "servicio"], na_position="first").to_csv(
-        LOG, index=False, date_format="%Y-%m-%d %H:%M %z"
+        LOG, index=False, date_format="%Y-%m-%d %H:%M %z",
     )
 
 
