@@ -272,7 +272,7 @@ def consultar_geoserver(geoserver: dict, sesion: urllib3.poolmanager.PoolManager
                         capas_geoserver = procesar_capa(capas_geoserver, capa, servicio)
             else:
                 # Si el servidor no responde correctamente
-                error = f"estatus de capabilities: {capabilities.status_code}"
+                error = f"estatus de capabilities: {capabilities.status}"
 
         # Si ocurre un error de red
         except urllib3.exceptions.HTTPError as e:
