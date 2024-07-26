@@ -507,7 +507,7 @@ def manejar_capas(capas: dict):
             disponibles: pd.core.frame.DataFrame,
             nuevas: list,
             columnas_indice: list,
-            timestamp: str,
+            timestamp: pd._libs.tslibs.timestamps.Timestamp,
         ):
             """
             Prepara 2 tablas de capas nuevas.
@@ -572,7 +572,7 @@ def manejar_capas(capas: dict):
             historial: pd.core.frame.DataFrame,
             faltantes: list,
             columnas_indice: list,
-            timestamp: str,
+            timestamp: pd._libs.tslibs.timestamps.Timestamp,
         ):
             """
             Asumo 3 escenarios:
@@ -609,7 +609,7 @@ def manejar_capas(capas: dict):
         # Si el csv de registros históricos existe
         if os.path.exists(CAPAS):
             # Una estampa de tiempo para actualizar valores en las columnas de fecha
-            timestamp = pd.to_datetime(dt.datetime.now(pytz.timezone("America/La_Paz")))
+            timestamp = pd.to_datetime(dt.datetime.now(pytz.timezone("America/La_Paz")).date())
 
             # Las columnas que comparamos para determinar si una capa disponible
             # está presente en el registro histórico
