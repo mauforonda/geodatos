@@ -31,7 +31,7 @@ export function mostrarCapa(capa, directorio) {
         }
       }
       
-      return html`<div class="fechas">${mostrarFecha("encontrado", capa.fecha_encontrado)} ${"removido", mostrarFecha(capa.fecha_removido)}</div>`
+      return html`<div class="fechas">${mostrarFecha("encontrado", capa.fecha_encontrado)} ${mostrarFecha("removido", capa.fecha_removido)}</div>`
     }
   
     function link(url, texto, clase="") {
