@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>Datos Geográficos sobre Bolivia</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&amp;display=swap" crossorigin>
+<link rel="preload" as="style" href="./_observablehq/theme-air,ink,wide.css">
+<link rel="preload" as="style" href="./_observablehq/stdlib/inputs.css">
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&amp;display=swap" crossorigin>
+<link rel="stylesheet" type="text/css" href="./_observablehq/theme-air,ink,wide.css">
+<link rel="stylesheet" type="text/css" href="./_observablehq/stdlib/inputs.css">
+<link rel="modulepreload" href="./_observablehq/client.js">
+<link rel="modulepreload" href="./_observablehq/runtime.js">
+<link rel="modulepreload" href="./_observablehq/stdlib.js">
+<link rel="modulepreload" href="./_import/components/cargar.49299a24.js">
+<link rel="modulepreload" href="./_import/components/mostrar.7d0cf371.js">
+<link rel="modulepreload" href="./_npm/d3@7.9.0/_esm.js">
+<link rel="modulepreload" href="./_npm/htl@0.3.1/_esm.js">
+<link rel="modulepreload" href="./_observablehq/stdlib/inputs.js">
+<link rel="modulepreload" href="./_npm/isoformat@0.2.1/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-array@3.2.4/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-axis@3.0.0/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-brush@3.0.0/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-chord@3.0.1/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-color@3.1.0/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-contour@4.0.2/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-delaunay@6.0.4/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-dispatch@3.0.1/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-drag@3.0.0/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-dsv@3.0.1/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-ease@3.0.1/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-fetch@3.0.1/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-force@3.0.0/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-format@3.1.0/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-geo@3.1.1/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-hierarchy@3.1.2/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-interpolate@3.0.1/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-path@3.1.0/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-polygon@3.0.1/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-quadtree@3.0.1/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-random@3.0.1/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-scale@4.0.2/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-scale-chromatic@3.1.0/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-selection@3.0.0/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-shape@3.2.0/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-time@3.1.0/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-time-format@4.1.0/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-timer@3.0.1/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-transition@3.0.1/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-zoom@3.0.0/_esm.js">
+<link rel="modulepreload" href="./_npm/internmap@2.0.3/_esm.js">
+<link rel="modulepreload" href="./_npm/delaunator@5.0.1/_esm.js">
+<link rel="modulepreload" href="./_npm/robust-predicates@3.0.2/_esm.js">
+<link rel="icon" href="./_file/favicon.cc2893b5.png" type="image/png">
+<script type="module">
+
+import {define} from "./_observablehq/client.js";
+
+define({id: "b00007cf", outputs: ["cargarCapas","capas"], body: async () => {
+const {cargarCapas} = await import("./_import/components/cargar.49299a24.js");
+const capas = await cargarCapas()
+return {cargarCapas,capas};
+}});
+
+define({id: "64be0e62", inputs: ["Inputs","capas","Generators"], outputs: ["busqueda","busquedaValor"], body: (Inputs,capas,Generators) => {
+const busqueda = Inputs.search(capas, {
+  placeholder: 'Busca ...',
+  columns: ["nombre", "geoserver", "titulo", "descripcion"],
+  format: d => `${d} capas`
+})
+const busquedaValor = Generators.input(busqueda)
+return {busqueda,busquedaValor};
+}});
+
+define({id: "9735bbdc", inputs: ["Inputs","busquedaValor"], outputs: ["tabla"], body: (Inputs,busquedaValor) => {
+const tabla = Inputs.table(busquedaValor, {
+  columns: ["presentacion"],
+  format: {
+    presentacion: (d) => d
+  },
+  header: {
+    presentacion: ""
+  },
+  rows: 35
+})
+return {tabla};
+}});
+
+define({id: "4e957b19", mode: "inline", inputs: ["busqueda","display"], body: async (busqueda,display) => {
+display(await(
+busqueda
+))
+}});
+
+define({id: "4a106a9d", mode: "inline", inputs: ["tabla","display"], body: async (tabla,display) => {
+display(await(
+tabla
+))
+}});
+
+</script>
+<div id="observablehq-center">
+<main id="observablehq-main" class="observablehq">
+<link rel="stylesheet" href="./_file/style.770b42c1.css">
+<div class="observablehq observablehq--block"><!--:b00007cf:--></div>
+<div class="observablehq observablehq--block"><!--:64be0e62:--></div>
+<div class="observablehq observablehq--block"><!--:9735bbdc:--></div>
+<div class="grid grid-cols-1" style="max-width: none">
+  <div class="card card-colspan-1" style="padding: 0">
+    <div class="busquedaContenedor">
+      <observablehq-loading></observablehq-loading><!--:4e957b19:-->
+    </div>
+    <observablehq-loading></observablehq-loading><!--:4a106a9d:-->
+  </div>
+</div>
+<div class="footer">Una lista actualizada de datos geográficos sobre Bolivia creada por <a href="mailto:mauriforonda@gmail.com" target="_blank" rel="noopener noreferrer">Mauricio Foronda</a></div></main>
+</div>
