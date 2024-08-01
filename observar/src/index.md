@@ -30,12 +30,14 @@ const tabla = Inputs.table(busquedaValor, {
   rows: 35
 })
 ```
-<div class="grid grid-cols-1" style="max-width: none">
-  <div class="card card-colspan-1" style="padding: 0">
+<div class="">
+  <div class="listado">
     <div class="busquedaContenedor">
       ${busqueda}
     </div>
+    <div class="tablaContenedor">
     ${tabla}
+    </div>
   </div>
 </div>
 
