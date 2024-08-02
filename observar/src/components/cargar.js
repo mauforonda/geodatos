@@ -9,5 +9,5 @@ export async function cargarCapas() {
     }
     const directorio = await cargarDirectorio()
     const c = await csv(`${baseUrl}/capas.csv`)
-    return c.map(i => { return {...i, presentacion:mostrarCapa(i, directorio)} }).reverse()
+    return c.filter(i => !i.fecha_removido).map(i => { return {...i, presentacion:mostrarCapa(i, directorio)} }).reverse()
 }
