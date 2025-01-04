@@ -87,9 +87,9 @@ export function mostrarCapa(capa, directorio) {
         if (ows.match(/\/ows$/g)) {
             url = `${ows.replace("//ows$/i", "")}/wms/reflect?layers=${
                 capa.nombre
-            }&format=${formato}&width=${width}&height=${height}`;
+            }&format=${formato}&transparent=true&width=${width}&height=${height}`;
         } else {
-            url = `${ows}?service=wms&request=GetMap&layers=${capa.nombre}&format=${formato}&width=${width}&height=${height}&bbox=${capa.min_x},${capa.min_y},${capa.max_x},${capa.max_y}`;
+            url = `${ows}?service=wms&request=GetMap&layers=${capa.nombre}&format=${formato}&transparent=true&width=${width}&height=${height}&bbox=${capa.min_x},${capa.min_y},${capa.max_x},${capa.max_y}`;
         }
 
         return html`<div
@@ -99,7 +99,7 @@ export function mostrarCapa(capa, directorio) {
     }
 
     return html`<div class="capa">
-        <div class="imagenContenedor">${imagen(capa)}</div>
+        <div class="imagenContenedor">${imagen(capa, 80, 80)}</div>
         <div>
             <div class="nombreContenedor">
                 ${mostrarNombre(capa)} ${mostrarDescripcion(capa.descripcion)}
