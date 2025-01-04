@@ -1,144 +1,215 @@
-@import url('https://fonts.googleapis.com/css?family=Archivo&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Figtree&display=swap");
 
-table input[type="checkbox"] {
-    visibility: hidden;
+body {
+    font-family: "Figtree";
 }
 
-thead {
-    display: none;
-}
-
-th {
-    z-index: 10;
-}
-
-.listado {
+.header,
+.listado,
+.tablaContenedor,
+.busquedaContenedor {
     justify-content: center;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.tablaContenedor, .busquedaContenedor {
-    display: flex;
-    justify-content: center;
-    padding: 1rem;
-    max-width: 700px;
+.header {
+    margin: 2rem;
+    .title, .subtitle {
+        text-align: center;
+        line-height: 1.1;
+    }
+    .title {
+        font-size: 3.7rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+    }
+    .subtitle {
+        font-weight: 300;
+        font-size: 1.5rem;
+    }
 }
 
-.busquedaContenedor input {
-    border-radius: 5px;
-    border: 1px solid var(--theme-foreground);
-    padding: 5px 10px;
-}
+.listado {
+    .tablaContenedor,
+    .busquedaContenedor {
+        max-width: 700px;
+    }
 
-.capa {
-    font-family: Archivo;
-    margin: 5px;
-    font-size: 15px;
-    display: flex;
-}
+    .busquedaContenedor {
+        padding: 2rem;
+        input {
+            border-radius: 10px;
+            border: 1px solid var(--theme-background-b);
+            background-color: var(--theme-background-b);
+            padding: 10px 15px;
+        }
+        output {
+            font-size: 0.7rem;
+            opacity: 0.5;
+        }
+    }
 
-.capa .imagenContenedor {
-    margin: 15px 15px 10px 0px;
-}
+    .tablaContenedor {
+        padding: 0 1rem 0 2rem;
+        form {
+            scrollbar-width: none;
+        }
+    }
 
-.capa .imagen {
-    width: 50px;
-    height: 50px;
-    border-radius: 5px;
-}
+    table {
+        thead {
+            border: 0;
+        }
+        input[type="checkbox"] {
+            visibility: hidden;
+        }
+        thead {
+            display: none;
+            th {
+                border-bottom: none;
+                z-index: 10;
+            }
+        }
+    }
 
-.capa .nombreContenedor {
-    margin: 10px 0px
-}
+    .capa {
 
-.capa .nombre {
-    display: flex;
-    align-items: baseline;
-    column-gap: 10px;
-    margin: 8px 0px;
-    max-width: 500px;
-    flex-wrap: wrap;
-}
+        margin: 1.3rem;
+        font-size: 15px;
+        display: flex;
 
-.capa .titulo {
-    font-size: 1.1em
-}
+        .imagenContenedor {
+            margin: 15px 15px 10px 0px;
+        }
 
-.capa .nombreTexto {
-    font-size: .7em;
-    opacity: .6
-}
+        .imagen {
+            width: 50px;
+            height: 50px;
+            border-radius: 5px;
+        }
 
-.capa .descripcion {
-    font-size: .7em;
-    max-width: 500px;
-    margin: 8px 0px;
-    white-space: normal
-}
+        .titulo {
+            font-size: 1.1rem;
+        }
 
-.capa .geoserver {
-    font-size: .7em;
-    max-width: 500px;
-    margin: 8px 0px;
-    white-space: normal
-}
+        .nombreTexto, .descripcion, .geoserver, .fecha {
+            font-size: .7rem;
+        }
 
-.capa .fechas {
-    margin: 8px 0px;
-    display: flex;
-    flex-direction: row;
-    gap: 10px
-}
+        .nombreContenedor {
+            margin: 10px 0px;
 
-.capa .fecha {
-    font-size: .7em;
-    opacity: .7
-}
+            .titulo,
+            .nombreTexto,
+            .descripcion,
+            .geoserver {
+                margin: 8px 0;
+            }
 
-.capa .enlaces {
-    margin: 10px 0px;
-    font-size: .7em;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-}
+            .nombre {
+                display: flex;
+                align-items: baseline;
+                column-gap: 10px;
+                max-width: 500px;
+                flex-wrap: wrap;
+            }
 
-.capa .enlace {
-    padding: 2px 6px;
-    border-radius: 4px;
-    color: inherit;
-    border: 1px solid #c9c9c9;
-    background: #c9c9c9aa;
-}
+            .titulo {
+                font-weight: 700;
+            }
 
-.capa .enlace.enlaceWms {
-    border: 1px solid #d9be95;
-    background: #d9be95aa;
-}
+            .nombreTexto {
+                opacity: 0.6;
+            }
 
-.capa .enlace.enlaceWfs {
-    border: 1px solid #bddefa;
-    background: #bddefaaa;
+            .descripcion {
+                max-width: 500px;
+                white-space: normal;
+                font-style: italic;
+            }
+
+            .geoserver {
+                max-width: 500px;
+                white-space: normal;
+                span {
+                    opacity: .6;
+                }
+            }
+        }
+
+        .fechas {
+            margin: 8px 0px;
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+        }
+
+        .fecha {
+            opacity: 0.6;
+        }
+
+        .enlaces {
+            margin: 10px 0px;
+            font-size: 0.7em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .enlace {
+            padding: 5px;
+            border-radius: 4px;
+            color: inherit;
+            border: 1px solid #dadee7;
+            background: #dadee7aa;
+            opacity: .8;
+        }
+
+        .enlace:hover {
+            opacity: 1;
+            text-decoration: none;
+        }
+
+        .enlaceWms {
+            border: 1px solid #b7dbcb;
+            background: #b7dbcbaa;
+        }
+
+        .enlaceWfs {
+            border: 1px solid #b7daeb;
+            background: #b7daebaa;
+        }
+    }
 }
 
 .footer {
-    font-size: .7em;
-    opacity: .7;
+    font-size: .9rem;
     text-align: center;
-    margin: 20px 0px;
+    margin: 3rem 0 1rem 0;
+    .plant {
+        margin: 2rem;
+    }
+    .footerEntry {
+        margin: .5rem;
+        a {
+            font-weight: 700;
+        }
+    }
 }
 
 @media (prefers-color-scheme: dark) {
     .capa .enlace {
-        color: #1f2022;
-        border: 1px solid rgb(0, 0, 0, 0) !important
+        color: #1f2022 !important;
+        border: 1px solid rgb(0, 0, 0, 0) !important;
     }
 }
 
 @media only screen and (max-width: 600px) {
-    #observablehq-center, #observablehq-main, .grid {
+    #observablehq-center,
+    #observablehq-main,
+    .grid {
         margin: 0;
     }
 

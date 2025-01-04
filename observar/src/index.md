@@ -27,18 +27,31 @@ const tabla = Inputs.table(busquedaValor, {
   header: {
     presentacion: ""
   },
-  rows: 35
+  height: 500
 })
 ```
-<div class="">
-  <div class="listado">
-    <div class="busquedaContenedor">
-      ${busqueda}
-    </div>
-    <div class="tablaContenedor">
-    ${tabla}
-    </div>
+<div class="header">
+  <div class="title">
+    GeoDatos sobre Bolivia
+  </div>
+  <div class="subtitle">
+    Un directorio de datos geográficos en servicios del gobierno boliviano
   </div>
 </div>
 
-<div class="footer">Una lista actualizada de datos geográficos sobre Bolivia creada por <a href="mailto:mauriforonda@gmail.com">Mauricio Foronda</a></div>
+<div class="">
+  <div class="listado">
+    <div class="busquedaContenedor">${busqueda}</div>
+    <div class="tablaContenedor">${tabla}</div>
+  </div>
+</div>
+
+<div class="footer">
+  <div class="plant">🪴</div>
+  <div class="footerEntry">
+    Actualizado a diario en <a href="https://github.com/mauforonda/geodatos/">Github</a>
+  </div>
+  <div class="footerEntry">
+    Creado por <a href="mailto:mauriforonda@gmail.com">Mauricio Foronda</a>
+  </div>
+</div>
