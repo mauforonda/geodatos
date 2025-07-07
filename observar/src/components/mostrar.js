@@ -100,7 +100,7 @@ export function mostrarCapa(capa, directorio) {
 
     return html`<div class="capa">
         <div class="imagenContenedor">${imagen(capa, 80, 80)}</div>
-        <div>
+        <div class="detalles">
             <div class="nombreContenedor">
                 ${mostrarNombre(capa)} ${mostrarDescripcion(capa.descripcion)}
                 ${mostrarGeoserver(capa.geoserver)}

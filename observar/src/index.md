@@ -28,7 +28,7 @@ const tabla = Inputs.table(busquedaValor, {
     presentacion: ""
   },
   rows: 25,
-  height: 500
+  height: 900
 })
 ```
 <div class="header">
