@@ -1,7 +1,13 @@
 @import url("https://fonts.googleapis.com/css?family=Figtree&display=swap");
 
 body {
+    padding: 0;
     font-family: "Figtree";
+    background-color: color-mix(in srgb, var(--theme-foreground) 2%, var(--theme-background-a));
+}
+
+#observablehq-center {
+    margin: 0;
 }
 
 .header,
@@ -15,16 +21,20 @@ body {
 }
 
 .header {
-    margin: 2rem;
-    .title, .subtitle {
+    margin: 4rem 2rem 2rem 2rem;
+
+    .title,
+    .subtitle {
         text-align: center;
         line-height: 1.1;
     }
+
     .title {
         font-size: 3.7rem;
         font-weight: 700;
         margin-bottom: 1.5rem;
     }
+
     .subtitle {
         font-weight: 300;
         font-size: 1.5rem;
@@ -32,6 +42,7 @@ body {
 }
 
 .listado {
+
     .tablaContenedor,
     .busquedaContenedor {
         max-width: 700px;
@@ -39,22 +50,26 @@ body {
 
     .busquedaContenedor {
         padding: 2rem;
+
         input {
             border-radius: 10px;
             border: 1px solid var(--theme-background-b);
-            background-color: var(--theme-background-b);
+            background-color: var(--theme-background-a);
             padding: 10px 15px;
         }
+
         output {
-            font-size: 0.7rem;
+            font-size: 1rem;
             opacity: 0.5;
         }
     }
 
     .tablaContenedor:has(form) {
         padding: 0 1rem;
-        border-top: 1px solid var(--theme-foreground-faintest);
-        box-shadow: inset 0px 14px 18px -24px var(--theme-foreground-faint);
+        border: 1px solid var(--theme-background-b);
+        border-radius: 10px;
+        background-color: var(--theme-background-a);
+
         form {
             scrollbar-width: none;
         }
@@ -62,28 +77,35 @@ body {
 
     .tablaContenedor observablehq-loading::before {
         display: none;
-      }
+    }
 
     table {
         thead {
             border: 0;
         }
+
         input[type="checkbox"] {
             visibility: hidden;
         }
+
         thead {
             display: none;
+
             th {
                 border-bottom: none;
                 z-index: 10;
             }
         }
+
+        tr:not(:last-child) td {
+            border-bottom: 1px solid var(--theme-background-b);
+        }
     }
 
     .capa {
 
-        margin: 1.3rem;
-        font-size: 15px;
+        margin: 1.3rem 0;
+        font-size: 1rem;
         display: flex;
 
         .imagenContenedor {
@@ -96,12 +118,19 @@ body {
             border-radius: 5px;
         }
 
-        .titulo {
-            font-size: 1.1rem;
+        .detalles {
+            max-width: calc(100% - 100px);
         }
 
-        .nombreTexto, .descripcion, .geoserver, .fecha {
-            font-size: .7rem;
+        .titulo {
+            font-size: 1.5rem;
+        }
+
+        .nombreTexto,
+        .descripcion,
+        .geoserver,
+        .fecha {
+            font-size: .9rem;
         }
 
         .nombreContenedor {
@@ -139,6 +168,7 @@ body {
             .geoserver {
                 max-width: 500px;
                 white-space: normal;
+
                 span {
                     opacity: .6;
                 }
@@ -158,7 +188,7 @@ body {
 
         .enlaces {
             margin: 10px 0px;
-            font-size: 0.7em;
+            font-size: 0.8rem;
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
@@ -188,17 +218,29 @@ body {
             background: #b7daebaa;
         }
     }
+
+    .capa {
+        padding: 0 !important;
+        position: relative;
+    }
+
+    td {
+        padding: 0 !important;
+    }
 }
 
 .footer {
     font-size: .9rem;
     text-align: center;
     margin: 3rem 0 1rem 0;
+
     .plant {
         margin: 2rem;
     }
+
     .footerEntry {
         margin: .5rem;
+
         a {
             font-weight: 700;
         }
@@ -213,6 +255,7 @@ body {
 }
 
 @media only screen and (max-width: 600px) {
+
     #observablehq-center,
     #observablehq-main,
     .grid {
@@ -223,11 +266,25 @@ body {
         border-radius: 0px;
     }
 
-    tr > :first-of-type {
+    tr> :first-of-type {
         display: none;
     }
 
     td {
         overflow: scroll !important;
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    .capa::after {
+        top: 0;
+        background: linear-gradient(to right, transparent 80%, var(--theme-background-a));
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        pointer-events: none;
+        z-index: 8;
+        bottom: 0;
     }
 }
