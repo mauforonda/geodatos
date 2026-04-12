@@ -1,7 +1,7 @@
-name: Actualizar
+name: Archivar
 on:
   schedule:
-    - cron: '0 4 * * *'
+    - cron: '0 1,7,13,19 * * *'
   workflow_dispatch:
 
 concurrency:
@@ -12,9 +12,15 @@ permissions:
   contents: write
 
 jobs:
-  update:
-    name: check, update and commit
+  archive:
+    name: archive, commit and push
     runs-on: ubuntu-latest
+    timeout-minutes: 330
+    env:
+      IA_ACCESS_KEY: ${{ secrets.IA_ACCESS_KEY }}
+      IA_SECRET_KEY: ${{ secrets.IA_SECRET_KEY }}
+      ARCHIVE_COLLECTION: ${{ secrets.ARCHIVE_COLLECTION }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -28,17 +34,12 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-      - name: Actualizar
+      - name: Archivar
         run: |
-         ./descubrir/actualizar.py
-      - name: Evaluar
-        run: |
-         ./evaluar/actualizar.py
+          ./archivar/actualizar.py --max-datasets 999999 --max-minutes 300 --max-errores-archivar 3 --map-mode composed
       - name: Commit
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config --global user.email "geodatos-bot@example.com"
           git config --global user.name "geodatos-bot"
           git add -A
-          git diff --quiet && git diff --staged --quiet || (git commit -m "[ci] $(date '+%Y-%m-%d')"; git push -q "https://$GITHUB_TOKEN@github.com/mauforonda/geodatos.git" master)
+          git diff --quiet && git diff --staged --quiet || (git commit -m "[archive] $(date '+%Y-%m-%d %H:%M')"; git push -q "https://$GITHUB_TOKEN@github.com/mauforonda/geodatos.git" master)

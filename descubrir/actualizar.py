@@ -8,6 +8,7 @@ import datetime as dt
 import os
 from itertools import chain
 import re
+from pathlib import Path
 from tqdm import tqdm
 import pytz
 from time import time
@@ -36,12 +37,13 @@ tardan en responder?
 """
 
 
+BASE_DIR = Path(__file__).resolve().parent
 # La lista de servidores y servicios disponibles
-DIRECTORIO = "directorio.json"
+DIRECTORIO = BASE_DIR / "directorio.json"
 # El log de eventos
-LOG = "log.csv"
+LOG = BASE_DIR / "log.csv"
 # El inventario de todas las capas
-CAPAS = "capas.csv"
+CAPAS = BASE_DIR / "capas.csv"
 
 
 def iniciarSesion() -> urllib3.poolmanager.PoolManager:
