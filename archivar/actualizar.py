@@ -370,7 +370,14 @@ def metadata_item_archive_org_remoto(
         return None
     if respuesta.status != 200:
         raise RuntimeError(f"Archive.org metadata devolvio estatus {respuesta.status} para {item}")
-    return json.loads(respuesta.data.decode("utf-8"))
+    data = json.loads(respuesta.data.decode("utf-8"))
+    if not data:
+        return None
+    metadata = data.get("metadata") or {}
+    files = data.get("files") or []
+    if not metadata and not files:
+        return None
+    return data
 
 
 def parse_size_archivo_archive_org(valor) -> Optional[int]:
