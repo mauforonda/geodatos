@@ -24,6 +24,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - name: setup python
         uses: actions/setup-python@v5
         with:
@@ -34,12 +36,42 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-      - name: Archivar
-        run: |
-          ./archivar/actualizar.py --max-datasets 999999 --max-minutes 300 --max-errores-archivar 3 --map-mode composed
-      - name: Commit
+      - name: Configurar git
         run: |
           git config --global user.email "geodatos-bot@example.com"
           git config --global user.name "geodatos-bot"
-          git add -A
-          git diff --quiet && git diff --staged --quiet || (git commit -m "[archive] $(date '+%Y-%m-%d %H:%M')"; git push -q "https://$GITHUB_TOKEN@github.com/mauforonda/geodatos.git" master)
+      - name: Sincronizar y archivar incrementalmente
+        run: |
+          set -euo pipefail
+
+          sync_and_push() {
+            git add evaluar/datasets.csv archivar/paquetes.csv archivar/runs.csv archivar/publicados
+            if git diff --quiet && git diff --staged --quiet; then
+              return 1
+            fi
+            git commit -m "[archive] $(date '+%Y-%m-%d %H:%M')"
+            git pull --rebase "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" master
+            git push "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" HEAD:master
+            return 0
+          }
+
+          start=$(date +%s)
+          deadline=$((start + 300 * 60))
+
+          while [ "$(date +%s)" -lt "$deadline" ]; do
+            set +e
+            ./archivar/actualizar.py --max-datasets 1 --max-minutes 300 --max-errores-archivar 3 --map-mode composed
+            status=$?
+            set -e
+
+            sync_and_push || true
+
+            if [ "$status" -eq 2 ]; then
+              echo "No quedan datasets candidatos para archivar."
+              break
+            fi
+
+            if [ "$status" -ne 0 ]; then
+              echo "Un dataset fallo; el estado ya fue guardado y la corrida continua."
+            fi
+          done

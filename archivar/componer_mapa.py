@@ -24,6 +24,7 @@ TILE_SIZE = 256
 MERCATOR_MAX = 20037508.342789244
 WEBMERCATOR_EPSG = 3857
 USER_AGENT = "geodatos-map-composer/1.0"
+MAX_LAT_WEBMERCATOR = 85.05112878
 
 
 def slug(texto: str) -> str:
@@ -57,6 +58,33 @@ def expandir_bbox(min_x: float, min_y: float, max_x: float, max_y: float, paddin
     return min_x - pad_x, min_y - pad_y, max_x + pad_x, max_y + pad_y
 
 
+def bbox_lonlat_valido(min_x: float, min_y: float, max_x: float, max_y: float) -> bool:
+    valores = [min_x, min_y, max_x, max_y]
+    if not all(math.isfinite(v) for v in valores):
+        return False
+    if min_x >= max_x or min_y >= max_y:
+        return False
+    if min_x < -180 or max_x > 180:
+        return False
+    if min_y < -90 or max_y > 90:
+        return False
+    return True
+
+
+def normalizar_bbox_lonlat(min_x: float, min_y: float, max_x: float, max_y: float) -> tuple[float, float, float, float]:
+    if not bbox_lonlat_valido(min_x, min_y, max_x, max_y):
+        raise ValueError(
+            f"BBox invalido para composicion de mapa: {min_x},{min_y},{max_x},{max_y}"
+        )
+    min_y = max(min_y, -MAX_LAT_WEBMERCATOR)
+    max_y = min(max_y, MAX_LAT_WEBMERCATOR)
+    if min_y >= max_y:
+        raise ValueError(
+            f"BBox invalido luego de normalizar latitudes: {min_x},{min_y},{max_x},{max_y}"
+        )
+    return min_x, min_y, max_x, max_y
+
+
 def lonlat_to_webmercator(lon: float, lat: float) -> tuple[float, float]:
     transformer = Transformer.from_crs(4326, WEBMERCATOR_EPSG, always_xy=True)
     return transformer.transform(lon, lat)
@@ -78,6 +106,10 @@ def dimensiones_objetivo(
     wm_width = max(abs(wm_max_x - wm_min_x), 1.0)
     wm_height = max(abs(wm_max_y - wm_min_y), 1.0)
     aspect_ratio = wm_width / wm_height
+    if not math.isfinite(aspect_ratio) or aspect_ratio <= 0:
+        raise ValueError(
+            f"Aspect ratio invalido para composicion de mapa: {aspect_ratio}"
+        )
     derived_height = max(1, int(round(width / aspect_ratio)))
     return width, derived_height
 
@@ -225,13 +257,20 @@ def componer_mapa(
     capa = leer_capa(geoserver, nombre)
     ows = leer_ows(geoserver)
 
-    min_x, min_y, max_x, max_y = expandir_bbox(
+    min_x, min_y, max_x, max_y = normalizar_bbox_lonlat(
         float(capa.min_x),
         float(capa.min_y),
         float(capa.max_x),
         float(capa.max_y),
+    )
+    min_x, min_y, max_x, max_y = expandir_bbox(
+        min_x,
+        min_y,
+        max_x,
+        max_y,
         padding_ratio=padding_ratio,
     )
+    min_x, min_y, max_x, max_y = normalizar_bbox_lonlat(min_x, min_y, max_x, max_y)
 
     width, height = dimensiones_objetivo(min_x, min_y, max_x, max_y, width, height)
 

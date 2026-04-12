@@ -11,6 +11,7 @@ import tempfile
 import time
 from pathlib import Path
 from typing import Dict, Iterable, Optional
+from urllib.parse import quote
 
 import geopandas as gpd
 import pandas as pd
@@ -91,6 +92,14 @@ def slug(texto: str) -> str:
 
 def item_name(geoserver: str, nombre: str) -> str:
     return f"{ITEM_PREFIX}_{slug(geoserver)}_{slug(nombre)}"
+
+
+def archive_metadata_url(item: str) -> str:
+    return f"https://archive.org/metadata/{quote(item)}"
+
+
+def archive_download_url(item: str, filename: str) -> str:
+    return f"https://archive.org/download/{quote(item)}/{quote(filename)}"
 
 
 def rutas_publicacion(geoserver: str, nombre: str) -> Dict[str, Path]:
@@ -327,6 +336,67 @@ def descargar_imagen_opcional(sesion: urllib3.PoolManager, url: str) -> Optional
     return bytes(respuesta.data)
 
 
+def descargar_bytes_archive_org(
+    sesion: urllib3.PoolManager,
+    item: str,
+    filename: str,
+) -> Optional[bytes]:
+    try:
+        respuesta = sesion.request("GET", archive_download_url(item, filename), redirect=False)
+    except Exception:
+        return None
+    if respuesta.status in [301, 302, 303, 307, 308]:
+        location = respuesta.headers.get("Location")
+        if not location:
+            return None
+        try:
+            respuesta = sesion.request("GET", location)
+        except Exception:
+            return None
+    if respuesta.status != 200:
+        return None
+    return bytes(respuesta.data)
+
+
+def metadata_item_archive_org_remoto(
+    sesion: urllib3.PoolManager,
+    item: str,
+) -> Optional[dict]:
+    try:
+        respuesta = sesion.request("GET", archive_metadata_url(item))
+    except Exception:
+        return None
+    if respuesta.status == 404:
+        return None
+    if respuesta.status != 200:
+        raise RuntimeError(f"Archive.org metadata devolvio estatus {respuesta.status} para {item}")
+    return json.loads(respuesta.data.decode("utf-8"))
+
+
+def parse_size_archivo_archive_org(valor) -> Optional[int]:
+    if valor in [None, ""]:
+        return None
+    try:
+        return int(valor)
+    except Exception:
+        return None
+
+
+def bbox_area_metadata(metadata: dict) -> Optional[float]:
+    bbox = metadata.get("bbox") or {}
+    try:
+        min_x = float(bbox["min_x"])
+        max_x = float(bbox["max_x"])
+        min_y = float(bbox["min_y"])
+        max_y = float(bbox["max_y"])
+    except Exception:
+        return None
+    area = abs((max_x - min_x) * (max_y - min_y))
+    if math.isnan(area) or math.isinf(area):
+        return None
+    return area
+
+
 def geojson_a_gdf(geojson_bytes: bytes, epsg: Optional[int]) -> gpd.GeoDataFrame:
     data = json.loads(geojson_bytes)
     features = data.get("features", [])
@@ -503,18 +573,24 @@ def generar_mapa_publicacion(
     if map_mode == "none":
         return
     if map_mode == "wms":
-        map_url = wms_url_mapa(ows, nombre, capa)
-        if map_url:
-            map_bytes = descargar_imagen_opcional(sesion, map_url)
-            if map_bytes:
-                destino.write_bytes(map_bytes)
+        try:
+            map_url = wms_url_mapa(ows, nombre, capa)
+            if map_url:
+                map_bytes = descargar_imagen_opcional(sesion, map_url)
+                if map_bytes:
+                    destino.write_bytes(map_bytes)
+        except Exception as e:
+            print(f"aviso: no se pudo generar map.png para {geoserver} / {nombre}: {e}")
         return
     if map_mode == "composed":
-        componer_mapa(
-            geoserver=geoserver,
-            nombre=nombre,
-            output=str(destino),
-        )
+        try:
+            componer_mapa(
+                geoserver=geoserver,
+                nombre=nombre,
+                output=str(destino),
+            )
+        except Exception as e:
+            print(f"aviso: no se pudo generar map.png para {geoserver} / {nombre}: {e}")
         return
     raise ValueError(f"map_mode desconocido: {map_mode}")
 
@@ -691,6 +767,119 @@ def publicar_local(staged: dict, geoserver: str, nombre: str) -> Dict[str, bool]
     }
 
 
+def publicar_local_desde_archive_org(
+    sesion: urllib3.PoolManager,
+    item: str,
+    geoserver: str,
+    nombre: str,
+) -> Dict[str, bool]:
+    rutas = rutas_publicacion(geoserver, nombre)
+    rutas["base"].mkdir(parents=True, exist_ok=True)
+
+    metadata_bytes = descargar_bytes_archive_org(sesion, item, "metadata.json")
+    if metadata_bytes is None:
+        raise RuntimeError(f"No se pudo descargar metadata.json desde Archive.org para {item}")
+    rutas["metadata"].write_bytes(metadata_bytes)
+
+    legend_bytes = descargar_bytes_archive_org(sesion, item, "legend.png")
+    if legend_bytes:
+        rutas["legend"].write_bytes(legend_bytes)
+    elif rutas["legend"].exists():
+        rutas["legend"].unlink()
+
+    map_bytes = (
+        descargar_bytes_archive_org(sesion, item, "cover.png")
+        or descargar_bytes_archive_org(sesion, item, "map.png")
+    )
+    if map_bytes:
+        rutas["map"].write_bytes(map_bytes)
+    elif rutas["map"].exists():
+        rutas["map"].unlink()
+
+    sample_bytes = descargar_bytes_archive_org(sesion, item, "sample.json")
+    if sample_bytes:
+        rutas["sample"].write_bytes(sample_bytes)
+    elif rutas["sample"].exists():
+        rutas["sample"].unlink()
+
+    return {
+        "tiene_legend_png": bool(legend_bytes),
+        "tiene_map_png": bool(map_bytes),
+        "tiene_sample_json": bool(sample_bytes),
+    }
+
+
+def fila_paquete_desde_archive_org(
+    archive_item: str,
+    remote_item: dict,
+    metadata: dict,
+    publicados: Dict[str, bool],
+) -> dict:
+    archivos = {archivo.get("name"): archivo for archivo in remote_item.get("files", [])}
+    return {
+        "geoserver": metadata.get("geoserver", ""),
+        "nombre": metadata.get("nombre", ""),
+        "titulo": metadata.get("titulo", ""),
+        "descripcion": metadata.get("descripcion", "") or "",
+        "fecha_archivado": metadata.get("fecha_archivado", ""),
+        "archive_item": archive_item,
+        "epsg": metadata.get("epsg", "") if metadata.get("epsg", None) is not None else "",
+        "bbox_area": "" if bbox_area_metadata(metadata) is None else bbox_area_metadata(metadata),
+        "n_features": metadata.get("n_features", ""),
+        "bytes_geojson": parse_size_archivo_archive_org((archivos.get("dataset.geojson") or {}).get("size")) or "",
+        "bytes_geoparquet": parse_size_archivo_archive_org((archivos.get("dataset.geoparquet") or {}).get("size")) or "",
+        **publicados,
+    }
+
+
+def actualizar_paquetes_desde_fila(paquetes: pd.DataFrame, fila: dict) -> pd.DataFrame:
+    paquetes = paquetes[
+        ~((paquetes["geoserver"] == fila["geoserver"]) & (paquetes["nombre"] == fila["nombre"]))
+    ].copy()
+    if paquetes.empty:
+        paquetes = pd.DataFrame([fila])
+    else:
+        paquetes = pd.concat([paquetes, pd.DataFrame([fila])], ignore_index=True)
+    paquetes = paquetes.sort_values(["geoserver", "nombre"], kind="mergesort").reset_index(drop=True)
+    return paquetes[PAQUETES_COLUMNAS]
+
+
+def sincronizar_item_archive_org(
+    sesion: urllib3.PoolManager,
+    datasets: pd.DataFrame,
+    paquetes: pd.DataFrame,
+    geoserver: str,
+    nombre: str,
+) -> tuple[bool, pd.DataFrame, pd.DataFrame]:
+    archive_item = item_name(geoserver, nombre)
+    remote_item = metadata_item_archive_org_remoto(sesion, archive_item)
+    if remote_item is None:
+        return False, datasets, paquetes
+
+    archivos = {archivo.get("name") for archivo in remote_item.get("files", [])}
+    requeridos = {"dataset.geojson", "dataset.geoparquet", "metadata.json"}
+    if not requeridos.issubset(archivos):
+        print(
+            f"aviso: {archive_item} existe en Archive.org pero esta incompleto; se intentara reparar con una nueva subida"
+        )
+        return False, datasets, paquetes
+
+    metadata_bytes = descargar_bytes_archive_org(sesion, archive_item, "metadata.json")
+    if metadata_bytes is None:
+        print(
+            f"aviso: no se pudo descargar metadata.json para {archive_item}; se intentara reparar con una nueva subida"
+        )
+        return False, datasets, paquetes
+    metadata = json.loads(metadata_bytes.decode("utf-8"))
+
+    publicados = publicar_local_desde_archive_org(sesion, archive_item, geoserver, nombre)
+    fila = fila_paquete_desde_archive_org(archive_item, remote_item, metadata, publicados)
+    paquetes = actualizar_paquetes_desde_fila(paquetes, fila)
+    fecha_archivado = texto_o_vacio(metadata.get("fecha_archivado")) or hoy()
+    datasets = actualizar_datasets_exito(datasets, geoserver, nombre, fecha_archivado)
+    return True, datasets, paquetes
+
+
 def actualizar_paquetes(paquetes: pd.DataFrame, capa: pd.Series, staged: dict, publicados: Dict[str, bool]) -> pd.DataFrame:
     fila = {
         "geoserver": capa.geoserver,
@@ -857,6 +1046,25 @@ def archivar_uno(
             guardar_runs(runs)
             guardar_datasets(datasets)
 
+        sincronizado, datasets, paquetes = sincronizar_item_archive_org(
+            sesion=sesion,
+            datasets=datasets,
+            paquetes=paquetes,
+            geoserver=geoserver,
+            nombre=nombre,
+        )
+        if sincronizado:
+            runs = registrar_run(runs, geoserver, nombre, fecha_inicio, ahora(), "ok", "synced_from_archive_org")
+            if dry_run:
+                runs = runs_original
+                datasets = datasets_original
+                paquetes = paquetes_original
+            else:
+                guardar_paquetes(paquetes)
+                guardar_datasets(datasets)
+                guardar_runs(runs)
+            return datasets, paquetes, runs
+
         capa = seleccionar_capa(capas, geoserver, nombre)
         staged = stage_dataset(sesion, directorio, capa, map_mode=map_mode)
         if not dry_run:
@@ -904,7 +1112,7 @@ def parse_args() -> argparse.Namespace:
     return parser.parse_args()
 
 
-def main() -> None:
+def main() -> int:
     args = parse_args()
     limpiar_stage_huerfano()
 
@@ -922,7 +1130,7 @@ def main() -> None:
     )
     if candidatos.empty:
         print("No hay datasets candidatos para archivar.")
-        return
+        return 2
 
     sesion = iniciar_sesion()
     inicio = time.monotonic()
@@ -949,7 +1157,10 @@ def main() -> None:
         procesados += 1
 
     print(f"datasets archivados en esta corrida: {procesados}")
+    if procesados == 0:
+        return 2
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())
