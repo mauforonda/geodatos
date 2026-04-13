@@ -26,6 +26,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          ref: master
       - name: setup python
         uses: actions/setup-python@v5
         with:
@@ -40,9 +41,15 @@ jobs:
         run: |
           git config --global user.email "geodatos-bot@example.com"
           git config --global user.name "geodatos-bot"
+          git checkout master
       - name: Sincronizar y archivar incrementalmente
         run: |
           set -euo pipefail
+
+          sync_branch() {
+            git fetch origin master
+            git checkout -B master origin/master
+          }
 
           sync_and_push() {
             commit_label="${1:-state}"
@@ -51,7 +58,6 @@ jobs:
               return 1
             fi
             git commit -m "[archive] ${commit_label} $(date '+%Y-%m-%d %H:%M')"
-            git pull --rebase "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" master
             git push "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" HEAD:master
             return 0
           }
@@ -60,6 +66,7 @@ jobs:
           deadline=$((start + 300 * 60))
 
           while [ "$(date +%s)" -lt "$deadline" ]; do
+            sync_branch
             set +e
             output=$(./archivar/actualizar.py --max-datasets 1 --max-minutes 300 --max-errores-archivar 3 --map-mode composed 2>&1)
             status=$?
