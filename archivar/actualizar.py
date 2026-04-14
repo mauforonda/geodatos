@@ -53,6 +53,10 @@ MAX_BYTES_ESTIMADOS_AUTOMATICO = 1_000_000_000
 class DatasetTimeoutError(TimeoutError):
     pass
 
+
+class DatasetTooLargeError(RuntimeError):
+    pass
+
 PAQUETES_COLUMNAS = [
     "geoserver",
     "nombre",
@@ -407,7 +411,9 @@ def solicitar_geojson_json(
     max_features: Optional[int] = None,
     start_index: Optional[int] = None,
     log_label: Optional[str] = None,
-) -> dict:
+    max_bytes: Optional[int] = None,
+    bytes_acumulados_previos: int = 0,
+) -> tuple[dict, int]:
     respuesta = sesion.request(
         "GET",
         ows,
@@ -428,18 +434,23 @@ def solicitar_geojson_json(
                 break
             data.extend(chunk)
             descargados += len(chunk)
+            bytes_totales = bytes_acumulados_previos + descargados
+            if max_bytes is not None and bytes_totales > max_bytes:
+                raise DatasetTooLargeError(
+                    f"{nombre} descargo {bytes_totales} bytes y excede umbral automatico de {max_bytes}"
+                )
             if log_label:
                 ahora_ts = time.monotonic()
                 if ahora_ts - ultimo_reporte >= DOWNLOAD_HEARTBEAT_SECONDS:
                     print(
-                        f"descargando {nombre}: {log_label}, {descargados / (1024 * 1024):.1f} MiB"
+                        f"descargando {nombre}: {log_label}, {bytes_totales / (1024 * 1024):.1f} MiB"
                     )
                     ultimo_reporte = ahora_ts
     finally:
         respuesta.release_conn()
 
     try:
-        return json.loads(data)
+        return json.loads(data), descargados
     except json.JSONDecodeError as e:
         raise RuntimeError(f"GetFeature no devolvio GeoJSON valido para {nombre}") from e
 
@@ -449,6 +460,7 @@ def descargar_geojson_streaming(
     ows: str,
     nombre: str,
     destino: Path,
+    max_bytes: Optional[int] = None,
 ) -> int:
     print(f"descargando {nombre}: respuesta unica en streaming")
     respuesta = sesion.request(
@@ -471,6 +483,10 @@ def descargar_geojson_streaming(
                     break
                 f.write(chunk)
                 descargados += len(chunk)
+                if max_bytes is not None and descargados > max_bytes:
+                    raise DatasetTooLargeError(
+                        f"{nombre} descargo {descargados} bytes y excede umbral automatico de {max_bytes}"
+                    )
                 ahora_ts = time.monotonic()
                 if ahora_ts - ultimo_reporte >= DOWNLOAD_HEARTBEAT_SECONDS:
                     print(f"descargando {nombre}: {descargados / (1024 * 1024):.1f} MiB")
@@ -509,22 +525,27 @@ def descargar_geojson_paginado(
     destino: Path,
     total_esperado: int,
     page_size: int = WFS_PAGE_SIZE,
+    max_bytes: Optional[int] = None,
 ) -> tuple[int, int]:
     features_por_pagina: list[list[dict]] = []
     total_descargado = 0
+    bytes_descargados = 0
     page_index = 0
     primera_huella: Optional[str] = None
 
     while total_descargado < total_esperado:
         start_index = page_index * page_size
-        pagina = solicitar_geojson_json(
+        pagina, bytes_pagina = solicitar_geojson_json(
             sesion,
             ows,
             nombre,
             max_features=page_size,
             start_index=start_index,
             log_label=f"pagina {page_index + 1}",
+            max_bytes=max_bytes,
+            bytes_acumulados_previos=bytes_descargados,
         )
+        bytes_descargados += bytes_pagina
         features = pagina.get("features", []) or []
         if page_index == 0 and not features:
             raise RuntimeError("La primera pagina WFS no contiene features")
@@ -551,7 +572,8 @@ def descargar_geojson_paginado(
         page_index += 1
 
     escribir_feature_collection(destino, features_por_pagina)
-    return total_descargado, destino.stat().st_size
+    bytes_descargados = destino.stat().st_size
+    return total_descargado, bytes_descargados
 
 
 def descargar_geojson(
@@ -559,6 +581,7 @@ def descargar_geojson(
     ows: str,
     nombre: str,
     destino: Path,
+    max_bytes: Optional[int] = None,
 ) -> tuple[int, Optional[int], int, bool]:
     total_esperado = consultar_hits(sesion, ows, nombre)
 
@@ -570,16 +593,19 @@ def descargar_geojson(
                 nombre,
                 destino,
                 total_esperado=total_esperado,
+                max_bytes=max_bytes,
             )
             if total_descargado == total_esperado:
                 return total_descargado, total_esperado, bytes_descargados, True
             print(
                 f"aviso: paginacion incompleta para {nombre}: {total_descargado}/{total_esperado}; se reintentara con respuesta unica"
             )
+        except DatasetTooLargeError:
+            raise
         except Exception as e:
             print(f"aviso: no se pudo paginar {nombre}: {e}; se intentara descarga unica")
 
-    bytes_descargados = descargar_geojson_streaming(sesion, ows, nombre, destino)
+    bytes_descargados = descargar_geojson_streaming(sesion, ows, nombre, destino, max_bytes=max_bytes)
     data = json.loads(destino.read_text(encoding="utf-8"))
     total_descargado = len(data.get("features", []) or [])
     if total_esperado is not None:
@@ -873,6 +899,7 @@ def stage_dataset(
     directorio: Dict[str, dict],
     capa: pd.Series,
     map_mode: str,
+    max_bytes_descarga: Optional[int],
 ) -> dict:
     geoserver = capa.geoserver
     nombre = capa.nombre
@@ -900,6 +927,7 @@ def stage_dataset(
             ows,
             nombre,
             geojson_path,
+            max_bytes=max_bytes_descarga,
         )
 
         gdf = geojson_a_gdf(geojson_path, capa.epsg if not pd.isna(capa.epsg) else None)
@@ -1353,6 +1381,7 @@ def archivar_uno(
     dry_run: bool,
     map_mode: str,
     max_minutes_por_dataset: int,
+    max_bytes_descarga: Optional[int],
 ) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
     fecha_inicio = ahora()
     fecha = fecha_inicio.date().isoformat()
@@ -1397,7 +1426,13 @@ def archivar_uno(
             return datasets, paquetes, runs
 
         capa = seleccionar_capa(capas, geoserver, nombre)
-        staged = stage_dataset(sesion, directorio, capa, map_mode=map_mode)
+        staged = stage_dataset(
+            sesion,
+            directorio,
+            capa,
+            map_mode=map_mode,
+            max_bytes_descarga=max_bytes_descarga,
+        )
         if not dry_run:
             subir_archive_org(staged)
         publicados = publicar_local(staged, geoserver, nombre)
@@ -1495,20 +1530,34 @@ def main() -> int:
             continue
 
         print(f"archivando {fila.geoserver} / {fila.nombre}")
-        datasets, paquetes, runs = archivar_uno(
-            sesion=sesion,
-            directorio=directorio,
-            capas=capas,
-            datasets=datasets,
-            paquetes=paquetes,
-            runs=runs,
-            geoserver=fila.geoserver,
-            nombre=fila.nombre,
-            dry_run=args.dry_run,
-            map_mode=args.map_mode,
-            max_minutes_por_dataset=args.max_minutes_por_dataset,
-        )
-        procesados += 1
+        try:
+            datasets, paquetes, runs = archivar_uno(
+                sesion=sesion,
+                directorio=directorio,
+                capas=capas,
+                datasets=datasets,
+                paquetes=paquetes,
+                runs=runs,
+                geoserver=fila.geoserver,
+                nombre=fila.nombre,
+                dry_run=args.dry_run,
+                map_mode=args.map_mode,
+                max_minutes_por_dataset=args.max_minutes_por_dataset,
+                max_bytes_descarga=args.max_bytes_estimados,
+            )
+            procesados += 1
+        except DatasetTooLargeError as e:
+            print(f"aviso: {e}; se marcara para archivo manual")
+            manuales = registrar_manual(
+                manuales,
+                geoserver=fila.geoserver,
+                nombre=fila.nombre,
+                bytes_estimados=bytes_estimados,
+                motivo=f"descarga_real>{args.max_bytes_estimados}",
+            )
+            if not args.dry_run:
+                guardar_manuales(manuales)
+            continue
 
     print(f"datasets archivados en esta corrida: {procesados}")
     if procesados == 0:
