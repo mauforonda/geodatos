@@ -54,7 +54,7 @@ jobs:
 
           sync_and_push() {
             commit_label="${1:-state}"
-            git add evaluar/datasets.csv archivar/paquetes.csv archivar/runs.csv archivar/publicados
+            git add evaluar/datasets.csv archivar/paquetes.csv archivar/runs.csv archivar/manuales.csv archivar/publicados
             if git diff --quiet && git diff --staged --quiet; then
               return 1
             fi
@@ -70,7 +70,7 @@ jobs:
             sync_branch
             set +e
             logfile=$(mktemp)
-            ./archivar/actualizar.py --max-datasets 1 --max-minutes 300 --max-minutes-por-dataset 25 --max-errores-archivar 3 --map-mode composed 2>&1 | tee "$logfile"
+            ./archivar/actualizar.py --max-datasets 1 --max-minutes 300 --max-minutes-por-dataset 25 --max-bytes-estimados 1000000000 --max-errores-archivar 3 --map-mode composed 2>&1 | tee "$logfile"
             status=${PIPESTATUS[0]}
             set -e
             output=$(cat "$logfile")

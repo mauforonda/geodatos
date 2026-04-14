@@ -36,6 +36,7 @@ DIRECTORIO = DESCUBRIR_DIR / "directorio.json"
 DATASETS = EVALUAR_DIR / "datasets.csv"
 PAQUETES = BASE_DIR / "paquetes.csv"
 RUNS = BASE_DIR / "runs.csv"
+MANUALES = BASE_DIR / "manuales.csv"
 PUBLICADOS = BASE_DIR / "publicados"
 TMP_STAGE = BASE_DIR / ".tmp_stage"
 BLACKLIST = BASE_DIR / "blacklist.json"
@@ -46,6 +47,7 @@ MAX_ERRORES_ARCHIVAR = 3
 WFS_PAGE_SIZE = 5000
 STREAM_CHUNK_SIZE = 1024 * 1024
 DOWNLOAD_HEARTBEAT_SECONDS = 15
+MAX_BYTES_ESTIMADOS_AUTOMATICO = 1_000_000_000
 
 
 class DatasetTimeoutError(TimeoutError):
@@ -76,6 +78,14 @@ RUNS_COLUMNAS = [
     "segundos",
     "estado",
     "detalle",
+]
+
+MANUALES_COLUMNAS = [
+    "geoserver",
+    "nombre",
+    "bytes_estimados",
+    "fecha_detectado",
+    "motivo",
 ]
 
 
@@ -227,6 +237,16 @@ def leer_runs() -> pd.DataFrame:
     return runs[RUNS_COLUMNAS].copy()
 
 
+def leer_manuales() -> pd.DataFrame:
+    if not MANUALES.exists():
+        return pd.DataFrame(columns=MANUALES_COLUMNAS)
+    manuales = pd.read_csv(MANUALES, keep_default_na=False)
+    for columna in MANUALES_COLUMNAS:
+        if columna not in manuales.columns:
+            manuales[columna] = ""
+    return manuales[MANUALES_COLUMNAS].copy()
+
+
 def limpiar_stage_huerfano(max_age_hours: int = 24) -> None:
     if not TMP_STAGE.exists():
         return
@@ -247,6 +267,7 @@ def limpiar_stage_huerfano(max_age_hours: int = 24) -> None:
 def seleccionar_candidatos(
     datasets: pd.DataFrame,
     geoservers_excluidos: set[str],
+    manuales: pd.DataFrame,
     max_errores_archivar: int = MAX_ERRORES_ARCHIVAR,
 ) -> pd.DataFrame:
     candidatos = datasets[
@@ -258,6 +279,11 @@ def seleccionar_candidatos(
     ].copy()
     if geoservers_excluidos:
         candidatos = candidatos[~candidatos["geoserver"].isin(sorted(geoservers_excluidos))].copy()
+    if not manuales.empty:
+        manual_keys = set(zip(manuales["geoserver"], manuales["nombre"]))
+        candidatos = candidatos[
+            ~candidatos.apply(lambda row: (row["geoserver"], row["nombre"]) in manual_keys, axis=1)
+        ].copy()
     return candidatos
 
 
@@ -1271,6 +1297,35 @@ def guardar_runs(runs: pd.DataFrame) -> None:
     runs.to_csv(RUNS, index=False)
 
 
+def guardar_manuales(manuales: pd.DataFrame) -> None:
+    salida = manuales.copy()
+    if "bytes_estimados" in salida.columns:
+        salida["bytes_estimados"] = pd.to_numeric(salida["bytes_estimados"], errors="coerce")
+    salida.to_csv(MANUALES, index=False, float_format="%.0f")
+
+
+def registrar_manual(
+    manuales: pd.DataFrame,
+    geoserver: str,
+    nombre: str,
+    bytes_estimados: Optional[float],
+    motivo: str,
+) -> pd.DataFrame:
+    fila = {
+        "geoserver": geoserver,
+        "nombre": nombre,
+        "bytes_estimados": "" if bytes_estimados is None or pd.isna(bytes_estimados) else int(bytes_estimados),
+        "fecha_detectado": hoy(),
+        "motivo": motivo,
+    }
+    manuales = manuales[
+        ~((manuales["geoserver"] == geoserver) & (manuales["nombre"] == nombre))
+    ].copy()
+    manuales = pd.concat([manuales, pd.DataFrame([fila])], ignore_index=True)
+    manuales = manuales.sort_values(["geoserver", "nombre"], kind="mergesort").reset_index(drop=True)
+    return manuales[MANUALES_COLUMNAS]
+
+
 def limpiar_stage(staged: dict) -> None:
     base = staged.get("staged")
     if base and Path(base).exists():
@@ -1385,6 +1440,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--max-datasets", type=int, default=1)
     parser.add_argument("--max-minutes", type=int, default=330)
     parser.add_argument("--max-minutes-por-dataset", type=int, default=25)
+    parser.add_argument("--max-bytes-estimados", type=int, default=MAX_BYTES_ESTIMADOS_AUTOMATICO)
     parser.add_argument("--max-errores-archivar", type=int, default=MAX_ERRORES_ARCHIVAR)
     parser.add_argument("--map-mode", choices=["none", "wms", "composed"], default="composed")
     parser.add_argument("--dry-run", action="store_true")
@@ -1401,10 +1457,12 @@ def main() -> int:
     blacklist = leer_blacklist()
     paquetes = leer_paquetes()
     runs = leer_runs()
+    manuales = leer_manuales()
 
     candidatos = seleccionar_candidatos(
         datasets,
         geoservers_excluidos=blacklist,
+        manuales=manuales,
         max_errores_archivar=args.max_errores_archivar,
     )
     if candidatos.empty:
@@ -1419,6 +1477,22 @@ def main() -> int:
         minutos = (time.monotonic() - inicio) / 60
         if procesados >= args.max_datasets or minutos >= args.max_minutes:
             break
+
+        bytes_estimados = pd.to_numeric(pd.Series([fila.bytes_estimados]), errors="coerce").iloc[0]
+        if pd.notna(bytes_estimados) and bytes_estimados > args.max_bytes_estimados:
+            print(
+                f"saltando {fila.geoserver} / {fila.nombre}: bytes_estimados={int(bytes_estimados)} excede umbral automatico"
+            )
+            manuales = registrar_manual(
+                manuales,
+                geoserver=fila.geoserver,
+                nombre=fila.nombre,
+                bytes_estimados=bytes_estimados,
+                motivo=f"bytes_estimados>{args.max_bytes_estimados}",
+            )
+            if not args.dry_run:
+                guardar_manuales(manuales)
+            continue
 
         print(f"archivando {fila.geoserver} / {fila.nombre}")
         datasets, paquetes, runs = archivar_uno(
