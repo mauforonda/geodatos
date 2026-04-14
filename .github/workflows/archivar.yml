@@ -21,6 +21,7 @@ jobs:
       IA_SECRET_KEY: ${{ secrets.IA_SECRET_KEY }}
       ARCHIVE_COLLECTION: ${{ secrets.ARCHIVE_COLLECTION }}
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      PYTHONUNBUFFERED: "1"
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -68,10 +69,12 @@ jobs:
           while [ "$(date +%s)" -lt "$deadline" ]; do
             sync_branch
             set +e
-            output=$(./archivar/actualizar.py --max-datasets 1 --max-minutes 300 --max-errores-archivar 3 --map-mode composed 2>&1)
-            status=$?
+            logfile=$(mktemp)
+            ./archivar/actualizar.py --max-datasets 1 --max-minutes 300 --max-errores-archivar 3 --map-mode composed 2>&1 | tee "$logfile"
+            status=${PIPESTATUS[0]}
             set -e
-            printf '%s\n' "$output"
+            output=$(cat "$logfile")
+            rm -f "$logfile"
 
             dataset_label=$(printf '%s\n' "$output" | sed -n 's/^archivando \(.*\) \/ \(.*\)$/\1 \2/p' | tail -n 1 | tr ':/ ' '____' | sed 's/_\\+/_/g; s/^_//; s/_$//')
             if [ -z "$dataset_label" ]; then
