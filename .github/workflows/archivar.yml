@@ -70,7 +70,7 @@ jobs:
             sync_branch
             set +e
             logfile=$(mktemp)
-            ./archivar/actualizar.py --max-datasets 1 --max-minutes 300 --max-errores-archivar 3 --map-mode composed 2>&1 | tee "$logfile"
+            ./archivar/actualizar.py --max-datasets 1 --max-minutes 300 --max-minutes-por-dataset 25 --max-errores-archivar 3 --map-mode composed 2>&1 | tee "$logfile"
             status=${PIPESTATUS[0]}
             set -e
             output=$(cat "$logfile")

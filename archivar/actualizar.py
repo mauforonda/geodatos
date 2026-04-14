@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
 
 import argparse
+import hashlib
 import json
 import math
 import os
 import re
 import shutil
+import signal
 import sys
 import tempfile
 import time
@@ -17,6 +19,7 @@ import geopandas as gpd
 import pandas as pd
 import pytz
 import urllib3
+import xmltodict
 
 BASE_DIR = Path(__file__).resolve().parent
 ROOT_DIR = BASE_DIR.parent
@@ -40,6 +43,13 @@ BLACKLIST = BASE_DIR / "blacklist.json"
 TIMEZONE = pytz.timezone("America/La_Paz")
 ITEM_PREFIX = "geodatosbolivia"
 MAX_ERRORES_ARCHIVAR = 3
+WFS_PAGE_SIZE = 5000
+STREAM_CHUNK_SIZE = 1024 * 1024
+DOWNLOAD_HEARTBEAT_SECONDS = 15
+
+
+class DatasetTimeoutError(TimeoutError):
+    pass
 
 PAQUETES_COLUMNAS = [
     "geoserver",
@@ -303,21 +313,254 @@ def wms_url_leyenda(ows: str, nombre: str) -> str:
     )
 
 
-def descargar_geojson(sesion: urllib3.PoolManager, ows: str, nombre: str) -> bytes:
+def consultar_hits(
+    sesion: urllib3.PoolManager,
+    ows: str,
+    nombre: str,
+) -> Optional[int]:
     respuesta = sesion.request(
         "GET",
         ows,
         fields={
             "service": "wfs",
-            "version": "1.0.0",
+            "version": "1.1.0",
             "request": "GetFeature",
             "typeName": nombre,
-            "outputFormat": "application/json",
+            "resultType": "hits",
         },
     )
     if respuesta.status != 200:
+        return None
+
+    try:
+        data = xmltodict.parse(respuesta.data)
+    except Exception:
+        return None
+
+    posibles = [
+        data.get("wfs:FeatureCollection", {}),
+        data.get("FeatureCollection", {}),
+    ]
+    for candidato in posibles:
+        for atributo in ["@numberOfFeatures", "@numberMatched"]:
+            valor = candidato.get(atributo)
+            if valor not in [None, "unknown"]:
+                try:
+                    return int(valor)
+                except ValueError:
+                    return None
+    return None
+
+
+def getfeature_fields(
+    nombre: str,
+    *,
+    max_features: Optional[int] = None,
+    start_index: Optional[int] = None,
+) -> dict:
+    fields = {
+        "service": "wfs",
+        "version": "1.0.0",
+        "request": "GetFeature",
+        "typeName": nombre,
+        "outputFormat": "application/json",
+    }
+    if max_features is not None:
+        fields["maxFeatures"] = str(max_features)
+        fields["count"] = str(max_features)
+    if start_index is not None and start_index > 0:
+        fields["startIndex"] = str(start_index)
+    return fields
+
+
+def solicitar_geojson_json(
+    sesion: urllib3.PoolManager,
+    ows: str,
+    nombre: str,
+    *,
+    max_features: Optional[int] = None,
+    start_index: Optional[int] = None,
+    log_label: Optional[str] = None,
+) -> dict:
+    respuesta = sesion.request(
+        "GET",
+        ows,
+        fields=getfeature_fields(nombre, max_features=max_features, start_index=start_index),
+        preload_content=False,
+    )
+    if respuesta.status != 200:
+        respuesta.release_conn()
         raise RuntimeError(f"GetFeature devolvio estatus {respuesta.status}")
-    return bytes(respuesta.data)
+
+    descargados = 0
+    ultimo_reporte = time.monotonic()
+    data = bytearray()
+    try:
+        while True:
+            chunk = respuesta.read(STREAM_CHUNK_SIZE)
+            if not chunk:
+                break
+            data.extend(chunk)
+            descargados += len(chunk)
+            if log_label:
+                ahora_ts = time.monotonic()
+                if ahora_ts - ultimo_reporte >= DOWNLOAD_HEARTBEAT_SECONDS:
+                    print(
+                        f"descargando {nombre}: {log_label}, {descargados / (1024 * 1024):.1f} MiB"
+                    )
+                    ultimo_reporte = ahora_ts
+    finally:
+        respuesta.release_conn()
+
+    try:
+        return json.loads(data)
+    except json.JSONDecodeError as e:
+        raise RuntimeError(f"GetFeature no devolvio GeoJSON valido para {nombre}") from e
+
+
+def descargar_geojson_streaming(
+    sesion: urllib3.PoolManager,
+    ows: str,
+    nombre: str,
+    destino: Path,
+) -> int:
+    print(f"descargando {nombre}: respuesta unica en streaming")
+    respuesta = sesion.request(
+        "GET",
+        ows,
+        fields=getfeature_fields(nombre),
+        preload_content=False,
+    )
+    if respuesta.status != 200:
+        raise RuntimeError(f"GetFeature devolvio estatus {respuesta.status}")
+
+    descargados = 0
+    ultimo_reporte = time.monotonic()
+    destino.parent.mkdir(parents=True, exist_ok=True)
+    try:
+        with open(destino, "wb") as f:
+            while True:
+                chunk = respuesta.read(STREAM_CHUNK_SIZE)
+                if not chunk:
+                    break
+                f.write(chunk)
+                descargados += len(chunk)
+                ahora_ts = time.monotonic()
+                if ahora_ts - ultimo_reporte >= DOWNLOAD_HEARTBEAT_SECONDS:
+                    print(f"descargando {nombre}: {descargados / (1024 * 1024):.1f} MiB")
+                    ultimo_reporte = ahora_ts
+    finally:
+        respuesta.release_conn()
+
+    print(f"descargando {nombre}: completo, {descargados / (1024 * 1024):.1f} MiB")
+    return descargados
+
+
+def feature_fingerprint(feature: dict) -> str:
+    return hashlib.sha1(
+        json.dumps(feature, sort_keys=True, ensure_ascii=False).encode("utf-8")
+    ).hexdigest()
+
+
+def escribir_feature_collection(destino: Path, features_por_pagina: list[list[dict]]) -> None:
+    destino.parent.mkdir(parents=True, exist_ok=True)
+    with open(destino, "w", encoding="utf-8") as f:
+        f.write('{"type":"FeatureCollection","features":[')
+        primero = True
+        for features in features_por_pagina:
+            for feature in features:
+                if not primero:
+                    f.write(",")
+                json.dump(feature, f, ensure_ascii=False, separators=(",", ":"))
+                primero = False
+        f.write("]}")
+
+
+def descargar_geojson_paginado(
+    sesion: urllib3.PoolManager,
+    ows: str,
+    nombre: str,
+    destino: Path,
+    total_esperado: int,
+    page_size: int = WFS_PAGE_SIZE,
+) -> tuple[int, int]:
+    features_por_pagina: list[list[dict]] = []
+    total_descargado = 0
+    page_index = 0
+    primera_huella: Optional[str] = None
+
+    while total_descargado < total_esperado:
+        start_index = page_index * page_size
+        pagina = solicitar_geojson_json(
+            sesion,
+            ows,
+            nombre,
+            max_features=page_size,
+            start_index=start_index,
+            log_label=f"pagina {page_index + 1}",
+        )
+        features = pagina.get("features", []) or []
+        if page_index == 0 and not features:
+            raise RuntimeError("La primera pagina WFS no contiene features")
+        if page_index == 1 and features and primera_huella is not None:
+            if feature_fingerprint(features[0]) == primera_huella:
+                raise RuntimeError("El servidor no parece soportar paginacion startIndex")
+        if not features:
+            break
+        if page_index == 0:
+            primera_huella = feature_fingerprint(features[0])
+            if len(features) > page_size:
+                print(
+                    f"aviso: {nombre} ignoro maxFeatures y devolvio {len(features)} features en la primera pagina"
+                )
+
+        features_por_pagina.append(features)
+        total_descargado += len(features)
+        print(
+            f"descargando {nombre}: pagina {page_index + 1}, features {total_descargado}/{total_esperado}"
+        )
+
+        if len(features) < page_size:
+            break
+        page_index += 1
+
+    escribir_feature_collection(destino, features_por_pagina)
+    return total_descargado, destino.stat().st_size
+
+
+def descargar_geojson(
+    sesion: urllib3.PoolManager,
+    ows: str,
+    nombre: str,
+    destino: Path,
+) -> tuple[int, Optional[int], int, bool]:
+    total_esperado = consultar_hits(sesion, ows, nombre)
+
+    if total_esperado is not None and total_esperado > WFS_PAGE_SIZE:
+        try:
+            total_descargado, bytes_descargados = descargar_geojson_paginado(
+                sesion,
+                ows,
+                nombre,
+                destino,
+                total_esperado=total_esperado,
+            )
+            if total_descargado == total_esperado:
+                return total_descargado, total_esperado, bytes_descargados, True
+            print(
+                f"aviso: paginacion incompleta para {nombre}: {total_descargado}/{total_esperado}; se reintentara con respuesta unica"
+            )
+        except Exception as e:
+            print(f"aviso: no se pudo paginar {nombre}: {e}; se intentara descarga unica")
+
+    bytes_descargados = descargar_geojson_streaming(sesion, ows, nombre, destino)
+    data = json.loads(destino.read_text(encoding="utf-8"))
+    total_descargado = len(data.get("features", []) or [])
+    if total_esperado is not None:
+        print(
+            f"descargando {nombre}: features {total_descargado}/{total_esperado}"
+        )
+    return total_descargado, total_esperado, bytes_descargados, False
 
 
 def descargar_imagen_opcional(sesion: urllib3.PoolManager, url: str) -> Optional[bytes]:
@@ -404,13 +647,10 @@ def bbox_area_metadata(metadata: dict) -> Optional[float]:
     return area
 
 
-def geojson_a_gdf(geojson_bytes: bytes, epsg: Optional[int]) -> gpd.GeoDataFrame:
-    data = json.loads(geojson_bytes)
-    features = data.get("features", [])
-    if not features:
+def geojson_a_gdf(geojson_path: Path, epsg: Optional[int]) -> gpd.GeoDataFrame:
+    gdf = gpd.read_file(geojson_path)
+    if gdf.empty:
         raise RuntimeError("El dataset no contiene features")
-
-    gdf = gpd.GeoDataFrame.from_features(features)
     if epsg and gdf.crs is None:
         gdf = gdf.set_crs(epsg=int(epsg), allow_override=True)
     return gdf
@@ -629,13 +869,23 @@ def stage_dataset(
         map_path = tmp / "map.png"
         sample_path = tmp / "sample.json"
 
-        geojson_bytes = descargar_geojson(sesion, ows, nombre)
-        geojson_path.write_bytes(geojson_bytes)
+        n_features_descargadas, n_features_esperadas, bytes_geojson, paginado = descargar_geojson(
+            sesion,
+            ows,
+            nombre,
+            geojson_path,
+        )
 
-        gdf = geojson_a_gdf(geojson_bytes, capa.epsg if not pd.isna(capa.epsg) else None)
+        gdf = geojson_a_gdf(geojson_path, capa.epsg if not pd.isna(capa.epsg) else None)
         gdf.to_parquet(geoparquet_path)
 
         n_features = len(gdf)
+        if n_features_esperadas is not None and n_features != n_features_esperadas:
+            print(
+                f"aviso: {nombre} descargo {n_features} features pero hits reporta {n_features_esperadas}"
+            )
+        if paginado:
+            print(f"descargando {nombre}: paginacion completada con {n_features_descargadas} features")
         escribir_json(sample_path, muestra_no_geometrica(gdf))
 
         legend_bytes = descargar_imagen_opcional(sesion, wms_url_leyenda(ows, nombre))
@@ -679,7 +929,7 @@ def stage_dataset(
         persisted.parent.mkdir(parents=True, exist_ok=True)
         shutil.copytree(staged, persisted)
 
-    return {
+        return {
         "archive_item": archive_item,
         "fecha_archivado": fecha_archivado,
         "staged": persisted,
@@ -702,6 +952,7 @@ def stage_dataset(
             n_features=n_features,
             tiene_legend=(persisted / "legend.png").exists(),
         ),
+        "bytes_geojson": bytes_geojson,
     }
 
 
@@ -1026,6 +1277,15 @@ def limpiar_stage(staged: dict) -> None:
         shutil.rmtree(base)
 
 
+def timeout_handler_factory(geoserver: str, nombre: str, max_seconds: int):
+    def handler(signum, frame):
+        raise DatasetTimeoutError(
+            f"Timeout archivando {geoserver} / {nombre} despues de {max_seconds // 60} minutos"
+        )
+
+    return handler
+
+
 def archivar_uno(
     sesion: urllib3.PoolManager,
     directorio: Dict[str, dict],
@@ -1037,6 +1297,7 @@ def archivar_uno(
     nombre: str,
     dry_run: bool,
     map_mode: str,
+    max_minutes_por_dataset: int,
 ) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
     fecha_inicio = ahora()
     fecha = fecha_inicio.date().isoformat()
@@ -1044,8 +1305,16 @@ def archivar_uno(
     datasets_original = datasets.copy()
     paquetes_original = paquetes.copy()
     runs_original = runs.copy()
+    timeout_seconds = max(60, int(max_minutes_por_dataset * 60))
+    previous_handler = signal.getsignal(signal.SIGALRM)
 
     try:
+        signal.signal(
+            signal.SIGALRM,
+            timeout_handler_factory(geoserver, nombre, timeout_seconds),
+        )
+        signal.alarm(timeout_seconds)
+
         mascara = (datasets["geoserver"] == geoserver) & (datasets["nombre"] == nombre)
         runs = registrar_run_inicio(runs, geoserver, nombre, fecha_inicio)
         datasets.loc[mascara, "fecha_ultimo_archivo_intento"] = fecha
@@ -1107,12 +1376,15 @@ def archivar_uno(
             rutas = rutas_publicacion(geoserver, nombre)
             if rutas["base"].exists():
                 shutil.rmtree(rutas["base"], ignore_errors=True)
+        signal.alarm(0)
+        signal.signal(signal.SIGALRM, previous_handler)
 
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser()
     parser.add_argument("--max-datasets", type=int, default=1)
     parser.add_argument("--max-minutes", type=int, default=330)
+    parser.add_argument("--max-minutes-por-dataset", type=int, default=25)
     parser.add_argument("--max-errores-archivar", type=int, default=MAX_ERRORES_ARCHIVAR)
     parser.add_argument("--map-mode", choices=["none", "wms", "composed"], default="composed")
     parser.add_argument("--dry-run", action="store_true")
@@ -1160,6 +1432,7 @@ def main() -> int:
             nombre=fila.nombre,
             dry_run=args.dry_run,
             map_mode=args.map_mode,
+            max_minutes_por_dataset=args.max_minutes_por_dataset,
         )
         procesados += 1
 
