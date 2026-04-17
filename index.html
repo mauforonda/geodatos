@@ -1,132 +1,94 @@
-<!DOCTYPE html>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<title>Datos Geográficos sobre Bolivia</title>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&amp;display=swap" crossorigin>
-<link rel="preload" as="style" href="./_observablehq/theme-air,ink,wide.css">
-<link rel="preload" as="style" href="./_observablehq/stdlib/inputs.css">
-<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&amp;display=swap" crossorigin>
-<link rel="stylesheet" type="text/css" href="./_observablehq/theme-air,ink,wide.css">
-<link rel="stylesheet" type="text/css" href="./_observablehq/stdlib/inputs.css">
-<link rel="modulepreload" href="./_observablehq/client.js">
-<link rel="modulepreload" href="./_observablehq/runtime.js">
-<link rel="modulepreload" href="./_observablehq/stdlib.js">
-<link rel="modulepreload" href="./_import/components/cargar.a0288685.js">
-<link rel="modulepreload" href="./_import/components/mostrar.08f0cad2.js">
-<link rel="modulepreload" href="./_npm/d3@7.9.0/_esm.js">
-<link rel="modulepreload" href="./_npm/htl@0.3.1/_esm.js">
-<link rel="modulepreload" href="./_observablehq/stdlib/inputs.js">
-<link rel="modulepreload" href="./_npm/isoformat@0.2.1/_esm.js">
-<link rel="modulepreload" href="./_npm/d3-array@3.2.4/_esm.js">
-<link rel="modulepreload" href="./_npm/d3-axis@3.0.0/_esm.js">
-<link rel="modulepreload" href="./_npm/d3-brush@3.0.0/_esm.js">
-<link rel="modulepreload" href="./_npm/d3-chord@3.0.1/_esm.js">
-<link rel="modulepreload" href="./_npm/d3-color@3.1.0/_esm.js">
-<link rel="modulepreload" href="./_npm/d3-contour@4.0.2/_esm.js">
-<link rel="modulepreload" href="./_npm/d3-delaunay@6.0.4/_esm.js">
-<link rel="modulepreload" href="./_npm/d3-dispatch@3.0.1/_esm.js">
-<link rel="modulepreload" href="./_npm/d3-drag@3.0.0/_esm.js">
-<link rel="modulepreload" href="./_npm/d3-dsv@3.0.1/_esm.js">
-<link rel="modulepreload" href="./_npm/d3-ease@3.0.1/_esm.js">
-<link rel="modulepreload" href="./_npm/d3-fetch@3.0.1/_esm.js">
-<link rel="modulepreload" href="./_npm/d3-force@3.0.0/_esm.js">
-<link rel="modulepreload" href="./_npm/d3-format@3.1.2/_esm.js">
-<link rel="modulepreload" href="./_npm/d3-geo@3.1.1/_esm.js">
-<link rel="modulepreload" href="./_npm/d3-hierarchy@3.1.2/_esm.js">
-<link rel="modulepreload" href="./_npm/d3-interpolate@3.0.1/_esm.js">
-<link rel="modulepreload" href="./_npm/d3-path@3.1.0/_esm.js">
-<link rel="modulepreload" href="./_npm/d3-polygon@3.0.1/_esm.js">
-<link rel="modulepreload" href="./_npm/d3-quadtree@3.0.1/_esm.js">
-<link rel="modulepreload" href="./_npm/d3-random@3.0.1/_esm.js">
-<link rel="modulepreload" href="./_npm/d3-scale@4.0.2/_esm.js">
-<link rel="modulepreload" href="./_npm/d3-scale-chromatic@3.1.0/_esm.js">
-<link rel="modulepreload" href="./_npm/d3-selection@3.0.0/_esm.js">
-<link rel="modulepreload" href="./_npm/d3-shape@3.2.0/_esm.js">
-<link rel="modulepreload" href="./_npm/d3-time@3.1.0/_esm.js">
-<link rel="modulepreload" href="./_npm/d3-time-format@4.1.0/_esm.js">
-<link rel="modulepreload" href="./_npm/d3-timer@3.0.1/_esm.js">
-<link rel="modulepreload" href="./_npm/d3-transition@3.0.1/_esm.js">
-<link rel="modulepreload" href="./_npm/d3-zoom@3.0.0/_esm.js">
-<link rel="modulepreload" href="./_npm/internmap@2.0.3/_esm.js">
-<link rel="modulepreload" href="./_npm/delaunator@5.1.0/_esm.js">
-<link rel="modulepreload" href="./_npm/robust-predicates@3.0.3/_esm.js">
-<link rel="icon" href="./_file/favicon.cc2893b5.png" type="image/png">
-<script type="module">
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>GeoDatos sobre Bolivia</title>
+    <meta
+      name="description"
+      content="Índice público de datos geográficos sobre Bolivia descubiertos en servicios GeoServer."
+    >
+    <link rel="icon" href="https://mauforonda.github.io/images/icon.svg">
+    <link rel="stylesheet" href="./assets/styles.css">
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="hero">
+        <div class="hero-row hero-row-top">
+          <nav class="hero-types" role="tablist" aria-label="Tipo de índice">
+            <button class="mode-switch is-active" id="mode-descubrir" data-mode="descubrir" role="tab" aria-selected="true">
+              Descubiertos
+            </button>
+            <button class="mode-switch" id="mode-archivo" data-mode="archivo" role="tab" aria-selected="false">
+              Archivados
+            </button>
+          </nav>
+          <div class="hero-site-title" id="hero-site-title">GeoDatos sobre Bolivia</div>
+        </div>
+        <div class="hero-row hero-row-short">
+          <div class="hero-short" id="hero-short"></div>
+        </div>
+        <div class="hero-row hero-row-long" id="hero-long"></div>
+      </header>
 
-import {define} from "./_observablehq/client.js";
+      <main class="app-shell">
+        <section class="toolbar" id="toolbar">
+          <label class="search-field">
+            <span class="label">Buscar</span>
+            <input id="search-input" type="search" placeholder="Por nombre, descripción o fuente ...">
+          </label>
+        </section>
 
-define({id: "b00007cf", outputs: ["cargarCapas","capas"], body: async () => {
-const {cargarCapas} = await import("./_import/components/cargar.a0288685.js");
-const capas = await cargarCapas()
-return {cargarCapas,capas};
-}});
+        <section class="statusbar">
+          <div id="results-summary">Cargando índice…</div>
+          <div class="status-note is-hidden" id="status-note"></div>
+        </section>
 
-define({id: "64be0e62", inputs: ["Inputs","capas","Generators"], outputs: ["busqueda","busquedaValor"], body: (Inputs,capas,Generators) => {
-const busqueda = Inputs.search(capas, {
-  placeholder: 'Busca ...',
-  columns: ["nombre", "geoserver", "titulo", "descripcion"],
-  format: d => `${d} capas`
-})
-const busquedaValor = Generators.input(busqueda)
-return {busqueda,busquedaValor};
-}});
+        <section id="results" class="results-grid" aria-live="polite"></section>
 
-define({id: "028ef218", inputs: ["Inputs","busquedaValor"], outputs: ["tabla"], body: (Inputs,busquedaValor) => {
-const tabla = Inputs.table(busquedaValor, {
-  columns: ["presentacion"],
-  format: {
-    presentacion: (d) => d
-  },
-  header: {
-    presentacion: ""
-  },
-  rows: 90,
-  height: 900
-})
-return {tabla};
-}});
+        <section id="empty-state" class="empty-state is-hidden">
+          <h2>Sin resultados</h2>
+          <p>¯\_(ツ)_/¯</p>
+        </section>
 
-define({id: "4e957b19", mode: "inline", inputs: ["busqueda","display"], body: async (busqueda,display) => {
-display(await(
-busqueda
-))
-}});
+        <section id="placeholder-state" class="empty-state is-hidden">
+          <h2>Archivados pronto</h2>
+          <p>
+            Esta misma interfaz mostrará luego el índice de datasets archivados, reutilizando
+            el mismo shell y un card especializado para preservación.
+          </p>
+        </section>
 
-define({id: "4a106a9d", mode: "inline", inputs: ["tabla","display"], body: async (tabla,display) => {
-display(await(
-tabla
-))
-}});
+        <div class="more-wrap">
+          <button id="load-more" class="load-more is-hidden" type="button">Mostrar más</button>
+        </div>
+      </main>
 
-</script>
-<div id="observablehq-center">
-<main id="observablehq-main" class="observablehq">
-<link rel="stylesheet" href="./_file/style.7290deb1.css">
-<div class="observablehq observablehq--block"><!--:b00007cf:--></div>
-<div class="observablehq observablehq--block"><!--:64be0e62:--></div>
-<div class="observablehq observablehq--block"><!--:028ef218:--></div>
-<div class="header">
-  <div class="title">
-    GeoDatos sobre Bolivia
-  </div>
-  <div class="subtitle">
-    Un directorio de datos geográficos en servicios del gobierno boliviano
-  </div>
-</div>
-<div class="">
-  <div class="listado">
-    <div class="busquedaContenedor"><observablehq-loading></observablehq-loading><!--:4e957b19:--></div>
-    <div class="tablaContenedor"><observablehq-loading></observablehq-loading><!--:4a106a9d:--></div>
-  </div>
-</div>
-<div class="footer">
-  <div class="plant">🪴</div>
-  <div class="footerEntry">
-    Actualizado a diario en <a href="https://github.com/mauforonda/geodatos/" target="_blank" rel="noopener noreferrer">Github</a>
-  </div>
-  <div class="footerEntry">
-    Creado por <a href="mailto:mauriforonda@gmail.com" target="_blank" rel="noopener noreferrer">Mauricio Foronda</a>
-  </div>
-</div></main>
-</div>
+      <footer class="footer">
+        <div>Actualizado desde <a href="https://github.com/mauforonda/geodatos/">Github</a>.</div>
+        <div class="footer-author">Creado por <a href="https://mauforonda.github.io">Mauricio Foronda</a>.</div>
+      </footer>
+    </div>
+
+    <template id="discover-card-template">
+      <article class="card" tabindex="0">
+        <div class="thumb-wrap">
+          <img class="thumb is-hidden" alt="" loading="lazy">
+          <div class="thumb-fallback"></div>
+          <div class="card-title-band">
+            <h2 class="card-title"></h2>
+          </div>
+          <div class="card-overlay">
+            <div class="card-overlay-body">
+              <div class="card-topline"></div>
+              <p class="card-description is-hidden"></p>
+              <div class="card-links"></div>
+            </div>
+          </div>
+        </div>
+      </article>
+    </template>
+
+    <script type="module" src="./assets/app.js"></script>
+  </body>
+</html>
