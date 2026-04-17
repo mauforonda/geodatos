@@ -20,7 +20,6 @@ const els = {
   modeButtons: Array.from(document.querySelectorAll(".mode-switch")),
   heroSiteTitle: document.querySelector("#hero-site-title"),
   heroShort: document.querySelector("#hero-short"),
-  heroLong: document.querySelector("#hero-long"),
   searchInput: document.querySelector("#search-input"),
   resultsSummary: document.querySelector("#results-summary"),
   statusNote: document.querySelector("#status-note"),
@@ -286,34 +285,17 @@ function openCard(node) {
   if (state.expandedCard && state.expandedCard !== node) {
     state.expandedCard.classList.remove("is-expanded");
     state.expandedCard.setAttribute("aria-expanded", "false");
-    state.expandedCard.style.setProperty("--indicator-extra", "0px");
   }
   state.expandedCard = node;
   node.classList.add("is-expanded");
   node.setAttribute("aria-expanded", "true");
-  syncCardIndicator(node);
 }
 
 function closeExpandedCard() {
   if (!state.expandedCard) return;
   state.expandedCard.classList.remove("is-expanded");
   state.expandedCard.setAttribute("aria-expanded", "false");
-  state.expandedCard.style.setProperty("--indicator-extra", "0px");
   state.expandedCard = null;
-}
-
-function syncCardIndicator(node) {
-  const overlay = node.querySelector(".card-overlay");
-  const overlayBody = node.querySelector(".card-overlay-body");
-  if (!overlay || !overlayBody) {
-    node.style.setProperty("--indicator-extra", "0px");
-    return;
-  }
-
-  const cardRect = node.getBoundingClientRect();
-  const overlayRect = overlayBody.getBoundingClientRect();
-  const extra = Math.max(0, overlayRect.bottom - cardRect.bottom);
-  node.style.setProperty("--indicator-extra", `${extra}px`);
 }
 
 function bindCardInteractions(node) {
@@ -363,6 +345,7 @@ function renderDiscoverCard(item) {
   node.dataset.id = `${item.geoserver}/${item.nombre}`;
   node.setAttribute("aria-expanded", "false");
   node.querySelector(".card-title").textContent = item.titulo;
+  node.querySelector(".card-overlay-title").textContent = item.titulo;
   node.querySelector(".card-topline").textContent = item.fuente;
 
   const description = node.querySelector(".card-description");
@@ -436,6 +419,7 @@ function renderArchiveCard(item) {
   node.dataset.id = item.archiveItem;
   node.setAttribute("aria-expanded", "false");
   node.querySelector(".card-title").textContent = item.titulo;
+  node.querySelector(".card-overlay-title").textContent = item.titulo;
   node.querySelector(".card-topline").textContent = item.fuente;
 
   const description = node.querySelector(".card-description");
@@ -532,7 +516,6 @@ function renderShell() {
 
   els.heroSiteTitle.textContent = "GeoDatos sobre Bolivia";
   els.heroShort.textContent = indexType.descripcionCorta;
-  els.heroLong.textContent = indexType.descripcionLarga;
   els.searchInput.placeholder = indexType.busquedaPlaceholder || "";
   els.toolbar.classList.remove("is-hidden");
 
