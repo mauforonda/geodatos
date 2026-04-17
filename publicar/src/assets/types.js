@@ -2,17 +2,13 @@ export const INDEX_TYPES = {
   descubrir: {
     id: "descubrir",
     nombre: "Descubiertos",
-    descripcionCorta: "Datos geográficos disponibles en sus fuentes originales",
-    descripcionLarga:
-      "Datos vectoriales o raster disponibles hasta anoche.",
+    descripcionCorta: "Datos disponibles en sus fuentes originales",
     busquedaPlaceholder: "Por nombre, descripción o fuente ...",
   },
   archivo: {
     id: "archivo",
     nombre: "Archivados",
-    descripcionCorta: "Datos geográficos archivados de manera independiente",
-    descripcionLarga:
-      "Datos vectoriales resguardados diariamente en Internet Archive.",
+    descripcionCorta: "Datos archivados independientemente",
     busquedaPlaceholder: "Por nombre, descripción, fuente o atributos ...",
   },
 };
