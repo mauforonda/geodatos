@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>GeoDatos sobre Bolivia</title>
+    <meta
+      name="description"
+      content="Índice público de datos geográficos sobre Bolivia descubiertos en servicios GeoServer."
+    >
+    <link rel="icon" href="https://mauforonda.github.io/images/icon.svg">
+    <link rel="stylesheet" href="./assets/styles.css">
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="hero">
+        <div class="hero-row hero-row-top">
+          <nav class="hero-types" role="tablist" aria-label="Tipo de índice">
+            <button class="mode-switch is-active" id="mode-descubrir" data-mode="descubrir" role="tab" aria-selected="true">
+              Descubiertos
+            </button>
+            <button class="mode-switch" id="mode-archivo" data-mode="archivo" role="tab" aria-selected="false">
+              Archivados
+            </button>
+          </nav>
+          <div class="hero-site-title" id="hero-site-title">GeoDatos sobre Bolivia</div>
+        </div>
+        <div class="hero-row hero-row-short">
+          <div class="hero-short" id="hero-short"></div>
+        </div>
+        <div class="hero-row hero-row-long" id="hero-long"></div>
+      </header>
+
+      <main class="app-shell">
+        <section class="toolbar" id="toolbar">
+          <label class="search-field">
+            <span class="label">Buscar</span>
+            <input id="search-input" type="search" placeholder="Por nombre, descripción o fuente ...">
+          </label>
+        </section>
+
+        <section class="statusbar">
+          <div id="results-summary">Cargando índice…</div>
+          <div class="status-note is-hidden" id="status-note"></div>
+        </section>
+
+        <section id="results" class="results-grid" aria-live="polite"></section>
+
+        <section id="empty-state" class="empty-state is-hidden">
+          <h2>Sin resultados</h2>
+          <p>¯\_(ツ)_/¯</p>
+        </section>
+
+        <section id="placeholder-state" class="empty-state is-hidden">
+          <h2>Archivados pronto</h2>
+          <p>
+            Esta misma interfaz mostrará luego el índice de datasets archivados, reutilizando
+            el mismo shell y un card especializado para preservación.
+          </p>
+        </section>
+
+        <div class="more-wrap">
+          <button id="load-more" class="load-more is-hidden" type="button">Mostrar más</button>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div>Actualizado desde <a href="https://github.com/mauforonda/geodatos/">Github</a>.</div>
+        <div class="footer-author">Creado por <a href="https://mauforonda.github.io">Mauricio Foronda</a>.</div>
+      </footer>
+    </div>
+
+    <template id="discover-card-template">
+      <article class="card" tabindex="0">
+        <div class="thumb-wrap">
+          <img class="thumb is-hidden" alt="" loading="lazy">
+          <div class="thumb-fallback"></div>
+          <div class="card-title-band">
+            <h2 class="card-title"></h2>
+          </div>
+          <div class="card-overlay">
+            <div class="card-overlay-body">
+              <div class="card-topline"></div>
+              <p class="card-description is-hidden"></p>
+              <div class="card-links"></div>
+            </div>
+          </div>
+        </div>
+      </article>
+    </template>
+
+    <script type="module" src="./assets/app.js"></script>
+  </body>
+</html>

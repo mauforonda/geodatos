@@ -1,37 +1,41 @@
 name: publicar
 on:
   workflow_dispatch:
+  push:
+    branches:
+    - master
+    paths:
+    - descubrir/**
+    - archivar/**
+    - publicar/**
+    - .github/workflows/publicar.yml
+  schedule:
+  - cron: "35 0 * * *"
+
+concurrency:
+  group: publicar-pages
+  cancel-in-progress: true
 
 jobs:
   publicar:
     name: publicar
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
     - name: Checkout
-      uses: actions/checkout@master
+      uses: actions/checkout@v4
 
-    - name: setup docs
-      run: |
-        mkdir -p docs
-        touch docs/.nojekyll
-
-    - name: setup node
-      uses: actions/setup-node@v4
+    - name: setup python
+      uses: actions/setup-python@v5
       with:
-        node-version: 20
-        cache: "npm"
-        cache-dependency-path: ./publicar/package-lock.json
-
-    - name: dependencias
-      working-directory: ./publicar
-      run: npm ci
+        python-version: "3.12"
 
     - name: build
-      working-directory: ./publicar
-      run: npm run build
+      run: python publicar/construir.py
 
     - name: publicar
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./docs
+        publish_dir: ./publicar/dist
