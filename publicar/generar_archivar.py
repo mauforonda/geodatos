@@ -30,6 +30,18 @@ def leer_paquetes() -> list[dict]:
         return list(csv.DictReader(f))
 
 
+def ordenar_paquetes(paquetes: list[dict]) -> list[dict]:
+    return sorted(
+        paquetes,
+        key=lambda paquete: (
+            (paquete.get("fecha_archivado") or "").strip(),
+            paquete.get("geoserver") or "",
+            paquete.get("nombre") or "",
+        ),
+        reverse=True,
+    )
+
+
 def compactar_fuentes(directorio: list[dict]) -> tuple[list[list[str]], dict[str, int]]:
     fuentes = []
     indices = {}
@@ -81,7 +93,7 @@ def compactar_paquete(paquete: dict, indice_fuente: int, sample: list[list]) -> 
 
 def construir_payload() -> dict:
     directorio = leer_directorio()
-    paquetes = leer_paquetes()
+    paquetes = ordenar_paquetes(leer_paquetes())
     fuentes, indices_fuente = compactar_fuentes(directorio)
 
     filas = []
