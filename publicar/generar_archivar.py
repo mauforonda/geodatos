@@ -30,39 +30,58 @@ def leer_paquetes() -> list[dict]:
         return list(csv.DictReader(f))
 
 
-def ordenar_paquetes(paquetes: list[dict]) -> list[dict]:
+def leer_catalogos_historicos() -> list[dict]:
+    rows = []
+    for path in sorted(ARCHIVAR_DIR.glob("*/catalogo.csv")):
+        with open(path, encoding="utf-8", newline="") as f:
+            rows.extend(csv.DictReader(f))
+    return rows
+
+
+def ordenar_filas(rows: list[dict]) -> list[dict]:
     return sorted(
-        paquetes,
-        key=lambda paquete: (
-            (paquete.get("fecha_archivado") or "").strip(),
-            paquete.get("geoserver") or "",
-            paquete.get("nombre") or "",
+        rows,
+        key=lambda row: (
+            (row.get("fecha_archivado") or "").strip(),
+            row.get("geoserver") or "",
+            row.get("nombre") or "",
         ),
         reverse=True,
     )
 
 
-def compactar_fuentes(directorio: list[dict]) -> tuple[list[list[str]], dict[str, int]]:
+def compactar_fuentes(
+    directorio: list[dict], fuentes_extra: list[tuple[str, str]]
+) -> tuple[list[list[str]], dict[str, int]]:
     fuentes = []
     indices = {}
-    for entrada in sorted(directorio, key=lambda item: item["nombre"]):
+    registros = {
+        entrada["nombre"]: (entrada["nombre"], (entrada.get("descripcion") or "").strip())
+        for entrada in directorio
+    }
+    for geoserver, fuente in fuentes_extra:
+        registros.setdefault(geoserver, (geoserver, (fuente or geoserver).strip()))
+
+    for geoserver, fuente in sorted(registros.values(), key=lambda item: item[0]):
         indice = len(fuentes)
-        indices[entrada["nombre"]] = indice
+        indices[geoserver] = indice
         fuentes.append(
             [
-                entrada["nombre"],
-                (entrada.get("descripcion") or "").strip(),
+                geoserver,
+                fuente,
             ]
         )
     return fuentes, indices
 
 
-def ruta_sample(geoserver: str, nombre: str) -> Path:
+def ruta_sample(coleccion: str, geoserver: str, nombre: str) -> Path:
+    if coleccion and coleccion != "actual":
+        return ARCHIVAR_DIR / coleccion / "publicados" / slug(nombre) / "sample.json"
     return PUBLICADOS_DIR / slug(geoserver) / slug(nombre) / "sample.json"
 
 
-def leer_sample(geoserver: str, nombre: str) -> list[list]:
-    path = ruta_sample(geoserver, nombre)
+def leer_sample(coleccion: str, geoserver: str, nombre: str) -> list[list]:
+    path = ruta_sample(coleccion, geoserver, nombre)
     if not path.exists():
         return []
 
@@ -75,17 +94,35 @@ def leer_sample(geoserver: str, nombre: str) -> list[list]:
     return [[str(key), value] for key, value in sample.items()]
 
 
+def normalizar_bool(value: str) -> bool:
+    return str(value).strip().lower() == "true"
+
+
+def archive_download_url(item: str, filename: str) -> str:
+    return f"https://archive.org/download/{item}/{filename}"
+
+
 def compactar_paquete(paquete: dict, indice_fuente: int, sample: list[list]) -> list:
+    archive_item = (paquete.get("archive_item") or "").strip()
+    geojson_url = (paquete.get("geojson_url") or "").strip()
+    geoparquet_url = (paquete.get("geoparquet_url") or "").strip()
+    if archive_item and "geojson_url" not in paquete:
+        geojson_url = archive_download_url(archive_item, "dataset.geojson")
+    if archive_item and "geoparquet_url" not in paquete:
+        geoparquet_url = archive_download_url(archive_item, "dataset.geoparquet")
+
     return [
         indice_fuente,
         paquete["nombre"],
         (paquete.get("titulo") or "").strip(),
         (paquete.get("descripcion") or "").strip(),
         (paquete.get("fecha_archivado") or "").strip(),
-        paquete["archive_item"],
+        archive_item,
+        geojson_url,
+        geoparquet_url,
         [
-            1 if paquete.get("tiene_map_png") == "True" else 0,
-            1 if paquete.get("tiene_sample_json") == "True" else 0,
+            1 if normalizar_bool(paquete.get("tiene_map_png", "")) else 0,
+            1 if normalizar_bool(paquete.get("tiene_sample_json", "")) else 0,
         ],
         sample,
     ]
@@ -93,15 +130,36 @@ def compactar_paquete(paquete: dict, indice_fuente: int, sample: list[list]) -> 
 
 def construir_payload() -> dict:
     directorio = leer_directorio()
-    paquetes = ordenar_paquetes(leer_paquetes())
-    fuentes, indices_fuente = compactar_fuentes(directorio)
+    paquetes_actuales = []
+    for row in leer_paquetes():
+        row = dict(row)
+        row["coleccion"] = "actual"
+        paquetes_actuales.append(row)
+
+    paquetes_historicos = []
+    for row in leer_catalogos_historicos():
+        row = dict(row)
+        row["coleccion"] = (row.get("coleccion") or "").strip() or "historico"
+        paquetes_historicos.append(row)
+
+    paquetes = ordenar_filas(paquetes_actuales + paquetes_historicos)
+    fuentes_extra = sorted(
+        {
+            (
+                row["geoserver"],
+                (row.get("fuente") or row["geoserver"]).strip(),
+            )
+            for row in paquetes_historicos
+        }
+    )
+    fuentes, indices_fuente = compactar_fuentes(directorio, fuentes_extra)
 
     filas = []
     for paquete in paquetes:
         geoserver = paquete["geoserver"]
         if geoserver not in indices_fuente:
             continue
-        sample = leer_sample(geoserver, paquete["nombre"])
+        sample = leer_sample(paquete.get("coleccion", "actual"), geoserver, paquete["nombre"])
         filas.append(compactar_paquete(paquete, indices_fuente[geoserver], sample))
 
     return {
@@ -115,6 +173,8 @@ def construir_payload() -> dict:
                 "descripcion",
                 "fecha_archivado",
                 "archive_item",
+                "geojson_url",
+                "geoparquet_url",
                 "flags",
                 "sample",
             ],

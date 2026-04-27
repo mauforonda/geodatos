@@ -171,8 +171,10 @@ function decodeArchive(payload) {
     const descripcion = row[3] || "";
     const fechaArchivado = row[4] || "";
     const archiveItem = row[5];
-    const flags = row[6] || [0, 0];
-    const sample = Array.isArray(row[7]) ? row[7] : [];
+    const geojsonUrl = row[6] || "";
+    const geoparquetUrl = row[7] || "";
+    const flags = row[8] || [0, 0];
+    const sample = Array.isArray(row[9]) ? row[9] : [];
     const attrNames = sample.map((entry) => String(entry[0] || ""));
     const hasMap = Boolean(flags[0]);
 
@@ -185,9 +187,9 @@ function decodeArchive(payload) {
       descripcion,
       fechaArchivado,
       archiveItem,
-      previewUrl: hasMap ? archiveDownloadUrl(archiveItem, "cover.png") : null,
-      geoparquetUrl: archiveDownloadUrl(archiveItem, "dataset.geoparquet"),
-      geojsonUrl: archiveDownloadUrl(archiveItem, "dataset.geojson"),
+      previewUrl: hasMap && archiveItem ? archiveDownloadUrl(archiveItem, "cover.png") : null,
+      geoparquetUrl: geoparquetUrl || null,
+      geojsonUrl: geojsonUrl || null,
       sample,
       searchText: normalize([source.fuente, nombre, titulo, descripcion, attrNames.join(" ")].join(" ")),
     };
