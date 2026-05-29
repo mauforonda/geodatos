@@ -1,0 +1,51 @@
+name: Reparar directorio
+on:
+  schedule:
+    - cron: '0 4 * * 6'
+  workflow_dispatch:
+
+concurrency:
+  group: repo-maintenance
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  repair:
+    name: check, repair and commit
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: master
+      - name: setup python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+          cache-dependency-path: requirements.txt
+      - name: Python
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Repair
+        run: |
+          python descubrir/reparar.py
+      - name: Commit
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          git config --global user.email "geodatos-bot@example.com"
+          git config --global user.name "geodatos-bot"
+          git fetch origin master
+          git checkout -B master origin/master
+          git add descubrir/directorio.json
+          if git diff --quiet && git diff --staged --quiet; then
+            exit 0
+          fi
+          git commit -m "[ci] reparar directorio $(date '+%Y-%m-%d')"
+          git push "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" HEAD:master
