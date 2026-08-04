@@ -54,7 +54,7 @@ def iniciarSesion() -> urllib3.poolmanager.PoolManager:
     """
     urllib3.disable_warnings()
     return urllib3.PoolManager(
-        timeout=20,
+        timeout=60,
         retries=3,
         cert_reqs="CERT_NONE",
     )
