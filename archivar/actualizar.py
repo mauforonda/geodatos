@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import argparse
+import datetime as dt
 import hashlib
 import json
 import math
@@ -48,6 +49,7 @@ WFS_PAGE_SIZE = 5000
 STREAM_CHUNK_SIZE = 1024 * 1024
 DOWNLOAD_HEARTBEAT_SECONDS = 15
 MAX_BYTES_ESTIMADOS_AUTOMATICO = 1_000_000_000
+MAX_ARCHIVE_ITEM_LENGTH = 100
 
 
 class DatasetTimeoutError(TimeoutError):
@@ -115,7 +117,14 @@ def slug(texto: str) -> str:
 
 
 def item_name(geoserver: str, nombre: str) -> str:
-    return f"{ITEM_PREFIX}_{slug(geoserver)}_{slug(nombre)}"
+    completo = f"{ITEM_PREFIX}_{slug(geoserver)}_{slug(nombre)}"
+    if len(completo) <= MAX_ARCHIVE_ITEM_LENGTH:
+        return completo
+
+    identificador = f"{geoserver}\0{nombre}".encode("utf-8")
+    sufijo = f"_{hashlib.sha1(identificador).hexdigest()[:12]}"
+    prefijo = completo[: MAX_ARCHIVE_ITEM_LENGTH - len(sufijo)].rstrip("_")
+    return f"{prefijo}{sufijo}"
 
 
 def archive_metadata_url(item: str) -> str:
@@ -718,11 +727,19 @@ def muestra_no_geometrica(gdf: gpd.GeoDataFrame) -> dict:
     for clave, valor in fila.items():
         if pd.isna(valor):
             muestra[clave] = None
-        elif hasattr(valor, "item"):
-            muestra[clave] = valor.item()
         else:
-            muestra[clave] = valor
+            muestra[clave] = valor_json(valor)
     return muestra
+
+
+def valor_json(valor):
+    if isinstance(valor, (pd.Timestamp, dt.datetime, dt.date, dt.time)):
+        return valor.isoformat()
+    if hasattr(valor, "item"):
+        convertido = valor.item()
+        if convertido is not valor:
+            return valor_json(convertido)
+    return valor
 
 
 def descripcion_archive_org(
@@ -857,7 +874,7 @@ def metadata_json(
 def escribir_json(path: Path, data: dict) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with open(path, "w") as f:
-        json.dump(data, f, ensure_ascii=False, indent=2)
+        json.dump(data, f, ensure_ascii=False, indent=2, default=valor_json)
 
 
 def generar_mapa_publicacion(
