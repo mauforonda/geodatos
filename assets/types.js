@@ -3,13 +3,13 @@ export const INDEX_TYPES = {
     id: "descubrir",
     nombre: "Descubiertos",
     descripcionCorta: "Datos disponibles en sus fuentes originales",
-    busquedaPlaceholder: "Por nombre, descripción o fuente ...",
+    busquedaPlaceholder: "Buscar por nombre, descripción o fuente ...",
   },
   archivo: {
     id: "archivo",
     nombre: "Archivados",
     descripcionCorta: "Datos archivados independientemente",
-    busquedaPlaceholder: "Por nombre, descripción, fuente o atributos ...",
+    busquedaPlaceholder: "Buscar por nombre, descripción, fuente o atributos ...",
   },
 };
 

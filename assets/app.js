@@ -17,16 +17,14 @@ const state = {
 };
 
 const els = {
-  modeButtons: Array.from(document.querySelectorAll(".mode-switch")),
-  heroSiteTitle: document.querySelector("#hero-site-title"),
-  heroShort: document.querySelector("#hero-short"),
+  modeButtons: Array.from(document.querySelectorAll(".nav > .buttons > .button")),
+  heroSiteTitle: document.querySelector("#site-title"),
+  heroShort: document.querySelector("#legend"),
   searchInput: document.querySelector("#search-input"),
   resultsSummary: document.querySelector("#results-summary"),
-  statusNote: document.querySelector("#status-note"),
   results: document.querySelector("#results"),
   emptyState: document.querySelector("#empty-state"),
   placeholderState: document.querySelector("#placeholder-state"),
-  toolbar: document.querySelector("#toolbar"),
   loadMore: document.querySelector("#load-more"),
   template: document.querySelector("#discover-card-template"),
 };
@@ -228,10 +226,10 @@ function filterItems(items) {
   });
 }
 
-function createChip(label, href, kind = "") {
+function createChip(label, href) {
   if (!href) return null;
   const a = document.createElement("a");
-  a.className = `chip ${kind}`.trim();
+  a.className = "button";
   a.href = href;
   a.target = "_blank";
   a.rel = "noreferrer";
@@ -239,18 +237,18 @@ function createChip(label, href, kind = "") {
   return a;
 }
 
-function createChipGroup(title, kind, chips) {
+function createChipGroup(title, chips) {
   if (chips.length === 0) return null;
   const wrap = document.createElement("section");
-  wrap.className = `chip-group ${kind}`.trim();
+  wrap.className = "button-group";
 
   const heading = document.createElement("div");
-  heading.className = "chip-group-title";
+  heading.className = "button-title";
   heading.textContent = title;
   wrap.append(heading);
 
   const row = document.createElement("div");
-  row.className = "chip-row";
+  row.className = "button-row";
   row.append(...chips);
   wrap.append(row);
   return wrap;
@@ -259,25 +257,25 @@ function createChipGroup(title, kind, chips) {
 function createAttributeSection(sample) {
   if (!sample.length) return null;
   const section = document.createElement("section");
-  section.className = "attribute-group";
+  section.className = "attributes";
 
   const heading = document.createElement("div");
-  heading.className = "chip-group-title";
+  heading.className = "attributes-title";
   heading.textContent = "Muestra de Atributos";
   section.append(heading);
 
   const list = document.createElement("div");
-  list.className = "attribute-list";
+  list.className = "attribute-table";
   for (const [key, value] of sample) {
     const row = document.createElement("div");
-    row.className = "attribute-row";
+    row.className = "attribute";
 
     const keyEl = document.createElement("div");
-    keyEl.className = "attribute-key";
+    keyEl.className = "key";
     keyEl.textContent = key;
 
     const valueEl = document.createElement("div");
-    valueEl.className = "attribute-value";
+    valueEl.className = "value";
     valueEl.textContent = value === null ? "null" : String(value);
 
     row.append(keyEl, valueEl);
@@ -344,17 +342,17 @@ function bindCardInteractions(node) {
 
 function renderDiscoverCard(item) {
   const node = els.template.content.firstElementChild.cloneNode(true);
-  const thumb = node.querySelector(".thumb");
-  const fallback = node.querySelector(".thumb-fallback");
-  const linksWrap = node.querySelector(".card-links");
+  const thumb = node.querySelector(".image");
+  const fallback = node.querySelector(".fallback");
+  const linksWrap = node.querySelector(".buttons");
 
   node.dataset.id = `${item.geoserver}/${item.nombre}`;
   node.setAttribute("aria-expanded", "false");
-  node.querySelector(".card-title").textContent = item.titulo;
-  node.querySelector(".card-overlay-title").textContent = item.titulo;
-  node.querySelector(".card-topline").textContent = item.fuente;
+  node.querySelector(".result-title .title").textContent = item.titulo;
+  node.querySelector(".details .title").textContent = item.titulo;
+  node.querySelector(".geoserver").textContent = item.fuente;
 
-  const description = node.querySelector(".card-description");
+  const description = node.querySelector(".description");
   if (item.descripcion) {
     description.textContent = item.descripcion;
     description.classList.remove("is-hidden");
@@ -381,23 +379,22 @@ function renderDiscoverCard(item) {
     );
     imageObserver.observe(thumb);
   } else {
-    fallback.classList.add("no-preview");
     fallback.textContent = "sin vista previa";
   }
 
   const groups = [
-    createChipGroup("Vistas", "group-views", [
-      createChip("ver mapa", item.mapUrl, "is-wms"),
-      createChip("ver ejemplo", item.exampleUrl, "is-wfs"),
+    createChipGroup("Vistas", [
+      createChip("ver mapa", item.mapUrl),
+      createChip("ver ejemplo", item.exampleUrl),
     ].filter(Boolean)),
-    createChipGroup("Vectores", "group-vectors", [
-      createChip("GeoJSON", item.geojsonUrl, "is-wfs"),
-      createChip("Shapefile", item.shpUrl, "is-wfs"),
-      createChip("CSV", item.csvUrl, "is-wfs"),
+    createChipGroup("Vectores", [
+      createChip("GeoJSON", item.geojsonUrl),
+      createChip("Shapefile", item.shpUrl),
+      createChip("CSV", item.csvUrl),
     ].filter(Boolean)),
-    createChipGroup("Rasters", "group-rasters", [
-      createChip("KML", item.kmlUrl, "is-wms"),
-      createChip("GeoTIFF", item.geotiffUrl, "is-wms"),
+    createChipGroup("Rasters", [
+      createChip("KML", item.kmlUrl),
+      createChip("GeoTIFF", item.geotiffUrl),
     ].filter(Boolean)),
   ].filter(Boolean);
 
@@ -407,9 +404,9 @@ function renderDiscoverCard(item) {
 
   if (item.fechaEncontrado) {
     const discovered = document.createElement("p");
-    discovered.className = "card-footnote";
+    discovered.className = "date";
     discovered.textContent = `descubierto el ${formatDate(item.fechaEncontrado)}`;
-    linksWrap.append(discovered);
+    node.querySelector(".details-body").append(discovered);
   }
 
   bindCardInteractions(node);
@@ -418,17 +415,17 @@ function renderDiscoverCard(item) {
 
 function renderArchiveCard(item) {
   const node = els.template.content.firstElementChild.cloneNode(true);
-  const thumb = node.querySelector(".thumb");
-  const fallback = node.querySelector(".thumb-fallback");
-  const linksWrap = node.querySelector(".card-links");
+  const thumb = node.querySelector(".image");
+  const fallback = node.querySelector(".fallback");
+  const linksWrap = node.querySelector(".buttons");
 
   node.dataset.id = item.archiveItem;
   node.setAttribute("aria-expanded", "false");
-  node.querySelector(".card-title").textContent = item.titulo;
-  node.querySelector(".card-overlay-title").textContent = item.titulo;
-  node.querySelector(".card-topline").textContent = item.fuente;
+  node.querySelector(".result-title .title").textContent = item.titulo;
+  node.querySelector(".details .title").textContent = item.titulo;
+  node.querySelector(".geoserver").textContent = item.fuente;
 
-  const description = node.querySelector(".card-description");
+  const description = node.querySelector(".description");
   if (item.descripcion) {
     description.textContent = item.descripcion;
     description.classList.remove("is-hidden");
@@ -455,14 +452,13 @@ function renderArchiveCard(item) {
     );
     imageObserver.observe(thumb);
   } else {
-    fallback.classList.add("no-preview");
     fallback.textContent = "";
   }
 
   const groups = [
-    createChipGroup("Descargas", "group-downloads", [
-      createChip("GeoParquet", item.geoparquetUrl, "is-download"),
-      createChip("GeoJSON", item.geojsonUrl, "is-download"),
+    createChipGroup("Descargas", [
+      createChip("GeoParquet", item.geoparquetUrl),
+      createChip("GeoJSON", item.geojsonUrl),
     ].filter(Boolean)),
   ].filter(Boolean);
 
@@ -472,14 +468,14 @@ function renderArchiveCard(item) {
 
   const attrs = createAttributeSection(item.sample);
   if (attrs) {
-    linksWrap.append(attrs);
+    node.querySelector(".details-body").append(attrs);
   }
 
   if (item.fechaArchivado) {
     const archived = document.createElement("p");
-    archived.className = "card-footnote";
+    archived.className = "date";
     archived.textContent = `archivado el ${formatDate(item.fechaArchivado)}`;
-    linksWrap.append(archived);
+    node.querySelector(".details-body").append(archived);
   }
 
   bindCardInteractions(node);
@@ -499,8 +495,6 @@ function renderDataset(mode) {
   els.results.classList.toggle("is-hidden", filtered.length === 0);
 
   els.resultsSummary.textContent = `${filtered.length.toLocaleString("en-US")} conjuntos de datos`;
-  els.statusNote.textContent = "";
-
   const hiddenCount = filtered.length - visible.length;
   els.loadMore.classList.toggle("is-hidden", hiddenCount <= 0);
   els.loadMore.textContent = hiddenCount > 0 ? `Mostrar ${Math.min(PAGE_SIZE, hiddenCount)} más` : "Mostrar más";
@@ -513,7 +507,6 @@ function renderArchivePlaceholder() {
   els.emptyState.classList.add("is-hidden");
   els.placeholderState.classList.remove("is-hidden");
   els.resultsSummary.textContent = "Índice de archivados en preparación.";
-  els.statusNote.textContent = "";
   els.loadMore.classList.add("is-hidden");
 }
 
@@ -523,7 +516,6 @@ function renderShell() {
   els.heroSiteTitle.textContent = "GeoDatos sobre Bolivia";
   els.heroShort.textContent = indexType.descripcionCorta;
   els.searchInput.placeholder = indexType.busquedaPlaceholder || "";
-  els.toolbar.classList.remove("is-hidden");
 
   for (const button of els.modeButtons) {
     const buttonType = getIndexType(button.dataset.mode);

@@ -12,45 +12,36 @@
     <link rel="stylesheet" href="./assets/styles.css">
   </head>
   <body>
-    <div class="site-shell">
-      <header class="hero">
-        <div class="hero-row hero-row-top">
-          <nav class="hero-types" role="tablist" aria-label="Tipo de índice">
-            <button class="mode-switch is-active" id="mode-descubrir" data-mode="descubrir" role="tab" aria-selected="true">
+    <div class="shell">
+      <header class="header">
+        <nav class="nav" role="tablist" aria-label="Tipo de índice">
+          <div class="buttons">
+            <button class="button is-active" id="mode-descubrir" data-mode="descubrir" role="tab" aria-selected="true">
               Descubiertos
             </button>
-            <button class="mode-switch" id="mode-archivo" data-mode="archivo" role="tab" aria-selected="false">
+            <button class="button" id="mode-archivo" data-mode="archivo" role="tab" aria-selected="false">
               Archivados
             </button>
-          </nav>
-          <div class="hero-site-title" id="hero-site-title">GeoDatos sobre Bolivia</div>
-        </div>
-        <div class="hero-row hero-row-short">
-          <div class="hero-short" id="hero-short"></div>
-        </div>
+          </div>
+          <div class="title" id="site-title">GeoDatos sobre Bolivia</div>
+        </nav>
+        <div class="legend" id="legend"></div>
       </header>
 
-      <main class="app-shell">
-        <section class="toolbar" id="toolbar">
-          <label class="search-field">
-            <span class="label">Buscar</span>
-            <input id="search-input" type="search" placeholder="Por nombre, descripción o fuente ...">
-          </label>
+      <main>
+        <section class="search" id="search">
+          <input id="search-input" type="text" inputmode="search" aria-label="Buscar por nombre, descripción o fuente" placeholder="Buscar por nombre, descripción o fuente ...">
+          <div class="result-count" id="results-summary">Cargando índice…</div>
         </section>
 
-        <section class="statusbar">
-          <div id="results-summary">Cargando índice…</div>
-          <div class="status-note is-hidden" id="status-note"></div>
-        </section>
+        <section id="results" class="results" aria-live="polite"></section>
 
-        <section id="results" class="results-grid" aria-live="polite"></section>
-
-        <section id="empty-state" class="empty-state is-hidden">
+        <section id="empty-state" class="empty is-hidden">
           <h2>Sin resultados</h2>
           <p>¯\_(ツ)_/¯</p>
         </section>
 
-        <section id="placeholder-state" class="empty-state is-hidden">
+        <section id="placeholder-state" class="empty is-hidden">
           <h2>Archivados pronto</h2>
           <p>
             Esta misma interfaz mostrará luego el índice de datasets archivados, reutilizando
@@ -58,31 +49,31 @@
           </p>
         </section>
 
-        <div class="more-wrap">
-          <button id="load-more" class="load-more is-hidden" type="button">Mostrar más</button>
-        </div>
+        <button id="load-more" class="show-more is-hidden" type="button">Mostrar más</button>
       </main>
 
       <footer class="footer">
-        <div>Actualizado desde <a href="https://github.com/mauforonda/geodatos/">Github</a>.</div>
-        <div class="footer-author">Creado por <a href="https://mauforonda.github.io">Mauricio Foronda</a>.</div>
+        <div class="source">Actualizado desde <a href="https://github.com/mauforonda/geodatos/">Github</a>.</div>
+        <div class="attribution">Creado por <a href="https://mauforonda.github.io">Mauricio Foronda</a>.</div>
       </footer>
     </div>
 
     <template id="discover-card-template">
-      <article class="card" tabindex="0">
-        <div class="thumb-wrap">
-          <img class="thumb is-hidden" alt="" loading="lazy">
-          <div class="thumb-fallback"></div>
-          <div class="card-title-band">
-            <h2 class="card-title"></h2>
+      <article class="result" tabindex="0">
+        <div class="preview">
+          <img class="image is-hidden" alt="" loading="lazy">
+          <div class="fallback"></div>
+          <div class="result-title">
+            <h2 class="title"></h2>
           </div>
-          <div class="card-overlay">
-            <div class="card-overlay-body">
-              <h2 class="card-overlay-title"></h2>
-              <div class="card-topline"></div>
-              <p class="card-description is-hidden"></p>
-              <div class="card-links"></div>
+          <div class="details">
+            <div class="details-body">
+              <header>
+                <h2 class="title"></h2>
+                <div class="geoserver"></div>
+                <p class="description is-hidden"></p>
+              </header>
+              <div class="buttons"></div>
             </div>
           </div>
         </div>
