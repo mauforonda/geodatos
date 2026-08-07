@@ -13,10 +13,7 @@ from tqdm import tqdm
 import pytz
 from time import time
 
-from .catalogo_geobolivia import (
-    enriquecer_capas_geobolivia,
-    leer_catalogo_geobolivia,
-)
+from .metadatos import enriquecer_capas, leer_metadatos
 
 """ 
 El objetivo de este programa es mantener un inventario de 
@@ -425,7 +422,7 @@ def manejar_log(sesion_log: list):
     )
 
 
-def manejar_capas(capas: dict, catalogo_geobolivia: pd.DataFrame | None = None):
+def manejar_capas(capas: dict, metadatos: pd.DataFrame | None = None):
     """
     Construye un dataframe con información de las capas disponibles
     en geoservers consultados y actualiza el csv CAPAS, que registra
@@ -695,11 +692,8 @@ def manejar_capas(capas: dict, catalogo_geobolivia: pd.DataFrame | None = None):
 
     # Construir una tabla en la forma de CAPAS
     disponibles = construir_tabla_disponibles(capas)
-    if catalogo_geobolivia is not None:
-        disponibles = enriquecer_capas_geobolivia(
-            disponibles,
-            catalogo_geobolivia,
-        )
+    if metadatos is not None:
+        disponibles = enriquecer_capas(disponibles, metadatos)
     # Utilizar esta tabla para actualizar registros históricos
     actualizar_historial(disponibles)
 
@@ -707,20 +701,16 @@ def manejar_capas(capas: dict, catalogo_geobolivia: pd.DataFrame | None = None):
 if __name__ == "__main__":
     capas, sesion_log = [{}, []]
     sesion = iniciarSesion()
-    catalogo_geobolivia = None
+    metadatos = None
     try:
-        catalogo_geobolivia, catalogo_fecha = leer_catalogo_geobolivia(sesion)
-        print(
-            f"catalogo GeoBolivia: {len(catalogo_geobolivia)} datasets activos"
-            f" ({catalogo_fecha or 'sin fecha'})"
-        )
+        metadatos, _ = leer_metadatos(sesion)
     except Exception as error:
-        print(f"aviso: no se pudo enriquecer con catalog.json: {error}")
+        print(f"aviso: no se pudo enriquecer con fuentes externas: {error}")
 
     geoservers = json.load(open(DIRECTORIO, "r"))
     for geoserver in tqdm(geoservers, total=len(geoservers)):
         consultar_geoserver(geoserver, sesion)
     if capas:
-        manejar_capas(capas, catalogo_geobolivia)
+        manejar_capas(capas, metadatos)
     if sesion_log:
         manejar_log(sesion_log)

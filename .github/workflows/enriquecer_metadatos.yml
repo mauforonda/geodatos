@@ -1,4 +1,4 @@
-name: Enriquecer GeoBolivia
+name: Enriquecer metadatos
 
 on:
   workflow_dispatch:
@@ -25,43 +25,35 @@ jobs:
         with:
           fetch-depth: 0
           ref: master
-
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
           cache: pip
           cache-dependency-path: requirements.txt
-
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-
       - name: Enrich and checkpoint local metadata
         run: |
           set -euo pipefail
-
           git config user.email "geodatos-bot@example.com"
           git config user.name "geodatos-bot"
-
           while true; do
             git fetch origin master
             git checkout -B master origin/master
-
             set +e
-            python -m archivar.enriquecer_geobolivia --max-items 25
+            python -m archivar.enriquecer_metadatos --max-items 25
             status=$?
             set -e
-
             git add descubrir/capas.csv evaluar/datasets.csv archivar/paquetes.csv archivar/publicados
             if ! git diff --cached --quiet; then
-              git commit -m "[metadata] enriquecer GeoBolivia"
+              git commit -m "[metadata] enriquecer metadatos"
               git push "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" HEAD:master
             fi
-
             if [ "$status" -eq 2 ]; then
-              echo "No quedan items de GeoBolivia por enriquecer."
+              echo "No quedan items por enriquecer."
               break
             fi
             if [ "$status" -ne 0 ]; then
