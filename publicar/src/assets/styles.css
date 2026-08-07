@@ -4,11 +4,11 @@
   color-scheme: light;
   --background: #f3f2f0;
   --surface: rgba(255, 255, 255, 0.94);
-  --surface-strong: #eef1f3;
+  --surface-strong: #e6eef4;
   --text: #202225;
   --muted: #5d6570;
   --accent: #252f3d;
-  --input-accent: #6a9fcc;
+  --input-accent: #5b95c7;
   --grid-minor: rgba(71, 79, 91, 0.03);
   --grid-major: rgba(71, 79, 89, 0.06);
   --grid-cross: rgba(49, 56, 67, 0.085);
@@ -21,19 +21,19 @@
 @media (prefers-color-scheme: dark) {
   :root {
     color-scheme: dark;
-    --background: #151821;
+    --background: #0b0d12;
     --surface: rgba(27, 31, 43, 0.96);
-    --surface-strong: #202536;
+    --surface-strong: #07090d;
     --text: #edf0fb;
-    --muted: #a9b1cb;
+    --muted: #959aa8;
     --accent: #dbdeed;
+    --input-accent: #88b8ef;
     --grid-minor: rgba(194, 202, 232, 0.04);
     --grid-major: rgba(194, 202, 232, 0.08);
     --grid-cross: rgba(194, 202, 232, 0.14);
     --border: rgba(194, 202, 232, 0.14);
     --border-strong: rgba(194, 202, 232, 0.26);
   }
-
 }
 
 * {
@@ -146,7 +146,7 @@ input {
 
     .nav {
       display: flex;
-      align-items: flex-start;
+      align-items: center;
       justify-content: space-between;
       gap: 1rem;
 
@@ -178,7 +178,7 @@ input {
       > .title {
         margin-left: auto;
         text-align: right;
-        font-size: 0.88rem;
+        font-size: 0.66rem;
         text-transform: uppercase;
         font-weight: 600;
       }
@@ -186,6 +186,7 @@ input {
 
     .legend {
       max-width: 52rem;
+      min-height: 1.5em;
       color: var(--accent);
       font-family: "Plantin MT Pro", Georgia, serif;
       font-size: 1.2rem;
@@ -202,7 +203,8 @@ input {
 
     .search {
       position: relative;
-      margin: 20px 0;
+      min-height: 3.1rem;
+      margin: 15px 0;
       padding: 0.9rem 0.95rem;
       border: 1px solid var(--border);
       background: var(--surface-strong);
@@ -216,6 +218,7 @@ input {
         color: var(--text);
         background: transparent;
         font-size: 0.8rem;
+        line-height: 1.25rem;
         transition:
           font-size 180ms ease,
           font-weight 180ms ease,
@@ -235,13 +238,17 @@ input {
           font-weight: 600;
         }
       }
+    }
+
+    .results-shell {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
 
       .result-count {
-        position: absolute;
-        right: 0.5rem;
-        bottom: 0.25rem;
+        text-align: center;
         color: var(--muted);
-        font-size: 0.6rem;
+        font-size: 0.7rem;
       }
     }
 
@@ -259,44 +266,33 @@ input {
       aspect-ratio: 1 / 1.05;
       overflow: hidden;
       z-index: 1;
-      border-radius: var(--radius);
+      border-radius: 25px;
       background: var(--surface);
+      box-shadow: 0 0 0 transparent;
+      transition: box-shadow 180ms ease;
 
       &:hover,
       &.is-expanded {
         z-index: 12;
       }
-      &:hover::after,
-      &.is-expanded::after {
-        opacity: 1;
+      &:hover {
+        box-shadow: 0 10px 24px rgb(37 47 61 / 20%);
       }
-
-      &::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        z-index: 20;
-        border: 1px solid var(--accent);
-        border-radius: 4.5px;
-        opacity: 0;
-        pointer-events: none;
-      }
-
       .preview {
         position: relative;
         min-width: 0;
         min-height: 0;
         overflow: hidden;
         padding: 0.45rem;
-        background: var(--surface-strong);
+        background: var(--background);
 
         .image,
         .fallback {
           position: absolute;
-          inset: 0.45rem;
-          width: calc(100% - 0.9rem);
-          height: calc(100% - 0.9rem);
-          border-radius: 5px;
+          inset: 0.2rem;
+          width: calc(100% - 0.4rem);
+          height: calc(100% - 0.4rem);
+          border-radius: 22px;
         }
 
         .image {
@@ -352,7 +348,7 @@ input {
             height: 100%;
             overflow-y: auto;
             padding: 1.2rem 1.25rem 0.95rem;
-            border-radius: var(--radius);
+            border-radius: 25px;
             background: color-mix(
               in srgb,
               var(--surface-strong) 90%,
@@ -369,6 +365,7 @@ input {
                 margin: 0;
                 font-size: 0.9rem;
                 overflow-wrap: anywhere;
+                line-height: 1.22;
               }
               .geoserver {
                 color: var(--text);
@@ -416,7 +413,7 @@ input {
                 text-decoration: none;
                 white-space: nowrap;
                 transition: opacity 160ms ease;
-                border-radius: .3rem;
+                border-radius: 0.3rem;
 
                 &:hover {
                   opacity: 1;
@@ -510,7 +507,7 @@ input {
       font-size: 0.72rem;
       letter-spacing: 0.04em;
       transition: opacity 160ms ease;
-      border-radius: .5rem;
+      border-radius: 0.5rem;
 
       &:hover {
         opacity: 1;
@@ -536,6 +533,7 @@ input {
     a {
       text-decoration: 1px dotted underline;
       transition: color 160ms ease;
+      text-underline-offset: 3px;
       &:hover {
         color: var(--accent);
       }
@@ -545,7 +543,12 @@ input {
 
 @media (prefers-color-scheme: dark) {
   .shell main .result .preview .result-title {
-    background: linear-gradient(180deg, rgb(14 18 40 / 69%), rgb(29 44 73 / 15%) 100%, transparent);
+    background: linear-gradient(
+      180deg,
+      rgb(14 18 40 / 69%),
+      rgb(29 44 73 / 15%) 100%,
+      transparent
+    );
   }
 }
 
@@ -555,8 +558,7 @@ input {
 
 #search-input:focus,
 .button:focus,
-.show-more:focus,
-.result:focus {
+.show-more:focus {
   outline: 2px solid color-mix(in srgb, var(--accent) 48%, transparent);
   outline-offset: 2px;
 }
@@ -576,6 +578,9 @@ input {
       margin-left: 0;
       text-align: left;
     }
+    .legend {
+      text-align: center;
+    }
     main .results {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
@@ -583,8 +588,8 @@ input {
 }
 @media (max-width: 640px) {
   .shell {
-    width: min(calc(100% - 1rem), var(--page-width));
-    padding-top: 0.8rem;
+    width: min(calc(100% - 2.5rem), var(--page-width));
+    padding-top: 1.25rem;
   }
   .shell main .results {
     grid-template-columns: 1fr;
