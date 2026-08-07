@@ -13,6 +13,11 @@ from tqdm import tqdm
 import pytz
 from time import time
 
+from .catalogo_geobolivia import (
+    enriquecer_capas_geobolivia,
+    leer_catalogo_geobolivia,
+)
+
 """ 
 El objetivo de este programa es mantener un inventario de 
 capas en servidores geográficos útiles para estudiar Bolivia. 
@@ -420,7 +425,7 @@ def manejar_log(sesion_log: list):
     )
 
 
-def manejar_capas(capas: dict):
+def manejar_capas(capas: dict, catalogo_geobolivia: pd.DataFrame | None = None):
     """
     Construye un dataframe con información de las capas disponibles
     en geoservers consultados y actualiza el csv CAPAS, que registra
@@ -690,6 +695,11 @@ def manejar_capas(capas: dict):
 
     # Construir una tabla en la forma de CAPAS
     disponibles = construir_tabla_disponibles(capas)
+    if catalogo_geobolivia is not None:
+        disponibles = enriquecer_capas_geobolivia(
+            disponibles,
+            catalogo_geobolivia,
+        )
     # Utilizar esta tabla para actualizar registros históricos
     actualizar_historial(disponibles)
 
@@ -697,10 +707,20 @@ def manejar_capas(capas: dict):
 if __name__ == "__main__":
     capas, sesion_log = [{}, []]
     sesion = iniciarSesion()
+    catalogo_geobolivia = None
+    try:
+        catalogo_geobolivia, catalogo_fecha = leer_catalogo_geobolivia(sesion)
+        print(
+            f"catalogo GeoBolivia: {len(catalogo_geobolivia)} datasets activos"
+            f" ({catalogo_fecha or 'sin fecha'})"
+        )
+    except Exception as error:
+        print(f"aviso: no se pudo enriquecer con catalog.json: {error}")
+
     geoservers = json.load(open(DIRECTORIO, "r"))
     for geoserver in tqdm(geoservers, total=len(geoservers)):
         consultar_geoserver(geoserver, sesion)
     if capas:
-        manejar_capas(capas)
+        manejar_capas(capas, catalogo_geobolivia)
     if sesion_log:
         manejar_log(sesion_log)
