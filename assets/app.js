@@ -25,6 +25,7 @@ const els = {
   results: document.querySelector("#results"),
   emptyState: document.querySelector("#empty-state"),
   placeholderState: document.querySelector("#placeholder-state"),
+  footer: document.querySelector(".footer"),
   loadMore: document.querySelector("#load-more"),
   template: document.querySelector("#discover-card-template"),
 };
@@ -495,6 +496,7 @@ function renderDataset(mode) {
   els.results.classList.toggle("is-hidden", filtered.length === 0);
 
   els.resultsSummary.textContent = `${filtered.length.toLocaleString("en-US")} conjuntos de datos`;
+  els.footer.classList.remove("is-hidden");
   const hiddenCount = filtered.length - visible.length;
   els.loadMore.classList.toggle("is-hidden", hiddenCount <= 0);
   els.loadMore.textContent = hiddenCount > 0 ? `Mostrar ${Math.min(PAGE_SIZE, hiddenCount)} más` : "Mostrar más";
@@ -507,6 +509,7 @@ function renderArchivePlaceholder() {
   els.emptyState.classList.add("is-hidden");
   els.placeholderState.classList.remove("is-hidden");
   els.resultsSummary.textContent = "Índice de archivados en preparación.";
+  els.footer.classList.remove("is-hidden");
   els.loadMore.classList.add("is-hidden");
 }
 
@@ -588,6 +591,7 @@ async function bootstrap() {
     state.mode = storedMode;
   }
   localStorage.setItem(VIEW_STORAGE_KEY, state.mode);
+  renderShell();
 
   try {
     const [discoverItems, archiveItems] = await Promise.all([loadDiscover(), loadArchive()]);
@@ -602,6 +606,7 @@ async function bootstrap() {
     els.emptyState.querySelector("h2").textContent = "No se pudo cargar el índice";
     els.emptyState.querySelector("p").textContent = error.message;
     els.resultsSummary.textContent = "Error cargando datos.";
+    els.footer.classList.remove("is-hidden");
   }
 }
 
