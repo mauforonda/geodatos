@@ -55,7 +55,7 @@ jobs:
             set -e
 
             git add descubrir/capas.csv evaluar/datasets.csv archivar/paquetes.csv archivar/publicados
-            if ! git diff --quiet && ! git diff --staged --quiet; then
+            if ! git diff --cached --quiet; then
               git commit -m "[metadata] enriquecer GeoBolivia"
               git push "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" HEAD:master
             fi

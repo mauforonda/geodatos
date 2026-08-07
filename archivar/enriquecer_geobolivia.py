@@ -218,7 +218,7 @@ def actualizar_archive_org(
     directorio: dict,
     cambios: set,
 ) -> list[tuple[str, str, str]]:
-    from internetarchive import Item
+    from internetarchive import get_item
 
     access_key = os.environ.get("IA_ACCESS_KEY")
     secret_key = os.environ.get("IA_SECRET_KEY")
@@ -257,7 +257,7 @@ def actualizar_archive_org(
                 n_features=int(float(paquetes.at[indice, "n_features"])),
                 tiene_legend=bool(paquetes.at[indice, "tiene_legend_png"]),
             )
-            item = Item(archive_item)
+            item = get_item(archive_item)
             respuesta = item.modify_metadata(
                 {
                     "title": archive_metadata["title"],
