@@ -14,7 +14,6 @@ PAQUETES_CSV = ARCHIVAR_DIR / "paquetes.csv"
 DIRECTORIO_JSON = DESCUBRIR_DIR / "directorio.json"
 PUBLICADOS_DIR = ARCHIVAR_DIR / "publicados"
 DEFAULT_OUTPUT = Path(__file__).resolve().parent / "dist" / "data" / "archivar.json"
-RAW_GITHUB_BASE = "https://raw.githubusercontent.com/mauforonda/geodatos/master"
 
 
 def slug(texto: str) -> str:
@@ -92,51 +91,29 @@ def leer_sample(coleccion: str, geoserver: str, nombre: str) -> list[list]:
     if not isinstance(sample, dict):
         return []
 
-    return [[str(key), value] for key, value in sample.items()]
+    return [[str(key), compactar_valor_sample(value)] for key, value in sample.items()]
 
 
 def normalizar_bool(value: str) -> bool:
     return str(value).strip().lower() == "true"
 
 
-def archive_download_url(item: str, filename: str) -> str:
-    return f"https://archive.org/download/{item}/{filename}"
+SAMPLE_VALUE_LIMIT = 200
 
 
-def repo_raw_url(path: Path) -> str:
-    relative = path.relative_to(ROOT_DIR).as_posix()
-    return f"{RAW_GITHUB_BASE}/{relative}"
-
-
-def ruta_mapa_publicado(coleccion: str, geoserver: str, nombre: str) -> Path | None:
-    if coleccion and coleccion != "actual":
-        base = ARCHIVAR_DIR / coleccion / "publicados" / slug(nombre)
-    else:
-        base = PUBLICADOS_DIR / slug(geoserver) / slug(nombre)
-
-    for filename in ("map.png", "cover.png"):
-        candidate = base / filename
-        if candidate.exists():
-            return candidate
-    return None
+def compactar_valor_sample(value):
+    if isinstance(value, str) and len(value) > SAMPLE_VALUE_LIMIT:
+        return f"{value[:SAMPLE_VALUE_LIMIT - 1]}…"
+    if isinstance(value, list):
+        return [compactar_valor_sample(entry) for entry in value]
+    if isinstance(value, dict):
+        return {key: compactar_valor_sample(entry) for key, entry in value.items()}
+    return value
 
 
 def compactar_paquete(paquete: dict, indice_fuente: int, sample: list[list]) -> list:
     archive_item = (paquete.get("archive_item") or "").strip()
-    geojson_url = (paquete.get("geojson_url") or "").strip()
-    geoparquet_url = (paquete.get("geoparquet_url") or "").strip()
-    preview_url = ""
-    if archive_item and "geojson_url" not in paquete:
-        geojson_url = archive_download_url(archive_item, "dataset.geojson")
-    if archive_item and "geoparquet_url" not in paquete:
-        geoparquet_url = archive_download_url(archive_item, "dataset.geoparquet")
-    mapa_publicado = ruta_mapa_publicado(
-        paquete.get("coleccion", "actual"), paquete["geoserver"], paquete["nombre"]
-    )
-    if mapa_publicado:
-        preview_url = repo_raw_url(mapa_publicado)
-    elif archive_item:
-        preview_url = archive_download_url(archive_item, "cover.png")
+    geojson_bytes = paquete.get("bytes_geojson") or paquete.get("size_bytes") or ""
 
     return [
         indice_fuente,
@@ -145,14 +122,13 @@ def compactar_paquete(paquete: dict, indice_fuente: int, sample: list[list]) -> 
         (paquete.get("descripcion") or "").strip(),
         (paquete.get("fecha_archivado") or "").strip(),
         archive_item,
-        preview_url,
-        geojson_url,
-        geoparquet_url,
         [
             1 if normalizar_bool(paquete.get("tiene_map_png", "")) else 0,
             1 if normalizar_bool(paquete.get("tiene_sample_json", "")) else 0,
+            1 if paquete.get("coleccion", "actual") == "actual" else 0,
         ],
         sample,
+        int(geojson_bytes) if str(geojson_bytes).strip() else None,
     ]
 
 
@@ -191,7 +167,7 @@ def construir_payload() -> dict:
         filas.append(compactar_paquete(paquete, indices_fuente[geoserver], sample))
 
     return {
-        "v": 1,
+        "v": 3,
         "k": {
             "s": ["geoserver", "fuente"],
             "r": [
@@ -201,13 +177,11 @@ def construir_payload() -> dict:
                 "descripcion",
                 "fecha_archivado",
                 "archive_item",
-                "preview_url",
-                "geojson_url",
-                "geoparquet_url",
                 "flags",
                 "sample",
+                "geojson_bytes",
             ],
-            "f": ["map", "sample"],
+            "f": ["map", "sample", "current"],
             "a": ["key", "value"],
         },
         "s": fuentes,
