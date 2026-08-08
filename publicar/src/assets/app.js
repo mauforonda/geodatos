@@ -210,6 +210,7 @@ function decodeArchive(payload) {
     const flags = row[6] || [0, 0, 0];
     const sample = Array.isArray(row[7]) ? row[7] : [];
     const geojsonBytes = Number(row[8] || 0);
+    const geoparquetBytes = Number(row[9] || 0);
     const attrNames = sample.map((entry) => String(entry[0] || ""));
     const hasMap = Boolean(flags[0]);
     const current = Boolean(flags[2]);
@@ -232,6 +233,7 @@ function decodeArchive(payload) {
       geoparquetUrl,
       geojsonUrl,
       geojsonBytes,
+      geoparquetBytes,
       canShowMap: Boolean(geojsonUrl && geojsonBytes > 0 && geojsonBytes <= GEOJSON_MAP_LIMIT),
       sample,
       searchText: normalize([source.fuente, nombre, titulo, descripcion, attrNames.join(" ")].join(" ")),
@@ -557,6 +559,21 @@ function createChip(label, href) {
   return a;
 }
 
+function formatDownloadSize(bytes) {
+  if (!bytes) return null;
+  return `${(bytes / 1_000_000).toFixed(2)} MB`;
+}
+
+function createDownloadChip(label, href, bytes) {
+  const chip = createChip(label, href);
+  const size = formatDownloadSize(bytes);
+  if (chip && size) {
+    chip.classList.add("has-tooltip");
+    chip.dataset.tooltip = size;
+  }
+  return chip;
+}
+
 function createMapButton(item, card) {
   if (!item.canShowMap) return null;
   const button = document.createElement("button");
@@ -795,8 +812,8 @@ function renderArchiveCard(item) {
 
   const groups = [
     createChipGroup("Descargas", [
-      createChip("GeoParquet", item.geoparquetUrl),
-      createChip("GeoJSON", item.geojsonUrl),
+      createDownloadChip("GeoParquet", item.geoparquetUrl, item.geoparquetBytes),
+      createDownloadChip("GeoJSON", item.geojsonUrl, item.geojsonBytes),
     ].filter(Boolean)),
   ].filter(Boolean);
 
