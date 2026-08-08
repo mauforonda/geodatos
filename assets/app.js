@@ -299,7 +299,12 @@ function createMapDataLayer(data) {
       type: "fill",
       paint: {
         "fill-color": "#6a9fcc",
-        "fill-opacity": 0.42,
+        "fill-opacity": [
+          "case",
+          ["boolean", ["feature-state", "selected"], false],
+          1,
+          0.4,
+        ],
         "fill-outline-color": "#355f86",
       },
     };
@@ -307,7 +312,16 @@ function createMapDataLayer(data) {
   if (type === "line") {
     return {
       type: "line",
-      paint: { "line-color": "#355f86", "line-width": 2, "line-opacity": 0.8 },
+      paint: {
+        "line-color": "#355f86",
+        "line-width": 2,
+        "line-opacity": [
+          "case",
+          ["boolean", ["feature-state", "selected"], false],
+          1,
+          0.4,
+        ],
+      },
     };
   }
   return {
@@ -315,6 +329,12 @@ function createMapDataLayer(data) {
     paint: {
       "circle-color": "#6a9fcc",
       "circle-radius": 5,
+      "circle-opacity": [
+        "case",
+        ["boolean", ["feature-state", "selected"], false],
+        1,
+        0.4,
+      ],
       "circle-stroke-color": "#355f86",
       "circle-stroke-width": 1,
     },
@@ -409,7 +429,16 @@ function showFeatureSheet(mapState, properties) {
 function bindFeatureInteraction(mapState) {
   mapState.map.on("click", "data", (event) => {
     const feature = event.features?.[0];
-    if (feature) showFeatureSheet(mapState, feature.properties);
+    if (!feature) return;
+    if (mapState.selectedFeatureId !== null) {
+      mapState.map.setFeatureState(
+        { source: "data", id: mapState.selectedFeatureId },
+        { selected: false },
+      );
+    }
+    mapState.selectedFeatureId = feature.id;
+    mapState.map.setFeatureState({ source: "data", id: feature.id }, { selected: true });
+    showFeatureSheet(mapState, feature.properties);
   });
   mapState.map.on("mouseenter", "data", () => {
     mapState.map.getCanvas().style.cursor = "pointer";
@@ -432,6 +461,7 @@ function createMapView(item, card) {
     view,
     map: null,
     sheet: null,
+    selectedFeatureId: null,
     sheetHeight: null,
     hasShownSheet: false,
     closed: false,
@@ -477,7 +507,7 @@ async function openArchiveMap(item, card) {
             tiles: baseTiles,
             tileSize: 256,
           },
-          data: { type: "geojson", data },
+          data: { type: "geojson", data, generateId: true },
           "carto-labels": {
             type: "raster",
             tiles: labelTiles,
