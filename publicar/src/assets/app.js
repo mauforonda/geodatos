@@ -209,6 +209,7 @@ function decodeArchive(payload) {
     const sample = Array.isArray(row[7]) ? row[7] : [];
     const geojsonBytes = Number(row[8] || 0);
     const geoparquetBytes = Number(row[9] || 0);
+    const epsg = Number(row[10] || 4326);
     const attrNames = sample.map((entry) => String(entry[0] || ""));
     const hasMap = Boolean(flags[0]);
     const current = Boolean(flags[1]);
@@ -227,6 +228,7 @@ function decodeArchive(payload) {
       descripcion,
       fechaArchivado,
       archiveItem,
+      epsg,
       previewUrl: archivePreviewUrl({ archiveItem, geoserver: source.geoserver, nombre, current, hasMap }),
       geoparquetUrl,
       geojsonUrl,
@@ -267,6 +269,161 @@ function collectCoordinates(value, bounds) {
     return;
   }
   for (const child of value) collectCoordinates(child, bounds);
+}
+
+function geojsonEpsg(data) {
+  const crsName = data?.crs?.properties?.name || data?.crs?.properties?.href || "";
+  const match = String(crsName).match(/(?:epsg(?::|[/]{1,2})|::)(\d+)/i);
+  return match ? Number(match[1]) : 4326;
+}
+
+function utmToWgs84([x, y, ...rest], zone, southernHemisphere) {
+  const a = 6378137;
+  const eccentricitySquared = 0.00669438;
+  const eccentricityPrimeSquared = eccentricitySquared / (1 - eccentricitySquared);
+  const scale = 0.9996;
+  const e1 = (1 - Math.sqrt(1 - eccentricitySquared)) /
+    (1 + Math.sqrt(1 - eccentricitySquared));
+  const longitudeOrigin = (zone - 1) * 6 - 180 + 3;
+
+  let easting = x - 500000;
+  let northing = y;
+  if (southernHemisphere) northing -= 10000000;
+
+  const meridionalArc = northing / scale;
+  const mu = meridionalArc /
+    (a * (1 - eccentricitySquared / 4 - 3 * eccentricitySquared ** 2 / 64 -
+      5 * eccentricitySquared ** 3 / 256));
+  const footprintLatitude = mu +
+    (3 * e1 / 2 - 27 * e1 ** 3 / 32) * Math.sin(2 * mu) +
+    (21 * e1 ** 2 / 16 - 55 * e1 ** 4 / 32) * Math.sin(4 * mu) +
+    (151 * e1 ** 3 / 96) * Math.sin(6 * mu) +
+    (1097 * e1 ** 4 / 512) * Math.sin(8 * mu);
+
+  const sinLatitude = Math.sin(footprintLatitude);
+  const cosLatitude = Math.cos(footprintLatitude);
+  const tangent = Math.tan(footprintLatitude);
+  const radiusOfCurvature = a /
+    Math.sqrt(1 - eccentricitySquared * sinLatitude ** 2);
+  const radiusOfMeridian = a * (1 - eccentricitySquared) /
+    (1 - eccentricitySquared * sinLatitude ** 2) ** 1.5;
+  const tangentSquared = tangent ** 2;
+  const latitudeParameter = eccentricityPrimeSquared * cosLatitude ** 2;
+  const distance = easting / (radiusOfCurvature * scale);
+
+  const latitude = footprintLatitude - (radiusOfCurvature * tangent / radiusOfMeridian) *
+    (distance ** 2 / 2 -
+      (5 + 3 * tangentSquared + 10 * latitudeParameter - 4 * latitudeParameter ** 2 -
+        9 * eccentricityPrimeSquared) * distance ** 4 / 24 +
+      (61 + 90 * tangentSquared + 298 * latitudeParameter + 45 * tangentSquared ** 2 -
+        252 * eccentricityPrimeSquared - 3 * latitudeParameter ** 2) * distance ** 6 / 720);
+  const longitude = (distance -
+    (1 + 2 * tangentSquared + latitudeParameter) * distance ** 3 / 6 +
+    (5 - 2 * latitudeParameter + 28 * tangentSquared - 3 * latitudeParameter ** 2 +
+      8 * eccentricityPrimeSquared + 24 * tangentSquared ** 2) * distance ** 5 / 120) /
+    cosLatitude;
+
+  return [
+    (longitudeOrigin + longitude * 180 / Math.PI),
+    (latitude * 180 / Math.PI),
+    ...rest,
+  ];
+}
+
+function webMercatorToWgs84([x, y, ...rest]) {
+  return [
+    x / 6378137 * 180 / Math.PI,
+    (2 * Math.atan(Math.exp(y / 6378137)) - Math.PI / 2) * 180 / Math.PI,
+    ...rest,
+  ];
+}
+
+function capeVerdeToWgs84([x, y, ...rest]) {
+  const a = 6378137;
+  const eccentricity = 0.0818191908426;
+  const eccentricitySquared = eccentricity ** 2;
+  const latitudeOrigin = 15.8333333333333 * Math.PI / 180;
+  const longitudeOrigin = -24 * Math.PI / 180;
+  const latitudeOne = 15 * Math.PI / 180;
+  const latitudeTwo = 16.6666666666667 * Math.PI / 180;
+  const falseEasting = 161587.83;
+  const falseNorthing = 128511.202;
+  const m = (latitude) => Math.cos(latitude) /
+    Math.sqrt(1 - eccentricitySquared * Math.sin(latitude) ** 2);
+  const t = (latitude) => Math.tan(Math.PI / 4 - latitude / 2) /
+    ((1 - eccentricity * Math.sin(latitude)) /
+      (1 + eccentricity * Math.sin(latitude))) ** (eccentricity / 2);
+  const n = Math.log(m(latitudeOne) / m(latitudeTwo)) /
+    Math.log(t(latitudeOne) / t(latitudeTwo));
+  const f = m(latitudeOne) / (n * t(latitudeOne) ** n);
+  const rhoOrigin = a * f * t(latitudeOrigin) ** n;
+  const adjustedX = x - falseEasting;
+  const adjustedY = y - falseNorthing;
+  const rho = Math.sign(n) * Math.sqrt(adjustedX ** 2 + (rhoOrigin - adjustedY) ** 2);
+  const theta = Math.atan2(adjustedX, rhoOrigin - adjustedY);
+  const projectedT = (rho / (a * f)) ** (1 / n);
+  let latitude = Math.PI / 2 - 2 * Math.atan(projectedT);
+  for (let index = 0; index < 5; index += 1) {
+    latitude = Math.PI / 2 - 2 * Math.atan(
+      projectedT * ((1 - eccentricity * Math.sin(latitude)) /
+        (1 + eccentricity * Math.sin(latitude))) ** (eccentricity / 2),
+    );
+  }
+
+  return [
+    (longitudeOrigin + theta / n) * 180 / Math.PI,
+    latitude * 180 / Math.PI,
+    ...rest,
+  ];
+}
+
+function transformGeojson(data, transform) {
+  const transformGeometry = (geometry) => {
+    if (!geometry) return;
+    if (geometry.type === "GeometryCollection") {
+      geometry.geometries.forEach(transformGeometry);
+    } else if (geometry.coordinates) {
+      geometry.coordinates = transformCoordinates(geometry.coordinates, transform);
+    }
+  };
+  const transformCoordinates = (coordinates, coordinateTransform) => {
+    if (coordinates.length >= 2 && coordinates.every((value) => typeof value === "number")) {
+      return coordinateTransform(coordinates);
+    }
+    return coordinates.map((child) => transformCoordinates(child, coordinateTransform));
+  };
+
+  if (data.type === "FeatureCollection") {
+    data.features.forEach((feature) => transformGeometry(feature.geometry));
+  } else if (data.type === "Feature") {
+    transformGeometry(data.geometry);
+  } else {
+    transformGeometry(data);
+  }
+  delete data.crs;
+  return data;
+}
+
+function prepareMapGeojson(data, sourceEpsg = geojsonEpsg(data)) {
+  const epsg = Number(sourceEpsg) || 4326;
+  if (epsg === 4326 || epsg === 4674) return data;
+  if (epsg === 3857 || epsg === 3395 || epsg === 900913) {
+    return transformGeojson(data, webMercatorToWgs84);
+  }
+  if (epsg === 4826) return transformGeojson(data, capeVerdeToWgs84);
+
+  const utmZone = epsg >= 32601 && epsg <= 32660 ? epsg - 32600 :
+    epsg >= 32701 && epsg <= 32760 ? epsg - 32700 :
+    epsg === 5355 ? 20 : null;
+  if (utmZone) return transformGeojson(data, (coordinate) =>
+    utmToWgs84(
+      coordinate,
+      utmZone,
+      epsg >= 32701 && epsg <= 32760 || epsg === 5355,
+    ));
+
+  console.warn(`CRS EPSG:${epsg} no soportado; se mostrarán las coordenadas originales.`);
+  return data;
 }
 
 function geojsonBounds(data) {
@@ -512,6 +669,7 @@ async function openArchiveMap(item, card) {
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     const data = await response.json();
     if (mapState.closed) return;
+    const mapData = prepareMapGeojson(data, item.epsg);
 
     const dark = window.matchMedia("(prefers-color-scheme: dark)").matches;
     const baseTiles = dark ? CARTO_DARK_TILES : CARTO_TILES;
@@ -528,7 +686,7 @@ async function openArchiveMap(item, card) {
             tiles: baseTiles,
             tileSize: 256,
           },
-          data: { type: "geojson", data, generateId: true },
+          data: { type: "geojson", data: mapData, generateId: true },
           "carto-labels": {
             type: "raster",
             tiles: labelTiles,
@@ -537,7 +695,7 @@ async function openArchiveMap(item, card) {
         },
         layers: [
           { id: "carto-light", type: "raster", source: "carto-light" },
-          { id: "data", source: "data", ...createMapDataLayer(data) },
+          { id: "data", source: "data", ...createMapDataLayer(mapData) },
           { id: "carto-labels", type: "raster", source: "carto-labels" },
         ],
       },
@@ -547,7 +705,7 @@ async function openArchiveMap(item, card) {
     bindFeatureInteraction(mapState);
     map.on("load", () => {
       message.remove();
-      map.fitBounds(geojsonBounds(data), { padding: 28, maxZoom: 14, duration: 0 });
+      map.fitBounds(geojsonBounds(mapData), { padding: 28, maxZoom: 14, duration: 0 });
     });
   } catch (error) {
     message.replaceChildren(createStatusIcon("error"));

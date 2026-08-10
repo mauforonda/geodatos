@@ -115,6 +115,7 @@ def compactar_paquete(paquete: dict, indice_fuente: int, sample: list[list]) -> 
     archive_item = (paquete.get("archive_item") or "").strip()
     geojson_bytes = paquete.get("bytes_geojson") or paquete.get("size_bytes") or ""
     geoparquet_bytes = paquete.get("bytes_geoparquet") or ""
+    epsg = paquete.get("epsg") or ""
 
     return [
         indice_fuente,
@@ -130,6 +131,7 @@ def compactar_paquete(paquete: dict, indice_fuente: int, sample: list[list]) -> 
         sample,
         int(geojson_bytes) if str(geojson_bytes).strip() else None,
         int(geoparquet_bytes) if str(geoparquet_bytes).strip() else None,
+        int(epsg) if str(epsg).strip() else None,
     ]
 
 
