@@ -18,6 +18,7 @@ const CARTO_LABEL_TILES = CARTO_TILES.map((url) => url.replace("light_nolabels",
 const CARTO_DARK_TILES = CARTO_TILES.map((url) => url.replace("light_nolabels", "dark_nolabels"));
 const CARTO_DARK_LABEL_TILES = CARTO_TILES.map((url) => url.replace("light_nolabels", "dark_only_labels"));
 const MAP_CONTINUOUS_COLORS = ["#f3e4bf", "#f5c1ac", "#e9a1b0", "#c48cc0", "#7f83c7"];
+const MAP_DARK_CONTINUOUS_COLORS = ["#c8bb9d", "#cb9e89", "#c7808a", "#ae6b9b", "#7863ac"];
 const MAP_CATEGORICAL_COLORS = [
   "#8dd3c7",
   "#ffffb3",
@@ -31,6 +32,7 @@ const MAP_CATEGORICAL_COLORS = [
 ];
 const MAP_INVALID_COLOR = "#c4c8cb";
 const resultResizeAnimations = new WeakMap();
+const darkModeQuery = window.matchMedia("(prefers-color-scheme: dark)");
 
 const state = {
   mode: "archivo",
@@ -472,7 +474,7 @@ function analyzeMapAttributes(data) {
         type: "continuous",
         min: uniqueNumbers[0],
         max: uniqueNumbers[uniqueNumbers.length - 1],
-        colors: MAP_CONTINUOUS_COLORS,
+        colors: darkModeQuery.matches ? MAP_DARK_CONTINUOUS_COLORS : MAP_CONTINUOUS_COLORS,
       });
       continue;
     }
@@ -494,6 +496,13 @@ function analyzeMapAttributes(data) {
 
 function mapColors() {
   const styles = getComputedStyle(document.documentElement);
+  if (darkModeQuery.matches) {
+    return {
+      fill: "#3e4d79",
+      border: styles.getPropertyValue("--frame").trim() || "#1b1f2b",
+      highlight: "#3761c7",
+    };
+  }
   return {
     fill: styles.getPropertyValue("--fill").trim() || "#b8e1f3",
     border: styles.getPropertyValue("--border-strong").trim() || "rgba(45, 53, 64, 0.26)",
@@ -1154,7 +1163,7 @@ async function openArchiveMap(item, card) {
     mapState.data = mapData;
     mapState.attributeOptions = analyzeMapAttributes(mapData);
 
-    const dark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const dark = darkModeQuery.matches;
     const baseTiles = dark ? CARTO_DARK_TILES : CARTO_TILES;
     const labelTiles = dark ? CARTO_DARK_LABEL_TILES : CARTO_LABEL_TILES;
     const map = new maplibregl.Map({
