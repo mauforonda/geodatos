@@ -633,27 +633,30 @@ function createMapBorderLayer(data, mapping = null) {
 function createMapLegend(mapping) {
   const legend = document.createElement("div");
   legend.className = `map-legend map-legend-${mapping.type}`;
-  const tooltip = document.createElement("div");
-  tooltip.className = "map-legend-tooltip";
   const bar = document.createElement("div");
   bar.className = "map-legend-bar";
 
-  mapping.colors.forEach((color, index) => {
-    const swatch = document.createElement(mapping.type === "categorical" ? "button" : "span");
-    swatch.className = "map-legend-swatch";
-    swatch.style.backgroundColor = color;
-    if (mapping.type === "categorical") {
+  if (mapping.type === "categorical") {
+    const categories = document.createElement("div");
+    categories.className = "map-legend-categories";
+    let pinnedSwatch = null;
+
+    mapping.colors.forEach((color, index) => {
+      const swatch = document.createElement("button");
+      swatch.className = "map-legend-swatch";
       swatch.type = "button";
-      swatch.dataset.tooltip = mapping.categories[index];
-      swatch.classList.add("has-tooltip");
-      const showTooltip = () => {
-        tooltip.textContent = mapping.categories[index];
-        tooltip.classList.add("is-visible");
-      };
+      swatch.setAttribute("aria-label", mapping.categories[index]);
+      swatch.style.backgroundColor = color;
+      swatch.style.setProperty("--category-color", color);
+
+      const tooltip = document.createElement("span");
+      tooltip.className = "map-legend-tooltip";
+      tooltip.textContent = mapping.categories[index];
+      swatch.append(tooltip);
+
+      const showTooltip = () => swatch.classList.add("is-tooltip-visible");
       const hideTooltip = () => {
-        if (!swatch.classList.contains("is-tooltip-visible")) {
-          tooltip.classList.remove("is-visible");
-        }
+        if (pinnedSwatch !== swatch) swatch.classList.remove("is-tooltip-visible");
       };
       swatch.addEventListener("pointerenter", showTooltip);
       swatch.addEventListener("pointerleave", hideTooltip);
@@ -661,22 +664,27 @@ function createMapLegend(mapping) {
       swatch.addEventListener("focusout", hideTooltip);
       swatch.addEventListener("click", (event) => {
         event.stopPropagation();
-        swatch.classList.toggle("is-tooltip-visible");
-        if (swatch.classList.contains("is-tooltip-visible")) showTooltip();
-        else hideTooltip();
+        const willPin = pinnedSwatch !== swatch;
+        pinnedSwatch?.classList.remove("is-tooltip-visible");
+        pinnedSwatch = willPin ? swatch : null;
+        swatch.classList.toggle("is-tooltip-visible", willPin);
       });
-    }
+      categories.append(swatch);
+    });
+    legend.append(categories);
+    return legend;
+  }
+
+  mapping.colors.forEach((color, index) => {
+    const swatch = document.createElement("span");
+    swatch.className = "map-legend-swatch";
+    swatch.style.backgroundColor = color;
     bar.append(swatch);
   });
-  if (mapping.type === "continuous") {
-    const labels = document.createElement("div");
-    labels.className = "map-legend-labels";
-    labels.append("-", bar, "+");
-    legend.append(labels);
-  } else {
-    legend.append(bar);
-  }
-  legend.append(tooltip);
+  const labels = document.createElement("div");
+  labels.className = "map-legend-labels";
+  labels.append("-", bar, "+");
+  legend.append(labels);
   return legend;
 }
 
@@ -704,15 +712,29 @@ function updateMapMapping(mapState, mapping) {
 
 function hideMapPopup(mapState) {
   if (!mapState.popup) return;
+  mapState.popupFeature = null;
+  mapState.popupAnchor = null;
   mapState.popup.classList.remove("is-visible");
 }
 
-function featureAnchorPoint(mapState, feature) {
-  const points = [];
+function sourceMapFeature(mapState, feature) {
+  if (mapState.data?.type !== "FeatureCollection") return feature;
+  const explicitFeature = mapState.data.features.find((item) => item.id === feature.id);
+  const generatedFeature = Number.isInteger(feature.id)
+    ? mapState.data.features[feature.id]
+    : null;
+  return explicitFeature || generatedFeature || feature;
+}
+
+function featureAnchor(feature) {
+  const bounds = { minX: Infinity, minY: Infinity, maxX: -Infinity, maxY: -Infinity };
   const collect = (value) => {
     if (!Array.isArray(value)) return;
     if (value.length >= 2 && value.every((entry) => typeof entry === "number")) {
-      points.push(mapState.map.project([value[0], value[1]]));
+      bounds.minX = Math.min(bounds.minX, value[0]);
+      bounds.minY = Math.min(bounds.minY, value[1]);
+      bounds.maxX = Math.max(bounds.maxX, value[0]);
+      bounds.maxY = Math.max(bounds.maxY, value[1]);
       return;
     }
     value.forEach(collect);
@@ -723,47 +745,42 @@ function featureAnchorPoint(mapState, feature) {
     else collect(geometry.coordinates);
   };
   collectGeometry(feature.geometry);
-  if (!points.length) {
-    return {
-      x: mapState.view.clientWidth / 2,
-      y: mapState.view.clientHeight / 2,
-    };
-  }
-  const bounds = points.reduce(
-    (result, point) => ({
-      minX: Math.min(result.minX, point.x),
-      minY: Math.min(result.minY, point.y),
-      maxX: Math.max(result.maxX, point.x),
-      maxY: Math.max(result.maxY, point.y),
-    }),
-    { minX: Infinity, minY: Infinity, maxX: -Infinity, maxY: -Infinity },
-  );
-  return {
-    x: (bounds.minX + bounds.maxX) / 2,
-    y: (bounds.minY + bounds.maxY) / 2,
-  };
+  if (!Number.isFinite(bounds.minX)) return null;
+  return [(bounds.minX + bounds.maxX) / 2, (bounds.minY + bounds.maxY) / 2];
+}
+
+function positionMapPopup(mapState) {
+  if (!mapState.popupAnchor || !mapState.popup.classList.contains("is-visible")) return;
+  const point = mapState.map.project(mapState.popupAnchor);
+  mapState.popup.style.left = `${point.x}px`;
+  mapState.popup.style.top = `${point.y}px`;
+  requestAnimationFrame(() => {
+    if (!mapState.popupAnchor) return;
+    const halfWidth = mapState.popup.offsetWidth / 2;
+    const left = Math.max(
+      halfWidth + 4,
+      Math.min(mapState.view.clientWidth - halfWidth - 4, point.x),
+    );
+    const pointerLeft = Math.max(
+      7,
+      Math.min(mapState.popup.offsetWidth - 7, point.x - left + halfWidth),
+    );
+    mapState.popup.style.left = `${left}px`;
+    mapState.popup.style.setProperty("--popup-pointer-left", `${pointerLeft}px`);
+  });
 }
 
 function showMapPopup(mapState, feature) {
   if (!mapState.mapping || !mapState.popup) return;
   const rawValue = feature.properties?.[mapState.mapping.key];
-  const value = rawValue === null || rawValue === undefined || rawValue === ""
+  mapState.popup.textContent = rawValue === null || rawValue === undefined || rawValue === ""
     ? "—"
     : String(rawValue);
-  const point = featureAnchorPoint(mapState, feature);
-  mapState.popup.textContent = value;
-  mapState.popup.style.left = `${point.x}px`;
-  mapState.popup.style.top = `${point.y}px`;
+  mapState.popupFeature = sourceMapFeature(mapState, feature);
+  mapState.popupAnchor = featureAnchor(mapState.popupFeature);
+  if (!mapState.popupAnchor) return;
   mapState.popup.classList.add("is-visible");
-  requestAnimationFrame(() => {
-    const halfWidth = mapState.popup.offsetWidth / 2;
-    const top = Math.max(mapState.popup.offsetHeight + 4, point.y);
-    mapState.popup.style.left = `${Math.max(
-      halfWidth + 4,
-      Math.min(mapState.view.clientWidth - halfWidth - 4, point.x),
-    )}px`;
-    mapState.popup.style.top = `${top}px`;
-  });
+  positionMapPopup(mapState);
 }
 
 function toggleMapAttribute(mapState, key) {
@@ -1002,7 +1019,8 @@ function bindFeatureInteraction(mapState) {
     const feature = featureAtPoint(event);
     if (!feature) return;
     if (mapState.selectedFeatureId === feature.id && !usesDesktopHover()) {
-      hideMapPopup(mapState);
+      if (mapState.popup.classList.contains("is-visible")) hideMapPopup(mapState);
+      else showMapPopup(mapState, feature);
       return;
     }
     if (mapState.selectedFeatureId !== null) {
@@ -1017,6 +1035,7 @@ function bindFeatureInteraction(mapState) {
     showMapPopup(mapState, feature);
   };
   mapState.map.on("click", selectFeature);
+  mapState.map.on("move", () => positionMapPopup(mapState));
   mapState.map.on("mousemove", (event) => {
     const feature = featureAtPoint(event);
     setHoveredFeature(usesDesktopHover() ? feature : null);
@@ -1086,6 +1105,8 @@ function createMapView(item, card) {
     titleParent,
     titleNextSibling,
     popup,
+    popupFeature: null,
+    popupAnchor: null,
     close: null,
     closed: false,
     closing: false,
@@ -1317,7 +1338,9 @@ function closeExpandedCard() {
 }
 
 function bindCardInteractions(node) {
-  node.addEventListener("mouseenter", () => openCard(node));
+  node.addEventListener("mouseenter", () => {
+    if (usesDesktopHover()) openCard(node);
+  });
   node.addEventListener("mouseleave", () => {
     if (!usesDesktopHover()) return;
     if (node.matches(":focus-within")) return;
@@ -1325,7 +1348,9 @@ function bindCardInteractions(node) {
       closeExpandedCard();
     }
   });
-  node.addEventListener("focusin", () => openCard(node));
+  node.addEventListener("focusin", () => {
+    if (usesDesktopHover()) openCard(node);
+  });
   node.addEventListener("focusout", () => {
     if (!usesDesktopHover()) return;
     queueMicrotask(() => {

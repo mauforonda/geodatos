@@ -328,12 +328,8 @@ input {
         z-index: 20;
       }
 
-      &:hover,
       &.is-expanded {
         z-index: 12;
-      }
-      &:hover {
-        box-shadow: 0 10px 24px rgb(37 47 61 / 20%);
       }
       .preview {
         position: relative;
@@ -579,8 +575,20 @@ input {
           }
         }
 
-        &:hover .details,
-        &.is-expanded .details {
+      }
+
+      &.is-expanded .details {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      @media (hover: hover) and (pointer: fine) and (min-width: 861px) {
+        &:hover {
+          z-index: 12;
+          box-shadow: 0 10px 24px rgb(37 47 61 / 20%);
+        }
+
+        &:hover .details {
           opacity: 1;
           pointer-events: auto;
         }
@@ -690,6 +698,55 @@ input {
 
         }
 
+        &.map-legend-categorical {
+          max-width: none;
+
+          .map-legend-categories {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.3rem;
+          }
+
+          .map-legend-swatch {
+            position: relative;
+            flex: none;
+            width: 0.8rem;
+            height: 0.8rem;
+            overflow: visible;
+            border: 1px solid var(--border-strong);
+            border-radius: 2px;
+          }
+
+          .map-legend-tooltip {
+            position: absolute;
+            top: 50%;
+            right: auto;
+            bottom: auto;
+            left: calc(100% + 0.4rem);
+            width: max-content;
+            max-width: calc(100vw - 5rem);
+            padding: 0.25rem 0.35rem;
+            border: 1px solid var(--category-color);
+            color: var(--foreground);
+            background: color-mix(in srgb, var(--category-color) 12%, transparent);
+            font-size: 0.66rem;
+            line-height: 1;
+            opacity: 0;
+            pointer-events: none;
+            transform: translate(0.2rem, -50%);
+            transition:
+              opacity 140ms ease,
+              transform 140ms ease;
+            white-space: nowrap;
+          }
+
+          .map-legend-swatch.is-tooltip-visible .map-legend-tooltip {
+            opacity: 1;
+            transform: translate(0, -50%);
+          }
+        }
+
         .map-legend-labels {
           display: flex;
           align-items: center;
@@ -749,7 +806,7 @@ input {
         &::after {
           position: absolute;
           bottom: -0.35rem;
-          left: 50%;
+          left: var(--popup-pointer-left, 50%);
           width: 0;
           height: 0;
           border-top: 0.35rem solid var(--border);
