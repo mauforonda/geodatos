@@ -125,7 +125,6 @@ def compactar_paquete(paquete: dict, indice_fuente: int, sample: list[list]) -> 
         archive_item,
         [
             1 if normalizar_bool(paquete.get("tiene_map_png", "")) else 0,
-            1 if normalizar_bool(paquete.get("tiene_sample_json", "")) else 0,
             1 if paquete.get("coleccion", "actual") == "actual" else 0,
         ],
         sample,
@@ -168,28 +167,7 @@ def construir_payload() -> dict:
         sample = leer_sample(paquete.get("coleccion", "actual"), geoserver, paquete["nombre"])
         filas.append(compactar_paquete(paquete, indices_fuente[geoserver], sample))
 
-    return {
-        "v": 4,
-        "k": {
-            "s": ["geoserver", "fuente"],
-            "r": [
-                "source",
-                "nombre",
-                "titulo",
-                "descripcion",
-                "fecha_archivado",
-                "archive_item",
-                "flags",
-                "sample",
-                "geojson_bytes",
-                "geoparquet_bytes",
-            ],
-            "f": ["map", "sample", "current"],
-            "a": ["key", "value"],
-        },
-        "s": fuentes,
-        "r": filas,
-    }
+    return {"s": fuentes, "r": filas}
 
 
 def parse_args() -> argparse.Namespace:

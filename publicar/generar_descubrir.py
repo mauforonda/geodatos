@@ -72,16 +72,7 @@ def construir_payload() -> dict:
         fuente = directorio_por_nombre.get(geoserver, {})
         filas.append(compactar_capa(capa, indices_fuente[geoserver], fuente))
 
-    return {
-        "v": 1,
-        "k": {
-            "s": ["geoserver", "fuente", "ows"],
-            "r": ["source", "nombre", "titulo", "descripcion", "fecha_encontrado", "flags"],
-            "f": ["wms", "wfs"],
-        },
-        "s": fuentes,
-        "r": filas,
-    }
+    return {"s": fuentes, "r": filas}
 
 
 def parse_args() -> argparse.Namespace:

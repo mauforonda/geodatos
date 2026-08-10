@@ -186,9 +186,7 @@ function decodeDiscover(payload) {
 
 async function loadDiscover() {
   const response = await fetch(DISCOVER_PATH);
-  if (!response.ok) {
-    throw new Error(`No se pudo cargar ${DISCOVER_PATH}`);
-  }
+  if (!response.ok) throw new Error(`No se pudo cargar ${DISCOVER_PATH}`);
   const payload = await response.json();
   return decodeDiscover(payload);
 }
@@ -207,13 +205,13 @@ function decodeArchive(payload) {
     const descripcion = row[3] || "";
     const fechaArchivado = row[4] || "";
     const archiveItem = row[5];
-    const flags = row[6] || [0, 0, 0];
+    const flags = row[6] || [0, 0];
     const sample = Array.isArray(row[7]) ? row[7] : [];
     const geojsonBytes = Number(row[8] || 0);
     const geoparquetBytes = Number(row[9] || 0);
     const attrNames = sample.map((entry) => String(entry[0] || ""));
     const hasMap = Boolean(flags[0]);
-    const current = Boolean(flags[2]);
+    const current = Boolean(flags[1]);
     const geojsonFilename = current ? "dataset.geojson" : `${slug(nombre)}.geojson`;
     const geojsonUrl = archiveItem ? archiveDownloadUrl(archiveItem, geojsonFilename) : null;
     const geoparquetUrl = current && archiveItem
@@ -243,9 +241,7 @@ function decodeArchive(payload) {
 
 async function loadArchive() {
   const response = await fetch(ARCHIVE_PATH);
-  if (!response.ok) {
-    throw new Error(`No se pudo cargar ${ARCHIVE_PATH}`);
-  }
+  if (!response.ok) throw new Error(`No se pudo cargar ${ARCHIVE_PATH}`);
   const payload = await response.json();
   return decodeArchive(payload);
 }
@@ -361,7 +357,22 @@ function hideFeatureSheet(mapState) {
 }
 
 function showFeatureSheet(mapState, properties) {
-  hideFeatureSheet(mapState);
+  const attributes = createAttributeSection(Object.entries(properties || {}), "", false);
+  if (!attributes) {
+    hideFeatureSheet(mapState);
+    return;
+  }
+
+  const currentTable = mapState.sheet?.querySelector(".attribute-table");
+  const nextTable = attributes.querySelector(".attribute-table");
+  if (currentTable && nextTable) {
+    const scrollTop = currentTable.scrollTop;
+    currentTable.replaceChildren(...nextTable.children);
+    requestAnimationFrame(() => {
+      currentTable.scrollTop = scrollTop;
+    });
+    return;
+  }
 
   const sheet = document.createElement("div");
   sheet.className = "map-attributes-sheet";
@@ -399,9 +410,8 @@ function showFeatureSheet(mapState, properties) {
     window.addEventListener("pointercancel", end, { once: true });
   });
 
-  const attributes = createAttributeSection(Object.entries(properties || {}), "", false);
   sheet.append(handle);
-  if (attributes) sheet.append(attributes);
+  sheet.append(attributes);
   mapState.view.append(sheet);
   mapState.sheet = sheet;
   const initialHeight = mapState.sheetHeight || mapState.view.clientHeight / 3;
@@ -458,6 +468,14 @@ function createMapView(item, card) {
   canvas.className = "map-canvas";
   canvas.setAttribute("aria-label", `Mapa de ${item.titulo}`);
 
+  const title = document.createElement("div");
+  title.className = "map-title";
+  title.setAttribute("aria-hidden", "true");
+  const titleText = document.createElement("span");
+  titleText.className = "title";
+  titleText.textContent = item.titulo;
+  title.append(titleText);
+
   const mapState = {
     card,
     view,
@@ -477,9 +495,10 @@ function createMapView(item, card) {
 
   const message = document.createElement("div");
   message.className = "map-message";
-  message.textContent = "Cargando mapa…";
+  message.setAttribute("aria-live", "polite");
+  message.append(createLoadingDots());
 
-  view.append(canvas, close, message);
+  view.append(canvas, title, close, message);
   card.replaceWith(view);
   state.openMaps.add(mapState);
   return { mapState, canvas, message };
@@ -531,7 +550,7 @@ async function openArchiveMap(item, card) {
       map.fitBounds(geojsonBounds(data), { padding: 28, maxZoom: 14, duration: 0 });
     });
   } catch (error) {
-    message.textContent = "No se pudo cargar el mapa.";
+    message.replaceChildren(createStatusIcon("error"));
     console.error("Error cargando GeoJSON archivado", error);
   }
 }
@@ -845,6 +864,7 @@ function renderDataset(mode) {
 
   closeAllMaps();
   closeExpandedCard();
+  els.emptyState.classList.remove("status-state");
   els.results.replaceChildren(...visible.map(renderer));
   els.emptyState.classList.toggle("is-hidden", filtered.length !== 0);
   els.placeholderState.classList.add("is-hidden");
@@ -879,22 +899,45 @@ function render() {
     renderDataset(state.mode);
     return;
   }
-  renderLoading(state.mode);
+  renderLoading();
 }
 
-function renderLoading(mode) {
+function renderLoading() {
   closeExpandedCard();
   els.results.replaceChildren();
   els.results.classList.add("is-hidden");
   els.emptyState.classList.add("is-hidden");
+  els.emptyState.classList.remove("status-state");
   els.placeholderState.classList.remove("is-hidden");
-  els.placeholderState.querySelector("h2").textContent = "Cargando índice…";
-  els.placeholderState.querySelector("p").textContent = mode === "archivo"
-    ? "Preparando los conjuntos archivados."
-    : "Preparando los conjuntos descubiertos.";
+  const loadingHeading = els.placeholderState.querySelector("h2");
+  loadingHeading.replaceChildren(createLoadingDots());
+  loadingHeading.setAttribute("aria-live", "polite");
+  loadingHeading.setAttribute("aria-label", "Cargando");
+  els.placeholderState.querySelector("p").classList.add("is-hidden");
   els.resultsSummary.textContent = "";
   els.footer.classList.add("is-hidden");
   els.loadMore.classList.add("is-hidden");
+}
+
+function createLoadingDots() {
+  const dots = document.createElement("span");
+  dots.className = "loading-dots";
+  dots.setAttribute("aria-hidden", "true");
+  for (let index = 0; index < 3; index += 1) {
+    const dot = document.createElement("span");
+    dot.className = "loading-dot";
+    dots.append(dot);
+  }
+  return dots;
+}
+
+function createStatusIcon(kind) {
+  const icon = document.createElement("span");
+  icon.className = `status-icon status-${kind}`;
+  icon.setAttribute("role", "img");
+  icon.setAttribute("aria-label", kind === "error" ? "No se pudo cargar" : "Cargando");
+  icon.textContent = kind === "error" ? "!" : "";
+  return icon;
 }
 
 function resetPagination() {
@@ -976,9 +1019,11 @@ async function loadMode(mode) {
       els.results.replaceChildren();
       els.results.classList.add("is-hidden");
       els.emptyState.classList.remove("is-hidden");
-      els.emptyState.querySelector("h2").textContent = "No se pudo cargar el índice";
-      els.emptyState.querySelector("p").textContent = error.message;
-      els.resultsSummary.textContent = "Error cargando datos.";
+      els.emptyState.classList.add("status-state");
+      const errorMessage = els.emptyState.querySelector("p");
+      errorMessage.replaceChildren(createStatusIcon("error"));
+      errorMessage.setAttribute("aria-live", "polite");
+      els.resultsSummary.textContent = "";
       els.footer.classList.remove("is-hidden");
     }
     throw error;
