@@ -648,37 +648,22 @@ function createMapLegend(mapping) {
   if (mapping.type === "categorical") {
     const categories = document.createElement("div");
     categories.className = "map-legend-categories";
-    let pinnedSwatch = null;
 
     mapping.colors.forEach((color, index) => {
-      const swatch = document.createElement("button");
+      const category = document.createElement("div");
+      category.className = "map-legend-category";
+      const swatch = document.createElement("span");
       swatch.className = "map-legend-swatch";
-      swatch.type = "button";
-      swatch.setAttribute("aria-label", mapping.categories[index]);
       swatch.style.backgroundColor = color;
-      swatch.style.setProperty("--category-color", color);
-
-      const tooltip = document.createElement("span");
-      tooltip.className = "map-legend-tooltip";
-      tooltip.textContent = mapping.categories[index];
-      swatch.append(tooltip);
-
-      const showTooltip = () => swatch.classList.add("is-tooltip-visible");
-      const hideTooltip = () => {
-        if (pinnedSwatch !== swatch) swatch.classList.remove("is-tooltip-visible");
-      };
-      swatch.addEventListener("pointerenter", showTooltip);
-      swatch.addEventListener("pointerleave", hideTooltip);
-      swatch.addEventListener("focusin", showTooltip);
-      swatch.addEventListener("focusout", hideTooltip);
-      swatch.addEventListener("click", (event) => {
-        event.stopPropagation();
-        const willPin = pinnedSwatch !== swatch;
-        pinnedSwatch?.classList.remove("is-tooltip-visible");
-        pinnedSwatch = willPin ? swatch : null;
-        swatch.classList.toggle("is-tooltip-visible", willPin);
-      });
-      categories.append(swatch);
+      const label = document.createElement("span");
+      label.className = "map-legend-category-label";
+      label.style.setProperty("--category-color", color);
+      const labelText = document.createElement("span");
+      labelText.className = "map-legend-category-text";
+      labelText.textContent = mapping.categories[index];
+      label.append(labelText);
+      category.append(swatch, label);
+      categories.append(category);
     });
     legend.append(categories);
     return legend;
@@ -715,8 +700,7 @@ function updateMapMapping(mapState, mapping) {
 
   mapState.legend?.remove();
   mapState.legend = mapping ? createMapLegend(mapping) : null;
-  if (mapState.legend) mapState.view.append(mapState.legend);
-  mapState.titleAttribute.textContent = mapping ? mapping.key : "";
+  if (mapState.legend) mapState.title.append(mapState.legend);
 }
 
 function hideMapPopup(mapState) {
@@ -795,10 +779,34 @@ function showMapPopup(mapState, feature) {
 function toggleMapAttribute(mapState, key) {
   const mapping = mapState.mapping?.key === key ? null : mapState.attributeOptions.get(key);
   updateMapMapping(mapState, mapping);
-  const activeButtons = mapState.view.querySelectorAll(".map-attribute");
+  const activeButtons = mapState.attributeControls?.querySelectorAll(".map-attribute") || [];
   for (const button of activeButtons) {
-    button.classList.toggle("is-active", button.dataset.attribute === mapping?.key);
+    const active = button.dataset.attribute === mapping?.key;
+    button.classList.toggle("is-active", active);
+    button.setAttribute("aria-pressed", String(active));
   }
+}
+
+function createMapAttributeControls(mapState) {
+  if (!mapState.attributeOptions.size) return null;
+  const controls = document.createElement("div");
+  controls.className = "map-attribute-controls";
+  controls.setAttribute("role", "group");
+  controls.setAttribute("aria-label", "Atributos temáticos");
+  for (const key of mapState.attributeOptions.keys()) {
+    const button = document.createElement("button");
+    button.className = "map-attribute";
+    button.type = "button";
+    button.textContent = key;
+    button.dataset.attribute = key;
+    button.setAttribute("aria-pressed", "false");
+    button.addEventListener("click", (event) => {
+      event.stopPropagation();
+      toggleMapAttribute(mapState, key);
+    });
+    controls.append(button);
+  }
+  return controls;
 }
 
 async function closeMapView(mapState) {
@@ -820,7 +828,6 @@ async function closeMapView(mapState) {
   const finish = () => {
     hideFeatureSheet(mapState);
     mapState.map?.remove();
-    mapState.titleAttribute.remove();
     mapState.titleParent.insertBefore(mapState.titleText, mapState.titleNextSibling);
     mapState.view.remove();
     mapState.card.classList.remove("is-map-active", "is-expanded", "is-resizing");
@@ -920,7 +927,6 @@ function showFeatureSheet(mapState, properties) {
     Object.entries(properties || {}),
     "",
     false,
-    mapState,
   );
   if (!attributes) {
     hideFeatureSheet(mapState);
@@ -1081,13 +1087,9 @@ function createMapView(item, card) {
 
   const title = document.createElement("div");
   title.className = "map-title";
-  title.setAttribute("aria-hidden", "true");
   const titleText = card.querySelector(".details header > .title");
   const titleParent = titleText.parentElement;
   const titleNextSibling = titleText.nextSibling;
-  const titleAttribute = document.createElement("small");
-  titleAttribute.className = "map-title-attribute";
-  titleText.append(titleAttribute);
   title.append(titleText);
 
   const popup = document.createElement("div");
@@ -1109,13 +1111,14 @@ function createMapView(item, card) {
     attributeOptions: new Map(),
     mapping: null,
     legend: null,
-    titleAttribute,
+    title,
     titleText,
     titleParent,
     titleNextSibling,
     popup,
     popupFeature: null,
     popupAnchor: null,
+    attributeControls: null,
     close: null,
     closed: false,
     closing: false,
@@ -1195,6 +1198,8 @@ async function openArchiveMap(item, card) {
       attributionControl: false,
     });
     mapState.map = map;
+    mapState.attributeControls = createMapAttributeControls(mapState);
+    if (mapState.attributeControls) mapState.title.append(mapState.attributeControls);
     bindFeatureInteraction(mapState);
     map.on("load", () => {
       message.remove();
@@ -1278,7 +1283,6 @@ function createAttributeSection(
   sample,
   title = "Muestra de Atributos",
   showTitle = true,
-  mapState = null,
 ) {
   if (!sample.length) return null;
   const section = document.createElement("section");
@@ -1297,32 +1301,15 @@ function createAttributeSection(
     const row = document.createElement("div");
     row.className = "attribute";
 
-    const keyWrap = document.createElement("div");
-    keyWrap.className = "key-wrap";
     const keyEl = document.createElement("div");
     keyEl.className = "key";
     keyEl.textContent = key;
-    keyWrap.append(keyEl);
-
-    if (mapState?.attributeOptions.has(key)) {
-      const mapButton = document.createElement("button");
-      mapButton.className = "map-attribute";
-      mapButton.type = "button";
-      mapButton.textContent = "mapear";
-      mapButton.dataset.attribute = key;
-      mapButton.classList.toggle("is-active", mapState.mapping?.key === key);
-      mapButton.addEventListener("click", (event) => {
-        event.stopPropagation();
-        toggleMapAttribute(mapState, key);
-      });
-      keyWrap.append(mapButton);
-    }
 
     const valueEl = document.createElement("div");
     valueEl.className = "value";
     valueEl.textContent = value === null ? "null" : String(value);
 
-    row.append(keyWrap, valueEl);
+    row.append(keyEl, valueEl);
     list.append(row);
   }
   section.append(list);

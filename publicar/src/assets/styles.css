@@ -649,13 +649,61 @@ input {
           line-height: 1.22;
         }
 
-        .map-title-attribute {
-          margin-left: 0.35rem;
+        .map-attribute-controls {
+          display: flex;
+          width: calc(100% - 2.5rem);
+          gap: 0.3rem;
+          margin-top: 0.65rem;
+          overflow-x: auto;
+          pointer-events: auto;
+          scrollbar-width: none;
+          touch-action: pan-x;
+
+          &::-webkit-scrollbar {
+            display: none;
+          }
+        }
+
+        > .map-legend {
+          position: relative;
+          top: auto;
+          right: auto;
+          left: auto;
+          width: 100%;
+          margin-top: 0.55rem;
+        }
+      }
+
+      .map-attribute {
+        flex: 0 0 auto;
+        padding: 1px 5px;
+        border: 1px solid var(--highlight);
+        border-radius: 3px;
+        color: var(--highlight);
+        background: color-mix(in srgb, var(--highlight) 10%, transparent);
+        cursor: pointer;
+        font-size: 0.62rem;
+        font-weight: 600;
+        line-height: 1.35;
+        opacity: 0.7;
+        transition:
+          opacity 160ms ease,
+          color 160ms ease,
+          background 160ms ease;
+
+        &:hover,
+        &:focus-visible {
           color: var(--highlight);
-          font-size: 0.68rem;
-          font-weight: 500;
-          background: none;
-          -webkit-text-fill-color: var(--highlight);
+          background: color-mix(in srgb, var(--highlight) 18%, transparent);
+          border-color: var(--highlight);
+          opacity: 1;
+        }
+
+        &.is-active {
+          color: var(--highlight);
+          background: color-mix(in srgb, var(--highlight) 24%, transparent);
+          border-color: var(--highlight);
+          opacity: 1;
         }
       }
 
@@ -706,47 +754,47 @@ input {
             gap: 0.3rem;
           }
 
+          .map-legend-category {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+          }
+
           .map-legend-swatch {
-            position: relative;
             flex: none;
             width: 0.8rem;
             height: 0.8rem;
-            overflow: visible;
             border: 1px solid var(--border-strong);
             border-radius: 2px;
           }
 
-          .map-legend-tooltip {
-            position: absolute;
-            top: 50%;
-            right: auto;
-            bottom: auto;
-            left: calc(100% + 0.4rem);
-            width: max-content;
-            max-width: calc(100vw - 5rem);
+          .map-legend-category-label {
             padding: 0.15rem 0.35rem;
             border: 1px solid var(--category-color);
             border-radius: 0 3px 3px 0;
-            color: var(--foreground);
             background: color-mix(
               in srgb,
               var(--category-color) 50%,
               transparent
             );
-            font-size: 0.66rem;
-            line-height: 1;
-            opacity: 0;
-            pointer-events: none;
-            transform: translate(0.2rem, -50%);
-            transition:
-              opacity 140ms ease,
-              transform 140ms ease;
-            white-space: nowrap;
           }
 
-          .map-legend-swatch.is-tooltip-visible .map-legend-tooltip {
-            opacity: 1;
-            transform: translate(0, -50%);
+          .map-legend-category-text {
+            display: block;
+            max-width: 80px;
+            overflow: hidden;
+            color: transparent;
+            background: linear-gradient(
+              90deg,
+              var(--foreground) 0 60px,
+              transparent 80px
+            );
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 0.66rem;
+            line-height: 1;
+            white-space: nowrap;
           }
         }
 
@@ -764,30 +812,6 @@ input {
           }
         }
 
-        .map-legend-tooltip {
-          position: absolute;
-          bottom: calc(100% + 0.35rem);
-          left: 0;
-          z-index: 20;
-          padding: 0.25rem 0.35rem;
-          border: 1px solid var(--border);
-          color: var(--foreground);
-          background: var(--frame);
-          font-size: 0.66rem;
-          line-height: 1;
-          opacity: 0;
-          pointer-events: none;
-          transform: translate(0, 0.2rem);
-          transition:
-            opacity 140ms ease,
-            transform 140ms ease;
-          white-space: nowrap;
-
-          &.is-visible {
-            opacity: 1;
-            transform: translate(0, 0);
-          }
-        }
       }
 
       .map-feature-popup {
@@ -956,48 +980,6 @@ input {
 
           .key {
             font-family: "Commit Mono", monospace;
-          }
-
-          .key-wrap {
-            display: flex;
-            align-items: flex-start;
-            min-width: 0;
-            gap: 0.35rem;
-          }
-
-          .map-attribute {
-            flex: 0 0 auto;
-            padding: 0;
-            border: 0;
-            color: var(--highlight);
-            background: none;
-            cursor: pointer;
-            font-size: 0.62rem;
-            line-height: 1.35;
-            transition:
-              opacity 160ms ease,
-              color 160ms ease;
-            background: color-mix(in srgb, var(--highlight) 10%, transparent);
-            padding: 1px 5px;
-            border-radius: 3px;
-            border: 1px solid var(--highlight);
-            font-weight: 600;
-            opacity: 0.7;
-
-            &:hover,
-            &:focus-visible {
-              color: var(--highlight);
-              background: color-mix(in srgb, var(--highlight) 18%, transparent);
-              border-color: var(--highlight);
-              opacity: 1;
-            }
-
-            &.is-active {
-              color: var(--highlight);
-              background: color-mix(in srgb, var(--highlight) 24%, transparent);
-              border-color: var(--highlight);
-              opacity: 1;
-            }
           }
 
           .value {
