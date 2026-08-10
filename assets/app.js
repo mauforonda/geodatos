@@ -17,6 +17,20 @@ const CARTO_TILES = [
 const CARTO_LABEL_TILES = CARTO_TILES.map((url) => url.replace("light_nolabels", "light_only_labels"));
 const CARTO_DARK_TILES = CARTO_TILES.map((url) => url.replace("light_nolabels", "dark_nolabels"));
 const CARTO_DARK_LABEL_TILES = CARTO_TILES.map((url) => url.replace("light_nolabels", "dark_only_labels"));
+const MAP_CONTINUOUS_COLORS = ["#f3e4bf", "#f5c1ac", "#e9a1b0", "#c48cc0", "#7f83c7"];
+const MAP_CATEGORICAL_COLORS = [
+  "#8dd3c7",
+  "#ffffb3",
+  "#bebada",
+  "#fb8072",
+  "#80b1d3",
+  "#fdb462",
+  "#b3de69",
+  "#fccde5",
+  "#d9d9d9",
+];
+const MAP_INVALID_COLOR = "#c4c8cb";
+const resultResizeAnimations = new WeakMap();
 
 const state = {
   mode: "archivo",
@@ -435,9 +449,121 @@ function geojsonBounds(data) {
   return Number.isFinite(bounds[0]) ? bounds : [-69.7, -22.9, -57.4, -9.6];
 }
 
+function mapFeatures(data) {
+  return data.type === "FeatureCollection" ? data.features : [data];
+}
+
+function analyzeMapAttributes(data) {
+  const valuesByKey = new Map();
+  for (const feature of mapFeatures(data)) {
+    for (const [key, value] of Object.entries(feature?.properties || {})) {
+      if (!valuesByKey.has(key)) valuesByKey.set(key, []);
+      valuesByKey.get(key).push(value);
+    }
+  }
+
+  const options = new Map();
+  for (const [key, values] of valuesByKey) {
+    const numbers = values.filter((value) => typeof value === "number" && Number.isFinite(value));
+    const uniqueNumbers = [...new Set(numbers)].sort((a, b) => a - b);
+    if (uniqueNumbers.length >= 2) {
+      options.set(key, {
+        key,
+        type: "continuous",
+        min: uniqueNumbers[0],
+        max: uniqueNumbers[uniqueNumbers.length - 1],
+        colors: MAP_CONTINUOUS_COLORS,
+      });
+      continue;
+    }
+
+    const categories = [...new Set(
+      values.filter((value) => typeof value === "string" && value.trim()).map((value) => value.trim()),
+    )].sort((a, b) => a.localeCompare(b, "es"));
+    if (categories.length >= 2 && categories.length <= MAP_CATEGORICAL_COLORS.length) {
+      options.set(key, {
+        key,
+        type: "categorical",
+        categories,
+        colors: MAP_CATEGORICAL_COLORS.slice(0, categories.length),
+      });
+    }
+  }
+  return options;
+}
+
+function mapColors() {
+  const styles = getComputedStyle(document.documentElement);
+  return {
+    fill: styles.getPropertyValue("--fill").trim() || "#b8e1f3",
+    border: styles.getPropertyValue("--border-strong").trim() || "rgba(45, 53, 64, 0.26)",
+    highlight: styles.getPropertyValue("--highlight").trim() || "#5b95c7",
+  };
+}
+
+function mappingColorExpression(mapping) {
+  const value = ["get", mapping.key];
+  if (mapping.type === "categorical") {
+    return [
+      "match",
+      value,
+      ...mapping.categories.flatMap((category, index) => [category, mapping.colors[index]]),
+      MAP_INVALID_COLOR,
+    ];
+  }
+  return [
+    "case",
+    ["==", ["typeof", value], "number"],
+    [
+      "interpolate",
+      ["linear"],
+      value,
+      mapping.min,
+      mapping.colors[0],
+      mapping.max,
+      mapping.colors[mapping.colors.length - 1],
+    ],
+    MAP_INVALID_COLOR,
+  ];
+}
+
+function mapOpacityExpression(mapped) {
+  return mapped
+    ? ["case", ["boolean", ["feature-state", "selected"], false], 1, 0.8]
+    : 0.8;
+}
+
+function mapStrokeOpacityExpression(mapped) {
+  return mapped
+    ? ["case", ["boolean", ["feature-state", "selected"], false], 1, 0.95]
+    : 1;
+}
+
+function mapStrokeWidthExpression(mapped) {
+  return [
+    "case",
+    ["boolean", ["feature-state", "selected"], false],
+    2,
+    mapped
+      ? ["case", ["boolean", ["feature-state", "hovered"], false], 2.5, 1]
+      : 1,
+  ];
+}
+
+function mapLineWidthExpression(mapped) {
+  return [
+    "case",
+    ["boolean", ["feature-state", "selected"], false],
+    2.5,
+    mapped
+      ? ["case", ["boolean", ["feature-state", "hovered"], false], 2.5, 1.5]
+      : 1.5,
+  ];
+}
+
 function dominantGeometryType(data) {
   const counts = { polygon: 0, line: 0, point: 0 };
-  const features = data.type === "FeatureCollection" ? data.features : [data];
+  const features = mapFeatures(data);
   for (const feature of features) {
     const type = feature?.geometry?.type || "";
     if (type.includes("Polygon")) counts.polygon += 1;
@@ -447,20 +573,22 @@ function dominantGeometryType(data) {
   return Object.entries(counts).sort((a, b) => b[1] - a[1])[0][0];
 }
 
-function createMapDataLayer(data) {
+function createMapDataLayer(data, mapping = null) {
   const type = dominantGeometryType(data);
+  const colors = mapColors();
+  const color = mapping ? mappingColorExpression(mapping) : null;
+  const fillColor = color || [
+    "case",
+    ["boolean", ["feature-state", "selected"], false],
+    colors.highlight,
+    colors.fill,
+  ];
   if (type === "polygon") {
     return {
       type: "fill",
       paint: {
-        "fill-color": "#6a9fcc",
-        "fill-opacity": [
-          "case",
-          ["boolean", ["feature-state", "selected"], false],
-          1,
-          0.4,
-        ],
-        "fill-outline-color": "#355f86",
+        "fill-color": fillColor,
+        "fill-opacity": mapOpacityExpression(mapping),
       },
     };
   }
@@ -468,43 +596,291 @@ function createMapDataLayer(data) {
     return {
       type: "line",
       paint: {
-        "line-color": "#355f86",
-        "line-width": 2,
-        "line-opacity": [
-          "case",
-          ["boolean", ["feature-state", "selected"], false],
-          1,
-          0.4,
-        ],
+        "line-color": color || fillColor,
+        "line-width": mapLineWidthExpression(mapping),
+        "line-opacity": mapStrokeOpacityExpression(mapping),
       },
     };
   }
   return {
     type: "circle",
     paint: {
-      "circle-color": "#6a9fcc",
+      "circle-color": fillColor,
       "circle-radius": 5,
-      "circle-opacity": [
-        "case",
-        ["boolean", ["feature-state", "selected"], false],
-        1,
-        0.4,
-      ],
-      "circle-stroke-color": "#355f86",
-      "circle-stroke-width": 1,
+      "circle-opacity": mapOpacityExpression(mapping),
+      "circle-stroke-color": colors.border,
+      "circle-stroke-width": mapStrokeWidthExpression(mapping),
+      "circle-stroke-opacity": mapStrokeOpacityExpression(mapping),
     },
   };
 }
 
-function closeMapView(mapState) {
-  if (!mapState) return;
+function createMapBorderLayer(data, mapping = null) {
+  const colors = mapColors();
+  if (dominantGeometryType(data) !== "polygon") return null;
+  return {
+    id: "data-border",
+    type: "line",
+    source: "data",
+    paint: {
+      "line-color": colors.border,
+      "line-width": mapStrokeWidthExpression(mapping),
+      "line-opacity": mapStrokeOpacityExpression(mapping),
+    },
+  };
+}
+
+function createMapLegend(mapping) {
+  const legend = document.createElement("div");
+  legend.className = `map-legend map-legend-${mapping.type}`;
+  const tooltip = document.createElement("div");
+  tooltip.className = "map-legend-tooltip";
+  const bar = document.createElement("div");
+  bar.className = "map-legend-bar";
+
+  mapping.colors.forEach((color, index) => {
+    const swatch = document.createElement(mapping.type === "categorical" ? "button" : "span");
+    swatch.className = "map-legend-swatch";
+    swatch.style.backgroundColor = color;
+    if (mapping.type === "categorical") {
+      swatch.type = "button";
+      swatch.dataset.tooltip = mapping.categories[index];
+      swatch.classList.add("has-tooltip");
+      const showTooltip = () => {
+        tooltip.textContent = mapping.categories[index];
+        tooltip.classList.add("is-visible");
+      };
+      const hideTooltip = () => {
+        if (!swatch.classList.contains("is-tooltip-visible")) {
+          tooltip.classList.remove("is-visible");
+        }
+      };
+      swatch.addEventListener("pointerenter", showTooltip);
+      swatch.addEventListener("pointerleave", hideTooltip);
+      swatch.addEventListener("focusin", showTooltip);
+      swatch.addEventListener("focusout", hideTooltip);
+      swatch.addEventListener("click", (event) => {
+        event.stopPropagation();
+        swatch.classList.toggle("is-tooltip-visible");
+        if (swatch.classList.contains("is-tooltip-visible")) showTooltip();
+        else hideTooltip();
+      });
+    }
+    bar.append(swatch);
+  });
+  if (mapping.type === "continuous") {
+    const labels = document.createElement("div");
+    labels.className = "map-legend-labels";
+    labels.append("-", bar, "+");
+    legend.append(labels);
+  } else {
+    legend.append(bar);
+  }
+  legend.append(tooltip);
+  return legend;
+}
+
+function updateMapMapping(mapState, mapping) {
+  mapState.mapping = mapping;
+  hideMapPopup(mapState);
+  if (mapState.map) {
+    const layer = createMapDataLayer(mapState.data, mapping);
+    for (const [property, value] of Object.entries(layer.paint)) {
+      mapState.map.setPaintProperty("data", property, value);
+    }
+    const borderLayer = createMapBorderLayer(mapState.data, mapping);
+    if (borderLayer) {
+      for (const [property, value] of Object.entries(borderLayer.paint)) {
+        mapState.map.setPaintProperty("data-border", property, value);
+      }
+    }
+  }
+
+  mapState.legend?.remove();
+  mapState.legend = mapping ? createMapLegend(mapping) : null;
+  if (mapState.legend) mapState.view.append(mapState.legend);
+  mapState.titleAttribute.textContent = mapping ? mapping.key : "";
+}
+
+function hideMapPopup(mapState) {
+  if (!mapState.popup) return;
+  mapState.popup.classList.remove("is-visible");
+}
+
+function featureAnchorPoint(mapState, feature) {
+  const points = [];
+  const collect = (value) => {
+    if (!Array.isArray(value)) return;
+    if (value.length >= 2 && value.every((entry) => typeof entry === "number")) {
+      points.push(mapState.map.project([value[0], value[1]]));
+      return;
+    }
+    value.forEach(collect);
+  };
+  const collectGeometry = (geometry) => {
+    if (!geometry) return;
+    if (geometry.type === "GeometryCollection") geometry.geometries.forEach(collectGeometry);
+    else collect(geometry.coordinates);
+  };
+  collectGeometry(feature.geometry);
+  if (!points.length) {
+    return {
+      x: mapState.view.clientWidth / 2,
+      y: mapState.view.clientHeight / 2,
+    };
+  }
+  const bounds = points.reduce(
+    (result, point) => ({
+      minX: Math.min(result.minX, point.x),
+      minY: Math.min(result.minY, point.y),
+      maxX: Math.max(result.maxX, point.x),
+      maxY: Math.max(result.maxY, point.y),
+    }),
+    { minX: Infinity, minY: Infinity, maxX: -Infinity, maxY: -Infinity },
+  );
+  return {
+    x: (bounds.minX + bounds.maxX) / 2,
+    y: (bounds.minY + bounds.maxY) / 2,
+  };
+}
+
+function showMapPopup(mapState, feature) {
+  if (!mapState.mapping || !mapState.popup) return;
+  const rawValue = feature.properties?.[mapState.mapping.key];
+  const value = rawValue === null || rawValue === undefined || rawValue === ""
+    ? "—"
+    : String(rawValue);
+  const point = featureAnchorPoint(mapState, feature);
+  mapState.popup.textContent = value;
+  mapState.popup.style.left = `${point.x}px`;
+  mapState.popup.style.top = `${point.y}px`;
+  mapState.popup.classList.add("is-visible");
+  requestAnimationFrame(() => {
+    const halfWidth = mapState.popup.offsetWidth / 2;
+    const top = Math.max(mapState.popup.offsetHeight + 4, point.y);
+    mapState.popup.style.left = `${Math.max(
+      halfWidth + 4,
+      Math.min(mapState.view.clientWidth - halfWidth - 4, point.x),
+    )}px`;
+    mapState.popup.style.top = `${top}px`;
+  });
+}
+
+function toggleMapAttribute(mapState, key) {
+  const mapping = mapState.mapping?.key === key ? null : mapState.attributeOptions.get(key);
+  updateMapMapping(mapState, mapping);
+  const activeButtons = mapState.view.querySelectorAll(".map-attribute");
+  for (const button of activeButtons) {
+    button.classList.toggle("is-active", button.dataset.attribute === mapping?.key);
+  }
+}
+
+async function closeMapView(mapState) {
+  if (!mapState || mapState.closing) return;
+  mapState.closing = true;
   mapState.closed = true;
-  hideFeatureSheet(mapState);
-  mapState.map?.remove();
-  mapState.view.replaceWith(mapState.card);
-  mapState.card.classList.remove("is-expanded");
-  mapState.card.setAttribute("aria-expanded", "false");
   state.openMaps.delete(mapState);
+
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  mapState.close.classList.remove("is-visible");
+  if (!reducedMotion) {
+    await new Promise((resolve) => window.setTimeout(resolve, 160));
+  }
+
+  const fromRect = mapState.card.getBoundingClientRect();
+  mapState.resizeAnimation?.cancel();
+  mapState.slot?.classList.remove("is-map-expanded");
+
+  const finish = () => {
+    hideFeatureSheet(mapState);
+    mapState.map?.remove();
+    mapState.titleAttribute.remove();
+    mapState.titleParent.insertBefore(mapState.titleText, mapState.titleNextSibling);
+    mapState.view.remove();
+    mapState.card.classList.remove("is-map-active", "is-expanded", "is-resizing");
+    mapState.card.setAttribute("aria-expanded", "false");
+    if (state.expandedCard === mapState.card) state.expandedCard = null;
+    fadeInResultContent(mapState.card);
+  };
+
+  const mapFade = mapState.view.animate(
+    [{ opacity: 1 }, { opacity: 0 }],
+    {
+      duration: reducedMotion ? 0 : mapState.expands ? 420 : 180,
+      easing: "ease-out",
+      fill: "forwards",
+    },
+  );
+
+  if (!mapState.expands) {
+    mapFade.finished.catch(() => {}).then(finish);
+    return;
+  }
+
+  mapState.resizeAnimation = animateResultResize(mapState.card, fromRect);
+  Promise.all([
+    mapState.resizeAnimation.finished.catch(() => {}),
+    mapFade.finished.catch(() => {}),
+  ]).then(finish);
+}
+
+function fadeInResultContent(card) {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const content = card.querySelector(":scope > .preview");
+  content?.animate(
+    [{ opacity: 0 }, { opacity: 1 }],
+    { duration: 180, easing: "ease-out" },
+  );
+}
+
+function animateResultResize(card, fromRect) {
+  clearResultResizeStyles(card);
+  const toRect = card.getBoundingClientRect();
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reducedMotion || !fromRect.width || !toRect.width) {
+    return card.animate([], { duration: 0 });
+  }
+
+  card.classList.add("is-resizing");
+  Object.assign(card.style, {
+    position: "fixed",
+    inset: "auto",
+    top: `${fromRect.top}px`,
+    left: `${fromRect.left}px`,
+    width: `${fromRect.width}px`,
+    height: `${fromRect.height}px`,
+  });
+  const animation = card.animate(
+    [
+      {
+        top: `${fromRect.top}px`,
+        left: `${fromRect.left}px`,
+        width: `${fromRect.width}px`,
+        height: `${fromRect.height}px`,
+      },
+      {
+        top: `${toRect.top}px`,
+        left: `${toRect.left}px`,
+        width: `${toRect.width}px`,
+        height: `${toRect.height}px`,
+      },
+    ],
+    { duration: 420, easing: "cubic-bezier(.22,.72,.24,1)" },
+  );
+  resultResizeAnimations.set(card, animation);
+  animation.finished.catch(() => {}).then(() => {
+    if (resultResizeAnimations.get(card) !== animation) return;
+    resultResizeAnimations.delete(card);
+    clearResultResizeStyles(card);
+    card.classList.remove("is-resizing");
+  });
+  return animation;
+}
+
+function clearResultResizeStyles(card) {
+  for (const property of ["position", "inset", "top", "left", "width", "height"]) {
+    card.style.removeProperty(property);
+  }
 }
 
 function hideFeatureSheet(mapState) {
@@ -514,7 +890,12 @@ function hideFeatureSheet(mapState) {
 }
 
 function showFeatureSheet(mapState, properties) {
-  const attributes = createAttributeSection(Object.entries(properties || {}), "", false);
+  const attributes = createAttributeSection(
+    Object.entries(properties || {}),
+    "",
+    false,
+    mapState,
+  );
   if (!attributes) {
     hideFeatureSheet(mapState);
     return;
@@ -596,9 +977,34 @@ function showFeatureSheet(mapState, properties) {
 }
 
 function bindFeatureInteraction(mapState) {
-  mapState.map.on("click", "data", (event) => {
-    const feature = event.features?.[0];
+  const setHoveredFeature = (feature) => {
+    const nextId = feature?.id ?? null;
+    if (mapState.hoveredFeatureId === nextId) return;
+    if (mapState.hoveredFeatureId !== null) {
+      mapState.map.setFeatureState(
+        { source: "data", id: mapState.hoveredFeatureId },
+        { hovered: false },
+      );
+    }
+    mapState.hoveredFeatureId = nextId;
+    if (nextId !== null) {
+      mapState.map.setFeatureState({ source: "data", id: nextId }, { hovered: true });
+    }
+  };
+  const featureAtPoint = (event) => mapState.map.queryRenderedFeatures(
+    [
+      [event.point.x - 10, event.point.y - 10],
+      [event.point.x + 10, event.point.y + 10],
+    ],
+    { layers: ["data"] },
+  )[0];
+  const selectFeature = (event) => {
+    const feature = featureAtPoint(event);
     if (!feature) return;
+    if (mapState.selectedFeatureId === feature.id && !usesDesktopHover()) {
+      hideMapPopup(mapState);
+      return;
+    }
     if (mapState.selectedFeatureId !== null) {
       mapState.map.setFeatureState(
         { source: "data", id: mapState.selectedFeatureId },
@@ -608,6 +1014,19 @@ function bindFeatureInteraction(mapState) {
     mapState.selectedFeatureId = feature.id;
     mapState.map.setFeatureState({ source: "data", id: feature.id }, { selected: true });
     showFeatureSheet(mapState, feature.properties);
+    showMapPopup(mapState, feature);
+  };
+  mapState.map.on("click", selectFeature);
+  mapState.map.on("mousemove", (event) => {
+    const feature = featureAtPoint(event);
+    setHoveredFeature(usesDesktopHover() ? feature : null);
+    if (!usesDesktopHover()) return;
+    if (feature) showMapPopup(mapState, feature);
+    else hideMapPopup(mapState);
+  });
+  mapState.map.getCanvas().addEventListener("mouseleave", () => {
+    setHoveredFeature(null);
+    hideMapPopup(mapState);
   });
   mapState.map.on("mouseenter", "data", () => {
     mapState.map.getCanvas().style.cursor = "pointer";
@@ -620,6 +1039,13 @@ function bindFeatureInteraction(mapState) {
 function createMapView(item, card) {
   const view = document.createElement("div");
   view.className = "map-view";
+  const slot = card.parentElement;
+  const columnCount = getComputedStyle(els.results).gridTemplateColumns.trim().split(/\s+/).length;
+  const expands = slot && columnCount >= 2;
+  const fromRect = card.getBoundingClientRect();
+  card.classList.add("is-map-active");
+  if (expands) slot.classList.add("is-map-expanded");
+  if (state.expandedCard === card) state.expandedCard = null;
 
   const canvas = document.createElement("div");
   canvas.className = "map-canvas";
@@ -628,20 +1054,42 @@ function createMapView(item, card) {
   const title = document.createElement("div");
   title.className = "map-title";
   title.setAttribute("aria-hidden", "true");
-  const titleText = document.createElement("span");
-  titleText.className = "title";
-  titleText.textContent = item.titulo;
+  const titleText = card.querySelector(".details header > .title");
+  const titleParent = titleText.parentElement;
+  const titleNextSibling = titleText.nextSibling;
+  const titleAttribute = document.createElement("small");
+  titleAttribute.className = "map-title-attribute";
+  titleText.append(titleAttribute);
   title.append(titleText);
+
+  const popup = document.createElement("div");
+  popup.className = "map-feature-popup";
+  popup.setAttribute("aria-live", "polite");
 
   const mapState = {
     card,
+    slot,
+    expands,
     view,
     map: null,
     sheet: null,
     selectedFeatureId: null,
+    hoveredFeatureId: null,
     sheetHeight: null,
     hasShownSheet: false,
+    data: null,
+    attributeOptions: new Map(),
+    mapping: null,
+    legend: null,
+    titleAttribute,
+    titleText,
+    titleParent,
+    titleNextSibling,
+    popup,
+    close: null,
     closed: false,
+    closing: false,
+    resizeAnimation: null,
   };
   const close = document.createElement("button");
   close.className = "map-close";
@@ -649,15 +1097,27 @@ function createMapView(item, card) {
   close.setAttribute("aria-label", "Cerrar mapa");
   close.textContent = "×";
   close.addEventListener("click", () => closeMapView(mapState));
+  mapState.close = close;
 
   const message = document.createElement("div");
   message.className = "map-message";
   message.setAttribute("aria-live", "polite");
   message.append(createLoadingDots());
 
-  view.append(canvas, title, close, message);
-  card.replaceWith(view);
+  view.append(canvas, title, popup, close, message);
+  view.addEventListener("click", (event) => event.stopPropagation());
+  card.append(view);
   state.openMaps.add(mapState);
+  if (expands) {
+    mapState.resizeAnimation = animateResultResize(card, fromRect);
+    mapState.resizeAnimation.finished.catch(() => {}).then(() => {
+      if (!mapState.closing) close.classList.add("is-visible");
+    });
+  } else {
+    requestAnimationFrame(() => {
+      if (!mapState.closing) close.classList.add("is-visible");
+    });
+  }
   return { mapState, canvas, message };
 }
 
@@ -670,6 +1130,8 @@ async function openArchiveMap(item, card) {
     const data = await response.json();
     if (mapState.closed) return;
     const mapData = prepareMapGeojson(data, item.epsg);
+    mapState.data = mapData;
+    mapState.attributeOptions = analyzeMapAttributes(mapData);
 
     const dark = window.matchMedia("(prefers-color-scheme: dark)").matches;
     const baseTiles = dark ? CARTO_DARK_TILES : CARTO_TILES;
@@ -696,8 +1158,9 @@ async function openArchiveMap(item, card) {
         layers: [
           { id: "carto-light", type: "raster", source: "carto-light" },
           { id: "data", source: "data", ...createMapDataLayer(mapData) },
+          createMapBorderLayer(mapData),
           { id: "carto-labels", type: "raster", source: "carto-labels" },
-        ],
+        ].filter(Boolean),
       },
       attributionControl: false,
     });
@@ -781,7 +1244,12 @@ function createChipGroup(title, chips) {
   return wrap;
 }
 
-function createAttributeSection(sample, title = "Muestra de Atributos", showTitle = true) {
+function createAttributeSection(
+  sample,
+  title = "Muestra de Atributos",
+  showTitle = true,
+  mapState = null,
+) {
   if (!sample.length) return null;
   const section = document.createElement("section");
   section.className = "attributes";
@@ -799,15 +1267,32 @@ function createAttributeSection(sample, title = "Muestra de Atributos", showTitl
     const row = document.createElement("div");
     row.className = "attribute";
 
+    const keyWrap = document.createElement("div");
+    keyWrap.className = "key-wrap";
     const keyEl = document.createElement("div");
     keyEl.className = "key";
     keyEl.textContent = key;
+    keyWrap.append(keyEl);
+
+    if (mapState?.attributeOptions.has(key)) {
+      const mapButton = document.createElement("button");
+      mapButton.className = "map-attribute";
+      mapButton.type = "button";
+      mapButton.textContent = "mapear";
+      mapButton.dataset.attribute = key;
+      mapButton.classList.toggle("is-active", mapState.mapping?.key === key);
+      mapButton.addEventListener("click", (event) => {
+        event.stopPropagation();
+        toggleMapAttribute(mapState, key);
+      });
+      keyWrap.append(mapButton);
+    }
 
     const valueEl = document.createElement("div");
     valueEl.className = "value";
     valueEl.textContent = value === null ? "null" : String(value);
 
-    row.append(keyEl, valueEl);
+    row.append(keyWrap, valueEl);
     list.append(row);
   }
   section.append(list);
@@ -850,12 +1335,12 @@ function bindCardInteractions(node) {
     });
   });
   node.addEventListener("click", (event) => {
-    const clickedLink = event.target.closest("a");
-    if (clickedLink) return;
+    const clickedControl = event.target.closest("button, a, input, select, textarea");
+    if (clickedControl) return;
+    if (window.getSelection()?.toString()) return;
     if (usesDesktopHover()) return;
-    if (state.expandedCard !== node) {
-      openCard(node);
-    }
+    if (state.expandedCard === node) closeExpandedCard();
+    else openCard(node);
   });
   node.addEventListener("keydown", (event) => {
     if (event.key === "Enter" || event.key === " ") {
@@ -1014,6 +1499,13 @@ function renderArchiveCard(item) {
   return node;
 }
 
+function createResultSlot(card) {
+  const slot = document.createElement("div");
+  slot.className = "result-slot";
+  slot.append(card);
+  return slot;
+}
+
 function renderDataset(mode) {
   const items = state.datasets[mode] || [];
   const filtered = filterItems(items);
@@ -1023,7 +1515,7 @@ function renderDataset(mode) {
   closeAllMaps();
   closeExpandedCard();
   els.emptyState.classList.remove("status-state");
-  els.results.replaceChildren(...visible.map(renderer));
+  els.results.replaceChildren(...visible.map(renderer).map(createResultSlot));
   els.emptyState.classList.toggle("is-hidden", filtered.length !== 0);
   els.placeholderState.classList.add("is-hidden");
   els.results.classList.toggle("is-hidden", filtered.length === 0);
