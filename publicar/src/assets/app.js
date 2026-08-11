@@ -121,8 +121,20 @@ function archiveDownloadUrl(item, filename) {
   return `https://archive.org/download/${encodeURIComponent(item)}/${encodeURIComponent(filename)}`;
 }
 
-function archiveGeojsonProxyUrl(item) {
-  return `${ARCHIVE_PROXY_BASE}/${encodeURIComponent(item)}`;
+function geojsonDatasetName(url) {
+  if (!url) return "dataset";
+  try {
+    const filename = decodeURIComponent(new URL(url).pathname.split("/").pop() || "");
+    return filename.replace(/\.geojson$/i, "") || "dataset";
+  } catch {
+    return "dataset";
+  }
+}
+
+function archiveGeojsonProxyUrl(item, geojsonUrl) {
+  const base = `${ARCHIVE_PROXY_BASE}/${encodeURIComponent(item)}`;
+  const dataset = geojsonDatasetName(geojsonUrl);
+  return dataset === "dataset" ? base : `${base}/${encodeURIComponent(dataset)}`;
 }
 
 function slug(text) {
@@ -226,14 +238,18 @@ function decodeArchive(payload) {
     const geojsonBytes = Number(row[8] || 0);
     const geoparquetBytes = Number(row[9] || 0);
     const epsg = Number(row[10] || 4326);
+    const catalogGeojsonUrl = row[11] || null;
+    const catalogGeoparquetUrl = row[12] || null;
     const attrNames = sample.map((entry) => String(entry[0] || ""));
     const hasMap = Boolean(flags[0]);
     const current = Boolean(flags[1]);
     const geojsonFilename = current ? "dataset.geojson" : `${slug(nombre)}.geojson`;
-    const geojsonUrl = archiveItem ? archiveDownloadUrl(archiveItem, geojsonFilename) : null;
-    const geoparquetUrl = current && archiveItem
+    const geojsonUrl = catalogGeojsonUrl || (archiveItem
+      ? archiveDownloadUrl(archiveItem, geojsonFilename)
+      : null);
+    const geoparquetUrl = catalogGeoparquetUrl || (current && archiveItem
       ? archiveDownloadUrl(archiveItem, "dataset.geoparquet")
-      : null;
+      : null);
 
     return {
       sourceId: source.id,
@@ -1158,7 +1174,7 @@ async function openArchiveMap(item, card) {
   const { mapState, canvas, message } = createMapView(item, card);
 
   try {
-    const response = await fetch(archiveGeojsonProxyUrl(item.archiveItem));
+    const response = await fetch(archiveGeojsonProxyUrl(item.archiveItem, item.geojsonUrl));
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     const data = await response.json();
     if (mapState.closed) return;
