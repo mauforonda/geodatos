@@ -28,6 +28,13 @@ jobs:
         with:
           fetch-depth: 0
           ref: master
+      - name: Restaurar cache de tiles OSM
+        uses: actions/cache@v4
+        with:
+          path: archivar/.tile-cache
+          key: osm-tiles-${{ runner.os }}-${{ github.run_id }}
+          restore-keys: |
+            osm-tiles-${{ runner.os }}-
       - name: setup python
         uses: actions/setup-python@v5
         with:

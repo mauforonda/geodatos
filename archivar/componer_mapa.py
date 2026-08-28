@@ -4,6 +4,8 @@ import argparse
 import io
 import json
 import math
+import os
+import time
 from pathlib import Path
 from typing import Optional
 
@@ -21,9 +23,15 @@ CAPAS = DESCUBRIR_DIR / "capas.csv"
 DIRECTORIO = DESCUBRIR_DIR / "directorio.json"
 
 TILE_SIZE = 256
+BASEMAP_OPACITY = 0.7
+BASEMAP_TILE_URL = "https://tile.openstreetmap.org/{z}/{x}/{y}.png"
+TILE_CACHE_DIR = Path(
+    os.environ.get("GEODATOS_TILE_CACHE_DIR", ROOT_DIR / "archivar" / ".tile-cache")
+)
+TILE_CACHE_MAX_AGE = 7 * 24 * 60 * 60
 MERCATOR_MAX = 20037508.342789244
 WEBMERCATOR_EPSG = 3857
-USER_AGENT = "geodatos-map-composer/1.0"
+USER_AGENT = "GeoDatosBolivia-map-composer/1.1 (+https://mauforonda.github.io/geodatos/)"
 MAX_LAT_WEBMERCATOR = 85.05112878
 
 
@@ -173,11 +181,20 @@ def tile_range_for_bbox(min_x: float, min_y: float, max_x: float, max_y: float, 
 
 
 def descargar_tile(session: requests.Session, z: int, x: int, y: int) -> Image.Image:
-    subdomain = ["a", "b", "c"][(x + y) % 3]
-    url = f"https://{subdomain}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"
+    cache_path = TILE_CACHE_DIR / str(z) / str(x) / f"{y}.png"
+    if cache_path.exists() and time.time() - cache_path.stat().st_mtime < TILE_CACHE_MAX_AGE:
+        try:
+            return Image.open(cache_path).convert("RGBA")
+        except OSError:
+            cache_path.unlink(missing_ok=True)
+
+    url = BASEMAP_TILE_URL.format(z=z, x=x, y=y)
     response = session.get(url, timeout=(10, 20))
     response.raise_for_status()
-    return Image.open(io.BytesIO(response.content)).convert("RGBA")
+    tile = Image.open(io.BytesIO(response.content)).convert("RGBA")
+    cache_path.parent.mkdir(parents=True, exist_ok=True)
+    tile.save(cache_path)
+    return tile
 
 
 def render_basemap(min_x: float, min_y: float, max_x: float, max_y: float, width: int, height: int) -> tuple[Image.Image, int, tuple[float, float, float, float]]:
@@ -212,6 +229,7 @@ def render_basemap(min_x: float, min_y: float, max_x: float, max_y: float, width
     bottom = int(round(py2 - ty_min * TILE_SIZE))
 
     crop = canvas.crop((left, top, right, bottom)).resize((width, height), Image.Resampling.LANCZOS)
+    crop = Image.blend(Image.new("RGBA", crop.size, "white"), crop, BASEMAP_OPACITY)
     return crop, zoom, (wm_min_x, wm_min_y, wm_max_x, wm_max_y)
 
 

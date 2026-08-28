@@ -8,15 +8,10 @@ const RAW_GITHUB_BASE = "https://raw.githubusercontent.com/mauforonda/geodatos/m
 const PAGE_SIZE = 60;
 const GEOJSON_MAP_LIMIT = 5 * 1024 * 1024;
 const VIEW_STORAGE_KEY = "geodatosbolivia_vista";
-const CARTO_TILES = [
-  "https://a.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png",
-  "https://b.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png",
-  "https://c.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png",
-  "https://d.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png",
-];
-const CARTO_LABEL_TILES = CARTO_TILES.map((url) => url.replace("light_nolabels", "light_only_labels"));
-const CARTO_DARK_TILES = CARTO_TILES.map((url) => url.replace("light_nolabels", "dark_nolabels"));
-const CARTO_DARK_LABEL_TILES = CARTO_TILES.map((url) => url.replace("light_nolabels", "dark_only_labels"));
+const MAP_STYLE_PATHS = {
+  light: "./assets/map-positron.json",
+  dark: "./assets/map-dark.json",
+};
 const MAP_CONTINUOUS_COLORS = ["#f3e4bf", "#f5c1ac", "#e9a1b0", "#c48cc0", "#7f83c7"];
 const MAP_DARK_CONTINUOUS_COLORS = ["#c8bb9d", "#cb9e89", "#c7808a", "#ae6b9b", "#7863ac"];
 const MAP_CATEGORICAL_COLORS = [
@@ -655,6 +650,17 @@ function createMapBorderLayer(data, mapping = null) {
   };
 }
 
+function prepareArchiveMapStyle(style, mapData) {
+  style.sources.data = { type: "geojson", data: mapData, generateId: true };
+  const dataLayers = [
+    { id: "data", source: "data", ...createMapDataLayer(mapData) },
+    createMapBorderLayer(mapData),
+  ].filter(Boolean);
+  const firstLabel = style.layers.findIndex((layer) => layer.type === "symbol");
+  style.layers.splice(firstLabel < 0 ? style.layers.length : firstLabel, 0, ...dataLayers);
+  return style;
+}
+
 function createMapLegend(mapping) {
   const legend = document.createElement("div");
   legend.className = `map-legend map-legend-${mapping.type}`;
@@ -1174,44 +1180,31 @@ async function openArchiveMap(item, card) {
   const { mapState, canvas, message } = createMapView(item, card);
 
   try {
-    const response = await fetch(archiveGeojsonProxyUrl(item.archiveItem, item.geojsonUrl));
-    if (!response.ok) throw new Error(`HTTP ${response.status}`);
-    const data = await response.json();
+    const dark = darkModeQuery.matches;
+    const [dataResponse, styleResponse] = await Promise.all([
+      fetch(archiveGeojsonProxyUrl(item.archiveItem, item.geojsonUrl)),
+      fetch(MAP_STYLE_PATHS[dark ? "dark" : "light"]),
+    ]);
+    if (!dataResponse.ok) throw new Error(`GeoJSON HTTP ${dataResponse.status}`);
+    if (!styleResponse.ok) throw new Error(`Estilo HTTP ${styleResponse.status}`);
+    const [data, baseStyle] = await Promise.all([
+      dataResponse.json(),
+      styleResponse.json(),
+    ]);
     if (mapState.closed) return;
     const mapData = prepareMapGeojson(data, item.epsg);
     mapState.data = mapData;
     mapState.attributeOptions = analyzeMapAttributes(mapData);
+    const style = prepareArchiveMapStyle(baseStyle, mapData);
 
-    const dark = darkModeQuery.matches;
-    const baseTiles = dark ? CARTO_DARK_TILES : CARTO_TILES;
-    const labelTiles = dark ? CARTO_DARK_LABEL_TILES : CARTO_LABEL_TILES;
     const map = new maplibregl.Map({
       container: canvas,
       center: [-64, -17],
       zoom: 4,
-      style: {
-        version: 8,
-        sources: {
-          "carto-light": {
-            type: "raster",
-            tiles: baseTiles,
-            tileSize: 256,
-          },
-          data: { type: "geojson", data: mapData, generateId: true },
-          "carto-labels": {
-            type: "raster",
-            tiles: labelTiles,
-            tileSize: 256,
-          },
-        },
-        layers: [
-          { id: "carto-light", type: "raster", source: "carto-light" },
-          { id: "data", source: "data", ...createMapDataLayer(mapData) },
-          createMapBorderLayer(mapData),
-          { id: "carto-labels", type: "raster", source: "carto-labels" },
-        ].filter(Boolean),
-      },
-      attributionControl: false,
+      minZoom: 0,
+      maxZoom: 14,
+      style,
+      attributionControl: { compact: true },
     });
     mapState.map = map;
     mapState.attributeControls = createMapAttributeControls(mapState);
@@ -1223,7 +1216,7 @@ async function openArchiveMap(item, card) {
     });
   } catch (error) {
     message.replaceChildren(createStatusIcon("error"));
-    console.error("Error cargando GeoJSON archivado", error);
+    console.error("Error cargando mapa archivado", error);
   }
 }
 
