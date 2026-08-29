@@ -28,6 +28,7 @@ const MAP_CATEGORICAL_COLORS = [
 const MAP_INVALID_COLOR = "#c4c8cb";
 const resultResizeAnimations = new WeakMap();
 const darkModeQuery = window.matchMedia("(prefers-color-scheme: dark)");
+const mobileLayoutQuery = window.matchMedia("(max-width: 640px)");
 
 const state = {
   mode: "archivo",
@@ -1097,7 +1098,7 @@ function createMapView(item, card) {
   view.className = "map-view";
   const slot = card.parentElement;
   const columnCount = getComputedStyle(els.results).gridTemplateColumns.trim().split(/\s+/).length;
-  const expands = slot && columnCount >= 2;
+  const expands = slot && (columnCount >= 2 || mobileLayoutQuery.matches);
   const fromRect = card.getBoundingClientRect();
   card.classList.add("is-map-active");
   if (expands) slot.classList.add("is-map-expanded");
@@ -1166,7 +1167,9 @@ function createMapView(item, card) {
   if (expands) {
     mapState.resizeAnimation = animateResultResize(card, fromRect);
     mapState.resizeAnimation.finished.catch(() => {}).then(() => {
-      if (!mapState.closing) close.classList.add("is-visible");
+      if (mapState.closing) return;
+      mapState.map?.resize();
+      close.classList.add("is-visible");
     });
   } else {
     requestAnimationFrame(() => {
