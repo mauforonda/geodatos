@@ -11,6 +11,9 @@ GEOBOLIVIA_URL = (
     "wp-content/themes/geobolivia/assets/data/catalog.json"
 )
 GEOINFO_URL = "https://infosipeb.planificacion.gob.bo/api/geovisor/geo-cartographics"
+PRESIDENCIA_GEOBOLIVIA_URL = (
+    "https://geobolivia.presidencia.gob.bo/api/v2/datasets?page_size=50"
+)
 METADATA_COLUMNS = ["geoserver", "nombre", "titulo", "descripcion"]
 
 
@@ -65,6 +68,39 @@ def procesar_geobolivia(sesion) -> pd.DataFrame:
     return tabla_metadatos("planificacion.geobolivia", filas)
 
 
+def procesar_presidencia_geobolivia(sesion) -> pd.DataFrame:
+    filas = []
+    url = PRESIDENCIA_GEOBOLIVIA_URL
+    paginas_vistas = set()
+
+    while url:
+        if url in paginas_vistas:
+            raise RuntimeError(f"paginacion ciclica en {url}")
+        paginas_vistas.add(url)
+
+        payload = solicitar_json(sesion, url)
+        datasets = payload.get("datasets") if isinstance(payload, dict) else None
+        if not isinstance(datasets, list):
+            raise RuntimeError("api/v2/datasets no contiene una lista datasets")
+
+        filas.extend(
+            {
+                "nombre": dataset.get("alternate"),
+                "titulo": dataset.get("title"),
+                "descripcion": dataset.get("raw_abstract"),
+            }
+            for dataset in datasets
+            if isinstance(dataset, dict) and dataset.get("alternate")
+        )
+
+        links = payload.get("links")
+        if not isinstance(links, dict):
+            raise RuntimeError("api/v2/datasets no contiene enlaces de paginacion")
+        url = links.get("next")
+
+    return tabla_metadatos("presidencia.geobolivia", filas)
+
+
 def procesar_geoinfo(sesion) -> pd.DataFrame:
     payload = solicitar_json(sesion, GEOINFO_URL)
     if not isinstance(payload, list):
@@ -86,6 +122,7 @@ def procesar_geoinfo(sesion) -> pd.DataFrame:
 
 FUENTES: list[tuple[str, Callable]] = [
     ("planificacion.geobolivia", procesar_geobolivia),
+    ("presidencia.geobolivia", procesar_presidencia_geobolivia),
     ("planificacion.geoinfo", procesar_geoinfo),
 ]
 
