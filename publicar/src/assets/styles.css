@@ -1204,9 +1204,36 @@ input {
   .shell main .result-slot.is-map-expanded {
     grid-column: auto;
     grid-row: auto;
+    aspect-ratio: 1 / 1.02;
 
-    .map-view {
-      aspect-ratio: 1 / 1.02;
+    > .result.is-map-active {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      width: 100vw;
+      width: 100dvw;
+      height: 100vh;
+      height: 100dvh;
+      aspect-ratio: auto;
+      border-radius: 0;
+
+      > .map-view {
+        width: 100%;
+        height: 100%;
+        aspect-ratio: auto;
+        border-radius: 0;
+
+        .map-title {
+          padding-top: calc(1.2rem + env(safe-area-inset-top));
+          padding-right: calc(1.25rem + env(safe-area-inset-right));
+          padding-left: calc(1.25rem + env(safe-area-inset-left));
+        }
+
+        .map-close {
+          top: calc(0.65rem + env(safe-area-inset-top));
+          right: calc(0.65rem + env(safe-area-inset-right));
+        }
+      }
     }
   }
   .footer .attribution {
