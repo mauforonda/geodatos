@@ -21,6 +21,7 @@ import pandas as pd
 import pytz
 import urllib3
 import xmltodict
+from geoparquet_io.core.convert import convert_to_geoparquet
 
 BASE_DIR = Path(__file__).resolve().parent
 ROOT_DIR = BASE_DIR.parent
@@ -717,6 +718,19 @@ def geojson_a_gdf(geojson_path: Path, epsg: Optional[int]) -> gpd.GeoDataFrame:
     return gdf
 
 
+def escribir_geoparquet(gdf: gpd.GeoDataFrame, destino: Path) -> None:
+    parquet_normalizado = destino.with_name(f"{destino.stem}.normalizado.parquet")
+    try:
+        gdf.to_parquet(parquet_normalizado, index=False)
+        convert_to_geoparquet(
+            str(parquet_normalizado),
+            str(destino),
+            geoparquet_version="1.1",
+        )
+    finally:
+        parquet_normalizado.unlink(missing_ok=True)
+
+
 def muestra_no_geometrica(gdf: gpd.GeoDataFrame) -> dict:
     columnas = [c for c in gdf.columns if c != gdf.geometry.name]
     if not columnas or gdf.empty:
@@ -948,7 +962,7 @@ def stage_dataset(
         )
 
         gdf = geojson_a_gdf(geojson_path, capa.epsg if not pd.isna(capa.epsg) else None)
-        gdf.to_parquet(geoparquet_path)
+        escribir_geoparquet(gdf, geoparquet_path)
 
         n_features = len(gdf)
         if n_features_esperadas is not None and n_features != n_features_esperadas:
