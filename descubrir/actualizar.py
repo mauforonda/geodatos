@@ -604,7 +604,8 @@ def manejar_capas(capas: dict, metadatos: pd.DataFrame | None = None):
                     historial_faltantes.geoserver.isin(
                         [g["nombre"] for g in geoservers]
                     )
-                ),
+                )
+                & (historial_faltantes.fecha_removido.isna()),
                 "fecha_removido",
             ] = timestamp
 
