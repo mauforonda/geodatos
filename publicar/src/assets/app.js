@@ -28,7 +28,6 @@ const MAP_CATEGORICAL_COLORS = [
 const MAP_INVALID_COLOR = "#c4c8cb";
 const resultResizeAnimations = new WeakMap();
 const darkModeQuery = window.matchMedia("(prefers-color-scheme: dark)");
-const mobileLayoutQuery = window.matchMedia("(max-width: 640px)");
 
 const state = {
   mode: "archivo",
@@ -47,6 +46,7 @@ const els = {
   modeButtons: Array.from(document.querySelectorAll(".nav > .buttons > .button")),
   heroSiteTitle: document.querySelector("#site-title"),
   heroShort: document.querySelector("#legend"),
+  search: document.querySelector("#search"),
   searchInput: document.querySelector("#search-input"),
   resultsSummary: document.querySelector("#results-summary"),
   results: document.querySelector("#results"),
@@ -1097,8 +1097,7 @@ function createMapView(item, card) {
   const view = document.createElement("div");
   view.className = "map-view";
   const slot = card.parentElement;
-  const columnCount = getComputedStyle(els.results).gridTemplateColumns.trim().split(/\s+/).length;
-  const expands = slot && (columnCount >= 2 || mobileLayoutQuery.matches);
+  const expands = Boolean(slot);
   const fromRect = card.getBoundingClientRect();
   card.classList.add("is-map-active");
   if (expands) slot.classList.add("is-map-expanded");
@@ -1164,9 +1163,11 @@ function createMapView(item, card) {
   view.addEventListener("click", (event) => event.stopPropagation());
   card.append(view);
   state.openMaps.add(mapState);
+  let expansionFinished = Promise.resolve();
   if (expands) {
     mapState.resizeAnimation = animateResultResize(card, fromRect);
-    mapState.resizeAnimation.finished.catch(() => {}).then(() => {
+    expansionFinished = mapState.resizeAnimation.finished.catch(() => {});
+    expansionFinished.then(() => {
       if (mapState.closing) return;
       mapState.map?.resize();
       close.classList.add("is-visible");
@@ -1176,20 +1177,22 @@ function createMapView(item, card) {
       if (!mapState.closing) close.classList.add("is-visible");
     });
   }
-  return { mapState, canvas, message };
+  return { mapState, canvas, message, expansionFinished };
 }
 
 async function openArchiveMap(item, card) {
-  const { mapState, canvas, message } = createMapView(item, card);
+  const { mapState, canvas, message, expansionFinished } = createMapView(item, card);
 
   try {
     const dark = darkModeQuery.matches;
-    const [dataResponse, styleResponse] = await Promise.all([
+    const [, dataResponse, styleResponse] = await Promise.all([
+      expansionFinished,
       fetch(archiveGeojsonProxyUrl(item.archiveItem, item.geojsonUrl)),
       fetch(MAP_STYLE_PATHS[dark ? "dark" : "light"]),
     ]);
     if (!dataResponse.ok) throw new Error(`GeoJSON HTTP ${dataResponse.status}`);
     if (!styleResponse.ok) throw new Error(`Estilo HTTP ${styleResponse.status}`);
+    if (mapState.closed) return;
     const [data, baseStyle] = await Promise.all([
       dataResponse.json(),
       styleResponse.json(),
@@ -1215,7 +1218,9 @@ async function openArchiveMap(item, card) {
     bindFeatureInteraction(mapState);
     map.on("load", () => {
       message.remove();
-      map.fitBounds(geojsonBounds(mapData), { padding: 28, maxZoom: 14, duration: 0 });
+      const viewportEdge = Math.min(window.innerWidth, window.innerHeight);
+      const padding = Math.min(96, Math.max(48, Math.round(viewportEdge * 0.1)));
+      map.fitBounds(geojsonBounds(mapData), { padding, maxZoom: 14, duration: 0 });
     });
   } catch (error) {
     message.replaceChildren(createStatusIcon("error"));
@@ -1628,6 +1633,10 @@ function resetPagination() {
 }
 
 function bindEvents() {
+  els.search.addEventListener("click", (event) => {
+    if (event.target !== els.searchInput) els.searchInput.focus();
+  });
+
   els.searchInput.addEventListener("input", (event) => {
     state.query = event.target.value;
     resetPagination();
