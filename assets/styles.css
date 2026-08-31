@@ -2,16 +2,16 @@
 
 :root {
   color-scheme: light;
-  --background: #f3f2f0;
+  --background: #ffffff;
   --frame: rgba(255, 255, 255, 0.94);
-  --frame-strong: #e6eef4;
+  --frame-strong: #f6f9fa;
   --fill: #b8e1f3;
   --foreground: #202225;
   --muted: #5d6570;
   --accent: #252f3d;
   --highlight: #5b95c7;
-  --stroke-faint: rgba(71, 79, 91, 0.03);
-  --stroke: rgba(71, 79, 89, 0.06);
+  --stroke-faint: rgb(71 79 91 / 2%);
+  --stroke: rgb(71 79 89 / 3%);
   --stroke-strong: rgba(49, 56, 67, 0.085);
   --border: rgba(45, 53, 64, 0.15);
   --border-strong: rgba(45, 53, 64, 0.26);
@@ -208,15 +208,18 @@ input {
 
     .search {
       position: relative;
-      min-height: 3.1rem;
+      height: 4.5rem;
       margin: 15px 0;
       padding: 0.9rem 0.95rem;
       border: 1px solid var(--border);
       background: var(--frame-strong);
       border-radius: 0.5rem;
+      cursor: text;
 
       #search-input {
+        display: block;
         width: 100%;
+        height: 1.25rem;
         padding: 0;
         border: 0;
         outline: 0;
@@ -243,18 +246,17 @@ input {
           font-weight: 600;
         }
       }
+      .result-count {
+        color: var(--muted);
+        font-size: 0.6rem;
+        line-height: 1.25rem;
+      }
     }
 
     .results-shell {
       display: flex;
       flex-direction: column;
-      gap: 0.6rem;
-
-      .result-count {
-        text-align: center;
-        color: var(--muted);
-        font-size: 0.7rem;
-      }
+      gap: 1.6rem;
     }
 
     .results {
@@ -299,14 +301,34 @@ input {
         }
 
         &.is-map-expanded {
-          grid-column: span 2;
-          grid-row: span 2;
-          aspect-ratio: 1 / 1.05;
-
-          .map-view {
-            width: 100%;
-            height: 100%;
+          > .result.is-map-active {
+            position: fixed;
+            inset: 0;
+            z-index: 100;
+            width: 100vw;
+            width: 100dvw;
+            height: 100vh;
+            height: 100dvh;
             aspect-ratio: auto;
+            border-radius: 0;
+
+            > .map-view {
+              width: 100%;
+              height: 100%;
+              aspect-ratio: auto;
+              border-radius: 0;
+
+              .map-title {
+                padding-top: calc(1.2rem + env(safe-area-inset-top));
+                padding-right: calc(1.25rem + env(safe-area-inset-right));
+                padding-left: calc(1.25rem + env(safe-area-inset-left));
+              }
+
+              .map-close {
+                top: calc(0.65rem + env(safe-area-inset-top));
+                right: calc(0.65rem + env(safe-area-inset-right));
+              }
+            }
           }
         }
       }
@@ -326,6 +348,8 @@ input {
 
       &.is-resizing {
         z-index: 20;
+        contain: layout paint;
+        will-change: top, left, width, height;
       }
 
       &.is-expanded {
@@ -691,7 +715,11 @@ input {
         border: 1px solid var(--border);
         border-radius: 3px;
         color: var(--accent);
-        background: color-mix(in srgb, var(--border-strong) 10%, var(--background));
+        background: color-mix(
+          in srgb,
+          var(--border-strong) 10%,
+          var(--background)
+        );
         cursor: pointer;
         font-size: 0.8rem;
         font-weight: 600;
@@ -705,14 +733,22 @@ input {
         &:hover,
         &:focus-visible {
           color: var(--highlight);
-          background: color-mix(in srgb, var(--highlight) 18%, var(--background));
+          background: color-mix(
+            in srgb,
+            var(--highlight) 18%,
+            var(--background)
+          );
           border-color: var(--highlight);
           opacity: 1;
         }
 
         &.is-active {
           color: var(--highlight);
-          background: color-mix(in srgb, var(--highlight) 18%, var(--background));
+          background: color-mix(
+            in srgb,
+            var(--highlight) 18%,
+            var(--background)
+          );
           border-color: var(--highlight);
           opacity: 1;
         }
@@ -822,7 +858,6 @@ input {
             flex: 1;
           }
         }
-
       }
 
       .map-feature-popup {
@@ -1200,41 +1235,6 @@ input {
   }
   .shell main .result-slot {
     aspect-ratio: 1 / 1.02;
-  }
-  .shell main .results .result-slot.is-map-expanded {
-    grid-column: auto;
-    grid-row: auto;
-    aspect-ratio: 1 / 1.02;
-
-    > .result.is-map-active {
-      position: fixed;
-      inset: 0;
-      z-index: 100;
-      width: 100vw;
-      width: 100dvw;
-      height: 100vh;
-      height: 100dvh;
-      aspect-ratio: auto;
-      border-radius: 0;
-
-      > .map-view {
-        width: 100%;
-        height: 100%;
-        aspect-ratio: auto;
-        border-radius: 0;
-
-        .map-title {
-          padding-top: calc(1.2rem + env(safe-area-inset-top));
-          padding-right: calc(1.25rem + env(safe-area-inset-right));
-          padding-left: calc(1.25rem + env(safe-area-inset-left));
-        }
-
-        .map-close {
-          top: calc(0.65rem + env(safe-area-inset-top));
-          right: calc(0.65rem + env(safe-area-inset-right));
-        }
-      }
-    }
   }
   .footer .attribution {
     margin-left: 0;
