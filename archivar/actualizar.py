@@ -151,6 +151,15 @@ def parse_bool(serie: pd.Series) -> pd.Series:
     return serie.astype(str).eq("True")
 
 
+def parse_nullable_bool(serie: pd.Series) -> pd.Series:
+    return (
+        serie.astype(str)
+        .str.strip()
+        .map({"True": True, "False": False})
+        .astype("boolean")
+    )
+
+
 def texto_o_vacio(valor) -> str:
     if valor is None or pd.isna(valor):
         return ""
@@ -181,6 +190,11 @@ def leer_datasets() -> pd.DataFrame:
             datasets[columna] = parse_bool(datasets[columna])
         else:
             datasets[columna] = False
+
+    if "geometria_valida" in datasets.columns:
+        datasets["geometria_valida"] = parse_nullable_bool(datasets["geometria_valida"])
+    else:
+        datasets["geometria_valida"] = pd.Series(pd.NA, index=datasets.index, dtype="boolean")
 
     for columna in ["errores_archivar", "errores_evaluar"]:
         if columna in datasets.columns:
@@ -287,6 +301,7 @@ def seleccionar_candidatos(
     candidatos = datasets[
         (datasets["wfs_activo"])
         & (~datasets["archivado"])
+        & (datasets["geometria_valida"].eq(True).fillna(False))
         & (datasets["fecha_ultima_evaluacion"].fillna("").astype(str).ne(""))
         & (pd.to_numeric(datasets["bytes_estimados"], errors="coerce").notna())
         & (pd.to_numeric(datasets["errores_archivar"], errors="coerce").fillna(0) < max_errores_archivar)
@@ -1320,6 +1335,8 @@ def guardar_datasets(datasets: pd.DataFrame) -> None:
     salida = ordenar_datasets(datasets)
     for columna in ["wfs_activo", "archivado"]:
         salida[columna] = salida[columna].astype(bool)
+    if "geometria_valida" in salida.columns:
+        salida["geometria_valida"] = salida["geometria_valida"].astype("boolean")
     for columna in ["errores_evaluar", "errores_archivar", "fallas_wfs_90d"]:
         if columna in salida.columns:
             salida[columna] = pd.to_numeric(salida[columna], errors="coerce").fillna(0).astype(int)

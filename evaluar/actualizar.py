@@ -3,6 +3,7 @@
 import argparse
 import datetime as dt
 import json
+import math
 import threading
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
@@ -31,6 +32,7 @@ COLUMNAS = [
     "bbox_area",
     "n_features",
     "bytes_estimados",
+    "geometria_valida",
     "errores_evaluar",
     "errores_archivar",
     "archivado",
@@ -121,6 +123,13 @@ def leer_existentes() -> pd.DataFrame:
 
     for columna in ["wfs_activo", "archivado"]:
         existentes[columna] = existentes[columna].astype(str).eq("True")
+    existentes["geometria_valida"] = (
+        existentes["geometria_valida"]
+        .astype(str)
+        .str.strip()
+        .map({"True": True, "False": False})
+        .astype("boolean")
+    )
 
     for columna in ["errores_evaluar", "errores_archivar", "fallas_wfs_90d"]:
         existentes[columna] = pd.to_numeric(existentes[columna], errors="coerce").fillna(0)
@@ -144,13 +153,13 @@ def construir_base(
         base["fallas_wfs_90d"] = 0
         base["n_features"] = pd.NA
         base["bytes_estimados"] = pd.NA
+        base["geometria_valida"] = pd.Series(pd.NA, index=base.index, dtype="boolean")
         base["errores_evaluar"] = 0
         base["errores_archivar"] = 0
         base["archivado"] = False
         base["fecha_ultima_evaluacion"] = ""
         base["fecha_ultimo_archivo_intento"] = ""
         base["fecha_archivado"] = ""
-        nuevas = base[["geoserver", "nombre"]].copy()
     else:
         base = existentes.merge(
             activas,
@@ -168,11 +177,12 @@ def construir_base(
             base["bbox_area"].notna(),
             base["bbox_area_old"],
         )
-        base["wfs_activo"] = base["wfs_activo"].fillna(False)
+        base["wfs_activo"] = base["wfs_activo"].astype("boolean").fillna(False).astype(bool)
         base["fallas_wfs_90d"] = base["fallas_wfs_90d"].fillna(0)
         base["errores_evaluar"] = base["errores_evaluar"].fillna(0)
         base["errores_archivar"] = base["errores_archivar"].fillna(0)
-        base["archivado"] = base["archivado"].fillna(False)
+        base["archivado"] = base["archivado"].astype("boolean").fillna(False).astype(bool)
+        base["geometria_valida"] = base["geometria_valida"].astype("boolean")
         for columna in [
             "fecha_ultima_evaluacion",
             "fecha_ultimo_archivo_intento",
@@ -181,17 +191,19 @@ def construir_base(
             base[columna] = base[columna].fillna("")
 
         base = base[COLUMNAS].copy()
-        nuevas = base.loc[
-            base["fecha_ultima_evaluacion"].fillna("").astype(str).eq(""),
-            ["geoserver", "nombre"],
-        ].copy()
 
     base = base.merge(fallas, on="geoserver", how="left", suffixes=("", "_nuevo"))
     base["fallas_wfs_90d"] = base["fallas_wfs_90d_nuevo"].fillna(base["fallas_wfs_90d"]).fillna(0)
     base = base.drop(columns=["fallas_wfs_90d_nuevo"])
 
     base["descripcion"] = base["descripcion"].fillna("").astype(str)
-    return base, nuevas
+    pendientes = base.loc[
+        base["wfs_activo"].fillna(False)
+        & ~base["archivado"].fillna(False)
+        & base["geometria_valida"].isna(),
+        ["geoserver", "nombre"],
+    ].copy()
+    return base, pendientes
 
 
 def consultar_hits(
@@ -233,7 +245,7 @@ def consultar_muestra_geojson(
     sesion: urllib3.PoolManager,
     ows: str,
     nombre: str,
-) -> Optional[Tuple[int, int]]:
+) -> Optional[Tuple[int, int, bool]]:
     respuesta = sesion.request(
         "GET",
         ows,
@@ -243,6 +255,7 @@ def consultar_muestra_geojson(
             "request": "GetFeature",
             "typeName": nombre,
             "outputFormat": "application/json",
+            "srsName": "EPSG:4326",
             "maxFeatures": 5,
         },
     )
@@ -254,20 +267,79 @@ def consultar_muestra_geojson(
     except json.JSONDecodeError:
         return None
 
-    n_features = len(data.get("features", []))
+    if data.get("type") != "FeatureCollection" or not isinstance(data.get("features"), list):
+        return None
+
+    features = data["features"]
+    n_features = len(features)
     if n_features == 0:
         return None
-    return len(respuesta.data), n_features
+    return len(respuesta.data), n_features, muestra_tiene_geometrias_validas(features)
+
+
+def iterar_posiciones(coordenadas):
+    if not isinstance(coordenadas, list):
+        raise ValueError("Las coordenadas GeoJSON deben ser listas")
+    if coordenadas and all(isinstance(valor, (int, float)) and not isinstance(valor, bool) for valor in coordenadas):
+        if len(coordenadas) < 2:
+            raise ValueError("Una posicion GeoJSON debe tener al menos dos coordenadas")
+        yield coordenadas
+        return
+    for elemento in coordenadas:
+        yield from iterar_posiciones(elemento)
+
+
+def iterar_geometrias(geometria):
+    if geometria is None:
+        return
+    if not isinstance(geometria, dict):
+        raise ValueError("La geometria GeoJSON debe ser un objeto")
+    if geometria.get("type") == "GeometryCollection":
+        geometrias = geometria.get("geometries")
+        if not isinstance(geometrias, list):
+            raise ValueError("GeometryCollection debe contener una lista de geometrias")
+        for elemento in geometrias:
+            yield from iterar_geometrias(elemento)
+        return
+    if geometria.get("type") not in {
+        "Point",
+        "MultiPoint",
+        "LineString",
+        "MultiLineString",
+        "Polygon",
+        "MultiPolygon",
+    }:
+        raise ValueError("Tipo de geometria GeoJSON desconocido")
+    yield geometria
+
+
+def muestra_tiene_geometrias_validas(features: list[dict]) -> bool:
+    tiene_posiciones = False
+    try:
+        for feature in features:
+            if not isinstance(feature, dict) or feature.get("type") != "Feature":
+                return False
+            for geometria in iterar_geometrias(feature.get("geometry")):
+                for posicion in iterar_posiciones(geometria.get("coordinates")):
+                    tiene_posiciones = True
+                    if not all(math.isfinite(float(valor)) for valor in posicion):
+                        return False
+                    longitud, latitud = posicion[:2]
+                    if not (-180 <= longitud <= 180 and -90 <= latitud <= 90):
+                        return False
+    except (TypeError, ValueError, OverflowError):
+        return False
+    return tiene_posiciones
 
 
 def evaluar_dataset(
     directorio: Dict[str, dict],
     geoserver: str,
     nombre: str,
-) -> Tuple[Optional[int], Optional[int], bool]:
+) -> Tuple[Optional[int], Optional[int], Optional[bool], bool]:
     entrada = directorio.get(geoserver)
     if not entrada:
-        return None, None, False
+        return None, None, None, False
 
     sesion = iniciar_sesion()
     ows = entrada["ows"]
@@ -275,14 +347,14 @@ def evaluar_dataset(
     muestra = consultar_muestra_geojson(sesion, ows, nombre)
 
     if muestra is None:
-        return n_features, None, False
+        return n_features, None, None, False
 
-    muestra_bytes, muestra_features = muestra
+    muestra_bytes, muestra_features, geometria_valida = muestra
     if n_features is None:
-        return None, None, True
+        return None, None, geometria_valida, True
 
     bytes_estimados = int(round((muestra_bytes / muestra_features) * n_features))
-    return n_features, bytes_estimados, True
+    return n_features, bytes_estimados, geometria_valida, True
 
 
 def evaluar_fila(
@@ -291,18 +363,19 @@ def evaluar_fila(
     nombre: str,
 ) -> dict:
     try:
-        n_features, bytes_estimados, exito = evaluar_dataset(
+        n_features, bytes_estimados, geometria_valida, exito = evaluar_dataset(
             directorio,
             geoserver,
             nombre,
         )
     except Exception:
-        n_features, bytes_estimados, exito = None, None, False
+        n_features, bytes_estimados, geometria_valida, exito = None, None, None, False
     return {
         "geoserver": geoserver,
         "nombre": nombre,
         "n_features": n_features,
         "bytes_estimados": bytes_estimados,
+        "geometria_valida": geometria_valida,
         "exito": exito,
     }
 
@@ -323,7 +396,7 @@ def aplicar_resultados(base: pd.DataFrame, resultados: list[dict], fecha: str) -
         suffixes=("", "_nuevo"),
     )
 
-    for columna in ["n_features", "bytes_estimados", "fecha_ultima_evaluacion"]:
+    for columna in ["n_features", "bytes_estimados", "geometria_valida", "fecha_ultima_evaluacion"]:
         base[columna] = base[f"{columna}_nuevo"].where(
             base[f"{columna}_nuevo"].notna(),
             base[columna],
@@ -335,33 +408,39 @@ def aplicar_resultados(base: pd.DataFrame, resultados: list[dict], fecha: str) -
         pd.to_numeric(base["errores_evaluar"], errors="coerce").fillna(0) + incremento_error
     )
 
-    columnas_aux = ["n_features_nuevo", "bytes_estimados_nuevo", "fecha_ultima_evaluacion_nuevo", "exito"]
+    columnas_aux = [
+        "n_features_nuevo",
+        "bytes_estimados_nuevo",
+        "geometria_valida_nuevo",
+        "fecha_ultima_evaluacion_nuevo",
+        "exito",
+    ]
     return base.drop(columns=[c for c in columnas_aux if c in base.columns])
 
 
-def actualizar_nuevas_filas(
+def actualizar_pendientes(
     base: pd.DataFrame,
-    nuevas: pd.DataFrame,
+    pendientes: pd.DataFrame,
     directorio: Dict[str, dict],
     limite: Optional[int] = None,
     workers: int = 8,
     batch_size: int = 100,
 ) -> pd.DataFrame:
-    if nuevas.empty:
+    if pendientes.empty:
         return base
 
-    nuevas = nuevas.sort_values(["geoserver", "nombre"], kind="mergesort").reset_index(drop=True)
+    pendientes = pendientes.sort_values(["geoserver", "nombre"], kind="mergesort").reset_index(drop=True)
     if limite is not None:
-        nuevas = nuevas.head(limite).copy()
+        pendientes = pendientes.head(limite).copy()
 
     fecha = hoy()
-    total = len(nuevas)
+    total = len(pendientes)
     resultados_lote: list[dict] = []
 
     with ThreadPoolExecutor(max_workers=max(1, workers)) as executor:
         futures = [
             executor.submit(evaluar_fila, directorio, fila.geoserver, fila.nombre)
-            for fila in nuevas.itertuples(index=False)
+            for fila in pendientes.itertuples(index=False)
         ]
 
         for i, future in enumerate(as_completed(futures), start=1):
@@ -374,7 +453,7 @@ def actualizar_nuevas_filas(
                 resultados_lote = []
 
             if i % 100 == 0 or i == total:
-                print(f"evaluadas {i} capas nuevas")
+                print(f"evaluados {i} datasets pendientes")
 
     return base
 
@@ -425,6 +504,7 @@ def guardar(base: pd.DataFrame) -> None:
     salida["errores_archivar"] = pd.to_numeric(salida["errores_archivar"], errors="coerce").fillna(0).astype(int)
     salida["wfs_activo"] = salida["wfs_activo"].astype(bool)
     salida["archivado"] = salida["archivado"].astype(bool)
+    salida["geometria_valida"] = salida["geometria_valida"].astype("boolean")
 
     for columna in ["bbox_area", "n_features", "bytes_estimados"]:
         salida[columna] = pd.to_numeric(salida[columna], errors="coerce")
@@ -445,10 +525,12 @@ def guardar(base: pd.DataFrame) -> None:
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser()
     parser.add_argument(
+        "--limite-pendientes",
         "--limite-nuevas",
+        dest="limite_pendientes",
         type=int,
         default=None,
-        help="Evalua solo esta cantidad de capas nuevas. Util para pruebas manuales.",
+        help="Evalua solo esta cantidad de datasets pendientes. Util para pruebas manuales.",
     )
     parser.add_argument("--workers", type=int, default=8)
     parser.add_argument("--batch-size", type=int, default=100)
@@ -462,16 +544,16 @@ def main() -> None:
     existentes = leer_existentes()
     directorio = leer_directorio()
 
-    base, nuevas = construir_base(existentes, activas, fallas)
+    base, pendientes = construir_base(existentes, activas, fallas)
     base = ordenar(base)
     guardar(base)
     print(f"capas activas WFS: {len(activas)}")
-    print(f"capas nuevas por evaluar: {len(nuevas)}")
-    base = actualizar_nuevas_filas(
+    print(f"datasets pendientes por evaluar: {len(pendientes)}")
+    base = actualizar_pendientes(
         base,
-        nuevas,
+        pendientes,
         directorio,
-        limite=args.limite_nuevas,
+        limite=args.limite_pendientes,
         workers=args.workers,
         batch_size=args.batch_size,
     )
