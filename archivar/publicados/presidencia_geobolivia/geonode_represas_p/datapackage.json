@@ -1,0 +1,96 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_represas_p",
+  "title": "Localización de las represas de agua de la empresa de EPSAS en las ciudades de La Paz y El Alto_ 2011",
+  "description": "Este mapa representa la localización de las represas de agua de la empresa EPSAS.(Empresa Pública Social de Agua y Saneamiento) cuya importancia es decisiva en la agricultura bajo riego, servicios de agua potable, generación de energía hidroeléctrica, etc. Elaborado por el Programa Andino de formación y de Investigación sobre la Vulnerabilidad y los Riesgos urbanos - Bolivia, Ecuador, Perú - PACIVUR en el año 2011.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_represas_p/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 2972,
+      "hash": "sha256:9bae1e379f0b1347208ef62f6b567d414d998060285d10116ebfde3246846b28",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 13
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "REPRESAS_P.13"
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 6666
+            }
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "represa Milluni",
+            "categories": [
+              "represa",
+              "represa Milluni",
+              "represafutura"
+            ]
+          },
+          {
+            "name": "pesovulne",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 14
+            }
+          },
+          {
+            "name": "nivelvulni",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 1
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
