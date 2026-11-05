@@ -1,0 +1,110 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_sergeomin_idesig_ws_cda_cuencas_calidad_agua_2026_1",
+  "title": "cuencas_calidad_agua_2026_1",
+  "sources": [
+    {
+      "title": "Catálogo IDESIG de Sergeomin",
+      "path": "https://idesig.sergeomin.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_sergeomin_idesig_ws_cda_cuencas_calidad_agua_2026_1/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 1785986,
+      "hash": "sha256:7b3dc30277b6ecffd397fd6b58a8c17bd12239ceb795b58731d275cd0231185e",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "cuencas_calidad_agua_2026_1.11"
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Cuencas Proyecto PIR"
+          },
+          {
+            "name": "macrocuenc",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Endorreica",
+            "categories": [
+              "Endorreica",
+              "Plata",
+              "Amazonas",
+              "Plata y Amazonas"
+            ]
+          },
+          {
+            "name": "depto",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "La Paz-Oruro-Potosi",
+            "categories": [
+              "La Paz",
+              "Potosi",
+              "Oruro",
+              "La Paz-Oruro-Potosi",
+              "Tarija-Chuqisaca-Santa Cruz"
+            ]
+          },
+          {
+            "name": "gestion",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "2003"
+          },
+          {
+            "name": "biblioteca",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Ac-PIR -0022"
+          },
+          {
+            "name": "area_km2",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 3086.13227431,
+              "maximum": 57026.5917064
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
