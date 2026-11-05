@@ -1,0 +1,127 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_unidades_educativas_superioreswgs84",
+  "title": "Mapa de Unidades Educativas de Nivel Superior del Municipio de La Paz",
+  "description": "El mapa presenta información espacial de la distribución y localización de unidades educativas de nivel superior en el Municipio de La Paz. Elaborado por Oficialía Mayor de Planificación para el Desarrollo (OMPD) del Gobierno Autónomo Municipal de La Paz, en el año 2013.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_unidades_educativas_superioreswgs84/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 6611,
+      "hash": "sha256:1e01e690ad813637e7155ae60de718ce15db2e2becbb4fd8c1a9d3980665b8d7",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "unidades_educativas_superioreswgs84.1"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 49
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "unidades_educativas_superioreswgs84.1"
+          },
+          {
+            "name": "objectid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 3,
+              "maximum": 138
+            }
+          },
+          {
+            "name": "gdbsunid",
+            "type": "string",
+            "example": "UMSA -CIDE"
+          },
+          {
+            "name": "gdbsdire",
+            "type": "string",
+            "example": "AV. HERNANDO SILES",
+            "categories": [
+              "CIUDAD UNIVERSITARIA",
+              "ALTO IRPAVI URBANIZACION LA PRADERA",
+              "AV. 14 DE SEPTIEMBRE",
+              "AV. 20 DE OCTUBRE YVCALLE OTERO DE LA VEGA",
+              "AV. DE LOS LEONES",
+              "AV. HECTOR ORMACHEA",
+              "AV. HERNANDO SILES",
+              "AV. HUGO ERNEST",
+              "AV. LAS AMERICAS",
+              "AVENIDA CHACALTAYA",
+              "CALLE 53 Y DEFENSORES DEL CHACO",
+              "CALLE OMASUYOS",
+              "CALLE STA. ROSA",
+              "CIUDAD UNIVERSITARIA  AV.ANDRES BELLO",
+              "Final Calle 14",
+              "S/N",
+              "UNIVERSACION LOS PINOS"
+            ]
+          },
+          {
+            "name": "gdbstelf",
+            "type": "string",
+            "example": "783637",
+            "categories": [
+              "783637"
+            ]
+          },
+          {
+            "name": "gdbsmail",
+            "type": "integer"
+          },
+          {
+            "name": "educ_sup",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "SIPS",
+            "categories": [
+              "SIPS"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPoint."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
