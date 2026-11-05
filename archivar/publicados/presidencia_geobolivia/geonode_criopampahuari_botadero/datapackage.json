@@ -1,0 +1,86 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_criopampahuari_botadero",
+  "title": "Plan Director Cuenca Río Pampa Huari – Botaderos y Rellenos Sanitarios_ Bolivia",
+  "description": "El mapa muestra la ubicación de botaderos y rellenos sanitarios en la cuenca del río pampa Huari, información del Viceministerio de Recursos Hídricos y Riego a fecha febrero 2019.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_criopampahuari_botadero/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 3575,
+      "hash": "sha256:7434314f715e65209859c8b0775760fa34f36fd6b8e34902f84756568afa16ee",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 4
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "minimum": 0,
+              "maximum": 3
+            }
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "example": "Botadero",
+            "categories": [
+              "Botadero",
+              "Relleno Sanitario"
+            ]
+          },
+          {
+            "name": "sup_m2",
+            "type": "number",
+            "constraints": {
+              "minimum": 78.3008018057,
+              "maximum": 203055.120328
+            }
+          },
+          {
+            "name": "sup_km2",
+            "type": "number",
+            "constraints": {
+              "minimum": 7.8300801806e-05,
+              "maximum": 0.203055120328
+            }
+          },
+          {
+            "name": "sup_ha",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.00783008018057,
+              "maximum": 20.3055120328
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
