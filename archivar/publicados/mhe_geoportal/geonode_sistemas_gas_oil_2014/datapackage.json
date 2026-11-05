@@ -1,0 +1,106 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mhe_geoportal_geonode_sistemas_gas_oil_2014",
+  "title": "Sistemas_gas_oil_2014",
+  "sources": [
+    {
+      "title": "Geoportal del Viceministerio de Electricidad y Energías Renovables",
+      "path": "https://geoportal.mhe.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mhe_geoportal_geonode_sistemas_gas_oil_2014/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 3376,
+      "hash": "sha256:555e00684f380745ab8b80f680c2acc426b854e418c13e40b16fc715b224be8c",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 14
+            }
+          },
+          {
+            "name": "empresa",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "C.S.E.  El Peru Ltda."
+          },
+          {
+            "name": "DEPTO",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Beni",
+            "categories": [
+              "Beni",
+              "Pando",
+              "Santa Cruz"
+            ]
+          },
+          {
+            "name": "Localidad",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "El Peru"
+          },
+          {
+            "name": "Asig_Lts",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 21840,
+              "maximum": 13510104
+            }
+          },
+          {
+            "name": "Pot_Inst",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 24,
+              "maximum": 14500
+            }
+          },
+          {
+            "name": "Usuarios",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 95,
+              "maximum": 17081
+            }
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
