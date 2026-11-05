@@ -1,0 +1,79 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_metropoli_poblacion_region_lpz",
+  "title": "Mapa Población de la Región Metropolitana del Departamento de La Paz, Bolivia 2017",
+  "description": "El mapa muestra la población por municipios que conforman la Región Metropolitana del Departamento de La Paz.  Esta información fue obtenida del Atlas de la Región Metropolitana del Departamento de La Paz, elaborado por la Secretaria Municipal de Planificación para el Desarrollo del Gobierno Autónomo Municipal de La Paz y el Instituto de Investigaciones Geográficas, Carrera de Ingeniería Geográfica - UMSA y presentado en el mes de agosto del 2017.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_metropoli_poblacion_region_lpz/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 2597,
+      "hash": "sha256:f833106389a4a733059dbcf67400eff3036188400f2813046a7c002af82ff680",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "example": "metropoli_poblacion_region_lpz.6"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 8
+            }
+          },
+          {
+            "name": "objectid",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 8
+            }
+          },
+          {
+            "name": "nom_mun",
+            "type": "string",
+            "example": "Viacha"
+          },
+          {
+            "name": "pob_2012",
+            "type": "integer",
+            "constraints": {
+              "minimum": 16324,
+              "maximum": 860062
+            }
+          },
+          {
+            "name": "pob",
+            "type": "integer",
+            "constraints": {
+              "minimum": 16324,
+              "maximum": 860062
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
