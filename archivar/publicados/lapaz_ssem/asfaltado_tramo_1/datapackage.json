@@ -1,0 +1,49 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_ssem_asfaltado_tramo_1",
+  "title": "tramo_1",
+  "sources": [
+    {
+      "title": "Servicio de Seguimiento Estratégico Municipal del Gobierno Autónomo Municipal de La Paz",
+      "path": "https://ssem.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_ssem_asfaltado_tramo_1/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 2852,
+      "hash": "sha256:88d7c42e17976203f2154ac19ba009654397fe0d4a621fd7631f9868c49ec725",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 3
+            }
+          },
+          {
+            "name": "numero",
+            "type": "string",
+            "example": "TRAMO 3"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
