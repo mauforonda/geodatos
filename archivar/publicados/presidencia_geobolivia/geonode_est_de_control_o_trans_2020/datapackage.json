@@ -1,0 +1,123 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_est_de_control_o_trans_2020",
+  "title": "Mapa de ubicación de Estación y Control en Bolivia, Julio 2020",
+  "description": "Este Mapa muestra las ubicaciones de estación y control que se encuentran actualmente en funcionamiento en Bolivia al mes Julio-2020. Muestra también el sistema de cobro en cada estación. Información obtenida de Vías Bolivia.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_est_de_control_o_trans_2020/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 3508,
+      "hash": "sha256:063fd9ee9c31c25ce3be9195e8efd2e445b82c3d2fc875c07d8aaf6b54f3b06f",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "est_de_control_o_trans_2020.4"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 12
+            }
+          },
+          {
+            "name": "label",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Tolapampa"
+          },
+          {
+            "name": "notes",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Oruro",
+            "categories": [
+              "Oruro",
+              "Santa Cruz",
+              "Chuquisaca",
+              "La Paz",
+              "Tarija"
+            ]
+          },
+          {
+            "name": "type",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Sin infraestructura propia",
+            "categories": [
+              "Sin infraestructura propia"
+            ]
+          },
+          {
+            "name": "easting",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 279282,
+              "maximum": 751518
+            }
+          },
+          {
+            "name": "northing",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 7547371,
+              "maximum": 8206498
+            }
+          },
+          {
+            "name": "sist_de_co",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "SISAPP",
+            "categories": [
+              "SISAPP",
+              "SISCAP"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
