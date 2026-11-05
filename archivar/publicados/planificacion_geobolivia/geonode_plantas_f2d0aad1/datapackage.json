@@ -1,0 +1,103 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geobolivia_geonode_plantas_f2d0aad1",
+  "title": "Localización Plantas de Gas y Petróleo",
+  "description": "Localización de Plantas de Gas y Petróleo, recopiladas de la base de datos histórico del Sistema Catastro Hidrocarburífero del Estado Plurinacional de Bolivia. Esta información proviene de la Infraestructura de Datos Espaciales de Hidrocarburos de Yacimientos Petrolíferos Fiscales Bolivianos - YPFB.",
+  "sources": [
+    {
+      "title": "Nueva plataforma GeoBolivia",
+      "path": "https://geonode.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geobolivia_geonode_plantas_f2d0aad1/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 3519,
+      "hash": "sha256:87bce8bd5a9ea235305490dd9c97608b22bf9b213cd9cd91d1e80250316f7a8a",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "plantas_f2d0aad1.3"
+          },
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 21
+            }
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 21
+            }
+          },
+          {
+            "name": "objectid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 22
+            }
+          },
+          {
+            "name": "fac_name",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "SAN ALBERTO"
+          },
+          {
+            "name": "ba_name",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Petrobras Bolivia S.A.",
+            "categories": [
+              "YPFB Chaco S.A.",
+              "YPFB Andina S.A.",
+              "Repsol E&P Bolivia S.A.",
+              "Petrobras Argentina S.A. Sucursal Bolivia",
+              "Petrobras Bolivia S.A.",
+              "Pluspetrol Bolivia Corporation S.A.",
+              "Vintage Petroleum Boliviana Ltd.",
+              "B.G. Bolivia Corporation Sucursal Bolivia"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
