@@ -1,0 +1,195 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_administracion_aduanera_2018",
+  "title": "Mapa de Administraciones Aduaneras_ Bolivia 2018",
+  "description": "El mapa muestra los 62 puntos de administración aduanera, dentro y fuera del territorio nacional, la Aduana Nacional de Bolivia tiene como objetivo: Controlar el tránsito de las mercaderías de y hacia Bolivia, en aplicación de los regímenes aduaneros generales y especiales, haciendo cumplir la normativa legal y los procedimientos operativos. La función principal es de: Registrar, Coordinar, Controlar y Fiscalizar las operaciones de comercio exterior y tránsito de mercancía que tienen los porteadores internacionales de carga desde y hacia Bolivia. Esta información obtenida de la Aduana Nacional y actualizada a julio 2018.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_administracion_aduanera_2018/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 11175,
+      "hash": "sha256:e27d676d2f2d73655249b7b73660ead507a5d3b16204a89eebbecb214b222f49",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "administracion_aduanera_2018.11"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 62
+            }
+          },
+          {
+            "name": "n",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 62
+            }
+          },
+          {
+            "name": "administra",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Frontera Apacheta Hito Cajones"
+          },
+          {
+            "name": "tipo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Frontera",
+            "categories": [
+              "Frontera",
+              "Interior",
+              "Franca",
+              "Control",
+              "Regional",
+              "Oficina",
+              "Aeropuerto",
+              "Agencia",
+              "Postal"
+            ]
+          },
+          {
+            "name": "departamen",
+            "type": "string",
+            "example": "Potosí",
+            "categories": [
+              "Santa Cruz",
+              "La Paz",
+              "Oruro",
+              "Potosí",
+              "Tarija",
+              "Chuquisaca",
+              "Cochabamba",
+              "Beni",
+              "Pando"
+            ]
+          },
+          {
+            "name": "ciudad",
+            "type": "string",
+            "example": "Villazón",
+            "categories": [
+              "El Alto",
+              "Oruro",
+              "Santa Cruz de la Sierra",
+              "Cochabamba",
+              "Potosí",
+              "Warnes",
+              "Nuestra Señora de La Paz",
+              "Puerto Quijarro",
+              "Tarija",
+              "Arica, Chile",
+              "Charaña",
+              "Cobija",
+              "Copacabana",
+              "Corumba, Brazil",
+              "Desaguadero",
+              "Guayaramerín",
+              "Ilo, Perú",
+              "Matarina, Perú",
+              "Mollendo, Perú",
+              "Paraguay",
+              "Patacamaya",
+              "Piedra Blanca",
+              "Pisiga",
+              "Salvador Mazza – Argentina",
+              "San Matías",
+              "San Vicente",
+              "Sucre",
+              "Villazón",
+              "Yacuiba",
+              "Yamparaez"
+            ]
+          },
+          {
+            "name": "direccion",
+            "type": "string",
+            "example": "Apacheta Hito Cajones  (Frontera con Chile)"
+          },
+          {
+            "name": "telefono",
+            "type": "string",
+            "example": "010(2)6132019"
+          },
+          {
+            "name": "pais",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Bolivia",
+            "categories": [
+              "Bolivia",
+              "Perú",
+              "Argentina",
+              "Brasil",
+              "Chile",
+              "Frontera Bolivia – Brasil",
+              "Frontera Bolivia – Paraguay",
+              "Frontera entre Bolivia y Paraguay"
+            ]
+          },
+          {
+            "name": "latitud",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": -22.73151,
+              "maximum": -10.80818
+            }
+          },
+          {
+            "name": "longitud",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": -72.09864,
+              "maximum": -57.68706
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
