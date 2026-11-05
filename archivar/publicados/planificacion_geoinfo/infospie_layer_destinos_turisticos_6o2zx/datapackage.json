@@ -1,0 +1,109 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_destinos_turisticos_6o2zx",
+  "title": "Destinos turísticos",
+  "description": "El mapa presenta la ubicación de los destinos turísticos en territorio nacional.",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_destinos_turisticos_6o2zx/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 9134,
+      "hash": "sha256:544e16e61d04634e9c6fe30a4b5070c1bbb2579bf61948671ef371a3fdd60210",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_destinos_turisticos_6o2zx.39"
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Centro poblado de Canquella"
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "example": "POTOSI",
+            "categories": [
+              "POTOSI",
+              "LA PAZ",
+              "ORURO",
+              "SANTA CRUZ",
+              "TARIJA",
+              "PANDO",
+              "COCHABAMBA",
+              "CHUQUISACA"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "example": "Daniel Campos",
+            "categories": [
+              "Sur Chichas",
+              "Cercado",
+              "Murillo",
+              "Daniel Campos",
+              "Charcas",
+              "Tomas Frias",
+              "Gran Chaco",
+              "Ingavi",
+              "Sajama",
+              "Andres Ibañez",
+              "Florida",
+              "Ladislao Cabrera",
+              "Manco Kapac",
+              "Manuripi",
+              "Nor Lipez",
+              "Sur Lipez",
+              "Abel Iturralde",
+              "Nicolas Suarez",
+              "Oropeza",
+              "Angel Sandoval",
+              "Antonio Quijarro",
+              "Campero",
+              "Franz Tamayo",
+              "Mendez",
+              "Nor Yungas",
+              "Poopo",
+              "Sara",
+              "Yamparaez"
+            ]
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "example": "Llica"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
