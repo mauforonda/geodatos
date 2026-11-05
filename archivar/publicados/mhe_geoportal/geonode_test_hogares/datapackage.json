@@ -1,0 +1,65 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mhe_geoportal_geonode_test_hogares",
+  "title": "Test_hogares",
+  "sources": [
+    {
+      "title": "Geoportal del Viceministerio de Electricidad y Energías Renovables",
+      "path": "https://geoportal.mhe.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mhe_geoportal_geonode_test_hogares/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 1819,
+      "hash": "sha256:0c3f2c3f3a4b9680cee5ba20d817b73f3f9973e8dddcefb6c6fd05218f89aad3",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 3
+            }
+          },
+          {
+            "name": "Id",
+            "type": "integer",
+            "constraints": {
+              "minimum": 0,
+              "maximum": 0
+            }
+          },
+          {
+            "name": "Hogar",
+            "type": "string",
+            "example": "Juan Apaza"
+          },
+          {
+            "name": "fotos",
+            "type": "string",
+            "example": "",
+            "categories": [
+              ""
+            ]
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
