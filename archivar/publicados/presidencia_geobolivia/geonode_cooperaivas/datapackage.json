@@ -1,0 +1,149 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_cooperaivas",
+  "title": "Ubicación de cooperativas de ahorro y crédito en Bolivia_ 2012",
+  "description": "El mapa muestra la distribución espacial de los puntos de atención de las entidades financieras conocidas como Cooperativas que brindan servicios de crédito y fomento a pequeñas empresas en Bolivia. Elaborado por la Autoridad de Supervisión del Sistema Financiero (ASFI) con datos actualizados al año 2012.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_cooperaivas/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 14168,
+      "hash": "sha256:8e77ebe64708fdd9711d75359c4fa76096e84ab62d1c10aab8f364d8ab479820",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "cooperaivas.194"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 213
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Cooperaivas.194"
+          },
+          {
+            "name": "oid_",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 0
+            }
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "cmg",
+            "categories": [
+              "cjn",
+              "csm",
+              "cme",
+              "cfa",
+              "cqc",
+              "cpx",
+              "csr",
+              "csa",
+              "ccm",
+              "ctr",
+              "ccr",
+              "cec",
+              "ccp",
+              "cca",
+              "cih",
+              "cly",
+              "cmg",
+              "cmr",
+              "cst",
+              "cjb",
+              "cjo",
+              "cjp",
+              "cmm",
+              "csp"
+            ]
+          },
+          {
+            "name": "folderpath",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "EIF/Folder",
+            "categories": [
+              "EIF/Folder"
+            ]
+          },
+          {
+            "name": "symbolid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 3
+            }
+          },
+          {
+            "name": "altitudemo",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": -1,
+              "maximum": -1
+            }
+          },
+          {
+            "name": "snippet",
+            "type": "integer"
+          },
+          {
+            "name": "popupinfo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "[CDATA[Entidad: COOPERATIVA MONSEÑOR FELIX GAINZA Identificador del PAF: 3 Nombr"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
