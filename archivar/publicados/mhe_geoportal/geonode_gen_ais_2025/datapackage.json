@@ -1,0 +1,115 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mhe_geoportal_geonode_gen_ais_2025",
+  "title": "Gen_Ais_2025",
+  "sources": [
+    {
+      "title": "Geoportal del Viceministerio de Electricidad y Energías Renovables",
+      "path": "https://geoportal.mhe.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mhe_geoportal_geonode_gen_ais_2025/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 4797,
+      "hash": "sha256:40e0dea68e559e2daaf2cd57ff3cf52946fc6b2fdaccfe8c2515713b52e98d91",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 35
+            }
+          },
+          {
+            "name": "fid_1",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 41
+            }
+          },
+          {
+            "name": "fid_12",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0,
+              "maximum": 47
+            }
+          },
+          {
+            "name": "Propietari",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "CRE",
+            "categories": [
+              "ENDE DELBENI",
+              "CRE",
+              "ENDE",
+              "ENDE Guaracachi",
+              "Comite de Electrificacion",
+              "ENDE DELEBENI"
+            ]
+          },
+          {
+            "name": "Tipo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Termoelectrica Gas Natural",
+            "categories": [
+              "Termoelectrica Diesel o Gas Oil",
+              "Termoelectrica Gas Natural",
+              "Solar Hibrido",
+              "Micro Central Hidroelectrica",
+              "Solar Fotovotaica"
+            ]
+          },
+          {
+            "name": "Central",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Mataral"
+          },
+          {
+            "name": "Pot_kW",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 8,
+              "maximum": 31400
+            }
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
