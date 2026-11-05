@@ -1,0 +1,90 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mhe_geoportal_geonode_cctt_minired",
+  "title": "CCTT_minired",
+  "sources": [
+    {
+      "title": "Geoportal del Viceministerio de Electricidad y Energías Renovables",
+      "path": "https://geoportal.mhe.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mhe_geoportal_geonode_cctt_minired/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 3055,
+      "hash": "sha256:ad242b69e7d72126463e3ec963d7f56d993cb335eb9347b07737acbb52079599",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "fid_1",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 18
+            }
+          },
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 18
+            }
+          },
+          {
+            "name": "Size_kVA",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 30,
+              "maximum": 75
+            }
+          },
+          {
+            "name": "Tension",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 24.9,
+              "maximum": 24.9
+            }
+          },
+          {
+            "name": "System",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "COCHABAMBA_llano_ug_99",
+            "categories": [
+              "COCHABAMBA_llano_ug_99",
+              "SANTACRUZ_llano_ug_560",
+              "PANDO_llano_ug_84",
+              "PANDO_llano_ug_86",
+              "BENI_llano_ug_84",
+              "BENI_llano_ug_89"
+            ]
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
