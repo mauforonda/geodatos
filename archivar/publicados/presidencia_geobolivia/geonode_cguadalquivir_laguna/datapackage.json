@@ -1,0 +1,66 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_cguadalquivir_laguna",
+  "title": "Plan Director de la Cuenca Río Guadalquivir - Lagunas_ Bolivia",
+  "description": "Muestra la georreferenciación e información de superficie sobre las lagunas del Plan Director de la Cuenca del Río Guadalquivir. Dato del Viceministerio de Recursos Hídricos y Riego a mayo 2017.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_cguadalquivir_laguna/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 6760,
+      "hash": "sha256:d13b17b9b2ff188c8e0f7b713c4a54cf5933e90718cba07e5316df029eda35b4",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "example": "cguadalquivir_laguna.4"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 4
+            }
+          },
+          {
+            "name": "objectid_1",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 4
+            }
+          },
+          {
+            "name": "area_km2",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.00896911580454,
+              "maximum": 5.32704849695
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
