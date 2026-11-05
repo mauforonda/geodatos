@@ -1,0 +1,154 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mhe_geoportal_geonode_gen_sin_20170428",
+  "title": "gen_sin_20170428",
+  "sources": [
+    {
+      "title": "Geoportal del Viceministerio de Electricidad y Energías Renovables",
+      "path": "https://geoportal.mhe.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mhe_geoportal_geonode_gen_sin_20170428/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 6118,
+      "hash": "sha256:66a22103dd9f0e9cbda0acc51142c04b35584b7d555cfa2356adf54bbbb45040",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 42
+            }
+          },
+          {
+            "name": "codigo",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "PUH"
+          },
+          {
+            "name": "Central",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Yura"
+          },
+          {
+            "name": "Planta",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Punutuma"
+          },
+          {
+            "name": "Sistema",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "SUR",
+            "categories": [
+              "NORTE",
+              "CENTRAL",
+              "ORIENTAL",
+              "ORURO",
+              "SUR",
+              "TRINIDAD",
+              "SUCRE",
+              "TARIJA"
+            ]
+          },
+          {
+            "name": "Empresa",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "ERESA G",
+            "categories": [
+              "COBEE",
+              "ENDE GUARACACHI S.A.",
+              "CORANI",
+              "ENDE ANDINA",
+              "ERESA G",
+              "VHE",
+              "ENDE G",
+              "HB",
+              "CECBB",
+              "GBE",
+              "SDB",
+              "SYNERGIA"
+            ]
+          },
+          {
+            "name": "Tecnologia",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "HidroelÃ©ctrica",
+            "categories": [
+              "HidroelÃ©ctrica",
+              "TermoelÃ©ctrica",
+              "Biomasa",
+              "EÃ³lico"
+            ]
+          },
+          {
+            "name": "Tec_n",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 4
+            }
+          },
+          {
+            "name": "Unida",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 16
+            }
+          },
+          {
+            "name": "Pn",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1.9,
+              "maximum": 392.704
+            }
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
