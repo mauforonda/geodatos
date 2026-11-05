@@ -1,0 +1,79 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_elalto_urbano_rural",
+  "title": "Mapa Área Urbana y Rural Municipio El Alto 2015",
+  "description": "El mapa muestra una forma de clasificar el espacio geográfico, diferenciando dos áreas Urbana y Rural del Municipio de El Alto, la primera se caracteriza por contar con mayor número de población en relación a la segunda. Información obtenida del Altas Geográfico del Municipio de El Alto presentado el año 2015 por la Infraestructura de Datos Espaciales - El Alto.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_elalto_urbano_rural/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 10707,
+      "hash": "sha256:3f2715fab4bad4074865b8477fcba75e7a79be8fd1eae6ab7fc37a91789cd5ff",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "example": "elalto_urbano_rural.2"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 2
+            }
+          },
+          {
+            "name": "gid",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 2
+            }
+          },
+          {
+            "name": "om",
+            "type": "string",
+            "example": "150/2005",
+            "categories": [
+              "150/2005"
+            ]
+          },
+          {
+            "name": "has_area",
+            "type": "number",
+            "constraints": {
+              "minimum": 18620.5,
+              "maximum": 19855.7
+            }
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "example": "Urbano"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
