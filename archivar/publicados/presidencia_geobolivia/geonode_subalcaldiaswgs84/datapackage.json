@@ -1,0 +1,71 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_subalcaldiaswgs84",
+  "title": "Mapa de Subalcaldias en el Municipio de La Paz",
+  "description": "El mapa presenta información espacial de la localización y distribución de las subalacadias en el Municipio de La Paz. Elaborado por Oficialía Mayor de Planificación para el Desarrollo (OMPD) del Gobierno Autónomo Municipal de La Paz, en el año 2013.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_subalcaldiaswgs84/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 2617,
+      "hash": "sha256:48ef6a46fdb03e22a9fdbc302e4f0fa322fb6c2ea486d126796a1e881ae93226",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 9
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "example": "subalcaldiaswgs84.9"
+          },
+          {
+            "name": "objectid",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 409
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "minimum": 0,
+              "maximum": 0
+            }
+          },
+          {
+            "name": "subalcaldi",
+            "type": "string",
+            "example": "SUB ALCALDIA COTAHUMA"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPoint."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
