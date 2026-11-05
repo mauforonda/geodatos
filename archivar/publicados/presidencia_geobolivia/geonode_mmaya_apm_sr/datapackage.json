@@ -1,0 +1,53 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_mmaya_apm_sr",
+  "title": "Área Protegida Municipal Área Natural de Manejo Integrado Pampas del Yacuma - GAM Santa Rosa del Yacuma",
+  "description": "Información geográfica del Área Protegida Municipal Área Natural de Manejo Integrado Pampas del Yacuma, creada a través de la Ordenanza Municipal Nº 15/2007 de 26 de julio de 2007. Plan de Manejo aprobado por la Ley Municipal Nº 09 de 6 de septiembre de 2016. Categorizada como Área Natural de Manejo Integrado.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_mmaya_apm_sr/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 3855,
+      "hash": "sha256:9e979d8a09b976fd0966d5b9428ba46c4f41c73a7ac79a79dd214aa9221d9794",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 1
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "minimum": 0,
+              "maximum": 0
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
