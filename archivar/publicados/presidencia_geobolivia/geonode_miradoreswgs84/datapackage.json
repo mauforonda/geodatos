@@ -1,0 +1,116 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_miradoreswgs84",
+  "title": "Mapa de Miradores del Municipio de La Paz",
+  "description": "El mapa presenta información espacial de la localización de miradores en el Municipio de La Paz.   Elaborado por Oficialía Mayor de Planificación para el Desarrollo (OMPD) del Gobierno Autónomo Municipal de La Paz, en el año 2013.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_miradoreswgs84/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 7120,
+      "hash": "sha256:8688d32c4a14fe355374d4f72ae2309c48bbf336c0c522b72440ddf326087c8f",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "miradoreswgs84.6"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 36
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "miradoreswgs84.6"
+          },
+          {
+            "name": "objectid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 2,
+              "maximum": 37
+            }
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Mirador Faro Murillo"
+          },
+          {
+            "name": "gdbsnomb",
+            "type": "string",
+            "example": "Mirador Faro Murillo"
+          },
+          {
+            "name": "gdbscodc",
+            "type": "string",
+            "example": "Sin registro catastral"
+          },
+          {
+            "name": "gdbszona",
+            "type": "string",
+            "example": "Faro Murillo"
+          },
+          {
+            "name": "gdbsubic",
+            "type": "string",
+            "example": "Av. Panoramica-Final 9 de Abril"
+          },
+          {
+            "name": "encontrado",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "NO",
+            "categories": [
+              "SI",
+              "NO"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPoint."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
