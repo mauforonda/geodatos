@@ -1,0 +1,89 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_sub_estacion",
+  "title": "Subestaciones eléctricas de Bolivia_2012",
+  "description": "El mapa muestra la distribución espacial de sub-estaciones eléctricas en el territorio nacional, instalaciones destinadas a derivar circuitos de potencia y a modificar y establecer los niveles de tensión de cada infraestructura eléctrica, facilitando el transporte y distribución de la energía eléctrica de cada región. Elaborado por la Autoridad de fiscalización y control de electricidad (AE) con datos actualizados a diciembre de 2012 a escala 1:4500000.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_sub_estacion/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 7866,
+      "hash": "sha256:4828fe006f66a042eadd9368209f60b19562eea8f59dfed2fc673b587a88fb50",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "sub_estacion.53"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 89
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "SUB_ESTACION.53"
+          },
+          {
+            "name": "empresa",
+            "type": "string",
+            "example": "Servicios Eléctricos Potosí S.A. (SEPSA)",
+            "categories": [
+              "Transportadora de Electricidad S.A. (TDE)",
+              "Cooperativa Rural de Electrificación Ltda. (CRE)",
+              "Servicios Eléctricos Potosí S.A. (SEPSA)",
+              "Empresa de Luz y Fuerza Eléctrica de Oruro S.A. (ELFEO)",
+              "Electricidad de La Paz S.A. (ELECTROPAZ)",
+              "Empresa de Luz y Fuerza Electrica Cochabamba S.A. (ELFEC)",
+              "Hidroeléctrica Boliviana S.A. (HB)",
+              "Servicios de Desarrollo de Bolivia S.A. (SDB)",
+              "Transmisora de Electricidad San Cristóbal S.A. INGELEC (TESA)"
+            ]
+          },
+          {
+            "name": "subestacio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "SAN CRISTOBAL"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
