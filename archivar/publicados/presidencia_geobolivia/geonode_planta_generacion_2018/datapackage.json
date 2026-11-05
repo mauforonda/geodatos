@@ -1,0 +1,123 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_planta_generacion_2018",
+  "title": "Plantas de generación eléctrica Bolivia_ 2018",
+  "description": "Este mapa representa la distribución y localización espacial de la generación de energía eléctrica en Bolivia mostrando centrales hidroeléctricas que aprovechan la fuerza del agua de los ríos para producir electricidad y termoeléctricas que producen electricidad utilizando energía del petróleo, a escala 1:4.500.000. Elaborado por la Autoridad de Fiscalización y Control Social de electricidad (AE) con datos actualizados a marzo de 2018.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_planta_generacion_2018/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 9378,
+      "hash": "sha256:1f8c000e7a9c0340a3c8ad4807c635008437b3eeae945cee82e9601e904c80c1",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 106
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0,
+              "maximum": 105
+            }
+          },
+          {
+            "name": "empresa",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Empresa Nacional de Electricidad (ENDE)",
+            "categories": [
+              "Empresa Nacional de Electricidad (ENDE)",
+              "Compañia Boliviana de Energia Electrica (COBEE S.A.)",
+              "EMPRESA ELÉCTRICA ENDE GUARACACHI S.A.",
+              "Distribuidora de Electricidad ENDE DELBENI S.A.M. (ENDE DELBENI S.A.M.)",
+              "Servicios Eléctricos de Tarija (SETAR)",
+              "Coop.Rural de Electrificación Ltda. (CRE)",
+              "Coop.Rural de Electrificación Ltda.(CRE)",
+              "Empresa Eléctrica Corani S.A. (CORANI)",
+              "Empresa Eléctrica Valle Hermoso S.A.( EVH)",
+              "Empresa Nacional de Electricidad Andina Sociedad Anónima Mixta (ENDE ANDINA S.A.M.)",
+              "Hidroeléctrica Boliviana S.A. (HB)",
+              "Río Eléctrico S.A. (ERESA)",
+              "Gas & Electricidad S.A. (G&E)",
+              "SINCHI WAYRA S.A.",
+              "Secco Energía Boliviana S.a. (SECCO)",
+              "Servicios de Desarrollo de Bolivia S.A. (SDB)",
+              "Compañía Eléctrica Central Bulo Bulo S.A. (CECBB)",
+              "Coop. Ser. Eléc. El Peru Ltda.",
+              "Coop. de Ser. Púb. Monteagudo Ltda. (COSERMO)",
+              "Coop. de Ser. Púb. Monteagudo Ltda.(COSERMO)",
+              "Cooperativa Eléctrica Riberalta Ltda. (CER)",
+              "Cooperativa de Servicios Eléctricos Las Petas LTDA.",
+              "Cooperativa de Servicios Eléctricos Rosario Río Tapado LTDA.",
+              "EMPRESA ELÉCTRICA ENDE GUARACACHI S.A.\r\n",
+              "Guabira Energia S.A. (Bagazo) (GESA)",
+              "Secco Energía Boliviana S.A.(SECCO)",
+              "Ser. Eléctricos San Buenaventura (SESSA)",
+              "Sociedad Industrial Energética y Comercial Andina S.A (SYNERGIA)"
+            ]
+          },
+          {
+            "name": "planta",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Laguna Colorada"
+          },
+          {
+            "name": "tecnologia",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Geotermico Proy",
+            "categories": [
+              "Hidroeléctrica",
+              "Termoeléctrica-Dies",
+              "Termoeléctrica-Aisl",
+              "Termoeléctrica-SIN",
+              "Hidroeléctrica Proy",
+              "Termoeléctrica-DieB",
+              "Central Solar",
+              "Termoeléctrica-SINP",
+              "Eólica",
+              "Geotermico Proy"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
