@@ -1,0 +1,73 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_tribunal_electoral_dpto",
+  "title": "Localización de Tribunales Electorales Departamentales Bolivia, 2019",
+  "description": "El mapa muestra la localización de los Tribunales Electorales Departamentales (TED) que son el máximo nivel y autoridad del Órgano Electoral Plurinacional (OEP) a nivel departamental, con sede, jurisdicción y atribuciones en sus respectivos departamentos, bajo las directrices del TSE.  La Sala Plena es la  Máxima Autoridad Ejecutiva (MAE) del TED y sus decisiones son de cumplimiento obligatorio para todas las autoridades públicas y personas naturales, aunque pueden ser impugnadas ante el Tribunal Supremo Electoral (TSE) en las condiciones y términos establecidos en la Ley. (Art 31, Ley N. 018). Los TED están integrados por cinco vocales, de los cuales al menos uno es de una nación o pueblo indígena originario campesino del departamento, y al menos dos son mujeres. (Art 32, Ley N. 018). Información obtenida de la web del Órgano Electoral Plurinacional de Bolivia a mayo 2019.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_tribunal_electoral_dpto/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 3282,
+      "hash": "sha256:2daa47412b31e20e95c4183d6d82ddd673a93a61f77a96765717fc454eefe46f",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 9
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 9
+            }
+          },
+          {
+            "name": "departamen",
+            "type": "string",
+            "example": "Oruro"
+          },
+          {
+            "name": "municipio",
+            "type": "string",
+            "example": "Oruro"
+          },
+          {
+            "name": "direccion",
+            "type": "string",
+            "example": "Calle La Plata y Aldana Nº 6356"
+          },
+          {
+            "name": "telefono",
+            "type": "string",
+            "example": "(591)-2-52-54011 / 2-52-83085"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
