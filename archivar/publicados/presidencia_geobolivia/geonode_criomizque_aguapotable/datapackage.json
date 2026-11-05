@@ -1,0 +1,222 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_criomizque_aguapotable",
+  "title": "Plan Director Cuenca Río Mizque - Agua Potable_ Bolivia",
+  "description": "Muestra la georreferenciación y la información relevante de los Proyectos de Agua Potable situados en el área del Plan Director de la Cuenca del Río Mizque de tipos de agua potable y saneamiento, información obtenida del Viceministerio de Recursos Hídricos y Riego, ha noviembre del 2016.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_criomizque_aguapotable/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 7268,
+      "hash": "sha256:b968c88db55ae20cbdd57942c430a21a6d36c89b9c6a0aa41bc83c8343e778d6",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 26
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0,
+              "maximum": 25
+            }
+          },
+          {
+            "name": "nom_proy",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "CONST. SIST. AGUA POTABLE TENERIA (AIQUILE)"
+          },
+          {
+            "name": "programa",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "MI AGUA III",
+            "categories": [
+              "MI AGUA I",
+              "MI AGUA II",
+              "APPC I",
+              "MI AGUA III",
+              "APCR"
+            ]
+          },
+          {
+            "name": "x",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -65.669939,
+              "maximum": -64.190845
+            }
+          },
+          {
+            "name": "y",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -18.722517,
+              "maximum": -17.512974
+            }
+          },
+          {
+            "name": "sisin",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 2877354400000.0
+            }
+          },
+          {
+            "name": "depto",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "COCHABAMBA",
+            "categories": [
+              "COCHABAMBA",
+              "SANTA CRUZ",
+              "Cochabamba",
+              "Santa Cruz"
+            ]
+          },
+          {
+            "name": "provincia",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "CAMPERO",
+            "categories": [
+              "CAMPERO",
+              "ARANI",
+              "MANUEL MARIA CABALLERO",
+              "MIZQUE",
+              "VALLEGRANDE",
+              "CARRASCO",
+              "Mizque",
+              "Carrasco",
+              "Manuel Maria Caballero"
+            ]
+          },
+          {
+            "name": "municipio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "AIQUILE"
+          },
+          {
+            "name": "comunidad",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "TENERIA"
+          },
+          {
+            "name": "flia_benf",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 9,
+              "maximum": 5315
+            }
+          },
+          {
+            "name": "inv_total",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 233296.01,
+              "maximum": 7528876.55
+            }
+          },
+          {
+            "name": "estado",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "CONCLUIDO",
+            "categories": [
+              "CONCLUIDO",
+              "EJECUCION"
+            ]
+          },
+          {
+            "name": "tipo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "AGUA POTABLE",
+            "categories": [
+              "AGUA POTABLE",
+              "SANEAMIENTO"
+            ]
+          },
+          {
+            "name": "prog_ejec",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "FPS",
+            "categories": [
+              "FPS"
+            ]
+          },
+          {
+            "name": "pdc",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "PDC_MIZQUE",
+            "categories": [
+              "PDC_MIZQUE"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
