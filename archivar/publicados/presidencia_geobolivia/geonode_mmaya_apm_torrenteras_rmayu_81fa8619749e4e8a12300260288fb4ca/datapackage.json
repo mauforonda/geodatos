@@ -1,0 +1,68 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_mmaya_apm_torrenteras_rmayu_81fa8619749e_f91a0c35003e",
+  "title": "Área Protegida y Patrimonial Natural las Torrenteras del Río Cárcel Mayu - GAM Capinota",
+  "description": "Información geográfica del Área Protegida y Patrimonial Natural las Torrenteras del Río Cárcel Mayu, creada mediante la Ordenanza Municipal 023/2013 de fecha 16 de septiembre de 2013. Con el fin de preservar los cursos de agua para no poder afectar a los centros poblados en épocas de lluvia, como también no permitir los avasallamientos y asentamientos humanos, conservando también las especies nativas mencionadas.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_mmaya_apm_torrenteras_rmayu_81fa8619749e_f91a0c35003e/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 9220,
+      "hash": "sha256:799c04b544dc7b1a36920cf43fcbdc0d5bb4210c6273254320d89425d63325dd",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 81
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 0
+            }
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Punto",
+            "categories": [
+              "Punto",
+              "APM"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
