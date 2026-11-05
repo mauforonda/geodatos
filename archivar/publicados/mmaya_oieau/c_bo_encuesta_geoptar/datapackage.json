@@ -1,0 +1,84 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_oieau_c_bo_encuesta_geoptar",
+  "title": "BO_UP_Encuesta_GEOPTAR",
+  "sources": [
+    {
+      "title": "Sistema para la Gestión Integral de Recursos Hídricos desarrollado por la Oficina Internacional del Agua (OiEau)",
+      "path": "https://www.oieau-wiss.org/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_oieau_c_bo_encuesta_geoptar/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 4464,
+      "hash": "sha256:3bf7fbaca797554f1a7f3ac3142a4bcdf3b38ed4cd0cc446cbf3475c3dcc00c7",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Encuesta_GEOPTAR.11"
+          },
+          {
+            "name": "field_1",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 33
+            }
+          },
+          {
+            "name": "nombre_ptar",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "PTAR COLOMI"
+          },
+          {
+            "name": "mosy",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": -22.0304557473942,
+              "maximum": -10.9947247476671
+            }
+          },
+          {
+            "name": "mosx",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": -68.3091651,
+              "maximum": -60.0099405726798
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
