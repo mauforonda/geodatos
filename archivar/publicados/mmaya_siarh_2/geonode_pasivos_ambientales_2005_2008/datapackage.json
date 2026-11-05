@@ -1,0 +1,124 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_pasivos_ambientales_2005_2008",
+  "title": "Plan Director Cuenca Rio Grande - Pasivos Ambientales",
+  "description": "PDCRG (Plan Director de la Cuenca Río Grande). Cobertura con información georreferenciada de los Pasivos Ambientales (2005 - 2008) ubicadas en el área del Plan Director de la Cuenca del Río Grande.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_pasivos_ambientales_2005_2008/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 6801,
+      "hash": "sha256:4b3c9ee6044b2994efcc322586ba6500c03500b3f19aed740c061e55ae1dce41",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "ID",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1037,
+              "maximum": 1498
+            }
+          },
+          {
+            "name": "COD_P",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "LLA-003-001",
+            "categories": [
+              "IND-002-001",
+              "SLA-001-001",
+              "LLA-003-001",
+              "JAM-001-001",
+              "JAM-003-001",
+              "AIS-001-001",
+              "PUC-001-002",
+              "CHV-001-001",
+              "JAM-006-001",
+              "LLA-001-002",
+              "JAM-003-002",
+              "PUC-002-001",
+              "CHV-001-002",
+              "IND-001-001",
+              "IND-003-001",
+              "LLA-001-001",
+              "LLA-002-001",
+              "PUC-001-001",
+              "PUC-003-001",
+              "SLA-001-002",
+              "SLA-002-001",
+              "SLA-003-001",
+              "SLA-003-002"
+            ]
+          },
+          {
+            "name": "MINA",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Cancañiri",
+            "categories": [
+              "La India",
+              "Angeles",
+              "Cancañiri",
+              "Sokhara",
+              "Willa Khollu",
+              "Janko Laime",
+              "Challviri",
+              "Cuyuma",
+              "Catavi",
+              "Pumiri",
+              "Capacirca",
+              "Desconocido",
+              "San Luis",
+              "Cantera Iruma",
+              "Llajta Pampa",
+              "Llallagua"
+            ]
+          },
+          {
+            "name": "X_UTM",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 734636,
+              "maximum": 777148
+            }
+          },
+          {
+            "name": "Y_UTM",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 7932895,
+              "maximum": 8000341
+            }
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
