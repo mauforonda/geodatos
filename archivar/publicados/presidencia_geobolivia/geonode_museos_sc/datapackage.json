@@ -1,0 +1,60 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_museos_sc",
+  "title": "Localización de museos del municipio de Santa Cruz de la Sierra 2017",
+  "description": "El mapa localiza los principales museos de la ciudad de Santa Cruz de la Sierra, información obtenida de la página web del  Concejo Municipal de Santa Cruz de la Sierra, actualizados a julio 2017.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_museos_sc/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 4329,
+      "hash": "sha256:1f4912b1057ccebe153bafd627fa063c31adaeb1a6e363428f0df8d7663e4bea",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "example": "museos_sc.7"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 8
+            }
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "example": "Museo Noel Kepff Mercado\n"
+          },
+          {
+            "name": "descripcio",
+            "type": "string",
+            "example": "Especializado en la conservación y muestra de colecciones de ciencias naturales (botánica, zoología "
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
