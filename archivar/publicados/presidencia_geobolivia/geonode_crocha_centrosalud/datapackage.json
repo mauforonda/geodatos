@@ -1,0 +1,124 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_crocha_centrosalud",
+  "title": "Plan Director Cuenca Río Rocha - Centro de Salud, Bolivia",
+  "description": "El mapa muestra la localización de los 146 centros de salud que se hallan en la Cuenca del Río Rocha del Departamento de Cochabamba, los tipos son: Centro de Salud (88), Centro con Camas (18), Puesto de Salud (24), Hospital de 2do. nivel (11), Hospital de 3er. nivel (3), Instituto Especializado (2). Dato del Viceministerio de Recursos Hídricos y Riego, ha mayo del 2016, a escala 1:250.000.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_crocha_centrosalud/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 12014,
+      "hash": "sha256:c6ca18c9c7c614895c1bc22c86c3c9923aceff643c7572da8b69c283e1ad65dd",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 146
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0,
+              "maximum": 145
+            }
+          },
+          {
+            "name": "tipo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "4",
+            "categories": [
+              "3",
+              "4",
+              "6",
+              "2",
+              "1",
+              "5"
+            ]
+          },
+          {
+            "name": "tipo_descr",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Puesto de Salud",
+            "categories": [
+              "Centro de Salud",
+              "Puesto de Salud",
+              "Centro de Salud con Camas",
+              "Hospital de Segundo Nivel",
+              "Hospital General ó de Tercer Nivel",
+              "Instituto Especializado"
+            ]
+          },
+          {
+            "name": "nombre_est",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "P.S. HUERTA MAYU"
+          },
+          {
+            "name": "lat",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -17.808,
+              "maximum": -17.297
+            }
+          },
+          {
+            "name": "long",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -66.467227,
+              "maximum": -65.626634
+            }
+          },
+          {
+            "name": "codigo_sni",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "300134"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
