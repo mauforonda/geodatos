@@ -1,0 +1,170 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_crocha_estmetereologicas",
+  "title": "Plan Director Cuenca Río Rocha - Estaciones Meteorológicas_ Bolivia",
+  "description": "El mapa muestra las 75 estaciones meteorológicas de la Cuenca del Río Rocha que se halla en el departamento de Cochabamba, datos del Servicio Nacional de Meteorología e Hidrología (SENAMHI), una estación meteorológica es una instalación destinada a medir y registrar regularmente diversas variables meteorológicas. Estos datos se utilizan tanto para la elaboración de predicciones meteorológicas a partir de modelos numéricos como para estudios climáticos. Información obtenida del Viceministerio de Recursos Hídricos y Riego, ha noviembre del 2016.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_crocha_estmetereologicas/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 7010,
+      "hash": "sha256:f6e741dd4ab43636c3dfa2d366ea8cba9570b084e9443e313dedf200feeeedd6",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 75
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0,
+              "maximum": 74
+            }
+          },
+          {
+            "name": "nom_proy",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Juan Vena"
+          },
+          {
+            "name": "tipo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Metereologica",
+            "categories": [
+              "Metereologica"
+            ]
+          },
+          {
+            "name": "x",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -66.47,
+              "maximum": -65.5
+            }
+          },
+          {
+            "name": "y",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -17.92,
+              "maximum": -17.22
+            }
+          },
+          {
+            "name": "depto",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Cochabamba",
+            "categories": [
+              "Cochabamba"
+            ]
+          },
+          {
+            "name": "provincia",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Esteban Arce",
+            "categories": [
+              "Arani",
+              "Quillacollo",
+              "Esteban Arce",
+              "Cercado",
+              "Punata",
+              "Chapare",
+              "Ayopaya",
+              "German Jordan",
+              "Tiraque",
+              "Carrasco",
+              "Mizque",
+              "Tapacari",
+              "Capinota"
+            ]
+          },
+          {
+            "name": "elev_msnm",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1040,
+              "maximum": 4200
+            }
+          },
+          {
+            "name": "rec_hist",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "1974 - 1993"
+          },
+          {
+            "name": "esta_actu",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Inactiva",
+            "categories": [
+              "Inactiva",
+              "Activa"
+            ]
+          },
+          {
+            "name": "observacio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Dentro la cuenca",
+            "categories": [
+              "Dentro la cuenca",
+              "Fuera de la cuenca"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
