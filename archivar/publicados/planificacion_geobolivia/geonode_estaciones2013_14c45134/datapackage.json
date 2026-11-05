@@ -1,0 +1,98 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geobolivia_geonode_estaciones2013_14c45134",
+  "title": "Estaciones de gas natural e hidrocarburos líquidos, YPFB Transporte - 2013",
+  "description": "La presente información muestra la distribución espacial de los distintos tipos de estaciones administrados por Yacimientos Petrolíferos Fiscales Bolivianos. Entre las cuales se presentan: estaciones de regulación y bombeo de hidrocarburos líquidos (petróleo crudo, excedentes de refinación y condensado), estaciones de compresión de GLP (Gas Licuado de Petroleo), oficinas y otras . Elaborado con datos actualizados a marzo de 2013 por YPFB Transporte S.A., empresa nacional que trabaja con tecnología de punta, normas y certificaciones internacionales.",
+  "sources": [
+    {
+      "title": "Nueva plataforma GeoBolivia",
+      "path": "https://geonode.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geobolivia_geonode_estaciones2013_14c45134/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 6265,
+      "hash": "sha256:28ac9c4cde8e7e09c078f82b5f5586e46629ff94a6187234f2d243f19f6a8437",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "estaciones2013_14c45134.42"
+          },
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 64
+            }
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 64
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Estaciones2013.42"
+          },
+          {
+            "name": "sitename",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Puquios"
+          },
+          {
+            "name": "sitetype",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Regulator Station",
+            "categories": [
+              "Compressor Station",
+              "Regulator Station",
+              "Pump Station",
+              "Meter Station",
+              "Office"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
