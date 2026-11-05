@@ -1,0 +1,108 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_molinos_emapa",
+  "title": "Localización de Molinos EMAPA, 2017",
+  "description": "El mapa muestra la localización de los molinos que administra la Empresa de Apoyo a la Producción de Alimentos (EMAPA) en el territorio nacional, los molinos es una herramienta que se utiliza mucho en el área agrícola con el objetivo principal de triturar alguna cosa, por lo general, cereales  granos, con el fin de convertirlos en harina, información actualizada a marzo del 2017.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_molinos_emapa/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 3528,
+      "hash": "sha256:d349165777cc5472f4af51090dcafd41cdf42df1ffd4e35a1eeb99249f75ca58",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "example": "molinos_emapa.1"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 8
+            }
+          },
+          {
+            "name": "cod",
+            "type": "string",
+            "example": "MOL001"
+          },
+          {
+            "name": "x",
+            "type": "number",
+            "constraints": {
+              "minimum": -68.187239,
+              "maximum": -62.561504
+            }
+          },
+          {
+            "name": "y",
+            "type": "number",
+            "constraints": {
+              "minimum": -19.039676,
+              "maximum": -16.482245
+            }
+          },
+          {
+            "name": "nom_dep",
+            "type": "string",
+            "example": "LA PAZ",
+            "categories": [
+              "LA PAZ",
+              "CHUQUISACA",
+              "COCHABAMBA",
+              "SANTA CRUZ"
+            ]
+          },
+          {
+            "name": "nom_mun",
+            "type": "string",
+            "example": "El Alto"
+          },
+          {
+            "name": "nom_infr",
+            "type": "string",
+            "example": "MOLINO Y FABRICA DE FIDEOS AURORA S.R.L."
+          },
+          {
+            "name": "alt_msnm",
+            "type": "integer",
+            "constraints": {
+              "minimum": 264,
+              "maximum": 4020
+            }
+          },
+          {
+            "name": "tipo_grano",
+            "type": "string",
+            "example": "Trigo",
+            "categories": [
+              "Trigo"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
