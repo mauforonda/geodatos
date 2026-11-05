@@ -1,0 +1,202 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_cpoopo_estacion_metereologica",
+  "title": "Plan Director Cuenca Lago Poopó - Estaciones Meteorológicas_ Bolivia",
+  "description": "El mapa muestra la georreferenciación e información relevante de las 72 estaciones meteorológicas ubicadas a dentro y al contorno de la Cuenca del Lago Poopó, dato del Viceministerio de Recursos Hídricos y Riego a noviembre 2016.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_cpoopo_estacion_metereologica/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 7747,
+      "hash": "sha256:d86e401bc97c3bcf9466379518fe437b659c6b1474f4f82c3ec45542e6e66c94",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 72
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0,
+              "maximum": 71
+            }
+          },
+          {
+            "name": "nom_proy",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Orinoca AT"
+          },
+          {
+            "name": "tipo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "METEREOLOGICAS",
+            "categories": [
+              "METEREOLOGICAS"
+            ]
+          },
+          {
+            "name": "codigo",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 0
+            }
+          },
+          {
+            "name": "x",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -68.17,
+              "maximum": -66.18
+            }
+          },
+          {
+            "name": "y",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -20.1,
+              "maximum": -17.05
+            }
+          },
+          {
+            "name": "depto",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Oruro",
+            "categories": [
+              "Oruro",
+              "La Paz",
+              "Potosi",
+              "Cochabamba",
+              "Potos?",
+              "Potosí"
+            ]
+          },
+          {
+            "name": "provincia",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Sud Carangas",
+            "categories": [
+              "Cercado",
+              "Antonio Quijarro",
+              "Carangas",
+              "Poopó",
+              "Aroma",
+              "Avaroa",
+              "Loayza",
+              "Saucari",
+              "Tomas Barron",
+              "Sud Carangas",
+              "Gualberto Villarroel",
+              "Inquisivi",
+              "Pantaleon Dalence",
+              "Rafael Bustillo",
+              "Sebastian Pagador",
+              "Bol?var",
+              "Capinota",
+              "Los Andes",
+              "Nor Carangas",
+              "Tapacari"
+            ]
+          },
+          {
+            "name": "elev_msnm",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1720,
+              "maximum": 4572
+            }
+          },
+          {
+            "name": "rec_hist",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "2011 - 2015"
+          },
+          {
+            "name": "esta_actu",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Activa",
+            "categories": [
+              "Inactiva",
+              "Activa"
+            ]
+          },
+          {
+            "name": "observacio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Dentro de la Cuenca",
+            "categories": [
+              "Dentro de la Cuenca",
+              "Fuera de la Cuenca"
+            ]
+          },
+          {
+            "name": "pdc",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "PDC_POOPO",
+            "categories": [
+              "PDC_POOPO"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
