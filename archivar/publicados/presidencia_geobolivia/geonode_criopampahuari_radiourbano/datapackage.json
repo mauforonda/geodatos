@@ -1,0 +1,81 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_criopampahuari_radiourbano",
+  "title": "Plan Director Cuenca Río Pampa Huari – Radio Urbano de la Ciudad de Potosí_ Bolivia",
+  "description": "El mapa muestra la delimitación del radio urbano de la ciudad de potosí de forma referencial. Información obtenida del Viceministerio de Recursos Hídricos y Riego a febrero del 2019.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_criopampahuari_radiourbano/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 9414,
+      "hash": "sha256:5f689fe3ef79c829f556ccdb6b56482d2795001622e03908688704e08eb53df1",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 1
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 1
+            }
+          },
+          {
+            "name": "departamen",
+            "type": "string",
+            "example": "Potosí"
+          },
+          {
+            "name": "municipio",
+            "type": "string",
+            "example": "Potosí"
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "example": "Radio Urbano"
+          },
+          {
+            "name": "descripcio",
+            "type": "string",
+            "example": "Area Concetrada"
+          },
+          {
+            "name": "area_km2",
+            "type": "number",
+            "constraints": {
+              "minimum": 32.6923630913,
+              "maximum": 32.6923630913
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 1."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
