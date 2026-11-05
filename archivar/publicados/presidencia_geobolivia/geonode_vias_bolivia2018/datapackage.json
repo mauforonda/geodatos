@@ -1,0 +1,136 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_vias_bolivia2018",
+  "title": "Mapa de Ubicación de Retenes de Peaje y Pesaje en Bolivia_ 2018",
+  "description": "El Mapa muestra las localizaciones de las estaciones de Peaje, Pesos y Dimensiones (Pesaje) que se encuentran actualmente en funcionamiento en Bolivia al mes Marzo 2018. Muestra también el sistema de cobro en cada estación.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_vias_bolivia2018/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 10927,
+      "hash": "sha256:93601d4482964551618728f677d1689268342d24618eb3a49a151d4be69b67c3",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "vias_bolivia2018.132"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 136
+            }
+          },
+          {
+            "name": "tipo_estac",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "PEAJE/PESAJE",
+            "categories": [
+              "PEAJE",
+              "PESAJE",
+              "PEAJE/PESAJE"
+            ]
+          },
+          {
+            "name": "estacion",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Uyuni II"
+          },
+          {
+            "name": "codesta",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 136
+            }
+          },
+          {
+            "name": "ubicacion",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "TEMPORAL",
+            "categories": [
+              "DEFINITIVO",
+              "TEMPORAL O MOVIL",
+              "TEMPORAL",
+              "DEFINITIVA"
+            ]
+          },
+          {
+            "name": "sist_cobro",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "SISCAP/SNCPD",
+            "categories": [
+              "SISCAP",
+              "SISAPP",
+              "SNCPD",
+              "SISCEP",
+              "CONTROL",
+              "SISCAP/CONTROL",
+              "SISCAP/SNCPD"
+            ]
+          },
+          {
+            "name": "departamen",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Potosí",
+            "categories": [
+              "Santa Cruz",
+              "Cochabamba",
+              "Potosí",
+              "Beni-Pando",
+              "La Paz",
+              "Oruro",
+              "Tarija",
+              "Chuquisaca"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
