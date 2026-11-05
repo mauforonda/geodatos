@@ -1,0 +1,163 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_4toorden_met",
+  "title": "Estaciones meteorologicas de 4to orden Bolivia_ 2014",
+  "description": "Esta información presenta la ubicación de estaciones meteorológicas de cuarto orden distribuidas en territorio nacional. Elaborado por el Servicio Nacional de Meteorología e Hidrología (SENAMHI) con datos actualizados a mayo de 2014.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_4toorden_met/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 12010,
+      "hash": "sha256:e66ba5a359694553b95d1e1051e3eae7a4b29b49c7d12c0a0dbacc6d6fb35b97",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "4toorden_met.36"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 103
+            }
+          },
+          {
+            "name": "estacion",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Talina"
+          },
+          {
+            "name": "departamen",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Potosí",
+            "categories": [
+              "Tarija",
+              "La Paz",
+              "Chuquisaca",
+              "Cochabamba",
+              "Potosí",
+              "Santa Cruz",
+              "Oruro"
+            ]
+          },
+          {
+            "name": "provincia",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Sud Chichas"
+          },
+          {
+            "name": "municio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Tupiza"
+          },
+          {
+            "name": "latitud",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -21.8556,
+              "maximum": -15.1953
+            }
+          },
+          {
+            "name": "longitud",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -69.2417,
+              "maximum": -61.4167
+            }
+          },
+          {
+            "name": "altitud",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 200,
+              "maximum": 4395
+            }
+          },
+          {
+            "name": "tipo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Meteorológica de 4to Orden",
+            "categories": [
+              "Meteorológica de 4to Orden"
+            ]
+          },
+          {
+            "name": "operador",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Proyecto Pilcomayo",
+            "categories": [
+              "SENAMHI",
+              "Proyecto Pilcomayo",
+              "Administradora Boliviana de Carreteras",
+              "EMAPA",
+              "EMIRSA - INTI RAYMI",
+              "Universidad Mayor de San Andres - IHH"
+            ]
+          },
+          {
+            "name": "estado",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Funcionando",
+            "categories": [
+              "Funcionando"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
