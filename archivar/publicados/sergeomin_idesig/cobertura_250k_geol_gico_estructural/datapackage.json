@@ -1,0 +1,131 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_sergeomin_idesig_cobertura_250k_geol_gico_estructural",
+  "title": "GEOLÓGICO_ESTRUCTURAL",
+  "sources": [
+    {
+      "title": "Catálogo IDESIG de Sergeomin",
+      "path": "https://idesig.sergeomin.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_sergeomin_idesig_cobertura_250k_geol_gico_estructural/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 1056251,
+      "hash": "sha256:4f9b236ca0e26c19835963213868f49f130283f82c327071368b61f1cf59071e",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "GEOLÓGICO_ESTRUCTURAL.16"
+          },
+          {
+            "name": "OBJECTID",
+            "type": "integer"
+          },
+          {
+            "name": "Nombre",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "VILLA MARTIN \"COLCHA K\""
+          },
+          {
+            "name": "Hoja",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "SF 19-3"
+          },
+          {
+            "name": "Estado",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Con cobertura",
+            "categories": [
+              "Con cobertura",
+              "Sin cobertura",
+              "En producción"
+            ]
+          },
+          {
+            "name": "Temáticos",
+            "type": "integer"
+          },
+          {
+            "name": "Publicacio",
+            "type": "integer"
+          },
+          {
+            "name": "Documento",
+            "type": "integer"
+          },
+          {
+            "name": "Código",
+            "type": "string",
+            "example": "Ae-PPS-0001"
+          },
+          {
+            "name": "Imagen",
+            "type": "integer"
+          },
+          {
+            "name": "Shape_Length",
+            "type": "integer"
+          },
+          {
+            "name": "Shape_Area",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 75.1728114022,
+              "maximum": 26226.1819074
+            }
+          },
+          {
+            "name": "gestion",
+            "type": "string",
+            "example": "SERGEOMIN (1996-2004)",
+            "categories": [
+              "GEOBOL (1965-1996)",
+              "SERGEOMIN (1996-2004)",
+              "SERGEOMIN 2022",
+              "SERGEOMIN 2024",
+              "SERGEOMIN 2015",
+              "SERGEOMIN 2017",
+              "SERGEOMIN 2018",
+              "SERGEOMIN 2019",
+              "SERGEOMIN 2023",
+              "SERGEOMIN 2025",
+              "SERGEOTECMIN (2004-2013)"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 1."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
