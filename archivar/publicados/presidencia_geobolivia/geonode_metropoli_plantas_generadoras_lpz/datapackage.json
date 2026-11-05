@@ -1,0 +1,122 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_metropoli_plantas_generadoras_lpz",
+  "title": "Mapa Plantas Generadoras de Electricidad Región Metropolitana del Departamento de La Paz, Bolivia 2017",
+  "description": "El mapa muestra las plantas generadoras de electricidad que se localizan en la Región Metropolitana del Departamento de La Paz. Esta información fue obtenida del Atlas de la Región Metropolitana del Departamento de La Paz, elaborado por la Secretaria Municipal de Planificación para el Desarrollo del Gobierno Autónomo Municipal de La Paz y el Instituto de Investigaciones Geográficas, Carrera de Ingeniería Geográfica - UMSA y presentado en el mes de agosto del 2017.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_metropoli_plantas_generadoras_lpz/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 4094,
+      "hash": "sha256:24410612e10f5323b40ff6452a27aa08e3bfd3a120c6830d0c15415cfe801167",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "metropoli_plantas_generadoras_lpz.16"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 16
+            }
+          },
+          {
+            "name": "objectid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 16
+            }
+          },
+          {
+            "name": "empresa",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Compañia Boliviana de Energia Electrica (COBEE S.A.)",
+            "categories": [
+              "Compañia Boliviana de Energia Electrica (COBEE S.A.)",
+              "Hidroeléctrica Boliviana S.A. (HB)",
+              "Empresa Eléctrica Valle Hermoso S.A.( EVH)"
+            ]
+          },
+          {
+            "name": "planta",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Central Kenko"
+          },
+          {
+            "name": "tecnologia",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "TERMOELÉCTRICA-SIN",
+            "categories": [
+              "HIDROELÉCTRICA",
+              "TERMOELÉCTRICA-SIN"
+            ]
+          },
+          {
+            "name": "nivel_volt",
+            "type": "string",
+            "example": "5,5 y 5,5",
+            "categories": [
+              "6,9 - 6,9",
+              "6,6",
+              "5,5 y 5,5",
+              "6,6 - 6,6",
+              "6,6 - 6,6 - 6,6",
+              "6,6 - 6,6 - 6,6 - 6,6 - 6,6",
+              "6,9"
+            ]
+          },
+          {
+            "name": "tipo_equip",
+            "type": "string",
+            "example": "GENERADOR",
+            "categories": [
+              "GENERADOR"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
