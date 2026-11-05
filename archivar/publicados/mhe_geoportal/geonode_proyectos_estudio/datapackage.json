@@ -1,0 +1,99 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mhe_geoportal_geonode_proyectos_estudio",
+  "title": "Proyectos_Estudio",
+  "sources": [
+    {
+      "title": "Geoportal del Viceministerio de Electricidad y Energías Renovables",
+      "path": "https://geoportal.mhe.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mhe_geoportal_geonode_proyectos_estudio/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 3917,
+      "hash": "sha256:2424c9f1694555d1385b127a35ad502b5d188dc2c8ce369ab8788baaab8bb0bd",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 6
+            }
+          },
+          {
+            "name": "Proyecto",
+            "type": "string",
+            "example": "PLANTA SOLAR FOTOVOLTAICA VINTO"
+          },
+          {
+            "name": "COD",
+            "type": "string",
+            "example": "ESTU_03"
+          },
+          {
+            "name": "Inversion",
+            "type": "number",
+            "constraints": {
+              "minimum": 24.0,
+              "maximum": 260.1
+            }
+          },
+          {
+            "name": "Fuente",
+            "type": "string",
+            "example": "GESTIÓN DEL FINANCIAMIENTO (AFD, UE)"
+          },
+          {
+            "name": "Avance",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.0985,
+              "maximum": 0.38
+            }
+          },
+          {
+            "name": "Empresa",
+            "type": "string",
+            "example": "ENDE Guaracachi S.A.",
+            "categories": [
+              "ENDE Guaracachi S.A.",
+              "ENDE Matriz"
+            ]
+          },
+          {
+            "name": "ano_de_in",
+            "type": "string",
+            "example": "feb-26",
+            "categories": [
+              "dic-25",
+              "feb-26",
+              "ene-25"
+            ]
+          },
+          {
+            "name": "Localizaci",
+            "type": "string",
+            "example": "Municipio: Oruro \nProvincia: Cercado\nDepto.: Oruro \nPROYECTO EN ETAPA DE ESTUDIOS"
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
