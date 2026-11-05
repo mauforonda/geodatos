@@ -1,0 +1,67 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_minplanifica_pnot_estaciones_ferreas",
+  "title": "estaciones_ferreas",
+  "sources": [
+    {
+      "title": "Geoserver del Ministerio de Planificación del Desarollo",
+      "path": "https://geoserver.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_minplanifica_pnot_estaciones_ferreas/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 2611,
+      "hash": "sha256:18e4caed41be02341be6c97c8561a847e8ceea12bda8171c637b76466283fb20",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "example": "estaciones_ferreas.3"
+          },
+          {
+            "name": "ubicacion",
+            "type": "string",
+            "example": "Tupiza"
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "example": "Potosi",
+            "categories": [
+              "Potosi",
+              "Santa Cruz",
+              "Oruro",
+              "Tarija"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "example": "Sur Chichas"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "example": "Tupiza"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
