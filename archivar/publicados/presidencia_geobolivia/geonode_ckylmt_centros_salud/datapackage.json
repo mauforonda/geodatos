@@ -1,0 +1,101 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_ckylmt_centros_salud",
+  "title": "Plan Director de la Cuenca Katari y Lago Menor del Titicaca - Centros de Salud_ Bolivia",
+  "description": "El mapa muestra los centros de salud que se localizan en el área de intervención de la Cuenca Katari y Lago Menor del Titicaca. Dato del Viceministerio de Recursos Hídricos y Riego a noviembre 2017.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_ckylmt_centros_salud/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 9253,
+      "hash": "sha256:7ff087b20ec09ab1ec819c7f16d365684d6ea3a38d5664aa9c50417a84cea690",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "ckylmt_centros_salud.109"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 121
+            }
+          },
+          {
+            "name": "tipo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "3",
+            "categories": [
+              "3",
+              "4",
+              "6",
+              "2"
+            ]
+          },
+          {
+            "name": "tipo_descr",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Centro de Salud",
+            "categories": [
+              "Centro de Salud",
+              "Puesto de Salud",
+              "Centro de Salud con Camas",
+              "Hospital de Segundo Nivel"
+            ]
+          },
+          {
+            "name": "nombre_est",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "C.S. TATA PEPE"
+          },
+          {
+            "name": "codigo_sni",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "200621"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
