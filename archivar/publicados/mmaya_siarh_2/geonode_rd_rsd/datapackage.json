@@ -1,0 +1,155 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_rd_rsd",
+  "title": "Plan Director Cuenca Lago Poopó - Botaderos de Residuos Sólidos",
+  "description": "PDCLP (Plan Director de la Cuenca Lago Poopó). Muestra la ubicación y la información relevante de los botaderos de residuos sólidos, en el marco del Plan Director de la Cuenca del Lago Poopó.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_rd_rsd/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 4583,
+      "hash": "sha256:155e81f23692c37192bd6a97d5a1821f66e48d9c5440c181672b337e06453fc6",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "No",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 19
+            }
+          },
+          {
+            "name": "Municipio",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Santiago de Andamarca"
+          },
+          {
+            "name": "Poblacion",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 2975,
+              "maximum": 264943
+            }
+          },
+          {
+            "name": "Coord_X",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 614516,
+              "maximum": 735751
+            }
+          },
+          {
+            "name": "Coord_Y",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 7877092,
+              "maximum": 8054025
+            }
+          },
+          {
+            "name": "Altitud",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 3600,
+              "maximum": 3957
+            }
+          },
+          {
+            "name": "Barrido",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Si",
+            "categories": [
+              "Si",
+              "No"
+            ]
+          },
+          {
+            "name": "Rec_Transp",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "No",
+            "categories": [
+              "Si",
+              "No",
+              "Ni"
+            ]
+          },
+          {
+            "name": "Deposicio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Botadero no Controlado",
+            "categories": [
+              "Botadero no Controlado",
+              "Botadero Controlado",
+              "Relleno Sanitario"
+            ]
+          },
+          {
+            "name": "Reciclaje",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "No",
+            "categories": [
+              "No",
+              "Si"
+            ]
+          },
+          {
+            "name": "Cat_Pob",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Mayor 2000",
+            "categories": [
+              "Mayor 2000",
+              "Menor 2000"
+            ]
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
