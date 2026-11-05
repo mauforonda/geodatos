@@ -1,0 +1,53 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_mmaya_corazon_de_jesus",
+  "title": "Área Protegida \"Corazón de Jesús\" D-1 - GAM Oruro",
+  "description": "Información Geográfica del Área Protegida \"Corazón de Jesús\" D-1, creada a través de la Ley Municipal Nº 004/2013 de fecha 21 de diciembre 2013. Con el objetivo de garantizar su conservación, sus particularidades y riquezas medioambientales y culturales, consideradas como patrimonio de los orureñas y orureños.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_mmaya_corazon_de_jesus/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 2119,
+      "hash": "sha256:238c86f4065a4f9470eb336ec48ad4de609888530d6a812c5c01eb255fcb9a83",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 1
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "minimum": 0,
+              "maximum": 0
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
