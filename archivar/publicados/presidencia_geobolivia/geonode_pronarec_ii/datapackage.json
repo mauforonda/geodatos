@@ -1,0 +1,117 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_pronarec_ii",
+  "title": "Localización Proyectos del Programa de Riego con Enfoque de Cuencas (PRONAREC) Bolivia, 2017",
+  "description": "En el mapa se muestra la ubicación de los proyectos de riego del Programa PRONAREC ejecutados a través del FPS. El objetivo  fue reducir el impacto de las amenazas fortaleciendo las capacidades productivas , a través del mejoramiento y rehabilitación de sistemas de riego y el manejo integral de cuencas para el desarrollo y recuperación de las comunidades afectadas por los desastres.  Incrementar la superficie bajo riego y mejorar la eficiencia del uso del agua y suelo con fines agrícolas.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_pronarec_ii/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 9627,
+      "hash": "sha256:d2e9b93a9dc249fe731003fc345651aefa6e2ee99da3fc329b0cb6b3f0313a5a",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "pronarec_ii.76"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 76
+            }
+          },
+          {
+            "name": "nº",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 76
+            }
+          },
+          {
+            "name": "departamen",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "POTOSI",
+            "categories": [
+              "COCHABAMBA",
+              "CHUQUISACA",
+              "TARIJA",
+              "POTOSI"
+            ]
+          },
+          {
+            "name": "proyecto",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "CONST. SIST RIEGO ALIANZA, CHIJLLAPATA Y HUAYLLUMA (TAHUA)"
+          },
+          {
+            "name": "hectareas",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "HAS:40"
+          },
+          {
+            "name": "latitud",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": -22.68471667,
+              "maximum": -16.6877
+            }
+          },
+          {
+            "name": "longitud",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": -68.03786,
+              "maximum": -63.10448056
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
