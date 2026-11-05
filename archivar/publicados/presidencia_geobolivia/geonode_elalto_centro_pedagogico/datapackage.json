@@ -1,0 +1,175 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_elalto_centro_pedagogico",
+  "title": "Mapa Centro de Recursos Pedagógicos (CRP) del Municipio El Alto 2015",
+  "description": "La información geográfica muestra la ubicación y características de los Centro de Recursos Pedagógicos (CRP) del Municipio de El Alto, con sistema de referencia WGS 84, proyección UTM Zona 19 Sur a escala 1:1000. Obtenida a través de relevamiento de campo. Información proporcionada del Atlas Geográfico del Municipio de El Alto gestión 2015.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_elalto_centro_pedagogico/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 7295,
+      "hash": "sha256:3f268f853399fcefd49d62e9bfa3daea2c6131949c4b49e9fa36ae5e887aeb9d",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 11
+            }
+          },
+          {
+            "name": "gid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 11
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 11
+            }
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Waki Cejupiano"
+          },
+          {
+            "name": "ubicacion",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Urb. Cosmos 79 Uv \"F\" C. Kala Vinto"
+          },
+          {
+            "name": "num_est",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 150
+            }
+          },
+          {
+            "name": "num_educ",
+            "type": "integer"
+          },
+          {
+            "name": "cap_infra",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 500
+            }
+          },
+          {
+            "name": "pers_admin",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 21
+            }
+          },
+          {
+            "name": "lab_comp",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 2
+            }
+          },
+          {
+            "name": "biblio",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 2
+            }
+          },
+          {
+            "name": "serv_bas",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 123,
+              "maximum": 1236
+            }
+          },
+          {
+            "name": "obs",
+            "type": "string",
+            "example": "La biblioteca y laboratorio no funciona"
+          },
+          {
+            "name": "area_m2",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 886
+            }
+          },
+          {
+            "name": "gid_mnz",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 64,
+              "maximum": 462
+            }
+          },
+          {
+            "name": "gid_urb",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 9,
+              "maximum": 679
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
