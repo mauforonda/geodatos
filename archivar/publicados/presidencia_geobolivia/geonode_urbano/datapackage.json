@@ -1,0 +1,76 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_urbano",
+  "title": "Mapa del esquema regulador del departamento de Tarija_ 2005",
+  "description": "Este mapa presenta el esquema regulador del departamento de Tarija, que contempla la delimitación de las manchas urbanas consolidadas, áreas de expansión y áreas de equipamiento, así como también ríos, quebradas y vías de comunicación, a escala 1:500000.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_urbano/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 5487,
+      "hash": "sha256:50d4287c743243d079126d4073baac1fdcf1ba5dfcb9410dd387e9e7bdc610d3",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "example": "urbano.6"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 6
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "example": "urbano.6"
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "example": "Bermejo"
+          },
+          {
+            "name": "shape_leng",
+            "type": "number",
+            "constraints": {
+              "minimum": 1643.04837685,
+              "maximum": 16989.16857
+            }
+          },
+          {
+            "name": "shape_area",
+            "type": "number",
+            "constraints": {
+              "minimum": 166361.52997,
+              "maximum": 7121863.51914
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
