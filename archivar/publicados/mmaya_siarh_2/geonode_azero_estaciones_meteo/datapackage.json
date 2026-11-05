@@ -1,0 +1,110 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_azero_estaciones_meteo",
+  "title": "Plan Director Cuenca Río Azero - Estaciones Meteorológicas",
+  "description": "PDCRA (Plan Director de la Cuenca Rio Azero).  Muestra las estaciones Meteorológicas consideradas en el estudio hidrológico, balance hídrico y Gestión de Agua realizado en el marco del Estudio: Diagnóstico Integral y formulación de la propuesta de lineamientos estratégicos e institucionales para el Plan Director de la Cuenca Azero.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_azero_estaciones_meteo/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 4760,
+      "hash": "sha256:00fbd8b9f7e881c8b510fe14fa2501112b107a917865125cf0ceb6bc5a2eba93",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "Estacion",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "San Lucas"
+          },
+          {
+            "name": "Dist_km",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 7.7,
+              "maximum": 106.7
+            }
+          },
+          {
+            "name": "Depto",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Chuquisaca",
+            "categories": [
+              "Chuquisaca",
+              "Santa Cruz",
+              "Potosí"
+            ]
+          },
+          {
+            "name": "Admin",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "SENAMHI",
+            "categories": [
+              "SENAMHI"
+            ]
+          },
+          {
+            "name": "Lat",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": -20.3636,
+              "maximum": -18.8278
+            }
+          },
+          {
+            "name": "Lon",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": -65.1333,
+              "maximum": -63.5258
+            }
+          },
+          {
+            "name": "Elev_msnm",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 400,
+              "maximum": 3284
+            }
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
