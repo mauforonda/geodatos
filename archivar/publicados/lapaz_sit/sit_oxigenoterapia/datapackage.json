@@ -1,0 +1,85 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_sit_oxigenoterapia",
+  "title": "oxigenoterapia",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz",
+      "path": "http://sitservicios.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_sit_oxigenoterapia/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 3224,
+      "hash": "sha256:2a734f48930e49549dd97148db04e611b44703b2bdf8fc5ab51c172f4eda2c7e",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "oxigenoterapia.4"
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Centro de Salud El Rosal"
+          },
+          {
+            "name": "dias_atenc",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Lunes a Viernes",
+            "categories": [
+              "Lunes a Viernes",
+              "Todos los dilas",
+              "Todos los dias",
+              "Todos los días"
+            ]
+          },
+          {
+            "name": "horario",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "8:00 a 20:00",
+            "categories": [
+              "8:00 a 20:00",
+              "24 horas"
+            ]
+          },
+          {
+            "name": "telefono",
+            "type": "string",
+            "example": "2500722"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
