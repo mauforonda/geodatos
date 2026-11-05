@@ -1,0 +1,115 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_sergeomin_idesig_ws_cda_muestras_agua",
+  "title": "muestras_agua",
+  "sources": [
+    {
+      "title": "Catálogo IDESIG de Sergeomin",
+      "path": "https://idesig.sergeomin.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_sergeomin_idesig_ws_cda_muestras_agua/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 36277,
+      "hash": "sha256:33295c279aed3d319bbbca910478f80f73ff6f2cf511e0525b5b009026fc0c38",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "muestras_agua.621"
+          },
+          {
+            "name": "codigo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "CHIL-105-ASP"
+          },
+          {
+            "name": "clase",
+            "type": "string",
+            "example": "C",
+            "categories": [
+              ">D=E",
+              "C",
+              "B",
+              "A",
+              "D"
+            ]
+          },
+          {
+            "name": "cuenca",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "San Juan del Oro",
+            "categories": [
+              "Poopo A",
+              "Desaguadero",
+              "Mapiri-Tipuani",
+              "Tupiza-Cotagaita",
+              "Poopo B",
+              "San Juan del Oro",
+              "Pilcomayo",
+              "Area Chaco"
+            ]
+          },
+          {
+            "name": "gestion",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "2009",
+            "categories": [
+              "2009",
+              "2008",
+              "2014",
+              "2003",
+              "2007",
+              "2013"
+            ]
+          },
+          {
+            "name": "biblioteca",
+            "type": "integer"
+          },
+          {
+            "name": "epoca",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Lluvia",
+            "categories": [
+              "Lluvia",
+              "Estiaje"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
