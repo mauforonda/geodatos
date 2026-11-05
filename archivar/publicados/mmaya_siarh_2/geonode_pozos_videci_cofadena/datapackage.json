@@ -1,0 +1,87 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_pozos_videci_cofadena",
+  "title": "Pozos VIDECI COFADENA",
+  "description": "Ubicación de pozos realizados por COFADENA",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_pozos_videci_cofadena/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 3025,
+      "hash": "sha256:5bddf1cbb3f108315accdb6efdf19b49d896e5baffa714acf8a87fd5b11e9e1c",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "DEPTO",
+            "type": "string",
+            "example": "Santa Cruz",
+            "categories": [
+              "Santa Cruz"
+            ]
+          },
+          {
+            "name": "PROVINCIA",
+            "type": "string",
+            "example": "Chiquitos",
+            "categories": [
+              "Chiquitos"
+            ]
+          },
+          {
+            "name": "MUNICIPIO",
+            "type": "string",
+            "example": "San José de Chiquitos",
+            "categories": [
+              "San José de Chiquitos"
+            ]
+          },
+          {
+            "name": "ETIQUETA",
+            "type": "string",
+            "example": "Los Sotos"
+          },
+          {
+            "name": "OBSERV",
+            "type": "string",
+            "example": "Ejecutado / Cuenta prueba de bombeo"
+          },
+          {
+            "name": "CAUDAL_ls",
+            "type": "integer",
+            "constraints": {
+              "minimum": 0,
+              "maximum": 4
+            }
+          },
+          {
+            "name": "EMPRESA",
+            "type": "string",
+            "example": "COFADENA",
+            "categories": [
+              "COFADENA"
+            ]
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
