@@ -1,0 +1,151 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mhe_geoportal_geonode_uyuni_solar",
+  "title": "UYUNI_SOLAR",
+  "sources": [
+    {
+      "title": "Geoportal del Viceministerio de Electricidad y Energías Renovables",
+      "path": "https://geoportal.mhe.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mhe_geoportal_geonode_uyuni_solar/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 3917,
+      "hash": "sha256:640c6cd582ce28977ceffec191023bef92d095aac124c349441d7c49d4382a71",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 13
+            }
+          },
+          {
+            "name": "ID",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 13
+            }
+          },
+          {
+            "name": "CODI",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "T10"
+          },
+          {
+            "name": "ESTE",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 728896.147,
+              "maximum": 732745.28
+            }
+          },
+          {
+            "name": "NORTE",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 7723516.36,
+              "maximum": 7724440.0
+            }
+          },
+          {
+            "name": "ELEVACION",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 3695.22998046875,
+              "maximum": 3758.286
+            }
+          },
+          {
+            "name": "TIPO_T_",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "atcb",
+            "categories": [
+              "slcb",
+              "atcb",
+              "spcb",
+              "atcb.",
+              "slcb."
+            ]
+          },
+          {
+            "name": "ALTURA_T_",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 27.9,
+              "maximum": 45.9
+            }
+          },
+          {
+            "name": "VANO",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0.0,
+              "maximum": 569.304
+            }
+          },
+          {
+            "name": "DISTANCIA",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 363.799,
+              "maximum": 4459.783
+            }
+          },
+          {
+            "name": "FUNDACION",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Grilla",
+            "categories": [
+              "Grilla",
+              "Grilla2"
+            ]
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
