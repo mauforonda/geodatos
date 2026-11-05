@@ -1,0 +1,134 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_poblaciones_principales_cuenca_del_479cbdf98ed5",
+  "title": "Poblaciones Principales (Cuenca del Río Coroico)",
+  "description": "El mapa muestra las poblaciones principales de los municipios involucrados en el análisis de riesgos, amenazas y vulnerabilidad al cambio climático en la cuenca del río Coroico para la propuesta de zonificación agroecológica de la cuenca.",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_poblaciones_principales_cuenca_del_479cbdf98ed5/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 5363,
+      "hash": "sha256:52b241ad3d8fb8ba844b7e31faed875f02527888d75171840c9fd150bdbd20f8",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_poblaciones_principales_cuenca_del_rio_coroico_4mjn5.27"
+          },
+          {
+            "name": "comunidad",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Santa Rosa De Kilo Kilo"
+          },
+          {
+            "name": "cod_comuni",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "02140102012-D"
+          },
+          {
+            "name": "poblacion",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 360,
+              "maximum": 1990
+            }
+          },
+          {
+            "name": "nbi_no_pob",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "36,29807692"
+          },
+          {
+            "name": "nbi_pobre",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "63,70192308"
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "LA PAZ",
+            "categories": [
+              "LA PAZ"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Nor Yungas",
+            "categories": [
+              "Nor Yungas",
+              "Larecaja",
+              "Caranavi",
+              "Sur Yungas"
+            ]
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Coroico",
+            "categories": [
+              "Coripata",
+              "Guanay",
+              "Tipuani",
+              "Coroico",
+              "Teoponte",
+              "Caranavi",
+              "La Asunta"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
