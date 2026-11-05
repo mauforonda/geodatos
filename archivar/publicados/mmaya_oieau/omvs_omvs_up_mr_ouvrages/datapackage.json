@@ -1,0 +1,87 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_oieau_omvs_omvs_up_mr_ouvrages",
+  "title": "OMVS_UP_MR_ouvrages",
+  "sources": [
+    {
+      "title": "Sistema para la Gestión Integral de Recursos Hídricos desarrollado por la Oficina Internacional del Agua (OiEau)",
+      "path": "https://www.oieau-wiss.org/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_oieau_omvs_omvs_up_mr_ouvrages/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 9686,
+      "hash": "sha256:9adca098b31aa86f9b34985139f5500cb88fed4c58d5c3b91c718b60e52c18d7",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "OMVS_UP_MR_ouvrages.30"
+          },
+          {
+            "name": "f_code",
+            "type": "string",
+            "example": "BH170",
+            "categories": [
+              "BH170"
+            ]
+          },
+          {
+            "name": "descr",
+            "type": "string",
+            "example": "Spring / Water-Hole",
+            "categories": [
+              "Spring / Water-Hole"
+            ]
+          },
+          {
+            "name": "descr1",
+            "type": "string",
+            "example": "Point d'Eau",
+            "categories": [
+              "Point d'Eau"
+            ]
+          },
+          {
+            "name": "x_coord",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -16.13808,
+              "maximum": 0.0
+            }
+          },
+          {
+            "name": "y_coord",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 17.26641
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
