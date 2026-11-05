@@ -1,0 +1,131 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_puntos_de_monitoreowgs84",
+  "title": "Mapa de Puntos de Monitoreo en el Municipio de La Paz",
+  "description": "El mapa presenta información espacial de las características de la distribución de punto de monitoreo en el Municipio de La Paz. Elaborado por Oficialía Mayor de Planificación para el Desarrollo (OMPD) del Gobierno Autónomo Municipal de La Paz, en el año 2013.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_puntos_de_monitoreowgs84/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 13954,
+      "hash": "sha256:ace47ad5a8ee9b5d64a977827fb69465f698c36bec6dacf8ae5fa1ed65c21b59",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "puntos_de_monitoreowgs84.123"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 126
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "puntos_de_monitoreowgs84.123"
+          },
+          {
+            "name": "objectid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 126
+            }
+          },
+          {
+            "name": "l_eq",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 48.496,
+              "maximum": 75.76
+            }
+          },
+          {
+            "name": "norte",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 8162639.551,
+              "maximum": 8183290.757
+            }
+          },
+          {
+            "name": "este",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 587128.673,
+              "maximum": 606423.405
+            }
+          },
+          {
+            "name": "numeracion",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 126
+            }
+          },
+          {
+            "name": "observ",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "PUNTOS DE GABINETE",
+            "categories": [
+              "PUNTOS DE CAMPO",
+              "PUNTOS DE GABINETE"
+            ]
+          },
+          {
+            "name": "direccion",
+            "type": "string",
+            "example": "Av. Florida altura Puente Aranjuez\r\n"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPoint."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
