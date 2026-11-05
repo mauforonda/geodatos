@@ -1,0 +1,82 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_aero1",
+  "title": "Mapa de aeropuertos de Bolivia_ 2008",
+  "description": "El mapa presenta información de la distribución de los aeropuertos de Bolivia. Localizando puntos o terminales terrestres donde el transporte aéreo inicia sus funciones en territorio nacional. Elaborado por la Unidad de Ordenamiento Territorial del Ministerio de Planificación del Desarrollo",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_aero1/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 4114,
+      "hash": "sha256:8352f8fb90190be23736e0212617cf2d0559bdbcf9b9d52b5af2f2bd17e0dbde",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 33
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "aero1.27"
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 0
+            }
+          },
+          {
+            "name": "aero_inter",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "NAL",
+            "categories": [
+              "NAL",
+              "INTER"
+            ]
+          },
+          {
+            "name": "aeropuerto",
+            "type": "string",
+            "example": "BERMEJO"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
