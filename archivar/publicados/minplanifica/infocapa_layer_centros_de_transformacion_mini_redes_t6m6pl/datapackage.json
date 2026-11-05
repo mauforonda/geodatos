@@ -1,0 +1,128 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_minplanifica_infocapa_layer_centros_de_transformacion_mini_redes_t6m6pl",
+  "title": "layer_centros_de_transformacion_mini_redes_t6m6pl",
+  "sources": [
+    {
+      "title": "Geoserver del Ministerio de Planificación del Desarollo",
+      "path": "https://geoserver.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_minplanifica_infocapa_layer_centros_de_transformacion_mini_redes_t6m6pl/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 3770,
+      "hash": "sha256:f300df049c6625e6c63140be875e32f267f621eaa11746bfd6dd20ed4ba73229",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_centros_de_transformacion_mini_redes_t6m6pl.6"
+          },
+          {
+            "name": "size_kva",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 30,
+              "maximum": 75
+            }
+          },
+          {
+            "name": "tension",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 24.9,
+              "maximum": 24.9
+            }
+          },
+          {
+            "name": "system",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "COCHABAMBA_llano_ug_99",
+            "categories": [
+              "COCHABAMBA_llano_ug_99",
+              "SANTACRUZ_llano_ug_560",
+              "PANDO_llano_ug_84",
+              "PANDO_llano_ug_86",
+              "BENI_llano_ug_84",
+              "BENI_llano_ug_89"
+            ]
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Cochabamba",
+            "categories": [
+              "Pando",
+              "Beni",
+              "Cochabamba",
+              "Santa Cruz"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Carrasco",
+            "categories": [
+              "Chiquitos",
+              "Federico Roman",
+              "Vaca Diez",
+              "Carrasco",
+              "Abuná",
+              "Chapare",
+              "Manuripi"
+            ]
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Chimoré",
+            "categories": [
+              "Riberalta",
+              "San José",
+              "Chimoré",
+              "Santos Mercado",
+              "Ingavi",
+              "San Pedro",
+              "Villa Nueva",
+              "Villa Tunari"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPoint."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
