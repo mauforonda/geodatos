@@ -1,0 +1,127 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_minplanifica_infocapa_layer_centros_poblados_del_municipio_de_camiri_lp10c",
+  "title": "layer_centros_poblados_del_municipio_de_camiri_lp10c",
+  "sources": [
+    {
+      "title": "Geoserver del Ministerio de Planificación del Desarollo",
+      "path": "https://geoserver.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_minplanifica_infocapa_layer_centros_poblados_del_municipio_de_camiri_lp10c/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 5830,
+      "hash": "sha256:9c42c45bd713cccd2f42d064a90dfc3363ac6ff8b1eb62714dbb4a48b86d07c0",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_centros_poblados_del_municipio_de_camiri_lp10c.2"
+          },
+          {
+            "name": "poblacion",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 28855
+            }
+          },
+          {
+            "name": "viviendas",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 8048
+            }
+          },
+          {
+            "name": "nombres",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Caratindi"
+          },
+          {
+            "name": "clas_hab",
+            "type": "string",
+            "example": "0-100 habitantes",
+            "categories": [
+              "0-100 habitantes",
+              "101-500 habitantes",
+              "1001-5000 habitantes",
+              "501-1000 habitantes"
+            ]
+          },
+          {
+            "name": "latitud",
+            "type": "string",
+            "example": "20° 11' 53,789\" S"
+          },
+          {
+            "name": "longitud",
+            "type": "string",
+            "example": "63° 40' 16,987\" W"
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Santa Cruz",
+            "categories": [
+              "Santa Cruz"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Cordillera",
+            "categories": [
+              "Cordillera"
+            ]
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Camiri",
+            "categories": [
+              "Camiri",
+              "Cuevo"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
