@@ -1,0 +1,131 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geobolivia_geonode_fundempresa2017_09e1ab8d",
+  "title": "Oficinas de Fundempresa a Nivel Nacional Bolivia (2017)",
+  "description": "Información geoespacial de las oficinas de Fundempresa muestra todas las oficinas geo localizadas en el territorio nacional. Fundempresa es una fundación sin fines de lucro que apoya al desarrollo empresarial y opera el Registro de Comercio de Bolivia, brindando un servicio eficiente a los empresarios y al Estado, orientada a la mejora continua. Dato actualizado hasta julio del 2017.",
+  "sources": [
+    {
+      "title": "Nueva plataforma GeoBolivia",
+      "path": "https://geonode.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geobolivia_geonode_fundempresa2017_09e1ab8d/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 5135,
+      "hash": "sha256:21a4fad9ce413f01ce4ac4fabdbaf9b4b9a6d8d6d03ab7b3a74e5e0a6b07f125",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "fundempresa2017_09e1ab8d.16"
+          },
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 20
+            }
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 20
+            }
+          },
+          {
+            "name": "n",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 20
+            }
+          },
+          {
+            "name": "depart",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "ORURO",
+            "categories": [
+              "LA PAZ",
+              "SANTA CRUZ",
+              "BENI",
+              "COCHABAMBA",
+              "TARIJA",
+              "CHUQUISACA",
+              "ORURO",
+              "PANDO",
+              "POTOSI"
+            ]
+          },
+          {
+            "name": "oficina",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Oruro – Atención al Público"
+          },
+          {
+            "name": "direccion",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Calle Potosí esquina Mier No 1495"
+          },
+          {
+            "name": "long",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -68.77113,
+              "maximum": -63.13385
+            }
+          },
+          {
+            "name": "lati",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -22.01473,
+              "maximum": -11.00024
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
