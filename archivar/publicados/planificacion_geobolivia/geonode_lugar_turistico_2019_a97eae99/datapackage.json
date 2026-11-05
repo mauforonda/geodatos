@@ -1,0 +1,121 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geobolivia_geonode_lugar_turistico_2019_a97eae99",
+  "title": "Lugares Turísticos de Bolivia (2019)",
+  "description": "Información geoespacial de la localización de 28 lugares turísticos que se hallan en el Estado Plurinacional de Bolivia, distribuidos en 8 departamentos estos sitios son: Tupiza, Coroico, Rurrenabaque, Tarabuco, Copacabana, Isla del Sol, Villazón, Chochis, Roboré, Samaipata, Cotagaita, Bermejo, Padcaya, Tarija, Santiago de Chiquitos, Tiawanacu, La Paz, Sucre, Cochabamba, Vallegrande, Potosí, Uyuni, Yacuiba, Madidi, Oruro, Espejillos, Santa Cruz. Bolivia es un país con mucho potencial turístico, que cuenta con variados atractivos turísticos, debido a su diversa cultura, regiones geográficas, rica historia y gastronomía. Información actualizada a enero del 2019.",
+  "sources": [
+    {
+      "title": "Nueva plataforma GeoBolivia",
+      "path": "https://geonode.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geobolivia_geonode_lugar_turistico_2019_a97eae99/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 4573,
+      "hash": "sha256:7eb70ba4aa178c7306dea8a2a50ea76b7080bcdcd456adc65b7a46334cc1301a",
+      "schema": {
+        "fields": [
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 28
+            }
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 28
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 28
+            }
+          },
+          {
+            "name": "departamen",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Potosí",
+            "categories": [
+              "Santa Cruz",
+              "La Paz",
+              "Potosí",
+              "Tarija",
+              "Chuquisaca",
+              "Beni",
+              "Cochabamba",
+              "Oruro"
+            ]
+          },
+          {
+            "name": "municipio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Villazón"
+          },
+          {
+            "name": "lugar",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Villazón"
+          },
+          {
+            "name": "latitud",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -22.73,
+              "maximum": -14.23
+            }
+          },
+          {
+            "name": "longitud",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": -69.17,
+              "maximum": -59.59
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
