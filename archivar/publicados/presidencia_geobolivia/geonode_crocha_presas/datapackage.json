@@ -1,0 +1,226 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_crocha_presas",
+  "title": "Plan Director Cuenca Río Rocha - Presas, Bolivia 2018",
+  "description": "El mapa muestra la localización de las 56 presas en la Cuenca del Río Rocha el uso principal es para riego, la presa es una estructura que se emplaza en una corriente de agua para embalsarla y/o desviarla para su posterior aprovechamiento o para proteger una zona de sus efectos dañinos. Dato obtenido del Viceministerio de Recursos Hídricos y Riego, ha noviembre del 2016, a escala 1:250.000",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_crocha_presas/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 9486,
+      "hash": "sha256:f1c9150496e90657f8928d7c2ea861fb257d7c69e0591b8269e7ba9925513587",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 56
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0,
+              "maximum": 55
+            }
+          },
+          {
+            "name": "nom_presa",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Laka Laka"
+          },
+          {
+            "name": "codigo",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "CB-G-084"
+          },
+          {
+            "name": "x",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -66.3972,
+              "maximum": -65.6114
+            }
+          },
+          {
+            "name": "y",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -17.8186,
+              "maximum": -17.2383
+            }
+          },
+          {
+            "name": "municipio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Tarata",
+            "categories": [
+              "Sacaba",
+              "Quillacollo",
+              "Tiraque",
+              "Anzaldo",
+              "Sacabamba",
+              "San Benito",
+              "Tarata",
+              "Toco",
+              "Cercado",
+              "Colomi",
+              "Tiquipaya",
+              "Vinto"
+            ]
+          },
+          {
+            "name": "uso",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Riego",
+            "categories": [
+              "Riego"
+            ]
+          },
+          {
+            "name": "tipo_presa",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Gravedad",
+            "categories": [
+              "Tierra",
+              "Gravedad",
+              "Arco"
+            ]
+          },
+          {
+            "name": "estado",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "F/Problemas",
+            "categories": [
+              "F/Problemas",
+              "Funciona",
+              "S/D"
+            ]
+          },
+          {
+            "name": "areacuenca",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "58,00_Km2"
+          },
+          {
+            "name": "alt_presa",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "31,50_m"
+          },
+          {
+            "name": "longcorona",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "141,50_m"
+          },
+          {
+            "name": "capembalse",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "2.600.000_m3"
+          },
+          {
+            "name": "cotacorona",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "2.807,50 msnm"
+          },
+          {
+            "name": "cuencainfl",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Rio Rocha",
+            "categories": [
+              "Rio Chocaya",
+              "Rio Rocha",
+              "S/N",
+              "Rio Millu Mayu",
+              "Rio Pucara",
+              "Tamborada",
+              "Corani",
+              "Incachaca",
+              "La Angostura",
+              "Laguna Alalay",
+              "Rio Chacaya",
+              "Rio Cliza",
+              "Rio Grande",
+              "Rio La Angostura",
+              "Rio Sulty",
+              "Rio Tamborada",
+              "Rio Tiquipaya"
+            ]
+          },
+          {
+            "name": "rio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Calicanto"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
