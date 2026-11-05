@@ -1,0 +1,153 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mhe_geoportal_geonode_gen_sin_20240404",
+  "title": "gen_sin_20240404",
+  "sources": [
+    {
+      "title": "Geoportal del Viceministerio de Electricidad y Energías Renovables",
+      "path": "https://geoportal.mhe.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mhe_geoportal_geonode_gen_sin_20240404/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 6190,
+      "hash": "sha256:c5832d35cb431f8d935bb359e74ce4f0ee8009b938ba7265e2c1fa9c15a0e903",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 50
+            }
+          },
+          {
+            "name": "codigo",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "PUH"
+          },
+          {
+            "name": "Tipo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "HE",
+            "categories": [
+              "HE",
+              "TG",
+              "BM",
+              "EO",
+              "SL",
+              "DO"
+            ]
+          },
+          {
+            "name": "Area",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "SUR",
+            "categories": [
+              "NORTE",
+              "CENTRAL",
+              "ORIENTAL",
+              "ORURO",
+              "SUR",
+              "TARIJA",
+              "SUCRE",
+              "TRINIDAD"
+            ]
+          },
+          {
+            "name": "Central",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Central Punutuma"
+          },
+          {
+            "name": "Propietari",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "ERESA",
+            "categories": [
+              "COBEE",
+              "ENDE GUARACACHI",
+              "ENDE G",
+              "ENDE CORANI",
+              "ENDE ANDINA",
+              "ERESA",
+              "VHE",
+              "GBE",
+              "HB",
+              "CECBB",
+              "SDB",
+              "SYNERGIA"
+            ]
+          },
+          {
+            "name": "Pn",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1.9,
+              "maximum": 556.16
+            }
+          },
+          {
+            "name": "No_Unid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 38
+            }
+          },
+          {
+            "name": "Cat",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "< 50",
+            "categories": [
+              "< 50",
+              "> 50",
+              "> 500",
+              "> 200"
+            ]
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
