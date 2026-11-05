@@ -1,0 +1,67 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_piscinas_de_evaporacion_xyz7wl",
+  "title": "Piscinas de Evaporación",
+  "description": "El mapa muestra la extensión de las piscinas de evaporación de la línea 1 a la 12, amplias áreas en los salares donde la salmuera se concentra mediante la evaporación natural para la extracción del litio.",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_piscinas_de_evaporacion_xyz7wl/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 2539,
+      "hash": "sha256:8903d1cf0c20ffd3c87dcb0678fdfb48bf6c862e628dba4352ac8cabd967251b",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "example": "layer_piscinas_de_evaporacion_xyz7wl.1"
+          },
+          {
+            "name": "categoria",
+            "type": "string",
+            "example": "Piscinas Industriales líneas del 1 al 12"
+          },
+          {
+            "name": "sup_ha",
+            "type": "number",
+            "constraints": {
+              "minimum": 1408.066,
+              "maximum": 1408.066
+            }
+          },
+          {
+            "name": "dep",
+            "type": "integer"
+          },
+          {
+            "name": "prov",
+            "type": "integer"
+          },
+          {
+            "name": "mun",
+            "type": "integer"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
