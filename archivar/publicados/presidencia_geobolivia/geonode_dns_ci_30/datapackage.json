@@ -1,0 +1,100 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_dns_ci_30",
+  "title": "Localización puntos de conectividad y accesibilidad a internet, Bolivia a diciembre 2017",
+  "description": "RIPE NCC está construyendo la red de medición de Internet más grande jamás creada. RIPE Atlas emplea una red global de sondeos que miden la conectividad y accesibilidad a Internet, proporcionando una comprensión sin precedentes del estado de Internet en tiempo real. El Sistema de Nombres de Dominio (DNS, según sus siglas en inglés) es como una guía telefónica para Internet y facilita las solicitudes que se hacen a páginas web en específico. Básicamente los DNS se aseguran de que llegues al sitio correcto cada vez que escribes la dirección de una web en tu navegador Dato actualizado al 22 de diciembre del 2017.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_dns_ci_30/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 3797,
+      "hash": "sha256:5664b7119c36501ec20291a33c362c190fc6176c623919584d5a30aced87da0e",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 30
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 30
+            }
+          },
+          {
+            "name": "id_1",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 3291,
+              "maximum": 32987
+            }
+          },
+          {
+            "name": "ipv4_asn",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 6568,
+              "maximum": 28210
+            }
+          },
+          {
+            "name": "ipv6_asn",
+            "type": "number",
+            "constraints": {
+              "minimum": 6939.0,
+              "maximum": 27839.0
+            }
+          },
+          {
+            "name": "depto.",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "COCHABAMBA",
+            "categories": [
+              "LA PAZ",
+              "COCHABAMBA",
+              "BENI",
+              "CHUQUISACA",
+              "ORURO",
+              "SANTA CRUZ",
+              "TARIJA"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
