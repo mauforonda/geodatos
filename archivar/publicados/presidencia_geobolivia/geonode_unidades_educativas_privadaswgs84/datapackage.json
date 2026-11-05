@@ -1,0 +1,116 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_unidades_educativas_privadaswgs84",
+  "title": "Unidades Educativas Privadas en el Municipio de La Paz",
+  "description": "Información geográfica de la distribución y localización de las uniddes educativas privadas (Colegios, Universidades, Institutos), en el Municipio de La Paz. Elaborado por Oficialía Mayor de Planificación para el Desarrollo (OMPD) del Gobierno Autónomo Municipal de La Paz, en el año 2013.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_unidades_educativas_privadaswgs84/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 12649,
+      "hash": "sha256:70fed733f3b5ec4c8acab8ea30e3db2a622ea1a543afec5a008803f09621e7ad",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "unidades_educativas_privadaswgs84.59"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 138
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "unidades_educativas_privadaswgs84.59"
+          },
+          {
+            "name": "objectid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 138
+            }
+          },
+          {
+            "name": "gdbsunid",
+            "type": "string",
+            "example": "CETAL"
+          },
+          {
+            "name": "gdbsdire",
+            "type": "string",
+            "example": "S/N"
+          },
+          {
+            "name": "gdbstelf",
+            "type": "string",
+            "example": "375003",
+            "categories": [
+              "222039",
+              "2229701",
+              "224404",
+              "245719",
+              "2795178",
+              "311775",
+              "375003",
+              "783637"
+            ]
+          },
+          {
+            "name": "gdbsmail",
+            "type": "integer"
+          },
+          {
+            "name": "educ_sup",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "SIPS",
+            "categories": [
+              "NOPS",
+              "SIPS"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPoint."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
