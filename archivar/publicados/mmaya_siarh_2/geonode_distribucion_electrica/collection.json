@@ -1,0 +1,178 @@
+{
+  "type": "Collection",
+  "id": "geodatosbolivia_mmaya_siarh_2_geonode_distribucion_electrica",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json",
+    "https://stac-extensions.github.io/vector/v0.1.0/schema.json",
+    "https://stac-extensions.github.io/projection/v2.0.0/schema.json",
+    "https://stac-extensions.github.io/file/v2.1.0/schema.json",
+    "https://stac-extensions.github.io/web-map-links/v1.3.0/schema.json"
+  ],
+  "title": "Plan Director Cuenca Rio Grande - Centrales Eléctricas",
+  "description": "PDCRG (Plan Director de la Cuenca Rio Grande). Muestra la georreferenciación de las centrales eléctricas en el área del Plan Director del Río Grande.",
+  "license": "other",
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -66.58183149,
+          -18.40822832,
+          -62.89305991,
+          -17.33917094
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "providers": [
+    {
+      "name": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "roles": [
+        "producer"
+      ],
+      "url": "https://sig02.siarh.gob.bo/geoserver/ows"
+    },
+    {
+      "name": "Internet Archive",
+      "roles": [
+        "host"
+      ],
+      "url": "https://archive.org/details/geodatosbolivia_mmaya_siarh_2_geonode_distribucion_electrica"
+    }
+  ],
+  "table:primary_geometry": "geometry",
+  "table:row_count": 14,
+  "table:columns": [
+    {
+      "name": "geometry",
+      "type": "binary",
+      "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+    },
+    {
+      "name": "ID",
+      "type": "int64"
+    },
+    {
+      "name": "ESTCENT",
+      "type": "string"
+    },
+    {
+      "name": "SISTEMA",
+      "type": "string"
+    },
+    {
+      "name": "CENTRAL",
+      "type": "string"
+    }
+  ],
+  "summaries": {
+    "vector:geometry_types": [
+      "Point"
+    ]
+  },
+  "assets": {
+    "data": {
+      "href": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_distribucion_electrica/dataset.geoparquet",
+      "type": "application/vnd.apache.parquet",
+      "title": "GeoParquet",
+      "roles": [
+        "data"
+      ],
+      "proj:code": "EPSG:4326",
+      "file:size": 2535,
+      "file:checksum": "122068074cc7425f41e4c7299b9b4a3d739df90c85be0e1a15184cee7daee4a5c9e2"
+    },
+    "datapackage": {
+      "href": "./datapackage.json",
+      "type": "application/json",
+      "title": "Data Package: columnas, tipos y categorías",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "pmtiles": {
+      "href": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_distribucion_electrica/dataset.pmtiles",
+      "type": "application/vnd.pmtiles",
+      "title": "Teselas vectoriales (PMTiles)",
+      "roles": [
+        "visual"
+      ],
+      "file:size": 20033,
+      "file:checksum": "1220ef1f7c9bffbc2bffa5f575f5b370a8f25c592042bce71b628b5273c93ad1f13b"
+    }
+  },
+  "pmtiles:min_zoom": 8,
+  "pmtiles:max_zoom": 10,
+  "pmtiles:tile_type": "mvt",
+  "pmtiles:center": [
+    -64.7374457,
+    -17.8736996,
+    9
+  ],
+  "pmtiles:properties": [
+    {
+      "nombre": "ESTCENT",
+      "tipo": "string",
+      "categorias": [
+        "ET",
+        "CT+ 50 MW",
+        "CH+100 MW",
+        "CT- 50 MW"
+      ]
+    },
+    {
+      "nombre": "SISTEMA",
+      "tipo": "string",
+      "categorias": [
+        "Interconectado",
+        "Oriental",
+        "Aislado"
+      ]
+    },
+    {
+      "nombre": "CENTRAL",
+      "tipo": "string",
+      "categorias": [
+        "Est. Transformac",
+        "Termoelectrica",
+        "Hidroelectrica"
+      ]
+    }
+  ],
+  "links": [
+    {
+      "rel": "root",
+      "href": "../../../catalog.json",
+      "type": "application/json",
+      "title": "Datos geográficos de Bolivia"
+    },
+    {
+      "rel": "parent",
+      "href": "../catalog.json",
+      "type": "application/json",
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)"
+    },
+    {
+      "rel": "via",
+      "href": "https://sig02.siarh.gob.bo/geoserver/ows",
+      "type": "text/html",
+      "title": "Servicio de origen"
+    },
+    {
+      "rel": "pmtiles",
+      "href": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_distribucion_electrica/dataset.pmtiles",
+      "type": "application/vnd.pmtiles",
+      "pmtiles:layers": [
+        "dataset"
+      ]
+    }
+  ]
+}

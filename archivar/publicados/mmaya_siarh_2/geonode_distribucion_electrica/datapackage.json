@@ -1,0 +1,87 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_distribucion_electrica",
+  "title": "Plan Director Cuenca Rio Grande - Centrales Eléctricas",
+  "description": "PDCRG (Plan Director de la Cuenca Rio Grande). Muestra la georreferenciación de las centrales eléctricas en el área del Plan Director del Río Grande.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_distribucion_electrica/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 2535,
+      "hash": "sha256:68074cc7425f41e4c7299b9b4a3d739df90c85be0e1a15184cee7daee4a5c9e2",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "ID",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 7,
+              "maximum": 61
+            }
+          },
+          {
+            "name": "ESTCENT",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "ET",
+            "categories": [
+              "ET",
+              "CT+ 50 MW",
+              "CH+100 MW",
+              "CT- 50 MW"
+            ]
+          },
+          {
+            "name": "SISTEMA",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Interconectado",
+            "categories": [
+              "Interconectado",
+              "Oriental",
+              "Aislado"
+            ]
+          },
+          {
+            "name": "CENTRAL",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Est. Transformac",
+            "categories": [
+              "Est. Transformac",
+              "Termoelectrica",
+              "Hidroelectrica"
+            ]
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
