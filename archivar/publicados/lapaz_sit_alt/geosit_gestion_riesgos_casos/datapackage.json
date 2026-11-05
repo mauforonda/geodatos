@@ -1,0 +1,79 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_alt_geosit_gestion_riesgos_casos",
+  "title": "gestion_riesgos_casos",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)",
+      "path": "http://sitservicios.lapaz.bo/ows38.jsp"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_geosit_gestion_riesgos_casos/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 2723,
+      "hash": "sha256:71fad5f0e977cbedca64767e58a67753eceea9b7939b68daee5b70a1c1f3c6d8",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "example": "gestion_riesgos_casos.fid--314a5bbc_19fd3fbb68b_3490"
+          },
+          {
+            "name": "id_caso",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 6
+            }
+          },
+          {
+            "name": "id_categoria",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 1
+            }
+          },
+          {
+            "name": "observacion",
+            "type": "string",
+            "example": "aaa"
+          },
+          {
+            "name": "usuario",
+            "type": "string",
+            "example": "hilarion.huasco",
+            "categories": [
+              "hilarion.huasco",
+              "joao.flores"
+            ]
+          },
+          {
+            "name": "fecha_registro",
+            "type": "datetime",
+            "constraints": {
+              "minimum": "2018-11-27T23:40:10.181000+00:00",
+              "maximum": "2019-09-20T14:09:00.341000+00:00"
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
