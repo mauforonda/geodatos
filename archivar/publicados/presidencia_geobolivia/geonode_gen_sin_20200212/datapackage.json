@@ -1,0 +1,149 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_gen_sin_20200212",
+  "title": "Centrales Generadoras SIN 12 de Febrero 2020, Bolivia",
+  "description": "Centrales Generadoras que inyectan al Sistema Interconectado Nacional SIN para el 12 de Febrero de 2020 en Bolivia. Elaborado por el Viceministerio de Electricidad y Energías Alternativas VMEEA. Centrales Hidroeléctricas, Termoeléctricas (Turbo Gas y Diesel Oil), Eólicas, Biomasa y Solar. De acuerdo a reporte y codificación del Comité Nacional de Despacho de Carga CNDC",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_gen_sin_20200212/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 6827,
+      "hash": "sha256:f22c2eb85b24de895fb42c360bad3fe74a25aa5fa23cbd1c423f48c8c7327fde",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "gen_sin_20200212.14"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 54
+            }
+          },
+          {
+            "name": "codigo",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "PUH"
+          },
+          {
+            "name": "sistema",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "SUR",
+            "categories": [
+              "NORTE",
+              "CENTRAL",
+              "ORIENTAL",
+              "SUR",
+              "ORURO",
+              "TARIJA",
+              "TRINIDAD",
+              "SUCRE"
+            ]
+          },
+          {
+            "name": "empresa",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "ERESA",
+            "categories": [
+              "COBEE",
+              "ENDE GUARACACHI",
+              "ENDE G",
+              "ENDE CORANI",
+              "ENDE ANDINA",
+              "ERESA",
+              "VHE",
+              "GBE",
+              "HB",
+              "CECBB",
+              "Central Solar Oruro",
+              "SDB",
+              "SYNERGIA"
+            ]
+          },
+          {
+            "name": "cental",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Central Punutuma"
+          },
+          {
+            "name": "tipo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "HE",
+            "categories": [
+              "HE",
+              "TG",
+              "DO",
+              "BM",
+              "SL",
+              "EO"
+            ]
+          },
+          {
+            "name": "no_unid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 21
+            }
+          },
+          {
+            "name": "pn",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.544,
+              "maximum": 467.12
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
