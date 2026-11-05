@@ -1,0 +1,121 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_impuestos2017",
+  "title": "Oficinas de Impuestos Nacionales Bolivia,  2017",
+  "description": "Este mapa de oficinas de impuestos nacionales, muestra todas las oficinas geo localizadas en el territorio nacional, con direcciones donde el púbico puede realizar las consultas y los trámites respectivos. La misión institucional es recaudar los recursos provenientes de los impuestos nacionales que el Estado Plurinacional requiere para consolidar el Modelo Económico Social Comunitario Productivo para el Vivir Bien. Información elaborada hasta julio del 2017.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_impuestos2017/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 7652,
+      "hash": "sha256:bd8c013bd487ab9acc01d42b265f443d522fd0cb39be4c44205a9d8d4e2b7c8f",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "impuestos2017.31"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 47
+            }
+          },
+          {
+            "name": "n",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 47
+            }
+          },
+          {
+            "name": "departam",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "POTOSI",
+            "categories": [
+              "SANTA CRUZ",
+              "LA PAZ",
+              "BENI",
+              "COCHABAMBA",
+              "POTOSI",
+              "TARIJA",
+              "CHUQUISACA",
+              "ORURO",
+              "PANDO"
+            ]
+          },
+          {
+            "name": "oficina",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Agencia Tributaria Uyuni"
+          },
+          {
+            "name": "direccion",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Calle Sucre s/n Av. Potosi y calle Colón"
+          },
+          {
+            "name": "long",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -69.08494,
+              "maximum": -57.79804
+            }
+          },
+          {
+            "name": "latit",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -22.73556,
+              "maximum": -10.8141
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
