@@ -1,0 +1,150 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_infoturs",
+  "title": "Infoturs en Bolivia 2024",
+  "description": "Registro de Infoturs en Bolivia, indica el año, su distribución, equipamientos con los que cuenta.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_infoturs/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 9134,
+      "hash": "sha256:ccb25efd8e3f442d9bbea1d6171bdc5e8af66438605a42e47089c7aa2e747ead",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "infoturs.9"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 23
+            }
+          },
+          {
+            "name": "departamen",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Potosi",
+            "categories": [
+              "Potosí",
+              "La Paz",
+              "Chuquisaca",
+              "Potosi",
+              "Tarija",
+              "BENI",
+              "CHUQUISACA",
+              "Cochabamba",
+              "POTOSI",
+              "SANTA CRUZ",
+              "Santa Cruz"
+            ]
+          },
+          {
+            "name": "entidad qu",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Gobierno Autónomo Departamental de Potosi"
+          },
+          {
+            "name": "municipio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Tupiza"
+          },
+          {
+            "name": "la distanc",
+            "type": "string",
+            "example": "Km 0"
+          },
+          {
+            "name": "el centro",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Gobierno Departamental"
+          },
+          {
+            "name": "aÑo desde",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Año 1"
+          },
+          {
+            "name": "materiales",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Material elaborado por la Secretaría Departamental"
+          },
+          {
+            "name": "equipamien",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Escritorio y material de actividades en el departamento"
+          },
+          {
+            "name": "latitud",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": -21.5471212,
+              "maximum": -14.8367626
+            }
+          },
+          {
+            "name": "longitud",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": -68.1496535,
+              "maximum": -63.1407962
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
