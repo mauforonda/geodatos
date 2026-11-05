@@ -1,0 +1,66 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_mmaya_area_de_influencia",
+  "title": "Área de Influencia de la Reserva Municipal Histórica y de Vida Silvestre Héroes del Chaco - GAM Macharetí",
+  "description": "Información Geográfica del Área de ifluencia de la Reserva Municipal Histórica y de Vida Silvestre, creada mediante la Ley Nº 40/2016 de fecha 25 de octubre de 2016, ubicada en el municipio de Macharetí del departamento de Chuquisaca. Se le otorga al Área Protegida Muncipal la categoría de \"Reserva Histórica y de Vida Silvestre\".",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_mmaya_area_de_influencia/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 3205,
+      "hash": "sha256:a60a1e226bd4bbf7fa5c62d8f34fb3c34b2c29a4f780f69fbe38f199d56c4635",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 1
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "minimum": 0,
+              "maximum": 0
+            }
+          },
+          {
+            "name": "area",
+            "type": "string",
+            "example": "Llanura Machareti"
+          },
+          {
+            "name": "ha",
+            "type": "number",
+            "constraints": {
+              "minimum": 71020.82,
+              "maximum": 71020.82
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
