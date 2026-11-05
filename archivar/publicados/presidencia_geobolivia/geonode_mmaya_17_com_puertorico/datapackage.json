@@ -1,0 +1,111 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_mmaya_17_com_puertorico",
+  "title": "Comunidades del ANMI Puerto Rico - GAM Puerto Rico",
+  "description": "Información geográfica (puntos) de las comunidades que se encuentran al interior del Área Natural de Manejo Integrado \"Bosque Amazónico de Manejo Integral Puerto Rico\".",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_mmaya_17_com_puertorico/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 5305,
+      "hash": "sha256:b0b4360d1b1414c4adb2dc90e2724a52ef3d5a6167eec61e038f07eb59c2b889",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "mmaya_17_com_puertorico.12"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 20
+            }
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "MANDARINO"
+          },
+          {
+            "name": "descr",
+            "type": "string",
+            "example": "<h4>Bolivia_comunidades</h4> <ul class=\"textattributes\"> <li><strong><span class=\"atr-name\">serial</"
+          },
+          {
+            "name": "codigo",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 12650
+            }
+          },
+          {
+            "name": "comunidad",
+            "type": "string",
+            "example": "Mandarino"
+          },
+          {
+            "name": "poblacion",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 504
+            }
+          },
+          {
+            "name": "sup",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 0
+            }
+          },
+          {
+            "name": "puperficie",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 0
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
