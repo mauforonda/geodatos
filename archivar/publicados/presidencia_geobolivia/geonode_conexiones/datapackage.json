@@ -1,0 +1,189 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_conexiones",
+  "title": "Mapa de Conexiones Físicas Binacionales Sudamérica COSIPLAN, 2015",
+  "description": "Puntos que representan la ubicación geográfica de conexiones físicas binacionales (puentes, túneles).",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_conexiones/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 7003,
+      "hash": "sha256:4ed61f2f6430861f466f17d2ff30d0a9796db2daddd2fa79d7e0a8faddac2ebb",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "conexiones.25"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 33
+            }
+          },
+          {
+            "name": "idusco",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 19001000001.0,
+              "maximum": 21012000004.0
+            }
+          },
+          {
+            "name": "acc",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 2
+            }
+          },
+          {
+            "name": "len",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": -1,
+              "maximum": 2113
+            }
+          },
+          {
+            "name": "nam",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Túnel Cristo Redentor"
+          },
+          {
+            "name": "obs",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Oficial - Validada",
+            "categories": [
+              "Oficial - Validada"
+            ]
+          },
+          {
+            "name": "zob",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Cordillera de los Andes"
+          },
+          {
+            "name": "zoc",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 4
+            }
+          },
+          {
+            "name": "zpps",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "ARG-CHL",
+            "categories": [
+              "COL-VEN",
+              "ARG-PAR",
+              "BRA-ARG",
+              "BRA-URY",
+              "ARG-BOL",
+              "ARG-BRA",
+              "ARG-URY",
+              "BRA-PAR",
+              "ARG-CHL",
+              "BRA-BOL",
+              "BRA-GUF",
+              "BRA-GUY",
+              "BRA-PER"
+            ]
+          },
+          {
+            "name": "ztt",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 3
+            }
+          },
+          {
+            "name": "acc_lbl",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Aproximada",
+            "categories": [
+              "Aproximada",
+              "Exacta"
+            ]
+          },
+          {
+            "name": "zoc_lbl",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Túnel",
+            "categories": [
+              "Puente",
+              "Túnel"
+            ]
+          },
+          {
+            "name": "ztt_lbl",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Automotor",
+            "categories": [
+              "Automotor",
+              "Peatonal"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
