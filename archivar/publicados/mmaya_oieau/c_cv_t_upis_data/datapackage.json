@@ -1,0 +1,109 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_oieau_c_cv_t_upis_data",
+  "title": "CV_UP_Furo discharge data (m3/s)",
+  "sources": [
+    {
+      "title": "Sistema para la Gestión Integral de Recursos Hídricos desarrollado por la Oficina Internacional del Agua (OiEau)",
+      "path": "https://www.oieau-wiss.org/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_oieau_c_cv_t_upis_data/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 3484,
+      "hash": "sha256:2301fbf50b261898cda3cf13379f4e15124e631ff07c472bfb01fc094093938f",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "t_upis_data.fid-75f29474_19d840cd59a_-69e6"
+          },
+          {
+            "name": "UPISTCODE",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 22100,
+              "maximum": 22100
+            }
+          },
+          {
+            "name": "UPISTNAME",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Furo",
+            "categories": [
+              "Furo"
+            ]
+          },
+          {
+            "name": "UPISCODE",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "FST-0040"
+          },
+          {
+            "name": "UPISNAME",
+            "type": "integer"
+          },
+          {
+            "name": "mopacode",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "PARs1420_117",
+            "categories": [
+              "PARs1420_117"
+            ]
+          },
+          {
+            "name": "mopaname",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Caudal (m3/s)",
+            "categories": [
+              "Caudal (m3/s)"
+            ]
+          },
+          {
+            "name": "iuddvalue",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 18,
+              "maximum": 200
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
