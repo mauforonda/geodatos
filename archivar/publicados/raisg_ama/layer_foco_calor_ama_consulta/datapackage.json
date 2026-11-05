@@ -1,0 +1,66 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_raisg_ama_layer_foco_calor_ama_consulta",
+  "title": "foco_calor_ama_consulta",
+  "sources": [
+    {
+      "title": "RAISG - AMA",
+      "path": "https://ama.raisg.org:8443/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_raisg_ama_layer_foco_calor_ama_consulta/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 26898048,
+      "hash": "sha256:c6e688cb99029061a506ce5ec4f6918a952ae89672619d4fc380e08053d54295",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "foco_calor_ama_consulta.22724117"
+          },
+          {
+            "name": "dates",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "20261001"
+          },
+          {
+            "name": "sat",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "A",
+            "categories": [
+              "N",
+              "N20",
+              "A",
+              "T"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
