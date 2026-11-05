@@ -1,0 +1,103 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_modulo_policial_municipiolpz",
+  "title": "Mapa Módulos Policiales de la Ciudad de La Paz, Bolivia 2019",
+  "description": "El mapa muestra la localización de los módulos policiales ubicados en la ciudad de La Paz, información obtenida del Gobierno Autónomo Municipal de La Paz a julio 2019.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_modulo_policial_municipiolpz/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 12767,
+      "hash": "sha256:444bdb0fde54b54f1d0d135a46b2648fb5cd9acb05dce2875a6c0579a5e0973a",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 109
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0,
+              "maximum": 108
+            }
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "example": "Huacataqui"
+          },
+          {
+            "name": "direccion",
+            "type": "string",
+            "example": "C. Heroinas de las Cornilla, Esq. C. Germán Monroy Black"
+          },
+          {
+            "name": "zona",
+            "type": "string",
+            "example": "Huacataqui"
+          },
+          {
+            "name": "tipo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "MODULO POLICIAL",
+            "categories": [
+              "MODULO POLICIAL",
+              "EPI"
+            ]
+          },
+          {
+            "name": "distrito",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 23
+            }
+          },
+          {
+            "name": "fechaactua",
+            "type": "datetime",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": "2016-06-11T17:28:01.107000",
+              "maximum": "2018-05-10T10:11:43.907000"
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point. Filas sin geometría: 2."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
