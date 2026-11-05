@@ -1,0 +1,162 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_cbermejo_estmeteorologica",
+  "title": "Plan Director Cuenca Río Bermejo - Estaciones Meteorológicas_ Bolivia",
+  "description": "El mapa muestra las 82 estaciones meteorológicas de la Cuenca del Río Bermejo que se halla en el departamento de Tarija, datos del Servicio Nacional de Meteorología e Hidrología (SENAMHI), una estación meteorológica es una instalación destinada a medir y registrar regularmente diversas variables meteorológicas. Estos datos se utilizan tanto para la elaboración de predicciones meteorológicas a partir de modelos numéricos como para estudios climáticos. Información obtenida del Viceministerio de Recursos Hídricos y Riego, ha noviembre del 2016.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_cbermejo_estmeteorologica/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 7205,
+      "hash": "sha256:a26b6a0de57b7ef1ad9bacdcac0f02305904babd7d2e050d40be064bfd6bfc4e",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 82
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0,
+              "maximum": 85
+            }
+          },
+          {
+            "name": "nom_proy",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Balapuca"
+          },
+          {
+            "name": "tipo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Meteorologica",
+            "categories": [
+              "Meteorologica"
+            ]
+          },
+          {
+            "name": "x",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -64.98,
+              "maximum": -63.87
+            }
+          },
+          {
+            "name": "y",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -22.77,
+              "maximum": -21.3
+            }
+          },
+          {
+            "name": "depto",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Tarija",
+            "categories": [
+              "Tarija"
+            ]
+          },
+          {
+            "name": "provincia",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Arce",
+            "categories": [
+              "Cercado",
+              "Arce",
+              "Aviles",
+              "Mendez",
+              "O'Connor",
+              "Gran Chaco"
+            ]
+          },
+          {
+            "name": "elev_msnm",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 385,
+              "maximum": 3000
+            }
+          },
+          {
+            "name": "rec_hist",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "2005 - 2010"
+          },
+          {
+            "name": "esta_actu",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Inactiva",
+            "categories": [
+              "Inactiva",
+              "Activa"
+            ]
+          },
+          {
+            "name": "observacio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Dentro de Cuenca",
+            "categories": [
+              "Dentro de Cuenca"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
