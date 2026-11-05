@@ -1,0 +1,88 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_sit_puntosdiapeaton",
+  "title": "Puntos Dia del Peaton",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz",
+      "path": "http://sitservicios.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_sit_puntosdiapeaton/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 3585,
+      "hash": "sha256:f2eb8e7900ae13fe7cb502aa1304413578edf8a2ce3e4bd2c96d6dd3a01db166",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "puntosdiapeaton.10"
+          },
+          {
+            "name": "nombr_ruta",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "RUTA 3",
+            "categories": [
+              "RUTA 1",
+              "RUTA 2",
+              "RUTA 3",
+              "RUTA 4",
+              "RUTA 5",
+              "PUNTO ADICIONAL",
+              "PUNTO FINAL",
+              "RUTA 5 FINAL"
+            ]
+          },
+          {
+            "name": "nomb_punto",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "PUNTO 1",
+            "categories": [
+              "PUNTO 1",
+              "PUNTO 2",
+              "PUNTO 3",
+              "PUNTO 4",
+              "PUNTO ADICIONAL",
+              "PUNTO 5",
+              "PUNTO FINAL"
+            ]
+          },
+          {
+            "name": "descripcio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "INICIO - FINAL SAN JORGE"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
