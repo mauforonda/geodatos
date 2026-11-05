@@ -1,0 +1,76 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_departamental_educacion2017",
+  "title": "Localización de Direcciones Departamentales de Educación Bolivia_ 2017",
+  "description": "El mapa muestra la localización de los 9 Edificios de Direcciones Departamentales de Educación en Bolivia, donde funcionan las Direcciones Departamentales de Educación en cada Departamento.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_departamental_educacion2017/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 2957,
+      "hash": "sha256:2a5e828cf8a591e725fec052b332a5bf7ceaa77bdf1dc6c8acc4596b5631cfa1",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "example": "departamental_educacion2017.2"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 9
+            }
+          },
+          {
+            "name": "departamen",
+            "type": "string",
+            "example": "ORURO"
+          },
+          {
+            "name": "direccion",
+            "type": "string",
+            "example": "C. Sucre #577"
+          },
+          {
+            "name": "x",
+            "type": "number",
+            "constraints": {
+              "minimum": -68.75762,
+              "maximum": -63.178016
+            }
+          },
+          {
+            "name": "y",
+            "type": "number",
+            "constraints": {
+              "minimum": -21.538705,
+              "maximum": -11.022897
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
