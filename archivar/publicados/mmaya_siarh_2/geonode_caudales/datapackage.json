@@ -1,0 +1,55 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_caudales",
+  "title": "Plan Director Cuenca Río Tupiza – Caudales",
+  "description": "PDCRT (Plan Director de la Cuenca Río Tupiza). Muestra la ubicación y la información relevante de los caudal hídrico , en el marco del Plan Director de la Cuenca del Río Tupiza.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_caudales/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 2106,
+      "hash": "sha256:05e3d836b0bf78645285b1c80262646a39336384cd903dea25c51e080050b47d",
+      "schema": {
+        "fields": [
+          {
+            "name": "Id",
+            "type": "integer",
+            "constraints": {
+              "minimum": 0,
+              "maximum": 0
+            }
+          },
+          {
+            "name": "UH_N5",
+            "type": "string",
+            "example": "86949"
+          },
+          {
+            "name": "CAUDAL",
+            "type": "string",
+            "example": "0.33"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
