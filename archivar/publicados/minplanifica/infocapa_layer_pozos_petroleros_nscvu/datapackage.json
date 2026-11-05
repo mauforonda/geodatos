@@ -1,0 +1,116 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_minplanifica_infocapa_layer_pozos_petroleros_nscvu",
+  "title": "layer_pozos_petroleros_nscvu",
+  "sources": [
+    {
+      "title": "Geoserver del Ministerio de Planificación del Desarollo",
+      "path": "https://geoserver.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_minplanifica_infocapa_layer_pozos_petroleros_nscvu/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 3807,
+      "hash": "sha256:c02ad4e30803cbdd674d9c606220cb80444a0138e9ae460951deafb4a7904d8c",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_pozos_petroleros_nscvu.9"
+          },
+          {
+            "name": "pozo",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "LAJITAS-X1"
+          },
+          {
+            "name": "estado_act",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Perforación",
+            "categories": [
+              "Perforación",
+              "Produc.(reserva)",
+              "Terminacion",
+              "Terminación",
+              "Aband. Temporalm.",
+              "Esp. Termin",
+              "Prueb. Produc."
+            ]
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Tarija",
+            "categories": [
+              "Tarija",
+              "Santa Cruz"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "O'Connor",
+            "categories": [
+              "Gran Chaco",
+              "O'Connor",
+              "Andres Ibañez",
+              "Cordillera",
+              "Sara"
+            ]
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Entre Ríos",
+            "categories": [
+              "Entre Ríos",
+              "Caraparí",
+              "La Guardia",
+              "Villa Montes",
+              "Yacuiba",
+              "Cabezas",
+              "Santa Cruz de la Sierra",
+              "Santa Rosa"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPoint."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
