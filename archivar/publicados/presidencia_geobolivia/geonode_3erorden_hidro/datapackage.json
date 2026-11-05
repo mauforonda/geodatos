@@ -1,0 +1,164 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_3erorden_hidro",
+  "title": "Estaciones hidrológicas de 3er orden Bolivia_ 2014",
+  "description": "Esta información presenta la ubicación de estaciones hidrológicas de tercer orden distribuidas en territorio nacional. Elaborado por el Servicio Nacional de Meteorología e Hidrología (SENAMHI) con datos actualizados a mayo de 2014.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_3erorden_hidro/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 6408,
+      "hash": "sha256:88220bbd2ef54c010457f811059ac2667dceadb2a728d5df2b6620ccd7e8243b",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "3erorden_hidro.17"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 32
+            }
+          },
+          {
+            "name": "estacion",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Chuquiña - Desaguadero"
+          },
+          {
+            "name": "departamen",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Oruro",
+            "categories": [
+              "La Paz",
+              "Potosí",
+              "Chuquisaca",
+              "Tarija",
+              "Oruro",
+              "Pando",
+              "Santa Cruz"
+            ]
+          },
+          {
+            "name": "provincia",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Cercado"
+          },
+          {
+            "name": "municio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Oruro"
+          },
+          {
+            "name": "latitud",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": -21.5617,
+              "maximum": -9.7042
+            }
+          },
+          {
+            "name": "longitud",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": -69.4539,
+              "maximum": -63.4653
+            }
+          },
+          {
+            "name": "altitud",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 94,
+              "maximum": 4054
+            }
+          },
+          {
+            "name": "tipo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Hidrológica de 3er Orden",
+            "categories": [
+              "Hidrológica de 3er Orden"
+            ]
+          },
+          {
+            "name": "operador",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "EMIRSA - INTI RAYMI",
+            "categories": [
+              "SENAMHI",
+              "Proyecto Pilcomayo",
+              "Proyecto HYBAM - IRD",
+              "EMIRSA - INTI RAYMI",
+              "ENDE"
+            ]
+          },
+          {
+            "name": "estado",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Funcionando",
+            "categories": [
+              "Funcionando"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
