@@ -1,0 +1,137 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mhe_geoportal_geonode_gen_sin_20180416",
+  "title": "gen_sin_20180416",
+  "sources": [
+    {
+      "title": "Geoportal del Viceministerio de Electricidad y Energías Renovables",
+      "path": "https://geoportal.mhe.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mhe_geoportal_geonode_gen_sin_20180416/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 6118,
+      "hash": "sha256:fbcce32228874a7ed807cc262d0e7506cd943d401c8466384d3b3436176bb3ed",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 52
+            }
+          },
+          {
+            "name": "codigo",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "PUH"
+          },
+          {
+            "name": "Sistema",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "SUR",
+            "categories": [
+              "NORTE",
+              "CENTRAL",
+              "ORIENTAL",
+              "SUR",
+              "ORURO",
+              "TARIJA",
+              "TRINIDAD",
+              "SUCRE"
+            ]
+          },
+          {
+            "name": "Empresa",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "ENDE GUARACACHI S.A.",
+            "categories": [
+              "COBEE",
+              "ENDE GUARACACHI S.A.",
+              "ENDE GENERACÍON",
+              "ENDE CORANI S.A.",
+              "ENDE ANDINA",
+              "VHE",
+              "GBE",
+              "HB",
+              "CECBB",
+              "SDB",
+              "SYNERGIA"
+            ]
+          },
+          {
+            "name": "Cental",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Punutuma"
+          },
+          {
+            "name": "Tipo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "HE",
+            "categories": [
+              "HE",
+              "TG",
+              "DO",
+              "BM",
+              "SL",
+              "EO"
+            ]
+          },
+          {
+            "name": "No_Unid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 21
+            }
+          },
+          {
+            "name": "Pn",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.544,
+              "maximum": 392.704
+            }
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
