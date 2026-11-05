@@ -1,0 +1,80 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_raisg_ama_siti_prio_ipa_hidrovias",
+  "title": "Índice de presión por hidrovías",
+  "sources": [
+    {
+      "title": "RAISG - AMA",
+      "path": "https://ama.raisg.org:8443/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_raisg_ama_siti_prio_ipa_hidrovias/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 11788941,
+      "hash": "sha256:9111e3f1d3777918073273d648389c7f4c499eb87edb87068d99c8278b05f413",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "ipa_hidrovias.4153"
+          },
+          {
+            "name": "fid_",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 0
+            }
+          },
+          {
+            "name": "HYBAS_ID",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 6080004060.0,
+              "maximum": 6090662430.0
+            }
+          },
+          {
+            "name": "comid",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 9001473.44452634,
+              "maximum": 9100980.08186699
+            }
+          },
+          {
+            "name": "waterways",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 1.0
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
