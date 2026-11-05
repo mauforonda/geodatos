@@ -1,0 +1,58 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_mmaya_pe_inachaca",
+  "title": "Área Protegida del Parque Ecológico Incachaca - GAM Colomi",
+  "description": "Información geográfica del Área Protegida del Parque Ecológico Incachaca, creada mediante la Ley Municipal Nº 037/2016 de fecha 16 de marzo de 2016 y modificada a través de la Ley Municipal Autonómica Nº 17/2022 de fecha 03 de agosto de 2022. Categorizada como Parque Ecológico, pertenece a la ecorregión puna semi húmeda yungas.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_mmaya_pe_inachaca/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 2316,
+      "hash": "sha256:495317fc10b3cfbefcbf90ebe45bc8a500ec3ee07873589299f8954fb517c8d0",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 1
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "minimum": 0,
+              "maximum": 0
+            }
+          },
+          {
+            "name": "area",
+            "type": "string",
+            "example": "430,507629024788"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
