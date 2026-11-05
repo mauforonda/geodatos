@@ -1,0 +1,85 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_sergeomin_idesig_ws_cda_cuencas_calidad_agua",
+  "title": "cuencas_calidad_agua",
+  "sources": [
+    {
+      "title": "Catálogo IDESIG de Sergeomin",
+      "path": "https://idesig.sergeomin.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_sergeomin_idesig_ws_cda_cuencas_calidad_agua/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 595255,
+      "hash": "sha256:86536647a20f8ae82ccb09cf5b75ff4a79b94f0eeb3b37bcfd908a239ea05487",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "example": "cuencas_calidad_agua.8"
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "example": "Cuenca Desaguadero"
+          },
+          {
+            "name": "macrocuenc",
+            "type": "string",
+            "example": "Endorreica",
+            "categories": [
+              "Endorreica",
+              "Plata",
+              "Amazonas",
+              "Plata y Amazonas"
+            ]
+          },
+          {
+            "name": "depto",
+            "type": "string",
+            "example": "La Paz",
+            "categories": [
+              "Potosi",
+              "La Paz",
+              "Oruro",
+              "Tarija-Chuqisaca-Santa Cruz"
+            ]
+          },
+          {
+            "name": "gestion",
+            "type": "string",
+            "example": "2014"
+          },
+          {
+            "name": "biblioteca",
+            "type": "integer"
+          },
+          {
+            "name": "area_km2",
+            "type": "number",
+            "constraints": {
+              "minimum": 11494.1919973,
+              "maximum": 30602.9664513
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
