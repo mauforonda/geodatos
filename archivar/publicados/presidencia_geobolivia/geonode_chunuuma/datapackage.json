@@ -1,0 +1,58 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_chunuuma",
+  "title": "Área Protegida Municipal a la Reserva de Agua y Bosque Montanos - Chuñuuma - Comunidad Miraflores - GAM Coroico",
+  "description": "Información Geográfica del Área Protegida Municipal a la Reserva de Agua y Bosque Montanos - Chuñuuma - Comunidad Miraflores - GAM Coroico creado mediante la Ley Municipal Nº 151/2021 de fecha 26 de marzo de 2021.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_chunuuma/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 4167,
+      "hash": "sha256:eb787858bd3063ada82b74811c275c8d3bbdd8835bf1bf3c639b48fb0d9475c0",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 1
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 1
+            }
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "example": "Reserva de Agua y Bosques Montanos - Chuñuuma"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
