@@ -1,0 +1,82 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_emprendimientos_turisticos_de_base_96cbb3ee7a63",
+  "title": "Emprendimientos Turísticos de Base Comunitaria en Bolivia",
+  "description": "El mapa muestra los emprendimientos turísticos comunitarios existentes a nivel nacional, destacando su distribución geográfica y facilitando la identificación de áreas de interés para el turismo sostenible en comunidades.",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_emprendimientos_turisticos_de_base_96cbb3ee7a63/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 4487,
+      "hash": "sha256:ead7b5f2f36c3748895562e6e183e1b916468dabc668355e6809668770774d96",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_emprendimientos_turisticos_de_base_comunitaria_en_ljicr.20"
+          },
+          {
+            "name": "descripcion",
+            "type": "integer"
+          },
+          {
+            "name": "categoria",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Emprendimientos Turísticos de Bolivia",
+            "categories": [
+              "Emprendimientos Turísticos de Bolivia"
+            ]
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "example": "POTOSI",
+            "categories": [
+              "CHUQUISACA",
+              "LA PAZ",
+              "POTOSI",
+              "ORURO"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "example": "Nor Lipez"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "example": "Colcha \"K\""
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
