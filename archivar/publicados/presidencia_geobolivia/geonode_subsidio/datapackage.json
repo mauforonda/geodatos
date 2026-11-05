@@ -1,0 +1,64 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_subsidio",
+  "title": "Puntos de distribución del Subsidio Prenatal Universal en Bolivia, 2015",
+  "description": "El mapa presenta la ubicación de 42 puntos de distribución habilitados para la entrega del Subsidio Prenatal Universal por la vida, beneficio social para mujeres embarazas a partir del quinto mes de gestación  en 42 centros de entrega. Elaborado por GeoBolivia en base a datos del Ministerio de Desarrollo Productivo con datos actualizados a octubre de 2015.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_subsidio/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 3871,
+      "hash": "sha256:587333ff976c75570774672354424e4e9197c3b478bf10f9894e8c0d19d5bd77",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 39
+            }
+          },
+          {
+            "name": "id",
+            "type": "number",
+            "constraints": {
+              "minimum": 1.0,
+              "maximum": 4.0
+            }
+          },
+          {
+            "name": "ciudad",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "UYUNI"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
