@@ -1,0 +1,183 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_lp_vi_estacionesmetereologicas2000",
+  "title": "Mapa de estaciones metereologicas de los  valles interandinos del departamento de La Paz_ 2000",
+  "description": "Este mapa presenta la distribución espacial del conjunto de estaciones meteorológicas de los valles interandinos del Departamento de La Paz. Producido por el proyecto ZONISIG (Zonificacion Agroecologica y Socioeconomica de los Valles Interandinos de La Paz) y convenios de cooperación en el año 2000, a escala 1:25000.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_lp_vi_estacionesmetereologicas2000/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 5983,
+      "hash": "sha256:00d63d95d3f82a337b09e8702066c1d125665c1b8200c08a06d31a63b36c05a2",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "lp_vi_estacionesmetereologicas2000.6"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 24
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "lp_vi_EstacionesMetereologicas2000.6"
+          },
+          {
+            "name": "id_shape",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 13
+            }
+          },
+          {
+            "name": "t_med_a",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -1.0,
+              "maximum": 21.6
+            }
+          },
+          {
+            "name": "t_max_a",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 26.3
+            }
+          },
+          {
+            "name": "t_min_a",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -5.2,
+              "maximum": 14.6
+            }
+          },
+          {
+            "name": "pp_a",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 118
+            }
+          },
+          {
+            "name": "frgra_m",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -0.1,
+              "maximum": 2.16
+            }
+          },
+          {
+            "name": "frhel_m",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -1.0,
+              "maximum": 28.87
+            }
+          },
+          {
+            "name": "estacion",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Calamarca"
+          },
+          {
+            "name": "altitud",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 5220
+            }
+          },
+          {
+            "name": "tipo",
+            "type": "string",
+            "example": "Termo-pluviom",
+            "categories": [
+              "Termo-pluviom",
+              "Climat-ord.",
+              "Clomat-princ",
+              "Sinopt-princ"
+            ]
+          },
+          {
+            "name": "clim_hum",
+            "type": "string",
+            "example": "Semi-arido",
+            "categories": [
+              "Semi-arido",
+              "Humedo",
+              "Sub-humedo",
+              "humedo"
+            ]
+          },
+          {
+            "name": "clim_inv",
+            "type": "string",
+            "example": "templ. a muy fri",
+            "categories": [
+              "libre de heladas",
+              "suaves a frios",
+              "suaves a templ.",
+              "Extrem. frio",
+              "frios a muy frio",
+              "suaves",
+              "temp a frios",
+              "templ. a muy fri"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
