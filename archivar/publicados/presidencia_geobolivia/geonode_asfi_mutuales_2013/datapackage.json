@@ -1,0 +1,208 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_asfi_mutuales_2013",
+  "title": "Ubicación de mutuales de ahorro y préstamo para la vivienda en Bolivia_ 2013",
+  "description": "El mapa muestra la distribución espacial de los puntos de atención (Agencias, oficinas, ventanillas de atención y cajeros automáticos) de las entidades financieras conocidas como \"Mutuales\" las cuales ofrecen servicios de ahorro y préstamo para viviendas en Bolivia. Elaborado por la Autoridad de Supervisión del Sistema Financiero (ASFI) con datos actualizados a mayo de 2013.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_asfi_mutuales_2013/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 15244,
+      "hash": "sha256:e7731453e2f0ba9a81c69d53ae321b95c484ee4602205cb6d3526d1896794e45",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "asfi_mutuales_2013.96"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 111
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "asfi_mutuales_2013.96"
+          },
+          {
+            "name": "x",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -68.7542388888889,
+              "maximum": -63.13481666666669
+            }
+          },
+          {
+            "name": "y",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -22.0896055555556,
+              "maximum": -10.8105916666667
+            }
+          },
+          {
+            "name": "mane_id",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "mpg",
+            "categories": [
+              "ml1",
+              "mlp",
+              "mpr",
+              "mpl",
+              "mpt",
+              "mpy",
+              "mpd",
+              "mpg"
+            ]
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "MUTUAL EL PROGRESO",
+            "categories": [
+              "MUTUAL LA PRIMERA",
+              "MUTUAL LA PAZ",
+              "MUTUAL LA PROMOTORA",
+              "ASOCIACIÓN MUTUAL DE AHORRO Y PRÉSTAMO PARA LA VIVIENDA LA PLATA",
+              "MUTUAL PAITITI",
+              "MUTUAL POTOSI",
+              "MUTUAL PANDO",
+              "MUTUAL EL PROGRESO"
+            ]
+          },
+          {
+            "name": "ide_paf",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 115
+            }
+          },
+          {
+            "name": "nombre_paf",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Oficina Agencia"
+          },
+          {
+            "name": "tipo_ofi",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Agencia Fija",
+            "categories": [
+              "Cajero Automático",
+              "Agencia Fija",
+              "Oficina Central",
+              "Ventanilla",
+              "Oficina Externa"
+            ]
+          },
+          {
+            "name": "departamet",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "ORURO",
+            "categories": [
+              "LA PAZ",
+              "SANTA CRUZ",
+              "COCHABAMBA",
+              "BENI",
+              "TARIJA",
+              "CHUQUISACA",
+              "POTOSÍ",
+              "PANDO",
+              "ORURO"
+            ]
+          },
+          {
+            "name": "ciudad",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "ORURO",
+            "categories": [
+              "LA PAZ",
+              "SANTA CRUZ",
+              "EL ALTO",
+              "COCHABAMBA",
+              "TARIJA",
+              "SUCRE",
+              "TRINIDAD",
+              "COBIJA",
+              "ORURO",
+              "POTOSI",
+              "QUILLACOLLO",
+              "GUAYARAMERIN",
+              "RIBERALTA",
+              "TUPIZA",
+              "VILLAZON"
+            ]
+          },
+          {
+            "name": "direccion",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Cochabamba esquina Potosi"
+          },
+          {
+            "name": "telefono",
+            "type": "string",
+            "example": "(591-2) 5277008"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
