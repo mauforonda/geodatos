@@ -1,0 +1,175 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_proyectos_recabados",
+  "title": "Revisar PDC Cuenca Alta del río La Paz - Proyectos Recabados",
+  "description": "El mapa de puntos muestra la ubicación espacial de los proyectos de riego y MIC identificados para la cuenca Alta del rio La Paz. En coordinación con técnicos Municipales se identificaron 4 proyectos EDTP y 15 ideas de proyecto en la tipología MIC, de los proyectos mencionados 13 pertenecen a Mecapaca, 4 a Achocalla y 2 a Palca. Este dato fue obtenido de su geoportal del Ministerio de Medio Ambiente y Agua en fecha septiembre del 2022.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_proyectos_recabados/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 7098,
+      "hash": "sha256:c4ee4c28817a7d501cb001a0283af4ef77970bb6379e399dac32637b968ac899",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "proyectos_recabados.40"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 42
+            }
+          },
+          {
+            "name": "no",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 42
+            }
+          },
+          {
+            "name": "ideas_de_p",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Construcción de sistema de riego comunidad Wilacota"
+          },
+          {
+            "name": "este",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 587824.68,
+              "maximum": 621136.6
+            }
+          },
+          {
+            "name": "norte",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 8138108.11,
+              "maximum": 8172824.0
+            }
+          },
+          {
+            "name": "tipo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "RIEGO",
+            "categories": [
+              "RIEGO",
+              "MIC"
+            ]
+          },
+          {
+            "name": "fase",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "ITCP",
+            "categories": [
+              "IDEA DE PROYECTO",
+              "EDTP",
+              "ITCP"
+            ]
+          },
+          {
+            "name": "municipio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "MECAPACA",
+            "categories": [
+              "MECAPACA",
+              "ACHOCALLA",
+              "PALCA"
+            ]
+          },
+          {
+            "name": "no_de_fam",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 450
+            }
+          },
+          {
+            "name": "caudal_de",
+            "type": "string",
+            "example": "POZO- NO AFORADO",
+            "categories": [
+              "CAUDAL COMPARTIDO",
+              "POZO- NO AFORADO",
+              "CAUDAL COMPARTIDO- NO AFORADO",
+              "DISTRITO 6",
+              "DISTRITO 7",
+              "HUARICANA",
+              "TITIRI"
+            ]
+          },
+          {
+            "name": "area_bajo",
+            "type": "string",
+            "example": "795.607 M2",
+            "categories": [
+              "30 ha",
+              "35 ha",
+              "795.607 M2",
+              "10 ha",
+              "12 ha",
+              "15 ha",
+              "25 ha",
+              "300.642 M2",
+              "306.79 M2",
+              "32 ha",
+              "45 ha",
+              "74 ha",
+              "785.979 M2",
+              "80 ha"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
