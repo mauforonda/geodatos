@@ -1,0 +1,121 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_central_de_generacion_mini_red_pla_2ca9fb88ee2c",
+  "title": "Central de Generación Mini Red - Plan de Electrificación Rural",
+  "description": "Centrales de los proyectos de Mini Redes, en el Área Rural como resultado de la consultoría: \"Elaboración e Implementación del Plan Integrado Nacional de Electrificación Rural de Bolivia\", ejecutada por la empresa Waya Energy de España, respaldada por la Universidad de Comillas y financiada por el Banco Interamericano de Desarrollo (BID), se aplicó el Modelo de Electrificación de Referencia (REM©MIT & IIT-Comillas).  Los principales objetivos del proyecto fueron:  Identificar zonas sin acceso eléctrico - Crear una plataforma de Electrificación Universal en Bolivia - Elaborar un plan maestro nacional y planes departamentales.",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_central_de_generacion_mini_red_pla_2ca9fb88ee2c/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 4944,
+      "hash": "sha256:e6e9a67bef2bc60c6f3716ea1b5a68864cb26aa345ef58f1c15d8e6e349552bb",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_central_de_generacion_mini_red__plan_de_electrifi_o22cs.28"
+          },
+          {
+            "name": "system",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "POTOSI_altiplano_ug_12"
+          },
+          {
+            "name": "generation",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "LV",
+            "categories": [
+              "LV",
+              "MV"
+            ]
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "POTOSI",
+            "categories": [
+              "BENI",
+              "PANDO",
+              "SANTA CRUZ",
+              "CHUQUISACA",
+              "COCHABAMBA",
+              "LA PAZ",
+              "POTOSI",
+              "TARIJA"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Sur Lipez",
+            "categories": [
+              "Vaca Diez",
+              "Federico Roman",
+              "Velasco",
+              "Chapare",
+              "Chiquitos",
+              "Madre De Dios",
+              "Sud Cinti",
+              "Abuná",
+              "Cercado",
+              "General José Ballivían",
+              "German Busch",
+              "Gran Chaco",
+              "Itenez",
+              "Moxos",
+              "Murillo",
+              "Nicolas Suarez",
+              "Sara",
+              "Sur Lipez"
+            ]
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "San Pablo"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPoint."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
