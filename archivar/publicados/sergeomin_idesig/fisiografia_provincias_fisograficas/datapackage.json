@@ -1,0 +1,75 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_sergeomin_idesig_fisiografia_provincias_fisograficas",
+  "title": "PROVINCIAS_FISOGRAFICAS",
+  "sources": [
+    {
+      "title": "Catálogo IDESIG de Sergeomin",
+      "path": "https://idesig.sergeomin.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_sergeomin_idesig_fisiografia_provincias_fisograficas/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 5499308,
+      "hash": "sha256:bbe4e960867e4a27f7795b4549456da590f3b5b6e6bae6c64a2939dcbc802e87",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "example": "PROVINCIAS_FISOGRAFICAS.2"
+          },
+          {
+            "name": "objectid",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 11
+            }
+          },
+          {
+            "name": "codigo",
+            "type": "string",
+            "example": "V"
+          },
+          {
+            "name": "clasificac",
+            "type": "string",
+            "example": "Cordillera Occidental"
+          },
+          {
+            "name": "fuente",
+            "type": "string",
+            "example": "MAPA DE PROVINCIAS FISIOGRÁFICAS DE BOLIVIA - 1994",
+            "categories": [
+              "MAPA DE PROVINCIAS FISIOGRÁFICAS DE BOLIVIA - 1994"
+            ]
+          },
+          {
+            "name": "autor",
+            "type": "string",
+            "example": "SERVICIO GEOLÓGICO DE BOLIVIA – GEOBOL E INSTITUTO FEDERAL DE GEOCIENCIAS Y RECURSOS NATURALES – BGR",
+            "categories": [
+              "SERVICIO GEOLÓGICO DE BOLIVIA – GEOBOL E INSTITUTO FEDERAL DE GEOCIENCIAS Y RECURSOS NATURALES – BGR"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
