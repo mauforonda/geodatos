@@ -1,0 +1,118 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_oieau_omvs_omvs_upis_somme_par_point_sortie",
+  "title": "OMVS_UP_Total de quantite d'eau preleve (milliers de m3/an)",
+  "sources": [
+    {
+      "title": "Sistema para la Gestión Integral de Recursos Hídricos desarrollado por la Oficina Internacional del Agua (OiEau)",
+      "path": "https://www.oieau-wiss.org/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_oieau_omvs_omvs_upis_somme_par_point_sortie/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 6882,
+      "hash": "sha256:b072b6f8e38b046d487b0fa130a01d5f80266937870012683fc069a8c7383cb4",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "omvs_upis_somme_par_point_sortie.fid-75f29474_19d840cd59a_-682b"
+          },
+          {
+            "name": "type",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Point de prise d'eau de surface Elevage",
+            "categories": [
+              "Point de prise d'eau de surface AEP",
+              "Point de prise d'eau de surface Elevage",
+              "Point de prise d'eau de surface Irrigation",
+              "Point de prise d'eau de surface Industrie Mines"
+            ]
+          },
+          {
+            "name": "upistcode",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 21100,
+              "maximum": 21400
+            }
+          },
+          {
+            "name": "code",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "UP_OMVS_BRL_000021"
+          },
+          {
+            "name": "nom",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "ELE21"
+          },
+          {
+            "name": "total",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 11,
+              "maximum": 1979960
+            }
+          },
+          {
+            "name": "paramètre",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Quantité d'eau prélevée",
+            "categories": [
+              "Quantité d'eau prélevée"
+            ]
+          },
+          {
+            "name": "unité",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "milliers de m3/an",
+            "categories": [
+              "milliers de m3/an"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
