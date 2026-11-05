@@ -1,0 +1,100 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_estaciones_y_derechos_de_via_ypfb_e0fkz",
+  "title": "Estaciones y Derechos de Vía - YPFB",
+  "description": "El mapa presenta la ubicación de las estaciones y los derechos de vía proporcionados por YPFB, ubicados dentro del trazado del Gasoducto Transboliviano (GTB).",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_estaciones_y_derechos_de_via_ypfb_e0fkz/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 3341,
+      "hash": "sha256:14791e790a5ca6117fcf015a96a182495884aebf05101dc99e20f72b1241ad79",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "example": "layer_estaciones_y_derechos_de_via__ypfb_e0fkz.7"
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "example": "Derecho de vía Inicio"
+          },
+          {
+            "name": "tipo",
+            "type": "string",
+            "example": "Derecho de vía",
+            "categories": [
+              "Estación",
+              "Derecho de vía"
+            ]
+          },
+          {
+            "name": "lat",
+            "type": "number",
+            "constraints": {
+              "minimum": -19.109793,
+              "maximum": -18.190367
+            }
+          },
+          {
+            "name": "lon",
+            "type": "number",
+            "constraints": {
+              "minimum": -62.902627,
+              "maximum": -57.81911
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "example": "SANTA CRUZ",
+            "categories": [
+              "SANTA CRUZ"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "example": "Cordillera",
+            "categories": [
+              "Cordillera",
+              "German Busch"
+            ]
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "example": "Cabezas",
+            "categories": [
+              "Charagua",
+              "Cabezas",
+              "Puerto Quijarro",
+              "El Carmen Rivero Tórrez"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
