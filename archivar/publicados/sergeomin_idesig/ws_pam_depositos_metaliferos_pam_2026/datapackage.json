@@ -1,0 +1,117 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_sergeomin_idesig_ws_pam_depositos_metaliferos_pam_2026",
+  "title": "depositos_metaliferos_pam_2026",
+  "sources": [
+    {
+      "title": "Catálogo IDESIG de Sergeomin",
+      "path": "https://idesig.sergeomin.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_sergeomin_idesig_ws_pam_depositos_metaliferos_pam_2026/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 121337,
+      "hash": "sha256:34c4709d2111c1834c1475981e384695e600f3107df874814b5550d8aa9b776c",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "depositos_metaliferos_pam_2026.1298"
+          },
+          {
+            "name": "nº",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 942
+            }
+          },
+          {
+            "name": "depto",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Potosi",
+            "categories": [
+              "Potosi",
+              "La Paz",
+              "Oruro",
+              "Cochabamba",
+              "Santa Cruz",
+              "Chuquisaca",
+              "Pando",
+              "Tarija",
+              "Beni"
+            ]
+          },
+          {
+            "name": "deposito",
+            "type": "string",
+            "example": "YARBI KHOYA"
+          },
+          {
+            "name": "estado",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "No Inventariado",
+            "categories": [
+              "No Inventariado",
+              "Inventariado"
+            ]
+          },
+          {
+            "name": "este",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 186800,
+              "maximum": 876219
+            }
+          },
+          {
+            "name": "norte",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 7477500,
+              "maximum": 8927647
+            }
+          },
+          {
+            "name": "zona",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 19,
+              "maximum": 21
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
