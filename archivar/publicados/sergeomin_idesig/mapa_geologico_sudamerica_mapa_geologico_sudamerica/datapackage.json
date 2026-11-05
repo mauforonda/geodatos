@@ -1,0 +1,209 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_sergeomin_idesig_mapa_geologico_sudamerica_mapa_geologico_sudamerica",
+  "title": "mapa_geologico_sudamerica",
+  "sources": [
+    {
+      "title": "Catálogo IDESIG de Sergeomin",
+      "path": "https://idesig.sergeomin.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_sergeomin_idesig_mapa_geologico_sudamerica_mapa_geologico_sudamerica/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 6868001,
+      "hash": "sha256:2447833d45f91f4e72e710b2be00988c3779611824c84b562f88704e89179518",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "mapa_geologico_sudamerica.2486"
+          },
+          {
+            "name": "unit_code",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "CP?"
+          },
+          {
+            "name": "unit_numbe",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 292
+            }
+          },
+          {
+            "name": "eon_max",
+            "type": "string",
+            "example": "Phanerozoic",
+            "categories": [
+              "Phanerozoic",
+              "Proterozoic",
+              "Archean"
+            ]
+          },
+          {
+            "name": "era_max",
+            "type": "string",
+            "example": "Paleozoic",
+            "categories": [
+              "Cenozoic",
+              "Mesozoic",
+              "Paleozoic",
+              "Paleoproterozoic",
+              "Neoproterozoic",
+              "Mesoproterozoic",
+              "Neoarchean",
+              "Mesoarchean",
+              "Paleoarchean"
+            ]
+          },
+          {
+            "name": "period_max",
+            "type": "string",
+            "example": "Carboniferous",
+            "categories": [
+              "Cretaceous",
+              "Neogene",
+              "Paleogene",
+              "Jurassic",
+              "Quaternary",
+              "Carboniferous",
+              "Orosirian",
+              "Ordovician",
+              "Ediacaran",
+              "Rhyacian",
+              "Devonian",
+              "Triassic",
+              "Statherian",
+              "Cambrian",
+              "Permian",
+              "Silurian",
+              "Cryogenian",
+              "Calymmian",
+              "Stenian",
+              "Ectasian",
+              "Tonian",
+              "<Null>",
+              "Siderian"
+            ]
+          },
+          {
+            "name": "eon_min",
+            "type": "string",
+            "example": "Phanerozoic",
+            "categories": [
+              "Phanerozoic",
+              "Proterozoic",
+              "Archean"
+            ]
+          },
+          {
+            "name": "era_min",
+            "type": "string",
+            "example": "Paleozoic",
+            "categories": [
+              "Cenozoic",
+              "Mesozoic",
+              "Paleozoic",
+              "Paleoproterozoic",
+              "Neoproterozoic",
+              "Mesoproterozoic",
+              "Neoarchean",
+              "Mesoarchean",
+              "Paleoarchean"
+            ]
+          },
+          {
+            "name": "period_min",
+            "type": "string",
+            "example": "Permian",
+            "categories": [
+              "Cretaceous",
+              "Neogene",
+              "Quaternary",
+              "Paleogene",
+              "Jurassic",
+              "Orosirian",
+              "Triassic",
+              "Ordovician",
+              "Permian",
+              "Ediacaran",
+              "Carboniferous",
+              "Rhyacian",
+              "Statherian",
+              "Cambrian",
+              "Devonian",
+              "Calymmian",
+              "Tonian",
+              "Cryogenian",
+              "Silurian",
+              "Ectasian",
+              "Stenian",
+              "<Null>",
+              "Siderian"
+            ]
+          },
+          {
+            "name": "rock_type",
+            "type": "string",
+            "example": "Volcanic",
+            "categories": [
+              "Sedimentary",
+              "Plutonic",
+              "Volcanic",
+              "Metamorphic"
+            ]
+          },
+          {
+            "name": "type",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Volcano-sedimentary",
+            "categories": [
+              "Siliciclastic",
+              "Granitic",
+              "Volcano-sedimentary",
+              "Undifferentiated",
+              "Medium to high grade",
+              "Low to medium grade",
+              "Basaltic",
+              "Rhyolitic",
+              "Andesitic and related",
+              "Gabbroic and Ultramafic",
+              "<Null>",
+              "Evaporitic",
+              "Alkaline",
+              "Carbonatic"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 5."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
