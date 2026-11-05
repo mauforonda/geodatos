@@ -1,0 +1,122 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_hidrantes_lpea",
+  "title": "Localización de hidrantes en las ciudades de La Paz y El Alto_ 2009",
+  "description": "Este mapa representa la distribución geográfica de los hidrantes que consiste en una red de tuberías conectadas a un sistema de bombeo o suministro de agua, para la extinción de incendios, el cual, se encuentra instalado en el exterior de los distintos complejos urbanísticos de las ciudades de La Paz y El Alto. Elaborado por el Programa Andino de Formación y de Investigación sobre la Vulnerabilidad y los Riesgos Urbanos - Bolivia, Ecuador, Perú - PACIVUR del Instituto de Investigaciones para el Desarrollo (IRD), en el año 2011.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_hidrantes_lpea/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 10485,
+      "hash": "sha256:106553972a2b2602bb5bb26738fca7d9ba62a32bbbeac103b0e17212331ce098",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 109
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Hidrantes_LPEA.105"
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 0
+            }
+          },
+          {
+            "name": "hidrante",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "HM-37"
+          },
+          {
+            "name": "zona",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Urb. Inti"
+          },
+          {
+            "name": "ubicacion",
+            "type": "string",
+            "example": "Canonigo Ayllon entre Saravia y Davalos"
+          },
+          {
+            "name": "diametr_mm",
+            "type": "string",
+            "example": "80",
+            "categories": [
+              "80",
+              "50"
+            ]
+          },
+          {
+            "name": "utilizable",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "sin dato",
+            "categories": [
+              "si",
+              "no",
+              "sin dato"
+            ]
+          },
+          {
+            "name": "sistema",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Meseta El Alto",
+            "categories": [
+              "Achachicala",
+              "Pampahasi",
+              "Meseta El Alto",
+              "Talud El Alto"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
