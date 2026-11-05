@@ -1,0 +1,132 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geobolivia_geonode_aeropuertos_2018_2b0befc9",
+  "title": "Localización de Aeropuertos AASANA, Bolivia (2018)",
+  "description": "Información geoespacial de la localización de los principales aeropuertos internacionales y nacionales que están en el territorio nacional, los mismos ocupan una superficie extensa de terreno con pistas adecuadas para el aterrizaje y despegue de aeronaves, información actualizada de la Administración de Aeropuertos y Servicios Auxiliares a la Navegación Aérea (AASANA), actualizado a junio 2018.",
+  "sources": [
+    {
+      "title": "Nueva plataforma GeoBolivia",
+      "path": "https://geonode.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geobolivia_geonode_aeropuertos_2018_2b0befc9/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 6121,
+      "hash": "sha256:59825088356fa34a4f2db1b54d9e398d13f965b2386fb2ce0d7c2955c6f83920",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "aeropuertos_2018_2b0befc9.36"
+          },
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 42
+            }
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 42
+            }
+          },
+          {
+            "name": "nro",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 41
+            }
+          },
+          {
+            "name": "departamen",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Potosí",
+            "categories": [
+              "Beni",
+              "Santa Cruz",
+              "La Paz",
+              "Tarija",
+              "Chuquisaca",
+              "Cochabamba",
+              "Potosí",
+              "Oruro",
+              "Pando"
+            ]
+          },
+          {
+            "name": "municipio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Uyuni"
+          },
+          {
+            "name": "ciudad",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Uyuni"
+          },
+          {
+            "name": "nombre_aer",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "JOYA ANDINA"
+          },
+          {
+            "name": "tipo_aerod",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Nacional",
+            "categories": [
+              "Nacional",
+              "Internacional"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
