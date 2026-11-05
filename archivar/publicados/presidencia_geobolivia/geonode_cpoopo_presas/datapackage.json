@@ -1,0 +1,223 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_cpoopo_presas",
+  "title": "Plan Director Cuenca Lago Poopó - Presas",
+  "description": "El mapa muestra la georreferenciación e información relevante de las 10 presas ubicadas en el área de intervención de la Cuenca del Lago Poopó. Dato del Viceministerio de Recursos Hídricos y Riego a marzo 2018.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_cpoopo_presas/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 5322,
+      "hash": "sha256:c2e8f5116dd68983af80058283356732face7ce319a711c17f89070751e560ae",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 10
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0,
+              "maximum": 9
+            }
+          },
+          {
+            "name": "nom_presa",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Tola Pampa"
+          },
+          {
+            "name": "codigo",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "LP-P-013"
+          },
+          {
+            "name": "x",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": -67.9608,
+              "maximum": -66.6897
+            }
+          },
+          {
+            "name": "y",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": -19.4198,
+              "maximum": -17.2647
+            }
+          },
+          {
+            "name": "municipio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "S. Pedro Curahuara"
+          },
+          {
+            "name": "uso",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Riego",
+            "categories": [
+              "Riego"
+            ]
+          },
+          {
+            "name": "tipo_presa",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Tierra",
+            "categories": [
+              "Tierra",
+              "Gravedad",
+              "Arco",
+              "Contrafuertes",
+              "Enrocado"
+            ]
+          },
+          {
+            "name": "estado",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "F/Problema",
+            "categories": [
+              "C/Problema",
+              "Funciona",
+              "F/Problema",
+              "No Funciona"
+            ]
+          },
+          {
+            "name": "areacuenca",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "13,22_Km2"
+          },
+          {
+            "name": "alt_presa",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "4,88_m"
+          },
+          {
+            "name": "longcorona",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "125_m"
+          },
+          {
+            "name": "capembalse",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "50.000_m3"
+          },
+          {
+            "name": "cotacorona",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "3.803,54 msnm"
+          },
+          {
+            "name": "cuencainfl",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "S/N",
+            "categories": [
+              "Lago Poopo",
+              "S/N",
+              "Rio Cabildo",
+              "Rio Pongo",
+              "Rio Sevaruyo"
+            ]
+          },
+          {
+            "name": "rio",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Thola Pampa"
+          },
+          {
+            "name": "pdc",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "PDC_POOPO",
+            "categories": [
+              "PDC_POOPO"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
