@@ -1,0 +1,120 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_apeaderos_del_tren_metropolitano_e_f8ea96954d28",
+  "title": "Apeaderos del Tren Metropolitano en el Departamento de Cochabamba",
+  "description": "El mapa muestra todas las estaciones o apeaderos ferroviarios que facilitan el acceso de los pasajeros a los trenes, así como su descenso, conectados a las diferentes líneas del tren cochabambino.",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_apeaderos_del_tren_metropolitano_e_f8ea96954d28/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 4998,
+      "hash": "sha256:dcde914fb780c90fdce3559315065606db09734f261dedbb8e716a2a02118297",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_apeaderos_del_tren_metropolitano_en_el_departamen_alqlq.34"
+          },
+          {
+            "name": "designaci",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Parada SUTICOLLO"
+          },
+          {
+            "name": "tipo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "ESTACION MUNICIPAL",
+            "categories": [
+              "APEADERO VIA DOBLE",
+              "APEADERO VIA SIMPLE",
+              "ESTACION MUNICIPAL",
+              "ESTACION CENTRAL"
+            ]
+          },
+          {
+            "name": "lado_en_se",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Izquierda",
+            "categories": [
+              "Derecha",
+              "Izquierda",
+              "Desconocido",
+              "Izquierdo"
+            ]
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "COCHABAMBA",
+            "categories": [
+              "COCHABAMBA"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Quillacollo",
+            "categories": [
+              "Cercado",
+              "Quillacollo"
+            ]
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Sipesipe",
+            "categories": [
+              "Cochabamba",
+              "Sipesipe",
+              "Quillacollo",
+              "Colcapirhua",
+              "Vinto"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
