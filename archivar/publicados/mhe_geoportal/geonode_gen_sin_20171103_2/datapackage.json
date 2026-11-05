@@ -1,0 +1,149 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mhe_geoportal_geonode_gen_sin_20171103_2",
+  "title": "gen_sin_20171103_2",
+  "sources": [
+    {
+      "title": "Geoportal del Viceministerio de Electricidad y Energías Renovables",
+      "path": "https://geoportal.mhe.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mhe_geoportal_geonode_gen_sin_20171103_2/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 5968,
+      "hash": "sha256:c93fa8efa225f660b9409721a2b961f005b520f1ccecb4d27a9459f12a627412",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 45
+            }
+          },
+          {
+            "name": "codigo",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "PUH"
+          },
+          {
+            "name": "Central",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Punutuma"
+          },
+          {
+            "name": "Area",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "SUR",
+            "categories": [
+              "NORTE",
+              "CENTRAL",
+              "ORIENTAL",
+              "ORURO",
+              "SUR",
+              "TARIJA",
+              "TRINIDAD",
+              "SUCRE"
+            ]
+          },
+          {
+            "name": "Empresa",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "ERESA G",
+            "categories": [
+              "COBEE",
+              "ENDE GUARACACHI S.A.",
+              "ENDE ANDINA",
+              "ENDE G",
+              "ERESA G",
+              "VHE",
+              "CORANI",
+              "GBE",
+              "HB",
+              "CECBB",
+              "ENDE CORANI S.A.",
+              "SDB",
+              "SYNERGIA"
+            ]
+          },
+          {
+            "name": "Tecnologia",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Hidroeléctrica",
+            "categories": [
+              "Hidroeléctrica",
+              "Termoeléctrica",
+              "Biomasa",
+              "Biomansa",
+              "Eólico",
+              "Solar"
+            ]
+          },
+          {
+            "name": "Tec_n",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 5
+            }
+          },
+          {
+            "name": "Unida",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 16
+            }
+          },
+          {
+            "name": "Pn",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1.9,
+              "maximum": 392.704
+            }
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
