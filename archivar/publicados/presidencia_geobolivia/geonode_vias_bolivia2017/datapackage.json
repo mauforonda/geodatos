@@ -1,0 +1,137 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_vias_bolivia2017",
+  "title": "Mapa de Ubicación de Retenes de Peaje y Pesaje en Bolivia_ 2017",
+  "description": "Este Mapa muestra las ubicaciones de las estaciones de Peaje y Pesos y Dimensiones (Pesaje) que se encuentran actualmente en funcionamiento en Bolivia al mes Marzo 2017. Muestra también el sistema de cobro en cada estación.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_vias_bolivia2017/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 10915,
+      "hash": "sha256:ef4558aaecaf8bc7f50fcd2bc76cb5dd0ebb62129d600dc622a6d925811a2233",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "vias_bolivia2017.132"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 136
+            }
+          },
+          {
+            "name": "tipo_estac",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "PEAJE/PESAJE",
+            "categories": [
+              "PEAJE",
+              "PESAJE",
+              "PEAJE/PESAJE"
+            ]
+          },
+          {
+            "name": "estacion",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Uyuni II"
+          },
+          {
+            "name": "codesta",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 136
+            }
+          },
+          {
+            "name": "ubicacion",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "TEMPORAL",
+            "categories": [
+              "DEFINITIVO",
+              "TEMPORAL O MOVIL",
+              "TEMPORAL",
+              "DEFINITIVA"
+            ]
+          },
+          {
+            "name": "sist_cobro",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "SISCAP/SNCPD",
+            "categories": [
+              "SISCAP",
+              "SISAPP",
+              "SNCPD",
+              "SISCEP",
+              "CONTROL",
+              "SISCAP/CONTROL",
+              "SISCAP/SNCPD"
+            ]
+          },
+          {
+            "name": "departamen",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Potosí",
+            "categories": [
+              "Santa Cruz",
+              "Cochabamba",
+              "Potosí",
+              "La Paz",
+              "Beni",
+              "Oruro",
+              "Tarija",
+              "Chuquisaca",
+              "Pando"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
