@@ -1,0 +1,181 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_cpilcomayo_estmeteorologica",
+  "title": "Plan Director Cuenca Río Pilcomayo - Estaciones Meteorológicas_ Bolivia",
+  "description": "El mapa muestra las 188 estaciones meteorológicas de la Cuenca del Río Pilcomayo que se halla en el departamentos: Oruro, Potosí, Chuquisaca y Tarija, datos del Servicio Nacional de Meteorología e Hidrología (SENAMHI), una estación meteorológica es una instalación destinada a medir y registrar regularmente diversas variables meteorológicas. Estos datos se utilizan tanto para la elaboración de predicciones meteorológicas a partir de modelos numéricos como para estudios climáticos. Información obtenida del Viceministerio de Recursos Hídricos y Riego, ha noviembre del 2016.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_cpilcomayo_estmeteorologica/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 11670,
+      "hash": "sha256:7c798ffdb7bc8e69be111111619969e2e888a8fa25f77f321d9816af1fd93d2f",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 188
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0,
+              "maximum": 187
+            }
+          },
+          {
+            "name": "nom_proy",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "San Antonio de Esmoruco"
+          },
+          {
+            "name": "tipo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Meteorologica",
+            "categories": [
+              "Meteorologica"
+            ]
+          },
+          {
+            "name": "x",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -66.68,
+              "maximum": -62.54
+            }
+          },
+          {
+            "name": "y",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -22.08,
+              "maximum": -18.8
+            }
+          },
+          {
+            "name": "depto",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Potosi",
+            "categories": [
+              "Potosi",
+              "Tarija",
+              "Chuquisaca"
+            ]
+          },
+          {
+            "name": "provincia",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Sud Lipez",
+            "categories": [
+              "Gran Chaco",
+              "Mendez",
+              "Cornelio Saavedra",
+              "Oropeza",
+              "Nor Cinti",
+              "O'Connor",
+              "Tomas Frias",
+              "Antonio Quijarro",
+              "Jose Maria Linares",
+              "Sud Chichas",
+              "Nor Chichas",
+              "Sud Cinti",
+              "Yamparaez",
+              "Modesto Omiste",
+              "Luis Calvo",
+              "Zudañez",
+              "Aviles",
+              "Hernando Siles",
+              "Rafael Bustillo",
+              "Alonzo de Ibañez",
+              "Azurduy",
+              "Chayanta",
+              "Sud Lipez"
+            ]
+          },
+          {
+            "name": "elev_msnm",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 287,
+              "maximum": 4572
+            }
+          },
+          {
+            "name": "rec_hist",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "1980 - 2015"
+          },
+          {
+            "name": "esta_actu",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Activa",
+            "categories": [
+              "Inactiva",
+              "Activa"
+            ]
+          },
+          {
+            "name": "observacio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Dentro de Cuenca",
+            "categories": [
+              "Dentro de Cuenca"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
