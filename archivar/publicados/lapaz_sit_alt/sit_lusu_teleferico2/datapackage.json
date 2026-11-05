@@ -1,0 +1,77 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_alt_sit_lusu_teleferico2",
+  "title": "LUSU Líneas Teleférico",
+  "description": "Líneas del Teleférico, actualizado al año 2017.",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)",
+      "path": "http://sitservicios.lapaz.bo/ows38.jsp"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_sit_lusu_teleferico2/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 4870,
+      "hash": "sha256:95a5d783c400e2e762da718cde76f816504bba2c33fcc8b802b620286ceb8add",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "lusu_teleferico2.22"
+          },
+          {
+            "name": "layer",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "franja",
+            "categories": [
+              "franja",
+              "eje"
+            ]
+          },
+          {
+            "name": "linea",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Verde",
+            "categories": [
+              "Naranja",
+              "Amarilla",
+              "Roja",
+              "Verde",
+              "Blanca",
+              "Celeste",
+              "Cafe",
+              "Morada",
+              "Plateada"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: LineString."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
