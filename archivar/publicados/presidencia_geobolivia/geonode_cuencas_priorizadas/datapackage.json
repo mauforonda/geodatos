@@ -1,0 +1,71 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_cuencas_priorizadas",
+  "title": "PDC Cuenca Alta del río La Paz - Cuencas Hidrográficas Priorizadas",
+  "description": "La capa de Microcuencas priorizadas, representa el resultado del proceso de priorización mediante análisis multicriterio y proceso de concertación social dentro del Plan Director de la cuenca La Paz, se priorizaron 5 microcuencas para lo cual se tomó como información base la delimitación de Unidades Hidrográficas Pfastetter Nivel 7 y 8 del Proyecto Bolivia WATCH, dadas las condiciones hidro sociales de las microcuencas, se conjugaron ambas unidades hidrográficas de los niveles 7 y 8. Esta información fue generada el año 2022. Este dato fue obtenido de su geoportal del Ministerio de Medio Ambiente y Agua en fecha septiembre del 2022.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_cuencas_priorizadas/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 14426,
+      "hash": "sha256:23ca7cc100a2bee6fd1e12ba43ef7bbcf46c789b67c9009bf3f7e89721e546b3",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "example": "cuencas_priorizadas.3"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 5
+            }
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "example": "Alpacoma"
+          },
+          {
+            "name": "area_km2",
+            "type": "number",
+            "constraints": {
+              "minimum": 1.684,
+              "maximum": 154.822
+            }
+          },
+          {
+            "name": "departamen",
+            "type": "string",
+            "example": "La Paz",
+            "categories": [
+              "La Paz"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 1."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
