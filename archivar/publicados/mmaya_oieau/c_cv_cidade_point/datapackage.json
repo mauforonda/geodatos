@@ -1,0 +1,100 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_oieau_c_cv_cidade_point",
+  "title": "CV_AD_cidade_point",
+  "sources": [
+    {
+      "title": "Sistema para la Gestión Integral de Recursos Hídricos desarrollado por la Oficina Internacional del Agua (OiEau)",
+      "path": "https://www.oieau-wiss.org/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_oieau_c_cv_cidade_point/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 4161,
+      "hash": "sha256:799904f62c7de3481349b1c09f807c1cbe22260e6462777022a3bb6488f34d9f",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "cidade_point.19"
+          },
+          {
+            "name": "nom_freg",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "SAO JOAO BAPTISTA"
+          },
+          {
+            "name": "nom_ilha",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "BRAVA",
+            "categories": [
+              "SANTIAGO",
+              "SANTO ANTAO",
+              "FOGO",
+              "SAL",
+              "SAO NICOLAU",
+              "BOAVISTA",
+              "BRAVA",
+              "MAIO",
+              "SAO VICENTE"
+            ]
+          },
+          {
+            "name": "nom_conc",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "BRAVA"
+          },
+          {
+            "name": "categoria",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "C",
+            "categories": [
+              "C"
+            ]
+          },
+          {
+            "name": "nom_zvc",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Cidade de Nova Sintra"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
