@@ -1,0 +1,97 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geobolivia_geonode_contenedores_diferenciados_d7487598",
+  "title": "Contenedores Diferenciados",
+  "description": "Información geoespacial de la localización de los Contenedores Diferenciados, distribuidos en la ciudad de La Paz. Dato obtenido del geoportal IDE La Paz en fecha octubre del 2022.",
+  "sources": [
+    {
+      "title": "Nueva plataforma GeoBolivia",
+      "path": "https://geonode.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geobolivia_geonode_contenedores_diferenciados_d7487598/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 6939,
+      "hash": "sha256:223e38872665c61829adabffc0bf4ac812f2995574bebaf53643303aba63c411",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "contenedores_diferenciados_d7487598.41"
+          },
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 75
+            }
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 75
+            }
+          },
+          {
+            "name": "codigo",
+            "type": "string",
+            "example": "CD-01-03"
+          },
+          {
+            "name": "ubicacion",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Estado Mayor"
+          },
+          {
+            "name": "no",
+            "type": "string",
+            "example": "3"
+          },
+          {
+            "name": "codigo_1",
+            "type": "string",
+            "example": "CD-11-02",
+            "categories": [
+              "CD-11-01",
+              "CD-11-02",
+              "CD-12-01",
+              "CD-13-02",
+              "CD-13-04"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
