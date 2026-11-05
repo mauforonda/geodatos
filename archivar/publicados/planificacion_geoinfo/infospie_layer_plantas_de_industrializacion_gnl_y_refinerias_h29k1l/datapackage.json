@@ -1,0 +1,85 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_plantas_de_industrializacion_gnl_y_6d87410c6ad7",
+  "title": "Plantas de Industrialización, GNL y Refinerías",
+  "description": "El mapa muestra la ubicación de las plantas de industrialización, la planta de gas natural licuado y las plantas de refinación, proveniente del Viceministerio de Industrialización, Comercialización, Transporte y Almacenaje de Hidrocarburos.",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_plantas_de_industrializacion_gnl_y_6d87410c6ad7/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 3173,
+      "hash": "sha256:c9006198cdb158bee89f45bf605baa54cab7c6b31cdd1fea081733aa1fa5c156",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "example": "layer_plantas_de_industrializacion_gnl_y_refinerias_h29k1l.5"
+          },
+          {
+            "name": "latitud",
+            "type": "integer"
+          },
+          {
+            "name": "longitud",
+            "type": "integer"
+          },
+          {
+            "name": "nomb_plant",
+            "type": "string",
+            "example": "Refinería Gualberto Villaroel"
+          },
+          {
+            "name": "descripcio",
+            "type": "string",
+            "example": "Planta de Refinación",
+            "categories": [
+              "Planta de Industrialización",
+              "Planta de Refinación",
+              "Planta de Gas Natural Licuado"
+            ]
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "example": "COCHABAMBA",
+            "categories": [
+              "SANTA CRUZ",
+              "COCHABAMBA",
+              "TARIJA"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "example": "Cercado"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "example": "Cochabamba"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
