@@ -62,6 +62,9 @@ jobs:
           sync_and_push() {
             commit_label="${1:-state}"
             git add evaluar/datasets.csv archivar/paquetes.csv archivar/runs.csv archivar/manuales.csv archivar/publicados
+            for f in archivar/normalizar_omitidos.csv archivar/catalog.json; do
+              if [ -e "$f" ]; then git add "$f"; fi
+            done
             if git diff --quiet && git diff --staged --quiet; then
               return 1
             fi

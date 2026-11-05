@@ -33,7 +33,7 @@ def iniciar_sesion() -> urllib3.PoolManager:
 def leer_datos() -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
     capas = pd.read_csv(CAPAS, keep_default_na=False)
     datasets = pd.read_csv(DATASETS, keep_default_na=False)
-    paquetes = pd.read_csv(PAQUETES, keep_default_na=False)
+    paquetes = pd.read_csv(PAQUETES, keep_default_na=False, dtype={"hash": str})
     if "archivado" in datasets:
         datasets["archivado"] = parse_bool(datasets["archivado"])
     for columna in ["tiene_legend_png", "tiene_map_png", "tiene_sample_json"]:

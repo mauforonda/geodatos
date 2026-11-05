@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import argparse
+import csv
 import datetime as dt
 import hashlib
 import json
@@ -32,6 +33,11 @@ if str(ROOT_DIR) not in sys.path:
     sys.path.insert(0, str(ROOT_DIR))
 
 from archivar.componer_mapa import componer_mapa
+from archivar.crs import extensiones_validas_por_geoserver, inferir_crs
+from archivar.geoparquet import bbox_lonlat_valido, esta_normalizado, inspeccionar
+from archivar.paquete_datos import construir_datapackage, perfilar
+from archivar.pmtiles import ARCHIVO as ARCHIVO_PMTILES, construir_pmtiles
+from archivar.stac import actualizar_catalogos, construir_collection
 
 CAPAS = DESCUBRIR_DIR / "capas.csv"
 DIRECTORIO = DESCUBRIR_DIR / "directorio.json"
@@ -42,6 +48,7 @@ MANUALES = BASE_DIR / "manuales.csv"
 PUBLICADOS = BASE_DIR / "publicados"
 TMP_STAGE = BASE_DIR / ".tmp_stage"
 BLACKLIST = BASE_DIR / "blacklist.json"
+OMITIDOS = BASE_DIR / "normalizar_omitidos.csv"
 
 TIMEZONE = pytz.timezone("America/La_Paz")
 ITEM_PREFIX = "geodatosbolivia"
@@ -75,7 +82,12 @@ PAQUETES_COLUMNAS = [
     "tiene_legend_png",
     "tiene_map_png",
     "tiene_sample_json",
+    "normalizado",
+    "hash",
+    "bytes_pmtiles",
 ]
+
+BOOL_COLUMNAS_PAQUETES = ["tiene_legend_png", "tiene_map_png", "tiene_sample_json", "normalizado"]
 
 RUNS_COLUMNAS = [
     "geoserver",
@@ -144,7 +156,25 @@ def rutas_publicacion(geoserver: str, nombre: str) -> Dict[str, Path]:
         "legend": base / "legend.png",
         "map": base / "map.png",
         "sample": base / "sample.json",
+        "datapackage": base / "datapackage.json",
+        "collection": base / "collection.json",
     }
+
+
+def leer_omitidos() -> set[tuple[str, str]]:
+    if not OMITIDOS.exists():
+        return set()
+    with open(OMITIDOS, encoding="utf-8", newline="") as f:
+        return {(fila["geoserver"], fila["nombre"]) for fila in csv.DictReader(f)}
+
+
+def registrar_omitido(geoserver: str, nombre: str, tipo: str, motivo: str) -> None:
+    nuevo = not OMITIDOS.exists()
+    with open(OMITIDOS, "a", encoding="utf-8", newline="") as f:
+        escritor = csv.writer(f)
+        if nuevo:
+            escritor.writerow(["geoserver", "nombre", "fecha", "tipo", "motivo"])
+        escritor.writerow([geoserver, nombre, hoy(), tipo, motivo.replace("\n", " ")[:300]])
 
 
 def parse_bool(serie: pd.Series) -> pd.Series:
@@ -229,11 +259,11 @@ def leer_directorio() -> Dict[str, dict]:
 def leer_paquetes() -> pd.DataFrame:
     if not PAQUETES.exists():
         return pd.DataFrame(columns=PAQUETES_COLUMNAS)
-    paquetes = pd.read_csv(PAQUETES, keep_default_na=False)
+    paquetes = pd.read_csv(PAQUETES, keep_default_na=False, dtype={"hash": str})
     for columna in PAQUETES_COLUMNAS:
         if columna not in paquetes.columns:
             paquetes[columna] = ""
-    for columna in ["tiene_legend_png", "tiene_map_png", "tiene_sample_json"]:
+    for columna in BOOL_COLUMNAS_PAQUETES:
         paquetes[columna] = parse_bool(paquetes[columna])
     return paquetes[PAQUETES_COLUMNAS].copy()
 
@@ -733,17 +763,28 @@ def geojson_a_gdf(geojson_path: Path, epsg: Optional[int]) -> gpd.GeoDataFrame:
     return gdf
 
 
-def escribir_geoparquet(gdf: gpd.GeoDataFrame, destino: Path) -> None:
+def convertir_a_geoparquet(entrada: str, destino: str) -> None:
+    # Las geometrias se conservan como las entrega la fuente: reparar las cambia y falla en algunas capas
+    convert_to_geoparquet(entrada, destino, geoparquet_version="1.1", repair_geometry=False)
+
+
+def escribir_geoparquet(gdf: gpd.GeoDataFrame, destino: Path, geoserver: Optional[str] = None) -> Optional[str]:
+    """Escribe el geoparquet normalizado. Devuelve el CRS inferido si la fuente declaraba uno incoherente."""
+    crs_inferido = None
+    if (gdf.crs is None or gdf.crs.equals("EPSG:4326")) and not bbox_lonlat_valido(list(gdf.total_bounds)):
+        hermanas = extensiones_validas_por_geoserver().get(geoserver)
+        crs_inferido, _ = inferir_crs(gdf.geometry.bounds.to_numpy(), hermanas=hermanas)
+        if crs_inferido:
+            gdf = gdf.set_crs(crs_inferido, allow_override=True)
+    if gdf.crs is not None and not gdf.crs.equals("EPSG:4326"):
+        gdf = gdf.to_crs(epsg=4326)
     parquet_normalizado = destino.with_name(f"{destino.stem}.normalizado.parquet")
     try:
         gdf.to_parquet(parquet_normalizado, index=False)
-        convert_to_geoparquet(
-            str(parquet_normalizado),
-            str(destino),
-            geoparquet_version="1.1",
-        )
+        convertir_a_geoparquet(str(parquet_normalizado), str(destino))
     finally:
         parquet_normalizado.unlink(missing_ok=True)
+    return crs_inferido
 
 
 def muestra_no_geometrica(gdf: gpd.GeoDataFrame) -> dict:
@@ -940,6 +981,17 @@ def generar_mapa_publicacion(
     raise ValueError(f"map_mode desconocido: {map_mode}")
 
 
+def intentar_pmtiles(geoparquet: Path, destino: Path) -> tuple[Optional[dict], Optional[str]]:
+    """PMTiles del geoparquet y, si no se puede, el motivo. Un fallo de teselado no impide archivar."""
+    try:
+        return construir_pmtiles(geoparquet, destino), None
+    except TimeoutError:
+        raise
+    except Exception as e:
+        print(f"aviso: sin PMTiles: {e}", flush=True)
+        return None, str(e)
+
+
 def stage_dataset(
     sesion: urllib3.PoolManager,
     directorio: Dict[str, dict],
@@ -967,6 +1019,9 @@ def stage_dataset(
         legend_path = tmp / "legend.png"
         map_path = tmp / "map.png"
         sample_path = tmp / "sample.json"
+        datapackage_path = tmp / "datapackage.json"
+        collection_path = tmp / "collection.json"
+        pmtiles_path = tmp / ARCHIVO_PMTILES
 
         n_features_descargadas, n_features_esperadas, bytes_geojson, paginado = descargar_geojson(
             sesion,
@@ -977,7 +1032,7 @@ def stage_dataset(
         )
 
         gdf = geojson_a_gdf(geojson_path, capa.epsg if not pd.isna(capa.epsg) else None)
-        escribir_geoparquet(gdf, geoparquet_path)
+        crs_inferido = escribir_geoparquet(gdf, geoparquet_path, geoserver)
 
         n_features = len(gdf)
         if n_features_esperadas is not None and n_features != n_features_esperadas:
@@ -1003,6 +1058,14 @@ def stage_dataset(
             ows=ows,
         )
         escribir_json(metadata_path, metadata)
+        perfil = perfilar(geoparquet_path, crs_inferido)
+        info_geoparquet = inspeccionar(geoparquet_path)
+        # Una capa que declara EPSG:4326 pero entrega metros se archiva igual, sin marcarla normalizada
+        normalizado = esta_normalizado(info_geoparquet) and bbox_lonlat_valido(info_geoparquet["bbox_geo"] or [])
+
+        pmtiles, omision_pmtiles = None, None
+        if normalizado:
+            pmtiles, omision_pmtiles = intentar_pmtiles(geoparquet_path, pmtiles_path)
 
         generar_mapa_publicacion(
             geoserver=geoserver,
@@ -1014,10 +1077,22 @@ def stage_dataset(
             capa=capa,
         )
 
+        escribir_json(
+            datapackage_path,
+            construir_datapackage(metadata, perfil),
+        )
+
+        # La coleccion STAC exige una extension en lon/lat: una capa sin normalizar no la tiene
+        if normalizado:
+            escribir_json(collection_path, construir_collection(metadata, perfil, pmtiles))
+
         staged = tmp / "staged"
         staged.mkdir()
-        for path in [geojson_path, geoparquet_path, metadata_path, sample_path]:
-            shutil.copy2(path, staged / path.name)
+        for path in [geojson_path, geoparquet_path, metadata_path, sample_path, datapackage_path, collection_path]:
+            if path.exists():
+                shutil.copy2(path, staged / path.name)
+        if pmtiles:
+            shutil.copy2(pmtiles_path, staged / pmtiles_path.name)
         if legend_path.exists():
             shutil.copy2(legend_path, staged / legend_path.name)
         if map_path.exists():
@@ -1039,6 +1114,13 @@ def stage_dataset(
         "legend_path": persisted / "legend.png",
         "map_path": persisted / "cover.png",
         "sample_path": persisted / "sample.json",
+        "datapackage_path": persisted / "datapackage.json",
+        "collection_path": persisted / "collection.json",
+        "pmtiles_path": persisted / ARCHIVO_PMTILES,
+        "bytes_pmtiles": pmtiles["bytes"] if pmtiles else "",
+        "omision_pmtiles": omision_pmtiles,
+        "hash": perfil["hash"],
+        "normalizado": normalizado,
         "archive_metadata": metadata_item_archive_org(
             fuente_legible=fuente_legible,
             geoserver=geoserver,
@@ -1078,6 +1160,10 @@ def subir_archive_org(staged: dict) -> None:
         archivos.append(str(staged["legend_path"]))
     if staged["map_path"].exists():
         archivos.append(str(staged["map_path"]))
+    if staged["datapackage_path"].exists():
+        archivos.append(str(staged["datapackage_path"]))
+    if staged["pmtiles_path"].exists():
+        archivos.append(str(staged["pmtiles_path"]))
 
     resultado = upload(
         staged["archive_item"],
@@ -1117,6 +1203,16 @@ def publicar_local(staged: dict, geoserver: str, nombre: str) -> Dict[str, bool]
         shutil.copy2(staged["sample_path"], rutas["sample"])
     elif rutas["sample"].exists():
         rutas["sample"].unlink()
+
+    if staged["datapackage_path"].exists():
+        shutil.copy2(staged["datapackage_path"], rutas["datapackage"])
+    elif rutas["datapackage"].exists():
+        rutas["datapackage"].unlink()
+
+    if staged["collection_path"].exists():
+        shutil.copy2(staged["collection_path"], rutas["collection"])
+    elif rutas["collection"].exists():
+        rutas["collection"].unlink()
 
     return {
         "tiene_legend_png": tiene_legend,
@@ -1160,6 +1256,12 @@ def publicar_local_desde_archive_org(
     elif rutas["sample"].exists():
         rutas["sample"].unlink()
 
+    datapackage_bytes = descargar_bytes_archive_org(sesion, item, "datapackage.json")
+    if datapackage_bytes:
+        rutas["datapackage"].write_bytes(datapackage_bytes)
+    elif rutas["datapackage"].exists():
+        rutas["datapackage"].unlink()
+
     return {
         "tiene_legend_png": bool(legend_bytes),
         "tiene_map_png": bool(map_bytes),
@@ -1186,6 +1288,9 @@ def fila_paquete_desde_archive_org(
         "n_features": metadata.get("n_features", ""),
         "bytes_geojson": parse_size_archivo_archive_org((archivos.get("dataset.geojson") or {}).get("size")) or "",
         "bytes_geoparquet": parse_size_archivo_archive_org((archivos.get("dataset.geoparquet") or {}).get("size")) or "",
+        "normalizado": False,
+        "hash": "",
+        "bytes_pmtiles": "",
         **publicados,
     }
 
@@ -1251,6 +1356,9 @@ def actualizar_paquetes(paquetes: pd.DataFrame, capa: pd.Series, staged: dict, p
         "n_features": len(gpd.read_parquet(staged["geoparquet_path"])),
         "bytes_geojson": staged["geojson_path"].stat().st_size,
         "bytes_geoparquet": staged["geoparquet_path"].stat().st_size,
+        "normalizado": staged["normalizado"],
+        "hash": staged["hash"],
+        "bytes_pmtiles": staged["bytes_pmtiles"],
         **publicados,
     }
 
@@ -1267,7 +1375,7 @@ def actualizar_paquetes(paquetes: pd.DataFrame, capa: pd.Series, staged: dict, p
 
 def guardar_paquetes(paquetes: pd.DataFrame) -> None:
     salida = paquetes.copy()
-    for columna in ["tiene_legend_png", "tiene_map_png", "tiene_sample_json"]:
+    for columna in BOOL_COLUMNAS_PAQUETES:
         salida[columna] = salida[columna].astype(bool)
     salida.to_csv(PAQUETES, index=False, float_format="%.6f")
 
@@ -1484,6 +1592,10 @@ def archivar_uno(
         if not dry_run:
             subir_archive_org(staged)
         publicados = publicar_local(staged, geoserver, nombre)
+        if not dry_run:
+            actualizar_catalogos(rutas_publicacion(geoserver, nombre)["base"].parent)
+            if staged["omision_pmtiles"]:
+                registrar_omitido(geoserver, nombre, "pmtiles", staged["omision_pmtiles"])
         paquetes = actualizar_paquetes(paquetes, capa, staged, publicados)
         datasets = actualizar_datasets_exito(datasets, geoserver, nombre, fecha)
         runs = registrar_run(runs, geoserver, nombre, fecha_inicio, ahora(), "ok", "")
