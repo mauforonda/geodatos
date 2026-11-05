@@ -1,0 +1,63 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_areascontrato",
+  "title": "Mapa de áreas de contrato petrolíferas en el departamento de Tarija_ 2012",
+  "description": "Este mapa muestra la distribución espacial de las áreas de contrato, que YPFB otorga a las empresas petroleras para su explotación, en las ciudades de Yacuiba, Caraparí, Palos Blancos y Puerto Margarita, del departamento de Tarija. elaborada por el Ministerio de Hidrocarburos y Energía por medio del proyecto \"Evaluación Ambiental Estratégica en Bolivia\" que realizó la recopilación de información geográfica de fuentes primarias (SERNAP, INRA, ABT, etc) y otras fuentes secundarias (instituciones públicas y privadas), a escala 1:500000 en el año 2012.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_areascontrato/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 5480,
+      "hash": "sha256:fafc35683e3720efa6a31ad95bd02d18530793e146e7c5e54a3abed0635ef09c",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "example": "areascontrato.7"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 8
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "example": "AreasContrato.7"
+          },
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "minimum": 0,
+              "maximum": 7
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
