@@ -1,0 +1,103 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_minplanifica_infocapa_layer_agencias_bdp_xv1za",
+  "title": "layer_agencias_bdp_xv1za",
+  "sources": [
+    {
+      "title": "Geoserver del Ministerio de Planificación del Desarollo",
+      "path": "https://geoserver.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_minplanifica_infocapa_layer_agencias_bdp_xv1za/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 5341,
+      "hash": "sha256:0d0143004b6c7e6db3fce7ec5d0748aad6de32ffd896eebab38a551d5533eb59",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_agencias_bdp_xv1za.23"
+          },
+          {
+            "name": "agencia",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "SALINAS DE GARCI MENDOZA"
+          },
+          {
+            "name": "regional",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "REGIONAL DE LOS ANDES",
+            "categories": [
+              "REGIONAL DE LOS ANDES",
+              "REGIONAL DE LOS LLANOS",
+              "REGIONAL DE LOS VALLES"
+            ]
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Oruro",
+            "categories": [
+              "Santa Cruz",
+              "La Paz",
+              "Cochabamba",
+              "Potosi",
+              "Chuquisaca",
+              "Beni",
+              "Oruro",
+              "Pando",
+              "Tarija"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Ladislao Cabrera"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Salinas de Garci Mendoza"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPoint."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
