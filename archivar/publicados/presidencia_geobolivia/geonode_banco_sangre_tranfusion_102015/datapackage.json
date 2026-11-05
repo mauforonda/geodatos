@@ -1,0 +1,122 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_banco_sangre_tranfusion_102015",
+  "title": "Bancos de sangre y servicios de transfusión, 2016",
+  "description": "Este mapa muestra la ubicación de los bancos de sangres y servicios de transfusión sanguínea a nivel nacional, se describe el nombre del recinto, la tipología y el sistema al que pertenece. Elaborado por el Ministerio Salud, con datos actualizados a febrero de 2016.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_banco_sangre_tranfusion_102015/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 9865,
+      "hash": "sha256:b2aa869f3eab61c09e71be560565013872d60297dd91a06c94a4e525e3dcd1e5",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 90
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 90
+            }
+          },
+          {
+            "name": "unittype",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "9",
+            "categories": [
+              "9",
+              "8"
+            ]
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "HOSPITAL EDUARDO EGUÍA"
+          },
+          {
+            "name": "tipo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "SERVICIO DE TRANSFUSION",
+            "categories": [
+              "SERVICIO DE TRANSFUSION",
+              "BANCO DE SANGRE"
+            ]
+          },
+          {
+            "name": "sistema",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "PUBLICO",
+            "categories": [
+              "PUBLICO",
+              "PRIVADO",
+              "SEGURIDAD SOCIAL",
+              "PUBLICO RURAL"
+            ]
+          },
+          {
+            "name": "lat",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -22.732312,
+              "maximum": -11.004826
+            }
+          },
+          {
+            "name": "long",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -68.767247,
+              "maximum": -62.614477
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPoint."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
