@@ -1,0 +1,203 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_elalto_calidad_agua",
+  "title": "Mapa Calidad de Agua del Municipio El Alto 2015",
+  "description": "La Información geográfica muestra la ubicación y características de la Calidad de Agua del Municipio de El Alto  la informacion obtenida de EPSAS, fuente el Altas Geográfico del Municipio de El Alto presentado el año 2015 por la Infraestructura de Datos Espaciales - El Alto.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_elalto_calidad_agua/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 5556,
+      "hash": "sha256:9792fa6e890bc02fdc2a3c0ceac638cb610f0dc7a05aec03016e00126772dfdd",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "elalto_calidad_agua.2"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 50
+            }
+          },
+          {
+            "name": "gid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 50
+            }
+          },
+          {
+            "name": "__gid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 50
+            }
+          },
+          {
+            "name": "ubicacion",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "río seke, despues de el alto",
+            "categories": [
+              "laguna sur",
+              "afluente-8",
+              "efluente-2",
+              "laguna centro",
+              "afluente-7",
+              "río seco, nacientes",
+              "río seke, naciente",
+              "afluente-6",
+              "laguna norte",
+              "río seke, despues de el alto",
+              "300 m aguas abajo del puente panamericana",
+              "cabecera rio seco",
+              "milluni, cabecera rio seke",
+              "zona mercedario"
+            ]
+          },
+          {
+            "name": "este",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 580133.0,
+              "maximum": 590958.3714
+            }
+          },
+          {
+            "name": "norte",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 8172973.0,
+              "maximum": 8195994.2096
+            }
+          },
+          {
+            "name": "fecha",
+            "type": "datetime",
+            "constraints": {
+              "minimum": "1987-01-12T00:00:00",
+              "maximum": "2009-04-15T00:00:00"
+            }
+          },
+          {
+            "name": "hora",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "8:40",
+            "categories": [
+              "Sin Registro",
+              "10:00",
+              "10:10",
+              "12:00",
+              "13.40",
+              "13:50",
+              "14:35",
+              "15.45",
+              "16.30",
+              "8:40",
+              "8:50",
+              "9:00",
+              "9:30"
+            ]
+          },
+          {
+            "name": "sistema",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "No corresponde",
+            "categories": [
+              "Milluni",
+              "Jankho Khota",
+              "No corresponde"
+            ]
+          },
+          {
+            "name": "aspecto",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Sin información",
+            "categories": [
+              "Sin información",
+              "Turbio",
+              "Turbio con sólidos suspendidos"
+            ]
+          },
+          {
+            "name": "olor",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Sin información",
+            "categories": [
+              "Sin información",
+              "Séptico"
+            ]
+          },
+          {
+            "name": "inst",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "MMAYA, 2007",
+            "categories": [
+              "Apaza R. 1991",
+              "MMAYA, 2007",
+              "MMAYA, 2008",
+              "MMAYA, 2009",
+              "MMAYA, 2006",
+              "PLATAFORMA DE SERVICIOS A INSTITUCIONES DE DESARROLLO"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
