@@ -1,0 +1,113 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_areasexploracion",
+  "title": "Mapa de Áreas de Exploración petrolifera Bolivia",
+  "description": "Este mapa muestra la distribución espacial de áreas de exploración petrolífera, en gran parte de los departamentos de La Paz, Beni y parte de Cochabamba, logrando volúmenes adicionales de hidrocarburos líquidos y gaseosos a través de una política de exploración agresiva en todo el territorio nacional; incentivando de este modo, la inversión para la exploración en áreas tradicionales y no tradicionales. Esta información fue elaborada por el Ministerio de Hidrocarburos por medio del proyecto \"Evaluación Ambiental Estratégica en Bolivia\", que realizo la recopilación de información geográfica de fuentes primarias (SERNAP, INRA, ABT, etc) e información secundaria (Instituciones públicas y privadas).",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_areasexploracion/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 6630,
+      "hash": "sha256:378ea19b578094e1d8172184a63f03129a9c70b64b248a252f78a5b8e7d260fb",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "example": "areasexploracion.1"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 3
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "example": "AreasExploracion.1"
+          },
+          {
+            "name": "area",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.041866,
+              "maximum": 0.841102
+            }
+          },
+          {
+            "name": "perimeter",
+            "type": "number",
+            "constraints": {
+              "minimum": 1.28118,
+              "maximum": 8.52896
+            }
+          },
+          {
+            "name": "g_bloques_",
+            "type": "integer",
+            "constraints": {
+              "minimum": 2,
+              "maximum": 4
+            }
+          },
+          {
+            "name": "g_bloques1",
+            "type": "integer",
+            "constraints": {
+              "minimum": 187,
+              "maximum": 239
+            }
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "example": "TUICHI NORTE"
+          },
+          {
+            "name": "compania",
+            "type": "string",
+            "example": "REPSOL"
+          },
+          {
+            "name": "shape_leng",
+            "type": "number",
+            "constraints": {
+              "minimum": 140551.964133,
+              "maximum": 932067.239265
+            }
+          },
+          {
+            "name": "shape_area",
+            "type": "number",
+            "constraints": {
+              "minimum": 503958089.103,
+              "maximum": 10045410479.3
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
