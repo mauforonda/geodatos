@@ -1,0 +1,157 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_museoswgs84",
+  "title": "Mapa de Museos en el Municipio de La Paz",
+  "description": "El mapa presenta información de la localización de museos en la ciudad de La Paz, en el Municipio de La Paz. Elaborado por Oficialía Mayor de Planificación para el Desarrollo (OMPD) del Gobierno Autónomo Municipal de La Paz, en el año 2013.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_museoswgs84/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 8011,
+      "hash": "sha256:c2529ee94a37c6d530121de2e0e3fded202cd6c920b3ed896ae8576f35a8677a",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "museoswgs84.16"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 25
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "museoswgs84.16"
+          },
+          {
+            "name": "objectid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 25
+            }
+          },
+          {
+            "name": "gdbsdesc",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Museo Municipal",
+            "categories": [
+              "Museo Municipal",
+              "Espacio cultural"
+            ]
+          },
+          {
+            "name": "gdbsnomb",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Casa Museo Marina Nuez"
+          },
+          {
+            "name": "gdbsmacr",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Cotahuma",
+            "categories": [
+              "Centro",
+              "Cotahuma",
+              "Sur",
+              "Periferica"
+            ]
+          },
+          {
+            "name": "gdbstema",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Esculturas de Marina Nez del Prado, arte colonial, pintura contempornea, joyas de Nilda Nez del Prad"
+          },
+          {
+            "name": "gdbshora",
+            "type": "string",
+            "example": "Martes a viernes (9.30 a 13.00 y 15.00 a 19.00) Sbado, domingo y lunes (9.00 a 13.00)"
+          },
+          {
+            "name": "gdbstele",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 2793716
+            }
+          },
+          {
+            "name": "gdbsptox",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 592002.817604,
+              "maximum": 599224.905273
+            }
+          },
+          {
+            "name": "gdbsptoy",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 8171027.47662,
+              "maximum": 8177299.49192
+            }
+          },
+          {
+            "name": "gdbsubic",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Av. Ecuador 2034 casi Esq. Snchez Lima"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPoint."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
