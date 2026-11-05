@@ -1,0 +1,66 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_educacion_tarde_ea",
+  "title": "Establecimientos de educación turno tarde en las ciudades de La Paz y El Alto_ 2011",
+  "description": "Este mapa representa la distribución espacial e información sobre las unidades educativas que trabajan en el turno tarde, siendo una de las variables que refleja el comportamiento de la familia en relación a la educación como comportamiento social, cultual y económico. Elaborado por el Programa Andino de Formación y de Investigación sobre la Vulnerabilidad y los Riesgos Urbanos - Bolivia, Ecuador, Perú - PACIVUR del Instituto de Investigaciones para el Desarrollo (IRD), en el año 2011.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_educacion_tarde_ea/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 2797,
+      "hash": "sha256:c8703b88b6fcabebe5cc79442ee12218985ebb3af4d455f71db633683c1387b0",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 22
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "educacion_tarde_EA.13"
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 5,
+              "maximum": 77
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
