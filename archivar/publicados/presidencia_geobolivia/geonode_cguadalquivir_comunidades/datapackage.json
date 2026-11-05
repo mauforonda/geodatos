@@ -1,0 +1,147 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_cguadalquivir_comunidades",
+  "title": "Plan Director de la Cuenca Río Guadalquivir - Comunidades_ Bolivia",
+  "description": "El mapa muestra la cobertura de la población por comunidades del INE según censo 2012, ubicados dentro de la Cuenca del Rio Guadalquivir. Dato del Viceministerio de Recursos Hídricos y Riego a mayo 2017.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_cguadalquivir_comunidades/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 14006,
+      "hash": "sha256:26bf6fe2fd9ae60c4c66a47522946cd3f0d472ecbcd1f1519a5167458183e5f9",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "cguadalquivir_comunidades.106"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 160
+            }
+          },
+          {
+            "name": "objectid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 160
+            }
+          },
+          {
+            "name": "departamen",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "06",
+            "categories": [
+              "06"
+            ]
+          },
+          {
+            "name": "municipio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Padcaya",
+            "categories": [
+              "Tarija",
+              "San Lorenzo",
+              "Uriondo",
+              "Padcaya"
+            ]
+          },
+          {
+            "name": "codigo_com",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "06020108002"
+          },
+          {
+            "name": "comunidad",
+            "type": "string",
+            "example": "SAN ISIDRO DE REJARA"
+          },
+          {
+            "name": "poblacion_",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 179561
+            }
+          },
+          {
+            "name": "nbi_nopobr",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 100.0
+            }
+          },
+          {
+            "name": "nbi_pobre",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 100.0
+            }
+          },
+          {
+            "name": "geosirh",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "501-1000 hab",
+            "categories": [
+              "100-500 hab",
+              "<100 hab",
+              "501-1000 hab",
+              "1001-5000 hab",
+              ">5000 hab"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
