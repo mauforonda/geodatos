@@ -1,0 +1,105 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_destino_turistico_mcyt2018",
+  "title": "Localización de 15 Destinos Turísticos de Bolivia 2019",
+  "description": "El mapa muestra la localización de los 15 destinos turísticos del Estado Plurinacional de Bolivia, es una política del Ministerio de Culturas y Turismo, promocionar y dar a conocer los 15 destinos que no solo se refieren a lugares geográficos, sino que abarcan pueblos, comunidades, costumbres y caminos que los rodean, los sitios son: Lago Titicaca, Salar de Uyuni y las lagunas, Potosí - Sucre, Toro Toro, El madidi y las Pampas Amazónicas, las Misiones Jesuíticas, Oruro y la Cordillera Real, los tres parques nacionales del Chapare, Cochabamba, Chaco, Pantanal, el norte Amazónico, la ruta del Vino y la ruta del Che. El 12 de enero, mediante la Ley 578 del 10 de octubre de 2015, se celebra el Día nacional de Turismo y que este año (2019) lleva el denominativo “Desbloquéate, viaja planificado”, explicó la jefa de Promoción Turística, del Ministerio de Culturas y Turismo, el objetivo principal es incentivar el turismo interno planificado. Información obtenida del Ministerio de Culturas y Turismo, actualizada hasta enero del 2019.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_destino_turistico_mcyt2018/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 3426,
+      "hash": "sha256:bbd3d11b6c370c90253f48f7e2f5dfc41648bf6348e57dcf1256f876fce7606f",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 18
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0,
+              "maximum": 17
+            }
+          },
+          {
+            "name": "departamen",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Potosí",
+            "categories": [
+              "Potosí",
+              "Santa Cruz",
+              "Cochabamba",
+              "La Paz",
+              "Tarija",
+              "Beni",
+              "Chuquisaca",
+              "Oruro",
+              "Pando"
+            ]
+          },
+          {
+            "name": "destino",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Salar de Uyuni"
+          },
+          {
+            "name": "latitud",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": -22.79,
+              "maximum": -10.73
+            }
+          },
+          {
+            "name": "longitud",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": -69.11,
+              "maximum": -59.79
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
