@@ -1,0 +1,117 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_indicehojastopograficas250000",
+  "title": "Mapa índice de hojas topograficas escala 1:250000 - IGM",
+  "description": "Cobertura de hojas topográficas del territorio nacional,   elaborado en la sección de cartografía del Instituto Geográfico Militar – IGM Bolivia, en base a la distribución de hojas topográficas generadas a escala 1:250000 en el año 2003.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_indicehojastopograficas250000/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 9891,
+      "hash": "sha256:3a316f70fed5bb1ed074cac9db0d122ff451e0bb9f1481c17b718ab3a3d4af0b",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "indicehojastopograficas250000.77"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 88
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "IndiceHojasTopograficas250000.77"
+          },
+          {
+            "name": "area",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 17150510000.0,
+              "maximum": 18349810000.0
+            }
+          },
+          {
+            "name": "perimeter",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 531077.3,
+              "maximum": 552623.1
+            }
+          },
+          {
+            "name": "gcod",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "SF-19-03"
+          },
+          {
+            "name": "tnmc",
+            "type": "string",
+            "example": "VILLA MARTIN-COLCHA"
+          },
+          {
+            "name": "shape_leng",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 531075.382972,
+              "maximum": 552621.186093
+            }
+          },
+          {
+            "name": "shape_area",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 17150391414.9,
+              "maximum": 18349680040.7
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
