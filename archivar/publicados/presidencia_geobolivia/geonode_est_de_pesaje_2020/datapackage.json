@@ -1,0 +1,128 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_est_de_pesaje_2020",
+  "title": "Mapa de ubicación de pesaje julio 2020, Bolivia.",
+  "description": "Este mapa muestra las ubicaciones de pesaje que se encuentran actualmente en funcionamiento en Bolivia al mes Julio-2020. Muestra también el sistema de cobro en cada estación. Información obtenida de Vías Bolivia Administradora de Rodaje y Pesaje.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_est_de_pesaje_2020/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 3841,
+      "hash": "sha256:1a10e60a5c4b645729b7397f4120a3f15717e33129a4d12bde3e06e2d7e4ad18",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "est_de_pesaje_2020.11"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 18
+            }
+          },
+          {
+            "name": "label",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Colchani"
+          },
+          {
+            "name": "notes",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Potosi",
+            "categories": [
+              "Potosi",
+              "Santa Cruz",
+              "Chuquisaca",
+              "Cochabamba",
+              "La Paz",
+              "Beni",
+              "Tarija"
+            ]
+          },
+          {
+            "name": "type",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Control",
+            "categories": [
+              "Punitivo",
+              "Control",
+              "No Operando"
+            ]
+          },
+          {
+            "name": "easting",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 206155,
+              "maximum": 735013
+            }
+          },
+          {
+            "name": "northing",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 7562284,
+              "maximum": 8401543
+            }
+          },
+          {
+            "name": "sist__de_c",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Control",
+            "categories": [
+              "SNCPD",
+              "Control",
+              "-"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
