@@ -1,0 +1,130 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_elalto_fabrica",
+  "title": "Mapa de Fábricas Municipio El Alto 2015",
+  "description": "Este mapa localiza las fábricas que están en el Municipio de El Alto, las fábricas también denominadas planta industrial o recinto fabril, es un lugar físico, abastecido de máquinas, herramientas o espacio, necesarios para la elaboración de algún objeto, material o servicio. Información obtenida del Altas Geográfico del Municipio de El Alto presentado el año 2015 por la Infraestructura de Datos Espaciales - El Alto.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_elalto_fabrica/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 13124,
+      "hash": "sha256:459dc6f76cc77591400ef068e89d5480734ea67c803107e7fc9335553fd4161d",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 40
+            }
+          },
+          {
+            "name": "gid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 40
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 40
+            }
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Concretec"
+          },
+          {
+            "name": "ubicacion",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Urb. Chijini U. V. \"A\", Av. Rep. Bol. De Venezuela"
+          },
+          {
+            "name": "caracter",
+            "type": "string",
+            "example": "Fábrica de viguetas Para Construccion",
+            "categories": [
+              "Ceramicas azulejos",
+              "Detergentes de limpieza",
+              "Fabricación de hilos, lanas",
+              "Fábrica de plásticos",
+              "Fábrica de viguetas Para Construccion",
+              "Importaciones y Representaciones",
+              "Procesadora de quinua",
+              "Procesamiento de alimentos basados en harina"
+            ]
+          },
+          {
+            "name": "obs",
+            "type": "string",
+            "example": "Solo abre domingos",
+            "categories": [
+              "No nos quisieron dar información",
+              "Esta cerrado",
+              "Estaba cerrado",
+              "No estan permanente es alquilado",
+              "Se encontraba cerrado",
+              "Solo abre domingos"
+            ]
+          },
+          {
+            "name": "gid_mnz",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 889
+            }
+          },
+          {
+            "name": "gid_urb",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 675
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
