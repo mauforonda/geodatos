@@ -1,0 +1,165 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_1erorden_met",
+  "title": "Estaciones meteorologicas de 1er orden Bolivia_ 2014",
+  "description": "Esta información presenta la ubicación de estaciones meteorológicas de primer orden distribuidas en territorio nacional. Elaborado por el Servicio Nacional de Meteorologia e Hidrología (SENAMHI) con datos actualizados a mayo de 2014.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_1erorden_met/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 8276,
+      "hash": "sha256:d39e3d76c1f859709476e460754c2345eb62de578fb5a8f9dc66f7cadc49ce5b",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "1erorden_met.17"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 51
+            }
+          },
+          {
+            "name": "estacion",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "San Agustin"
+          },
+          {
+            "name": "departamen",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Potosí",
+            "categories": [
+              "Potosí",
+              "Cochabamba",
+              "La Paz",
+              "Tarija",
+              "Beni",
+              "Chuquisaca",
+              "Santa Cruz",
+              "Oruro",
+              "Pando"
+            ]
+          },
+          {
+            "name": "provincia",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Enrique Baldivieso"
+          },
+          {
+            "name": "municio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "San Agustin"
+          },
+          {
+            "name": "latitud",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": -22.7058,
+              "maximum": -11.0333
+            }
+          },
+          {
+            "name": "longitud",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": -69.2719,
+              "maximum": -60.8114
+            }
+          },
+          {
+            "name": "altitud",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 107,
+              "maximum": 4336
+            }
+          },
+          {
+            "name": "tipo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Meteorológica de 1er Orden",
+            "categories": [
+              "Meteorológica de 1er Orden"
+            ]
+          },
+          {
+            "name": "operador",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "SENAMHI",
+            "categories": [
+              "SENAMHI",
+              "Municipio de Independencia",
+              "Proyecto - GCS",
+              "SEAPAM"
+            ]
+          },
+          {
+            "name": "estado",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Funcionando",
+            "categories": [
+              "Funcionando"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
