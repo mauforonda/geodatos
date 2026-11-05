@@ -1,0 +1,81 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_oieau_c_cv_freguesia_point",
+  "title": "CV_AD_freguesia_point",
+  "sources": [
+    {
+      "title": "Sistema para la Gestión Integral de Recursos Hídricos desarrollado por la Oficina Internacional del Agua (OiEau)",
+      "path": "https://www.oieau-wiss.org/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_oieau_c_cv_freguesia_point/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 4012,
+      "hash": "sha256:3c76874ed5eec5a1f41692fa517b5eb6ecf00788b20bc547a79c1ea42a13228b",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "freguesia_point.10"
+          },
+          {
+            "name": "nom_freg",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "NOSSA SENHORA DO MONTE"
+          },
+          {
+            "name": "nom_ilha",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "BRAVA",
+            "categories": [
+              "SANTIAGO",
+              "SANTO ANTAO",
+              "FOGO",
+              "SAO NICOLAU",
+              "BRAVA",
+              "BOAVISTA",
+              "BOAVISTA\r\n",
+              "MAIO",
+              "SAL",
+              "SAO VICENTE"
+            ]
+          },
+          {
+            "name": "nom_conc",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "BRAVA"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
