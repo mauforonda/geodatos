@@ -1,0 +1,127 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geobolivia_geonode_sistemas_gas_oil_2014_942414f3",
+  "title": "Sistemas Gas Oil, Bolivia (2014)",
+  "description": "Localización de los sistemas eléctricos Aislados basados en generadores Gas Oil, con asignación Diésel, elaborado por el Viceministerio de Electricidad y Energías Alternativas, con información de Nombre del Operador, Localidad, Litros de Asignación de Diésel , Potencia Instalada y Número de Usuarios Residenciales, para el 2014.",
+  "sources": [
+    {
+      "title": "Nueva plataforma GeoBolivia",
+      "path": "https://geonode.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geobolivia_geonode_sistemas_gas_oil_2014_942414f3/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 3579,
+      "hash": "sha256:a28d87c1a019c6b4256fa0c5b60e9987df7a5a8d18b95a6a82eced9b597e0981",
+      "schema": {
+        "fields": [
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 14
+            }
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 14
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0,
+              "maximum": 13
+            }
+          },
+          {
+            "name": "empresa",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "C.S.E.  El Peru Ltda."
+          },
+          {
+            "name": "depto",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Beni",
+            "categories": [
+              "Beni",
+              "Pando",
+              "Santa Cruz"
+            ]
+          },
+          {
+            "name": "localidad",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "El Peru"
+          },
+          {
+            "name": "asig_lts",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 21840.0,
+              "maximum": 13510104.0
+            }
+          },
+          {
+            "name": "pot_inst",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 24,
+              "maximum": 14500
+            }
+          },
+          {
+            "name": "usuarios",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 95,
+              "maximum": 17081
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
