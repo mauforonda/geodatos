@@ -1,0 +1,62 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_ssem_degem_hospitales_municipales",
+  "title": "hospitales_municipales",
+  "sources": [
+    {
+      "title": "Servicio de Seguimiento Estratégico Municipal del Gobierno Autónomo Municipal de La Paz",
+      "path": "https://ssem.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_ssem_degem_hospitales_municipales/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 2354,
+      "hash": "sha256:7c006db6442f17cf46dd81bf610b91ab846c20a71599d9afc3874423779cb0b5",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "example": "hospitales_municipales.3"
+          },
+          {
+            "name": "hospital_nombre",
+            "type": "string",
+            "example": "HOSPITAL COTAHUMA"
+          },
+          {
+            "name": "hospital_registrado",
+            "type": "datetime",
+            "constraints": {
+              "minimum": "2021-05-06T14:19:47.997000+00:00",
+              "maximum": "2021-05-06T14:19:47.997000+00:00"
+            }
+          },
+          {
+            "name": "hospital_modificado",
+            "type": "datetime",
+            "constraints": {
+              "minimum": "2021-05-06T14:19:47.997000+00:00",
+              "maximum": "2021-05-06T14:19:47.997000+00:00"
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
