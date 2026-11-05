@@ -1,0 +1,139 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_sat",
+  "title": "Puntos de monitoreo del Sistema de Alerta Temprana y repetidoras en el municipio de La Paz_ 2011",
+  "description": "Este mapa muestra la distribución de los puntos de monitoreo del Sistema de Alerta Temprana (SAT) y sus estaciones repetidoras dentro del municipio de La Paz, que tiene la finalidad de prevenir los riesgos geodinámicos e hidráulicos, tiene la capacidad de proporcionar datos oportunos antes de que se produzcan inundaciones y deslizamiento de suelos, producto de los fenómenos naturales, asumiendo acciones inmediatas. Elaborado por el Programa Andino de Formación y de Investigación sobre la Vulnerabilidad y los Riesgos Urbanos - Bolivia, Ecuador, Perú - PACIVUR del Instituto de Investigaciones para el Desarrollo (IRD), en el año 2011.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_sat/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 5694,
+      "hash": "sha256:35f9629a906a4302af0619c96a7e079ce085186df36891f7d831ff4e28c257c7",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "sat.40"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 41
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "SAT.40"
+          },
+          {
+            "name": "x",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 590026,
+              "maximum": 604116
+            }
+          },
+          {
+            "name": "y",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 8170065,
+              "maximum": 8183723
+            }
+          },
+          {
+            "name": "z",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0,
+              "maximum": 4317
+            }
+          },
+          {
+            "name": "codigo",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Alpacoma"
+          },
+          {
+            "name": "cuenca",
+            "type": "string",
+            "example": "Rio La Paz",
+            "categories": [
+              "Achumani",
+              "Choqueyapu",
+              "Huanajahuira",
+              "Jillusaya",
+              "orkijahuira",
+              "Irpavi",
+              "Rio La Paz"
+            ]
+          },
+          {
+            "name": "conexion",
+            "type": "string",
+            "example": "Fibra Optica",
+            "categories": [
+              "Radio Enlace",
+              "Fibra Optica"
+            ]
+          },
+          {
+            "name": "instrument",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Repetidora",
+            "categories": [
+              "Punto de monitoreo",
+              "Repetidora"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
