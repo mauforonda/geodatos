@@ -1,0 +1,95 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_capitanias_de_puerto",
+  "title": "Capitanías de Puerto del Estado Plurinacional de Bolivia_ 2016",
+  "description": "Este mapa presenta la distribución de las capitanias de puertos en el territorio nacional que son un lugar natural o artificial mejorado para proveer protección a los barcos que permita el anclaje y atrancamiento con instalaciones para carga y descarga Elaborado y digitalizado en el año 2015 por el Servicio Nacional de Hidrografia Naval y en coordinaciṕn, con la sección de cartografía del Instituto Geográfico Militar – IGM Bolivia.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_capitanias_de_puerto/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 5436,
+      "hash": "sha256:acc973692b23427517f7687c89df1b9c9d8979b5bd7bfa6e9f2678946e62a7e6",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 41
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 0
+            }
+          },
+          {
+            "name": "cuenca",
+            "type": "string",
+            "example": "Amazonas",
+            "categories": [
+              "Amazonas"
+            ]
+          },
+          {
+            "name": "subcuenca",
+            "type": "integer"
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "CP. Mayor Bermejo"
+          },
+          {
+            "name": "longitud",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "64° 21' 3.66\" W"
+          },
+          {
+            "name": "latitud",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "22° 43' 49.12\" S"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
