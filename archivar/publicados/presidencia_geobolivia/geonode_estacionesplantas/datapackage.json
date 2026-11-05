@@ -1,0 +1,72 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_estacionesplantas",
+  "title": "Mapa de estaciones de bombeo y compresión en el departamento de Tarija_ 2012",
+  "description": "Este mapa presenta la distribución geográfica de las estaciones de bombeo y compresión que impulsan el petróleo dependiendo de la topografía por donde esta pase, las estaciones de compresión son utilizadas durante el transporte de gas ya que el gas al ser transportado pierde presión al recorrer grandes distancias, por tanto para asegurar un flujo uniforme, el gas debe ser recomprimido en estaciones localizadas cada 60 a 80 Km. a lo largo de la ruta, en las ciudades de Yacuiba, Caraparí, Palos Blancos y Puerto Margarita, del departamento de Tarija. Esta información fue elaborada por el ministerio de Hidrocarburos a través del proyecto \"Evaluación Ambiental Estratégica en Bolivia\" que realizó la recopilación de información geográfica de fuentes primarias (SERNAP, INRA, ABT, etc) e información secundaria (Instituciones públicas y privadas).",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_estacionesplantas/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 2329,
+      "hash": "sha256:70485b8720a4e1da132cff9dae7941768e0374fea36147c23a9f042c111e6687",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 6
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "example": "EstacionesPlantas.6"
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "minimum": 41,
+              "maximum": 47
+            }
+          },
+          {
+            "name": "tipo",
+            "type": "string",
+            "example": "Estación de bombeo",
+            "categories": [
+              "Estación de bombeo",
+              "Estación de compresión"
+            ]
+          },
+          {
+            "name": "localidad",
+            "type": "string",
+            "example": "Yacuiba"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
