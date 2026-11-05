@@ -1,0 +1,98 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mhe_geoportal_geonode_gen_ais_2020",
+  "title": "Gen_Ais_2020",
+  "sources": [
+    {
+      "title": "Geoportal del Viceministerio de Electricidad y Energías Renovables",
+      "path": "https://geoportal.mhe.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mhe_geoportal_geonode_gen_ais_2020/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 5292,
+      "hash": "sha256:fff5f9f9a3fff3b0104ea943676a0118ec59b8603991fa618b66e7add84a1136",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 51
+            }
+          },
+          {
+            "name": "Propietari",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "SEPSA",
+            "categories": [
+              "ENDE DELBENI",
+              "CRE",
+              "Comite de Electrificacion",
+              "ENDE Guaracachi",
+              "SEPSA",
+              "SETAR",
+              "CER",
+              "ENDE",
+              "ENDE DELEBENI"
+            ]
+          },
+          {
+            "name": "Tipo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Micro Central Hidroelectrica",
+            "categories": [
+              "Diesel Oil",
+              "Termoelectrica",
+              "Micro Central Hidroelectrica",
+              "Solar Hibrido",
+              "Solar Fotovotaica"
+            ]
+          },
+          {
+            "name": "Central",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Mallku Villamar"
+          },
+          {
+            "name": "Pot_kW",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 23200
+            }
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
