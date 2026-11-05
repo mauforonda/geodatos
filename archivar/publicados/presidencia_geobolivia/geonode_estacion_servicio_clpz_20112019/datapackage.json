@@ -1,0 +1,139 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_estacion_servicio_clpz_20112019",
+  "title": "Estaciones de Servicio para Provisión de Gasolina y Diesel habilitados por ANH Ciudad de La Paz, Bolivia 2019",
+  "description": "El mapa muestra las 15 estaciones de servicio que habilito la Agencia Nacional de Hidrocarburos (ANH) en la ciudad de Nuestra Señora de La Paz, para la provisión de gasolina especial y diésel oil, este 20 de noviembre del presente año, las estaciones son: Volcán SRL, Uruguay, San Pedro, Cota Cota, Lubrican, Cristo Auto Gas SRL, SAF Miraflores SRL, Kantuta, Tupac Katari SRL, Costanera, Carsur SRL, ESUR G.H.S Ltda, ACB Calacoto, Entre Ríos y BASSAM Ltda. La ANH recomienda el uso racional y que cada vehículo podrá cargar 100 Bolivianos en gasolina y 300 bolivianos en diésel una vez por semana, mientras se restablece las operaciones en la planta de Senkata y regularizar el aprovisionamiento. El mapa fue elaborado por GeoBolivia en base a los datos de la ANH, en fecha 21 de noviembre del 2019.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_estacion_servicio_clpz_20112019/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 5330,
+      "hash": "sha256:2a40716aabd4b50ff8290e93dd071f390c66a7242288afd92b27404a4d35ea9d",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 15
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0,
+              "maximum": 14
+            }
+          },
+          {
+            "name": "departamen",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "LA PAZ",
+            "categories": [
+              "LA PAZ"
+            ]
+          },
+          {
+            "name": "municipio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "LA PAZ",
+            "categories": [
+              "LA PAZ"
+            ]
+          },
+          {
+            "name": "esta_servi",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "COSTANERA S.R.L."
+          },
+          {
+            "name": "zona",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "OBRAJES"
+          },
+          {
+            "name": "avenida",
+            "type": "string",
+            "example": "COSTANERITA"
+          },
+          {
+            "name": "calle",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "AV. LA PAZ - LIPARI ESQ. CALLE No 5"
+          },
+          {
+            "name": "referencia",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "NO DISPONIBLE"
+          },
+          {
+            "name": "licencia",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "LIQUIDOS",
+            "categories": [
+              "LIQUIDOS",
+              "LIQUIDOS + GNV"
+            ]
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Costanera"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
