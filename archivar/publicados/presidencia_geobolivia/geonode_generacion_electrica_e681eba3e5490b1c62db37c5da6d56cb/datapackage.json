@@ -1,0 +1,123 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_generacion_electrica_e681eba3e5490b1c62db37c5da6d56cb",
+  "title": "Mapa de generación eléctrica en Bolivia, 2012",
+  "description": "Este mapa representa la distribución espacial de la generación de energía eléctrica en Bolivia mostrando centrales hidroeléctricas que aprovechan la fuerza del agua de los ríos para producir electricidad y termoeléctricas que producen electricidad utilizando energía del petroleo. Elaborado por la Autoridad de fiscalización y control de electricidad (AE) con datos actualizados a diciembre de 2012 a escala 1:4500000.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_generacion_electrica_e681eba3e5490b1c62db37c5da6d56cb/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 7261,
+      "hash": "sha256:e92dd1d206807364b7cf50d1ecbd05466955e475e183e83a449f7db13121c0d8",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 68
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Generacion_electrica.6"
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 24
+            }
+          },
+          {
+            "name": "nomcentral",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Yura"
+          },
+          {
+            "name": "acronimo",
+            "type": "string",
+            "example": "ERESA",
+            "categories": [
+              "CRE",
+              "SETAR",
+              "COBEE S.A.",
+              "EGSA",
+              "ENDE",
+              "EVH",
+              "SECCO",
+              "CORANI S.A.",
+              "COSERMO",
+              "ERESA",
+              "G&E",
+              "HB",
+              "SDB S.A.",
+              "SYNERGIA S.A.",
+              "CEBB",
+              "COSEBA",
+              "COSEGUA",
+              "COSERCA",
+              "ENDE ANDINA S.A.M.",
+              "GESA",
+              "SESSA"
+            ]
+          },
+          {
+            "name": "nomempre_1",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Rï¿½o Elï¿½ctrico S.A."
+          },
+          {
+            "name": "generacion",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "HIDROELECTRICA",
+            "categories": [
+              "TERMOELECTRICA-DIESEL",
+              "TERMOELECTRICA-AISLADO",
+              "HIDROELECTRICA",
+              "TERMOELECTRICA-SIN"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
