@@ -1,0 +1,84 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geobolivia_geonode_sismosregistrados_07792271",
+  "title": "Grados de intensidad sísmica en la escala de Richter, Bolivia (2002)",
+  "description": "Información geoespacial de la intensidad sísmica de los epicentros en cinco categorías y se representan por asteriscos según su intensidad (mayor a menor grado) y la profundidad de acuerdo a la escala de Richter registrados por el observatorio de San Calixto. Elaborado por la Unidad de Ordenamiento Territorial del Ministerio de Planificación del Desarrollo en el año 2002 a escala 1:1000000.",
+  "sources": [
+    {
+      "title": "Nueva plataforma GeoBolivia",
+      "path": "https://geonode.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geobolivia_geonode_sismosregistrados_07792271/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 4088,
+      "hash": "sha256:bc5be02d7c708eeb965adf617067069028b7173b3351ce92f95640e5646d734b",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "sismosregistrados_07792271.14"
+          },
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 49
+            }
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 49
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "SismosRegistrados.14"
+          },
+          {
+            "name": "value",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 4.3,
+              "maximum": 8.3
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
