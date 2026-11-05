@@ -1,0 +1,156 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_proyectos2012",
+  "title": "Proyectos financiados por el Fondo Nacional de Desarrollo Regional, 2012",
+  "description": "El mapa muestra la distribución de proyectos de desarrollo productivo y social enmarcados en la Bolivia Digna y  Productiva del Plan Nacional de Desarrollo (PND).  Establece una diferencia entre proyectos en ejecución y  proyectos en cierre, de acuerdo a datos del Fondo Nacional de Desarrollo hasta el año 2012.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_proyectos2012/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 14250,
+      "hash": "sha256:7a59ba6f488ab359a37ac91908b05fa3870e56432dd8dbc8beb4c5a440a1ecbb",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "proyectos2012.5"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 106
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Proyectos2012.5"
+          },
+          {
+            "name": "proyecto_c",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "FDR-02-00001183"
+          },
+          {
+            "name": "departamen",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "ORURO",
+            "categories": [
+              "LA PAZ",
+              "SANTA CRUZ",
+              "POTOSI",
+              "COCHABAMBA",
+              "ORURO",
+              "BENI",
+              "CHUQUISACA",
+              "PANDO",
+              "TARIJA"
+            ]
+          },
+          {
+            "name": "provincia",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "EDUARDO AVAROA (CHALLAPATA)"
+          },
+          {
+            "name": "municipio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "SANTUARIO DE QUILLACAS"
+          },
+          {
+            "name": "descripcio",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "ADQUISICION DE EQUIPO - G.M. SANTUARIO DE QUILLACAS"
+          },
+          {
+            "name": "estado",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "CIERRE",
+            "categories": [
+              "CIERRE",
+              "EJECUCION"
+            ]
+          },
+          {
+            "name": "institucio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "G. A. M. DE SANTUARIO DE QUILLACAS"
+          },
+          {
+            "name": "monto_proy",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 24349201.6
+            }
+          },
+          {
+            "name": "empleo_gen",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 147
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
