@@ -1,0 +1,94 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geobolivia_geonode_psuarea_5cm_2011_d77fe8d4",
+  "title": "Mosaico de fotografías aéreas Puerto Suarez - Santa Cruz (2011)",
+  "description": "Cobertura de fotografías aéreas del sector urbano y alrededores del Municipio de Puerto Suarez, Provincia German Busch del Departamento de Santa Cruz, capturadas en el año 2011 por vuelo aerofotogramétrico con una resolución espacial de 5 centímetros. Elaborado por el Servicio Nacional de Aerofotogrametría (SNA), única entidad autorizada para realizar este tipo de trabajo aéreo.",
+  "sources": [
+    {
+      "title": "Nueva plataforma GeoBolivia",
+      "path": "https://geonode.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geobolivia_geonode_psuarea_5cm_2011_d77fe8d4/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 6838,
+      "hash": "sha256:be78dc64453c6b427a3bf76b993fb0969ba201ca632fc11cc7cc9d3189346ca8",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "psuarea_5cm_2011_d77fe8d4.66"
+          },
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 75
+            }
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 75
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "PSuarea_5cm_2011.66"
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "66"
+          },
+          {
+            "name": "layer",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Coverage/Quad",
+            "categories": [
+              "Coverage/Quad"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
