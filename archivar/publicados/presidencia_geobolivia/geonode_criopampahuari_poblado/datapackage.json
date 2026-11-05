@@ -1,0 +1,126 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_criopampahuari_poblado",
+  "title": "Plan Director Cuenca Río Pampa Huari - Centros Poblados 2012_ Bolivia",
+  "description": "El mapa muestra la localización de los centros poblados existentes en la cuenca del río pampa Huari según CNPV 2012 y ajustado con trabajo de campo 2018. Información obtenida del Viceministerio de Recursos Hídricos y Riego a febrero del 2019.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_criopampahuari_poblado/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 6688,
+      "hash": "sha256:312b9b2993f2e89d39ec06a99d97a2182727086280e267c7cc311238e38022d4",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "criopampahuari_poblado.6"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 50
+            }
+          },
+          {
+            "name": "departamen",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "05",
+            "categories": [
+              "05"
+            ]
+          },
+          {
+            "name": "municipio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Yocalla",
+            "categories": [
+              "Potosi",
+              "Yocalla",
+              "Tinguipaya"
+            ]
+          },
+          {
+            "name": "codigo_com",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "05010303032"
+          },
+          {
+            "name": "comunidad",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "CHIRA CORO"
+          },
+          {
+            "name": "poblacion_",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 3,
+              "maximum": 619
+            }
+          },
+          {
+            "name": "x",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": -65.961316667,
+              "maximum": -65.6661308537
+            }
+          },
+          {
+            "name": "y",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": -19.6746326816,
+              "maximum": -19.3007754794
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
