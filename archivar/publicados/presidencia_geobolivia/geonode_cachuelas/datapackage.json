@@ -1,0 +1,92 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_cachuelas",
+  "title": "Cachuelas del Estado Plurinacional de Bolivia, 2016",
+  "description": "Este mapa presenta la distribución de las Cachuelas en los principales afluentes del territorio nacional.  Son obstáculos que se encuentran en diferentes lugares de los rios perfudicando la navegación de un sector a otro, elaborado y digitalizado por Servicio Nacional de Hidrografia Naval,  Instituto Geográfico Militar – IGM Bolivia, información actualizada.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_cachuelas/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 4196,
+      "hash": "sha256:45cbdc1aae8358955fb562af7b22fb55dc6080ab7a0ead327eb80dac10530848",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "cachuelas.35"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 42
+            }
+          },
+          {
+            "name": "objectid_1",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 42
+            }
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "example": "Cachuela La Cruz",
+            "categories": [
+              "Cachuela Araras",
+              "Cachuela Bitumbo",
+              "Cachuela Bolivar",
+              "Cachuela Camacho",
+              "Cachuela Candelaria",
+              "Cachuela Cascajal",
+              "Cachuela Chocolatal",
+              "Cachuela Esperanza",
+              "Cachuela La Cruz",
+              "Cachuela Los Angeles",
+              "Cachuela Matucaré",
+              "Cachuela Misericordia",
+              "Cachuela Navidad",
+              "Cachuela Palo Grande",
+              "Cachuela Periquitos",
+              "Cachuela Riveron",
+              "Cachuela San José",
+              "Cachuela Warnes",
+              "Cachuela Yaguarazu"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
