@@ -1,0 +1,111 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_minplanifica_infocapa_layer_centros_mineros_de_bolivia_q4polg",
+  "title": "layer_centros_mineros_de_bolivia_q4polg",
+  "sources": [
+    {
+      "title": "Geoserver del Ministerio de Planificación del Desarollo",
+      "path": "https://geoserver.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_minplanifica_infocapa_layer_centros_mineros_de_bolivia_q4polg/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 8160,
+      "hash": "sha256:5de06e2de84a0926eb0a3bd561d1d97e38d92d3027b45546d07b7be4ff732104",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_centros_mineros_de_bolivia_q4polg.66"
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "MARIA LUISA"
+          },
+          {
+            "name": "mineral",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Zn-Pb-Ag"
+          },
+          {
+            "name": "propiedad",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Privado",
+            "categories": [
+              "Privado",
+              "COMIBOL-Cooperativas",
+              "Privado-Cooperativas",
+              "COMIBOL",
+              "Cooperativas",
+              "Privado - Cooperativas"
+            ]
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Oruro",
+            "categories": [
+              "Potosi",
+              "La Paz",
+              "Santa Cruz",
+              "Oruro",
+              "Beni",
+              "Cochabamba",
+              "Pando"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Ladislao Cabrera"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Salinas de Garci Mendoza"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
