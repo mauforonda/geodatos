@@ -1,0 +1,86 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_metropoli_direccion_viento_lpz",
+  "title": "Mapa Dirección y Velocidad Media del Viento de la Región Metropolitana del Departamento de La Paz, Bolivia 2017",
+  "description": "Al presentar una topografía variada se produce un desigual calentamiento de la superficie terrestre y de la atmósfera por lo tanto las masas de aire de mayor temperatura tienden a ascender y su lugar es ocupada por las masas de aire circundante más frío. En la Región Metropolitana del Departamento de La Paz se presenta una velocidad máxima del viento de 15,6 Km/h y una mínima de 3.3 Km/h. Elaborado por la Secretaria Municipal de Planificación para el Desarrollo del Gobierno Autónomo Municipal de La Paz y el Instituto de Investigaciones Geográficas, Carrera de Ingeniería Geográfica - UMSA y presentado en el mes de agosto del 2017. Los límites de la región son de carácter netamente referencial y no son válidos para otros fines.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_metropoli_direccion_viento_lpz/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 7019,
+      "hash": "sha256:b330909ae1858d502e03a99ef7d219c39d06a8a93ce8b0ae9cdce3174aa34230",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "metropoli_direccion_viento_lpz.27"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 85
+            }
+          },
+          {
+            "name": "objectid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 85
+            }
+          },
+          {
+            "name": "velocidad",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 3.305569887161255,
+              "maximum": 15.609999656677246
+            }
+          },
+          {
+            "name": "direccion",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 35.279598236083984,
+              "maximum": 328.2919921875
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
