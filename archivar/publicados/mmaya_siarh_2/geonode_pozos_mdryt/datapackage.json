@@ -1,0 +1,137 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_pozos_mdryt",
+  "title": "Pozos MDRyT",
+  "description": "Ubicacion de pozos Ministerio de Desarrollo Rural y Tierras, Programa Pozos",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_pozos_mdryt/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 4470,
+      "hash": "sha256:313ac3a7fa161413a5159eb8413d991889ed4ac64d56ff085b10b6c1ce6d11f7",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "Municipio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "CONCEPCION",
+            "categories": [
+              "CONCEPCION",
+              "SAN IGNACIO DE VELASCO",
+              "SAN ANTONIO DEL LOMERIO"
+            ]
+          },
+          {
+            "name": "Comunidad",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "EL CARMEN"
+          },
+          {
+            "name": "E",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 604005,
+              "maximum": 717283
+            }
+          },
+          {
+            "name": "N",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 8146064,
+              "maximum": 8322603
+            }
+          },
+          {
+            "name": "Prof_m",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 42,
+              "maximum": 131
+            }
+          },
+          {
+            "name": "Niv_Est",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 4,
+              "maximum": 47
+            }
+          },
+          {
+            "name": "Niv_Din",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 28,
+              "maximum": 104
+            }
+          },
+          {
+            "name": "Caudal_ls",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.7,
+              "maximum": 10.0
+            }
+          },
+          {
+            "name": "Diam_pulg",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "(6-4)",
+            "categories": [
+              "(6-4)",
+              "6",
+              "4"
+            ]
+          },
+          {
+            "name": "Prof_Bom",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 40.0,
+              "maximum": 120.0
+            }
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
