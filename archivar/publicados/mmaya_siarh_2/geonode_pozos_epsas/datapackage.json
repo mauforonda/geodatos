@@ -1,0 +1,124 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_pozos_epsas",
+  "title": "Pozos EPSAS",
+  "description": "Pozos EPSAS Municipios Chiquitania",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_pozos_epsas/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 4276,
+      "hash": "sha256:10fd72a3c17bc90f4af7f69e0d0fa64df9fea7c2deddc8fbc3c9dd95f5ef16fa",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "EPSA",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "COMAYO",
+            "categories": [
+              "COSPAS",
+              "LA PORTEÑA",
+              "COMAYO",
+              "COOSIV",
+              "COSFAL",
+              ""
+            ]
+          },
+          {
+            "name": "NOMBRE",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Cooperativa de Servicios 1º de Mayo LTDA",
+            "categories": [
+              "Cooperativa de Servicios Ascencion de Guarayos LTDA",
+              "Cooperativa de Servicios La Porteña LTDA",
+              "Cooperativa de Servicios 1º de Mayo LTDA",
+              "Cooperativa de Servicios Nuestra Señora de Fátima LTDA",
+              "Cooperativa de Servicios San Ignacion de Velasco LTDA",
+              "Comité de Agua y Saneamiento San Miguelito de la Cruz"
+            ]
+          },
+          {
+            "name": "DEPARTAMEN",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "SANTA CRUZ",
+            "categories": [
+              "SANTA CRUZ",
+              "Santa Cruz"
+            ]
+          },
+          {
+            "name": "CIUDAD",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "SAN JOSE DE CHIQUITOS",
+            "categories": [
+              "ASCENSION DE GUARAYOS",
+              "PUERTO SUAREZ",
+              "SAN JOSE DE CHIQUITOS",
+              "PAILON",
+              "SAN IGNACIO DE VELASCO"
+            ]
+          },
+          {
+            "name": "POZO",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "San Francisco P-1"
+          },
+          {
+            "name": "ESTE",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 420263,
+              "maximum": 755754
+            }
+          },
+          {
+            "name": "NORTE",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 7899011,
+              "maximum": 8243693
+            }
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
