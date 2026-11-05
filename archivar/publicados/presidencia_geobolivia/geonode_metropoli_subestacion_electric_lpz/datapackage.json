@@ -1,0 +1,109 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_metropoli_subestacion_electric_lpz",
+  "title": "Mapa Subestaciones Eléctricas de la Región Metropolitana del Departamento de La Paz, Bolivia 2017",
+  "description": "El mapa muestra la distribución espacial de sub-estaciones eléctricas en la Región Metropolitana, instalaciones destinadas a derivar circuitos de potencia y a modificar y establecer los niveles de tensión de cada infraestructura eléctrica, facilitando el transporte y distribución de la energía eléctrica de cada región. Elaborado por la Secretaria Municipal de Planificación para el Desarrollo del Gobierno Autónomo Municipal de La Paz y el Instituto de Investigaciones Geográficas, Carrera de Ingeniería Geográfica - UMSA y presentado en el mes de agosto del 2017.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_metropoli_subestacion_electric_lpz/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 6596,
+      "hash": "sha256:9265349cc386f7733efb9113e3ba220fb973f93ec9b9fa4b565bcad6e47fb53e",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "metropoli_subestacion_electric_lpz.5"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 53
+            }
+          },
+          {
+            "name": "objectid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 53
+            }
+          },
+          {
+            "name": "empresa",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "ENDE Transmisión S.A.",
+            "categories": [
+              "Electricidad de La Paz S.A. (ELECTROPAZ)",
+              "ENDE Transmisión S.A.",
+              "Compañia Boliviana de Energía Eléctrica (COBEE)",
+              "Compañia Boliviana de Energía Eléctrica (COBBE)",
+              "Hidroeléctrica Boliviana S.A. (HB)",
+              "Empresa Nacional de Electricidad (ENDE)",
+              "Empresa de Luz y Fuerza Eléctrica de Oruro S.A. (ELFEO)"
+            ]
+          },
+          {
+            "name": "subestacio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Mazocruz"
+          },
+          {
+            "name": "codigo",
+            "type": "string",
+            "example": "MAZ"
+          },
+          {
+            "name": "tecnologia",
+            "type": "string",
+            "example": "Hidroeléctrica",
+            "categories": [
+              "Hidroeléctrica"
+            ]
+          },
+          {
+            "name": "nivel_volt",
+            "type": "string",
+            "example": "115/230"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
