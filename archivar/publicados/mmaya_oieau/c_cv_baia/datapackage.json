@@ -1,0 +1,126 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_oieau_c_cv_baia",
+  "title": "CV_ENV_baia",
+  "sources": [
+    {
+      "title": "Sistema para la Gestión Integral de Recursos Hídricos desarrollado por la Oficina Internacional del Agua (OiEau)",
+      "path": "https://www.oieau-wiss.org/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_oieau_c_cv_baia/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 7284,
+      "hash": "sha256:016484c4252947f39f573c7d42f38b8b0c9e017ef3974041996a021a28b911bc",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "baia.51"
+          },
+          {
+            "name": "nome_ilha",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Brava",
+            "categories": [
+              "São Nicolau",
+              "Fogo",
+              "Sal",
+              "Santo Antão",
+              "São Vicente",
+              "Santiago",
+              "Boa Vista",
+              "Santa Luzia",
+              "Brava",
+              "Maio"
+            ]
+          },
+          {
+            "name": "nome_conc",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Brava",
+            "categories": [
+              "Ribeira Brava",
+              "Sal",
+              "São Vicente",
+              "Tarrafal",
+              "Ribeira Grande",
+              "Santa Catarina",
+              "Boa Vista",
+              "Tarrafal de São Nicolau",
+              "São Filipe",
+              "Brava",
+              "Mosteiros",
+              "Maio",
+              "Porto Novo",
+              "São Domingos"
+            ]
+          },
+          {
+            "name": "designacao",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Baia da Pedrinha"
+          },
+          {
+            "name": "ano_de_pro",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 2011,
+              "maximum": 2011
+            }
+          },
+          {
+            "name": "ano_de_act",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 2014,
+              "maximum": 2022
+            }
+          },
+          {
+            "name": "escala",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "25000",
+            "categories": [
+              "25000"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
