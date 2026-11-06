@@ -1,0 +1,111 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_establecimientos_educativos_2",
+  "title": "Plan Director Cuenca Río Yapacaní– Establecimientos Educativos",
+  "description": "PDCRY (Plan Director de la Cuenca Río Yapacaní). Muestra la ubicación y la información relevante de Establecimientos Educativos (Escuelas, Colegios y Centros Educativos) en el marco del Plan Director de la Cuenca del Río Yapacaní.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_establecimientos_educativos_2/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 5556,
+      "hash": "sha256:a5c8dabc3801c6e4524129a9938c81adc8b82f26a427dafb4e49906320dd0ee6",
+      "schema": {
+        "fields": [
+          {
+            "name": "FID_Educac",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 123,
+              "maximum": 5462
+            }
+          },
+          {
+            "name": "nombre_for",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "CONST. MURO PERIMETRAL U.E. PEDRO MORON EL PACAY"
+          },
+          {
+            "name": "area_influ",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Rural",
+            "categories": [
+              "Urbano",
+              "Rural",
+              "Urbano/Rural"
+            ]
+          },
+          {
+            "name": "DEPARTAMEN",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Santa Cruz",
+            "categories": [
+              "Santa Cruz"
+            ]
+          },
+          {
+            "name": "PROVINCIA",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Florida",
+            "categories": [
+              "Ichilo",
+              "Florida",
+              "Andres Ibañez"
+            ]
+          },
+          {
+            "name": "MUNICIPIO",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Pampa Grande",
+            "categories": [
+              "Buena Vista",
+              "San Carlos",
+              "Yapacaní",
+              "San Juan",
+              "Pampa Grande",
+              "Mairana",
+              "Quirusillas",
+              "El Torno"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPoint."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
