@@ -1,0 +1,149 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mdpyep_sitap_cereales2024_centeno2024",
+  "title": "centeno2024",
+  "sources": [
+    {
+      "title": "Sistema Territorial de Apoyo a la Producción (SITAP) del Ministerio de Desarrollo Productivo y Economía Plural",
+      "path": "https://geodata-bolivia.produccion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mdpyep_sitap_cereales2024_centeno2024/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 10750,
+      "hash": "sha256:f06164166f7c01aab0ce79be92bb8e6f9bd7fd091db0aed04ea3265518bf512f",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "centeno2024.5"
+          },
+          {
+            "name": "departamento",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "La Paz",
+            "categories": [
+              "Potosi",
+              "La Paz",
+              "Tarija"
+            ]
+          },
+          {
+            "name": "provincia",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Pacajes",
+            "categories": [
+              "Alonso de Ibañez",
+              "Aroma",
+              "Mendez",
+              "Loayza",
+              "Omasuyos",
+              "Pacajes"
+            ]
+          },
+          {
+            "name": "municipio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Comanche",
+            "categories": [
+              "Sacaca",
+              "Caripuyo",
+              "Sicasica",
+              "El Puente",
+              "Comanche",
+              "Huatajata",
+              "Yaco"
+            ]
+          },
+          {
+            "name": "comunidad",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "PALCOMA ALTA"
+          },
+          {
+            "name": "producto",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Centeno",
+            "categories": [
+              "Centeno"
+            ]
+          },
+          {
+            "name": "estacion",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "verano",
+            "categories": [
+              "verano"
+            ]
+          },
+          {
+            "name": "produccion",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0.065,
+              "maximum": 17.14
+            }
+          },
+          {
+            "name": "superficie",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.163,
+              "maximum": 24.047
+            }
+          },
+          {
+            "name": "rendimiento",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.092,
+              "maximum": 1.501
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
