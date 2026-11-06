@@ -1,0 +1,151 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_poblacion_comdad_2012",
+  "title": "Plan Director Cuenca Río Guadalquivir - Poblaciones CNPV 2012",
+  "description": "PDCRGu (Plan Director de la Cuenca Río Guadalquivir). Muestra la ubicacion e información del las ploblaciones segun censo nacional de poblacion y vivienda 2012, en el marco del Plan Director de la Cuenca del Río Guadalquivir.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_poblacion_comdad_2012/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 13067,
+      "hash": "sha256:9bafee3c688302862b3696fddb30199476cf6cce61e1319edb6cfd44b22c98fa",
+      "schema": {
+        "fields": [
+          {
+            "name": "departamen",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "06",
+            "categories": [
+              "06"
+            ]
+          },
+          {
+            "name": "municipio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Padcaya",
+            "categories": [
+              "Tarija",
+              "San Lorenzo",
+              "Uriondo",
+              "Padcaya"
+            ]
+          },
+          {
+            "name": "codigo_com",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "06020108002"
+          },
+          {
+            "name": "comunidad",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "SAN ISIDRO DE REJARA"
+          },
+          {
+            "name": "poblacion_",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 179561
+            }
+          },
+          {
+            "name": "poblacio_1",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 172494
+            }
+          },
+          {
+            "name": "nbi_nopobr",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 100.0
+            }
+          },
+          {
+            "name": "nbi_pobre",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 100.0
+            }
+          },
+          {
+            "name": "rec_2030xr",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 2,
+              "maximum": 3
+            }
+          },
+          {
+            "name": "rec_2025r",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 2,
+              "maximum": 3
+            }
+          },
+          {
+            "name": "rec_2020r",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 2,
+              "maximum": 3
+            }
+          },
+          {
+            "name": "rec_2015_a",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 2,
+              "maximum": 3
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
