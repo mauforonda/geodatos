@@ -1,0 +1,59 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_sit_rutaspeaton",
+  "title": "Rutas Dia del Peaton",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz",
+      "path": "http://sitservicios.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_sit_rutaspeaton/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 5074,
+      "hash": "sha256:bd059586fcd8e8ed1afdf446b02b1b9699b11f9f938b1069be6947f032405f38",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "example": "rutaspeaton.4"
+          },
+          {
+            "name": "nombr_ruta",
+            "type": "string",
+            "example": "RUTA 04"
+          },
+          {
+            "name": "descripcio",
+            "type": "string",
+            "example": "PUNTO DE INICIO ESTADIO BOLIVAR"
+          },
+          {
+            "name": "distanc_km",
+            "type": "number",
+            "constraints": {
+              "minimum": 2.1,
+              "maximum": 2.7
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: LineString."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
