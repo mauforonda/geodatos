@@ -1,0 +1,72 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_oieau_omvs_omvs_env_sdage_enjeux_vegetation",
+  "title": "OMVS_ENV_SDAGE_Enjeux_Vegetation",
+  "sources": [
+    {
+      "title": "Sistema para la Gestión Integral de Recursos Hídricos desarrollado por la Oficina Internacional del Agua (OiEau)",
+      "path": "https://www.oieau-wiss.org/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_oieau_omvs_omvs_env_sdage_enjeux_vegetation/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 8368,
+      "hash": "sha256:0c816a55213fd268261dae369b04078af69f06d853dc7fe6ac67b5e7822fa824",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "OMVS_ENV_SDAGE_Enjeux_Vegetation.5"
+          },
+          {
+            "name": "libell",
+            "type": "integer"
+          },
+          {
+            "name": "type_id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 4
+            }
+          },
+          {
+            "name": "libell0",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Milieux naturels à enjeux",
+            "categories": [
+              "Milieux naturels à enjeux",
+              "Secteurs forestiers sensibles",
+              "Couvert végétal à surveiller",
+              "Plantes envahissantes"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
