@@ -1,0 +1,110 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_poblacion_cuenca_yapacani",
+  "title": "Plan Director Cuenca Río Yapacaní – Poblaciones",
+  "description": "PDCRY (Plan Director de la Cuenca Río Yapacaní). Muestra la ubicación y la información relevante de los  centros poblados, en el marco del Plan Director de la Cuenca del Río Yapacaní.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_poblacion_cuenca_yapacani/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 14488,
+      "hash": "sha256:7e7f130f2ebce7741afd9f0dde7e751ab4c28cda2bcfab8bc8b37c13d80e50fa",
+      "schema": {
+        "fields": [
+          {
+            "name": "id_unico",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "4688478233-D"
+          },
+          {
+            "name": "poblacion",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "36"
+          },
+          {
+            "name": "vivienda",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "16"
+          },
+          {
+            "name": "Provincia",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Vallegrande",
+            "categories": [
+              "Florida",
+              "Ichilo",
+              "Vallegrande",
+              "Andrés Ibáñez",
+              "Manuel María Caballero"
+            ]
+          },
+          {
+            "name": "Municipio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Vallegrande",
+            "categories": [
+              "Pampa Grande",
+              "Vallegrande",
+              "Mairana",
+              "Buena Vista",
+              "Yapacaní",
+              "Quirusillas",
+              "Samaipata",
+              "San Carlos",
+              "Trigal",
+              "San Juan de Yapacaní",
+              "Moro Moro",
+              "Comarapa",
+              "Porongo",
+              "El Torno",
+              "Postrer Valle"
+            ]
+          },
+          {
+            "name": "Comu",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Lampazar"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
