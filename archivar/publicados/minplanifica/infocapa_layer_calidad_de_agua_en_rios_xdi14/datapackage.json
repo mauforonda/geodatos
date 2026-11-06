@@ -1,0 +1,122 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_minplanifica_infocapa_layer_calidad_de_agua_en_rios_xdi14",
+  "title": "layer_calidad_de_agua_en_rios_xdi14",
+  "sources": [
+    {
+      "title": "Geoserver del Ministerio de Planificación del Desarollo",
+      "path": "https://geoserver.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_minplanifica_infocapa_layer_calidad_de_agua_en_rios_xdi14/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 8553,
+      "hash": "sha256:a0b3a1261f0b2a40cc6ed6425e7b53ef8f5ea0b94ac4f8b7555da3fdfefe8cd8",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_calidad_de_agua_en_rios_xdi14.8"
+          },
+          {
+            "name": "calidad",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "mala",
+            "categories": [
+              "mala",
+              "muy mala",
+              "buena",
+              "media"
+            ]
+          },
+          {
+            "name": "long_km",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 33
+            }
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Khaluyo Choqueyapu",
+            "categories": [
+              "Khaluyo Choqueyapu",
+              "Rio Achocalla",
+              "Choqueyapu",
+              "Hampaturi",
+              "Incachaca OrkoJahuira",
+              "Rio Achumani"
+            ]
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "La Paz",
+            "categories": [
+              "La Paz"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Murillo",
+            "categories": [
+              "Murillo",
+              "Loayza"
+            ]
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Mecapaca",
+            "categories": [
+              "Nuestra Señora de La Paz",
+              "Mecapaca",
+              "Achocalla",
+              "Cairoma",
+              "Palca"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
