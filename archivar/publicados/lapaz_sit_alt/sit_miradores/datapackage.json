@@ -1,0 +1,154 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_alt_sit_miradores",
+  "title": "miradores",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)",
+      "path": "http://sitservicios.lapaz.bo/ows38.jsp"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_sit_miradores/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 8769,
+      "hash": "sha256:0140830c670b9810d029046ba83048b6c2d7ad4b45368bf7a2ab3aa178af4efc",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "miradores.53"
+          },
+          {
+            "name": "Nombre",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Sallahumani"
+          },
+          {
+            "name": "Direccion",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "A 300 metros del Peaje de la Autopista La Paz - El Alto"
+          },
+          {
+            "name": "Zona",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Bajo Pacajes"
+          },
+          {
+            "name": "Tipo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "mirador",
+            "categories": [
+              "Mirador",
+              "Mirador Parque",
+              "Mirador-Apacheta",
+              "mirador",
+              "",
+              "Mirador Plaza",
+              "Mirador, paseo peatonal"
+            ]
+          },
+          {
+            "name": "CodMacro",
+            "type": "number",
+            "constraints": {
+              "minimum": 1.0,
+              "maximum": 9.0
+            }
+          },
+          {
+            "name": "CodDistrito",
+            "type": "number",
+            "constraints": {
+              "minimum": 1.0,
+              "maximum": 23.0
+            }
+          },
+          {
+            "name": "distrito",
+            "type": "number",
+            "constraints": {
+              "minimum": 1.0,
+              "maximum": 23.0
+            }
+          },
+          {
+            "name": "owner",
+            "type": "string",
+            "example": "",
+            "categories": [
+              ""
+            ]
+          },
+          {
+            "name": "usuario",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "carlos.callisayat",
+            "categories": [
+              "marcelo.espinoza",
+              "pablo.jordan",
+              "rolandop.quisbert",
+              "carlos.callisayat",
+              "soren.rodriguez",
+              "veronica.huanca",
+              "abel.gonzales",
+              "patricia.castillo",
+              "gustavo.nao"
+            ]
+          },
+          {
+            "name": "fechaActual",
+            "type": "datetime",
+            "constraints": {
+              "required": true,
+              "minimum": "2024-06-03T17:41:42+00:00",
+              "maximum": "2025-06-03T21:56:00.613000+00:00"
+            }
+          },
+          {
+            "name": "observaciones",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": ""
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
