@@ -1,0 +1,136 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_establecim_salud",
+  "title": "Plan Director Cuenca Río Tupiza – Establecimientos de Salud",
+  "description": "PDCRT (Plan Director de la Cuenca Río Tupiza). Muestra la ubicación y la información relevante de  los establecimientos de salud en el marco del Plan Director de la Cuenca del Río Tupiza.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_establecim_salud/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 3752,
+      "hash": "sha256:a3e649d7a4c2002895ec2d13a73710c3886f1a54763aecb23fd8a56668e1c4ad",
+      "schema": {
+        "fields": [
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Establecimientos.1732"
+          },
+          {
+            "name": "ID",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 1938
+            }
+          },
+          {
+            "name": "TIPO",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "4",
+            "categories": [
+              "3",
+              "4",
+              "",
+              "2"
+            ]
+          },
+          {
+            "name": "TIPO_DESCR",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Puesto de Salud",
+            "categories": [
+              "Centro de Salud",
+              "Puesto de Salud",
+              "Hospital de Segundo Nivel"
+            ]
+          },
+          {
+            "name": "NOMBRE_EST",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "P.S. ORO INGENIO"
+          },
+          {
+            "name": "LAT",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -21.444459,
+              "maximum": 0.0
+            }
+          },
+          {
+            "name": "LONG",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -66.144,
+              "maximum": 0.0
+            }
+          },
+          {
+            "name": "CODIGO_SNI",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "500256"
+          },
+          {
+            "name": "POINT_X",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 173486.289426,
+              "maximum": 218925.577056
+            }
+          },
+          {
+            "name": "POINT_Y",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 7626224.90302,
+              "maximum": 7656354.44647
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
