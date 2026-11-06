@@ -1,0 +1,182 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_eventos_por_distritos",
+  "title": "Número de eventos por distritos en las ciudades de La Paz y El Alto",
+  "description": "Este mapa representa el número de eventos en los distritos de la ciudad de El Alto y macrodistritos de la ciudad de La Paz, Conteniendo la información únicamente del número de eventos ocurridos desde el año 1970 hasta el 2007. Elaborado por el Programa Andino de Formación y de Investigación sobre la Vulnerabilidad y los Riesgos Urbanos - Bolivia, Ecuador, Perú - PACIVUR del Instituto de Investigaciones para el Desarrollo (IRD), en el año 2011.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_eventos_por_distritos/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 22248,
+      "hash": "sha256:d439fe0ce8002efc6b85c2a0975b1f3ec8f282dffc84551be66106bf1608a47d",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 20
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Eventos_por_distritos.10"
+          },
+          {
+            "name": "fid_1",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0,
+              "maximum": 19
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 12
+            }
+          },
+          {
+            "name": "municip",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "El Alto",
+            "categories": [
+              "El Alto",
+              "La Paz"
+            ]
+          },
+          {
+            "name": "subalcal_1",
+            "type": "string",
+            "example": "MAX PAREDES",
+            "categories": [
+              "CENTRO",
+              "COTAHUMA",
+              "HAMPATURI",
+              "MALLASA",
+              "MAX PAREDES",
+              "PERIFERICA",
+              "SAN ANTONIO",
+              "SUR",
+              "ZONGO"
+            ]
+          },
+          {
+            "name": "macro_1",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 9
+            }
+          },
+          {
+            "name": "distr_ea",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 12
+            }
+          },
+          {
+            "name": "codigo",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "ElAlto11"
+          },
+          {
+            "name": "cnt_codigo",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 50
+            }
+          },
+          {
+            "name": "cnt_codig2",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 15
+            }
+          },
+          {
+            "name": "sum_zonas",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 57
+            }
+          },
+          {
+            "name": "sum_puntos",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "0",
+            "categories": [
+              "0",
+              "1",
+              "2",
+              "12",
+              "3",
+              "6"
+            ]
+          },
+          {
+            "name": "sum_tot",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 60
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
