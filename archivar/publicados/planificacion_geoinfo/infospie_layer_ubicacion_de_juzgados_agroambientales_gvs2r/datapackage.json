@@ -1,0 +1,140 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_ubicacion_de_juzgados_agroambientales_gvs2r",
+  "title": "Ubicación de Juzgados Agroambientales",
+  "description": "El mapa muestra la ubicación de los distritos agroambientales determinan la jurisdicción de cada juzgado agroambiental. Los juzgados agroambientales en Bolivia son tribunales especializados encargados de impartir justicia en materias agraria, forestal, pecuaria, ambiental, de aguas y biodiversidad, basándose en los principios de función social, integralidad, inmediatez, sustentabilidad e interculturalidad. Tienen competencia para resolver conflictos sobre el uso de recursos naturales renovables, contaminación ambiental, responsabilidad por daños ecológicos, así como sobre contratos agrarios y forestales. Una característica clave es su itinerancia, que les permite desplazarse para impartir justicia en áreas remotas o de difícil acceso. \nElaboración propia del Ministerio de Planificación del Desarrollo en base a la información del Tribunal Agroambiental de los JUZGADOS AGROAMBIENTALES base Ley 025 del Órgano Judicial del 24 de junio de 2010",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_ubicacion_de_juzgados_agroambientales_gvs2r/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 10882,
+      "hash": "sha256:e960d0c13867acbb6acfa352b7c2e6fd7d8b4822538f0531169d4c959e0ec615",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_ubicacion_de_juzgados_agroambientales_gvs2r.1"
+          },
+          {
+            "name": "distritos",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "J-A BERMEJO"
+          },
+          {
+            "name": "point_x",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": -69,
+              "maximum": -60
+            }
+          },
+          {
+            "name": "point_y",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": -23,
+              "maximum": -11
+            }
+          },
+          {
+            "name": "j_a_juez",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Olga Acuña Villca"
+          },
+          {
+            "name": "telefono",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 1025572504
+            }
+          },
+          {
+            "name": "dirección",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Avenida Luis de Fuente entre Nils Kleming y Pando"
+          },
+          {
+            "name": "comunidad",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "BERMEJO"
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "TARIJA",
+            "categories": [
+              "LA PAZ",
+              "SANTA CRUZ",
+              "TARIJA",
+              "CHUQUISACA",
+              "COCHABAMBA",
+              "BENI",
+              "POTOSI",
+              "ORURO",
+              "PANDO"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Arce"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Bermejo"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
