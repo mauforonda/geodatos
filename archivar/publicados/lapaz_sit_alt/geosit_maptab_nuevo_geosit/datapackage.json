@@ -1,0 +1,173 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_alt_geosit_maptab_nuevo_geosit",
+  "title": "maptab_nuevo_geosit",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)",
+      "path": "http://sitservicios.lapaz.bo/ows38.jsp"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_geosit_maptab_nuevo_geosit/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 6105,
+      "hash": "sha256:f1a06ffc935b63e2bb315f15bcefba2992d7a0bb5401882923e8e74ca98697ba",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "maptab_nuevo_geosit.14"
+          },
+          {
+            "name": "id_item",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 2387,
+              "maximum": 2972
+            }
+          },
+          {
+            "name": "fecha_registro",
+            "type": "datetime",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": "2020-03-02T22:45:39.639000+00:00",
+              "maximum": "2021-10-05T12:49:59.651000+00:00"
+            }
+          },
+          {
+            "name": "id_estado",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 2
+            }
+          },
+          {
+            "name": "usuario",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "generico",
+            "categories": [
+              "generico",
+              "joao.flores",
+              "angel.laura",
+              "sistema.externo",
+              "alvaro.guachalla"
+            ]
+          },
+          {
+            "name": "fecha_actualizacion",
+            "type": "datetime",
+            "constraints": {
+              "minimum": "2020-03-02T22:45:39.672000+00:00",
+              "maximum": "2021-10-05T12:51:38.028000+00:00"
+            }
+          },
+          {
+            "name": "ext_id_tramite",
+            "type": "string",
+            "example": "9-100",
+            "categories": [
+              "9-100"
+            ]
+          },
+          {
+            "name": "ext_id_item",
+            "type": "string",
+            "example": "9-100-3",
+            "categories": [
+              "9-100-1",
+              "9-100-2",
+              "9-100-3"
+            ]
+          },
+          {
+            "name": "fecha_registro_movil",
+            "type": "datetime",
+            "constraints": {
+              "minimum": "2020-03-02T22:48:30+00:00",
+              "maximum": "2021-10-05T12:49:40+00:00"
+            }
+          },
+          {
+            "name": "abierto",
+            "type": "string",
+            "example": "2"
+          },
+          {
+            "name": "rango",
+            "type": "string",
+            "example": "1",
+            "categories": [
+              "3",
+              "1",
+              "4",
+              "valor",
+              "2",
+              "5",
+              "6"
+            ]
+          },
+          {
+            "name": "preferencias",
+            "type": "string",
+            "example": "futbol",
+            "categories": [
+              "futbol",
+              "vasquet",
+              "valor"
+            ]
+          },
+          {
+            "name": "color",
+            "type": "string",
+            "example": "azul",
+            "categories": [
+              "azul",
+              "rojo",
+              "valor",
+              "verde"
+            ]
+          },
+          {
+            "name": "genero",
+            "type": "string",
+            "example": "masculino",
+            "categories": [
+              "masculino",
+              "femenino",
+              "valor"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point, Polygon, LineString."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
