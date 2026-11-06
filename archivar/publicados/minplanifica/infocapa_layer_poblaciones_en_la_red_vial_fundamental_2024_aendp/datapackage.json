@@ -1,0 +1,88 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_minplanifica_infocapa_layer_poblaciones_en_la_red_vial_fundamental_2024_aendp",
+  "title": "layer_poblaciones_en_la_red_vial_fundamental_2024_aendp",
+  "sources": [
+    {
+      "title": "Geoserver del Ministerio de Planificación del Desarollo",
+      "path": "https://geoserver.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_minplanifica_infocapa_layer_poblaciones_en_la_red_vial_fundamental_2024_aendp/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 18012,
+      "hash": "sha256:f58eb7cf03c8b713a543aa77f43e79c3edc4ed91cc472c51a77cdaca0c1c9bf8",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_poblaciones_en_la_red_vial_fundamental_2024_aendp.238"
+          },
+          {
+            "name": "poblacion",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "HITO LX"
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Potosi",
+            "categories": [
+              "La Paz",
+              "Santa Cruz",
+              "Tarija",
+              "Cochabamba",
+              "Beni",
+              "Potosi",
+              "Oruro",
+              "Chuquisaca",
+              "Pando"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Nor Lipez"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "San Pedro de Quemes"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
