@@ -1,0 +1,170 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_alt_culturas_medioscomunicacion",
+  "title": "Medios de comunicacion cultural",
+  "description": "Mapa Cultural, Medios de comunicación, SMC",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)",
+      "path": "http://sitservicios.lapaz.bo/ows38.jsp"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_culturas_medioscomunicacion/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 8482,
+      "hash": "sha256:ee585ba0d0a793e9b4515a265d8084cef236c875ca0ef756b706989b53869436",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "mediosComunicacion.13"
+          },
+          {
+            "name": "IdAreaArtistica",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 1
+            }
+          },
+          {
+            "name": "IdSubcategoria",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 4
+            }
+          },
+          {
+            "name": "NombreCentro",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Abya Ayala"
+          },
+          {
+            "name": "Descripcion",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Televisión",
+            "categories": [
+              "Radio",
+              "Televisión",
+              "Prensa Escrita",
+              "Medio Digital"
+            ]
+          },
+          {
+            "name": "Direccion",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "C. Díaz Villamil Nº 5206, Esq. Calle 6"
+          },
+          {
+            "name": "Macrodistrito",
+            "type": "integer"
+          },
+          {
+            "name": "idMacrodistrito",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 7
+            }
+          },
+          {
+            "name": "Distrito",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 21
+            }
+          },
+          {
+            "name": "Telefono",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "2148401 - 2148275 - 2147303"
+          },
+          {
+            "name": "DirecionWeb",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "http://abyayala.tv.bo/"
+          },
+          {
+            "name": "owner",
+            "type": "integer"
+          },
+          {
+            "name": "usuario",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "clara.revollo",
+            "categories": [
+              "clara.revollo",
+              "dorcas.ross"
+            ]
+          },
+          {
+            "name": "fechaActual",
+            "type": "datetime",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": "2016-03-17T14:03:19.937000+00:00",
+              "maximum": "2018-09-25T15:58:12.540000+00:00"
+            }
+          },
+          {
+            "name": "observaciones",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "",
+            "categories": [
+              ""
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
