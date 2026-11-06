@@ -1,0 +1,99 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_lapaz_riesgomanzanas",
+  "title": "Manzanas Riesgo",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz",
+      "path": "http://sitservicios.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_lapaz_riesgomanzanas/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 9972,
+      "hash": "sha256:8a9929c651fe6664216ae7a0ce67e8fb4715879d535746ae74eb8d4dbc3a2064",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "RiesgoManzanas.189"
+          },
+          {
+            "name": "OBJECTID",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 274
+            }
+          },
+          {
+            "name": "TEXTSTRING",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "371"
+          },
+          {
+            "name": "TEXT_SIZE",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 10
+            }
+          },
+          {
+            "name": "TEXT_ANGLE",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 2.783159
+            }
+          },
+          {
+            "name": "MANZANA",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 275,
+              "maximum": 1031
+            }
+          },
+          {
+            "name": "DISTRITOCA",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 20,
+              "maximum": 47
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
