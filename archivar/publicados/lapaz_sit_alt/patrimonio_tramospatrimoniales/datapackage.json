@@ -1,0 +1,145 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_alt_patrimonio_tramospatrimoniales",
+  "title": "Tramos Patrimoniales",
+  "description": "Tramos Patrimoniales, LM 17/2025.",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)",
+      "path": "http://sitservicios.lapaz.bo/ows38.jsp"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_patrimonio_tramospatrimoniales/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 8198,
+      "hash": "sha256:95975ad575d4e902f73989dd6e53e6e13dd0aefd275d1e2d57d2cebcb81ca97d",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "tramosPatrimoniales.1"
+          },
+          {
+            "name": "ENTITY",
+            "type": "string",
+            "example": "Polyline",
+            "categories": [
+              "Polyline"
+            ]
+          },
+          {
+            "name": "LAYER",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "DM",
+            "categories": [
+              "DM",
+              "LM",
+              "OM"
+            ]
+          },
+          {
+            "name": "TIPO_INS",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "DM",
+            "categories": [
+              "DM",
+              "LM - DM",
+              "LM - OM - DM",
+              "OM",
+              "OM - DM",
+              "LM"
+            ]
+          },
+          {
+            "name": "DESCRIP_NT",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "TO DM 20/19 - 35/19",
+            "categories": [
+              "TO DM 20/19 - 35/19",
+              "LM 224 - TO DM 20/19 - 35/19",
+              "TO OM 74/99 76/99 -330/2014 - TO DM 20/19 - 35/19",
+              "LM 224",
+              "LM 299 - TO OM 74/99 76/99 -330/2014 - - TO DM 20/19 - 35/19",
+              "LM 302  - TO DM 20/19 - 35/19",
+              "LM 396  - TO OM 74/99 76/99 -330/2014 - TO DM 20/19 - 35/19",
+              "LM 398 - TO DM 20/19 - 35/19",
+              "LM 408  - TO DM 20/19 - 35/19",
+              "LM 448  - TO DM 20/19 - 35/19",
+              "LM 79  - TO OM 74/99 76/99 -330/2014 - TO DM 20/19 - 35/19",
+              "LM 99 - TO OM 74/99 76/99 -330/2014 - TO DM 20/19 - 35/19",
+              "TO DM 20/19 - 35/19   - referencia LM429",
+              "TO OM 74/99 76/99 -330/2014"
+            ]
+          },
+          {
+            "name": "LEY",
+            "type": "string",
+            "example": "L.M.",
+            "categories": [
+              "L.M."
+            ]
+          },
+          {
+            "name": "DECRETO",
+            "type": "string",
+            "example": "D.M.",
+            "categories": [
+              "D.M."
+            ]
+          },
+          {
+            "name": "ORDENANZA",
+            "type": "string",
+            "example": "O.M.",
+            "categories": [
+              "O.M."
+            ]
+          },
+          {
+            "name": "TRAM_PATRI",
+            "type": "string",
+            "example": "Calle Nicolas Acosta"
+          },
+          {
+            "name": "NUM_TRAMO",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 26
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
