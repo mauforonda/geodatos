@@ -1,0 +1,101 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_ssem_asfaltado_tipopoligono",
+  "title": "tipopoligono",
+  "sources": [
+    {
+      "title": "Servicio de Seguimiento Estratégico Municipal del Gobierno Autónomo Municipal de La Paz",
+      "path": "https://ssem.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_ssem_asfaltado_tipopoligono/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 4344,
+      "hash": "sha256:c187c2e1804901752f350758545678881923a4421bf7b5137c1986a331c7169a",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 11
+            }
+          },
+          {
+            "name": "area",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "ABC - SMMSC",
+            "categories": [
+              "ABC",
+              "ABC - SMIP - MD3",
+              "ABC - SMMSC"
+            ]
+          },
+          {
+            "name": "actividad",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Pompeyano"
+          },
+          {
+            "name": "ubicacion",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "avenida Sucre\naltura calle Pichincha"
+          },
+          {
+            "name": "inicio",
+            "type": "datetime",
+            "constraints": {
+              "required": true,
+              "minimum": "2023-06-19T00:00:00",
+              "maximum": "2023-06-29T00:00:00"
+            }
+          },
+          {
+            "name": "final",
+            "type": "datetime",
+            "constraints": {
+              "required": true,
+              "minimum": "2023-07-04T00:00:00",
+              "maximum": "2023-07-23T00:00:00"
+            }
+          },
+          {
+            "name": "avance",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "95 %"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
