@@ -1,0 +1,227 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_centros_de_salud_poopo",
+  "title": "Plan Director Cuenca Lago Poopó - Centros de Salud",
+  "description": "PDCLP (Plan Director de la Cuenca Lago Poopó). Muestra la ubicación y la información relevante de los centro de salud, en el marco del Plan Director de la Cuenca del Lago Poopó.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_centros_de_salud_poopo/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 10061,
+      "hash": "sha256:a7aa073eb56fc3d9a3fa38974c0c842ce11568b5fd0d3b16ae969584b27c0f4c",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "ID",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 187,
+              "maximum": 901
+            }
+          },
+          {
+            "name": "DEPTO",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Oruro",
+            "categories": [
+              "Oruro",
+              "La Paz",
+              "POTOSI"
+            ]
+          },
+          {
+            "name": "RED",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Cuenca Poopó",
+            "categories": [
+              "Red Urbana",
+              "Azanaque",
+              "Cuenca Poopó",
+              "Norte Oruro",
+              "Minera",
+              "",
+              "UYUNI"
+            ]
+          },
+          {
+            "name": "CODMUNI",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "041201",
+            "categories": [
+              "040101",
+              "041001",
+              "041401",
+              "040602",
+              "040102",
+              "040104",
+              "040701",
+              "041601",
+              "040103",
+              "040201",
+              "040301",
+              "040601",
+              "040603",
+              "041201",
+              "051201",
+              "021802",
+              "040202",
+              "040702",
+              "020903",
+              "021005",
+              "040802",
+              "041101"
+            ]
+          },
+          {
+            "name": "MUNICIPIO",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Andamarca",
+            "categories": [
+              "Oruro",
+              "Toledo",
+              "Santiago de Huari",
+              "Paz¤a",
+              "Caracollo",
+              "Huanuni",
+              "Huayllamarca (Santiago de Huayllama",
+              "Soracachi",
+              "Andamarca",
+              "Antequera",
+              "Challapata",
+              "Corque",
+              "El Choro",
+              "Poopo (Villa de Poopo)",
+              "UYUNI",
+              "Machacamarca",
+              "Papel Pampa",
+              "Santiago de Quillacas",
+              "Eucaliptus",
+              "Ichoca",
+              "Pampa Aullagas",
+              "Yaco"
+            ]
+          },
+          {
+            "name": "ESTSALUD",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "C.S. ANDAMARCA"
+          },
+          {
+            "name": "POSTSAL",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 1
+            }
+          },
+          {
+            "name": "CENTSAL",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 1
+            }
+          },
+          {
+            "name": "HOSPBAS",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 0
+            }
+          },
+          {
+            "name": "HOSPGEN",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 0
+            }
+          },
+          {
+            "name": "INSTITUTO",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 0
+            }
+          },
+          {
+            "name": "TIPOESTAB",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "CS",
+            "categories": [
+              "CS",
+              "PS",
+              "H2",
+              "H3"
+            ]
+          },
+          {
+            "name": "NIVELAT",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 3
+            }
+          },
+          {
+            "name": "TOTAL",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 1
+            }
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
