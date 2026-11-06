@@ -1,0 +1,103 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_cobija_siscat_social_recinto",
+  "title": "recinto",
+  "sources": [
+    {
+      "title": "Sistema de Catastro del Gobierno Autónomo Municipal de Cobija",
+      "path": "https://siscat.cobija.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_cobija_siscat_social_recinto/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 15372,
+      "hash": "sha256:bdc50880a3a7b0ded020e60bb56c18a7fc3a3f5d9f7d919f3a8048b8288dba17",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "recinto.66"
+          },
+          {
+            "name": "descripcion",
+            "type": "string",
+            "example": "SOBERANIA"
+          },
+          {
+            "name": "estado",
+            "type": "boolean",
+            "constraints": {
+              "required": true
+            }
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "U.E. JUANCITO PINTO"
+          },
+          {
+            "name": "circunscripcion",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 7,
+              "maximum": 63
+            }
+          },
+          {
+            "name": "municipio",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 15
+            }
+          },
+          {
+            "name": "latitud",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": -12.39163,
+              "maximum": -10.057803
+            }
+          },
+          {
+            "name": "longitud",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": -69.56477,
+              "maximum": -65.320111
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
