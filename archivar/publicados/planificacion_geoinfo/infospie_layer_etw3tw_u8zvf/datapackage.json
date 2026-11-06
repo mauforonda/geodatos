@@ -1,0 +1,152 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_etw3tw_u8zvf",
+  "title": "Estaciones de Servicio de YPFB según Tipo de Combustible",
+  "description": "El mapa presenta la ubicación de estaciones de servicio de YPFB, clasificadas según el tipo de combustible ofertado (diésel, gasolina y sus variantes). Incluye información sobre la localización geográfica y combinaciones de productos disponibles, facilitando el análisis territorial del abastecimiento de combustibles.",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_etw3tw_u8zvf/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 9607,
+      "hash": "sha256:628fe8429621aba91f48d0094a72cbf6bb43c5ab9022cbbee9bd277e92407c06",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_etw3tw_u8zvf.15"
+          },
+          {
+            "name": "numero",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 72
+            }
+          },
+          {
+            "name": "estado",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "EN FUNCIONAMIENTO",
+            "categories": [
+              "EN FUNCIONAMIENTO"
+            ]
+          },
+          {
+            "name": "nombre_est",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "E.S. UYUNI"
+          },
+          {
+            "name": "latitud",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": -22.726448,
+              "maximum": -10.814893
+            }
+          },
+          {
+            "name": "longitud",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": -69.08117,
+              "maximum": -57.714689
+            }
+          },
+          {
+            "name": "combustibl",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "DIESEL, GASOLINA",
+            "categories": [
+              "DIESEL, GASOLINA",
+              "DIESEL, GASOLINA, GASOLINA ESPECIAL +",
+              "GASOLINA, GASOLINA ESPECIAL +",
+              "DIESEL, DIESEL OIL +, GASOLINA, GASOLINA ESPECIAL +",
+              "DIESEL, GASOLINA ESPECIAL +",
+              "GASOLINA",
+              "DIESEL",
+              "DIESEL OIL +, GASOLINA, GASOLINA ESPECIAL +",
+              "DIESEL, DIESEL OIL +, GASOLINA ESPECIAL +",
+              "DIESEL, GASOLINA, GASOLINA ESPECIAL +, GASOLINA PREMIUM +",
+              "GASOLINA, GASOLINA ESPECIAL +, GASOLINA PREMIUM +"
+            ]
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "POTOSI",
+            "categories": [
+              "SANTA CRUZ",
+              "CHUQUISACA",
+              "POTOSI",
+              "TARIJA",
+              "LA PAZ",
+              "BENI",
+              "COCHABAMBA",
+              "ORURO",
+              "PANDO"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Antonio Quijarro"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Uyuni"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
