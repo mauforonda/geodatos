@@ -1,0 +1,62 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mhe_geoportal_geonode_proyectos_trans_2020",
+  "title": "Proyectos_Trans_2020",
+  "sources": [
+    {
+      "title": "Geoportal del Viceministerio de Electricidad y Energías Renovables",
+      "path": "https://geoportal.mhe.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mhe_geoportal_geonode_proyectos_trans_2020/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 8205,
+      "hash": "sha256:6d71cf710986f9261c364ba9f445eb287d135f67ca1549fb1aa5f27b5cbdfef7",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 8
+            }
+          },
+          {
+            "name": "Proyecto",
+            "type": "string",
+            "example": "LÃ­nea  SANTIVAÃEZ- MIZQUE â SEHUENCAS"
+          },
+          {
+            "name": "Tramo",
+            "type": "string",
+            "example": "SantivaÃ±ez - Mizque"
+          },
+          {
+            "name": "Un_kV",
+            "type": "integer",
+            "constraints": {
+              "minimum": 230,
+              "maximum": 500
+            }
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
