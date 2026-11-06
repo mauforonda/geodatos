@@ -1,0 +1,128 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_entidades_estado_lpz",
+  "title": "Mapa de Localización de Entidades del Estado Ciudad de La Paz, 2017",
+  "description": "El mapa representa la localización de instituciones del Órgano Legislativo, Órgano Ejecutivo (Ministerios, Viceministerios, Entidades; Autárquicas, Descentralizadas y Empresas) y Órgano Electoral del Estado Plurinacional de Bolivia que se encuentran en la Ciudad de La Paz.  Elaborado en base al “Mapa de Localización de entidades del Estado Plurinacional de Bolivia, 2014” por la Agencia para el Desarrollo de la Sociedad de la Información (ADSIB) y GeoBolivia, actualizado por la Agencia de Gobierno Electrónico y Tecnologías de Información y Comunicación (AGETIC) hasta el 4 de octubre de 2017.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_entidades_estado_lpz/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 22166,
+      "hash": "sha256:5d0407785aacf8c39362ed674089e9a9ed8a95b709db451db76fd30ddea31092",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "entidades_estado_lpz.145"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 200
+            }
+          },
+          {
+            "name": "dependenci",
+            "type": "string",
+            "example": "Ministerio de Desarrollo Productivo y Economía Plural"
+          },
+          {
+            "name": "tipo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Empresa Nacional",
+            "categories": [
+              "Descentralizada",
+              "Empresa Nacional",
+              "Desconcentrada Órgano Ejecutivo",
+              "Ministerios",
+              "Dependiente",
+              "Viceministerio",
+              "Autárquica",
+              "Institución de Seguridad Social",
+              "Empresa Municipal",
+              "Institución de Control y Defensa del Estado",
+              "Universidades Públicas",
+              "Asamblea Legislativa Plurinacional",
+              "Desconcentrada",
+              "Institución Financiera No Bancaria Nivel Central del Estado",
+              "Órgano Electoral",
+              "Empresa Departamental",
+              "Programa",
+              "Vicepresidencia",
+              "Órgano Ejecutivo"
+            ]
+          },
+          {
+            "name": "sigla",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "ECEBOL "
+          },
+          {
+            "name": "entidad",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Empresa Pública Nacional Estratégica Cementos de Bolivia "
+          },
+          {
+            "name": "direccion",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Sopocachi Av. Jaimes Freyre y Calle Uno Nro. 9 Edif.: IMPEXPAP II Piso 5"
+          },
+          {
+            "name": "tipo_entid",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Órgano Ejecutivo",
+            "categories": [
+              "Órgano Ejecutivo",
+              "Órgano Electoral",
+              "Órgano Legislativo"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPoint."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
