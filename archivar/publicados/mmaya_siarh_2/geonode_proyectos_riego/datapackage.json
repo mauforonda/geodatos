@@ -1,0 +1,120 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_proyectos_riego",
+  "title": "Plan Director Cuenca Río Grande - Proyectos Riego",
+  "description": "PDCRG (Plan Director de la Cuenca Rio Grande). Muestra la ubicación y la información relevante de los proyectos riego, en el marco del Plan Director de la Cuenca del Río Grande.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_proyectos_riego/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 14645,
+      "hash": "sha256:a711f713c0fa1f09cc85fdc5a656d010d987ce20638f0f4eb38373bbebea55da",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "cod_ine",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "01030101027004"
+          },
+          {
+            "name": "NOMBRE_PRO",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "AMPL. SIST. MICRORIEGO SAUCES"
+          },
+          {
+            "name": "DEPTO",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "CHUQUISACA",
+            "categories": [
+              "COCHABAMBA",
+              "POTOSI",
+              "SANTA CRUZ",
+              "CHUQUISACA",
+              "ORURO"
+            ]
+          },
+          {
+            "name": "MUNICIPIO",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "ZUDAÑEZ"
+          },
+          {
+            "name": "SUP__INCRE",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 2.0,
+              "maximum": 1042.92
+            }
+          },
+          {
+            "name": "ORGANISMO",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "MIAGUA - CAF",
+            "categories": [
+              "MIAGUA - CAF",
+              "PROAR - CAF",
+              "PRONAREC - BID (2da Cartera)",
+              "PARC - BELGAS",
+              "PRONAREC - BID (1ra Cartera)",
+              "SIRIC - KfW",
+              "2KR",
+              "COREA DEL SUR",
+              "PIACC - BID",
+              "PNC"
+            ]
+          },
+          {
+            "name": "ENTIDAD_EJ",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "FPS",
+            "categories": [
+              "FPS",
+              "EMAGUA",
+              "GAD",
+              "GAM",
+              "PRONAREC"
+            ]
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
