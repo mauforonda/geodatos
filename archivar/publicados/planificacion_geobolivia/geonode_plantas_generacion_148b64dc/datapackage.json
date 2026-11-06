@@ -1,0 +1,141 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geobolivia_geonode_plantas_generacion_148b64dc",
+  "title": "Plantas de generación eléctrica Bolivia (2016)",
+  "description": "Distribución y localización espacial de la generación de energía eléctrica en Bolivia mostrando centrales hidroeléctricas que aprovechan la fuerza del agua de los ríos para producir electricidad y termoeléctricas que producen electricidad utilizando energía del petroleo. Elaborado por la Autoridad de fiscalización y control de electricidad (AE) con datos actualizados a marzo de 2016 a escala 1:4500000.",
+  "sources": [
+    {
+      "title": "Nueva plataforma GeoBolivia",
+      "path": "https://geonode.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geobolivia_geonode_plantas_generacion_148b64dc/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 10216,
+      "hash": "sha256:4c336dc2ec6c8f73607e82ce0dda7500ecd7af5d3feabd3aff9d9d6b2cb07d16",
+      "schema": {
+        "fields": [
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 99
+            }
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 99
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 99
+            }
+          },
+          {
+            "name": "objectid_1",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 4079
+            }
+          },
+          {
+            "name": "empresa",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Empresa Nacional de Electricidad (ENDE)"
+          },
+          {
+            "name": "planta",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Laguna Colorada"
+          },
+          {
+            "name": "tecnologia",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "GEOTERMICO PROY",
+            "categories": [
+              "HIDROELÉCTRICA",
+              "TERMOELÉCTRICA-AISL",
+              "TERMOELÉCTRICA-DIES",
+              "TERMOELÉCTRICA-SIN",
+              "HIDROELÉCTRICA PROY",
+              "TERMOELÉCTRICA-DIEB",
+              "TERMOELÉCTRICA-SINP",
+              "EÓLICA",
+              "GEOTERMICO PROY"
+            ]
+          },
+          {
+            "name": "nivel_volt",
+            "type": "string",
+            "example": "24,9",
+            "categories": [
+              "6,9 - 6,9",
+              "24,9",
+              "6,6",
+              "6,6 - 6,6",
+              "6,6 - 6,6 - 6,6",
+              "6,9",
+              "5,5 y 5,5",
+              "6,6 - 6,6 - 6,6 - 6,6 - 6,6",
+              "6,9 - 6,9 - 6,9"
+            ]
+          },
+          {
+            "name": "tipo_equip",
+            "type": "string",
+            "example": "GENERADOR",
+            "categories": [
+              "GENERADOR",
+              "3 TURBINAS PELTON",
+              "8 TURBINAS",
+              "AEROGENERADOR",
+              "FRANCIS(870, 600RPM)",
+              "TRANSFORMADOR"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
