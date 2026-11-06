@@ -1,0 +1,138 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_estaciones_meteorologicas",
+  "title": "Plan Director Cuenca Río Grande - Estaciones Meteorológicas",
+  "description": "PDCRG (Plan Director de la Cuenca Rio Grande). Muestra la georreferenciación y la información de las Estaciones Meteorológicas en la Cuenca del Plan Director del Río Grande.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_estaciones_meteorologicas/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 7544,
+      "hash": "sha256:56a23dea5c052fc9d599d106bac0e52ef38fd617411aaf5c2e8ba879d5d6d77c",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "N",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 41
+            }
+          },
+          {
+            "name": "ESTACION",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "CHUQUI CHUQUI"
+          },
+          {
+            "name": "PROVINCIA",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Oropeza"
+          },
+          {
+            "name": "DEPARTAMEN",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Chuquisaca",
+            "categories": [
+              "Cochabamba",
+              "Santa Cruz",
+              "Chuquisaca",
+              "Potos¡"
+            ]
+          },
+          {
+            "name": "LATITUD_S",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "18ø 49' 15\""
+          },
+          {
+            "name": "LONGITUD_W",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "65ø 03' 15\""
+          },
+          {
+            "name": "ALTURA",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 200,
+              "maximum": 3800
+            }
+          },
+          {
+            "name": "TIPO",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "TP",
+            "categories": [
+              "TP",
+              "P",
+              "CO",
+              "S",
+              "A",
+              "CP"
+            ]
+          },
+          {
+            "name": "LATITUD",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -19.98388889,
+              "maximum": -16.81666667
+            }
+          },
+          {
+            "name": "LONGITUD",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": -66.58230556,
+              "maximum": -62.88333333
+            }
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
