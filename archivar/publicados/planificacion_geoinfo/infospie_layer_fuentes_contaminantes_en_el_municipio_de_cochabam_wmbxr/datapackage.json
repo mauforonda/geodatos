@@ -1,0 +1,108 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_fuentes_contaminantes_en_el_munici_7accc9d8553d",
+  "title": "Fuentes Contaminantes en el municipio de Cochabamba - PTDI",
+  "description": "En el mapa se identifican las principales fuentes de contaminación ambiental en el Municipio de Cochabamba.",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_fuentes_contaminantes_en_el_munici_7accc9d8553d/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 22329,
+      "hash": "sha256:cdd8b7a6348337d0319b8228f9251927c0dd8b843547eed64f6b90087b51f12d",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_fuentes_contaminantes_en_el_municipio_de_cochabam_wmbxr.31"
+          },
+          {
+            "name": "clase_fuen",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "domestico",
+            "categories": [
+              "industrial",
+              "domestico",
+              "agropecuario",
+              "multisector"
+            ]
+          },
+          {
+            "name": "nombre_act",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Complejo turistico la Cabaña"
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "COCHABAMBA",
+            "categories": [
+              "COCHABAMBA"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Quillacollo",
+            "categories": [
+              "Quillacollo",
+              "Chapare",
+              "Cercado"
+            ]
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Sipesipe",
+            "categories": [
+              "Sacaba",
+              "Cochabamba",
+              "Sipesipe",
+              "Vinto",
+              "Quillacollo",
+              "Colcapirhua"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
