@@ -1,0 +1,71 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_circuito_copacabana_peregrino",
+  "title": "Dos Circuitos para el Peregrinaje al Santuario de Copacabana Departamento de La Paz, Bolivia 2019",
+  "description": "El mapa muestra el recorrido de los dos circuitos para el peregrinaje al santuario de Copabacana que se realiza en semana santa, las rutas son: Tradicional (139 Km.) y Alterna (92 Km.). La primera comienza en la ciudad de El Alto en la tranca de Corapata y luego sigue por las comunidades: Patamanta, Batallas, Huarina, Huatajata, Compi y estrecho de Tiquina hasta llegar a Copacabana. La segunda se inicia en la tranca de Corapata, pero a la altura del cruce a Pucarani el peregrino debe caminar rumbo a ese municipio, más adelante para pasar a las islas Suriqui, Taquiri e Isicachi, deberá abordar una embarcación que le permitirá concluir el recorrido hasta Copacabana o sino deberá llegar hasta la comunidad de Santiago de Oje para continuar el camino a pie hasta Copacabana. Ambas rutas ofrecen mucho atractivo turístico y paisajístico, el peregrino podrá encontrar hospedaje, alimentación y atención médica, esta peregrinación se la realiza caminando o sino en bicicleta, puede durar de 3 días a 2 días. Información obtenida del Ministerio de Culturas y Turismo a abril 2019.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_circuito_copacabana_peregrino/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 16770,
+      "hash": "sha256:bd51a8b10d2a9bf720b3abf514bde2447c7f79c177926ebbf1b3c00d1581cfd2",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 3
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 3
+            }
+          },
+          {
+            "name": "departamen",
+            "type": "string",
+            "example": "La Paz",
+            "categories": [
+              "La Paz"
+            ]
+          },
+          {
+            "name": "ruta",
+            "type": "string",
+            "example": "Ruta Tradicional"
+          },
+          {
+            "name": "caracteris",
+            "type": "string",
+            "example": "Comienza en El Alto (en la tranca de Corapata) y luego sigue por Patamanta, Batallas, Huarina, Compi"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
