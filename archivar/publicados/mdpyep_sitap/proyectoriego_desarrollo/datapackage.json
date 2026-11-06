@@ -1,0 +1,228 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mdpyep_sitap_proyectoriego_desarrollo",
+  "title": "desarrollo",
+  "sources": [
+    {
+      "title": "Sistema Territorial de Apoyo a la Producción (SITAP) del Ministerio de Desarrollo Productivo y Economía Plural",
+      "path": "https://geodata-bolivia.produccion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mdpyep_sitap_proyectoriego_desarrollo/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 6650,
+      "hash": "sha256:eabd28beee013729fa3ca10de16fdf77642caa6d013c227500387d6fcf7cc278",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "desarrollo.1815"
+          },
+          {
+            "name": "ministerio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "MDPRA",
+            "categories": [
+              "MDPRA"
+            ]
+          },
+          {
+            "name": "viceministerio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "VRHRAPySB",
+            "categories": [
+              "VRHRAPySB"
+            ]
+          },
+          {
+            "name": "entidad_ejecutora",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "EMAGUA",
+            "categories": [
+              "EMAGUA",
+              "FPS"
+            ]
+          },
+          {
+            "name": "programa",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "PRESAS",
+            "categories": [
+              "PRESAS",
+              "MI RIEGO II",
+              "PACC I",
+              "MULTIPROPOSITO",
+              "PACC II"
+            ]
+          },
+          {
+            "name": "proyecto",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "CONST. SISTEMA DE RIEGO PRESA CAWALLICALA "
+          },
+          {
+            "name": "code_mun",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 4
+            }
+          },
+          {
+            "name": "dpto",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "ORURO",
+            "categories": [
+              "COCHABAMBA",
+              "LA PAZ",
+              "CHUQUISACA",
+              "ORURO",
+              "POTOSI",
+              "SANTA CRUZ",
+              "TARIJA"
+            ]
+          },
+          {
+            "name": "provincia",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "NOR CARANGAS"
+          },
+          {
+            "name": "municipio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "SANTIAGO DE HUAYLLAMARCA"
+          },
+          {
+            "name": "comunidad",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "VILLA IRPOCA, JORONCO Y NARANJANI"
+          },
+          {
+            "name": "familias_beneficiadas",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 41,
+              "maximum": 3422
+            }
+          },
+          {
+            "name": "estado",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "EN EJECUCION",
+            "categories": [
+              "EN EJECUCION"
+            ]
+          },
+          {
+            "name": "tipo_proy",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "RIEGO",
+            "categories": [
+              "RIEGO",
+              "MICRORIEGO"
+            ]
+          },
+          {
+            "name": "tipo_proy_2",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "MEDIANO",
+            "categories": [
+              "MEDIANO",
+              "MAYOR",
+              "MENOR"
+            ]
+          },
+          {
+            "name": "macro_region",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "PUNA",
+            "categories": [
+              "VALLES",
+              "PUNA",
+              "CHACO"
+            ]
+          },
+          {
+            "name": "pueblo_indigena",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "KARANKA",
+            "categories": [
+              "NDI",
+              "",
+              "PAKAJAQI",
+              "CHARKA",
+              "KARANKA",
+              "QHARA QHARA"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
