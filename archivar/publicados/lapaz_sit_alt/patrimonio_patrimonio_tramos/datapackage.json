@@ -1,0 +1,99 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_alt_patrimonio_patrimonio_tramos",
+  "title": "Tramos patrimoniales",
+  "description": "Tramos Patrimoniales, Informe GAMLP SMCT DFPDCP UPAC No 937/2024.",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)",
+      "path": "http://sitservicios.lapaz.bo/ows38.jsp"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_patrimonio_patrimonio_tramos/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 5769,
+      "hash": "sha256:c7680642be9edf098adad46bcdd27c9f9cf91823845a67d04116361696b77a59",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "patrimonio_tramos.4"
+          },
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 21
+            }
+          },
+          {
+            "name": "Layer",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "TRAMOS_VIAS",
+            "categories": [
+              "TRAMOS_VIAS"
+            ]
+          },
+          {
+            "name": "PaperSpace",
+            "type": "integer"
+          },
+          {
+            "name": "SubClasses",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "AcDbEntity:AcDbPolyline",
+            "categories": [
+              "AcDbEntity:AcDbPolyline"
+            ]
+          },
+          {
+            "name": "Linetype",
+            "type": "integer"
+          },
+          {
+            "name": "EntityHandle",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "66"
+          },
+          {
+            "name": "Text",
+            "type": "integer"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: LineString."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
