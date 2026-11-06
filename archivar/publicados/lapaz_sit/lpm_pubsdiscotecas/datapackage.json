@@ -1,0 +1,99 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_lpm_pubsdiscotecas",
+  "title": "Pubs y Discotecas",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz",
+      "path": "http://sitservicios.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_lpm_pubsdiscotecas/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 3567,
+      "hash": "sha256:0203f9f740d21e425c8bcd71c3dfbd2d2ad7222e8df3f0acf89caff362bd8ea1",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "example": "pubsdiscotecas.7"
+          },
+          {
+            "name": "Nombre",
+            "type": "string",
+            "example": "GOLD CLASSICS"
+          },
+          {
+            "name": "Direccion",
+            "type": "string",
+            "example": "Calle Almirante Grau  # 648"
+          },
+          {
+            "name": "Zona",
+            "type": "string",
+            "example": "San Pedro"
+          },
+          {
+            "name": "Telefono",
+            "type": "string",
+            "example": "2492120"
+          },
+          {
+            "name": "distrito",
+            "type": "integer",
+            "constraints": {
+              "minimum": 0,
+              "maximum": 3
+            }
+          },
+          {
+            "name": "owner",
+            "type": "integer"
+          },
+          {
+            "name": "usuario",
+            "type": "string",
+            "example": "jeanine.blanco",
+            "categories": [
+              "jeanine.blanco",
+              "nhuanquiri"
+            ]
+          },
+          {
+            "name": "fechaActual",
+            "type": "datetime",
+            "constraints": {
+              "minimum": "2019-07-11T20:11:04.113000+00:00",
+              "maximum": "2019-12-27T17:35:14.770000+00:00"
+            }
+          },
+          {
+            "name": "observaciones",
+            "type": "string",
+            "example": "",
+            "categories": [
+              "",
+              "Ya no existe"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
