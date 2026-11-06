@@ -1,0 +1,58 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_criopampahuari_contaminacionminera",
+  "title": "Plan Director Cuenca Río Pampa Huari - Contaminación Minera_ Bolivia",
+  "description": "Muestra las áreas con contaminación ambiental por actividades mineras en la cuenca del río Pampa Huari, como ser: Deposito minero, Desmontes, Dique de Colas, Pasivo ambiental, etc., información obtenida del Viceministerio de Recursos Hídricos y Riego, ha febrero del 2019",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_criopampahuari_contaminacionminera/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 16094,
+      "hash": "sha256:3fec72b26f25ad39ca2a2798e9644a5dc782b7b7f061ad66cae9b88c20796def",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 7
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "minimum": 0,
+              "maximum": 6
+            }
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "example": "Desmonte"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
