@@ -1,0 +1,112 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_sit_arqueologico_sitios_2026",
+  "title": "Sitios Arqueológicos 2026",
+  "description": "Ubicación de los Sitios Arquelógicos 2018 y 2026, D.M. 0010/2026 fecha 13 de abril de 2026.",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz",
+      "path": "http://sitservicios.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_sit_arqueologico_sitios_2026/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 9293,
+      "hash": "sha256:7c32b68b626a19c72c0dd7bf72370ca12ea8db34be51325672f3dd12af357795",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "arqueologico_sitios_2026.19"
+          },
+          {
+            "name": "LAYER",
+            "type": "string",
+            "example": "0",
+            "categories": [
+              "0"
+            ]
+          },
+          {
+            "name": "ESTE",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 601235
+            }
+          },
+          {
+            "name": "NORTE",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 8177295
+            }
+          },
+          {
+            "name": "DENSIDAD",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "ALTA",
+            "categories": [
+              "BAJA",
+              "ALTA",
+              "MEDIA"
+            ]
+          },
+          {
+            "name": "UBICACION",
+            "type": "string",
+            "example": "AVENIDA LIBERTADOR"
+          },
+          {
+            "name": "PESO",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 100,
+              "maximum": 300
+            }
+          },
+          {
+            "name": "path",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "puntos_alto.shp",
+            "categories": [
+              "puntos_baja.shp",
+              "puntos_alto.shp",
+              "puntos_media.shp"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
