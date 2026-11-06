@@ -1,0 +1,147 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geobolivia_geonode_vias_bolivia2017_353690cd",
+  "title": "Ubicación de Retenes de Peaje y Pesaje en Bolivia (2017)",
+  "description": "Información geoespacial de las ubicaciones de las estaciones de Peaje y Pesos y Dimensiones (Pesaje) que se encuentran actualmente en funcionamiento en Bolivia al mes Marzo 2017. Muestra también el sistema de cobro en cada estación.",
+  "sources": [
+    {
+      "title": "Nueva plataforma GeoBolivia",
+      "path": "https://geonode.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geobolivia_geonode_vias_bolivia2017_353690cd/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 10989,
+      "hash": "sha256:7d9b7ce4f07ab8d97dd16a64728123897c55977e1527760c24f1604cb5ce8299",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "vias_bolivia2017_353690cd.132"
+          },
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 136
+            }
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 136
+            }
+          },
+          {
+            "name": "tipo_estac",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "PEAJE/PESAJE",
+            "categories": [
+              "PEAJE",
+              "PESAJE",
+              "PEAJE/PESAJE"
+            ]
+          },
+          {
+            "name": "estacion",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Uyuni II"
+          },
+          {
+            "name": "codesta",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 136
+            }
+          },
+          {
+            "name": "ubicacion",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "TEMPORAL",
+            "categories": [
+              "DEFINITIVO",
+              "TEMPORAL O MOVIL",
+              "TEMPORAL",
+              "DEFINITIVA"
+            ]
+          },
+          {
+            "name": "sist_cobro",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "SISCAP/SNCPD",
+            "categories": [
+              "SISCAP",
+              "SISAPP",
+              "SNCPD",
+              "SISCEP",
+              "CONTROL",
+              "SISCAP/CONTROL",
+              "SISCAP/SNCPD"
+            ]
+          },
+          {
+            "name": "departamen",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Potosí",
+            "categories": [
+              "Santa Cruz",
+              "Cochabamba",
+              "Potosí",
+              "La Paz",
+              "Beni",
+              "Oruro",
+              "Tarija",
+              "Chuquisaca",
+              "Pando"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
