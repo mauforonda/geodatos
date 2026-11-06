@@ -1,0 +1,126 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_conseciones_mineras_z20",
+  "title": "Plan Director Cuenca Río Guadalquivir - Concesiones Mineras",
+  "description": "PDCR_G (Plan Director Cuenca Río Guadalquivir) Muestra las Coberturas de Concesiones Mineras de SERGEOTECMIN.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_conseciones_mineras_z20/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 6012,
+      "hash": "sha256:f0d0f7c431379e5b85502c71aaf3c5d0f69eccdcb7541e68aa635d860b263b02",
+      "schema": {
+        "fields": [
+          {
+            "name": "OBJECTID",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 199,
+              "maximum": 1271
+            }
+          },
+          {
+            "name": "Entity",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Closed Shape",
+            "categories": [
+              "Closed Shape"
+            ]
+          },
+          {
+            "name": "Level_",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 5,
+              "maximum": 5
+            }
+          },
+          {
+            "name": "Layer",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "5",
+            "categories": [
+              "5"
+            ]
+          },
+          {
+            "name": "Color",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 7
+            }
+          },
+          {
+            "name": "Linetype",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Solid",
+            "categories": [
+              "Solid"
+            ]
+          },
+          {
+            "name": "LineWt",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 1
+            }
+          },
+          {
+            "name": "MsLink_ODB",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 11048,
+              "maximum": 30038
+            }
+          },
+          {
+            "name": "MsCtlg_ODB",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 2,
+              "maximum": 2
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
