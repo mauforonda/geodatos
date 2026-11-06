@@ -1,0 +1,137 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_sit_laboratorioscovid",
+  "title": "Laboratorios Covid",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz",
+      "path": "http://sitservicios.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_sit_laboratorioscovid/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 8930,
+      "hash": "sha256:8aee9d0eaeb5c0e364ee58c7fbb1565a1194ef431ae094ed67f68f008f816c7c",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "laboratorioscovid.25"
+          },
+          {
+            "name": "nro",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 59
+            }
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Hospital Corazón de Jesús"
+          },
+          {
+            "name": "direccion",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Zona Jesús del Gran Poder, entre calles 2 y 3, lado el Kenko, El Alto."
+          },
+          {
+            "name": "municipio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "El Alto",
+            "categories": [
+              "La Paz",
+              "El Alto"
+            ]
+          },
+          {
+            "name": "watsapp",
+            "type": "string",
+            "example": "76757801"
+          },
+          {
+            "name": "telefono",
+            "type": "string",
+            "example": "2850909 - 2850701"
+          },
+          {
+            "name": "zona",
+            "type": "string",
+            "example": "Zona Norte",
+            "categories": [
+              "Miraflores",
+              "Miraflores Sur",
+              "San Miguel",
+              "Calacoto",
+              "Obrajes",
+              "Sopocachi",
+              "San Jorge",
+              "Central",
+              "San Sebastián",
+              "Villa Fátima",
+              "Achumani",
+              "Chasquipampa",
+              "Zona Norte"
+            ]
+          },
+          {
+            "name": "distrito",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 21
+            }
+          },
+          {
+            "name": "fechaactua",
+            "type": "datetime",
+            "constraints": {
+              "required": true,
+              "minimum": "2021-06-02T00:00:00",
+              "maximum": "2021-06-04T00:00:00"
+            }
+          },
+          {
+            "name": "observacio",
+            "type": "integer"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
