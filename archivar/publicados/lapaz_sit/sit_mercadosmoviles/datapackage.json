@@ -1,0 +1,178 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_sit_mercadosmoviles",
+  "title": "Mercados Moviles",
+  "description": "Mercados Moviles del productor al consumidor.",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz",
+      "path": "http://sitservicios.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_sit_mercadosmoviles/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 9950,
+      "hash": "sha256:b431234443af0f6f61e5658fb6d8eaf82449ba01a862dc29acf563f3a2f5ff8d",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "mercadosmoviles.9"
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Hernando Siles"
+          },
+          {
+            "name": "direccion",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Av. Hernando Siles"
+          },
+          {
+            "name": "tipo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Mercado Movil",
+            "categories": [
+              "Mercado Movil"
+            ]
+          },
+          {
+            "name": "macro_ante",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Mallasa",
+            "categories": [
+              "SUR",
+              "COTAHUMA",
+              "PERIFERICA",
+              "CENTRO",
+              "MAX PAREDES",
+              "SAN ANTONIO",
+              "San Antonio",
+              "Centro",
+              "Mallasa",
+              "Max Paredes",
+              "",
+              "Cotahuma",
+              "Periferica",
+              "Sur"
+            ]
+          },
+          {
+            "name": "distrito",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 21
+            }
+          },
+          {
+            "name": "zona",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Sequoia"
+          },
+          {
+            "name": "fecha_prop",
+            "type": "datetime",
+            "constraints": {
+              "required": true,
+              "minimum": "2020-04-07T00:00:00",
+              "maximum": "2020-05-29T00:00:00"
+            }
+          },
+          {
+            "name": "fecha_crea",
+            "type": "datetime",
+            "constraints": {
+              "required": true,
+              "minimum": "2020-04-05T00:00:00",
+              "maximum": "2020-05-26T00:00:00"
+            }
+          },
+          {
+            "name": "afiche",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "si",
+            "categories": [
+              "si",
+              "no"
+            ]
+          },
+          {
+            "name": "owner",
+            "type": "string",
+            "example": "carlos.medrano",
+            "categories": [
+              "carlos.medrano"
+            ]
+          },
+          {
+            "name": "usuario",
+            "type": "string",
+            "example": "carlos.medrano",
+            "categories": [
+              "carlos.medrano",
+              "clara.revollo",
+              "gustavo.nao"
+            ]
+          },
+          {
+            "name": "fechaActual",
+            "type": "datetime",
+            "constraints": {
+              "minimum": "2020-04-11T23:18:16.320000+00:00",
+              "maximum": "2023-01-10T20:10:06.940000+00:00"
+            }
+          },
+          {
+            "name": "observaciones",
+            "type": "string",
+            "example": "",
+            "categories": [
+              ""
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
