@@ -1,0 +1,115 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_sit_centrosvacunacion",
+  "title": "Centros de Vacunacion",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz",
+      "path": "http://sitservicios.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_sit_centrosvacunacion/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 3887,
+      "hash": "sha256:8f9bfdd5b362971398605705c08a64751dba0da704880d3cd64a7b9f755aeaf4",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "CentrosVacunacion.9"
+          },
+          {
+            "name": "municipio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Viacha",
+            "categories": [
+              "La Paz",
+              "El Alto",
+              "Viacha"
+            ]
+          },
+          {
+            "name": "lugar",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Centro de Salud Viacha"
+          },
+          {
+            "name": "diasatenci",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Lu, Ma, Mi, Ju, Vi",
+            "categories": [
+              "Lu, Ma, Mi, Ju, Vi",
+              "Lu, Ma, Mi, Ju, Vi, Sa",
+              "Sábado",
+              "Domingo",
+              "Viernes"
+            ]
+          },
+          {
+            "name": "horario",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "08:30 - 14:30",
+            "categories": [
+              "08:30 - 14:30",
+              "NO",
+              "08:00 - 14:00",
+              "08:00 - 16:00",
+              "08:00 a 14:00",
+              "08:30 - 14:00",
+              "09:00 a 16:00"
+            ]
+          },
+          {
+            "name": "findeseman",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "NO",
+            "categories": [
+              "NO",
+              "08:30 - 14:30",
+              "08:30 - 16:00",
+              "07:00 - 14:00",
+              "08:00 - 13:30",
+              "08:30 - 12:00"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
