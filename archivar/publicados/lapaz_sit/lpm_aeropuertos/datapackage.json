@@ -1,0 +1,111 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_lpm_aeropuertos",
+  "title": "Aeropuertos",
+  "description": "Agencia La Paz Maravillosa, Aeropuertos",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz",
+      "path": "http://sitservicios.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_lpm_aeropuertos/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 3473,
+      "hash": "sha256:cb70de8fd74fe1c5ca048fedabca130b21557877142a0837e9d04f52cf14bb20",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "example": "aeropuertos.2"
+          },
+          {
+            "name": "Nombre",
+            "type": "string",
+            "example": "AEROPUERTO DE LAS FUERZAS ARMADAS BOLIVIANAS"
+          },
+          {
+            "name": "Zona",
+            "type": "string",
+            "example": "El Alto"
+          },
+          {
+            "name": "Direccion",
+            "type": "string",
+            "example": "Bartolina Sisa, Av. Juan Pablo II, lado Multifuncional Palacio del Deporte"
+          },
+          {
+            "name": "Telefono",
+            "type": "integer",
+            "constraints": {
+              "minimum": 2157300,
+              "maximum": 72085014
+            }
+          },
+          {
+            "name": "PaginaWeb",
+            "type": "string",
+            "example": "www.tam.bo"
+          },
+          {
+            "name": "Aerolineas",
+            "type": "string",
+            "example": "TAM"
+          },
+          {
+            "name": "distrito",
+            "type": "integer",
+            "constraints": {
+              "minimum": 0,
+              "maximum": 0
+            }
+          },
+          {
+            "name": "owner",
+            "type": "integer"
+          },
+          {
+            "name": "usuario",
+            "type": "string",
+            "example": "nhuanquiri",
+            "categories": [
+              "nhuanquiri"
+            ]
+          },
+          {
+            "name": "fechaActual",
+            "type": "datetime",
+            "constraints": {
+              "minimum": "2017-05-31T22:42:07.503000+00:00",
+              "maximum": "2017-05-31T22:48:45.740000+00:00"
+            }
+          },
+          {
+            "name": "observaciones",
+            "type": "string",
+            "example": "",
+            "categories": [
+              ""
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
