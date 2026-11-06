@@ -1,0 +1,135 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_alt_ubi_edificios_administrativos",
+  "title": "Edificios administrativos GAMLP",
+  "description": "Edificios administrativos del GAMLP",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)",
+      "path": "http://sitservicios.lapaz.bo/ows38.jsp"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_ubi_edificios_administrativos/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 8571,
+      "hash": "sha256:a35779c4d9736ebbc7ef500e06219d34a0bfc73083fdee11a8f33e275ff6abd2",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "edificios_administrativos.77"
+          },
+          {
+            "name": "codigofinanciero",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "031-0349-0001"
+          },
+          {
+            "name": "macrodistrito",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 7
+            }
+          },
+          {
+            "name": "distritomunicipal",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 21
+            }
+          },
+          {
+            "name": "codigocatastral",
+            "type": "string",
+            "example": "031034900010000"
+          },
+          {
+            "name": "numcarpeta",
+            "type": "string",
+            "example": "139"
+          },
+          {
+            "name": "fecharegistro",
+            "type": "datetime",
+            "constraints": {
+              "required": true,
+              "minimum": "2015-10-29T04:00:00+00:00",
+              "maximum": "2019-12-31T04:00:00+00:00"
+            }
+          },
+          {
+            "name": "nombrepatrimonio",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Administrativo Posta Municipal Taller de Maquinaria Llojeta-Los Sargentos"
+          },
+          {
+            "name": "supedificacion",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 33485.01
+            }
+          },
+          {
+            "name": "supterreno",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 201435.3
+            }
+          },
+          {
+            "name": "valorTerreno",
+            "type": "number",
+            "constraints": {
+              "minimum": 71909.69,
+              "maximum": 1433290668.53
+            }
+          },
+          {
+            "name": "valorEdificio",
+            "type": "number",
+            "constraints": {
+              "minimum": 2.0,
+              "maximum": 68706094.2
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
