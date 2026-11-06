@@ -1,0 +1,158 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_oieau_c_bo_aaps_public_ptap_activo_todos",
+  "title": "AAPS_UP_PTAP activo todos",
+  "sources": [
+    {
+      "title": "Sistema para la Gestión Integral de Recursos Hídricos desarrollado por la Oficina Internacional del Agua (OiEau)",
+      "path": "https://www.oieau-wiss.org/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_oieau_c_bo_aaps_public_ptap_activo_todos/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 7860,
+      "hash": "sha256:55793ddcaebe73a3552c5da9d711cc03455698090fad65b98a40a61e7d201124",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "public_ptap_activo_todos.fid-55bf7b64_19fcc7912a4_-773c"
+          },
+          {
+            "name": "id_ptap",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 2,
+              "maximum": 83
+            }
+          },
+          {
+            "name": "id_epsa",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1994,
+              "maximum": 3326
+            }
+          },
+          {
+            "name": "id_tipo_tratamiento_agua",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 13
+            }
+          },
+          {
+            "name": "capacidad_instalada",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 1080.0
+            }
+          },
+          {
+            "name": "capacidad_operada",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 139.0
+            }
+          },
+          {
+            "name": "coordenada_x",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 181284,
+              "maximum": 811572
+            }
+          },
+          {
+            "name": "coordenada_y",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 7486268,
+              "maximum": 8800060
+            }
+          },
+          {
+            "name": "coordenada_z",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.0,
+              "maximum": 3865.0
+            }
+          },
+          {
+            "name": "fecha_creacion",
+            "type": "datetime",
+            "constraints": {
+              "required": true,
+              "minimum": "2015-11-20T00:00:00",
+              "maximum": "2023-08-29T00:00:00"
+            }
+          },
+          {
+            "name": "id_usuario_creacion",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 14,
+              "maximum": 224
+            }
+          },
+          {
+            "name": "activo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "A",
+            "categories": [
+              "A"
+            ]
+          },
+          {
+            "name": "zona_utm",
+            "type": "string",
+            "example": "20K",
+            "categories": [
+              "20K",
+              "19K",
+              "19L",
+              "21K",
+              "20L"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
