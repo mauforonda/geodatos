@@ -1,0 +1,153 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_ssem_sit_sit_lpm_casasdecambio",
+  "title": "sit_lpm_casasdecambio",
+  "sources": [
+    {
+      "title": "Servicio de Seguimiento Estratégico Municipal del Gobierno Autónomo Municipal de La Paz",
+      "path": "https://ssem.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_ssem_sit_sit_lpm_casasdecambio/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 5811,
+      "hash": "sha256:f065bad6da7bd7b76be9fe7919b16127ee70e6ac09593c53edf0159a1a80b894",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "sit_lpm_casasdecambio.16"
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Unitours"
+          },
+          {
+            "name": "zona",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Central",
+            "categories": [
+              "Centro",
+              "Central",
+              "Rosario",
+              "El Rosario"
+            ]
+          },
+          {
+            "name": "direccion",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "c. Camacho esq. Loayza No. 1389 | La Paz, Bolivia"
+          },
+          {
+            "name": "telefono",
+            "type": "string",
+            "example": "2202124 o 2 2201836"
+          },
+          {
+            "name": "celular",
+            "type": "string",
+            "example": "77292281",
+            "categories": [
+              "76278922",
+              "77292281"
+            ]
+          },
+          {
+            "name": "horarioate",
+            "type": "string",
+            "example": "Lun - Vie 08:30 - 18:30   Sab  09:00 - 13:00"
+          },
+          {
+            "name": "fuente",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Gobernación",
+            "categories": [
+              "Gobernación",
+              "GBT"
+            ]
+          },
+          {
+            "name": "distrito",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 11
+            }
+          },
+          {
+            "name": "owner",
+            "type": "integer"
+          },
+          {
+            "name": "usuario",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "jeanine.blanco",
+            "categories": [
+              "jeanine.blanco"
+            ]
+          },
+          {
+            "name": "fechaactua",
+            "type": "datetime",
+            "constraints": {
+              "required": true,
+              "minimum": "2019-07-11T00:00:00",
+              "maximum": "2019-12-27T00:00:00"
+            }
+          },
+          {
+            "name": "observacio",
+            "type": "string",
+            "example": "NO ESTA EN FUNCIONAMIENTO Y EL NUMERO  NO CORRESPONDE.",
+            "categories": [
+              "Email :\ndanielcallizaya@hotmail.com",
+              "Email: marnegcc@hotmail.com\nNo se encuentra",
+              "La misma dirección del número 15",
+              "NO ESTA EN FUNCIONAMIENTO Y EL NUMERO  NO CORRESPONDE.",
+              "NO ESTA EN FUNCIONAMIENTO Y EL TELÉFONO ES DE OTRA CASA DE CAMBIOS.",
+              "No esta en funcionamiento"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
