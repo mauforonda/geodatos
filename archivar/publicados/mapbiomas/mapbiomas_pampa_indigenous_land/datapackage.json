@@ -1,0 +1,86 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mapbiomas_mapbiomas_pampa_indigenous_land",
+  "title": "indigenous-land",
+  "sources": [
+    {
+      "title": "MapBiomas",
+      "path": "https://shared-geoserver.mapbiomas.org/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mapbiomas_mapbiomas_pampa_indigenous_land/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 10887,
+      "hash": "sha256:34d157a9379f5174b4af3db2de3a4769fafa20ed88d7e47eb027fffaafd79999",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "example": "indigenous-land.6"
+          },
+          {
+            "name": "feature_id",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1345,
+              "maximum": 1350
+            }
+          },
+          {
+            "name": "territory",
+            "type": "string",
+            "example": "Pacheca (Brasil)"
+          },
+          {
+            "name": "type",
+            "type": "string",
+            "example": "indigenous_land",
+            "categories": [
+              "indigenous_land"
+            ]
+          },
+          {
+            "name": "country",
+            "type": "string",
+            "example": "Brasil",
+            "categories": [
+              "Brasil"
+            ]
+          },
+          {
+            "name": "pol_level1",
+            "type": "string",
+            "example": "",
+            "categories": [
+              ""
+            ]
+          },
+          {
+            "name": "pol_level2",
+            "type": "string",
+            "example": "",
+            "categories": [
+              ""
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 1."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
