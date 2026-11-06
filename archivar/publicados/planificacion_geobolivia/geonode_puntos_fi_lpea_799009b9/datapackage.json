@@ -1,0 +1,106 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geobolivia_geonode_puntos_fi_lpea_799009b9",
+  "title": "Recorrido de los carros recolectores de desechos sólidos en las ciudades de La Paz y El Alto (2011)",
+  "description": "Ubicación geográfica e información de los puntos que indican el inicio y el final de los recorridos que realizan los carros recolectores de basura en las ciudades de La Paz y El Alto. Elaborado por el Programa Andino de Formación y de Investigación sobre la Vulnerabilidad y los Riesgos Urbanos - Bolivia, Ecuador, Perú - PACIVUR del Instituto de Investigaciones para el Desarrollo (IRD), en el año 2011.",
+  "sources": [
+    {
+      "title": "Nueva plataforma GeoBolivia",
+      "path": "https://geonode.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geobolivia_geonode_puntos_fi_lpea_799009b9/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 17137,
+      "hash": "sha256:da31be048c3fd82ac1da6875739c88fdba79c53674239264779df06228216fb1",
+      "schema": {
+        "fields": [
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 353
+            }
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 353
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Puntos_FI_LPEA.315"
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 8
+            }
+          },
+          {
+            "name": "cod",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "RAD-801"
+          },
+          {
+            "name": "op",
+            "type": "string",
+            "example": "SABENPE",
+            "categories": [
+              "SABENPE",
+              "ISSA"
+            ]
+          },
+          {
+            "name": "tipo_punto",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "F-EA",
+            "categories": [
+              "I-LP",
+              "F-LP",
+              "F-EA",
+              "I-EA"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
