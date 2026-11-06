@@ -1,0 +1,112 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_cobertura_de_pavimento_del_municip_cc8f637b02be",
+  "title": "Cobertura de Pavimento del Municipio de Montero - PTDI",
+  "description": "El mapa muestra la distribución geográfica de la cobertura de pavimento en el municipio de Montero, así como la clasificación por tipo de cobertura que presenta, según el PTDI 2021 - 2025.",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_cobertura_de_pavimento_del_municip_cc8f637b02be/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 10128,
+      "hash": "sha256:ce5cb50ab88ba96ec308a5804ce6aeea3c977c560e39d1999b3cc9122c22048d",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_cobertura_de_pavimento_del_municipio_de_montero___w9t9p.49"
+          },
+          {
+            "name": "tipo_cober",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Pavimento Rígido",
+            "categories": [
+              "Pavimento Rígido",
+              "Pavimento Articulado",
+              "Pavimento Flexible"
+            ]
+          },
+          {
+            "name": "tipo_linea",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Continua",
+            "categories": [
+              "Continua"
+            ]
+          },
+          {
+            "name": "long_km",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.081,
+              "maximum": 7.877
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "SANTA CRUZ",
+            "categories": [
+              "SANTA CRUZ"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Obispo Santisteban",
+            "categories": [
+              "Obispo Santisteban"
+            ]
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Montero",
+            "categories": [
+              "Montero"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
