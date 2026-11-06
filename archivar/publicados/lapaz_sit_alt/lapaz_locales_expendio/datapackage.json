@@ -1,0 +1,61 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_alt_lapaz_locales_expendio",
+  "title": "Locales de expendio de bebidas alcoholicas",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)",
+      "path": "http://sitservicios.lapaz.bo/ows38.jsp"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_lapaz_locales_expendio/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 11594,
+      "hash": "sha256:02aa8df5d24be5b7bf40d51ca5004095f8b0492387b136e2bc2a84f37840e769",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "locales_expendio.72"
+          },
+          {
+            "name": "CODIGO_ESTABLE",
+            "type": "number",
+            "constraints": {
+              "minimum": 40.0,
+              "maximum": 4286.0
+            }
+          },
+          {
+            "name": "OBSERVACIONES",
+            "type": "integer"
+          },
+          {
+            "name": "CODIGOEST2",
+            "type": "integer"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
