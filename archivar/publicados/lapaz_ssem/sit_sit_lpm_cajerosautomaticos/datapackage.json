@@ -1,0 +1,161 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_ssem_sit_sit_lpm_cajerosautomaticos",
+  "title": "sit_lpm_cajerosautomaticos",
+  "sources": [
+    {
+      "title": "Servicio de Seguimiento Estratégico Municipal del Gobierno Autónomo Municipal de La Paz",
+      "path": "https://ssem.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_ssem_sit_sit_lpm_cajerosautomaticos/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 6704,
+      "hash": "sha256:0785b75994a493da9865e6d1c46853c4a2e817b1d269fe549e61d39e47709a6c",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "sit_lpm_cajerosautomaticos.47"
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Mercantil Santa Cruz",
+            "categories": [
+              "Mercantil Santa Cruz",
+              "Banco Bisa",
+              "Banco Económico",
+              "FIE",
+              "Banco de Credito de Bolivia BCP",
+              "Banco de Crédito de Bolivia BCP",
+              "Banco Central de Bolivia",
+              "Banco de Credito de Bolivia S.A.",
+              "Banco de Crédito de Bolivia S.A. BCP",
+              "Ganadero",
+              "Los Andes Procredit"
+            ]
+          },
+          {
+            "name": "zona",
+            "type": "string",
+            "example": "Sopocachi",
+            "categories": [
+              "Sopocachi",
+              "Central",
+              "Miraflores",
+              "Achumani",
+              "El Rosario",
+              "San Miguel",
+              "San Pedro",
+              "Camacho",
+              "Centro",
+              "Comercio",
+              "El Prado",
+              "Oeste",
+              "Alto Miraflores",
+              "Calacoto",
+              "Eloy Salmon",
+              "Irpavi",
+              "Prado",
+              "Rosario",
+              "Sagarnaga",
+              "Sur",
+              "Terminal LPZ",
+              "V. Fátima",
+              "Villa Fatima",
+              "miraflores"
+            ]
+          },
+          {
+            "name": "direccion",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Av. Ecuador entre Medez Arcos y Quintin Barrios"
+          },
+          {
+            "name": "lineagratu",
+            "type": "string",
+            "example": "800 10 5555",
+            "categories": [
+              "800 10 5555",
+              "800 10 2244",
+              "800103060",
+              "800 108 108",
+              "800101112",
+              "800 10 4010",
+              "8000101112",
+              "800103999",
+              "801 10 4010"
+            ]
+          },
+          {
+            "name": "distrito",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 18
+            }
+          },
+          {
+            "name": "owner",
+            "type": "integer"
+          },
+          {
+            "name": "usuario",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "gustavo.nao",
+            "categories": [
+              "gustavo.nao",
+              "jeanine.blanco",
+              "nhuanquiri"
+            ]
+          },
+          {
+            "name": "fechaactua",
+            "type": "datetime",
+            "constraints": {
+              "required": true,
+              "minimum": "2017-06-02T00:00:00",
+              "maximum": "2019-12-27T00:00:00"
+            }
+          },
+          {
+            "name": "observacio",
+            "type": "integer"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
