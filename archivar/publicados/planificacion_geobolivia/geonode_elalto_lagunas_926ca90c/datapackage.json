@@ -1,0 +1,101 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geobolivia_geonode_elalto_lagunas_926ca90c",
+  "title": "Lagunas del Municipio El Alto (2015)",
+  "description": "La información geográfica de los lagos y lagunas del Municipio de El Alto, con sistema de referencia WGS 84, proyección UTM 19 Sur, a escala 1: 15000, obtenida del Servicio Nacional de Hidrografía Naval año 2012. Información obtenida del Atlas Geográfico del Municipio de El Alto gestión 2015.",
+  "sources": [
+    {
+      "title": "Nueva plataforma GeoBolivia",
+      "path": "https://geonode.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geobolivia_geonode_elalto_lagunas_926ca90c/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 10284,
+      "hash": "sha256:705ae92728fc96ea32d0afd3b5a6d47ad2cb7d2913019529f47548458a932cf7",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "elalto_lagunas_926ca90c.45"
+          },
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 47
+            }
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 47
+            }
+          },
+          {
+            "name": "gid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 3,
+              "maximum": 212
+            }
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "cuerpo de agua",
+            "categories": [
+              "cuerpo de agua",
+              "Lagunas Huanakkota",
+              "Lagunas Kellhuani",
+              "Laguna Milluni (Artificial)",
+              "Laguna Milluni Chico"
+            ]
+          },
+          {
+            "name": "area_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1.0225,
+              "maximum": 9.2759
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
