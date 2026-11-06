@@ -1,0 +1,158 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_umsa_iiag_geodesia_estaciones_pasivas",
+  "title": "estaciones_pasivas",
+  "sources": [
+    {
+      "title": "Geoportal del Instituto de Investigaciones y Aplicaciones Geomáticas (IIAG) de la Universidad Mayor de San Andrés (UMSA)",
+      "path": "http://gtggeoportal.umsa.bo:8087/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_umsa_iiag_geodesia_estaciones_pasivas/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 14492,
+      "hash": "sha256:b83e559e61ea92e26ed6700313a1e22991a4dca50a00b198e7475bffe394a209",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "estaciones_pasivas.22"
+          },
+          {
+            "name": "objectid_1",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 124
+            }
+          },
+          {
+            "name": "fid_estaci",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0,
+              "maximum": 126
+            }
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "CM52"
+          },
+          {
+            "name": "lon",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": -69.43557,
+              "maximum": -57.75522
+            }
+          },
+          {
+            "name": "lat",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": -22.32286,
+              "maximum": -10.38847
+            }
+          },
+          {
+            "name": "pro",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "PROYECTO RED IGM 2000 (MARGEN CLASE \"B\") SECTOR SUD OESTE",
+            "categories": [
+              "PROYECTO RED IGM 1998 (MARGEN CLASE \"B\")",
+              "PROYECTO RED IGM 2000 (MARGEN CLASE \"B\") SECTOR SUD OESTE",
+              "PROYECTO RED IGM 2000 (MARGEN CLASE \"B\") SECTOR CENTRAL ESTE"
+            ]
+          },
+          {
+            "name": "c_ut",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "051401"
+          },
+          {
+            "name": "departamen",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Potosí",
+            "categories": [
+              "La Paz",
+              "Potosí",
+              "Santa Cruz",
+              "Beni",
+              "Oruro",
+              "Cochabamba",
+              "Tarija",
+              "Pando",
+              "Chuquisaca"
+            ]
+          },
+          {
+            "name": "provincia",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Daniel Campos"
+          },
+          {
+            "name": "municipio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Llica"
+          },
+          {
+            "name": "capital",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Llica"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
