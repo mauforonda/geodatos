@@ -1,0 +1,107 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_sit_lusu_ejeteleferico",
+  "title": "LUSU Eje Teleferico",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz",
+      "path": "http://sitservicios.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_sit_lusu_ejeteleferico/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 5581,
+      "hash": "sha256:e93e3c05febd60e713d325d081fc93e884152b6b51aeec5af566e8ef3d59cd4c",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "lusu_ejeteleferico.19"
+          },
+          {
+            "name": "entity",
+            "type": "string",
+            "example": "Line",
+            "categories": [
+              "Line",
+              "Polyline"
+            ]
+          },
+          {
+            "name": "layer",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "franja",
+            "categories": [
+              "franja",
+              "eje"
+            ]
+          },
+          {
+            "name": "elevation",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.0,
+              "maximum": 0.0
+            }
+          },
+          {
+            "name": "thickness",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.0,
+              "maximum": 0.0
+            }
+          },
+          {
+            "name": "color",
+            "type": "number",
+            "constraints": {
+              "minimum": 4.0,
+              "maximum": 10.0
+            }
+          },
+          {
+            "name": "linea",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Amarilla",
+            "categories": [
+              "Blanca",
+              "Naranja",
+              "Amarilla",
+              "Roja",
+              "Verde",
+              "Celeste",
+              "Morada"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: LineString."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
