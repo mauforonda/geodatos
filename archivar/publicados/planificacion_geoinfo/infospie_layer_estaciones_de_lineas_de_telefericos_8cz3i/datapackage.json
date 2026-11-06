@@ -1,0 +1,210 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_estaciones_de_lineas_de_telefericos_8cz3i",
+  "title": "Estaciones de Líneas de Teleféricos",
+  "description": "El mapa muestra todas las estaciones y líneas del teleférico a nivel nacional, a cargo de la empresa estatal de transporte por Cable \"Mi Teleférico\".",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_estaciones_de_lineas_de_telefericos_8cz3i/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 8842,
+      "hash": "sha256:9fcf90504900823500c16a04176e6b2ed23005555a0f0593cd748ed8b3976f31",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_estaciones_de_lineas_de_telefericos_8cz3i.16"
+          },
+          {
+            "name": "linea",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Azul",
+            "categories": [
+              "Azul",
+              "Amarilla",
+              "Blanca",
+              "Celeste",
+              "Naranja",
+              "Verde",
+              "Morada",
+              "Plateada",
+              "Roja",
+              "Café",
+              "Línea Oruro"
+            ]
+          },
+          {
+            "name": "estaciones",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Rio Seco"
+          },
+          {
+            "name": "nomb_estac",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Waña Jawira"
+          },
+          {
+            "name": "capacid_pa",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 4000
+            }
+          },
+          {
+            "name": "longi_km",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.72,
+              "maximum": 823.0
+            }
+          },
+          {
+            "name": "tiemp_min",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 3.83,
+              "maximum": 20.79
+            }
+          },
+          {
+            "name": "cabinas",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 19,
+              "maximum": 208
+            }
+          },
+          {
+            "name": "inauguraci",
+            "type": "datetime",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": "2014-05-30T00:00:00",
+              "maximum": "2019-03-11T00:00:00"
+            }
+          },
+          {
+            "name": "barrio_ben",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Los Andes, Ballivian, Rio Seco, Mejillones, Tunari, Alto Lima, 16 de Julio, Obreros Ferroviarios"
+          },
+          {
+            "name": "latitud",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 584338.86,
+              "maximum": 699283.0
+            }
+          },
+          {
+            "name": "longitud",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 8011649.0,
+              "maximum": 8177254.0203
+            }
+          },
+          {
+            "name": "coord_y",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -17.974311,
+              "maximum": -16.484616
+            }
+          },
+          {
+            "name": "coord_x",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -68.209791,
+              "maximum": -67.118155
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "LA PAZ",
+            "categories": [
+              "LA PAZ",
+              "ORURO"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Murillo",
+            "categories": [
+              "Murillo",
+              "Cercado"
+            ]
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "El Alto",
+            "categories": [
+              "Nuestra Señora de La Paz",
+              "El Alto",
+              "Oruro"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
