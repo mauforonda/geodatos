@@ -1,0 +1,185 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_centrales_generadoras_sin_2022_qls3f",
+  "title": "Centrales Generadoras SIN 2022",
+  "description": "Centrales Generadoras que inyectan al Sistema Interconectado Nacional SIN para el 8 de agosto de  2022 en Bolivia. Elaborado por el Viceministerio de Electricidad y Energías Renovables. Centrales Hidroeléctricas, Termoeléctricas (Turbo Gas y Diesel Oil), Eólicas, Biomasa y Solar. De acuerdo a reporte y codificación del Comité Nacional de Despacho de Carga CNDC.",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_centrales_generadoras_sin_2022_qls3f/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 7181,
+      "hash": "sha256:a574a37db7330d3482c1e6ac73ee85b9217c6d016773c37009cbf76932740a4f",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_centrales_generadoras_sin_2022_qls3f.13"
+          },
+          {
+            "name": "codigo",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "PUH"
+          },
+          {
+            "name": "tipo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Hidroeléctrica",
+            "categories": [
+              "Hidroeléctrica",
+              "Turbo Gas",
+              "Biomasa",
+              "Eólico",
+              "Solar",
+              "Diesel Oil"
+            ]
+          },
+          {
+            "name": "area",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "SUR",
+            "categories": [
+              "NORTE",
+              "CENTRAL",
+              "ORIENTAL",
+              "ORURO",
+              "SUR",
+              "TARIJA",
+              "SUCRE",
+              "TRINIDAD"
+            ]
+          },
+          {
+            "name": "central",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Central Punutuma"
+          },
+          {
+            "name": "propietari",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "ERESA",
+            "categories": [
+              "COBEE",
+              "ENDE GUARACACHI",
+              "ENDE G",
+              "ENDE CORANI",
+              "ENDE ANDINA",
+              "ERESA",
+              "VHE",
+              "GBE",
+              "HB",
+              "CECBB",
+              "SDB",
+              "SYNERGIA"
+            ]
+          },
+          {
+            "name": "pn",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1.9,
+              "maximum": 556.16
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "POTOSI",
+            "categories": [
+              "LA PAZ",
+              "COCHABAMBA",
+              "SANTA CRUZ",
+              "POTOSI",
+              "TARIJA",
+              "BENI",
+              "CHUQUISACA",
+              "ORURO"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Antonio Quijarro",
+            "categories": [
+              "Murillo",
+              "Antonio Quijarro",
+              "Carrasco",
+              "Cercado",
+              "Chapare",
+              "Inquisivi",
+              "Obispo Santisteban",
+              "Andres Ibañez",
+              "Quillacollo",
+              "Warnes",
+              "Abel Iturralde",
+              "Avilez",
+              "Ayopaya",
+              "Cordillera",
+              "Gran Chaco",
+              "Larecaja",
+              "Nor Yungas",
+              "Oropeza",
+              "Sur Yungas"
+            ]
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "TIOC-Jatun Ayllu Yura"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPoint."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
