@@ -1,0 +1,74 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_cobija_siscat_cobija_mancha_urbana",
+  "title": "mancha_urbana",
+  "sources": [
+    {
+      "title": "Sistema de Catastro del Gobierno Autónomo Municipal de Cobija",
+      "path": "https://siscat.cobija.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_cobija_siscat_cobija_mancha_urbana/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 10710,
+      "hash": "sha256:8d07fb2cd9a6c7cb2fa54a5ef34384f52cfef02b64c4cb52ae25724aec15777d",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "example": "mancha_urbana.cobija.1"
+          },
+          {
+            "name": "Name",
+            "type": "string",
+            "example": "GOBIERNO AUTÓNOMO MUNICIPAL DE COBIJA"
+          },
+          {
+            "name": "icon",
+            "type": "integer"
+          },
+          {
+            "name": "FID",
+            "type": "integer",
+            "constraints": {
+              "minimum": 0,
+              "maximum": 0
+            }
+          },
+          {
+            "name": "ha",
+            "type": "number",
+            "constraints": {
+              "minimum": 5621.736,
+              "maximum": 5621.736
+            }
+          },
+          {
+            "name": "area",
+            "type": "number",
+            "constraints": {
+              "minimum": 56.217,
+              "maximum": 56.217
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
