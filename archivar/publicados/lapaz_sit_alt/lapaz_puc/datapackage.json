@@ -1,0 +1,60 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_alt_lapaz_puc",
+  "title": "Limites Parque Urbano Central",
+  "description": "Limites aprobados del Parque Urbano Central (PUC) según el listado de coordenadas adjunto a la O.M. 6/2011.",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)",
+      "path": "http://sitservicios.lapaz.bo/ows38.jsp"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_lapaz_puc/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 14357,
+      "hash": "sha256:888fea65f294b21066832bf268f950e89c4fdcbe85f34b3a7db038f2f09f3475",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "example": "PUC.1"
+          },
+          {
+            "name": "COLOR",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 82
+            }
+          },
+          {
+            "name": "LAYER",
+            "type": "string",
+            "example": "limite uspa-puc"
+          },
+          {
+            "name": "DESCRIPCIO",
+            "type": "string",
+            "example": "Area de Influencia"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
