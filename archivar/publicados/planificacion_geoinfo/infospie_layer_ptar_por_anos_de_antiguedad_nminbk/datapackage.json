@@ -1,0 +1,149 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_ptar_por_anos_de_antiguedad_nminbk",
+  "title": "PTAR por años de antigüedad",
+  "description": "El mapa presenta las plantas de tratamiento de aguas residuales, clasificados según los años de antigüedad respecto al año de construcción.",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_ptar_por_anos_de_antiguedad_nminbk/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 19670,
+      "hash": "sha256:fe44264b28b02bb6ddc4ff02382f0938ae08d7dcbd3f65c60075ae48ef4dcf32",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_ptar_por_anos_de_antiguedad_nminbk.4"
+          },
+          {
+            "name": "nomb_ptar",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "LLICA"
+          },
+          {
+            "name": "comuni_id",
+            "type": "integer"
+          },
+          {
+            "name": "anio_const",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 2020
+            }
+          },
+          {
+            "name": "ptar_func",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "SI",
+            "categories": [
+              "SI",
+              "NO"
+            ]
+          },
+          {
+            "name": "cuer_recep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Lago",
+            "categories": [
+              "Rio",
+              "Suelo",
+              "Lago",
+              "Humedal"
+            ]
+          },
+          {
+            "name": "efluen_rie",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "NO",
+            "categories": [
+              "NO",
+              "SI"
+            ]
+          },
+          {
+            "name": "antigue",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 6
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "POTOSI",
+            "categories": [
+              "LA PAZ",
+              "SANTA CRUZ",
+              "COCHABAMBA",
+              "POTOSI",
+              "CHUQUISACA",
+              "ORURO",
+              "TARIJA",
+              "BENI",
+              "PANDO"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Daniel Campos"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Llica"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPoint."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
