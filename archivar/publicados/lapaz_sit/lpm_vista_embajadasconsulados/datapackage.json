@@ -1,0 +1,124 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_lpm_vista_embajadasconsulados",
+  "title": "Embajadas y Consulados",
+  "description": "Agencia la paz maravilla",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz",
+      "path": "http://sitservicios.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_lpm_vista_embajadasconsulados/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 7581,
+      "hash": "sha256:b39045cc339b8bb0796a45bf9d0427efc6828f42e30a41524dbcdcdb930958ea",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "vista_embajadasconsulados.32"
+          },
+          {
+            "name": "Nombre",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "VENEZUELA"
+          },
+          {
+            "name": "Direccion",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "c. 12 esq. Costenerita Nº 1000 Obrajes"
+          },
+          {
+            "name": "Casilla",
+            "type": "string",
+            "example": "960"
+          },
+          {
+            "name": "Telefono",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "2788501 -2788326"
+          },
+          {
+            "name": "Fax",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "2788501"
+          },
+          {
+            "name": "PaginaWeb",
+            "type": "string",
+            "example": "",
+            "categories": [
+              "",
+              "amblapaz.esteri.it/ambasciata_lapaz/it/",
+              "bo.ambafrance.org",
+              "bo.china-embassy.org",
+              "bo.usembassy.gov",
+              "bol.mofa.go.kr",
+              "bolivia.embajada.gob.ec",
+              "bolivia.embajada.gov.co",
+              "embamex.sre.gob.mx/bolivia",
+              "lapaz.itamaraty.gov.br",
+              "misiones.minrex.gob.cu/es/bolivia",
+              "www.amblapaz.um.dk",
+              "www.bo.emb-japan.go.jp",
+              "www.cgchilelapaz.com.bo",
+              "www.eda.admin.ch/lapaz",
+              "www.embaperubolivia.com",
+              "www.exteriores.gob.es/embajadas/lapaz",
+              "www.la-paz.diplo.de",
+              "www.mfa.nl/lap-es",
+              "www.swedenabroad.com/lapaz"
+            ]
+          },
+          {
+            "name": "Tipo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Embajadas",
+            "categories": [
+              "Embajadas",
+              "Consulados"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point. Filas sin geometría: 3."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
