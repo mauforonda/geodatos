@@ -1,0 +1,103 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geobolivia_geonode_poblaciones_interm_ddbf57ea",
+  "title": "Poblaciones en la Red Vial Fundamental de Bolivia",
+  "description": "La presente capa fue elaborada por la Administradora Boliviana de carreteras y tiene como objetivo, visualizar las ciudades pricipales, ciudades intermedias,pueblos, comunidaes mas importantes que se encuentran en la Red Vial Fundamental de Bolivia.",
+  "sources": [
+    {
+      "title": "Nueva plataforma GeoBolivia",
+      "path": "https://geonode.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geobolivia_geonode_poblaciones_interm_ddbf57ea/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 20420,
+      "hash": "sha256:faea333228b4324768aa9508f88a2f4b2260d917ad7ab9804f474eb564ab385f",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "poblaciones_interm_ddbf57ea.238"
+          },
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 250
+            }
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 250
+            }
+          },
+          {
+            "name": "poblacion",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "HITO LX"
+          },
+          {
+            "name": "cor_x",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": -69.594858001,
+              "maximum": -17.5230741372
+            }
+          },
+          {
+            "name": "cory",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": -22.729254446,
+              "maximum": -10.823255216
+            }
+          },
+          {
+            "name": "rastervalu",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 77,
+              "maximum": 4680
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
