@@ -1,0 +1,100 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_metropoli",
+  "title": "Mapa del área metropolitana de La Paz",
+  "description": "El Mapa muestra información espacial del Área Metropolitana de La Paz (AMLP) comprendida por las ciudades de La Paz y El Alto que constituye el asentamiento urbano más importante de Bolivia, con una alta concentración de las actividades financieras y económicas. Siendo La Paz está centralizada la mayoría de la administración pública de Bolivia. Elaborado por el Instituto francés de Investigación para el Desarrollo (IRD).",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_metropoli/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 26367,
+      "hash": "sha256:180bdf37487deaf894f2e3f35b30e67fd233651c39c819b9c0d2de9e2eb0699d",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "example": "metropoli.8"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 8
+            }
+          },
+          {
+            "name": "objectid",
+            "type": "integer",
+            "constraints": {
+              "minimum": 0,
+              "maximum": 7
+            }
+          },
+          {
+            "name": "municipio",
+            "type": "string",
+            "example": "Viacha"
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "example": "Viacha"
+          },
+          {
+            "name": "has",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.0669547735167,
+              "maximum": 13576.2646317
+            }
+          },
+          {
+            "name": "zona_urban",
+            "type": "string",
+            "example": "SI",
+            "categories": [
+              "SI"
+            ]
+          },
+          {
+            "name": "shape_leng",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.128727321018,
+              "maximum": 125.249767562
+            }
+          },
+          {
+            "name": "shape_area",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.000669547735167,
+              "maximum": 135.762646317
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 1."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
