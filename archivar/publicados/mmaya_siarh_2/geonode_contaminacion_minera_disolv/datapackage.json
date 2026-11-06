@@ -1,0 +1,42 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_contaminacion_minera_disolv",
+  "title": "Plan Director Cuenca Río Pampa Huari – Contaminación Minera",
+  "description": "PDCRPH (Plan Director de la Cuenca Rio Pampa Huari). Muestra las áreas con contaminacion ambiental por actividades mineras  en la cuenca del Rió Pampa Huari.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_contaminacion_minera_disolv/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 12641,
+      "hash": "sha256:97aeb2fc15018257b8e31692029b4ebdb8b023a8ad5036ebced6682621ccedce",
+      "schema": {
+        "fields": [
+          {
+            "name": "Name",
+            "type": "string",
+            "example": "Desmonte"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
