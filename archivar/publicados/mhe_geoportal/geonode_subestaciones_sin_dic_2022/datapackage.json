@@ -1,0 +1,88 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mhe_geoportal_geonode_subestaciones_sin_dic_2022",
+  "title": "Subestaciones_SIN_Dic_2022",
+  "sources": [
+    {
+      "title": "Geoportal del Viceministerio de Electricidad y Energías Renovables",
+      "path": "https://geoportal.mhe.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mhe_geoportal_geonode_subestaciones_sin_dic_2022/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 15345,
+      "hash": "sha256:a236339d9af554a2aa84ac93749d52f921afed1ad56672493bf265cf012145b1",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 226
+            }
+          },
+          {
+            "name": "codigo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "CHL"
+          },
+          {
+            "name": "Nombre",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Chilcobija"
+          },
+          {
+            "name": "Area",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "SUR",
+            "categories": [
+              "NORTE",
+              "CENTRAL",
+              "ORIENTAL",
+              "ORURO",
+              "SUR",
+              "TARIJA",
+              "SUCRE",
+              "TRINIDAD"
+            ]
+          },
+          {
+            "name": "Niv_Vol",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "6.15 kV/69 kV/"
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
