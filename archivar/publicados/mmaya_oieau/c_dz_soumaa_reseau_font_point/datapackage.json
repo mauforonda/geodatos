@@ -1,0 +1,160 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_oieau_c_dz_soumaa_reseau_font_point",
+  "title": "DZ_MO_Forages, piézomètres, puits",
+  "sources": [
+    {
+      "title": "Sistema para la Gestión Integral de Recursos Hídricos desarrollado por la Oficina Internacional del Agua (OiEau)",
+      "path": "https://www.oieau-wiss.org/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_oieau_c_dz_soumaa_reseau_font_point/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 9013,
+      "hash": "sha256:9cef701f724c5ab33ba22f85b1af0abfb0067947a0635e0ec4fa2608e101d74e",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Soumaa_reseau_font_point.12"
+          },
+          {
+            "name": "_p_nappe",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 87
+            }
+          },
+          {
+            "name": "nom",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "W062-332"
+          },
+          {
+            "name": "x",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 488600,
+              "maximum": 558620
+            }
+          },
+          {
+            "name": "y",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 349450,
+              "maximum": 386050
+            }
+          },
+          {
+            "name": "syst",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "LN",
+            "categories": [
+              "LN"
+            ]
+          },
+          {
+            "name": "mesure",
+            "type": "datetime",
+            "constraints": {
+              "minimum": "1993-04-30T00:00:00",
+              "maximum": "2002-01-23T00:00:00"
+            }
+          },
+          {
+            "name": "end_mesure",
+            "type": "datetime",
+            "constraints": {
+              "minimum": "2021-05-31T00:00:00",
+              "maximum": "2021-05-31T00:00:00"
+            }
+          },
+          {
+            "name": "nature",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Puits",
+            "categories": [
+              "Piézomètre",
+              "piézometre",
+              "Forage",
+              "Puits",
+              "Puits + f"
+            ]
+          },
+          {
+            "name": "etat",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "en service",
+            "categories": [
+              "en service",
+              "Non exploité"
+            ]
+          },
+          {
+            "name": "nappe",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Plaine Mitidja Ouest",
+            "categories": [
+              "Plaine Mitidja Est",
+              "Plaine Mitidja Ouest",
+              "Baie Alger"
+            ]
+          },
+          {
+            "name": "direction",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "DRC",
+            "categories": [
+              "DRC"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPoint."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
