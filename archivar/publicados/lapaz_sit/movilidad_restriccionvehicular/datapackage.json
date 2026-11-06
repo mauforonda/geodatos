@@ -1,0 +1,76 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_movilidad_restriccionvehicular",
+  "title": "Restriccion vehicular 2023",
+  "description": "Area de restriccion vehicular 2023",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz",
+      "path": "http://sitservicios.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_movilidad_restriccionvehicular/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 6916,
+      "hash": "sha256:91a395f6a8e1dd83f697591293a658a7b4de0a6879cde0bc3feb6e34480150b7",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "example": "restriccionvehicular.1"
+          },
+          {
+            "name": "objectid",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 1
+            }
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "example": "ARV La Paz marzo 2023"
+          },
+          {
+            "name": "ley",
+            "type": "string",
+            "example": "Resolucion Administrativa SMMSC Nº389/2023"
+          },
+          {
+            "name": "shape_leng",
+            "type": "number",
+            "constraints": {
+              "minimum": 17757.1878981,
+              "maximum": 17757.1878981
+            }
+          },
+          {
+            "name": "shape_area",
+            "type": "number",
+            "constraints": {
+              "minimum": 6482952.17354,
+              "maximum": 6482952.17354
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
