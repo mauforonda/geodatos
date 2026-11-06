@@ -1,0 +1,79 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_alt_sit_drenaje_represas",
+  "title": "Drenaje Represas",
+  "description": "Mapa de Drenaje del Área Urbana del Municipio de La Paz 2026, R.E. 0226/2026, SMRGV.",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)",
+      "path": "http://sitservicios.lapaz.bo/ows38.jsp"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_sit_drenaje_represas/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 7810,
+      "hash": "sha256:56739a09d0aa3ebd59152506af45911b5c539642530551141f1b437c14e7ddea",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "example": "drenaje_represas.6"
+          },
+          {
+            "name": "OBJECTID",
+            "type": "integer",
+            "constraints": {
+              "minimum": 0,
+              "maximum": 9
+            }
+          },
+          {
+            "name": "SHAPE_Leng",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.0,
+              "maximum": 5422.03418135
+            }
+          },
+          {
+            "name": "SHAPE_Area",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.0,
+              "maximum": 792623.861634
+            }
+          },
+          {
+            "name": "Represa",
+            "type": "string",
+            "example": "Alpaquita"
+          },
+          {
+            "name": "capacidad",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.0,
+              "maximum": 100.0
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
