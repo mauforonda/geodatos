@@ -1,0 +1,167 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geobolivia_geonode_penitenciario_52eb76e2",
+  "title": "Localización de recintos penitenciarios a nivel nacional (2017)",
+  "description": "Localización geográfica de los recintos carcelarios o penitenciarios que se hallan en el territorio nacional, datos actualizados a marzo del 2017.",
+  "sources": [
+    {
+      "title": "Nueva plataforma GeoBolivia",
+      "path": "https://geonode.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geobolivia_geonode_penitenciario_52eb76e2/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 8835,
+      "hash": "sha256:9a51b4678f06b3a5bd43d79873fc689eb61a7025d17544318e843d41d81e99c9",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "penitenciario_52eb76e2.54"
+          },
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 62
+            }
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 62
+            }
+          },
+          {
+            "name": "no",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 62
+            }
+          },
+          {
+            "name": "depto",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "POTOSI",
+            "categories": [
+              "COCHABAMBA",
+              "LA PAZ",
+              "POTOSI",
+              "SANTA CRUZ",
+              "BENI",
+              "CHUQUISACA",
+              "TARIJA",
+              "ORURO",
+              "PANDO"
+            ]
+          },
+          {
+            "name": "lugar",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Carceleta Prov.",
+            "categories": [
+              "Carceleta Prov.",
+              "Centro Penitenciario"
+            ]
+          },
+          {
+            "name": "rec_penit",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Uyuni"
+          },
+          {
+            "name": "c_geohas",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "6s27xk7ngfzf"
+          },
+          {
+            "name": "lat",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -22.7278592,
+              "maximum": -10.82407487
+            }
+          },
+          {
+            "name": "long",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -69.247705936,
+              "maximum": -57.8105735778
+            }
+          },
+          {
+            "name": "varones",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.0,
+              "maximum": 4800.0
+            }
+          },
+          {
+            "name": "mujeres",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 371
+            }
+          },
+          {
+            "name": "total",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 5171
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
