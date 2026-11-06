@@ -1,0 +1,107 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_centros_poblados_2012",
+  "title": "Plan Director Cuenca Río Pampa Huari – Centros Poblados 2012",
+  "description": "PDCRPH (Plan Director de la Cuenca Rio Pampa Huari) Describe la ubicación de los centros poblados existentes en la cuenca del rio pampa Huari según CNPV 2012 y ajustado con trabajo de campo 2018.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_centros_poblados_2012/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 5898,
+      "hash": "sha256:6ad4b40066a0f34c45b6b85035ef014c08613c576727f9b237daeec6b1d0cbfc",
+      "schema": {
+        "fields": [
+          {
+            "name": "departamen",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "05",
+            "categories": [
+              "05"
+            ]
+          },
+          {
+            "name": "municipio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Yocalla",
+            "categories": [
+              "Potosi",
+              "Yocalla",
+              "Tinguipaya"
+            ]
+          },
+          {
+            "name": "codigo_com",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "05010303032"
+          },
+          {
+            "name": "comunidad",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "CHIRA CORO"
+          },
+          {
+            "name": "poblacion_",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 3,
+              "maximum": 619
+            }
+          },
+          {
+            "name": "X",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": -65.961316667,
+              "maximum": -65.6661308537
+            }
+          },
+          {
+            "name": "Y",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": -19.6746326816,
+              "maximum": -19.3007754794
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
