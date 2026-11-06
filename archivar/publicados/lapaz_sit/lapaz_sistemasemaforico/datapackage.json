@@ -1,0 +1,96 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_lapaz_sistemasemaforico",
+  "title": "Sistema Semaforico",
+  "description": "Sistema Semafórico.",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz",
+      "path": "http://sitservicios.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_lapaz_sistemasemaforico/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 11739,
+      "hash": "sha256:bac7bb57decd49637a7bcd3a97f56cbb1e11334c09e0fb2b4fccc244a29b8936",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "sistemasemaforico.190"
+          },
+          {
+            "name": "sf_codigo_pi",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "9-80198"
+          },
+          {
+            "name": "sf_direccion_interseccion",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "AV. DEL LIBERTADOR - TELEFERICO AMARILLO"
+          },
+          {
+            "name": "sf_controlador_monitoreo",
+            "type": "integer"
+          },
+          {
+            "name": "sf_controlador_funcionamiento",
+            "type": "integer"
+          },
+          {
+            "name": "sf_poste_columna",
+            "type": "integer"
+          },
+          {
+            "name": "sf_poste_brazo_simple",
+            "type": "integer"
+          },
+          {
+            "name": "sf_poste_brazo_doble",
+            "type": "integer"
+          },
+          {
+            "name": "sf_tipo_cableado",
+            "type": "integer"
+          },
+          {
+            "name": "sf_cantidad_cabezales",
+            "type": "integer"
+          },
+          {
+            "name": "sf_tipo",
+            "type": "integer"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
