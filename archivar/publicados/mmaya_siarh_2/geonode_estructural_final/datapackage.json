@@ -1,0 +1,52 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_estructural_final",
+  "title": "Plan Director Cuenca Río Pampa Huari – Geología Estructural",
+  "description": "PDCRPH (Plan Director de la Cuenca Rio Pampa Huari) Describe las formaciones la geologia estructural  en la cuenca de rio pampa huari.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_estructural_final/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 11197,
+      "hash": "sha256:876291674dd090fabea8acad8501f8e5e644005471685e5e35e35e40ebae7a80",
+      "schema": {
+        "fields": [
+          {
+            "name": "ESTRUCTURA",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Contacto Geologico",
+            "categories": [
+              "Rumbo y buzamiento de estratos",
+              "Contacto Geologico",
+              "Anticlinal",
+              "Sinclinal",
+              "Falla"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString. Filas sin geometría: 2."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
