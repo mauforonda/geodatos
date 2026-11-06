@@ -1,0 +1,80 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_sit_cines",
+  "title": "Cines",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz",
+      "path": "http://sitservicios.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_sit_cines/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 2971,
+      "hash": "sha256:ed258e6af8abda17076f0799328978e088623454496b505eeea8f47c95933e4b",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "example": "cines.6"
+          },
+          {
+            "name": "Nombre",
+            "type": "string",
+            "example": "Multicine"
+          },
+          {
+            "name": "Zona",
+            "type": "string",
+            "example": "San Jorge"
+          },
+          {
+            "name": "Direccion",
+            "type": "string",
+            "example": "Av. Arce Nº 2631"
+          },
+          {
+            "name": "distrito",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 18
+            }
+          },
+          {
+            "name": "owner",
+            "type": "integer"
+          },
+          {
+            "name": "usuario",
+            "type": "integer"
+          },
+          {
+            "name": "fechaActual",
+            "type": "integer"
+          },
+          {
+            "name": "observaciones",
+            "type": "integer"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
