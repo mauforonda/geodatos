@@ -1,0 +1,182 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_minas",
+  "title": "Plan Director Cuenca Rio Grande - Minas",
+  "description": "PDCRG (Plan Director de la Cuenca Río Grande). Cobertura con información georreferenciada de Minas e información geológica y minera ubicadas en el área del Plan Director de la Cuenca del Río Grande.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_minas/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 10700,
+      "hash": "sha256:1c941e1e1f6beaf967ad9169713e22571c28e9b195d94d864f6040775d49c44f",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "NUM_DEPOS",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "555"
+          },
+          {
+            "name": "NOM_DEPOS",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "HUARCUMA"
+          },
+          {
+            "name": "UTM_NOR",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 7885034,
+              "maximum": 8065700
+            }
+          },
+          {
+            "name": "UTM_ESTE",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 184500,
+              "maximum": 816100
+            }
+          },
+          {
+            "name": "TMIN_COD",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "08",
+            "categories": [
+              "07",
+              "08",
+              "01",
+              "05",
+              "09",
+              "06",
+              "10",
+              "03",
+              "11",
+              "12",
+              "02"
+            ]
+          },
+          {
+            "name": "TAM_DEPO",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "PequeÏo / Small",
+            "categories": [
+              "PequeÏo / Small",
+              "Peque¤o / Small",
+              "Mediano / Medium",
+              "Desconocido / Unknown",
+              "Grande / Large"
+            ]
+          },
+          {
+            "name": "TDPO_COD",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Dep½sitos vetiformes epitermales (volcanog'nicos) / Epithermal vein-type deposits (volcanogenic)"
+          },
+          {
+            "name": "AMBIEN_GEO",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Rocas intermedias a f'lsicas subvolcÿnicas a volcÿnicas / Subvolcanic to volcanic intermediate to fe"
+          },
+          {
+            "name": "EDAD_MINER",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Ne½geno / Neogene",
+            "categories": [
+              "Ne½geno / Neogene",
+              "Ne¢geno / Neogene",
+              "Desconocida / Unknown",
+              "Cuaternario / Quaternary"
+            ]
+          },
+          {
+            "name": "ALTER_HIPO",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Desconocida / Unknown",
+            "categories": [
+              "Desconocida / Unknown",
+              "Silicificaci½n / Silicification",
+              "Arcillizaci½n / Argillization",
+              "Alteraci½n f­lica / Phyllic alteration",
+              "Silicificaci¢n / Silicification",
+              "Sin alteraci½n / No alteration",
+              "Cloritizaci½n / Chloritization",
+              "Sericitizaci½n / Sericitization",
+              "Sin alteraci¢n / No alteration"
+            ]
+          },
+          {
+            "name": "MINERA",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Sb"
+          },
+          {
+            "name": "DE_GRUPO",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": ""
+          },
+          {
+            "name": "ZONA",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 19,
+              "maximum": 20
+            }
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
