@@ -1,0 +1,110 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_oieau_c_cv_station_santiago",
+  "title": "CV_MO_estacao_santiago",
+  "sources": [
+    {
+      "title": "Sistema para la Gestión Integral de Recursos Hídricos desarrollado por la Oficina Internacional del Agua (OiEau)",
+      "path": "https://www.oieau-wiss.org/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_oieau_c_cv_station_santiago/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 13793,
+      "hash": "sha256:b929464d916180b505e226dc02801b6fc256c9f224b71bda4f38769b413808ff",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Station_Santiago.fid-75f29474_19d840cd59a_-66d1"
+          },
+          {
+            "name": "moscode",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "MOS_INGM_Santiago_120"
+          },
+          {
+            "name": "mosname",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Ribeira da Barca"
+          },
+          {
+            "name": "smoncode",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "MON_CV_00002",
+            "categories": [
+              "MON_CV_00002"
+            ]
+          },
+          {
+            "name": "mosx",
+            "type": "number",
+            "constraints": {
+              "minimum": -24.70545556,
+              "maximum": -20.0292
+            }
+          },
+          {
+            "name": "mosy",
+            "type": "number",
+            "constraints": {
+              "minimum": 14.55477,
+              "maximum": 16.93906
+            }
+          },
+          {
+            "name": "MOSyearsta",
+            "type": "number",
+            "constraints": {
+              "minimum": 1914.0,
+              "maximum": 2019.0
+            }
+          },
+          {
+            "name": "MOScomm",
+            "type": "string",
+            "example": "Avariado",
+            "categories": [
+              "Novo",
+              "Avariado",
+              "Substituido",
+              "Substituicao",
+              "Nao Encontrado",
+              "Bom"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point. Filas sin geometría: 6."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
