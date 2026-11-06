@@ -1,0 +1,135 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_alt_sit_museos",
+  "title": "museos",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)",
+      "path": "http://sitservicios.lapaz.bo/ows38.jsp"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_sit_museos/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 5320,
+      "hash": "sha256:7e3654187302d5cd20879ee562fa835072ff846bc57e41a9c827887393dc51f1",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "museos.28"
+          },
+          {
+            "name": "Nombre",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Casa Museo Walter Solón Romero"
+          },
+          {
+            "name": "Direccion",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Av. Ecuador #2517"
+          },
+          {
+            "name": "Zona",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Sopocachi",
+            "categories": [
+              "Casco Viejo",
+              "Miraflores",
+              "Central",
+              "Sopocachi",
+              "Belén",
+              "Cota Cota",
+              "El Rosario",
+              "Irpavi",
+              "Miraflores Stadium",
+              "San Sebastián",
+              "Santa Barbara",
+              "Zona Norte"
+            ]
+          },
+          {
+            "name": "distrito",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 18
+            }
+          },
+          {
+            "name": "owner",
+            "type": "string",
+            "example": "gustavo.nao",
+            "categories": [
+              "gustavo.nao"
+            ]
+          },
+          {
+            "name": "usuario",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "fermin.rojas",
+            "categories": [
+              "fermin.rojas"
+            ]
+          },
+          {
+            "name": "fechaActual",
+            "type": "datetime",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": "2024-05-24T21:26:13.087000+00:00",
+              "maximum": "2025-08-20T15:29:07.897000+00:00"
+            }
+          },
+          {
+            "name": "observaciones",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "",
+            "categories": [
+              "",
+              "Museo a Cielo Abierto"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
