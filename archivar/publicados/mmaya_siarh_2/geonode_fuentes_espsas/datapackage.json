@@ -1,0 +1,112 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_fuentes_espsas",
+  "title": "Plan Director Cuenca Río Guadalquivir -  Fuetes de  Agua EPSAS",
+  "description": "PDCRGu (Plan Director de la Cuenca Río Guadalquivir). Muestra la ubicación de las fuentes  de agua  de las Empresas Prestadoras de Servicio de Agua dentro de la Cuenca del Rio Guadalquivir, compilada en base de datos proporcionados por la Autoridad de Fiscalización y Control Social de Agua Potable y Saneamiento Básico.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_fuentes_espsas/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 9091,
+      "hash": "sha256:9c6bb878e70cb940301241445aee995af4ee47bedfad459f65ce61efd3d5a5cc",
+      "schema": {
+        "fields": [
+          {
+            "name": "PUNTO",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 128
+            }
+          },
+          {
+            "name": "ESTE",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 294242,
+              "maximum": 343619
+            }
+          },
+          {
+            "name": "NORTE",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 7562046,
+              "maximum": 7645724
+            }
+          },
+          {
+            "name": "DESCRIPCIO",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "FUENTE 1"
+          },
+          {
+            "name": "TIPO",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "FUENTE",
+            "categories": [
+              "",
+              "VERTIENTE",
+              "TANQUE",
+              "POZO",
+              "SUPERFICIAL",
+              "FUENTE",
+              "GAL. FILTRANTE"
+            ]
+          },
+          {
+            "name": "EPSA",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Rejara Sur"
+          },
+          {
+            "name": "MUNICIPIO",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "PADCAYA",
+            "categories": [
+              "TARIJA",
+              "SAN LORENZO",
+              "URIONDO",
+              "PADCAYA"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
