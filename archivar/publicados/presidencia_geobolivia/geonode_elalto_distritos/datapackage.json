@@ -1,0 +1,114 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_elalto_distritos",
+  "title": "Mapa Distritos Municipales El Alto 2015",
+  "description": "En el marco de la Ley 031 de Marco de Autonomías y Descentralización, y como instrumento aplicado a los espacios de planificación y gestión, la Distritación Municipal es el proceso de etapas sucesivas que busca organizar los distritos al interior del Municipio. La Distritación pretende accionar la participación conjunta y coordinada del Gobierno Autónomo Municipal, las organizaciones comunitarias, los sectores de salud, educación y todos los estantes y habitantes del Municipio. Información obtenida del Altas Geográfico del Municipio de El Alto presentado el año 2015 por la Infraestructura de Datos Espaciales - El Alto.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_elalto_distritos/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 22352,
+      "hash": "sha256:a0eddf234bd435d12c9000742a6f2e70fba7d015a55882817ade996cc2f5e42d",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "elalto_distritos.2"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 14
+            }
+          },
+          {
+            "name": "gid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 14
+            }
+          },
+          {
+            "name": "c_dep",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 2,
+              "maximum": 2
+            }
+          },
+          {
+            "name": "c_mun",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 20105,
+              "maximum": 20105
+            }
+          },
+          {
+            "name": "c_dist_mun",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 14
+            }
+          },
+          {
+            "name": "poblacion",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 785,
+              "maximum": 144828
+            }
+          },
+          {
+            "name": "area_km2",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 8.325315,
+              "maximum": 145.418866
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
