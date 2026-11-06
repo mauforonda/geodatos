@@ -1,0 +1,142 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_estaciones",
+  "title": "Plan Director Cuenca Río Cotagaita – Estaciones  Meteorológicas",
+  "description": "PDCRCo (Plan Director de la Cuenca Río Cotagaita). Muestra la ubicación y la información relevante de las estaciones meteorológicas en el marco del Plan Director de la Cuenca del Río Cotagaita.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_estaciones/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 4636,
+      "hash": "sha256:3ab7b6a02de4d1825dce76c66f7b01422d786c9001f34e6c04bf8dbc202b5323",
+      "schema": {
+        "fields": [
+          {
+            "name": "Codigo",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1057,
+              "maximum": 6049
+            }
+          },
+          {
+            "name": "Estacion",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Kocani"
+          },
+          {
+            "name": "Longitud",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -66.5658333333,
+              "maximum": -65.2305555556
+            }
+          },
+          {
+            "name": "Latitud",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": -21.4386111111,
+              "maximum": -20.0666666667
+            }
+          },
+          {
+            "name": "Elevacion",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 2280,
+              "maximum": 4230
+            }
+          },
+          {
+            "name": "Xutm",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 752727.349808,
+              "maximum": 892030.854646
+            }
+          },
+          {
+            "name": "Yutm",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 7624627.59831,
+              "maximum": 7779077.33197
+            }
+          },
+          {
+            "name": "Pais",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Bolivia",
+            "categories": [
+              "Bolivia"
+            ]
+          },
+          {
+            "name": "Cuenca",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Kocani"
+          },
+          {
+            "name": "Estacion_1",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Kocani"
+          },
+          {
+            "name": "Altitud",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 2280,
+              "maximum": 4230
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
