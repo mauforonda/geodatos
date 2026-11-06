@@ -1,0 +1,116 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_capitales_de_municipios",
+  "title": "Plan Director Cuenca Río Yapacaní - Capitales de Municipios",
+  "description": "PDCRY (Plan Director de la Cuenca Río Yapacaní). Muestra la ubicación y la información relevante de las capitales municipales que comprende la cuenca, en el marco del Plan Director de la Cuenca del Río Yapacaní.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_capitales_de_municipios/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 3531,
+      "hash": "sha256:50e014f38151498226216406a990b3c18acea92815a7bdc0a44c05e4bf5fc6ff",
+      "schema": {
+        "fields": [
+          {
+            "name": "NOM_DEP",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Santa Cruz",
+            "categories": [
+              "Santa Cruz"
+            ]
+          },
+          {
+            "name": "NOM_PROV",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Valle Grande",
+            "categories": [
+              "Florida",
+              "Ichilo",
+              "Valle Grande",
+              "Andres Iba?ez",
+              "Manuel M. Caballero",
+              "Sara"
+            ]
+          },
+          {
+            "name": "CAT_SEC",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "TERCERA",
+            "categories": [
+              "SEGUNDA",
+              "CUARTA",
+              "PRIMERA",
+              "TERCERA"
+            ]
+          },
+          {
+            "name": "NOM_MUN",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Moro Moro"
+          },
+          {
+            "name": "POBLACION",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "3863"
+          },
+          {
+            "name": "HECTARES",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 28854.175,
+              "maximum": 956684.374
+            }
+          },
+          {
+            "name": "pobla",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1507,
+              "maximum": 23582
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
