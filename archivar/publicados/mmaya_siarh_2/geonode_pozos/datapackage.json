@@ -1,0 +1,184 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_pozos",
+  "title": "Plan Director Cuenca Río Cotagaita – Pozos",
+  "description": "PDCRCo (Plan Director de la Cuenca Río Cotagaita). Muestra la ubicación y la información relevante de los  pozos en la cuenca en el marco del Plan Director de la Cuenca del Río Cotagaita.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_pozos/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 4606,
+      "hash": "sha256:b8880085d25f1e3c90fc9be7b5ef536adf595cdb1465003b1a9df01d284d9f3a",
+      "schema": {
+        "fields": [
+          {
+            "name": "Depto",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "POTOSI",
+            "categories": [
+              "POTOSI"
+            ]
+          },
+          {
+            "name": "Provincia",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Sur Chichas",
+            "categories": [
+              "Nor Chichas",
+              "Sur Chichas"
+            ]
+          },
+          {
+            "name": "Municipio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Atocha",
+            "categories": [
+              "Cotagaita",
+              "Atocha"
+            ]
+          },
+          {
+            "name": "Codigo_INE",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "050802",
+            "categories": [
+              "050601",
+              "050802"
+            ]
+          },
+          {
+            "name": "Viceminist",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "VRHR",
+            "categories": [
+              "VAPSB",
+              "VRHR"
+            ]
+          },
+          {
+            "name": "Sector",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "RIEGO",
+            "categories": [
+              "AP y SB",
+              "RIEGO"
+            ]
+          },
+          {
+            "name": "Proyecto",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "AMPL. MICRORIEGO THOLAPHUJRU-VILLA SOLANO"
+          },
+          {
+            "name": "Programa",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "MIAGUA"
+          },
+          {
+            "name": "Inst_Ejec",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "FPS",
+            "categories": [
+              "FPS",
+              "",
+              "EMAGUA"
+            ]
+          },
+          {
+            "name": "Fuentes",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "CAF",
+            "categories": [
+              "CAF",
+              "",
+              "CAF (Riego mayor 5%)",
+              "TGN"
+            ]
+          },
+          {
+            "name": "Estado",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Concluido",
+            "categories": [
+              "Concluido",
+              "En ejecucion",
+              "Programado"
+            ]
+          },
+          {
+            "name": "Benef_Hab",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 100,
+              "maximum": 4480
+            }
+          },
+          {
+            "name": "FliaBenef",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 11,
+              "maximum": 850
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
