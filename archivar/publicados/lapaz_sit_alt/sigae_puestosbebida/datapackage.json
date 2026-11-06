@@ -1,0 +1,65 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_alt_sigae_puestosbebida",
+  "title": "Puestos de venta de bebidas alcoholicas",
+  "description": "Puestos de venta en vía publica donde también se permite venta de bebidas alcohólicas, base SIGAE O.D. 165/14.",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)",
+      "path": "http://sitservicios.lapaz.bo/ows38.jsp"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_sigae_puestosbebida/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 5262,
+      "hash": "sha256:89646d5d8419333865aafabcf9860c40a3b68a466f2d2d42b7324f03fb54d9a1",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "puestosbebida.68"
+          },
+          {
+            "name": "dbpstocodi",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 102165,
+              "maximum": 132106
+            }
+          },
+          {
+            "name": "dbpropcodi",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1000577,
+              "maximum": 1034010
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
