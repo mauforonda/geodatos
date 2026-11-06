@@ -1,0 +1,97 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_minplanifica_infocapa_layer_patrimonios_culturales_p95v5",
+  "title": "layer_patrimonios_culturales_p95v5",
+  "sources": [
+    {
+      "title": "Geoserver del Ministerio de Planificación del Desarollo",
+      "path": "https://geoserver.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_minplanifica_infocapa_layer_patrimonios_culturales_p95v5/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 10673,
+      "hash": "sha256:094c848be05d371d36734332c6f062db09173a238d583b285f97aeaed8d97e87",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_patrimonios_culturales_p95v5.110"
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Parque Nacional Llica"
+          },
+          {
+            "name": "tipo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Sitios naturales",
+            "categories": [
+              "Patrimonio y manifestaciones culturales",
+              "Sitios naturales",
+              "Patrimonio Sacro, Templo y/o Iglesia",
+              "Obras arquitectonicas y civiles",
+              "Ruinas Prehispánicas / Complejos Arqueológicos",
+              "Arte Rupestre",
+              "Museo Nacional",
+              "Ruinas Prehispánicas"
+            ]
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "example": "Potosi",
+            "categories": [
+              "Potosi",
+              "La Paz",
+              "Santa Cruz",
+              "Tarija",
+              "Oruro",
+              "Cochabamba",
+              "Pando",
+              "Chuquisaca",
+              "Beni"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "example": "Daniel Campos"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "example": "Llica"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
