@@ -1,0 +1,80 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_oieau_c_bo_t_adorga_point",
+  "title": "BO_AD_EPSA_points",
+  "sources": [
+    {
+      "title": "Sistema para la Gestión Integral de Recursos Hídricos desarrollado por la Oficina Internacional del Agua (OiEau)",
+      "path": "https://www.oieau-wiss.org/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_oieau_c_bo_t_adorga_point/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 7798,
+      "hash": "sha256:ce657df9004f7436270fc11d5971234c72665441ec48df790e045cb483ad2453",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "t_adorga_point.fid-75f29474_19d840cd59a_-68f6"
+          },
+          {
+            "name": "adorcode",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "BOORG00002230"
+          },
+          {
+            "name": "adorcodenat",
+            "type": "number",
+            "constraints": {
+              "minimum": 1942.0,
+              "maximum": 4067.0
+            }
+          },
+          {
+            "name": "ADORNAME",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "EMPRESA MUNICIPAL PRESTADORA DE SERVICIOS DE AGUA POTABLE Y ALCANTARILLADO SANITARIO TUPIZA"
+          },
+          {
+            "name": "ADORACRONYM",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "EMPSAAT"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
