@@ -1,0 +1,81 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_sit_estacionesteleferico",
+  "title": "Estaciones Teleferico",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz",
+      "path": "http://sitservicios.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_sit_estacionesteleferico/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 4918,
+      "hash": "sha256:f407ce45c248f908b2b9983c1f03b4305bf32b644dbf83afcd302d61154d6770",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "estacionesteleferico.40"
+          },
+          {
+            "name": "Estacion",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Estacion Morada",
+            "categories": [
+              "Estacion Azul",
+              "Estacion Amarilla",
+              "Estacion Blanca",
+              "Estacion Celeste",
+              "Estacion Naranja",
+              "Estacion Verde",
+              "Estacion Morada",
+              "Estacion Plateada",
+              "Estacion Roja",
+              "Estacion Cafe"
+            ]
+          },
+          {
+            "name": "Direccion",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Avenida 6 de marzo, al frente del Regimiento Ingavi"
+          },
+          {
+            "name": "Nombre",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Estacion Jacha Thaki"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
