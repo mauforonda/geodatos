@@ -1,0 +1,269 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_subestaciones_2021",
+  "title": "Subestaciones eléctricas de Bolivia_ 2021",
+  "description": "El mapa muestra la distribución espacial de subestaciones eléctricas en el territorio nacional, instalaciones destinadas a derivar circuitos de potencia ya modificar y establecer los niveles de tensión de cada infraestructura eléctrica, facilitando el transporte y distribución de la energía eléctrica de cada región, a escala 1:4.500.000. Elaborado por la Autoridad de Fiscalización de Electricidad y Tecnología Nuclear (AETN) con datos de la gestión 2021.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_subestaciones_2021/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 21497,
+      "hash": "sha256:ba7606630ea1161ec61a014185b2269649aa7f63a9f752e3db89fe9010325696",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "subestaciones_2021.105"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 231
+            }
+          },
+          {
+            "name": "objectid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0,
+              "maximum": 230
+            }
+          },
+          {
+            "name": "empresa",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Servicios Eléctricos Potosí S.A. (SEPSA)",
+            "categories": [
+              "ENDE Transmisión S.A.",
+              "Distribuidora de Electricidad La Paz S.A. (DELAPAZ) DELAPAZ",
+              "Cooperativa Rural de Electrificación R.L. (CRE R.L.)",
+              "Servicios Eléctricos Potosí S.A. (SEPSA)",
+              "DISTRIBUIDORA DE ELECTRICIDAD ENDE DEORURO S.A.",
+              "Empresa de Luz y Fuerza Electrica Cochabamba S.A. (ELFEC)",
+              "Empresa Nacional de Electricidad (ENDE)",
+              "Servicios Eléctricos de Tarija (SETAR)",
+              "Compañia Boliviana de Energía Eléctrica (COBEE)",
+              "Compañia Boliviana de Energía Eléctrica (COBBE)",
+              "Interconexión Eléctrica - ISA BOLIVIA S.A. (ISA)",
+              "Distribuidora de Electricidad ENDE DELBENI S.A.M.",
+              "Hidroeléctrica Boliviana S.A. (HB)",
+              "Empresa Eléctrica Corani S.A. (CORANI)",
+              "Compañia Eléctrica Sucre S.A. (CESSA)",
+              "Compañía Eléctrica Central Bulo Bulo S.A. (CECBB)",
+              "ENDE Guaracachi S.A.",
+              "Empresa Minera Inti Raymi  S. A .(EMIRSA)",
+              "Empresa Nacional de Electricidad (ENDE) ANDINA",
+              "Empresa Nacional de Electricidad Andina (ENDE ANDINA)",
+              "Empresa Río Eléctrico S.A (ERESA)",
+              "SINCHI WAYRA S.A.",
+              "Servicios de Desarrollo de Bolivia S.A. (SDB)"
+            ]
+          },
+          {
+            "name": "subestacio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "San Cristobal"
+          },
+          {
+            "name": "codigo",
+            "type": "string",
+            "example": "SCR"
+          },
+          {
+            "name": "tecnologia",
+            "type": "string",
+            "example": "Hidroeléctrica",
+            "categories": [
+              "Hidroeléctrica",
+              "Termoelectrica",
+              "Termoeléctrica"
+            ]
+          },
+          {
+            "name": "cant_trans",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 9
+            }
+          },
+          {
+            "name": "potencia_t",
+            "type": "string",
+            "example": "10",
+            "categories": [
+              "10",
+              "115 kV / 123 kV",
+              "24.5",
+              "25 MVA",
+              "33.25",
+              "35.2",
+              "5",
+              "6,6",
+              "7,5",
+              "N/C"
+            ]
+          },
+          {
+            "name": "potencia_1",
+            "type": "string",
+            "example": "34.5",
+            "categories": [
+              "34.5",
+              "35",
+              "40.8",
+              "58.7",
+              "N/C"
+            ]
+          },
+          {
+            "name": "potencia_2",
+            "type": "string",
+            "example": "1 x 25 MVA",
+            "categories": [
+              "1 x 25 MVA",
+              "1 x 50 MVA",
+              "4 x 50 MVA",
+              "26.25/35",
+              "4 x 25 MVA",
+              "4 x 33.3 MVA    2  x  25 MVA",
+              "4x50 MVA",
+              "69",
+              "7 x 25 MVA",
+              "TRF(115  A  14.4)"
+            ]
+          },
+          {
+            "name": "tipo_sub",
+            "type": "string",
+            "example": "1",
+            "categories": [
+              "3",
+              "1",
+              "Trafo (3f)",
+              "115",
+              "2",
+              "Autotrafo(3f",
+              "Trafo (1f)-3"
+            ]
+          },
+          {
+            "name": "estado_sub",
+            "type": "string",
+            "example": "1",
+            "categories": [
+              "1",
+              "6",
+              "Proyecto"
+            ]
+          },
+          {
+            "name": "nivel_volt",
+            "type": "string",
+            "example": "11/230"
+          },
+          {
+            "name": "potencia_i",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 62500
+            }
+          },
+          {
+            "name": "demanda_kw",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 47018
+            }
+          },
+          {
+            "name": "servicio",
+            "type": "string",
+            "example": "AT/MT - Adm",
+            "categories": [
+              "AT/MT - Propiedad",
+              "MT/MT - Propiedad",
+              "AT/MT - Adm"
+            ]
+          },
+          {
+            "name": "grupo_cone",
+            "type": "string",
+            "example": "Dyn11",
+            "categories": [
+              "Dyn11",
+              "D,yn5/D,d0",
+              "Dy11",
+              "YNd1",
+              "YN,d1",
+              "YNd5",
+              "Dyn5",
+              "YN,d1 - YN,d1",
+              "D,yn5/D,d0/YN,d1\r\n",
+              "Dy1",
+              "Dy5",
+              "Dyn1",
+              "Dyn11/Dyn11/Dyn5",
+              "Dyn11; AUTOTRAFO",
+              "Dyn11; Dyn11",
+              "YN,d1 - YN,d1\r\n",
+              "YN,yn0/YNd5",
+              "YNd11",
+              "YNd1; YNd1",
+              "YNdI-YNdI-YNd11-YNd11\r\n\r\n\r\n\r\n",
+              "YNyn0d10",
+              "Yd1",
+              "Ydn1"
+            ]
+          },
+          {
+            "name": "marca",
+            "type": "string",
+            "example": "ABB"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
