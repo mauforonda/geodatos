@@ -1,0 +1,138 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_alt_sit_embajadas",
+  "title": "Embajadas",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)",
+      "path": "http://sitservicios.lapaz.bo/ows38.jsp"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_sit_embajadas/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 4939,
+      "hash": "sha256:12684e48853c66f285382ab602058a3b51bbbf7a1feebdf3743e0c259d750868",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "embajadas.21"
+          },
+          {
+            "name": "Nombre",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Embajada de Venezuela"
+          },
+          {
+            "name": "Direccion",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "C. 12 de Obrajes Esq. Costanerita #1000"
+          },
+          {
+            "name": "Telefono",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "2166450"
+          },
+          {
+            "name": "Zona",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "OBRAJES",
+            "categories": [
+              "CALACOTO",
+              "SOPOCACHI",
+              "OBRAJES",
+              "SAN JORGE",
+              "CENTRAL",
+              "IRPAVI"
+            ]
+          },
+          {
+            "name": "distrito",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "21",
+            "categories": [
+              "18",
+              "1",
+              "3",
+              "21"
+            ]
+          },
+          {
+            "name": "owner",
+            "type": "integer"
+          },
+          {
+            "name": "usuario",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "gustavo.nao",
+            "categories": [
+              "gustavo.nao"
+            ]
+          },
+          {
+            "name": "fechaActual",
+            "type": "datetime",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": "2024-09-11T15:19:22.340000+00:00",
+              "maximum": "2024-09-11T15:45:00.023000+00:00"
+            }
+          },
+          {
+            "name": "observaciones",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "",
+            "categories": [
+              ""
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
