@@ -1,0 +1,87 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_cuenca_rio_lapaz_trasvase",
+  "title": "PDC Cuenca Alta del río La Paz - Límite de Cuenca y Transvase",
+  "description": "Este mapa muestra la delimitación del área de estudio, Corresponde a la delimitación de cuencas nivel 6, generada por el Viceministerio de Recursos Hídricos y Riego. Este dato fue obtenido de su geoportal del Ministerio de Medio Ambiente y Agua en fecha septiembre del 2022.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_cuenca_rio_lapaz_trasvase/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 16103,
+      "hash": "sha256:45a138322e38bb09648f1598736094a8716f64d70e65a961f0f045bd0614fc74",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "example": "cuenca_rio_lapaz_trasvase.2"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 3
+            }
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "example": "Trasvase I"
+          },
+          {
+            "name": "area_km2",
+            "type": "number",
+            "constraints": {
+              "minimum": 48.1059137699,
+              "maximum": 1724.79137422
+            }
+          },
+          {
+            "name": "pourptlon",
+            "type": "number",
+            "constraints": {
+              "minimum": -68.165417,
+              "maximum": -67.942917
+            }
+          },
+          {
+            "name": "pourptlat",
+            "type": "number",
+            "constraints": {
+              "minimum": -16.39125,
+              "maximum": -16.32875
+            }
+          },
+          {
+            "name": "departamen",
+            "type": "string",
+            "example": "La Paz",
+            "categories": [
+              "La Paz"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
