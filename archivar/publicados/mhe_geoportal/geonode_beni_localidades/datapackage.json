@@ -1,0 +1,151 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mhe_geoportal_geonode_beni_localidades",
+  "title": "beni_localidades",
+  "sources": [
+    {
+      "title": "Geoportal del Viceministerio de Electricidad y Energías Renovables",
+      "path": "https://geoportal.mhe.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mhe_geoportal_geonode_beni_localidades/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 15471,
+      "hash": "sha256:81bbc05edd219cfa9491d6733eb8f672d1b964cfd28d625fa5858b4e73db3377",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 214
+            }
+          },
+          {
+            "name": "OBJECTID",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 214
+            }
+          },
+          {
+            "name": "CODIGO",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "08030201005"
+          },
+          {
+            "name": "NOMBRE",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "21 DE ABRIL"
+          },
+          {
+            "name": "PROVINCIA",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "José Ballivián",
+            "categories": [
+              "José Ballivián",
+              "Marban",
+              "Moxos",
+              "Itenez",
+              "Cercado",
+              "Yacuma",
+              "",
+              "Mamore",
+              "Itenes"
+            ]
+          },
+          {
+            "name": "MUNICIPIO",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "San Borja",
+            "categories": [
+              "San Borja",
+              "San Andrés",
+              "San Ignacio",
+              "Rurrenabaque",
+              "Santa Rosa",
+              "",
+              "Reyes",
+              "Trinidad",
+              "Baures",
+              "Magdalena",
+              "Exaltación",
+              "Santa Ana de Yacuma",
+              "San Javier",
+              "Huacaraje",
+              "Loreto",
+              "Puerto Siles",
+              "San Joaquín",
+              "San Ramón"
+            ]
+          },
+          {
+            "name": "CANT_HABIT",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 7202
+            }
+          },
+          {
+            "name": "CANT_FAMIL",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 430
+            }
+          },
+          {
+            "name": "TIPO",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Interconetados con Lineas",
+            "categories": [
+              "Interconetados con Lineas",
+              "Prospectos",
+              "Generacion Local - Grupos Electrogenos",
+              ""
+            ]
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
