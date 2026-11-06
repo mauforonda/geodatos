@@ -1,0 +1,158 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_lpm_lineasaereas",
+  "title": "Líneas Aereas",
+  "description": "Agencia La Paz Maravillosa, Lineas Aéreas",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz",
+      "path": "http://sitservicios.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_lpm_lineasaereas/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 5946,
+      "hash": "sha256:17ea79701c094604c18f7bda29c7d815a3b661e51079a8210ac3fd3a44f75b42",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "lineasaereas.18"
+          },
+          {
+            "name": "Nombre",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Peruvian Airline"
+          },
+          {
+            "name": "Zona",
+            "type": "string",
+            "example": "Sopocachi",
+            "categories": [
+              "San Miguel",
+              "Centro",
+              "Calacoto",
+              "Sopocachi",
+              "",
+              "Central",
+              "Miraflores",
+              "Norte"
+            ]
+          },
+          {
+            "name": "Direccion",
+            "type": "string",
+            "example": "Heriberto Gutierrez esq. Rosendo Gutierrez entre Av. Arce y Capitàn Ravelo N° 2323"
+          },
+          {
+            "name": "Telefono",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": ""
+          },
+          {
+            "name": "Fax",
+            "type": "string",
+            "example": "",
+            "categories": [
+              "",
+              "2124475",
+              "2791461",
+              "2795393",
+              "2111104",
+              "2150093",
+              "2201871",
+              "2203950",
+              "2391316",
+              "2681102",
+              "2774216",
+              "2774740"
+            ]
+          },
+          {
+            "name": "PaginaWeb",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": ""
+          },
+          {
+            "name": "Fuente",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "GBT",
+            "categories": [
+              "GBT",
+              "pagina",
+              ""
+            ]
+          },
+          {
+            "name": "distrito",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.0,
+              "maximum": 18.0
+            }
+          },
+          {
+            "name": "owner",
+            "type": "integer"
+          },
+          {
+            "name": "usuario",
+            "type": "string",
+            "example": "nhuanquiri",
+            "categories": [
+              "nhuanquiri"
+            ]
+          },
+          {
+            "name": "fechaActual",
+            "type": "datetime",
+            "constraints": {
+              "minimum": "2017-06-05T13:51:23.750000+00:00",
+              "maximum": "2019-07-01T16:12:40.977000+00:00"
+            }
+          },
+          {
+            "name": "observaciones",
+            "type": "string",
+            "example": "",
+            "categories": [
+              ""
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point. Filas sin geometría: 1."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
