@@ -1,0 +1,111 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_calidadhidrica_simonvh_2017",
+  "title": "Plan Director Cuenca Río Cotagaita – Calidad Hídrica",
+  "description": "PDCRCo (Plan Director de la Cuenca Río Cotagaita). Muestra la Puntos de muestreo de calidad de agua realizados  en la gestión 2017 dentro del área intervención de la Cuenca Cotagaita.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_calidadhidrica_simonvh_2017/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 3619,
+      "hash": "sha256:7d393bd8206a5b9323bc311c8f20157363000fae17d1eac04cf8f0cd1d9a6fc0",
+      "schema": {
+        "fields": [
+          {
+            "name": "OBJECTID",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 185,
+              "maximum": 287
+            }
+          },
+          {
+            "name": "Codigo",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "RQ-01"
+          },
+          {
+            "name": "Este",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 198022,
+              "maximum": 812345
+            }
+          },
+          {
+            "name": "Norte",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 7689420,
+              "maximum": 7744940
+            }
+          },
+          {
+            "name": "Zona",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "19K",
+            "categories": [
+              "19K",
+              "20K"
+            ]
+          },
+          {
+            "name": "Elevacion",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 2445,
+              "maximum": 4355
+            }
+          },
+          {
+            "name": "Cuenca",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Cotagaita",
+            "categories": [
+              "Blanco",
+              "Cotagaita",
+              "Pilcomayo"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
