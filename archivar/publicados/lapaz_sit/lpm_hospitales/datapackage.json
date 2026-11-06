@@ -1,0 +1,195 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_lpm_hospitales",
+  "title": "Hospitales",
+  "description": "La Paz Maravillosa, Hospitales",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz",
+      "path": "http://sitservicios.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_lpm_hospitales/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 7133,
+      "hash": "sha256:c86b639ccd4e93593c3fa422d0ff7c86fec025d40761ecadaaecdf7b1d779e55",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "hospitales.31"
+          },
+          {
+            "name": "Nombre",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "SERVICIO MUNICIPAL DE AMBULANCIAS (SEMA)"
+          },
+          {
+            "name": "Zona",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "SANTA BARBARA",
+            "categories": [
+              "Miraflores",
+              "Sopocachi",
+              "Villa Copacabana",
+              "Villa Fátima",
+              "Aranjuez",
+              "Central",
+              "Gran Poder",
+              "LOS PINOS",
+              "Los Andes",
+              "MIRAFLORES",
+              "Obrajes",
+              "SANTA BARBARA",
+              "SATELITE",
+              "San Miguel",
+              "Sur",
+              "san jorge"
+            ]
+          },
+          {
+            "name": "Direccion",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "AV. SIMÓN BOLIVAR FRENTE MERCADO CAMACHO"
+          },
+          {
+            "name": "Telefono",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "165"
+          },
+          {
+            "name": "Fax",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "",
+            "categories": [
+              "",
+              "2217376",
+              "2226767",
+              "2245058",
+              "2246243",
+              "2433023",
+              "2784753"
+            ]
+          },
+          {
+            "name": "IdTipo",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 3
+            }
+          },
+          {
+            "name": "Fuente",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Servicio Municipal de Ambulancias (SEMA)",
+            "categories": [
+              "Pag Colegio Medico",
+              "bolivia en tus manos",
+              "pagina oficial de la institucion",
+              "AMID  SRL. Ambulancias",
+              "SAMI ASISTIR S.R.L.",
+              "Servicio Municipal de Ambulancias (SEMA)",
+              "Sistema de Urgencias Mediacas (Suma)",
+              "pagina oficaial de la onstitucion",
+              "pagina oficail de la institucion",
+              "pagina ofical de la institucion",
+              "paginas amarillas"
+            ]
+          },
+          {
+            "name": "distrito",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 2
+            }
+          },
+          {
+            "name": "owner",
+            "type": "integer"
+          },
+          {
+            "name": "usuario",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "jeanine.blanco",
+            "categories": [
+              "jeanine.blanco",
+              "nhuanquiri"
+            ]
+          },
+          {
+            "name": "fechaActual",
+            "type": "datetime",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": "2017-06-05T14:29:10.800000+00:00",
+              "maximum": "2019-12-27T16:48:52.877000+00:00"
+            }
+          },
+          {
+            "name": "observaciones",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Se cambio la dirección  de Av. Saavedra a Av. Simón Bolívar",
+            "categories": [
+              "",
+              "En el mapa no se puede ubicar las oficinas de SAMI ASISTIR",
+              "SISTEMA DE URGENCIAS MEDIACAS (SUMA) localizado en la ciudad El Alto",
+              "Se cambio la dirección  de Av. Saavedra a Av. Simón Bolívar"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point. Filas sin geometría: 1."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
