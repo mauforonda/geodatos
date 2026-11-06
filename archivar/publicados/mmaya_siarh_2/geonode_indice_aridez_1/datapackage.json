@@ -1,0 +1,74 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_indice_aridez_1",
+  "title": "Plan Director Cuenca Río Tupiza – Indice Aridez",
+  "description": "PDCRT (Plan Director Cuenca Río Tupiza). Muestra la información relevante del indice aridez en el área de la cuenca, en el marco del Plan Director de la Cuenca del Río Tupiza.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_indice_aridez_1/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 10005,
+      "hash": "sha256:509799e4f604ad5501d5c2737dbd9cb299cf8905f556fc1fc0a191d164a93ae6",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "ID",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 3
+            }
+          },
+          {
+            "name": "GRIDCODE",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 2
+            }
+          },
+          {
+            "name": "INDICE",
+            "type": "string",
+            "example": "0.50 - 0.59 (Moderado a deficitario de agua)"
+          },
+          {
+            "name": "SUP_KM2",
+            "type": "number",
+            "constraints": {
+              "minimum": 313.965834967,
+              "maximum": 1995.45627408
+            }
+          },
+          {
+            "name": "SUP_HA",
+            "type": "number",
+            "constraints": {
+              "minimum": 31396.5834967,
+              "maximum": 199545.627408
+            }
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
