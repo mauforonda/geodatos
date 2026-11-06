@@ -1,0 +1,88 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geobolivia_geonode_proyecto_mt_3a92bc4a",
+  "title": "Proyecto red eléctrica de media tensión (2012)",
+  "description": "Información geoespacial de la distribución de líneas de media tensión (entre 1,599 y 2500 voltios) implementadas en base al Proyecto Red Eléctrica de Media Tensión ejecutado por la Autoridad de fiscalización y control de electricidad (AE) en el año 2012, los datos se presentan a escala 1:4500000.",
+  "sources": [
+    {
+      "title": "Nueva plataforma GeoBolivia",
+      "path": "https://geonode.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geobolivia_geonode_proyecto_mt_3a92bc4a/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 6622,
+      "hash": "sha256:dc75fe52a21aeefa5c86a6dddceb234d1ee2cccfd6986e482c82651a6424165b",
+      "schema": {
+        "fields": [
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 7
+            }
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 7
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "example": "PROYECTO_MT.7"
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "minimum": 0,
+              "maximum": 0
+            }
+          },
+          {
+            "name": "proyecto",
+            "type": "string",
+            "example": "PORVENIR-PUERTO RICO"
+          },
+          {
+            "name": "descripcio",
+            "type": "string",
+            "example": "LÍNEA DE MT 34.5 kV",
+            "categories": [
+              "LÍNEA DE MT 24.9 kV",
+              "LÍNEA DE MT 34.5 kV"
+            ]
+          },
+          {
+            "name": "idproyec",
+            "type": "string",
+            "example": "OFID/OPEC",
+            "categories": [
+              "OFID/OPEC"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
