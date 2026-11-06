@@ -1,0 +1,138 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mdpyep_sitap_hortalizas_pepino2024",
+  "title": "pepino2024",
+  "sources": [
+    {
+      "title": "Sistema Territorial de Apoyo a la Producción (SITAP) del Ministerio de Desarrollo Productivo y Economía Plural",
+      "path": "https://geodata-bolivia.produccion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mdpyep_sitap_hortalizas_pepino2024/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 20520,
+      "hash": "sha256:b20ff54541e2e063c9104e644fc7dd568bd6059bcd0a144ab571902802ac1949",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "pepino2024.114"
+          },
+          {
+            "name": "departamento",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Oruro",
+            "categories": [
+              "Pando",
+              "La Paz",
+              "Cochabamba",
+              "Beni",
+              "Santa Cruz",
+              "Oruro",
+              "Chuquisaca",
+              "Potosi",
+              "Tarija"
+            ]
+          },
+          {
+            "name": "provincia",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Litoral"
+          },
+          {
+            "name": "municipio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Huachacalla"
+          },
+          {
+            "name": "comunidad",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "HUACHACALLA"
+          },
+          {
+            "name": "producto",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Pepino",
+            "categories": [
+              "Pepino"
+            ]
+          },
+          {
+            "name": "estacion",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "verano",
+            "categories": [
+              "verano",
+              "invierno"
+            ]
+          },
+          {
+            "name": "produccion",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.134,
+              "maximum": 688.851
+            }
+          },
+          {
+            "name": "superficie",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.254,
+              "maximum": 38.979
+            }
+          },
+          {
+            "name": "rendimiento",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.388,
+              "maximum": 35.164
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
