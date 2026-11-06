@@ -1,0 +1,122 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_subestaciones_electricas_del_sin_x7z7",
+  "title": "Subestaciones Eléctricas del SIN",
+  "description": "En el Sistema Interconectado Nacional (SIN) de Bolivia en 2023, las subestaciones eléctricas jugaron un papel crucial en la distribución y transmisión de energía eléctrica a nivel nacional. Estas infraestructuras facilitaron la interconexión de diferentes regiones del país, asegurando la estabilidad y eficiencia del suministro eléctrico. La expansión y modernización de las subestaciones fueron prioritarias para mejorar la capacidad de transmisión, integrar energías renovables y responder a las demandas crecientes de energía en diversas zonas del territorio boliviano.",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_subestaciones_electricas_del_sin_x7z7/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 17851,
+      "hash": "sha256:3612eac17cde61cad50e988bc63800372fc00ac798590f042f7cdd316be3c17a",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_subestaciones_electricas_del_sin_x7z7.49"
+          },
+          {
+            "name": "codigo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "CHL"
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Chilcobija"
+          },
+          {
+            "name": "area",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "SUR",
+            "categories": [
+              "NORTE",
+              "CENTRAL",
+              "ORIENTAL",
+              "ORURO",
+              "SUR",
+              "TARIJA",
+              "SUCRE",
+              "TRINIDAD"
+            ]
+          },
+          {
+            "name": "niv_vol",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "6.15 kV/69 kV/"
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "POTOSI",
+            "categories": [
+              "LA PAZ",
+              "SANTA CRUZ",
+              "COCHABAMBA",
+              "POTOSI",
+              "ORURO",
+              "TARIJA",
+              "BENI",
+              "CHUQUISACA"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Sur Chichas"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Tupiza"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPoint."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
