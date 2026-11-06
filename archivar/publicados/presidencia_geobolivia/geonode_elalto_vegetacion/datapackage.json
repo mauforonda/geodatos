@@ -1,0 +1,103 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_elalto_vegetacion",
+  "title": "Mapa de Vegetación Municipio El Alto 2015",
+  "description": "La información geográfica muestra la clasificación por tipo de vegetación y su respectiva descripción, con sistema de referencia WGS 84, proyección UTM 19 Sur, a escala 1: 15000, obtenida del Ministerio de Medio Ambiente y Aguas año 2012. Información proporcionada del Atlas Geográfico del Municipio de El Alto gestión 2015.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_elalto_vegetacion/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 21412,
+      "hash": "sha256:901f029134e6e48a63fbda68c98671a9e9845533e61bfae37ecc90492bbfb84f",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "elalto_vegetacion.9"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 13
+            }
+          },
+          {
+            "name": "gid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 13
+            }
+          },
+          {
+            "name": "__gid",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "12"
+          },
+          {
+            "name": "clase",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "p2'+p3a+p26F"
+          },
+          {
+            "name": "descrip",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Humedales altoandinos de la Puna subhúmedo-húmeda: Bofedales (CES409.072). Sistema ecológico de las "
+          },
+          {
+            "name": "area_ha",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0,
+              "maximum": 9958
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
