@@ -1,0 +1,160 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geobolivia_geonode_red_geodesica_cepag_igm_ada1c692",
+  "title": "Red GPS de Estaciones Continuas (ROC) Sirgas - Bolivia IGM-CEPAG (GNSS)",
+  "description": "La Red de Operaciones Continuas, componente del Marco de Referencia Geocéntrico Nacional (MARGEN), es parte de la Red SIRGAS (Sistema de Referencia Geocéntrico para las Américas), que a su vez está enlazado al Marco Internacional de Referencia Terrestre (ITRF: International Terrestrial Reference Frame). Además del sistema de referencia geométrico, se ocupa de la definición y representación física de un sistema vertical de referencia basado en alturas elipsoidales y en números geopotenciales. Este mapa contiene las estaciones continuas distribuidos en toda Bolivia, el presente conjunto de datos fue preparado, publicado y digitalizado el 2014 por la sección Centro de Procesamiento y Analisis GNSS (CEPAG) del IGM.",
+  "sources": [
+    {
+      "title": "Nueva plataforma GeoBolivia",
+      "path": "https://geonode.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geobolivia_geonode_red_geodesica_cepag_igm_ada1c692/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 5829,
+      "hash": "sha256:8b330614af2f3b5941a8db27fe1d3cdb154ab310182d21af2b903f20231f1de8",
+      "schema": {
+        "fields": [
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 32
+            }
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 32
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0,
+              "maximum": 31
+            }
+          },
+          {
+            "name": "ubicacion",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "UYUNI"
+          },
+          {
+            "name": "codigo_est",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "uyni"
+          },
+          {
+            "name": "marco_de_r",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "SIRGAS-ROC",
+            "categories": [
+              "MARGEN - SIRGAS",
+              "SIRGAS-ROC"
+            ]
+          },
+          {
+            "name": "sistema_de",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "WGS-84",
+            "categories": [
+              "WGS-84"
+            ]
+          },
+          {
+            "name": "latitud",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": -22.017,
+              "maximum": -10.999
+            }
+          },
+          {
+            "name": "longitud",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": -68.94,
+              "maximum": -57.799
+            }
+          },
+          {
+            "name": "net_rs_red",
+            "type": "string",
+            "example": "SI",
+            "categories": [
+              "SI"
+            ]
+          },
+          {
+            "name": "ftp_red",
+            "type": "string",
+            "example": "SI",
+            "categories": [
+              "SI"
+            ]
+          },
+          {
+            "name": "manual",
+            "type": "string",
+            "example": "SI",
+            "categories": [
+              "SI"
+            ]
+          },
+          {
+            "name": "a_req_usua",
+            "type": "string",
+            "example": "SI",
+            "categories": [
+              "SI"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
