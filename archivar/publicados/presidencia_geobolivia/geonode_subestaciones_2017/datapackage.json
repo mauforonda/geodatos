@@ -1,0 +1,125 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_subestaciones_2017",
+  "title": "Subestaciones eléctricas de Bolivia_ 2017",
+  "description": "El mapa muestra la distribución espacial de sub-estaciones eléctricas en el territorio nacional, instalaciones destinadas a derivar circuitos de potencia y a modificar y establecer los niveles de tensión de cada infraestructura eléctrica, facilitando el transporte y distribución de la energía eléctrica de cada región. Elaborado por la Autoridad de fiscalización y control de electricidad (AE) con datos actualizados a marzo de 2017 a escala 1:4500000.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_subestaciones_2017/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 16090,
+      "hash": "sha256:86d48a24cb2a899c855406253f4ea09f8441950e974ff2809794ed8cd8871b35",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "subestaciones_2017.73"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 204
+            }
+          },
+          {
+            "name": "objectid_1",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 9371
+            }
+          },
+          {
+            "name": "empresa",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Servicios Eléctricos Potosí S.A. (SEPSA)",
+            "categories": [
+              "ENDE Transmisión S.A.",
+              "Electricidad de La Paz S.A. (ELECTROPAZ)",
+              "Servicios Eléctricos Potosí S.A. (SEPSA)",
+              "Cooperativa Rural de Electrificación Ltda. (CRE)",
+              "Empresa de Luz y Fuerza Eléctrica de Oruro S.A. (ELFEO)",
+              "Empresa de Luz y Fuerza Electrica Cochabamba S.A. (ELFEC)",
+              "Compañia Boliviana de Energía Eléctrica (COBEE)",
+              "Empresa Nacional de Electricidad (ENDE)",
+              "Servicios Eléctricos de Tarija (SETAR)",
+              "Compañia Boliviana de Energía Eléctrica (COBBE)",
+              "Interconexión Eléctrica - ISA BOLIVIA S.A. (ISA)",
+              "Empresa Nacional de Electricidad (ENDE) - Trinidad",
+              "Hidroeléctrica Boliviana S.A. (HB)",
+              "Empresa Eléctrica Corani S.A. (CORANI)",
+              "Compañia Eléctrica Sucre S.A. (CESSA)",
+              "Compañía Eléctrica Central Bulo Bulo S.A. (CECBB)",
+              "Empresa Minera Inti Raymi  S. A .(EMIRSA)",
+              "Empresa Nacional de Electricidad (ENDE) ANDINA",
+              "Empresa Nacional de Electricidad Andina (ENDE ANDINA)",
+              "Empresa Río Eléctrico S.A (ERESA)",
+              "SINCHI WAYRA S.A.",
+              "Servicios de Desarrollo de Bolivia S.A. (SDB)"
+            ]
+          },
+          {
+            "name": "subestacio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "San Cristobal"
+          },
+          {
+            "name": "codigo",
+            "type": "string",
+            "example": "SCR"
+          },
+          {
+            "name": "cant_trans",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 9
+            }
+          },
+          {
+            "name": "nivel_volt",
+            "type": "string",
+            "example": "11/230"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
