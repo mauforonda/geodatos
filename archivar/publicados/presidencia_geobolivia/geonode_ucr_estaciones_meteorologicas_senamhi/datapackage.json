@@ -1,0 +1,162 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_ucr_estaciones_meteorologicas_senamhi",
+  "title": "Mapa de estaciones metereológicas de Bolivia 2011",
+  "description": "El mapa presenta la distribución espacial de estaciones meteorológicas del Servicio Nacional de Meteorología e Hidrología - SENAMHI, instalaciones destinadas a medir y registrar el conjunto de variables meteorológicas que regulan el clima del país.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_ucr_estaciones_meteorologicas_senamhi/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 26662,
+      "hash": "sha256:cf8cafc24e9747126fb39c315b0cdc52c89a6d0c85aba071b92de03349f90265",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "ucr_estaciones_meteorologicas_senamhi.157"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 299
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "ucr_Estaciones_meteorologicas_SENAMHI.157"
+          },
+          {
+            "name": "estacion_1",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "APACHETA (TIERRAS S.A)"
+          },
+          {
+            "name": "provincia",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Sud L?pez"
+          },
+          {
+            "name": "departamen",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Potos?",
+            "categories": [
+              "La Paz",
+              "Tarija",
+              "Potos?",
+              "Cochabamba",
+              "Santa Cruz",
+              "Chuquisaca",
+              "Oruro",
+              "Beni",
+              "Pando"
+            ]
+          },
+          {
+            "name": "latitud_s",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "22? 10' 00\""
+          },
+          {
+            "name": "longitud_w",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "67? 49' 00\""
+          },
+          {
+            "name": "altura",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 5020
+            }
+          },
+          {
+            "name": "tipo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "TP",
+            "categories": [
+              "P",
+              "TP",
+              "CO",
+              "S",
+              "CP",
+              "TP - A",
+              "A",
+              "CO - A",
+              "CP - A"
+            ]
+          },
+          {
+            "name": "latitud",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -22.770833,
+              "maximum": -10.816831
+            }
+          },
+          {
+            "name": "longitud",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -69.254444,
+              "maximum": -57.733333
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
