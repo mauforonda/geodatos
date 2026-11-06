@@ -1,0 +1,177 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_sit_supermercados",
+  "title": "SuperMercados",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz",
+      "path": "http://sitservicios.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_sit_supermercados/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 8424,
+      "hash": "sha256:4721011cd508853446d1c6e7b7d97f21cb911179e0d0cfa80434c5ebdfca7faa",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "supermercados.34"
+          },
+          {
+            "name": "Nombre",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Superapidito S.R.L."
+          },
+          {
+            "name": "Direccion",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "C. Ismael Sotomayor # 3052"
+          },
+          {
+            "name": "Zona",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Sopocachi"
+          },
+          {
+            "name": "Tipo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Supermercado",
+            "categories": [
+              "Supermercado",
+              "Micromarket"
+            ]
+          },
+          {
+            "name": "ActividadEconomica",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "VENTA POR MAYOR Y MENOR DE PRODUCTOS",
+            "categories": [
+              "VENTA POR MAYOR Y MENOR DE PRODUCTOS"
+            ]
+          },
+          {
+            "name": "MacroDistrito",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "COTAHUMA",
+            "categories": [
+              "SUR",
+              "CENTRO",
+              "COTAHUMA",
+              "SAN ANTONIO",
+              "MAX PAREDES",
+              "PERIFERICA"
+            ]
+          },
+          {
+            "name": "DistritoVarchar",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "DISTRITO 3",
+            "categories": [
+              "DISTRITO 18",
+              "DISTRITO 2",
+              "DISTRITO 3",
+              "DISTRITO 1",
+              "DISTRITO 15",
+              "DISTRITO 21",
+              "DISTRITO 6",
+              "DISTRITO 13",
+              "DISTRITO 7",
+              "DISTRITO 10",
+              "DISTRITO 11",
+              "DISTRITO 17",
+              "DISTRITO 5"
+            ]
+          },
+          {
+            "name": "distrito",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 21
+            }
+          },
+          {
+            "name": "owner",
+            "type": "string",
+            "example": "gustavo.nao",
+            "categories": [
+              "gustavo.nao",
+              "clara.revollo"
+            ]
+          },
+          {
+            "name": "usuario",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "gustavo.nao",
+            "categories": [
+              "gustavo.nao"
+            ]
+          },
+          {
+            "name": "fechaActual",
+            "type": "datetime",
+            "constraints": {
+              "required": true,
+              "minimum": "2023-10-27T13:12:40.470000+00:00",
+              "maximum": "2024-08-29T19:33:19+00:00"
+            }
+          },
+          {
+            "name": "observaciones",
+            "type": "string",
+            "example": "",
+            "categories": [
+              ""
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
