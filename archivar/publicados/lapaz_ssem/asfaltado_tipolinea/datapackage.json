@@ -1,0 +1,86 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_ssem_asfaltado_tipolinea",
+  "title": "tipolinea",
+  "sources": [
+    {
+      "title": "Servicio de Seguimiento Estratégico Municipal del Gobierno Autónomo Municipal de La Paz",
+      "path": "https://ssem.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_ssem_asfaltado_tipolinea/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 4107,
+      "hash": "sha256:e80eb40d9de3444f97ceed9fa5aafb67f430b4854f45838183fd6977427ba959",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 3
+            }
+          },
+          {
+            "name": "area",
+            "type": "string",
+            "example": "SMIP",
+            "categories": [
+              "SMIP"
+            ]
+          },
+          {
+            "name": "actividad",
+            "type": "string",
+            "example": "Asfaltado",
+            "categories": [
+              "Asfaltado"
+            ]
+          },
+          {
+            "name": "ubicacion",
+            "type": "string",
+            "example": "avenida Sucre"
+          },
+          {
+            "name": "inicio",
+            "type": "datetime",
+            "constraints": {
+              "minimum": "2023-06-19T00:00:00",
+              "maximum": "2023-06-19T00:00:00"
+            }
+          },
+          {
+            "name": "final",
+            "type": "datetime",
+            "constraints": {
+              "minimum": "2023-07-13T00:00:00",
+              "maximum": "2023-07-23T00:00:00"
+            }
+          },
+          {
+            "name": "avance",
+            "type": "string",
+            "example": "90 %"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
