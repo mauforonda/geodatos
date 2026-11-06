@@ -1,0 +1,190 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_represas_1",
+  "title": "Plan Director Cuenca Río Pampa Huari – Represas",
+  "description": "PDCRPH (Plan Director de la Cuenca Rio Pampa Huari). Muestra la ubicación espacial  de las represas que se encuentran dentro de la cuenca.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_represas_1/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 6135,
+      "hash": "sha256:bb9e90f2a49744dd2e18109dbe9588ecc4a1ba84b883a9747884e40b4679ea0d",
+      "schema": {
+        "fields": [
+          {
+            "name": "Depto",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Potosi",
+            "categories": [
+              "Potosi"
+            ]
+          },
+          {
+            "name": "Municipio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Yocalla",
+            "categories": [
+              "Potosi",
+              "Yocalla",
+              "POTOSI"
+            ]
+          },
+          {
+            "name": "Latitud",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -19.6606,
+              "maximum": 0.0
+            }
+          },
+          {
+            "name": "Longitud",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -65.9592,
+              "maximum": 0.0
+            }
+          },
+          {
+            "name": "Estado",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Funciona",
+            "categories": [
+              "Funciona",
+              "CONCLUIDO",
+              "Existe y en operacion"
+            ]
+          },
+          {
+            "name": "Nom_Presa",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Cienega Mayu"
+          },
+          {
+            "name": "Uso",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Riego",
+            "categories": [
+              "Agua Potable",
+              "Riego",
+              "Mineria",
+              "Riego/Energia"
+            ]
+          },
+          {
+            "name": "Tipo_Presa",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Gravedad",
+            "categories": [
+              "Tierra",
+              "Gravedad",
+              ""
+            ]
+          },
+          {
+            "name": "AreaCuenca",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "2,99_Km2"
+          },
+          {
+            "name": "Alt_Presa",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "4,00_m"
+          },
+          {
+            "name": "LongCorona",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "11,50_m"
+          },
+          {
+            "name": "CapEmbalse",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "7.700_m3"
+          },
+          {
+            "name": "CotaCorona",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "3.793 msnm"
+          },
+          {
+            "name": "Rio_Presa",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Kapala"
+          },
+          {
+            "name": "Fuente",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Inventario de Presas",
+            "categories": [
+              "Inventario de Presas",
+              "MI AGUA I",
+              "MI AGUA III"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
