@@ -1,0 +1,104 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_ssem_chukuta_online_chukuta_online_2025",
+  "title": "chukuta_online_2025",
+  "sources": [
+    {
+      "title": "Servicio de Seguimiento Estratégico Municipal del Gobierno Autónomo Municipal de La Paz",
+      "path": "https://ssem.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_ssem_chukuta_online_chukuta_online_2025/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 4957,
+      "hash": "sha256:77c57706b27e44f5c933a510e05b9d3daa829ac769d367791bd67a8eb2bfa1b3",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "integer"
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "BIBLIOTECA ZONAL TACAGUA"
+          },
+          {
+            "name": "descriptio",
+            "type": "integer"
+          },
+          {
+            "name": "timestamp",
+            "type": "integer"
+          },
+          {
+            "name": "begin",
+            "type": "integer"
+          },
+          {
+            "name": "end",
+            "type": "integer"
+          },
+          {
+            "name": "altitudemo",
+            "type": "integer"
+          },
+          {
+            "name": "tessellate",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": -1,
+              "maximum": -1
+            }
+          },
+          {
+            "name": "extrude",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 0
+            }
+          },
+          {
+            "name": "visibility",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": -1,
+              "maximum": -1
+            }
+          },
+          {
+            "name": "draworder",
+            "type": "integer"
+          },
+          {
+            "name": "icon",
+            "type": "integer"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
