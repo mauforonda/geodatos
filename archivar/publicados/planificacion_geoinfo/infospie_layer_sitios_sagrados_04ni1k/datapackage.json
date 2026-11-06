@@ -1,0 +1,80 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_sitios_sagrados_04ni1k",
+  "title": "Sitios Sagrados",
+  "description": "El mapa presenta la ubicación de los sitios sagrados en territorio nacional.",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_sitios_sagrados_04ni1k/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 10130,
+      "hash": "sha256:d85b851ed00c9d569f15f417ff44d2a04fb3d0bddd7a883c464d4977da5fca61",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_sitios_sagrados_04ni1k.1"
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "SABAYA"
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "example": "POTOSI",
+            "categories": [
+              "LA PAZ",
+              "SANTA CRUZ",
+              "CHUQUISACA",
+              "COCHABAMBA",
+              "BENI",
+              "ORURO",
+              "POTOSI",
+              "TARIJA",
+              "PANDO"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "example": "Nor Lipez"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "example": "Colcha \"K\""
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
