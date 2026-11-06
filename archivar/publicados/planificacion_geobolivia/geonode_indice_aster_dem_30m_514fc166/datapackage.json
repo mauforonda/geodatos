@@ -1,0 +1,93 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geobolivia_geonode_indice_aster_dem_30m_514fc166",
+  "title": "Índice de escenas del Modelo Digital de Elevación de ASTER (30 metros) para Bolivia",
+  "description": "Información geoespacial de la distribución de escenas del Modelo de Elevación Digital Global de ASTER (Global Digital Elevation Model - GDEM) que cubren territorio boliviano, creadas con una resolución espacial de 30 metros a partir de imágenes captadas por el sensor japonés Advanced Spaceborne Thermal Emision and Reflection Radiometer, o ASTER GDEM a cargo de la NASA y el Ministerio de Economía, Comercio e Industria de Japón (METI). Las mismas se encuentran disponibles para su descarga en formato GeoTIFF con coordenadas geográficas latitud/longitud, disponibles a través de la sección Mapas Temáticos de la página web de GeoBolivia.",
+  "sources": [
+    {
+      "title": "Nueva plataforma GeoBolivia",
+      "path": "https://geonode.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geobolivia_geonode_indice_aster_dem_30m_514fc166/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 5548,
+      "hash": "sha256:490a22b8eff4bda1e40349545f0decc76df40f5e5315723ebe04b5e4ef26fd6d",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "indice_aster_dem_30m_514fc166.33"
+          },
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 124
+            }
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 124
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "indice_aster_dem_30m.33"
+          },
+          {
+            "name": "location",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "S23W069_dem.tif"
+          },
+          {
+            "name": "escena",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "S23W069"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
