@@ -1,0 +1,163 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_estadios_de_futbol_02tha",
+  "title": "Estadios de Futbol",
+  "description": "En el mapa se muestra la ubicación de los estadios de futbol describiendo su capacidad de publico y categoría de competición tanto futbol profesional y amateur, considerando los privados y del estado.",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_estadios_de_futbol_02tha/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 7906,
+      "hash": "sha256:25e8d7ff6b965bbf79075fb4a5d1afd62e711fca7856be3a518f95a1f3657f78",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_estadios_de_futbol_02tha.9"
+          },
+          {
+            "name": "caracteris",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Estadios Menores a 15000 Espectadores",
+            "categories": [
+              "Estadios Menores a 15000 Espectadores",
+              "Estadios Privados",
+              "Principales Estadios",
+              "Secundarios Estadios",
+              "Estadios Menores a 3000 Espectadores",
+              "En Refacción o Abandonados"
+            ]
+          },
+          {
+            "name": "estadios",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "DEPARTAMENTAL VICTOR AGUSTIN UGARTE"
+          },
+          {
+            "name": "categoria",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 6
+            }
+          },
+          {
+            "name": "localidad",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "TUPIZA"
+          },
+          {
+            "name": "capacidad",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 32595
+            }
+          },
+          {
+            "name": "propietario",
+            "type": "integer"
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "POTOSI",
+            "categories": [
+              "LA PAZ",
+              "SANTA CRUZ",
+              "COCHABAMBA",
+              "TARIJA",
+              "POTOSI",
+              "BENI",
+              "CHUQUISACA",
+              "ORURO",
+              "PANDO"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Sur Chichas",
+            "categories": [
+              "Andres Ibañez",
+              "Murillo",
+              "Cercado",
+              "Gran Chaco",
+              "Nicolas Suarez",
+              "Oropeza",
+              "Quillacollo",
+              "Chapare",
+              "Rafael Bustillo",
+              "Tomas Frias",
+              "Vaca Diez",
+              "Abaroa",
+              "Arce",
+              "Avilez",
+              "Campero",
+              "Caranavi",
+              "Carrasco",
+              "Ingavi",
+              "Los Andes",
+              "Obispo Santisteban",
+              "Omasuyos",
+              "Pantaleon Dalence",
+              "Sur Chichas",
+              "Tiraque",
+              "Warnes",
+              "Ñuflo De Chavez"
+            ]
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Tupiza"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPoint."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
