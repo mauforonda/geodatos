@@ -1,0 +1,147 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_red_geodesicawgs84",
+  "title": "Mapa de Red Geodésica del Municipio de La Paz",
+  "description": "El mapa muestra información de la distribución y localización de la red geodésica, que es un conjunto de puntos ubicados en la superficie terrestre, en los cuales se determinan su posición geográfica (latitud, longitud y elevación) mediante el uso de receptores GPS. La creación de una red geodésica, tiene el objetivo de regular todos los proyectos topográficos y cartográficos, que sean realizados por dependencias estatales, municipales y empresas descentralizadas, para que los mismos queden ligados a un solo sistema de referencia geográfica. Elaborado por Oficialía Mayor de Planificación para el Desarrollo (OMPD) del Gobierno Autónomo Municipal de La Paz, en el año 2013.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_red_geodesicawgs84/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 27645,
+      "hash": "sha256:2499e6f64fe3d60bca89892a0c2a722f31a3f706a7d8cc7df869d8ac2762b321",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "red_geodesicawgs84.655"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 799
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "red_geodesicawgs84.655"
+          },
+          {
+            "name": "fid_",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 0
+            }
+          },
+          {
+            "name": "entity",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Line",
+            "categories": [
+              "Line"
+            ]
+          },
+          {
+            "name": "level",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 12,
+              "maximum": 12
+            }
+          },
+          {
+            "name": "layer",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "12",
+            "categories": [
+              "12"
+            ]
+          },
+          {
+            "name": "color",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 34,
+              "maximum": 34
+            }
+          },
+          {
+            "name": "linetype",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Solid",
+            "categories": [
+              "Solid"
+            ]
+          },
+          {
+            "name": "elevation",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 0
+            }
+          },
+          {
+            "name": "linewt",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 1
+            }
+          },
+          {
+            "name": "refname",
+            "type": "integer"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
