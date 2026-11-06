@@ -1,0 +1,74 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_redes",
+  "title": "Redes de salud de las ciudades de La Paz y El Alto_ 2011",
+  "description": "Este mapa representa la ubicación y área de cobertura de las redes de salud en las ciudades de La Paz y El Alto, involucran a actores que brindan servicios de salud a lo largo de los distintos niveles de atención y a las personas u organizaciones que no necesariamente se desempeñan como efectores en los servicios. Elaborado por el Programa Andino de Formación y de Investigación sobre la Vulnerabilidad y los Riesgos Urbanos - Bolivia, Ecuador, Perú - PACIVUR del Instituto de Investigaciones para el Desarrollo (IRD), en el año 2011.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_redes/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 19881,
+      "hash": "sha256:95fa8c0335be8e5e0615a088d79635419cd2f85f3e5e178f7220f5cbf1eff2e2",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 10
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Redes.1"
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 0
+            }
+          },
+          {
+            "name": "red",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "SENKATA"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
