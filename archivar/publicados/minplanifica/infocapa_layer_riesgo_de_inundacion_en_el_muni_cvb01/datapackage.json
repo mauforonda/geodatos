@@ -1,0 +1,90 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_minplanifica_infocapa_layer_riesgo_de_inundacion_en_el_muni_cvb01",
+  "title": "layer_riesgo_de_inundacion_en_el_muni_cvb01",
+  "sources": [
+    {
+      "title": "Geoserver del Ministerio de Planificación del Desarollo",
+      "path": "https://geoserver.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_minplanifica_infocapa_layer_riesgo_de_inundacion_en_el_muni_cvb01/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 7442,
+      "hash": "sha256:fb6213d02be4f2a45cc94427a187146d1024b68444369f2186dbba0bc4cda285",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "example": "layer_riesgo_de_inundacion_en_el_muni_cvb01.6"
+          },
+          {
+            "name": "riesgo_tex",
+            "type": "string",
+            "example": "Sin riesgo",
+            "categories": [
+              "Sin riesgo",
+              "Bajo"
+            ]
+          },
+          {
+            "name": "sup_ha",
+            "type": "number",
+            "constraints": {
+              "minimum": 5.253,
+              "maximum": 3338.825
+            }
+          },
+          {
+            "name": "riesg_num",
+            "type": "integer",
+            "constraints": {
+              "minimum": 0,
+              "maximum": 3
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "example": "Santa Cruz",
+            "categories": [
+              "Santa Cruz"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "example": "Obispo Santisteban",
+            "categories": [
+              "Obispo Santisteban"
+            ]
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "example": "Montero",
+            "categories": [
+              "Montero"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
