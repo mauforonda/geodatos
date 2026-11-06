@@ -1,0 +1,179 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_sit_mercados",
+  "title": "mercados",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz",
+      "path": "http://sitservicios.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_sit_mercados/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 11318,
+      "hash": "sha256:8d9af769e57ad7dcf6c089625ebb2067184fdc709abd1386006cb42f5edd56a0",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "mercados.27"
+          },
+          {
+            "name": "Nombre",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "El Rosal"
+          },
+          {
+            "name": "Direccion",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Av. Mario Mercado y C. Agapanto"
+          },
+          {
+            "name": "Zona",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Llojeta el Rosal"
+          },
+          {
+            "name": "Macrodistrito",
+            "type": "string",
+            "example": "COTAHUMA",
+            "categories": [
+              "COTAHUMA",
+              "MAX PAREDES",
+              "PERIFERICA",
+              "SAN ANTONIO",
+              "SUR",
+              "CENTRO",
+              "MALLASA"
+            ]
+          },
+          {
+            "name": "CodMacro",
+            "type": "string",
+            "example": "1",
+            "categories": [
+              "1",
+              "2",
+              "3",
+              "4",
+              "5",
+              "7",
+              "6"
+            ]
+          },
+          {
+            "name": "CodDistrito",
+            "type": "string",
+            "example": "4",
+            "categories": [
+              "4",
+              "11",
+              "8",
+              "17",
+              "18",
+              "7",
+              "21",
+              "6",
+              "2",
+              "1",
+              "10",
+              "13",
+              "16",
+              "5",
+              "12",
+              "15",
+              "3",
+              "9",
+              "14",
+              "19",
+              "20"
+            ]
+          },
+          {
+            "name": "distrito",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 21
+            }
+          },
+          {
+            "name": "owner",
+            "type": "string",
+            "example": "gustavo.nao",
+            "categories": [
+              "gustavo.nao"
+            ]
+          },
+          {
+            "name": "usuario",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "henrry.figueredo",
+            "categories": [
+              "henrry.figueredo",
+              "gustavo.nao"
+            ]
+          },
+          {
+            "name": "fechaActual",
+            "type": "datetime",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": "2025-05-24T16:17:02.307000+00:00",
+              "maximum": "2025-12-15T19:17:54.303000+00:00"
+            }
+          },
+          {
+            "name": "observaciones",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "",
+            "categories": [
+              "",
+              "Mercado Privado",
+              "Mercado privado"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point. Filas sin geometría: 2."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
