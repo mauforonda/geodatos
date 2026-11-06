@@ -1,0 +1,67 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_lagunasfin",
+  "title": "Plan Director Cuenca Río Cotagaita – Lagunas",
+  "description": "PDCRCo (Plan Director de la Cuenca Río Cotagaita). Muestra la ubicación y la información relevante de las lagunas  en el marco del Plan Director de la Cuenca del Río Cotagaita.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_lagunasfin/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 5037,
+      "hash": "sha256:f0ea8892a51e6f448d7366d500815e5b4e7befe6b85a3ba053c24d991c6a5554",
+      "schema": {
+        "fields": [
+          {
+            "name": "osm_id",
+            "type": "string",
+            "example": "396267592"
+          },
+          {
+            "name": "code",
+            "type": "integer",
+            "constraints": {
+              "minimum": 0,
+              "maximum": 8200
+            }
+          },
+          {
+            "name": "fclass",
+            "type": "string",
+            "example": "water",
+            "categories": [
+              "",
+              "water"
+            ]
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "example": "",
+            "categories": [
+              ""
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
