@@ -1,0 +1,88 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_red_vial_departamental_del_municip_5c42ad6bf63b",
+  "title": "Red Vial Departamental del Municipio de Montero - PTDI",
+  "description": "El mapa presenta la distribución geográfica de la red vial a nivel departamental en el municipio de  Montero, y su clasificación por tipos de camino, conectando centros poblados entre sí, según el PTDI 2021 - 2025.",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_red_vial_departamental_del_municip_5c42ad6bf63b/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 7753,
+      "hash": "sha256:dfec18913d97312139ebce236d6af369b336585c8821ada3b27f549f9aa4f328",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "example": "layer_red_vial_departamental_del_municipio_de_montero___66ii3.2"
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "example": "Carretera Ruta 4 Montero - Villa Copac"
+          },
+          {
+            "name": "tipo",
+            "type": "string",
+            "example": "Ripio",
+            "categories": [
+              "Ripio",
+              "Tierra"
+            ]
+          },
+          {
+            "name": "long_km",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.07,
+              "maximum": 6.449
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "example": "SANTA CRUZ",
+            "categories": [
+              "SANTA CRUZ"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "example": "Obispo Santisteban",
+            "categories": [
+              "Obispo Santisteban"
+            ]
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "example": "Montero",
+            "categories": [
+              "Montero"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
