@@ -1,0 +1,75 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_amenaza_helada_huarina",
+  "title": "Mapa de amenaza por helada del Municipio de Huarina_ 2012",
+  "description": "El mapa presenta el grado de amenaza por heladas del Municipio de Huarina, originadas por el enfriamiento de la capa de aire próxima al suelo. Definida en base a la temperatura, extensión geográfica, intensidad, probabilidad de ocurrencia, frecuencia y duración del fenómeno. En base a las cuales se identifican cuatro categorías: Muy alta, Alta, Media y Baja. Elaborado por el programa de Promoción de la Sustentabilidad y Conocimientos Compartidos - PROSUCO con intervención del Programa de Reducción de Riesgos y Desastres PRRD III componente 2, en el año 2012.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_amenaza_helada_huarina/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 16449,
+      "hash": "sha256:d8bc788bb16ddd6fe4aa3a03e24d04a1bb8c58b8ea8426a18047d2f82fa554de",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 7
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "example": "amenaza_helada_huarina.6"
+          },
+          {
+            "name": "amenaza",
+            "type": "string",
+            "example": "Media",
+            "categories": [
+              "Alta",
+              "Media"
+            ]
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "minimum": 189,
+              "maximum": 189
+            }
+          },
+          {
+            "name": "codseccion",
+            "type": "string",
+            "example": "020201",
+            "categories": [
+              "020201"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
