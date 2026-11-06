@@ -1,0 +1,110 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_minplanifica_infocapa_layer_salares_y_lagunas_a_nivel_nacional_4x443",
+  "title": "layer_salares_y_lagunas_a_nivel_nacional_4x443",
+  "sources": [
+    {
+      "title": "Geoserver del Ministerio de Planificación del Desarollo",
+      "path": "https://geoserver.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_minplanifica_infocapa_layer_salares_y_lagunas_a_nivel_nacional_4x443/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 14090,
+      "hash": "sha256:4ccd878187e62c1f65bc830ea11985b77bf09961a6cedd1136adb8166144bd05",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_salares_y_lagunas_a_nivel_nacional_4x443.5"
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "CACHI"
+          },
+          {
+            "name": "tipo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "LAGUNA",
+            "categories": [
+              "LAGUNA",
+              "SALAR"
+            ]
+          },
+          {
+            "name": "sup_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1603.537,
+              "maximum": 2200000.0
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "example": "Potosi",
+            "categories": [
+              "Potosi",
+              "Oruro"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "example": "Nor Lipez",
+            "categories": [
+              "Sur Lipez",
+              "Nor Lipez",
+              "Sajama",
+              "Daniel Campos",
+              "Sur Carangas"
+            ]
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "example": "Colcha \"K\"",
+            "categories": [
+              "San Pablo",
+              "Colcha \"K\"",
+              "San Pedro de Quemes",
+              "Curahuara de Carangas",
+              "Andamarca",
+              "Llica"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
