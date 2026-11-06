@@ -1,0 +1,67 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_poblaciones",
+  "title": "Plan Director Cuenca Río Mizque - Poblaciones",
+  "description": "PDCRM (Plan Director de la Cuenca Río Mizque). Muestra la ubicacion y la información relevante de las poblaciones, en el marco del Plan Director de la Cuenca Río Mizque.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_poblaciones/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 6352,
+      "hash": "sha256:65ae2425f1bcf868216c8f5f5d061527182a760af2568a6013ac09af9564ce05",
+      "schema": {
+        "fields": [
+          {
+            "name": "PUEBLOS_ID",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 3864,
+              "maximum": 6307
+            }
+          },
+          {
+            "name": "PUEBLOS",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "AIQUILE"
+          },
+          {
+            "name": "CLASIFICAC",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Cap. Municipal",
+            "categories": [
+              "Población",
+              "Cap. Municipal"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
