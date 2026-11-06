@@ -1,0 +1,166 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_entidades_financieras",
+  "title": "Plan Director Cuenca Río Mizque - Entidades Financieras",
+  "description": "PDCRM (Plan Director de la Cuenca Río Mizque). Muestra la ubicacion y la información relevante de las entidades financieras, en el marco del Plan Director de la Cuenca Río Mizque.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_entidades_financieras/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 4978,
+      "hash": "sha256:7381d7474a864565c2a2ad09707f8d98a21af8aced55bb9000ca4bdbc57b69ef",
+      "schema": {
+        "fields": [
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "asfi_iefs_2013.3334"
+          },
+          {
+            "name": "x",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": -65.5802361111,
+              "maximum": -64.4312722222
+            }
+          },
+          {
+            "name": "y",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -18.2027777778,
+              "maximum": -17.5753944444
+            }
+          },
+          {
+            "name": "mane_id",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "fef",
+            "categories": [
+              "ccm",
+              "fpr",
+              "bun",
+              "bis",
+              "ccb",
+              "fef"
+            ]
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "ECO FUTURO S.A. F. F. P.",
+            "categories": [
+              "COOPERATIVA COMARAPA",
+              "FONDO FINANCIERO PRIVADO PRODEM S.A.",
+              "BANCO UNIÓN S.A.",
+              "BANCO BISA S.A.",
+              "COOPERATIVA DE AHORRO Y CRÉDITO SAN CARLOS BORROMEO LTDA.",
+              "ECO FUTURO S.A. F. F. P."
+            ]
+          },
+          {
+            "name": "ide_paf",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 320
+            }
+          },
+          {
+            "name": "nombre_paf",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Agencia Aiquile"
+          },
+          {
+            "name": "tipo_ofi",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Agencia Fija",
+            "categories": [
+              "Agencia Fija",
+              "Cajero Automático",
+              "Oficina Central",
+              "Oficina Externa",
+              "Punto de Atención corresponsal Financiero"
+            ]
+          },
+          {
+            "name": "departamen",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "COCHABAMBA",
+            "categories": [
+              "COCHABAMBA",
+              "SANTA CRUZ"
+            ]
+          },
+          {
+            "name": "ciudad",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "AIQUILE"
+          },
+          {
+            "name": "direccion",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Av. Bolivar s/n esquina Héroes del Chaco"
+          },
+          {
+            "name": "telefono",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "(591-4) 4343250"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
