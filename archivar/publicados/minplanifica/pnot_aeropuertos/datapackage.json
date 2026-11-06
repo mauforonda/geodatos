@@ -1,0 +1,130 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_minplanifica_pnot_aeropuertos",
+  "title": "aeropuertos",
+  "sources": [
+    {
+      "title": "Geoserver del Ministerio de Planificación del Desarollo",
+      "path": "https://geoserver.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_minplanifica_pnot_aeropuertos/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 7255,
+      "hash": "sha256:1c915ac1f6729230d9ce8eba9efd85901634192899aea5dc089a96603f8c2355",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "aeropuertos.40"
+          },
+          {
+            "name": "ubicacion",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Uyuni"
+          },
+          {
+            "name": "point_x",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": -69.08799999999997,
+              "maximum": -57.82045254199994
+            }
+          },
+          {
+            "name": "point_y",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": -22.770941870999934,
+              "maximum": -10.822363497999959
+            }
+          },
+          {
+            "name": "administra",
+            "type": "string",
+            "example": "ASANA",
+            "categories": [
+              "ASANA"
+            ]
+          },
+          {
+            "name": "aeropuerto",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Uyuni Joya Andina"
+          },
+          {
+            "name": "codigo",
+            "type": "string",
+            "example": "Control03"
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Potosi",
+            "categories": [
+              "Santa Cruz",
+              "Beni",
+              "La Paz",
+              "Tarija",
+              "Chuquisaca",
+              "Cochabamba",
+              "Potosi",
+              "Oruro",
+              "Pando"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Antonio Quijarro"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Uyuni"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
