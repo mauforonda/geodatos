@@ -1,0 +1,110 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geobolivia_geonode_vias_bolivia2015_7cc78564",
+  "title": "Ubicación de Retenes de Peaje y Pesaje en Bolivia (2015)",
+  "description": "Información geográfica de las ubicaciones de los retenes de Peaje y Pesaje existentes actualmente en Bolivia (año 2015) asi como las condiciones en las que se encuentra.",
+  "sources": [
+    {
+      "title": "Nueva plataforma GeoBolivia",
+      "path": "https://geonode.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geobolivia_geonode_vias_bolivia2015_7cc78564/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 10105,
+      "hash": "sha256:6b88bbe82a423133b5b93ff4dd45155f53643cccfb37a651f29fd08769e62a6a",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "vias_bolivia2015_7cc78564.60"
+          },
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 134
+            }
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 134
+            }
+          },
+          {
+            "name": "tipo_estac",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "PEAJE",
+            "categories": [
+              "PEAJE",
+              "PESAJE",
+              "PEAJE/PESAJE"
+            ]
+          },
+          {
+            "name": "ubicacion",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "TEMPORAL",
+            "categories": [
+              "DEFINITIVO",
+              "TEMPORAL O MOVIL",
+              "TEMPORAL",
+              "DEFINITIVA"
+            ]
+          },
+          {
+            "name": "codesta",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 134
+            }
+          },
+          {
+            "name": "estacion",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Colchani"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
