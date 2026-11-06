@@ -1,0 +1,94 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_estaciones_meteorologicas_2",
+  "title": "Plan Director Cuenca Río Yapacaní – Estaciones Meteorológicas",
+  "description": "PDCRY (Plan Director de la Cuenca Río Yapacaní). Muestra la ubicación y la información relevante de las estaciones meteorológicas, en el marco del Plan Director de la Cuenca del Río Yapacaní.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_estaciones_meteorologicas_2/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 3195,
+      "hash": "sha256:4f1c545bc0e1ed184508ceea24bc1315357aa78c8edecf64c9ebb6ccc5e95939",
+      "schema": {
+        "fields": [
+          {
+            "name": "OID_",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 0
+            }
+          },
+          {
+            "name": "Name",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "SANTA ANA SC"
+          },
+          {
+            "name": "Acum_anual",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 476,
+              "maximum": 2366
+            }
+          },
+          {
+            "name": "Temp_prom",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0.0,
+              "maximum": 25.0
+            }
+          },
+          {
+            "name": "RASTERVALU",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 195,
+              "maximum": 2117
+            }
+          },
+          {
+            "name": "Temp_1500m",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 15.39,
+              "maximum": 19.72
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
