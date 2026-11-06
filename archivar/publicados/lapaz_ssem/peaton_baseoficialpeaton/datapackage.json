@@ -1,0 +1,205 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_ssem_peaton_baseoficialpeaton",
+  "title": "baseoficialpeaton",
+  "sources": [
+    {
+      "title": "Servicio de Seguimiento Estratégico Municipal del Gobierno Autónomo Municipal de La Paz",
+      "path": "https://ssem.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_ssem_peaton_baseoficialpeaton/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 15672,
+      "hash": "sha256:8491aaf795def9d2ec99afa078e29cba8dd2a17c63fda3f3ad6ab6349241d027",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "baseoficialpeaton.102"
+          },
+          {
+            "name": "nro",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 105
+            }
+          },
+          {
+            "name": "categoria",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Deportivas",
+            "categories": [
+              "Recreativas",
+              "Deportivas",
+              "Educativas",
+              "Emergencias",
+              "Culturales"
+            ]
+          },
+          {
+            "name": "actividad",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Caravana de Downhill  junto a la leyenda del MTB y Downhill, Aaron Chase"
+          },
+          {
+            "name": "macrodistr",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Cotahuma",
+            "categories": [
+              "Centro",
+              "Sur",
+              "Cotahuma",
+              "Max Paredes",
+              "Maximiliano Paredes",
+              "SUR",
+              "San Antonio",
+              "PERIFÉRICA",
+              "Mallasa"
+            ]
+          },
+          {
+            "name": "ubicacion",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Partida: Faro Murillo, Pajchani, Buenos Aires, Plaza Cebras, Parque Kantutani (deslizamiento) y vari"
+          },
+          {
+            "name": "horario",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "9:00 a 11:00",
+            "categories": [
+              "09:30 a 13:00",
+              "09:00 a 17:00",
+              "9:00 a 12:00",
+              "09:00 a 14:00",
+              "9:00 a 14:00",
+              "9:00 a 18:00",
+              "09:30 a 11:30",
+              "10:00 a 14:00",
+              "12:00 a 14:00",
+              "9:00 a 13:00",
+              "09:00 a 10:00",
+              "10:00 a 11:00",
+              "11:00 a 12:00",
+              "11:00 a 12:30",
+              "12:00 a 13:00",
+              "13:00 a 14:00",
+              "9:00 a 11:00",
+              "9:00 a 12:30",
+              "09:30 a 12:00",
+              "9:00 a 10:00"
+            ]
+          },
+          {
+            "name": "descripcio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Inicio caravana downhill"
+          },
+          {
+            "name": "mas_info",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Alcalde iniciará el día del peatón con la bienvenida a Aaron Chase y amigos y filmarán una invitació"
+          },
+          {
+            "name": "responsabl",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "SEM - ABC",
+            "categories": [
+              "SMMSC",
+              "SMSD-DD-UPAFD",
+              "EMAVERDE",
+              "SMGAER",
+              "SAC-DDES-UAIN",
+              "SMSD",
+              "SAMP-DDES-UAIN",
+              "SUBALCALDÍA SUR",
+              "SACO-DDES-UAIN",
+              "SUBALCALDÍA SAN ANTONIO",
+              "SUBALCALDÍA PERIFÉRICA",
+              "UDCS-ABC",
+              "SEM - ABC",
+              "SUBALCALDÍA MALLASA"
+            ]
+          },
+          {
+            "name": "latitud",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -16.57738,
+              "maximum": -16.46259
+            }
+          },
+          {
+            "name": "longitud",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": -68.1664351361637,
+              "maximum": -68.06332276731833
+            }
+          },
+          {
+            "name": "tipo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "punto",
+            "categories": [
+              "punto"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
