@@ -1,0 +1,48 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_inundvlady",
+  "title": "Plan Director Cuenca Lago Poopó - Zonas de Inundación",
+  "description": "PDCLP (Plan Director de la Cuenca Lago Poopó). Muestra la ubicación y la información relevante de las zonas de inundación, en el marco del Plan Director de la Cuenca del Lago Poopó.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_inundvlady/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 12160,
+      "hash": "sha256:ddff0118b8e5d6aee091b22aa6030fa4e52ade2a2fc75d41a6dfe18e9547b572",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "INUNDVLAD",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Zonas_de_Inundacion_verificadas_en_Campo",
+            "categories": [
+              "Zonas_de_Inundacion_verificadas_en_Campo"
+            ]
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
