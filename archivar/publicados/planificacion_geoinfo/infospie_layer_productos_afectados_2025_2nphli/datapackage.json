@@ -1,0 +1,152 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_productos_afectados_2025_2nphli",
+  "title": "Productos afectados 2025",
+  "description": "El mapa muestra las vías de acceso afectadas por deslizamientos y otros eventos, así como los productos que eran transportados por estas rutas. (COBERTURA DE USO REFERENCIAL)",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_productos_afectados_2025_2nphli/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 10160,
+      "hash": "sha256:88ec354aa789c06616c3c8ac69a40596b52690a2c40b6967c9793e2ca98f46fa",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_productos_afectados_2025_2nphli.5"
+          },
+          {
+            "name": "estado",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "B - TRANSITABLE CON PRECAUCIÓN",
+            "categories": [
+              "B - TRANSITABLE CON PRECAUCIÓN",
+              "D - NO TRANSITABLE, TRAFICO CERRADO",
+              "C - TRANSITABLE CON DESVIOS",
+              "G - RESTRICCION VEHICULAR",
+              "E - NO TRANSITABLE POR CONFLICTOS SOCIALES"
+            ]
+          },
+          {
+            "name": "seccion",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "ALCANTARILLA - FIN PTE. RIO GRANDE"
+          },
+          {
+            "name": "evento",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "PLATAFORMA RESBALADIZA",
+            "categories": [
+              "CON ALTA VULNERABILIDAD",
+              "CRECIDA DE RIO",
+              "DERRUMBES MENORES",
+              "COLAPSO DE PUENTE",
+              "DERRUMBE",
+              "NO TRANSITAR EN LLUVIAS",
+              "CAIDA DE ROCAS",
+              "PERDIDA DE PLATAFORMA",
+              "PLATAFORMA RESBALADIZA",
+              "BLOQUEO POR DEMANDAS LOCALES",
+              "DESLIZAMIENTO",
+              "PLATAFORMA HUMEDA",
+              "AFECTACION DE PUENTE",
+              "AHUELLAMIENTO EN PLATAFORMA",
+              "CIERRE DE PUENTE",
+              "COLAPSO DE MURO DE GAVION",
+              "FLUJO DE BARRO",
+              "PERDIDA DE VIADUCTO"
+            ]
+          },
+          {
+            "name": "prod_afect",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Quinua, papa, carne de llama y cebada",
+            "categories": [
+              "Carne de res, yuca, plátano, y arroz",
+              "Quinua, papa, carne de llama y cebada",
+              "Carne de res, arroz, azúcar, aceite de soya, trigo, pollo y leche",
+              "Pollo, trigo, maíz, papa, hortalizas y leche",
+              "Quinua, papa, hortalizas, carne de res y leche",
+              "Maní, maíz, trigo, papa y hortalizas",
+              "Castaña, yuca, plátano y arroz",
+              "Carne de pollo entero, Carne de res, Arroz de primera, Azucar blanca, Aceite vegetal",
+              "Carne de res",
+              "Papa Huaycho",
+              "Quinua, papa, carne de llama y leche"
+            ]
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "POTOSI",
+            "categories": [
+              "BENI",
+              "POTOSI",
+              "SANTA CRUZ",
+              "LA PAZ",
+              "COCHABAMBA",
+              "CHUQUISACA",
+              "PANDO",
+              "ORURO"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Nor Lipez"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Colcha \"K\""
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
