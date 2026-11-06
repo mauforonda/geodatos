@@ -1,0 +1,159 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_oieau_bo_satd_katari_water_source",
+  "title": "water_source",
+  "sources": [
+    {
+      "title": "Sistema para la Gestión Integral de Recursos Hídricos desarrollado por la Oficina Internacional del Agua (OiEau)",
+      "path": "https://www.oieau-wiss.org/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_oieau_bo_satd_katari_water_source/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 18463,
+      "hash": "sha256:3533326c09d8d33f9005e8c2685d0d43e8c018b29d6081f8a28a28aced28d91e",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "water_source.173"
+          },
+          {
+            "name": "physiography",
+            "type": "string",
+            "example": "Serrania",
+            "categories": [
+              "Planicie",
+              "Ladera",
+              "Colina",
+              "Serrania",
+              "serrania",
+              "Serranía",
+              "Terraza"
+            ]
+          },
+          {
+            "name": "source",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Vertiente",
+            "categories": [
+              "Pozo",
+              "Vertiente",
+              "Estanque",
+              "Río",
+              "Bofedal",
+              "Laguna",
+              "Río temporal",
+              "Represa",
+              "Lago",
+              "Río Katari",
+              "Río permanente",
+              "Cosecha de agua de lluvia",
+              "Laguna Cota Pata",
+              "Laguna Jayu Qota",
+              "Laguna Wajra pila",
+              "Puchucollo",
+              "Río Juchu jawira",
+              "Río Pallina",
+              "Río Seco",
+              "Río Seke",
+              "Río meandrico",
+              "Río negro",
+              "Rïo permanente"
+            ]
+          },
+          {
+            "name": "use",
+            "type": "string",
+            "example": "Consumo humano",
+            "categories": [
+              "Consumo humano",
+              "Consumo animal",
+              "Sin Uso",
+              "Consumo humano, animal",
+              "Riego",
+              "Consumo animal y riego",
+              "Consumo humano, animal, riego",
+              "Ninguno",
+              "Riego y Consumo animal",
+              "Consumo humano, Animal",
+              "Consumo humano, riego",
+              "Consumo animal, aridos",
+              "Consumo animal, riego",
+              "Consumo humano, riego y Consumo animal",
+              "Estraccion de áridos",
+              "Lavado de autos",
+              "Otro",
+              "Recreacion,",
+              "Riego aguas arriba"
+            ]
+          },
+          {
+            "name": "altitude",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 4544
+            }
+          },
+          {
+            "name": "observations",
+            "type": "string",
+            "example": "Caudal temporal"
+          },
+          {
+            "name": "area",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 485.407,
+              "maximum": 595.955
+            }
+          },
+          {
+            "name": "last_edited_date",
+            "type": "datetime",
+            "constraints": {
+              "required": true,
+              "minimum": "2022-03-14T06:29:39+00:00",
+              "maximum": "2022-03-14T06:29:39+00:00"
+            }
+          },
+          {
+            "name": "last_edited_user",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 1
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
