@@ -1,0 +1,162 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_minplanifica_infocapa_layer_represas_obwlj",
+  "title": "layer_represas_obwlj",
+  "sources": [
+    {
+      "title": "Geoserver del Ministerio de Planificación del Desarollo",
+      "path": "https://geoserver.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_minplanifica_infocapa_layer_represas_obwlj/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 17444,
+      "hash": "sha256:a0ceddd53ee48d60c625bb9326ab2269565228b2aaab946c52c82b273d35fadf",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_represas_obwlj.1"
+          },
+          {
+            "name": "estado",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Funciona",
+            "categories": [
+              "Funciona",
+              "F/Problemas",
+              "C/Problema",
+              "No Funciona",
+              "F/Problema",
+              "S/D",
+              "En Construccion",
+              "En construccion"
+            ]
+          },
+          {
+            "name": "nom_presa",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Trinchera Cabildo"
+          },
+          {
+            "name": "uso",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Conservacion",
+            "categories": [
+              "Riego",
+              "Agua Potable",
+              "Mineria",
+              "Energia",
+              "Conservacion",
+              "Multiple",
+              "Riego/A P",
+              "Riego/Energia",
+              "Energia/Riego",
+              "Otros"
+            ]
+          },
+          {
+            "name": "tipo_presa",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Tierra",
+            "categories": [
+              "Tierra",
+              "Gravedad",
+              "Arco",
+              "Enrocado",
+              "Rustica/Roca",
+              "Contrafuertes",
+              "Gravedad/Arco",
+              "Rustica",
+              "Tierra/Enrocado"
+            ]
+          },
+          {
+            "name": "alt_presa",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "27,00_m"
+          },
+          {
+            "name": "fuente",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Inventario de Presas",
+            "categories": [
+              "Inventario de Presas"
+            ]
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Tarija",
+            "categories": [
+              "Cochabamba",
+              "Potosi",
+              "Chuquisaca",
+              "La Paz",
+              "Oruro",
+              "Santa Cruz",
+              "Tarija"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Arce"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Padcaya"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPoint."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
