@@ -1,0 +1,151 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geobolivia_geonode_elalto_espaciolibre_a97d8dc8",
+  "title": "Localización de espacios libres del Municipio El Alto (2015)",
+  "description": "La información geográfica muestra la ubicación y característica de los espacios libres del Municipio del El Alto a escala 1:1000, obtenida a través de relevamiento de campo. Información proporcionada del Atlas Geográfico del Municipio de El Alto gestión 2015.",
+  "sources": [
+    {
+      "title": "Nueva plataforma GeoBolivia",
+      "path": "https://geonode.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geobolivia_geonode_elalto_espaciolibre_a97d8dc8/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 10265,
+      "hash": "sha256:3897672caf4792175f56595abbc93f4c99f2c9766745c2360ffc29af6dcb20c3",
+      "schema": {
+        "fields": [
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 53
+            }
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 53
+            }
+          },
+          {
+            "name": "gid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 53
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 53
+            }
+          },
+          {
+            "name": "ubicacion",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Urb. Santo Domingo, Av. Defensores Del Chaco"
+          },
+          {
+            "name": "inf_proy",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Mercado",
+            "categories": [
+              "Parque",
+              "Plaza",
+              "n/s",
+              "Area verde",
+              "Cancha",
+              "Ampliación del Parque",
+              "Casa de acogida y apoyo a la mujer",
+              "Centro cultural",
+              "Centro de Convenciones",
+              "Colegio o mercado",
+              "Complejo deportivo",
+              "Feria",
+              "Mercado",
+              "Multifuncional",
+              "Parque infantil",
+              "Parque o area verde",
+              "Parque o centro de salud",
+              "Parque y Cancha",
+              "Poli funcional"
+            ]
+          },
+          {
+            "name": "obs",
+            "type": "string",
+            "example": "Loteado al interior",
+            "categories": [
+              "Proyecto no definido",
+              "Area en completo abandono",
+              "Area en conflicto entre urb. América y Fatima.",
+              "Area verde propiedad del GAMEA",
+              "Cancha abandonada",
+              "Espacio dividido",
+              "Loteado",
+              "Loteado al interior",
+              "Lotes con notificacion para desocupar",
+              "Predio proyectado",
+              "Se demolera la muralla perimetral",
+              "Ubicado en zona de riesgo por deslizamiento"
+            ]
+          },
+          {
+            "name": "gid_mnz",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 871
+            }
+          },
+          {
+            "name": "gid_urb",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 645
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
