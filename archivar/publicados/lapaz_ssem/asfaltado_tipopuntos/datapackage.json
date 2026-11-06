@@ -1,0 +1,150 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_ssem_asfaltado_tipopuntos",
+  "title": "tipopuntos",
+  "sources": [
+    {
+      "title": "Servicio de Seguimiento Estratégico Municipal del Gobierno Autónomo Municipal de La Paz",
+      "path": "https://ssem.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_ssem_asfaltado_tipopuntos/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 5803,
+      "hash": "sha256:51513445b34df4675e4041696e5648a1312bd4877190a74cf882a70b887126b4",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 62
+            }
+          },
+          {
+            "name": "area",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "ABC",
+            "categories": [
+              "ABC",
+              "SUB PERIFERICA",
+              "EMAVERDE",
+              "SMIP",
+              "SUB CENTRO",
+              "SMMSC",
+              "SUB CENTRO\n",
+              "SUB PERIFÉRICA\n"
+            ]
+          },
+          {
+            "name": "actividad",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Isleta avenida Sucre y calle Colón"
+          },
+          {
+            "name": "inicio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "30/06/2023\n",
+            "categories": [
+              "14/07/2023\n",
+              "26/06/2023\n",
+              "14/07/2023",
+              "19/06/2023\n",
+              "03/07/2023\n",
+              "19/06/2023",
+              "23/06/2023\n",
+              "12/07/2023",
+              "13/07/2023",
+              "18/07/2023",
+              "29/06/2023\n",
+              "20/06/2023\n",
+              "21/07/2023",
+              "23/06/2023",
+              "26/06/2023",
+              "27/06/2023",
+              "28/06/2023\n",
+              "30/06/2023\n"
+            ]
+          },
+          {
+            "name": "final",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "01/07/2023\n",
+            "categories": [
+              "23/07/2023\n",
+              "23/07/2023",
+              "22/07/2023",
+              "13/07/2023\n",
+              "07/07/2023\n",
+              "10/07/2023\n",
+              "13/07/2023",
+              "22/07/2023\n",
+              "30/06/2023\n",
+              "31/07/2023\n",
+              "01/07/2023\n",
+              "03/07/2023\n",
+              "04/07/2023\n",
+              "06/07/2023\n",
+              "12/07/2023\n",
+              "18/07/2023\n",
+              "27/06/2023\n",
+              "28/07/2023\n"
+            ]
+          },
+          {
+            "name": "avance",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "100 %",
+            "categories": [
+              "100 %",
+              "0 %",
+              "80 %",
+              "85 %",
+              "95 %",
+              "97 %",
+              "10 %",
+              "25 %",
+              "50 %",
+              "70 %",
+              "90 %",
+              "98 %"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
