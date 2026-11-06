@@ -1,0 +1,107 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_minplanifica_infocapa_layer_potencial_agroproductivo_cocha_vf6mbl",
+  "title": "layer_potencial_agroproductivo_cocha_vf6mbl",
+  "sources": [
+    {
+      "title": "Geoserver del Ministerio de Planificación del Desarollo",
+      "path": "https://geoserver.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_minplanifica_infocapa_layer_potencial_agroproductivo_cocha_vf6mbl/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 11483,
+      "hash": "sha256:7ede93521d46f9c590be82130730b349cb84db8101147c4490ac3e91726e36f7",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_potencial_agroproductivo_cocha_vf6mbl.14"
+          },
+          {
+            "name": "categoria",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "PASTOREO EXTENSIVO",
+            "categories": [
+              "CULTIVOS AGRICOLAS",
+              "PASTOREO EXTENSIVO",
+              "ZONA  URBANA",
+              "CULTIVOS AGRICOLAS MERCADO LOCAL",
+              "FORESTAL LIMITADO",
+              "AGROPECUARIO"
+            ]
+          },
+          {
+            "name": "sup_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0.196,
+              "maximum": 1902.307
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Cochabamba",
+            "categories": [
+              "Cochabamba"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Quillacollo",
+            "categories": [
+              "Quillacollo",
+              "Cercado"
+            ]
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Colcapirhua",
+            "categories": [
+              "Colcapirhua",
+              "Cochabamba",
+              "Quillacollo"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 1."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
