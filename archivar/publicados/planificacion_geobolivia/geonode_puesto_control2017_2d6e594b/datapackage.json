@@ -1,0 +1,133 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geobolivia_geonode_puesto_control2017_2d6e594b",
+  "title": "Puesto de Control y Registro del SENASAG (2017)",
+  "description": "Información geoespacial de los puestos de control y registro del Servicio Nacional de Sanidad Agropecuaria e Inocuidad Alimentaria (SENASAG) en el territorio nacional. Estos puestos de control son utilizados para realizar la protección sanitaria del patrimonio agropecuario y forestal a través de la inspección de los productos pecuarios y agrícolas. Elaborado por SENASAG y actualizado a marzo del 2017.",
+  "sources": [
+    {
+      "title": "Nueva plataforma GeoBolivia",
+      "path": "https://geonode.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geobolivia_geonode_puesto_control2017_2d6e594b/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 6936,
+      "hash": "sha256:a7007c01296fbbd236fb0ef8fb6d57797b2bb5c59de201ca095d945beb39324a",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "puesto_control2017_2d6e594b.23"
+          },
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 55
+            }
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 55
+            }
+          },
+          {
+            "name": "no",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 55
+            }
+          },
+          {
+            "name": "departam",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "POTOSI",
+            "categories": [
+              "SANTA CRUZ",
+              "BENI",
+              "LA PAZ",
+              "TARIJA",
+              "ORURO",
+              "POTOSI",
+              "CHUQUISACA",
+              "COCHABAMBA",
+              "PANDO"
+            ]
+          },
+          {
+            "name": "pcontrol",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "AVAROA"
+          },
+          {
+            "name": "categoria",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "INTERNACIONAL",
+            "categories": [
+              "INTERNO",
+              "INTERNACIONAL"
+            ]
+          },
+          {
+            "name": "latitud",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -22.32302,
+              "maximum": -10.81116
+            }
+          },
+          {
+            "name": "longitud",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -69.4446,
+              "maximum": -57.71082
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
