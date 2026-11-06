@@ -1,0 +1,108 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_potencial_agroproductivo_del_munic_50be8032f06f",
+  "title": "Potencial Agroproductivo del Municipio de Colcapirhua -PTDI",
+  "description": "El mapa muestra el potencial agroproductivo en el municipio de Colcapirhua del departamento de Cochabamba",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_potencial_agroproductivo_del_munic_50be8032f06f/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 11583,
+      "hash": "sha256:123588051de5cd4d949a2f2113434d7ba4d15d5c301542d3ad66a429a033664e",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_potencial_agroproductivo_del_municipio_de_colcapi_6vqfr.8"
+          },
+          {
+            "name": "categoria",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "PASTOREO EXTENSIVO",
+            "categories": [
+              "CULTIVOS AGRICOLAS",
+              "PASTOREO EXTENSIVO",
+              "ZONA  URBANA",
+              "CULTIVOS AGRICOLAS MERCADO LOCAL",
+              "FORESTAL LIMITADO",
+              "AGROPECUARIO"
+            ]
+          },
+          {
+            "name": "sup_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0.196,
+              "maximum": 1902.307
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "COCHABAMBA",
+            "categories": [
+              "COCHABAMBA"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Quillacollo",
+            "categories": [
+              "Quillacollo",
+              "Cercado"
+            ]
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Colcapirhua",
+            "categories": [
+              "Colcapirhua",
+              "Cochabamba",
+              "Quillacollo"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 1."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
