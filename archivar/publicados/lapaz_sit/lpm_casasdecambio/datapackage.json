@@ -1,0 +1,169 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_lpm_casasdecambio",
+  "title": "Casa de Cambios",
+  "description": "La Paz Maravillosa, Casas de Cambio",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz",
+      "path": "http://sitservicios.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_lpm_casasdecambio/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 5671,
+      "hash": "sha256:6a4c466ee6542bb908f949a9480e0870cf74de2890565090ca48f5dcb797b5c7",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "casasdecambio.16"
+          },
+          {
+            "name": "Nombre",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Unitours"
+          },
+          {
+            "name": "Zona",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Central",
+            "categories": [
+              "Centro",
+              "Central",
+              "Rosario",
+              "El Rosario"
+            ]
+          },
+          {
+            "name": "Direccion",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "c. Camacho esq. Loayza No. 1389 | La Paz, Bolivia"
+          },
+          {
+            "name": "Telefono",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "2202124 o 2 2201836"
+          },
+          {
+            "name": "Celular",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "",
+            "categories": [
+              "",
+              "76278922",
+              "77292281"
+            ]
+          },
+          {
+            "name": "HorarioAtencion",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Lun - Vie 08:30 - 18:30   Sab  09:00 - 13:00"
+          },
+          {
+            "name": "Fuente",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Gobernación",
+            "categories": [
+              "Gobernación",
+              "GBT"
+            ]
+          },
+          {
+            "name": "distrito",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 11
+            }
+          },
+          {
+            "name": "owner",
+            "type": "integer"
+          },
+          {
+            "name": "usuario",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "jeanine.blanco",
+            "categories": [
+              "jeanine.blanco"
+            ]
+          },
+          {
+            "name": "fechaActual",
+            "type": "datetime",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": "2019-07-11T20:02:15.293000+00:00",
+              "maximum": "2019-12-27T16:30:01.060000+00:00"
+            }
+          },
+          {
+            "name": "observaciones",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "",
+            "categories": [
+              "",
+              "Email :\ndanielcallizaya@hotmail.com",
+              "Email: marnegcc@hotmail.com\nNo se encuentra",
+              "La misma dirección del número 15",
+              "NO ESTA EN FUNCIONAMIENTO Y EL NUMERO  NO CORRESPONDE.",
+              "NO ESTA EN FUNCIONAMIENTO Y EL TELÉFONO ES DE OTRA CASA DE CAMBIOS.",
+              "No esta en funcionamiento"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
