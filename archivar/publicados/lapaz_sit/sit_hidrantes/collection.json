@@ -1,0 +1,186 @@
+{
+  "type": "Collection",
+  "id": "geodatosbolivia_lapaz_sit_sit_hidrantes",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json",
+    "https://stac-extensions.github.io/vector/v0.1.0/schema.json",
+    "https://stac-extensions.github.io/projection/v2.0.0/schema.json",
+    "https://stac-extensions.github.io/file/v2.1.0/schema.json",
+    "https://stac-extensions.github.io/web-map-links/v1.3.0/schema.json"
+  ],
+  "title": "Hidrantes",
+  "description": "Hidrantes de la ciudad de La Paz, EPSAS.",
+  "license": "other",
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -68.15092072283632,
+          -16.587889297137192,
+          -68.03650111098912,
+          -16.453971456966865
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "providers": [
+    {
+      "name": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz",
+      "roles": [
+        "producer"
+      ],
+      "url": "http://sitservicios.lapaz.bo/geoserver/ows"
+    },
+    {
+      "name": "Internet Archive",
+      "roles": [
+        "host"
+      ],
+      "url": "https://archive.org/details/geodatosbolivia_lapaz_sit_sit_hidrantes"
+    }
+  ],
+  "table:primary_geometry": "geometry",
+  "table:row_count": 100,
+  "table:columns": [
+    {
+      "name": "id",
+      "type": "string"
+    },
+    {
+      "name": "Codigo",
+      "type": "string"
+    },
+    {
+      "name": "Direccion",
+      "type": "string"
+    },
+    {
+      "name": "Zona",
+      "type": "string"
+    },
+    {
+      "name": "distrito",
+      "type": "int32"
+    },
+    {
+      "name": "owner",
+      "type": "string"
+    },
+    {
+      "name": "usuario",
+      "type": "string"
+    },
+    {
+      "name": "fechaActual",
+      "type": "timestamp[us, tz=UTC]"
+    },
+    {
+      "name": "observaciones",
+      "type": "string"
+    },
+    {
+      "name": "geometry",
+      "type": "binary",
+      "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+    }
+  ],
+  "summaries": {
+    "vector:geometry_types": [
+      "Point"
+    ]
+  },
+  "assets": {
+    "data": {
+      "href": "https://archive.org/download/geodatosbolivia_lapaz_sit_sit_hidrantes/dataset.geoparquet",
+      "type": "application/vnd.apache.parquet",
+      "title": "GeoParquet",
+      "roles": [
+        "data"
+      ],
+      "proj:code": "EPSG:4326",
+      "file:size": 10418,
+      "file:checksum": "12200f1a0f55ddc534c571568e42cc41d33875899ba4cb6c9bbf36980759a4e68243"
+    },
+    "datapackage": {
+      "href": "./datapackage.json",
+      "type": "application/json",
+      "title": "Data Package: columnas, tipos y categorías",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "pmtiles": {
+      "href": "https://archive.org/download/geodatosbolivia_lapaz_sit_sit_hidrantes/dataset.pmtiles",
+      "type": "application/vnd.pmtiles",
+      "title": "Teselas vectoriales (PMTiles)",
+      "roles": [
+        "visual"
+      ],
+      "file:size": 23021,
+      "file:checksum": "122086f04d0047eb872889c7a01425f43539f5040def4f7862fd6e46fd61490e1583"
+    }
+  },
+  "pmtiles:min_zoom": 12,
+  "pmtiles:max_zoom": 14,
+  "pmtiles:tile_type": "mvt",
+  "pmtiles:center": [
+    -68.0937109,
+    -16.5209303,
+    13
+  ],
+  "pmtiles:properties": [
+    {
+      "nombre": "observaciones",
+      "tipo": "string",
+      "categorias": [
+        "Sistema Pampahasi",
+        "Sistema Achachicala",
+        "Sistema Talud El Alto",
+        "Sistema Chuquiaguillo"
+      ]
+    },
+    {
+      "nombre": "distrito",
+      "tipo": "number",
+      "minimo": 1.0,
+      "maximo": 21.0
+    }
+  ],
+  "links": [
+    {
+      "rel": "root",
+      "href": "../../../catalog.json",
+      "type": "application/json",
+      "title": "Datos geográficos de Bolivia"
+    },
+    {
+      "rel": "parent",
+      "href": "../catalog.json",
+      "type": "application/json",
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz"
+    },
+    {
+      "rel": "via",
+      "href": "http://sitservicios.lapaz.bo/geoserver/ows",
+      "type": "text/html",
+      "title": "Servicio de origen"
+    },
+    {
+      "rel": "pmtiles",
+      "href": "https://archive.org/download/geodatosbolivia_lapaz_sit_sit_hidrantes/dataset.pmtiles",
+      "type": "application/vnd.pmtiles",
+      "pmtiles:layers": [
+        "dataset"
+      ]
+    }
+  ]
+}
