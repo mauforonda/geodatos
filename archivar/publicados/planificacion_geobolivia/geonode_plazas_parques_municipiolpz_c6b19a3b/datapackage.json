@@ -1,0 +1,112 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geobolivia_geonode_plazas_parques_municipiolpz_c6b19a3b",
+  "title": "Plazas y Parques en la Ciudad de La Paz (2019)",
+  "description": "Localización de plazas y parques ubicadas en la ciudad de La Paz, información obtenida del Gobierno Autónomo Municipal de La Paz a julio 2019.",
+  "sources": [
+    {
+      "title": "Nueva plataforma GeoBolivia",
+      "path": "https://geonode.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geobolivia_geonode_plazas_parques_municipiolpz_c6b19a3b/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 18424,
+      "hash": "sha256:b931b3c55b03ed133ebddfd14fba86f112368c756b9460c0fc5a316e170de625",
+      "schema": {
+        "fields": [
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 270
+            }
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 270
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0,
+              "maximum": 269
+            }
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "example": "De Los Duendes"
+          },
+          {
+            "name": "zona",
+            "type": "string",
+            "example": "Isla Verde"
+          },
+          {
+            "name": "idtipo",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 2
+            }
+          },
+          {
+            "name": "tipo",
+            "type": "string",
+            "example": "Parque",
+            "categories": [
+              "Plaza",
+              "Parque"
+            ]
+          },
+          {
+            "name": "distrito",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 24
+            }
+          },
+          {
+            "name": "fechaactua",
+            "type": "datetime",
+            "constraints": {
+              "minimum": "2016-06-02T16:59:13.053000",
+              "maximum": "2018-09-11T18:50:18.040000"
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
