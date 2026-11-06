@@ -1,0 +1,140 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_atractivos_turisticos2012",
+  "title": "Mapa de atractivos turísticos de Bolivia_ 2012",
+  "description": "Este mapa presenta la distribución espacial de los atractivos turísticos: elementos naturales, culturales o productos antropológicos, de gran incidencia en el proceso de decisión del turista. El conjunto de atractivos, incluye a su vez una descripción del destino, localización y una serie de recomendaciones que permitan disfrutar al máximo de los atractivos incluidos en el programa de gestión territorial turístico “Destino Bolivia” que viene incentivando el Viceministerio de Turismo en el 2012.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_atractivos_turisticos2012/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 20866,
+      "hash": "sha256:0691105ae2415f04aa98ccd10f9bfda18b40f011a64a065a793ec71f861eb393",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "atractivos_turisticos2012.141"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 173
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "atractivos_turisticos2012.141"
+          },
+          {
+            "name": "id_atracti",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 139,
+              "maximum": 448
+            }
+          },
+          {
+            "name": "id_municip",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 34,
+              "maximum": 87
+            }
+          },
+          {
+            "name": "id_tipoatr",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 4,
+              "maximum": 117
+            }
+          },
+          {
+            "name": "lat",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -22.828244,
+              "maximum": -11.017931
+            }
+          },
+          {
+            "name": "lon",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -69.173069,
+              "maximum": -63.181475
+            }
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Pueblo Quemado"
+          },
+          {
+            "name": "tipo_atrac",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Patrimonio y manifestaciones culturales",
+            "categories": [
+              "Patrimonio y manifestaciones culturales",
+              "Sitios naturales",
+              "Obras arquitectonicas y civiles"
+            ]
+          },
+          {
+            "name": "localizaci",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Pueblo de  San Pedro de Quemes"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
