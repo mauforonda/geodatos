@@ -1,0 +1,121 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mhe_geoportal_geonode_mt_minired",
+  "title": "MT_Minired",
+  "sources": [
+    {
+      "title": "Geoportal del Viceministerio de Electricidad y Energías Renovables",
+      "path": "https://geoportal.mhe.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mhe_geoportal_geonode_mt_minired/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 6618,
+      "hash": "sha256:90c386804ce43596c935cd3db59de1d4b19ebe043b104a7d55979a3e07e895bd",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "fid_1",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 18
+            }
+          },
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 18
+            }
+          },
+          {
+            "name": "TipoCond",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "ACSR2-2",
+            "categories": [
+              "ACSR2-2"
+            ]
+          },
+          {
+            "name": "Long",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0.639,
+              "maximum": 5.566
+            }
+          },
+          {
+            "name": "Amperios",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.1,
+              "maximum": 1.1
+            }
+          },
+          {
+            "name": "Ratio_pu",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 0.01
+            }
+          },
+          {
+            "name": "Flujo_kVA",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 4.72,
+              "maximum": 49.42
+            }
+          },
+          {
+            "name": "System",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "COCHABAMBA_llano_ug_99",
+            "categories": [
+              "COCHABAMBA_llano_ug_99",
+              "SANTACRUZ_llano_ug_560",
+              "PANDO_llano_ug_84",
+              "PANDO_llano_ug_86",
+              "BENI_llano_ug_84",
+              "BENI_llano_ug_89"
+            ]
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
