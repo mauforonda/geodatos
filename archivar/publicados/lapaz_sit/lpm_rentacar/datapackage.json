@@ -1,0 +1,149 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_lpm_rentacar",
+  "title": "Rent A-Car",
+  "description": "Agencia La Paz Maravillosa, Rent A-Car",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz",
+      "path": "http://sitservicios.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_lpm_rentacar/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 6175,
+      "hash": "sha256:2a3c790dbe58cd1c838e75d517b2c48b535aa92a67ff38827918cbd406a01713",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "rentacar.11"
+          },
+          {
+            "name": "Nombre",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Petita Rent a Car - Jeeping Bolivia"
+          },
+          {
+            "name": "Zona",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Sopocachi Alto"
+          },
+          {
+            "name": "Direccion",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "c. Valentín Abecia Nº 2031"
+          },
+          {
+            "name": "Telefono",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "2420329"
+          },
+          {
+            "name": "Celular",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "72204551"
+          },
+          {
+            "name": "Email",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "info@rentacarpetita.com"
+          },
+          {
+            "name": "PaginaWeb",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "www.rentacarpetita.com"
+          },
+          {
+            "name": "distrito",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 2
+            }
+          },
+          {
+            "name": "owner",
+            "type": "string",
+            "example": "jeanine.blanco",
+            "categories": [
+              "jeanine.blanco"
+            ]
+          },
+          {
+            "name": "usuario",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "jeanine.blanco",
+            "categories": [
+              "jeanine.blanco"
+            ]
+          },
+          {
+            "name": "fechaActual",
+            "type": "datetime",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": "2019-12-13T16:58:17.273000+00:00",
+              "maximum": "2019-12-27T20:22:40.150000+00:00"
+            }
+          },
+          {
+            "name": "observaciones",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Pagina web es del Dpto. de Santa Cruz\nLa direccion de las oficinas de Petita Rent a Car - Jeeping Bo"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point. Filas sin geometría: 2."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
