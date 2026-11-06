@@ -1,0 +1,74 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_ssem_sit_sit_paradaspumakatari2021",
+  "title": "sit_paradaspumakatari2021",
+  "sources": [
+    {
+      "title": "Servicio de Seguimiento Estratégico Municipal del Gobierno Autónomo Municipal de La Paz",
+      "path": "https://ssem.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_ssem_sit_sit_paradaspumakatari2021/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 19150,
+      "hash": "sha256:894feb5b00ff9305334ff14bcc2dcf72ff42f5ab44f3e4a1f47099f40c7fa6d9",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "sit_paradaspumakatari2021.387"
+          },
+          {
+            "name": "direccion",
+            "type": "string",
+            "example": "Final Buenos Aires"
+          },
+          {
+            "name": "ruta",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "PUC - INCA LLOJETA",
+            "categories": [
+              "RUTA INTEGRADORA",
+              "ACHUMANI - SAN PEDRO",
+              "SAN PEDRO - ACHUMANI",
+              "PUC - IRPAVI II",
+              "IRPAVI II - PUC",
+              "SIETE LAGUNAS - ALONZO DE MENDOZA",
+              "CHASQUIPAMPA - PUC",
+              "INCA LLOJETA - PUC",
+              "PUC - INCA LLOJETA",
+              "PUC - CHASQUIPAMPA",
+              "ALONZO DE MENDOZA - SIETE LAGUNAS",
+              "PUC - VILLA SALOME",
+              "VILLA SALOME - PUC",
+              "Estación de Transferencia"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
