@@ -1,0 +1,140 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geobolivia_geonode_cguadalquivir_estsalud_4e2133f1",
+  "title": "Plan Director de la Cuenca Río Guadalquivir - Salud, Bolivia",
+  "description": "Muestra la ubicación de Centros de Salud ubicados en el área del Plan Director de la Cuenca del Río Guadalquivir. Diferencia entre postas de primer nivel, centros de segundo nivel y hospitales de tercer nivel. Dato del Viceministerio de Recursos Hídricos y Riego a mayo 2017.",
+  "sources": [
+    {
+      "title": "Nueva plataforma GeoBolivia",
+      "path": "https://geonode.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geobolivia_geonode_cguadalquivir_estsalud_4e2133f1/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 6043,
+      "hash": "sha256:3b55f3637548f9026f60ce328801ab34d7564e4c8804b8b2c6e2df45aedf9c69",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "cguadalquivir_estsalud_4e2133f1.25"
+          },
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 42
+            }
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 42
+            }
+          },
+          {
+            "name": "objectid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 42
+            }
+          },
+          {
+            "name": "tipo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "4",
+            "categories": [
+              "3",
+              "4",
+              "6",
+              "1",
+              "2"
+            ]
+          },
+          {
+            "name": "tipo_descr",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Centro de primer nivel",
+            "categories": [
+              "Centro de primer nivel",
+              "Centro de segundo nivel",
+              "Hospital de tercer nivel"
+            ]
+          },
+          {
+            "name": "nombre_est",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "P.S. REJARA"
+          },
+          {
+            "name": "lat",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -22.000428,
+              "maximum": -21.342
+            }
+          },
+          {
+            "name": "long",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -64.981583,
+              "maximum": -64.439
+            }
+          },
+          {
+            "name": "codigo_sni",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "600056"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
