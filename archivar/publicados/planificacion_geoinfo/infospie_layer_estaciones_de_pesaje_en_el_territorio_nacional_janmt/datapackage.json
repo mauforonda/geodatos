@@ -1,0 +1,150 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_estaciones_de_pesaje_en_el_territo_822d4ea902b2",
+  "title": "Estaciones de Pesaje en el Territorio Nacional",
+  "description": "El mapa presenta la distribución de las estaciones de pesaje a nivel nacional, detallando su estado actual y las observaciones correspondientes, según la información proporcionada por la Unidad de Control de Pesos y Dimensiones de la Dirección de Operaciones de Vías Bolivia.",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_estaciones_de_pesaje_en_el_territo_822d4ea902b2/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 7277,
+      "hash": "sha256:8517634d4a830deaad249cde9e0c17ca94e87eb8ded3a7ae27a3ca013e3d1fbe",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_estaciones_de_pesaje_en_el_territorio_nacional_janmt.7"
+          },
+          {
+            "name": "estacion",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "ESTACION DE PESAJE COLCHANI"
+          },
+          {
+            "name": "estado",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "ESTACIONES ACTUALES",
+            "categories": [
+              "ESTACIONES ACTUALES",
+              "NUEVOS PUESTOS DE CONTROL",
+              "ESTACIONES CON CIERRE"
+            ]
+          },
+          {
+            "name": "observacio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "ESTACION DE PESAJE DINÁMICO CON CONTROL EN UN SENTIDO"
+          },
+          {
+            "name": "ruta",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "RUTA 30",
+            "categories": [
+              "RUTA 4",
+              "RUTA 9",
+              "RUTA 1",
+              "RUTA 5",
+              "RUTA 14",
+              "RUTA 3",
+              "RUTA 30",
+              "RUTA 36",
+              "RUTA 6",
+              "RUTA 7",
+              "RUTA 8"
+            ]
+          },
+          {
+            "name": "coord_x",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": -68.827362258,
+              "maximum": -60.782673123
+            }
+          },
+          {
+            "name": "coord_y",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": -22.02392562,
+              "maximum": -14.453695435
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "POTOSI",
+            "categories": [
+              "SANTA CRUZ",
+              "POTOSI",
+              "COCHABAMBA",
+              "BENI",
+              "CHUQUISACA",
+              "LA PAZ",
+              "ORURO",
+              "TARIJA"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Antonio Quijarro"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Uyuni"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
