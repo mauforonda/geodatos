@@ -1,0 +1,105 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_sucursales_y_puntos_de_venta_de_emapa_bvugb",
+  "title": "Sucursales y Puntos de Venta  de EMAPA",
+  "description": "EL mapa muestra la ubicación de las sucursales y lugares de venta de productos en EMAPA a nivel nacional",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_sucursales_y_puntos_de_venta_de_emapa_bvugb/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 11170,
+      "hash": "sha256:1f229c97ad730c35d66ed26f4a7ff27d896aed52bda306a5a43c79bfb00dc02a",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_sucursales_y_puntos_de_venta__de_emapa_bvugb.6"
+          },
+          {
+            "name": "localidad",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Tarija"
+          },
+          {
+            "name": "sucursal",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Suc. 138 Tarija"
+          },
+          {
+            "name": "dirección",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Av. Circunvalación Esquina Calle Itau, Atención: lunes a domingo 08:00-16:00"
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "TARIJA",
+            "categories": [
+              "LA PAZ",
+              "COCHABAMBA",
+              "BENI",
+              "ORURO",
+              "TARIJA",
+              "CHUQUISACA",
+              "SANTA CRUZ",
+              "POTOSI",
+              "PANDO"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Cercado"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Tarija"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPoint."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
