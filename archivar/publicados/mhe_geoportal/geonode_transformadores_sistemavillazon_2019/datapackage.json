@@ -1,0 +1,105 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mhe_geoportal_geonode_transformadores_sistemavillazon_2019",
+  "title": "Transformadores_SistemaVillazon_2019",
+  "sources": [
+    {
+      "title": "Geoportal del Viceministerio de Electricidad y Energías Renovables",
+      "path": "https://geoportal.mhe.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mhe_geoportal_geonode_transformadores_sistemavillazon_2019/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 13002,
+      "hash": "sha256:3a9629e063e13b3011c75ab31274457ea98c69cddf37404688adaac0851803fa",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point. Filas sin geometría: 3."
+          },
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 225
+            }
+          },
+          {
+            "name": "SUBTIPO",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 2,
+              "maximum": 5
+            }
+          },
+          {
+            "name": "FUENTEALIM",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "",
+            "categories": [
+              "",
+              "Villazon C",
+              "Urbano",
+              "C",
+              "Central",
+              "24,9",
+              "A",
+              "Arce B",
+              "6,9",
+              "Arce A",
+              "Oeste"
+            ]
+          },
+          {
+            "name": "DIRECION",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "CALA HOYO"
+          },
+          {
+            "name": "POTENCIAKV",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 200
+            }
+          },
+          {
+            "name": "PROPIEDAD",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "S",
+            "categories": [
+              "S",
+              "P"
+            ]
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
