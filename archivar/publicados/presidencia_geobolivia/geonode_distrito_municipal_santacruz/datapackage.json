@@ -1,0 +1,128 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_distrito_municipal_santacruz",
+  "title": "Distritos Municipales de Santa Cruz de la Sierra Departamento de Santa Cruz, Bolivia",
+  "description": "El mapa muestra los límites referenciales de los distritos municipales de Santa Cruz de la Sierra del departamento de Santa Cruz, se observa los 16 distritos urbanos y rurales.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_distrito_municipal_santacruz/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 21451,
+      "hash": "sha256:1f59dc3ca0ceaf8ae426a9b43a2c7f2c32d9b0d7cf42b201b1ed603a3a44b884",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "distrito_municipal_santacruz.5"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 16
+            }
+          },
+          {
+            "name": "provincia",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Andres Ibañez",
+            "categories": [
+              "Andres Ibañez"
+            ]
+          },
+          {
+            "name": "municipio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Capital (Santa Cruz de la Sierra)",
+            "categories": [
+              "Capital (Santa Cruz de la Sierra)"
+            ]
+          },
+          {
+            "name": "nombreciud",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Santa Cruz de la Sierra",
+            "categories": [
+              "Santa Cruz de la Sierra"
+            ]
+          },
+          {
+            "name": "distrito",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "016"
+          },
+          {
+            "name": "poblacion",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "38815"
+          },
+          {
+            "name": "viviendas",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 6200,
+              "maximum": 53235
+            }
+          },
+          {
+            "name": "departamen",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Santa Cruz",
+            "categories": [
+              "Santa Cruz"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
