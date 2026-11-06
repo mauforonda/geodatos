@@ -1,0 +1,123 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geobolivia_geonode_sucursales_emapa_90a8da2f",
+  "title": "Localización de Sucursales y Supermercados EMAPA (2017)",
+  "description": "Información geoespacial de las sucursales y supermercados de la Empresa de Apoyo a la Producción de Alimentos (EMAPA), estos espacios son para la comercialización de los productos nacionales y promocionar la industria nacional evitando la especulación de precios. Elaborado por EMAPA y actualizado a marzo del 2017.",
+  "sources": [
+    {
+      "title": "Nueva plataforma GeoBolivia",
+      "path": "https://geonode.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geobolivia_geonode_sucursales_emapa_90a8da2f/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 6600,
+      "hash": "sha256:a3bebe0108bea70e5394094429d8fb0e490fc7afb7a5659b2c56d79356bdd141",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "sucursales_emapa_90a8da2f.33"
+          },
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 40
+            }
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 40
+            }
+          },
+          {
+            "name": "regional",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "POTOSI",
+            "categories": [
+              "BENI",
+              "EL ALTO",
+              "LA PAZ",
+              "COCHABAMBA",
+              "ORURO",
+              "TARIJA",
+              "CHUQUISACA",
+              "POTOSI",
+              "SANTA CRUZ"
+            ]
+          },
+          {
+            "name": "punto_de_v",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "SUCURSAL 77"
+          },
+          {
+            "name": "f3",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "AVENIDA TUMUSLA N° 11 ZONA SAN ROQUE"
+          },
+          {
+            "name": "x",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": -68.20977,
+              "maximum": -63.205881
+            }
+          },
+          {
+            "name": "y",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": -22.003679,
+              "maximum": -10.815912
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
