@@ -1,0 +1,126 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_alt_patrimonio_patrimonio_textos",
+  "title": "Patrimos texto o anotaciones",
+  "description": "Patrimonio declarado Informe GAMLP SMCT DFPDCP UPAC No 937/2024.",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)",
+      "path": "http://sitservicios.lapaz.bo/ows38.jsp"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_patrimonio_patrimonio_textos/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 15294,
+      "hash": "sha256:dde738be32ede1c6849944b711b5549ce3c53ce8b50ffb58bc7545d01ed9c5e4",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "patrimonio_textos.139"
+          },
+          {
+            "name": "fid",
+            "type": "number",
+            "constraints": {
+              "minimum": 1.0,
+              "maximum": 299.0
+            }
+          },
+          {
+            "name": "COLOR",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 256,
+              "maximum": 256
+            }
+          },
+          {
+            "name": "LAYER",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "CE_DSM_TEXTO",
+            "categories": [
+              "CE_DSM_TEXTO",
+              "CE_dIVISI_N dE sECTORES",
+              "NCALLES",
+              "CE_PATRIMONIAL"
+            ]
+          },
+          {
+            "name": "ROTATION",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 6.248612506287876
+            }
+          },
+          {
+            "name": "STYLE",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Standard",
+            "categories": [
+              "Standard",
+              "Arial (bold)",
+              "ROMANS",
+              "Cod_distri"
+            ]
+          },
+          {
+            "name": "TEXTSTRING",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "VIA S"
+          },
+          {
+            "name": "TEXT_SIZE",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.341230150099629,
+              "maximum": 7.0
+            }
+          },
+          {
+            "name": "TEXT_ANGLE",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 358.0191244229589
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
