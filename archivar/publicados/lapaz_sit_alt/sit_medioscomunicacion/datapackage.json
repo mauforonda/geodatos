@@ -1,0 +1,183 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_alt_sit_medioscomunicacion",
+  "title": "Medios de Comunicacion",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)",
+      "path": "http://sitservicios.lapaz.bo/ows38.jsp"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_sit_medioscomunicacion/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 8538,
+      "hash": "sha256:044341a0a1219046217042b457e3e682d04cc1664929f61033c52e7b670a3ec7",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "medioscomunicacion.39"
+          },
+          {
+            "name": "Nombre",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Stereo 97"
+          },
+          {
+            "name": "Direccion",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Av. Héctor Ormachea #5671"
+          },
+          {
+            "name": "Zona",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Obrajes",
+            "categories": [
+              "Central",
+              "Miraflores",
+              "Sopocachi",
+              "Obrajes",
+              "Auquisamaña",
+              "Santa Barbara",
+              "Zona Norte",
+              "Achumani",
+              "Belén",
+              "Cota Cota",
+              "Kantutani",
+              "San Jorge",
+              "San Miguel",
+              "Zona Central"
+            ]
+          },
+          {
+            "name": "Telefono",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "2783607"
+          },
+          {
+            "name": "IdTipo",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 4
+            }
+          },
+          {
+            "name": "Tipo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Radio",
+            "categories": [
+              "Radio",
+              "Televisión",
+              "Prensa Escrita",
+              "Medio Digital"
+            ]
+          },
+          {
+            "name": "PaginaWeb",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "www.stereo97.net"
+          },
+          {
+            "name": "Macrodistrito",
+            "type": "integer"
+          },
+          {
+            "name": "idMacrodistrito",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 7
+            }
+          },
+          {
+            "name": "distrito",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 21
+            }
+          },
+          {
+            "name": "owner",
+            "type": "integer"
+          },
+          {
+            "name": "usuario",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "clara.revollo",
+            "categories": [
+              "clara.revollo"
+            ]
+          },
+          {
+            "name": "fechaActual",
+            "type": "datetime",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": "2016-08-11T14:20:03.680000+00:00",
+              "maximum": "2016-08-16T14:39:59.380000+00:00"
+            }
+          },
+          {
+            "name": "observaciones",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "",
+            "categories": [
+              ""
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
