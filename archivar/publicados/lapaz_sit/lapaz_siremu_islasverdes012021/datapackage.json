@@ -1,0 +1,111 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_lapaz_siremu_islasverdes012021",
+  "title": "islasverdes012021",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz",
+      "path": "http://sitservicios.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_lapaz_siremu_islasverdes012021/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 5300,
+      "hash": "sha256:ee9bdee1fdcf35e29a7e27b3686e4b668cbcb229f3b420698ad9ce84d78b9328",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "siremu_islasverdes012021.98"
+          },
+          {
+            "name": "codigo",
+            "type": "string",
+            "example": "IV-21-06"
+          },
+          {
+            "name": "ubicacion",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Plaza Cueto Vidaurre"
+          },
+          {
+            "name": "macro",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Sur",
+            "categories": [
+              "Sur",
+              "Centro",
+              "Cotahuma",
+              "Max Paredes",
+              "Periferica",
+              "Mallasa",
+              "San Antonio"
+            ]
+          },
+          {
+            "name": "distrito",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Distrito 21",
+            "categories": [
+              "Distrito 18",
+              "Distrito 2",
+              "Distrito 21",
+              "Distrito 4",
+              "Distrito 1",
+              "Distrito 10",
+              "Distrito 11",
+              "Distrito 13",
+              "Distrito 20",
+              "Distrito 3",
+              "Distrito 16",
+              "Distrito 17",
+              "Distrito 19",
+              "Distrito 6",
+              "Distrito 7",
+              "Distrito 8",
+              "Distrito 9"
+            ]
+          },
+          {
+            "name": "zona",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Obrajes"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
