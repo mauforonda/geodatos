@@ -1,0 +1,220 @@
+{
+  "type": "Collection",
+  "id": "geodatosbolivia_lapaz_sit_alt_sit_supermercados",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json",
+    "https://stac-extensions.github.io/vector/v0.1.0/schema.json",
+    "https://stac-extensions.github.io/projection/v2.0.0/schema.json",
+    "https://stac-extensions.github.io/file/v2.1.0/schema.json",
+    "https://stac-extensions.github.io/web-map-links/v1.3.0/schema.json"
+  ],
+  "title": "SuperMercados",
+  "description": "SuperMercados",
+  "license": "other",
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -68.1538581,
+          -16.54577693408561,
+          -68.05731838953663,
+          -16.471364700000024
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "providers": [
+    {
+      "name": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)",
+      "roles": [
+        "producer"
+      ],
+      "url": "http://sitservicios.lapaz.bo/ows38.jsp"
+    },
+    {
+      "name": "Internet Archive",
+      "roles": [
+        "host"
+      ],
+      "url": "https://archive.org/details/geodatosbolivia_lapaz_sit_alt_sit_supermercados"
+    }
+  ],
+  "table:primary_geometry": "geometry",
+  "table:row_count": 61,
+  "table:columns": [
+    {
+      "name": "id",
+      "type": "string"
+    },
+    {
+      "name": "Nombre",
+      "type": "string"
+    },
+    {
+      "name": "Direccion",
+      "type": "string"
+    },
+    {
+      "name": "Zona",
+      "type": "string"
+    },
+    {
+      "name": "Tipo",
+      "type": "string"
+    },
+    {
+      "name": "ActividadEconomica",
+      "type": "string"
+    },
+    {
+      "name": "MacroDistrito",
+      "type": "string"
+    },
+    {
+      "name": "DistritoVarchar",
+      "type": "string"
+    },
+    {
+      "name": "distrito",
+      "type": "int32"
+    },
+    {
+      "name": "owner",
+      "type": "string"
+    },
+    {
+      "name": "usuario",
+      "type": "string"
+    },
+    {
+      "name": "fechaActual",
+      "type": "timestamp[us, tz=UTC]"
+    },
+    {
+      "name": "observaciones",
+      "type": "string"
+    },
+    {
+      "name": "geometry",
+      "type": "binary",
+      "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+    }
+  ],
+  "summaries": {
+    "vector:geometry_types": [
+      "Point"
+    ]
+  },
+  "assets": {
+    "data": {
+      "href": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_sit_supermercados/dataset.geoparquet",
+      "type": "application/vnd.apache.parquet",
+      "title": "GeoParquet",
+      "roles": [
+        "data"
+      ],
+      "proj:code": "EPSG:4326",
+      "file:size": 8424,
+      "file:checksum": "12204721011cd508853446d1c6e7b7d97f21cb911179e0d0cfa80434c5ebdfca7faa"
+    },
+    "datapackage": {
+      "href": "./datapackage.json",
+      "type": "application/json",
+      "title": "Data Package: columnas, tipos y categorías",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "pmtiles": {
+      "href": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_sit_supermercados/dataset.pmtiles",
+      "type": "application/vnd.pmtiles",
+      "title": "Teselas vectoriales (PMTiles)",
+      "roles": [
+        "visual"
+      ],
+      "file:size": 21703,
+      "file:checksum": "1220ce738a9d698541fa4f9cc51faf95e4733263ce11c8fee5940fa87fddae7affbe"
+    }
+  },
+  "pmtiles:min_zoom": 12,
+  "pmtiles:max_zoom": 14,
+  "pmtiles:tile_type": "mvt",
+  "pmtiles:center": [
+    -68.1055882,
+    -16.5085708,
+    13
+  ],
+  "pmtiles:properties": [
+    {
+      "nombre": "Tipo",
+      "tipo": "string",
+      "categorias": [
+        "Supermercado",
+        "Micromarket"
+      ]
+    },
+    {
+      "nombre": "MacroDistrito",
+      "tipo": "string",
+      "categorias": [
+        "SUR",
+        "CENTRO",
+        "COTAHUMA",
+        "SAN ANTONIO",
+        "MAX PAREDES",
+        "PERIFERICA"
+      ]
+    },
+    {
+      "nombre": "owner",
+      "tipo": "string",
+      "categorias": [
+        "gustavo.nao",
+        "clara.revollo"
+      ]
+    },
+    {
+      "nombre": "distrito",
+      "tipo": "number",
+      "minimo": 1.0,
+      "maximo": 21.0
+    }
+  ],
+  "links": [
+    {
+      "rel": "root",
+      "href": "../../../catalog.json",
+      "type": "application/json",
+      "title": "Datos geográficos de Bolivia"
+    },
+    {
+      "rel": "parent",
+      "href": "../catalog.json",
+      "type": "application/json",
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)"
+    },
+    {
+      "rel": "via",
+      "href": "http://sitservicios.lapaz.bo/ows38.jsp",
+      "type": "text/html",
+      "title": "Servicio de origen"
+    },
+    {
+      "rel": "pmtiles",
+      "href": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_sit_supermercados/dataset.pmtiles",
+      "type": "application/vnd.pmtiles",
+      "pmtiles:layers": [
+        "dataset"
+      ]
+    }
+  ]
+}
