@@ -1,0 +1,63 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_cpoopo_acuifero_challapampa",
+  "title": "Plan Director Cuenca Lago Poopó - Perímetro Acuífero Challapampa_ Bolivia",
+  "description": "El mapa muestra las georreferenciación del área del acuífero de Challapampa de la Cuenca del Lago Poopó. Dato del Viceministerio de Recursos Hídricos y Riego a septiembre 2016.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_cpoopo_acuifero_challapampa/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 13255,
+      "hash": "sha256:f3cdab8de2c3b4a025b45dcc1976850c15062a878ce5caf6aca89a4a953397fd",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 1
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 1
+            }
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "example": "Acuifero de Challapampa"
+          },
+          {
+            "name": "caracteris",
+            "type": "string",
+            "example": "Campo de Pozos"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
