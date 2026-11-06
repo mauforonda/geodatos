@@ -1,0 +1,140 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_plantas_engarrafadoras_de_glp_3a105",
+  "title": "Plantas Engarrafadoras de GLP",
+  "description": "El mapa muestra la ubicación de las plantas engarrafadoras de GLP distribuidas en todo el territorio nacional, de acuerdo con información de YPFB. La información presentada permite identificar la cobertura territorial y apoyar la planificación logística para garantizar el abastecimiento energético a la población.",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_plantas_engarrafadoras_de_glp_3a105/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 6347,
+      "hash": "sha256:740061d6e80820f793fd2c536edccf059eff0b3f4c55aee4ae523b0ad5e2f727",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_plantas_engarrafadoras_de_glp_3a105.9"
+          },
+          {
+            "name": "num",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 28
+            }
+          },
+          {
+            "name": "planta",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "UYUNI"
+          },
+          {
+            "name": "direccion",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "C. JOSE EDUARDO PEREZ, AV. FERROVIARIA"
+          },
+          {
+            "name": "y_coordena",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": -22.727698,
+              "maximum": -10.808324
+            }
+          },
+          {
+            "name": "x_coordena",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": -68.75532,
+              "maximum": -57.792467
+            }
+          },
+          {
+            "name": "leyenda",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Plantas Engarrafadoras GLP",
+            "categories": [
+              "Plantas Engarrafadoras GLP"
+            ]
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "POTOSI",
+            "categories": [
+              "POTOSI",
+              "SANTA CRUZ",
+              "CHUQUISACA",
+              "TARIJA",
+              "LA PAZ",
+              "BENI",
+              "COCHABAMBA",
+              "ORURO",
+              "PANDO"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Antonio Quijarro"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Uyuni"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
