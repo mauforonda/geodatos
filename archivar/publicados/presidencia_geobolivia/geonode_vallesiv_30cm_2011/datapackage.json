@@ -1,0 +1,98 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_vallesiv_30cm_2011",
+  "title": "Mosaico de fotografias aereas Region Valles IV, 2011",
+  "description": "Cobertura de fotografías aéreas de la región de los valles del Departamento de la Paz, correspondiente a las Provincias Camacho, Muñecas, Omasuyos, Nor Yungas, Sur Yungas, Los Andes, Murillo, Loayza e Inquisivi. Capturadas en el año 2011 por vuelo aerofotogramétrico (Region Valles IV) con una resolución espacial de 30 centímetros. Elaborado por el Servicio Nacional de Aerofotogrametría (SNA), única entidad autorizada para realizar este tipo de trabajo aéreo.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_vallesiv_30cm_2011/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 78494,
+      "hash": "sha256:0fc429179ea3f9b5d3fd21d939f0e032ee877fd11900a406c6ae7d198a012934",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "vallesiv_30cm_2011.394"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 1237
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "vallesIV_30cm_2011.394"
+          },
+          {
+            "name": "text",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "889"
+          },
+          {
+            "name": "numero",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 1472
+            }
+          },
+          {
+            "name": "bloque",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "4",
+            "categories": [
+              "1",
+              "4",
+              "3",
+              "2"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
