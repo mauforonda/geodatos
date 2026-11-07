@@ -1,0 +1,72 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_ductos",
+  "title": "Plan Director Cuenca Rio Grande - Ductos",
+  "description": "PDCRG (Plan Director de la Cuenca Rio Grande). Muestra la distribución espacial de ductos en el marco del Plan Director de la cuenca Río Grande",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_ductos/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 59708,
+      "hash": "sha256:f03b4ab5df5871054eca0da3bd52f2986d026dff44e417e65ca44196a6358299",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "ENTITY",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "",
+            "categories": [
+              "",
+              "Line String",
+              "Complex Chain",
+              "Line"
+            ]
+          },
+          {
+            "name": "TIPODUCTO",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Poliducto",
+            "categories": [
+              "Oleoducto",
+              "Gasoducto",
+              "Poliducto"
+            ]
+          },
+          {
+            "name": "CODIGO",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "PSP"
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
