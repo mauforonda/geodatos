@@ -1,0 +1,88 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mhe_geoportal_geonode_a_02_sfv_individuales_2025_simpl0",
+  "title": "a__02_SFV_Individuales_2025_simpl0",
+  "sources": [
+    {
+      "title": "Geoportal del Viceministerio de Electricidad y Energías Renovables",
+      "path": "https://geoportal.mhe.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mhe_geoportal_geonode_a_02_sfv_individuales_2025_simpl0/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 57012,
+      "hash": "sha256:fddac367b0c96285d879fe9677d080f0be5a151847114d3c06fecdc9fbfd3cc4",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 1073
+            }
+          },
+          {
+            "name": "OBJECTID",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 5970,
+              "maximum": 18176
+            }
+          },
+          {
+            "name": "Comunidad",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "bella flor"
+          },
+          {
+            "name": "HR",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "2025-04104"
+          },
+          {
+            "name": "INFORME",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "MHE-VMEER-DGER-INF/2025-0127"
+          },
+          {
+            "name": "Solicitude",
+            "type": "number",
+            "constraints": {
+              "minimum": 1.0,
+              "maximum": 347.0
+            }
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
