@@ -1,0 +1,106 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_tipo_de_suelos_en_el_municipio_de_01759c44d2cb",
+  "title": "Tipo de suelos en el municipio de Cochabamba - PTDI",
+  "description": "El mapa muestra el tipo de suelos presente en el Municipio de Cochabamba.",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_tipo_de_suelos_en_el_municipio_de_01759c44d2cb/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 28854,
+      "hash": "sha256:5becbe06a3e1e3b7f296c966a8c60f8bd4a191249461cfb57972d22c50b62d9e",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_tipo_de_suelos_en_el_municipio_de_cochabamba__ptd_hqlnm.1"
+          },
+          {
+            "name": "suelos",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Inceptisoles",
+            "categories": [
+              "Inceptisoles",
+              "Entisoles",
+              "Molisoles",
+              "Alfisoles",
+              "Aridisoles"
+            ]
+          },
+          {
+            "name": "sup_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 51.317,
+              "maximum": 8249.709
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "COCHABAMBA",
+            "categories": [
+              "COCHABAMBA"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Cercado",
+            "categories": [
+              "Cercado",
+              "Chapare"
+            ]
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Cochabamba",
+            "categories": [
+              "Cochabamba",
+              "Sacaba"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
