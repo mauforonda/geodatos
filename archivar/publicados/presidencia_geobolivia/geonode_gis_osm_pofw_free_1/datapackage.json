@@ -1,0 +1,99 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_gis_osm_pofw_free_1",
+  "title": "Centros Religiosos OpenStreetMap",
+  "description": "Esta capa obtenida de la plataforma OpenStreetMap, presenta los centros religiosos, iglesias, templos entre otros dentro de sus distintas categorías a nivel nacional.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_gis_osm_pofw_free_1/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 103040,
+      "hash": "sha256:d596baf2de6bdf2fb7395a94ea9509c3eb3f8bff7235ef17500944ebf7b1c25f",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "gis_osm_pofw_free_1.1721"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 1752
+            }
+          },
+          {
+            "name": "osm_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "11015030601"
+          },
+          {
+            "name": "code",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 3100,
+              "maximum": 3500
+            }
+          },
+          {
+            "name": "fclass",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "christian_catholic",
+            "categories": [
+              "christian",
+              "christian_catholic",
+              "christian_evangelical",
+              "christian_protestant",
+              "christian_methodist",
+              "hindu",
+              "christian_lutheran",
+              "jewish",
+              "buddhist",
+              "muslim"
+            ]
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "example": "Capilla San Juan"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
