@@ -1,0 +1,65 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_cultivos_cana_de_azucar_en_la_paz_s5kwj",
+  "title": "Cultivos caña de azúcar en La Paz",
+  "description": "El mapa muestra las estimaciones de superficie de cultivos priorizados de caña de azúcar de La Paz  a través de un análisis multicriterio, elaborado por el Observatorio Agroambiental y Productivo - OAP",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_cultivos_cana_de_azucar_en_la_paz_s5kwj/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 37602,
+      "hash": "sha256:9b7f919ca3571809a5245bfa17c8e4876ab8756bea543bcc81ccfc4ae9d021b7",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "example": "layer_cultivos_cana_de_azucar_en_la_paz_s5kwj.1"
+          },
+          {
+            "name": "sup_ha",
+            "type": "integer",
+            "constraints": {
+              "minimum": 2977,
+              "maximum": 2977
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "example": "LA PAZ"
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "example": "Abel Iturralde"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "example": "San Buenaventura"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
