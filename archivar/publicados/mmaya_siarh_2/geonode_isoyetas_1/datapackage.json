@@ -1,0 +1,94 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_isoyetas_1",
+  "title": "Plan Director Cuenca Río Rocha – Isoyetas",
+  "description": "PDCRR (Plan Director de la Cuenca Río Rocha). Muestra las lineas Isoyetas y la información relevante, en el marco del Plan Director de la Cuenca Río Rocha.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_isoyetas_1/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 29368,
+      "hash": "sha256:47210e2ebb951fb69f2bc7b9548661d0f0ed433a7bdd9acdf64c023ab6e6b0a9",
+      "schema": {
+        "fields": [
+          {
+            "name": "OBJECTID",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 65
+            }
+          },
+          {
+            "name": "FID_ISOYET",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 2,
+              "maximum": 76
+            }
+          },
+          {
+            "name": "ISOYE",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 350,
+              "maximum": 1250
+            }
+          },
+          {
+            "name": "FID_limite",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 1
+            }
+          },
+          {
+            "name": "Id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 0
+            }
+          },
+          {
+            "name": "Shape_Leng",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 146.972981658,
+              "maximum": 122373.585804
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
