@@ -1,0 +1,201 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_lpm_empresasturismo",
+  "title": "Empresas de Turismo",
+  "description": "Agencia La Paz Maravillosa, Empresas de Turismo",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz",
+      "path": "http://sitservicios.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_lpm_empresasturismo/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 24864,
+      "hash": "sha256:78bc00171d5615bb49c159a4be7923fedfd2b1233784a37874836bbcb258c26a",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "empresasturismo.50"
+          },
+          {
+            "name": "Nombre",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Eba Transtur"
+          },
+          {
+            "name": "Zona",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Cristo Rey",
+            "categories": [
+              "Rosario",
+              "Centro",
+              "Sopocachi",
+              "Central",
+              "Sur",
+              "Miraflores",
+              "San Pedro",
+              "Calacoto",
+              "Obrajes",
+              "San Miguel",
+              "Norte",
+              "San Jorge",
+              "Sur-Calacoto",
+              "Sur-San Miguel",
+              "",
+              "Cristo Rey",
+              "Mallasa",
+              "Sur - Calacoto",
+              "Sur - San Miguel",
+              "Sur-Bella Vista"
+            ]
+          },
+          {
+            "name": "Direccion",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "c. Carlos Medinacelli Nº 1120"
+          },
+          {
+            "name": "Telefono",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "2422430   2422426"
+          },
+          {
+            "name": "Celular",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "71968471"
+          },
+          {
+            "name": "PaginaWeb",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "www.besttourinbolivia.com"
+          },
+          {
+            "name": "Email",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "ebatrans@entelnet.bo"
+          },
+          {
+            "name": "Fuente",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "GBT",
+            "categories": [
+              "",
+              "GBT",
+              "pag",
+              "Q",
+              "Gob",
+              "Amarillas",
+              "facebook",
+              "pag."
+            ]
+          },
+          {
+            "name": "IdTipo",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 3
+            }
+          },
+          {
+            "name": "distrito",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 6
+            }
+          },
+          {
+            "name": "owner",
+            "type": "integer"
+          },
+          {
+            "name": "usuario",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "jeanine.blanco",
+            "categories": [
+              "jeanine.blanco",
+              "nhuanquiri"
+            ]
+          },
+          {
+            "name": "fechaActual",
+            "type": "datetime",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": "2017-06-03T15:14:15.727000+00:00",
+              "maximum": "2019-12-27T15:55:15.817000+00:00"
+            }
+          },
+          {
+            "name": "observaciones",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "",
+            "categories": [
+              "",
+              "Esta agencia no se encuentra registrada en la base de datos.",
+              "No existe - no se encuentra",
+              "No se encuentra - no existe",
+              "Sin nombre - no se encuentra"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point. Filas sin geometría: 3."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
