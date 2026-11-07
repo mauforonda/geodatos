@@ -1,0 +1,156 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_culturas_lugaressimbolicos",
+  "title": "Lugares Simbolicos",
+  "description": "Mapa Cultural, Lugares simbolicos, sagrados, miradores, SMC",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz",
+      "path": "http://sitservicios.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_culturas_lugaressimbolicos/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 13939,
+      "hash": "sha256:ca33fc557018bcb3c79ca32a04ba56831bf67239d40e3f0462dfb3368f599ee7",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "lugaresSimbolicos.60"
+          },
+          {
+            "name": "IdSubcategoria",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 2,
+              "maximum": 7
+            }
+          },
+          {
+            "name": "NombreCentro",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "SAMI ALPACOMA"
+          },
+          {
+            "name": "Descripcion",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Es una Wak'a de energías positivas, muchos Amawt'as, Yatiris del la ciudad de La Paz y el Alto Acude"
+          },
+          {
+            "name": "Direccion",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Zona Alpacoma Av. Marcelo Quiroga Santa Cruz Entra por la ciudad Satélite"
+          },
+          {
+            "name": "Macrodistrito",
+            "type": "string",
+            "example": "Macrodistrito Max Paredes",
+            "categories": [
+              "macro distrito de zongo ",
+              " macro distrito de Hampaturi,",
+              " macro distrito de San Antonio",
+              "Macrodistrito Cotahuma",
+              "Macrodistrito Max Paredes",
+              "Macrodistrito de cotahuma",
+              "Pertenece al macro distrito de la periferica",
+              "macro distrito Periferica",
+              "macro distrito de Hampaturi",
+              "macro distrito de Mallasa",
+              "macro distrito periferica",
+              "miraflores centro,",
+              "pertenece al macro distrito san Antonio"
+            ]
+          },
+          {
+            "name": "idMacrodistrito",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 9
+            }
+          },
+          {
+            "name": "Distrito",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 23
+            }
+          },
+          {
+            "name": "owner",
+            "type": "integer"
+          },
+          {
+            "name": "usuario",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "clara.revollo",
+            "categories": [
+              "clara.revollo"
+            ]
+          },
+          {
+            "name": "fechaActual",
+            "type": "datetime",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": "2018-01-19T14:44:41.997000+00:00",
+              "maximum": "2018-02-20T19:34:34.687000+00:00"
+            }
+          },
+          {
+            "name": "observaciones",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "",
+            "categories": [
+              ""
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
