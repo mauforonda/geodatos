@@ -1,0 +1,101 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_areas_verdes_y_de_preservaci_ulrg7",
+  "title": "Áreas Verdes y de Preservación Ecológica del Municipio de Montero - PTDI",
+  "description": "El mapa presenta las áreas verdes del sector urbano y la zona de preservación ecológica del municipio de Montero, según el PTDI 2021 - 2025.",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_areas_verdes_y_de_preservaci_ulrg7/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 63566,
+      "hash": "sha256:ae9ef61b7656f554e18bf98877cee20cff7ff99dec70daa4d49d0681b7926ec2",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_areas_verdes_y_de_preservaci_ulrg7.21"
+          },
+          {
+            "name": "sup_ha",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "144.717"
+          },
+          {
+            "name": "descrip",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Áreas verdes",
+            "categories": [
+              "Áreas verdes",
+              "Área de preservación ecológica"
+            ]
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "SANTA CRUZ",
+            "categories": [
+              "SANTA CRUZ"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Obispo Santisteban",
+            "categories": [
+              "Obispo Santisteban",
+              "Warnes"
+            ]
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Montero",
+            "categories": [
+              "Montero",
+              "Warnes"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
