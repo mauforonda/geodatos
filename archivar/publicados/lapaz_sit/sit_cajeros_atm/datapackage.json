@@ -1,0 +1,155 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_sit_cajeros_atm",
+  "title": "Cajeros Automáticos (ATM)",
+  "description": "ATM Cajeros",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz",
+      "path": "http://sitservicios.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_sit_cajeros_atm/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 57464,
+      "hash": "sha256:1c0142971dc6f6e69ca387d461a39c303e8db2de4039b4e4190663abcf790f80",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "cajeros_atm.529"
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Banco Mercantil Santa Cruz S.A."
+          },
+          {
+            "name": "tipoPuntoAtencion",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Cajero Automático Interno",
+            "categories": [
+              "Cajero Automático Externo - Con Recinto",
+              "Cajero Automático Especial Externo - Con Recinto",
+              "Cajero Automático Interno",
+              "Cajero Automático Especial Interno",
+              "Cajero Automático Especial Externo - Sin Recinto",
+              "Cajero Automático Externo - Sin Recinto",
+              "Cajero Automático Especial para Personas con Discapacidad Externo - Con Recinto",
+              "Cajero Automático Especial para Personas con Discapacidad Interno"
+            ]
+          },
+          {
+            "name": "nombrePuntoAtencion",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "MLP821 LOS SARGENTOS."
+          },
+          {
+            "name": "direccion",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "AV. Los Sargentos N°1000 esq. Costanera."
+          },
+          {
+            "name": "telefonoEmergencia",
+            "type": "string",
+            "example": "+591 2 114010"
+          },
+          {
+            "name": "servicio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "-Retiros, consultas, informaciones, donaciones, cambio de pin, pago de préstamos, pago de tarjetas d"
+          },
+          {
+            "name": "horarios",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "LU--24 HORAS\nMA--24 HORAS\nMI--24 HORAS\nJU--24 HORAS\nVI--24 HORAS\nSA--24 HORAS\nDO--24 HORAS"
+          },
+          {
+            "name": "nroIdentif",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "BME0947"
+          },
+          {
+            "name": "distrito",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.0,
+              "maximum": 21.0
+            }
+          },
+          {
+            "name": "owner",
+            "type": "integer"
+          },
+          {
+            "name": "usuario",
+            "type": "string",
+            "example": "gustavo.nao",
+            "categories": [
+              "gustavo.nao",
+              "gonzalo.flores"
+            ]
+          },
+          {
+            "name": "fechaActual",
+            "type": "datetime",
+            "constraints": {
+              "minimum": "2023-02-13T16:23:08.610000+00:00",
+              "maximum": "2024-08-29T23:01:28.720000+00:00"
+            }
+          },
+          {
+            "name": "observaciones",
+            "type": "string",
+            "example": "",
+            "categories": [
+              ""
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point. Filas sin geometría: 27."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
