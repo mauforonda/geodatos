@@ -1,0 +1,135 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mdpyep_sitap_frutales_banano_load_2023",
+  "title": "Banano_Load_2023",
+  "sources": [
+    {
+      "title": "Sistema Territorial de Apoyo a la Producción (SITAP) del Ministerio de Desarrollo Productivo y Economía Plural",
+      "path": "https://geodata-bolivia.produccion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mdpyep_sitap_frutales_banano_load_2023/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 60957,
+      "hash": "sha256:ee9a3eb07c92c1097a1aa7e743ecf756debdc2e895b94949a42e4ed682ba0dbb",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Banano_Load_2023.790"
+          },
+          {
+            "name": "departamento",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Tarija",
+            "categories": [
+              "La Paz",
+              "Beni",
+              "Cochabamba",
+              "Santa Cruz",
+              "Pando",
+              "Chuquisaca",
+              "Tarija"
+            ]
+          },
+          {
+            "name": "provincia",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Arce"
+          },
+          {
+            "name": "municipio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Bermejo"
+          },
+          {
+            "name": "comunidad",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "FLOR DE ORO"
+          },
+          {
+            "name": "producto",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Plátano (Banano)",
+            "categories": [
+              "Plátano (Banano)"
+            ]
+          },
+          {
+            "name": "estacion",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "verano",
+            "categories": [
+              "verano"
+            ]
+          },
+          {
+            "name": "produccion",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 1.491,
+              "maximum": 18323.562
+            }
+          },
+          {
+            "name": "superficie",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 1.144,
+              "maximum": 1001.049
+            }
+          },
+          {
+            "name": "rendimiento",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.765,
+              "maximum": 22.875
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
