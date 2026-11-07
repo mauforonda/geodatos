@@ -1,0 +1,91 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_metropoli_lagunas_lpz",
+  "title": "Mapa de Lagunas de la Región Metropolitana del Departamento de La Paz, Bolivia 2017",
+  "description": "El mapa muestra las lagunas que se localizan en la Región Metropolitana del Departamento de La Paz, esta información fue obtenida del Atlas de la Región Metropolitana del Departamento de La Paz, elaborado por la Secretaria Municipal de Planificación para el Desarrollo del Gobierno Autónomo Municipal de La Paz y el Instituto de Investigaciones Geográficas, Carrera de Ingeniería Geográfica - UMSA y presentado en el mes de agosto del 2017.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_metropoli_lagunas_lpz/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 48196,
+      "hash": "sha256:ef76b0e56afa8688f1008312e8b9cab37cd9b34513b8346d83bd34781443de2b",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "metropoli_lagunas_lpz.35"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 87
+            }
+          },
+          {
+            "name": "objectid_1",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 87
+            }
+          },
+          {
+            "name": "nombre0",
+            "type": "string",
+            "example": "Laguna Murmukhota"
+          },
+          {
+            "name": "shape_leng",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 80.24820679032871,
+              "maximum": 9988.225867054594
+            }
+          },
+          {
+            "name": "shape_area",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 444.1260563833861,
+              "maximum": 2269850.6872338946
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
