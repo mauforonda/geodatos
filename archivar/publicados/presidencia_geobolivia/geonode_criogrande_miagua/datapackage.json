@@ -1,0 +1,176 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_criogrande_miagua",
+  "title": "Plan Director de la Cuenca Río Grande - Agua Potable 2018 (Mi Agua)_ Bolivia",
+  "description": "El mapa muestra la georreferenciación e información relevante de los proyectos de Agua Potable 2018 (MI AGUA) en el marco del Plan Director de la Cuenca del Río Grande, con un total de 466 proyectos. Dato del Viceministerio de Recursos Hídricos y Riego a marzo 2018.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_criogrande_miagua/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 38124,
+      "hash": "sha256:b7198fa67eb108e09b796783083b206108d4338a5714e3ebd1cab1736d2b55d4",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "criogrande_miagua.45"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 466
+            }
+          },
+          {
+            "name": "cod_ine",
+            "type": "string",
+            "example": "01060101010003"
+          },
+          {
+            "name": "sisin",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "2873091900000"
+          },
+          {
+            "name": "convenio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "MI AGUA 3",
+            "categories": [
+              "MI AGUA",
+              "MI AGUA 3",
+              "MI AGUA 2",
+              "MIAGUA IV",
+              "MIAGUA IV - FASE 2"
+            ]
+          },
+          {
+            "name": "departamen",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "CHUQUISACA",
+            "categories": [
+              "SANTA CRUZ",
+              "COCHABAMBA",
+              "POTOSI",
+              "CHUQUISACA",
+              "ORURO"
+            ]
+          },
+          {
+            "name": "provincia",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "YAMPARAEZ"
+          },
+          {
+            "name": "municipio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "TARABUCO"
+          },
+          {
+            "name": "nombre_del",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "CONST. SIST. AGUA POTABLE ICHUPAMPA (TARABUCO)"
+          },
+          {
+            "name": "estado",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "CONCLUIDO",
+            "categories": [
+              "CONCLUIDO",
+              "EJECUCION",
+              "APROBACION"
+            ]
+          },
+          {
+            "name": "tipo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "AGUA",
+            "categories": [
+              "AGUA"
+            ]
+          },
+          {
+            "name": "conex",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 3000
+            }
+          },
+          {
+            "name": "pil",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 50
+            }
+          },
+          {
+            "name": "fam",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 3389
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
