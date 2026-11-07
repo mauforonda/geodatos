@@ -1,0 +1,111 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_minplanifica_infocapa_layer_riesgo_de_ocurrencia_de_he_cbjpzk",
+  "title": "layer_riesgo_de_ocurrencia_de_he_cbjpzk",
+  "sources": [
+    {
+      "title": "Geoserver del Ministerio de Planificación del Desarollo",
+      "path": "https://geoserver.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_minplanifica_infocapa_layer_riesgo_de_ocurrencia_de_he_cbjpzk/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 51719,
+      "hash": "sha256:9b53cd53e63e4ffc7ea61988364dd660ed568a6bf4ae8ae8ba5caa02b340fb7f",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_riesgo_de_ocurrencia_de_he_cbjpzk.171"
+          },
+          {
+            "name": "dn",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 3
+            }
+          },
+          {
+            "name": "clas_helad",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Baja",
+            "categories": [
+              "Media",
+              "Baja",
+              "Alta"
+            ]
+          },
+          {
+            "name": "sup_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.024,
+              "maximum": 46552.953
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Santa Cruz",
+            "categories": [
+              "Santa Cruz"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Cordillera",
+            "categories": [
+              "Cordillera"
+            ]
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Camiri",
+            "categories": [
+              "Camiri",
+              "Cuevo",
+              "Gutiérrez"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 4."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
