@@ -1,0 +1,74 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_sit_lusu_conjuntospat",
+  "title": "LUSU Conjuntos Patrimoniales",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz",
+      "path": "http://sitservicios.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_sit_lusu_conjuntospat/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 19160,
+      "hash": "sha256:8518dda35ddbcbbda871acd21d2a12eea409b4de0c43d35c5cac20eb36b5352f",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "lusu_conjuntospat.1"
+          },
+          {
+            "name": "entity",
+            "type": "string",
+            "example": "Polyline",
+            "categories": [
+              "Polyline"
+            ]
+          },
+          {
+            "name": "conjunto",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Conjunto Francisco Bedregal"
+          },
+          {
+            "name": "tipo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Conjuntos Patrimoniales de 1º Orden",
+            "categories": [
+              "Conjuntos Patrimoniales de 1º Orden",
+              "Conjuntos Patrimoniales de 2º Orden"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Polygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
