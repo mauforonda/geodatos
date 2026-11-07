@@ -1,0 +1,130 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_alt_estadisticasmunicipales_vwencuestasitemgeom",
+  "title": "vwEncuestasItemGeom",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)",
+      "path": "http://sitservicios.lapaz.bo/ows38.jsp"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_estadisticasmunicipales_vwencuestasitemgeom/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 68605,
+      "hash": "sha256:1bd5fc57518b55895bedf18d22a81e1a3f21aefd79783d4dc5548b4c3ba58470",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "vwEncuestasItemGeom.fid--314a5bbc_19fd3fbb68b_4ff5"
+          },
+          {
+            "name": "idItem",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 4935,
+              "maximum": 117496
+            }
+          },
+          {
+            "name": "idEncuesta",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 16,
+              "maximum": 185
+            }
+          },
+          {
+            "name": "fechaCreacion",
+            "type": "datetime",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": "2018-07-10T15:29:54.990000+00:00",
+              "maximum": "2023-07-26T20:39:08.930000+00:00"
+            }
+          },
+          {
+            "name": "fechaInicio",
+            "type": "datetime",
+            "constraints": {
+              "required": true,
+              "minimum": "1970-01-02T07:20:14+00:00",
+              "maximum": "2023-07-26T20:38:47+00:00"
+            }
+          },
+          {
+            "name": "fechaFin",
+            "type": "datetime",
+            "constraints": {
+              "required": true,
+              "minimum": "1970-01-02T07:53:19+00:00",
+              "maximum": "2023-07-26T20:38:51+00:00"
+            }
+          },
+          {
+            "name": "idEstado",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 1
+            }
+          },
+          {
+            "name": "controlIP",
+            "type": "integer"
+          },
+          {
+            "name": "controlUsuario",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "joao.flores"
+          },
+          {
+            "name": "titulo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "geodemo",
+            "categories": [
+              "SETV 2022",
+              "LA PAZ SUEÑA SU FUTURO DE MIL COLORES",
+              "FORMULARIO – GAMLP",
+              "ENCUESTA USUARIO SIMULADO - SETRAM",
+              "SEGURIDAD DEMO (Georreferenciada)",
+              "PRUEBA ENCUESTA BLONDEL",
+              "geodemo"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point. Filas sin geometría: 601."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
