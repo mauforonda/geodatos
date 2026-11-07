@@ -1,0 +1,46 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_cuerpos_agua_disolv",
+  "title": "Plan Director Cuenca Río Pampa Huari – Cuerpos de Agua",
+  "description": "PDCRPH (Plan Director de la Cuenca Rio Pampa Huari). Muestra la cobertura de los cuerpos de agua de la  cuenca del rio Pampa Huari.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_cuerpos_agua_disolv/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 18311,
+      "hash": "sha256:54c8f09b2734ef5952600f4623bde09193417f4b177dc5c26c9fba041b9bf657",
+      "schema": {
+        "fields": [
+          {
+            "name": "Nombre",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Laguna Wara Wara"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
