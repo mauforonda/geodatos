@@ -1,0 +1,165 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_alt_lapaz_vw_familiasprediogeom",
+  "title": "vw_FamiliasPredioGeom",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)",
+      "path": "http://sitservicios.lapaz.bo/ows38.jsp"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_lapaz_vw_familiasprediogeom/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 24947,
+      "hash": "sha256:6928c2dd36cbc034432b76705be8ef7e923439cf1455b2f0a7d8264b43132a2d",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "vw_FamiliasPredioGeom.fid-50b080f7_19e79306e64_7faf"
+          },
+          {
+            "name": "IdPredio",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 22320,
+              "maximum": 22643
+            }
+          },
+          {
+            "name": "IdSector",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 2101,
+              "maximum": 2101
+            }
+          },
+          {
+            "name": "distrito",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "28",
+            "categories": [
+              "28",
+              "20",
+              "31",
+              "2"
+            ]
+          },
+          {
+            "name": "Manzana",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "162",
+            "categories": [
+              "",
+              "162",
+              "140",
+              "161",
+              "178",
+              "152",
+              "80",
+              "186",
+              "0",
+              "174",
+              "184",
+              "150",
+              "183",
+              "182",
+              "0161",
+              "153",
+              "166"
+            ]
+          },
+          {
+            "name": "Lote",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "S/N 26"
+          },
+          {
+            "name": "subPredio",
+            "type": "string",
+            "example": "",
+            "categories": [
+              ""
+            ]
+          },
+          {
+            "name": "codSifca",
+            "type": "integer"
+          },
+          {
+            "name": "idFranja",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 13
+            }
+          },
+          {
+            "name": "idRelPredioFamilia",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 9427,
+              "maximum": 10388
+            }
+          },
+          {
+            "name": "direccion",
+            "type": "string",
+            "example": ""
+          },
+          {
+            "name": "IdFamilia",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 6295,
+              "maximum": 6909
+            }
+          },
+          {
+            "name": "DescFamilia",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "ANA PARIGUANA MAMANI "
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
