@@ -1,0 +1,196 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_sit_sitiosturisticos",
+  "title": "Sitiosde Interes Turisticos",
+  "description": "Sitio de Interes turisticos relevados por la Unidad de Gestion Turistica (2015)",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz",
+      "path": "http://sitservicios.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_sit_sitiosturisticos/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 15343,
+      "hash": "sha256:8c529da987f31c23cd8c290cf7ad65907bd7a60ac07603c69a152a87ee0c8b84",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "sitiosturisticos.466"
+          },
+          {
+            "name": "IdCategoria",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 26
+            }
+          },
+          {
+            "name": "Categoria",
+            "type": "string",
+            "example": "Atractivo Turístico",
+            "categories": [
+              "Museo",
+              "Atractivo Turístico",
+              "Mirador",
+              "Laguna",
+              "Iglesia",
+              "Área Protegida",
+              "",
+              "Apaccheta",
+              "Atractivo"
+            ]
+          },
+          {
+            "name": "Nombre",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "HUERTO ORGÁNICO LAKA UTA"
+          },
+          {
+            "name": "Direccion",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Av. Marcelo Quiroga Santa Cruz"
+          },
+          {
+            "name": "Cod_UGT",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "",
+            "categories": [
+              ""
+            ]
+          },
+          {
+            "name": "Telefono",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "",
+            "categories": [
+              ""
+            ]
+          },
+          {
+            "name": "Contacto",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "",
+            "categories": [
+              ""
+            ]
+          },
+          {
+            "name": "Correo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "",
+            "categories": [
+              ""
+            ]
+          },
+          {
+            "name": "Legalidad",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "",
+            "categories": [
+              ""
+            ]
+          },
+          {
+            "name": "distrito",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 23
+            }
+          },
+          {
+            "name": "owner",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "indira.vilela",
+            "categories": [
+              "indira.vilela"
+            ]
+          },
+          {
+            "name": "usuario",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "indira.vilela",
+            "categories": [
+              "indira.vilela",
+              "gustavo.nao"
+            ]
+          },
+          {
+            "name": "fechaActual",
+            "type": "datetime",
+            "constraints": {
+              "required": true,
+              "minimum": "2025-06-05T17:14:35.450000+00:00",
+              "maximum": "2025-09-08T21:02:15.590000+00:00"
+            }
+          },
+          {
+            "name": "observaciones",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Categoría: atractivo turístico (Borrar agencia de viaje)",
+            "categories": [
+              "",
+              "Categoría: atractivo turístico (Borrar agencia de viaje)"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
