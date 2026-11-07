@@ -1,0 +1,90 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geobolivia_geonode_incendiosforestales_1b49c948",
+  "title": "Incendios forestales en Bolivia (2002)",
+  "description": "Información geoespacial de la distribución de las zonas afectadas por los incendios forestales y hace referencia a los reportes de quemas (chaqueos ) y que se constituyen en un riesgo por la amenaza de incendio para los bosques circundantes y la población rural dispersa o concentrada. Se localiza principalmente en el departamento de Santa Cruz, donde la actividad y presencia antrópica es baja a moderada. Elaborado por la Unidad de Ordenamiento Territorial del Ministerio de Planificación del Desarrollo, en el año 2002 a escala 1:1000000",
+  "sources": [
+    {
+      "title": "Nueva plataforma GeoBolivia",
+      "path": "https://geonode.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geobolivia_geonode_incendiosforestales_1b49c948/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 89606,
+      "hash": "sha256:f6ee008baa78a61b59661583fab106e7be2df239e75b80ff6477de51d8a49294",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "incendiosforestales_1b49c948.1772"
+          },
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 1823
+            }
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 1823
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "IncendiosForestales.1772"
+          },
+          {
+            "name": "fireff",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "5",
+            "categories": [
+              "4",
+              "1",
+              "3",
+              "2",
+              "5"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
