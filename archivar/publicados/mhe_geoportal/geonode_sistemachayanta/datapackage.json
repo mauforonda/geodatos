@@ -1,0 +1,75 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mhe_geoportal_geonode_sistemachayanta",
+  "title": "SistemaChayanta",
+  "sources": [
+    {
+      "title": "Geoportal del Viceministerio de Electricidad y Energías Renovables",
+      "path": "https://geoportal.mhe.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mhe_geoportal_geonode_sistemachayanta/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 35337,
+      "hash": "sha256:3ddcecafaa581004dd71cae2c37b6847fd0ed29a225d9a5f08fd2d47ab0f4140",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 854
+            }
+          },
+          {
+            "name": "LENGTH",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.009,
+              "maximum": 3.249
+            }
+          },
+          {
+            "name": "FASE",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 3
+            }
+          },
+          {
+            "name": "Sistema",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Chayanta",
+            "categories": [
+              "Chayanta"
+            ]
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
