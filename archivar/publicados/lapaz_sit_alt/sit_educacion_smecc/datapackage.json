@@ -1,0 +1,175 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_alt_sit_educacion_smecc",
+  "title": "Educacion Publica (SMECC)",
+  "description": "Base de unidades educativas de la Secretaria Municipal de Educación y Cultura Ciudadana",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)",
+      "path": "http://sitservicios.lapaz.bo/ows38.jsp"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_sit_educacion_smecc/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 29873,
+      "hash": "sha256:233febdfada9c2487ad35f329ef3402c93d4b07b068850756c5988014b92e8e9",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "educacion_smecc.2"
+          },
+          {
+            "name": "Nombre",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "JOSE SANTOS VARGAS"
+          },
+          {
+            "name": "Direccion",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "AV MAX FERNANDEZ # 2631"
+          },
+          {
+            "name": "Zona",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "LLOJETA"
+          },
+          {
+            "name": "Telefono",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "NO TIENE"
+          },
+          {
+            "name": "MacroDistrito",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "COTAHUMA",
+            "categories": [
+              "CENTRO",
+              "COTAHUMA",
+              "PERIFERICA",
+              "SUR MALLASA",
+              "MAX PAREDES",
+              "SAN ANTONIO",
+              "ZONGO VALLE",
+              "HAMPATURI",
+              "ZONGO TROPICO",
+              "MALLASA"
+            ]
+          },
+          {
+            "name": "Codigo",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "L-102"
+          },
+          {
+            "name": "Turno",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "T",
+            "categories": [
+              "M",
+              "T",
+              "N"
+            ]
+          },
+          {
+            "name": "Nivel",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "S",
+            "categories": [
+              "S",
+              "IP",
+              "IPS",
+              "I",
+              "P",
+              "PS",
+              "IS"
+            ]
+          },
+          {
+            "name": "distrito",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.0,
+              "maximum": 24.0
+            }
+          },
+          {
+            "name": "owner",
+            "type": "integer"
+          },
+          {
+            "name": "usuario",
+            "type": "string",
+            "example": "nhuanquiri",
+            "categories": [
+              "gustavo.nao",
+              "nhuanquiri",
+              "clara.revollo"
+            ]
+          },
+          {
+            "name": "fechaActual",
+            "type": "datetime",
+            "constraints": {
+              "minimum": "2016-06-06T21:25:05.667000+00:00",
+              "maximum": "2023-01-06T19:26:02.830000+00:00"
+            }
+          },
+          {
+            "name": "observaciones",
+            "type": "string",
+            "example": "",
+            "categories": [
+              ""
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point. Filas sin geometría: 3."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
