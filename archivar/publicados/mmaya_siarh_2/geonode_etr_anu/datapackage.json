@@ -1,0 +1,46 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_etr_anu",
+  "title": "Plan Director Cuenca Río Pampa Huari – Evapotranspiración Real Media Anual",
+  "description": "PDCRPH (Plan Director de la Cuenca Rio Pampa Huari) Describe las variaciones meteorológicas de la evapotranspiración real media anual en la cuenca del rio pampa Huari, elaborado en base a datos disponibles de SENAMHI 2017.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_etr_anu/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 43261,
+      "hash": "sha256:dbf9d718579202dd160010ff6e09c79e3e9402c5571eacedd929267983a299ac",
+      "schema": {
+        "fields": [
+          {
+            "name": "ETR",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 215,
+              "maximum": 245
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
