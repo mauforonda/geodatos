@@ -1,0 +1,92 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_subcuencas_del_municipio_de_montero_ptdi_novrq",
+  "title": "Subcuencas del Municipio de Montero - PTDI",
+  "description": "El mapa muestra la división por subcuencas en el municipio de Montero, según el PTDI 2021 - 2025",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_subcuencas_del_municipio_de_montero_ptdi_novrq/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 20567,
+      "hash": "sha256:e5235f20137da1622d97b67573b7db4520e19be2bdaf69649a983ef2c42d68c3",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "example": "layer_subcuencas_del_municipio_de_montero__ptdi_novrq.1"
+          },
+          {
+            "name": "cuenca",
+            "type": "string",
+            "example": "Pirai",
+            "categories": [
+              "Pirai"
+            ]
+          },
+          {
+            "name": "subcuenca",
+            "type": "string",
+            "example": "Pirai baja"
+          },
+          {
+            "name": "microcuenc",
+            "type": "string",
+            "example": "UH 30604 Intercuenca"
+          },
+          {
+            "name": "sup_ha",
+            "type": "number",
+            "constraints": {
+              "minimum": 8814.916,
+              "maximum": 15686.805
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "example": "SANTA CRUZ",
+            "categories": [
+              "SANTA CRUZ"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "example": "Obispo Santisteban",
+            "categories": [
+              "Obispo Santisteban"
+            ]
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "example": "Montero",
+            "categories": [
+              "Montero"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
