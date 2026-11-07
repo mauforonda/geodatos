@@ -1,0 +1,98 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_sit_sedes_establsalud",
+  "title": "Establecimientos de Salud SEDES",
+  "description": "Establecimientos de salud, según el Servicio Departamental de Salud La Paz",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz",
+      "path": "http://sitservicios.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_sit_sedes_establsalud/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 40730,
+      "hash": "sha256:888c23fae22bda09fe6cd383a16c267025f5c88428d0164563afded6b9396aa2",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "sedes_establsalud.284"
+          },
+          {
+            "name": "codsnis",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 200003,
+              "maximum": 200887
+            }
+          },
+          {
+            "name": "nombr_snis",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "CHARANA"
+          },
+          {
+            "name": "niveles",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "1er NIVEL",
+            "categories": [
+              "1er NIVEL",
+              "2do NIVEL",
+              "3er NIVEL"
+            ]
+          },
+          {
+            "name": "ambitogeo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "R",
+            "categories": [
+              "R",
+              "U"
+            ]
+          },
+          {
+            "name": "nivel",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 3
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
