@@ -1,0 +1,81 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_region_metropolitanawgs84",
+  "title": "Mapa de la Región Metropolitana del Municipio de La Paz",
+  "description": "El mapa presenta información espacial de la región metropolitana del Municipio de La Paz. Elaborado por Oficialía Mayor de Planificación para el Desarrollo (OMPD) del Gobierno Autónomo Municipal de La Paz, en el año 2013.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_region_metropolitanawgs84/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 45517,
+      "hash": "sha256:67bdb85cf5b910615155ee2846184817fe771539de7bba99aa0dcdd8a1bfa0fa",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "example": "region_metropolitanawgs84.3"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 8
+            }
+          },
+          {
+            "name": "objectid",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 14
+            }
+          },
+          {
+            "name": "shape_leng",
+            "type": "string",
+            "example": "132487.79374"
+          },
+          {
+            "name": "shape_area",
+            "type": "string",
+            "example": "823383587.631"
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "example": "VIACHA"
+          },
+          {
+            "name": "metro_and",
+            "type": "string",
+            "example": "MET_ANDINO",
+            "categories": [
+              "MET_ANDINO"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
