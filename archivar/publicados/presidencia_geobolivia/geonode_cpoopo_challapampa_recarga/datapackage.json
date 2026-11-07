@@ -1,0 +1,63 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_cpoopo_challapampa_recarga",
+  "title": "Plan Director Cuenca Lago Poopó - Challapampa Sector de Recarga 1_ Bolivia",
+  "description": "El mapa muestra el sector de la recarga 1, en la Cuenca del Lago Poopó, dato del Viceministerio de Recursos Hídricos y Riego a marzo 2018.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_cpoopo_challapampa_recarga/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 44110,
+      "hash": "sha256:bd97c8cb066318eae8463928b30105c207abd384fc34ef8ab1003def894782c3",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 6
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 6
+            }
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "example": "Conde Auque",
+            "categories": [
+              "Conde Auque",
+              "Paria",
+              "Pongo Jauira"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
