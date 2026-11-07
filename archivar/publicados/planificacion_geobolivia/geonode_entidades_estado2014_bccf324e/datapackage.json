@@ -1,0 +1,137 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geobolivia_geonode_entidades_estado2014_bccf324e",
+  "title": "Localización de entidades del Estado Plurinacional de Bolivia (2014)",
+  "description": "Información geoespacial de localización de instituciones (Ministerios, Viceministerios, Entidades Descentralizadas, FFAA, Gobiernos Departamentales y Municipales) del Estado Plurinacional de Bolivia, a través de la cuál se podrá conocer la ubicación, dirección y pagina web de cualquier institución que componga el aparato estatal. Elaborado en base a la consulta de direcciones y páginas web institucionales, por la Vicepresidencia del Estado Plurinacional a través de la Agencia para el Desarrollo de la Sociedad de la Información (ADSIB) y GeoBolivia entre mayo y agosto del año 2014, los datos se encuentran bajo actualización constante.",
+  "sources": [
+    {
+      "title": "Nueva plataforma GeoBolivia",
+      "path": "https://geonode.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geobolivia_geonode_entidades_estado2014_bccf324e/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 20101,
+      "hash": "sha256:bcf1fda43c6e0b4b02fb20486085716d50a3686539a80499bf8e10695344798b",
+      "schema": {
+        "fields": [
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 179
+            }
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 179
+            }
+          },
+          {
+            "name": "gml_idc8",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "entidades_estado.54"
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 11,
+              "maximum": 215
+            }
+          },
+          {
+            "name": "fecha",
+            "type": "datetime",
+            "constraints": {
+              "required": true,
+              "minimum": "2014-05-29T00:00:00",
+              "maximum": "2014-08-12T00:00:00"
+            }
+          },
+          {
+            "name": "coord_y",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -2455659.1816251,
+              "maximum": -1234136.9302804
+            }
+          },
+          {
+            "name": "coord_x",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -7653739.0694095,
+              "maximum": -7030631.7212761
+            }
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Gobierno Autonomo Departamental de Oruro"
+          },
+          {
+            "name": "direccion",
+            "type": "string",
+            "example": "Plaza 10 de Febrero, entre Bolivar y Adolfo Mier"
+          },
+          {
+            "name": "url",
+            "type": "string",
+            "example": "www.oruro.gob.bo"
+          },
+          {
+            "name": "categoria",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Gobernación Departamental",
+            "categories": [
+              "Descentralizada",
+              "Viceministerio",
+              "Ministerio",
+              "Gobernación Departamental",
+              "FFAA",
+              "Vicepresidencia",
+              "Gobierno Municipal"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
