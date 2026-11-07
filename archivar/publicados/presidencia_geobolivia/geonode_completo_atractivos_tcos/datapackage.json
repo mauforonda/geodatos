@@ -1,0 +1,211 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_completo_atractivos_tcos",
+  "title": "Atractivos Turisticos de Bolivia 2024",
+  "description": "Distribución de atractivos, sitios turisticos, detallando su vocación, temoralidades, limitaciones, tipo de tranporte, alimentación, etc.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_completo_atractivos_tcos/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 76597,
+      "hash": "sha256:9217da809065e7d4b8f80acae387e6295e4c16293dd9e824fae9e2d050419482",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "completo_atractivos_tcos.74"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 474
+            }
+          },
+          {
+            "name": "jerarquÍa",
+            "type": "string",
+            "example": "III",
+            "categories": [
+              "III",
+              "IV",
+              "SJ",
+              "II",
+              "I",
+              "V"
+            ]
+          },
+          {
+            "name": "departamen",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "POTOSI",
+            "categories": [
+              "LA PAZ",
+              "SANTA CRUZ",
+              "COCHABAMBA",
+              "TARIJA",
+              "POTOSI",
+              "CHUQUISACA",
+              "PANDO",
+              "BENI",
+              "ORURO",
+              "Potosí",
+              "BENI y La Paz",
+              "BENI, Cochabamba, Santa Cruz y parte de Brasil",
+              "BENI, La Paz y Pando"
+            ]
+          },
+          {
+            "name": "provincia",
+            "type": "string",
+            "example": "DANIEL CAMPOS"
+          },
+          {
+            "name": "municipio",
+            "type": "string",
+            "example": "LLICA"
+          },
+          {
+            "name": "comunidad",
+            "type": "string",
+            "example": "HUANAQUE"
+          },
+          {
+            "name": "nombre de",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "MIRADOR PUQUISA"
+          },
+          {
+            "name": "categoria",
+            "type": "number",
+            "constraints": {
+              "minimum": 1.0,
+              "maximum": 3.0
+            }
+          },
+          {
+            "name": "vocaciÓn",
+            "type": "string",
+            "example": "TURISMO CULTURAL"
+          },
+          {
+            "name": "sitios_tur",
+            "type": "string",
+            "example": "SALAR DE UYNI, ISLA INKAHUASI, CERRO SAPAJO Y CHINCHILGUAYA."
+          },
+          {
+            "name": "temporalid",
+            "type": "string",
+            "example": "MARZO - NOVIEMBRE"
+          },
+          {
+            "name": "limitacion",
+            "type": "string",
+            "example": "EXISTE DIFICULTAD PARA LLEGAR AL LUGAR EN ÉPOCA DE LLUVIAS"
+          },
+          {
+            "name": "alojamient",
+            "type": "string",
+            "example": "LLICA CUENTA CON UN ALBERGUE MUNICIPAL"
+          },
+          {
+            "name": "alimentaci",
+            "type": "string",
+            "example": "NO EXISTE EN EL LUGAR SERVICIO DE ALIMENTACIÓN"
+          },
+          {
+            "name": "transporte",
+            "type": "string",
+            "example": "NO EXISTE TRANSPORTE PÚBLICO AL LUGAR, SE DEBE INGRESAR CON TRANSPORTE PRIVADO."
+          },
+          {
+            "name": "comunicaci",
+            "type": "string",
+            "example": "EL ÁREA URBANA CUENTA CON UNA ANTENA DE ENTEL"
+          },
+          {
+            "name": "actividade",
+            "type": "string",
+            "example": "ESTUDIOS E INVESTIGACIONES CULTURALES, FOTOGRAFIÁS DE PAISAJES ."
+          },
+          {
+            "name": "descripcio",
+            "type": "string",
+            "example": "EL LUGAR SE ENCUENTRA EN UN BUEN ESTADO DE CONSERVACIÓN YA QUE LA POBLACIÓN DE HUANAQUE ADMINISTRA E"
+          },
+          {
+            "name": "responsabl",
+            "type": "string",
+            "example": "MUNICIPIO DANIEL CAMPOS"
+          },
+          {
+            "name": "otras enti",
+            "type": "string",
+            "example": "COMUNIDAD HUANAQUE"
+          },
+          {
+            "name": "pertenenci",
+            "type": "string",
+            "example": "COMUNIDAD DE HUANAQUE"
+          },
+          {
+            "name": "fuente",
+            "type": "string",
+            "example": "PLAN DE DESARROLLO TURÍSTICO MUNICIPAL DE LLICA"
+          },
+          {
+            "name": "este",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -69.429,
+              "maximum": -57.756
+            }
+          },
+          {
+            "name": "norte",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -22.833,
+              "maximum": -9.888
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
