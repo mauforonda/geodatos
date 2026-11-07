@@ -1,0 +1,134 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mdpyep_sitap_frutales_pinia_load_2023",
+  "title": "Pinia_Load_2023",
+  "sources": [
+    {
+      "title": "Sistema Territorial de Apoyo a la Producción (SITAP) del Ministerio de Desarrollo Productivo y Economía Plural",
+      "path": "https://geodata-bolivia.produccion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mdpyep_sitap_frutales_pinia_load_2023/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 58476,
+      "hash": "sha256:1b9337822cbc2f1f784e12a16643e22fd0c3d1746cb30bde9759050696badfe9",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Pinia_Load_2023.287"
+          },
+          {
+            "name": "departamento",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Tarija",
+            "categories": [
+              "Cochabamba",
+              "Pando",
+              "La Paz",
+              "Beni",
+              "Chuquisaca",
+              "Santa Cruz",
+              "Tarija"
+            ]
+          },
+          {
+            "name": "provincia",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Burnet O'connor"
+          },
+          {
+            "name": "municipio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Entre Ríos"
+          },
+          {
+            "name": "comunidad",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "SERERE LIMAL"
+          },
+          {
+            "name": "producto",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Piña",
+            "categories": [
+              "Piña"
+            ]
+          },
+          {
+            "name": "estacion",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "verano",
+            "categories": [
+              "verano",
+              "invierno"
+            ]
+          },
+          {
+            "name": "produccion",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.106,
+              "maximum": 10109.444
+            }
+          },
+          {
+            "name": "superficie",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.005,
+              "maximum": 381.827
+            }
+          },
+          {
+            "name": "rendimiento",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.976,
+              "maximum": 160.951
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
