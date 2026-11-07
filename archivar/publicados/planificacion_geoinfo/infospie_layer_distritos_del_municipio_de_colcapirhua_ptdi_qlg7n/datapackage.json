@@ -1,0 +1,79 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_distritos_del_municipio_de_colcapi_96b980ee9833",
+  "title": "Distritos del municipio de Colcapirhua- PTDI",
+  "description": "El mapa presenta la división territorial en distritos del Municipio de Colcapirhua, según el PTDI 2021 - 2025",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_distritos_del_municipio_de_colcapi_96b980ee9833/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 9410,
+      "hash": "sha256:3373a743b21d9ba5cf805697fd70329a5265d9dde823a71308fb207a895bc498",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "example": "layer_distritos_del_municipio_de_colcapirhua_ptdi_qlg7n.2"
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "example": "DISTRITO E"
+          },
+          {
+            "name": "sup_ha",
+            "type": "integer",
+            "constraints": {
+              "minimum": 276,
+              "maximum": 1158
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "example": "COCHABAMBA",
+            "categories": [
+              "COCHABAMBA"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "example": "Quillacollo",
+            "categories": [
+              "Quillacollo"
+            ]
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "example": "Colcapirhua",
+            "categories": [
+              "Colcapirhua"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
