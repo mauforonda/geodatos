@@ -1,0 +1,111 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_forestal_2013_2017v01_sp",
+  "title": "Cuencas Sobrepuestas - Intervenciones PNC",
+  "description": "Cuencas que se sobreponen en intervenciones MIC, Forestal, Pedagógicas y Defensivos",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_forestal_2013_2017v01_sp/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 45718,
+      "hash": "sha256:769682ad8862db5de772759b5f36c9fc1f0f0982044aa8c480d2eec7d8050d42",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "example": "Río Comuna"
+          },
+          {
+            "name": "Codif",
+            "type": "string",
+            "example": "46698292"
+          },
+          {
+            "name": "Sup_Km2",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.0,
+              "maximum": 97.62
+            }
+          },
+          {
+            "name": "Municipio",
+            "type": "string",
+            "example": "Tacopaya"
+          },
+          {
+            "name": "Departamen",
+            "type": "string",
+            "example": "Cochabamba",
+            "categories": [
+              "Cochabamba",
+              "Chuquisaca",
+              "Santa Cruz"
+            ]
+          },
+          {
+            "name": "Proyecto",
+            "type": "string",
+            "example": "Forestacion en las Microcuencas de Tacopaya y Sisaqueña mediante sistemas agroforestales en el Munic"
+          },
+          {
+            "name": "Ano",
+            "type": "string",
+            "example": "2017",
+            "categories": [
+              "2014",
+              "2015",
+              "2016",
+              "2017"
+            ]
+          },
+          {
+            "name": "Micrcuenca",
+            "type": "number",
+            "constraints": {
+              "minimum": 4669466.0,
+              "maximum": 466996695.0
+            }
+          },
+          {
+            "name": "MED",
+            "type": "string",
+            "example": "2013-2017",
+            "categories": [
+              "2013-2017"
+            ]
+          },
+          {
+            "name": "Observac",
+            "type": "string",
+            "example": "sobreposición proyectos MIC",
+            "categories": [
+              "sobreposición proyectos MIC",
+              "sobreposición proyectos Pedagógicos"
+            ]
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
