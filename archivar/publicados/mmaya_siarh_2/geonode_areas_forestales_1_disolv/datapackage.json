@@ -1,0 +1,42 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_areas_forestales_1_disolv",
+  "title": "Plan Director Cuenca Río Pampa Huari – Áreas Forestales",
+  "description": "PDCRPH (Plan Director de la Cuenca Rio Pampa Huari) Describe las áreas forestales que existe en la cuenca del rio pampa Huari, clasificados según tipo: área forestal y Áreas verdes urbano.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_areas_forestales_1_disolv/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 32615,
+      "hash": "sha256:d4b836a73109036f8c2573550c26a261f7f93b25c76f796a5d6e9bd1357ea466",
+      "schema": {
+        "fields": [
+          {
+            "name": "Layer",
+            "type": "string",
+            "example": "Area forestal"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 1."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
