@@ -1,0 +1,224 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_sitios_de_disposicion_final_de_res_2c28aafc79fb",
+  "title": "Sitios de disposición final de residuos sólidos a nivel nacional",
+  "description": "La capa contiene la ubicación geográfica de los sitios de disposición final de residuos sólidos a nivel nacional, incluyendo rellenos sanitarios, botaderos controlados y botaderos a cielo abierto. Asimismo, incorpora información asociada a la gestión municipal de residuos sólidos, como la generación de residuos, cobertura del servicio de recolección, mecanismos de cobro y prácticas de aprovechamiento (reciclaje y compostaje).",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_sitios_de_disposicion_final_de_res_2c28aafc79fb/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 20755,
+      "hash": "sha256:55299292a9ac438f3173ff751d0997ee928325e03b4a01790a5dd2a70da4f679",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_sitios_de_disposicion_final_de_residuos_solidos_a_yam53.5"
+          },
+          {
+            "name": "poblacion",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 1379.0,
+              "maximum": 1651435.0
+            }
+          },
+          {
+            "name": "categoria",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Intermedio",
+            "categories": [
+              "Menor",
+              "Intermedio",
+              "Capital",
+              "Mayor",
+              "menor"
+            ]
+          },
+          {
+            "name": "ppc_2010",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.205,
+              "maximum": 0.655
+            }
+          },
+          {
+            "name": "generacio",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.151575,
+              "maximum": 1043.8
+            }
+          },
+          {
+            "name": "cobertura",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 95.385
+            }
+          },
+          {
+            "name": "cobra_por",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Si",
+            "categories": [
+              "No",
+              "Si"
+            ]
+          },
+          {
+            "name": "caracteriz",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Botadero a cielo abierto",
+            "categories": [
+              "Botadero a cielo abierto",
+              "Botadero controlado",
+              "No cuenta con sitio de disposicion final",
+              "Relleno Sanitario",
+              "Relleno Sanitario en mancomunidad con la ciudad de Tarija"
+            ]
+          },
+          {
+            "name": "realiza_ap",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "No",
+            "categories": [
+              "No",
+              "Si"
+            ]
+          },
+          {
+            "name": "reciclaje",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "No",
+            "categories": [
+              "No",
+              "Si"
+            ]
+          },
+          {
+            "name": "compostaje",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "No",
+            "categories": [
+              "No",
+              "Si"
+            ]
+          },
+          {
+            "name": "cord_x",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": -69.55641831206579,
+              "maximum": -57.754487292050285
+            }
+          },
+          {
+            "name": "cord_y",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": -22.71151353846721,
+              "maximum": -10.791085334491958
+            }
+          },
+          {
+            "name": "zona",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 19,
+              "maximum": 21
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "POTOSI",
+            "categories": [
+              "SANTA CRUZ",
+              "LA PAZ",
+              "COCHABAMBA",
+              "POTOSI",
+              "ORURO",
+              "BENI",
+              "CHUQUISACA",
+              "TARIJA",
+              "PANDO"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Antonio Quijarro"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Uyuni"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
