@@ -1,0 +1,166 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_alt_movilidad_paradas",
+  "title": "Paradas 2019",
+  "description": "Paradas de transporte publico 2019",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)",
+      "path": "http://sitservicios.lapaz.bo/ows38.jsp"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_movilidad_paradas/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 45894,
+      "hash": "sha256:a5d0da6e99f9b7711c0434e8f1431c4c6b6521ed61d000bf638ae9ea396b233d",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "paradas.137"
+          },
+          {
+            "name": "objectid_1",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 921
+            }
+          },
+          {
+            "name": "objectid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 88
+            }
+          },
+          {
+            "name": "codruta",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "m970v"
+          },
+          {
+            "name": "ruta",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "970"
+          },
+          {
+            "name": "tiporuta",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Urbana",
+            "categories": [
+              "Urbana",
+              "Metropolitana LP - EA",
+              "Metropolitana LP - MC",
+              "Metropolitana LP - P",
+              "Intermunicipal",
+              "Local",
+              "Metropolitana LP - EA - VCH",
+              "Metropolitana MC - LP - EA",
+              "Metropolitana LP - A"
+            ]
+          },
+          {
+            "name": "tipovehicu",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "MINIBUS",
+            "categories": [
+              "MINIBUS",
+              "CARRY",
+              "TRUFI",
+              "MICROBUS",
+              "BUS",
+              "MICRO"
+            ]
+          },
+          {
+            "name": "sentido",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "v",
+            "categories": [
+              "i",
+              "v",
+              "c"
+            ]
+          },
+          {
+            "name": "operador",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Sindicato San Juan"
+          },
+          {
+            "name": "longitud",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.826011925168,
+              "maximum": 38.746924236
+            }
+          },
+          {
+            "name": "federacion",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Federacion De Choferes Urbana De La Paz",
+            "categories": [
+              "Federacion Departamental De Choferes 1º De Mayo La Paz - Cutup",
+              "Federacion De Choferes Urbana De La Paz",
+              "Federacion De Choferes Urbana",
+              "Federacion Departamental De Transporte Libre La Paz"
+            ]
+          },
+          {
+            "name": "r_ante",
+            "type": "string",
+            "example": "237"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
