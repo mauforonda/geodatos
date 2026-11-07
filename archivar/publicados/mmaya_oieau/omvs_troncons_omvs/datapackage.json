@@ -1,0 +1,119 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_oieau_omvs_troncons_omvs",
+  "title": "OMVS_SW_Troncons prelevements",
+  "sources": [
+    {
+      "title": "Sistema para la Gestión Integral de Recursos Hídricos desarrollado por la Oficina Internacional del Agua (OiEau)",
+      "path": "https://www.oieau-wiss.org/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_oieau_omvs_troncons_omvs/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 15052,
+      "hash": "sha256:7965d171d4124a394223d87d7e5d52d28f6250dbbd3af46df130916d3b63f34d",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "troncons_omvs.fid-75f29474_19d840cd59a_-654f"
+          },
+          {
+            "name": "hyercode",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "HYE_112_2"
+          },
+          {
+            "name": "hyehyertcode",
+            "type": "integer"
+          },
+          {
+            "name": "hyerdesc",
+            "type": "integer"
+          },
+          {
+            "name": "hyername",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Rosso-Diama",
+            "categories": [
+              "Bakel-Podor",
+              "Bafoulabe-Bakel",
+              "Faleme",
+              "Bafing-Manantali",
+              "Bakoye-Bafoulabe",
+              "Manantali-Bafoulabe",
+              "Podor-Rosso",
+              "Rosso-Diama"
+            ]
+          },
+          {
+            "name": "hyercodex",
+            "type": "integer"
+          },
+          {
+            "name": "hyername2",
+            "type": "integer"
+          },
+          {
+            "name": "hyerdesc2",
+            "type": "integer"
+          },
+          {
+            "name": "code_ecrin",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "12"
+          },
+          {
+            "name": "code_omvs",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "8",
+            "categories": [
+              "6",
+              "4",
+              "5",
+              "1",
+              "3",
+              "2",
+              "7",
+              "8"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
