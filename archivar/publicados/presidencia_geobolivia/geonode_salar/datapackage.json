@@ -1,0 +1,108 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_salar",
+  "title": "Mapa de Salares en Bolivia_ 2002",
+  "description": "Este mapa muestra la ubicación geográfica de los salares en Bolivia donde podemos observar al salar de Uyuni, Coipasa, Chiguana y Empexa, que son lagos superficiales en cuyos sedimentos dominan las sales precipitadas por la fuerte evaporación, que a largo plazo siempre es mayor que la alimentación o entrada de las aguas en la cuenca. Elaborado por la Unidad de Ordenamiento Territorial del Ministerio de Planificación del Desarrollo, en el año 2002 a escala 1:1000000.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_salar/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 55990,
+      "hash": "sha256:b931a0b4d4b27068ca850f501494e565385c84581e445752c4d4376326d47628",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "example": "salar.4"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 4
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "example": "salar.4"
+          },
+          {
+            "name": "area",
+            "type": "integer",
+            "constraints": {
+              "minimum": 40000,
+              "maximum": 788200
+            }
+          },
+          {
+            "name": "perimeter",
+            "type": "number",
+            "constraints": {
+              "minimum": 69648.22,
+              "maximum": 705383.2
+            }
+          },
+          {
+            "name": "bolagos_",
+            "type": "integer",
+            "constraints": {
+              "minimum": 410,
+              "maximum": 421
+            }
+          },
+          {
+            "name": "bolagos_id",
+            "type": "integer",
+            "constraints": {
+              "minimum": 2,
+              "maximum": 2
+            }
+          },
+          {
+            "name": "nomb_lag",
+            "type": "string",
+            "example": "salar",
+            "categories": [
+              "salar"
+            ]
+          },
+          {
+            "name": "cod_lag",
+            "type": "integer",
+            "constraints": {
+              "minimum": 2,
+              "maximum": 2
+            }
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "example": "Salar de Chiguana"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
