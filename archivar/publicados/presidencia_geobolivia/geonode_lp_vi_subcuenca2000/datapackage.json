@@ -1,0 +1,68 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_lp_vi_subcuenca2000",
+  "title": "Mapa de subcuencas de los valles interandinos del departamento de La Paz_ 2000",
+  "description": "Este mapa muestra la delimitación de unidades hidrográficas de tipo subcuenca de los valles interandinos de La Paz. Producido por el proyecto ZONISIG (Zonificacion Agroecológica y Socioeconomica de los Valles Interandinos de La Paz) y convenios de cooperación en el año 2000, a escala 1:25000.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_lp_vi_subcuenca2000/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 87366,
+      "hash": "sha256:aa250f0d7d43321d8f590d96195c8ceea628e420b0b9a69fa31e875be087ff94",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "example": "lp_vi_subcuenca2000.7"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 7
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "example": "lp_vi_SubCuenca2000.7"
+          },
+          {
+            "name": "color",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 213
+            }
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "example": "Tuichi"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString. Filas sin geometría: 1."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
