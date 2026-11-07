@@ -1,0 +1,147 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_areas_de_recreacion",
+  "title": "Áreas de Recreación 2024",
+  "description": "Servicios de Recreación: parques, centros comerciales, parques acuaticos, clubs nocturnos.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_areas_de_recreacion/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 42860,
+      "hash": "sha256:c18886f36b07e7719ca41a5ed752f0899622e5cd4bf74ea64de58d87d0fc9387",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "areas_de_recreacion.1260"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 1859
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "POTOSI",
+            "categories": [
+              "COCHABAMBA",
+              "LA PAZ",
+              "SANTA CRUZ",
+              "TARIJA",
+              "ORURO",
+              "POTOSI",
+              "BENI",
+              "CHUQUISACA",
+              "PANDO"
+            ]
+          },
+          {
+            "name": "ciudad",
+            "type": "string",
+            "example": "Tarija",
+            "categories": [
+              "Cochabamba",
+              "Ciudad Satélite",
+              "El Alto",
+              "La Paz",
+              "Sacaba",
+              "Santa Cruz de la Sierra",
+              "Cobija",
+              "El Puente",
+              "Espejillos",
+              "Municipio Yacuíba",
+              "Quillacollo",
+              "Sipe Sipe",
+              "Sucre",
+              "Tarija",
+              "Villa Tunari"
+            ]
+          },
+          {
+            "name": "calles",
+            "type": "string",
+            "example": "Calle Avaroa"
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "sin_nombre"
+          },
+          {
+            "name": "tipo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Parques infantiles",
+            "categories": [
+              "Parques",
+              "Plazas",
+              "Parques infantiles",
+              "Club nocturno",
+              "Centros comerciales",
+              "Parque acuatico",
+              "Parque de atracciones",
+              "Casino",
+              "Parque de perros"
+            ]
+          },
+          {
+            "name": "este",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -68.759,
+              "maximum": -57.709
+            }
+          },
+          {
+            "name": "norte",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -22.736,
+              "maximum": -10.954
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
