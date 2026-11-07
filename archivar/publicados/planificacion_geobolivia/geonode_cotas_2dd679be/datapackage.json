@@ -1,0 +1,124 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geobolivia_geonode_cotas_2dd679be",
+  "title": "Elevaciones (m.s.n.m) del Estado Plurinacional de Bolivia (2016)",
+  "description": "Información geoespacial de la distribución de las elevaciones o cotas que se hallan en el territorio nacional, son un número que en los mapas indica la altura de un punto sobre el nivel del mar o sobre otro plano de nivel, las unidades son metros sobre el nivel del mar (m.s.n.m). Elaborado en la sección de cartografía del Instituto Geográfico Militar – IGM Bolivia, datos actualizados hasta 2015.",
+  "sources": [
+    {
+      "title": "Nueva plataforma GeoBolivia",
+      "path": "https://geonode.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geobolivia_geonode_cotas_2dd679be/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 32000,
+      "hash": "sha256:1249ee062f18226b75c66acdf7bb3cc0f0b6750c33a9838ccdd8111311932efd",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "cotas_2dd679be.239"
+          },
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 575
+            }
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 575
+            }
+          },
+          {
+            "name": "objectid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 1012
+            }
+          },
+          {
+            "name": "entity",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Point",
+            "categories": [
+              "Point"
+            ]
+          },
+          {
+            "name": "layer",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "36",
+            "categories": [
+              "36"
+            ]
+          },
+          {
+            "name": "level",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 36,
+              "maximum": 36
+            }
+          },
+          {
+            "name": "color",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 3,
+              "maximum": 3
+            }
+          },
+          {
+            "name": "altura",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "5882"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
