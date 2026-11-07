@@ -1,0 +1,236 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_sit_salud",
+  "title": "salud",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz",
+      "path": "http://sitservicios.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_sit_salud/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 18353,
+      "hash": "sha256:ef32d88f9014f39e1bc6425e7940849b0c5fe78fe888de273f996a9ab01c108e",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "salud.3"
+          },
+          {
+            "name": "Nombre",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Pasankery"
+          },
+          {
+            "name": "Direccion",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Av. Marcelo Quiroga esquina Heroes del Chaco"
+          },
+          {
+            "name": "IdFuente",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.0,
+              "maximum": 2.0
+            }
+          },
+          {
+            "name": "Fuente",
+            "type": "string",
+            "example": "GAMLP",
+            "categories": [
+              "GAMLP",
+              "SEDES",
+              "GMLP",
+              " "
+            ]
+          },
+          {
+            "name": "Zona",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Pasankery"
+          },
+          {
+            "name": "IdTipo",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 4
+            }
+          },
+          {
+            "name": "Tipo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Centro de Salud",
+            "categories": [
+              "Centro de Salud",
+              "Clinica",
+              "Hospital",
+              "Policlínico",
+              " ",
+              ""
+            ]
+          },
+          {
+            "name": "IdSector",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 5
+            }
+          },
+          {
+            "name": "Sector",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Público",
+            "categories": [
+              "Público",
+              "Privado",
+              "Seguro Social",
+              "Iglesia"
+            ]
+          },
+          {
+            "name": "IdNivel",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 3
+            }
+          },
+          {
+            "name": "Nivel",
+            "type": "string",
+            "example": "Primer Nivel",
+            "categories": [
+              "Primer Nivel",
+              "Tercer Nivel",
+              " ",
+              "Segundo Nivel",
+              ""
+            ]
+          },
+          {
+            "name": "Red",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "RED 1 - SUR OESTE",
+            "categories": [
+              "RED - 3 NORTE CENTRAL",
+              "RED 1 - SUR OESTE",
+              "RED - 5 SUR",
+              "Red - 2 Nor Oeste",
+              "RED - 4 ESTE (N)",
+              "AREA RURAL DE LA PAZ"
+            ]
+          },
+          {
+            "name": "TipoAtencion",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "CS AMBULATORIO",
+            "categories": [
+              "CS AMBULATORIO",
+              "",
+              "CS INTEGRAL",
+              "C.S. Ambulatorio",
+              "2do nivel"
+            ]
+          },
+          {
+            "name": "distrito",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 23
+            }
+          },
+          {
+            "name": "owner",
+            "type": "string",
+            "example": "clara.revollo",
+            "categories": [
+              "clara.revollo",
+              "gustavo.nao",
+              "juan.alba",
+              ""
+            ]
+          },
+          {
+            "name": "usuario",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "douglas.cabrera",
+            "categories": [
+              "douglas.cabrera"
+            ]
+          },
+          {
+            "name": "fechaActual",
+            "type": "datetime",
+            "constraints": {
+              "required": true,
+              "minimum": "2025-05-28T16:13:37+00:00",
+              "maximum": "2025-05-28T16:39:15.537000+00:00"
+            }
+          },
+          {
+            "name": "observaciones",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Teléfono:  2320994\nHorario de atención: 12 Hrs."
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
