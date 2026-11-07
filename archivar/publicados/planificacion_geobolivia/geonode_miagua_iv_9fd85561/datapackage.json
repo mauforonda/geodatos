@@ -1,0 +1,127 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geobolivia_geonode_miagua_iv_9fd85561",
+  "title": "Localización de Proyectos Mi Agua IV Bolivia (2017)",
+  "description": "Información geoespacial de la ubicación de los proyectos de agua potable y riego del Programa MIAGUA IV ejecutados a través del FPS en sus programas de inversión, datos proporcionados por el Fondo Nacional de Inversión Productiva y Social (FPS).",
+  "sources": [
+    {
+      "title": "Nueva plataforma GeoBolivia",
+      "path": "https://geonode.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geobolivia_geonode_miagua_iv_9fd85561/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 18567,
+      "hash": "sha256:43761e14ade6e52f43037e43489c599856ecfd32cac506f51db9b3bc3d47e353",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "miagua_iv_9fd85561.190"
+          },
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 194
+            }
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 194
+            }
+          },
+          {
+            "name": "no",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 194
+            }
+          },
+          {
+            "name": "department",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "TARIJA",
+            "categories": [
+              "TARIJA",
+              "COCHABAMBA",
+              "LA PAZ",
+              "SANTA CRUZ",
+              "PANDO"
+            ]
+          },
+          {
+            "name": "proyecto",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "CONST. SIST. AGUA POTABLE COM. SAN PEDRO (YUNCHARA)"
+          },
+          {
+            "name": "familias",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "FAM:49"
+          },
+          {
+            "name": "latitud",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -22.741675,
+              "maximum": -10.058056
+            }
+          },
+          {
+            "name": "longitud",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": -69.277011,
+              "maximum": -58.415219
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
