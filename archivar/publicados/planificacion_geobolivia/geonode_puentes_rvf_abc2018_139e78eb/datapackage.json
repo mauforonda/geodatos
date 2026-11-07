@@ -1,0 +1,121 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geobolivia_geonode_puentes_rvf_abc2018_139e78eb",
+  "title": "Puentes de la Red Vial Fundamental de Bolivia (punto) (2018)",
+  "description": "Información geoespacial sobre la ubicación de puentes que forman parte de la red vial fundamental del país, de tipo punto ubicado en la mitad del puente, aproximadamente son 686 puentes, la longitud y ancho esta en metros, el código de ruta corresponde a la ruta donde se encuentra el puente. Los puentes son construcciones que permiten salvar los accidentes geográficos para una mejor estructuración del territorio nacional. Información administrada por la Administradora Boliviana de Carreteras (ABC), elaborada por la Gerencia Nacional Tecnica, actualizado hasta diciembre del 2017.",
+  "sources": [
+    {
+      "title": "Nueva plataforma GeoBolivia",
+      "path": "https://geonode.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geobolivia_geonode_puentes_rvf_abc2018_139e78eb/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 50459,
+      "hash": "sha256:f27d22e2dcc78bdbc251412085ded014213452809b5feb765e6b2746b78119af",
+      "schema": {
+        "fields": [
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 686
+            }
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 686
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 1383
+            }
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Puente (Rio Colorado)"
+          },
+          {
+            "name": "cod_ruta",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 50
+            }
+          },
+          {
+            "name": "x_geo",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": -69.3212274535,
+              "maximum": -58.4311252384
+            }
+          },
+          {
+            "name": "y_geo",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": -22.71776455,
+              "maximum": -10.962156999
+            }
+          },
+          {
+            "name": "long_aprox",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 1400.0
+            }
+          },
+          {
+            "name": "ancho",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 30.0
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
