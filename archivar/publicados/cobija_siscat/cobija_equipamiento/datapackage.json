@@ -1,0 +1,128 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_cobija_siscat_cobija_equipamiento",
+  "title": "equipamiento",
+  "sources": [
+    {
+      "title": "Sistema de Catastro del Gobierno Autónomo Municipal de Cobija",
+      "path": "https://siscat.cobija.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_cobija_siscat_cobija_equipamiento/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 58238,
+      "hash": "sha256:3e5394b35a5798b99e20188e552302eff242afd07ea823aed8db1a8c5c5d1a61",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "equipamiento.1890"
+          },
+          {
+            "name": "distrito",
+            "type": "string",
+            "example": "9",
+            "categories": [
+              "11",
+              "6",
+              "12",
+              "5",
+              "7",
+              "8",
+              "9",
+              "10",
+              "3",
+              "4",
+              "2",
+              "Parque_piñata",
+              "1"
+            ]
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Area verde",
+            "categories": [
+              "Area verde",
+              "Area de equipamiento",
+              "Area de proteccion",
+              "Area verde o equipamiento",
+              "Ex basurero Municipal",
+              "Parque Piñata",
+              "Area de equipamiento o area verde",
+              "Area de equipamientos",
+              "Area protegida",
+              "Area protegida invadido",
+              "Area urbana",
+              "Area verdes",
+              "Cancha polifuncional",
+              "Laguna de oxidacion",
+              "Parque ecologico",
+              "Parque lineal ecologico",
+              "Plaza  en ejecucion",
+              "Plaza 11 de Octubre",
+              "Plaza 27 de Mayo",
+              "Plaza Cobija",
+              "Plaza Conavi",
+              "Plaza Judicial",
+              "Plaza Pedro Domingo Murillo",
+              "Plaza del estudiante",
+              "Plaza del maestro",
+              "Plaza humberto Terrazas",
+              "Plaza villa vista",
+              "Plazuela Municipal",
+              "Relleno sanitario Municipal"
+            ]
+          },
+          {
+            "name": "shape_leng",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 64.5845000374,
+              "maximum": 3971.14533476
+            }
+          },
+          {
+            "name": "shape_area",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0.579001847162,
+              "maximum": 156177.999245
+            }
+          },
+          {
+            "name": "codigo",
+            "type": "integer"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
