@@ -1,0 +1,117 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_organizaciones_territoriales_de_ba_d38b722492b7",
+  "title": "Organizaciones Territoriales de Base en el Municipio de Camiri - PTDI",
+  "description": "El mapa muestra las Organizaciones Territoriales de Base - OTB en el Municipio de Camiri, según el PTDI 2021 - 2025",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_organizaciones_territoriales_de_ba_d38b722492b7/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 15735,
+      "hash": "sha256:54cc6474a578a1abad16b3166fa3e6e49f7301572ade9a72d353fa3c360869e3",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_organizaciones_territoriales_de_base_en_el_munici_p01ra.10"
+          },
+          {
+            "name": "otb",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "ARNULFO PEÑA"
+          },
+          {
+            "name": "distri_int",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Distrito 6",
+            "categories": [
+              "Distrito 1",
+              "Distrito 4\r",
+              "Distrito 6",
+              "Distrito 7",
+              "Distrito 2",
+              "Distrito 3\r",
+              "Distrito 8",
+              "Distrito 5\r",
+              "Distrito 4"
+            ]
+          },
+          {
+            "name": "sup_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 5.664,
+              "maximum": 72.823
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "SANTA CRUZ",
+            "categories": [
+              "SANTA CRUZ"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Cordillera",
+            "categories": [
+              "Cordillera"
+            ]
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Camiri",
+            "categories": [
+              "Camiri"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 2."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
