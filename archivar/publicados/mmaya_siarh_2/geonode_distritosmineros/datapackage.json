@@ -1,0 +1,86 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_distritosmineros",
+  "title": "Plan Director Cuenca Río Cotagaita –  Distritos Mineros",
+  "description": "PDCRCo (Plan Director de la Cuenca Río Cotagaita). Muestra la ubicación y la información relevante de los distritos mineros en el marco del Plan Director de la Cuenca del Río Cotagaita.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_distritosmineros/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 39883,
+      "hash": "sha256:2841cd95acac64dbb17d3aec46cad5bd027c6da8d508cc585a07ca7fe5956a82",
+      "schema": {
+        "fields": [
+          {
+            "name": "DISTRITOS",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Distrito de Tatasi"
+          },
+          {
+            "name": "AREA",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 7331951.913,
+              "maximum": 269025447.425
+            }
+          },
+          {
+            "name": "PERIMETER",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 11936.738,
+              "maximum": 76782.345
+            }
+          },
+          {
+            "name": "ACRES",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1811.758,
+              "maximum": 66477.37
+            }
+          },
+          {
+            "name": "HECTARES",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 733.195,
+              "maximum": 26902.545
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
