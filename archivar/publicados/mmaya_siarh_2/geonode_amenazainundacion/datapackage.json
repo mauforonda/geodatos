@@ -1,0 +1,60 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_amenazainundacion",
+  "title": "Plan Director Cuenca Río Mizque - Amenaza Inundación",
+  "description": "PDCRM (Plan Director de la Cuenca Río Mizque). Muestra la georreferenciación y la información relevante de las zonas con riesgo de inundacion, en el marco del Plan Director de la Cuenca Río Mizque.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_amenazainundacion/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 21347,
+      "hash": "sha256:f8aab06e1e0d22cab43ba251693ec373b9c48eef08df93dd8484ec8a93b1440d",
+      "schema": {
+        "fields": [
+          {
+            "name": "gml_id",
+            "type": "string",
+            "example": "Inundacion.6"
+          },
+          {
+            "name": "DESCIN3",
+            "type": "string",
+            "example": "TO"
+          },
+          {
+            "name": "COUNT_",
+            "type": "integer",
+            "constraints": {
+              "minimum": 44,
+              "maximum": 44
+            }
+          },
+          {
+            "name": "DESCRIP",
+            "type": "string",
+            "example": "Torrenteras"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
