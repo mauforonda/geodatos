@@ -1,0 +1,133 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_elalto_densidad_pobl2001",
+  "title": "Mapa Densidad Poblacional Censo 2001 por Zona Censal del Municipio El Alto 2015",
+  "description": "La información geográfica muestra la ubicación y las características de la Densidad Poblacional Censo 2001 por zona censal del Municipio de El Alto, con sistema de referencia WGS 84, proyección UTM Zona 19 Sur a escala 1:1000. Obtenida a través de relevamiento de campo. Información proporcionada del Atlas Geográfico del Municipio de El Alto gestión 2015.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_elalto_densidad_pobl2001/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 50834,
+      "hash": "sha256:d9ce0c3b8d5aad6e6111882cfa7f833d2521350011ed63fd61f48d331e0a1965",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "elalto_densidad_pobl2001.65"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 195
+            }
+          },
+          {
+            "name": "gid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 195
+            }
+          },
+          {
+            "name": "__gid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 195
+            }
+          },
+          {
+            "name": "z_censal",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 196
+            }
+          },
+          {
+            "name": "area_m2",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 92666.7911016,
+              "maximum": 7490689.09842
+            }
+          },
+          {
+            "name": "area_km2",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0.0926667911016,
+              "maximum": 7.49068909842
+            }
+          },
+          {
+            "name": "area_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 9.26667911016,
+              "maximum": 749.068909842
+            }
+          },
+          {
+            "name": "d_ha",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 3,
+              "maximum": 284
+            }
+          },
+          {
+            "name": "c_dist_mun",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 8
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
