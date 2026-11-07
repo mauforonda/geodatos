@@ -1,0 +1,112 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_concesiones_mineraswgs84",
+  "title": "Mapa de Concesiones Mineras del Municipio de La Paz",
+  "description": "El mapa muestra información espacial de la localización e identificación de concesiones mineras en el Municipio de La Paz. Elaborado por Oficialía Mayor de Planificación para el Desarrollo (OMPD) del Gobierno Autónomo Municipal de La Paz, en el año 2013.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_concesiones_mineraswgs84/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 39442,
+      "hash": "sha256:14f8ceda5c980a4b879edd15072bbcde81df31574ed2e0c0c3ea5a4b0dd5aad2",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "concesiones_mineraswgs84.154"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 176
+            }
+          },
+          {
+            "name": "objectid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 176
+            }
+          },
+          {
+            "name": "fid_",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 0
+            }
+          },
+          {
+            "name": "layer",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Concesiones - peticiones por cuadrcula",
+            "categories": [
+              "Concesiones - peticiones por cuadrcula",
+              "Concesiones por pertenencias catastradas por colindancia",
+              "Concesiones por pertenencias catastradas"
+            ]
+          },
+          {
+            "name": "area",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "0.04714383379"
+          },
+          {
+            "name": "shape_leng",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "142.584091803"
+          },
+          {
+            "name": "shape_area",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "471.438201227"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 1."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
