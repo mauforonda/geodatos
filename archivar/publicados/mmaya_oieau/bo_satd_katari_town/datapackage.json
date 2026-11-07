@@ -1,0 +1,119 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_oieau_bo_satd_katari_town",
+  "title": "town",
+  "sources": [
+    {
+      "title": "Sistema para la Gestión Integral de Recursos Hídricos desarrollado por la Oficina Internacional del Agua (OiEau)",
+      "path": "https://www.oieau-wiss.org/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_oieau_bo_satd_katari_town/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 35958,
+      "hash": "sha256:57a39948237818c9f41c03be7d987109d2dc06b60e0a509c30c4d1f841269187",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "town.155"
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Sirca Misicuni"
+          },
+          {
+            "name": "population",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 846880
+            }
+          },
+          {
+            "name": "households",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 267307
+            }
+          },
+          {
+            "name": "type",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "dis",
+            "categories": [
+              "dis",
+              "cp",
+              "municipality capital"
+            ]
+          },
+          {
+            "name": "source",
+            "type": "string",
+            "example": "CNPV-CNA",
+            "categories": [
+              "CNPV-CNA",
+              "CNPV"
+            ]
+          },
+          {
+            "name": "alias",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Sirca Misicuni"
+          },
+          {
+            "name": "last_edited_date",
+            "type": "datetime",
+            "constraints": {
+              "required": true,
+              "minimum": "2022-03-11T11:59:46+00:00",
+              "maximum": "2022-03-11T11:59:46+00:00"
+            }
+          },
+          {
+            "name": "last_edited_user",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 1
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
