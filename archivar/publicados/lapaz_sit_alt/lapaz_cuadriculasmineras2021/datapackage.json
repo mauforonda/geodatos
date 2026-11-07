@@ -1,0 +1,78 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_alt_lapaz_cuadriculasmineras2021",
+  "title": "Cuadriculas Mineras 2021",
+  "description": "Cuadriculas Mineras, Autoridad Jurisdiccional Administrativa Minera, Dirección de Catastro y Cuadriculado Minero, 2021.",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)",
+      "path": "http://sitservicios.lapaz.bo/ows38.jsp"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_lapaz_cuadriculasmineras2021/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 39637,
+      "hash": "sha256:09bb9643d20cd040993df120b3ff5b9d4fee8dc35b3d0a7518e8b8693e662a85",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "cuadriculasmineras2021.198"
+          },
+          {
+            "name": "Text_1",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "19613"
+          },
+          {
+            "name": "DATO_1",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "ATEs Por Cuadrícula",
+            "categories": [
+              "Trámite Ley 535",
+              "ATEs Por Cuadrícula",
+              "Contrato Administrativo Minero",
+              "Reserva ley 535",
+              "Contratos Mineros",
+              "Solicitudes de Contratos Mineros",
+              "Trámite Administrativo Ley 403",
+              "Área Inmovilizada",
+              "ATEs Por Pertenencia",
+              "Contrato Administrativo Minero por Adecuación"
+            ]
+          },
+          {
+            "name": "GDB_GEOMATTR_DATA",
+            "type": "integer"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Polygon, MultiPolygon. Geometrías inválidas, conservadas sin reparar: 4."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
