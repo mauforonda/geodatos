@@ -1,0 +1,181 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_spot",
+  "title": "Indice de Imagenes Satelitales SPOT de Bolivia",
+  "description": "Mosaico de polígonos que indican las diferentes imágenes satelitales SPOT que cubren el territorio boliviano.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_spot/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 42092,
+      "hash": "sha256:e74bbc0a27b1774ab2fdaf790a085bd3f6b41f039e7c47b2c41dc32089d3f8c2",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "spot.368"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 445
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Spot.368"
+          },
+          {
+            "name": "area",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 2634896000.0,
+              "maximum": 3301576000.0
+            }
+          },
+          {
+            "name": "perimeter",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 209237.3,
+              "maximum": 232835.1
+            }
+          },
+          {
+            "name": "gcis",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 663372,
+              "maximum": 691390
+            }
+          },
+          {
+            "name": "formato",
+            "type": "string",
+            "example": "digital",
+            "categories": [
+              "digital"
+            ]
+          },
+          {
+            "name": "modo",
+            "type": "string",
+            "example": "pancromatico",
+            "categories": [
+              "pancromatico"
+            ]
+          },
+          {
+            "name": "nivel",
+            "type": "integer"
+          },
+          {
+            "name": "existencia",
+            "type": "string",
+            "example": "SI",
+            "categories": [
+              "SI"
+            ]
+          },
+          {
+            "name": "imagen",
+            "type": "integer"
+          },
+          {
+            "name": "selec",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 1
+            }
+          },
+          {
+            "name": "inra_ima",
+            "type": "string",
+            "example": "DAN_99-08-17"
+          },
+          {
+            "name": "dtpto_ima",
+            "type": "string",
+            "example": "POTOSI",
+            "categories": [
+              "SANTA CRUZ",
+              "BENI",
+              "POTOSI",
+              "LA PAZ",
+              "COCHABAMBA",
+              "BENI-CBBA",
+              "BENI-LP",
+              "BENI_LP",
+              "BENI_LP_CBBA",
+              "BENI_STA",
+              "COCHABAMBA_BENI",
+              "COCHABAMBA_BNI",
+              "LA PAZ_BENI",
+              "LA PAZ_CBBA",
+              "POTOSI_ORO",
+              "SANTA CRUZ_2I_1M",
+              "SANTZ CRUZ"
+            ]
+          },
+          {
+            "name": "shape_leng",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 209237.291105,
+              "maximum": 232835.146447
+            }
+          },
+          {
+            "name": "shape_area",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 2634895503.65,
+              "maximum": 3301576480.7
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
