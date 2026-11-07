@@ -1,0 +1,158 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_aeropuerto",
+  "title": "Mapa de los Aeropuertos en Sudamérica COSIPLAN_ 2015",
+  "description": "Puntos que representan la ubicación geográfica de aeropuertos. Contiene aeropuertos nacionales e internacionales y entre otras informaciones se puede encontrar: nombre, uso/función, condiciòn operacional, tipo de tráfico permitido, propiedad de la infraestructura.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_aeropuerto/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 57463,
+      "hash": "sha256:c8fad3098b993dfcf8b309b3a37c182de1d33ead62f1a56a15d6b9849dd40efa",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "aeropuerto.554"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 976
+            }
+          },
+          {
+            "name": "idusco",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 20012000037.0
+            }
+          },
+          {
+            "name": "nam",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Laguna San Rafael"
+          },
+          {
+            "name": "acc_lbl",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Precisa",
+            "categories": [
+              "Precisa",
+              "Exacta",
+              "Información No Disponible",
+              "Aproximada",
+              "Approximate",
+              "Exact"
+            ]
+          },
+          {
+            "name": "atv_lbl",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Nacional",
+            "categories": [
+              "Nacional",
+              "Información no disponible",
+              "Internacional",
+              "National"
+            ]
+          },
+          {
+            "name": "fuc_lbl",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Servicio Público",
+            "categories": [
+              "Transporte",
+              "Información No Disponible",
+              "Servicio Público",
+              "Comercial",
+              "Commercial",
+              "Information Not Available",
+              "Militar",
+              "Área Prohibida"
+            ]
+          },
+          {
+            "name": "ops_lbl",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "En Operación",
+            "categories": [
+              "En Operación",
+              "Información No Disponible",
+              "No Está Operando",
+              "Operativo",
+              "Operating"
+            ]
+          },
+          {
+            "name": "zpp_lbl",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "CHL",
+            "categories": [
+              "CHL",
+              "BRA",
+              "COL",
+              "URY",
+              "ARG",
+              "VEN",
+              "BOL",
+              "ECU",
+              "PER",
+              "PRY",
+              "GUY",
+              "SUR"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
