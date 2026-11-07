@@ -1,0 +1,138 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mdpyep_sitap_hortalizas_zanahoria2024",
+  "title": "zanahoria2024",
+  "sources": [
+    {
+      "title": "Sistema Territorial de Apoyo a la Producción (SITAP) del Ministerio de Desarrollo Productivo y Economía Plural",
+      "path": "https://geodata-bolivia.produccion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mdpyep_sitap_hortalizas_zanahoria2024/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 60105,
+      "hash": "sha256:54850b3f6b5429512ea6a518d5557003a573c180fb18714a619e8a09ec91f399",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "zanahoria2024.674"
+          },
+          {
+            "name": "departamento",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Potosi",
+            "categories": [
+              "Potosi",
+              "Cochabamba",
+              "Oruro",
+              "La Paz",
+              "Chuquisaca",
+              "Tarija",
+              "Santa Cruz",
+              "Pando",
+              "Beni"
+            ]
+          },
+          {
+            "name": "provincia",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Nor Lipez"
+          },
+          {
+            "name": "municipio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "San Pedro de Quemes"
+          },
+          {
+            "name": "comunidad",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "PAJANCHA"
+          },
+          {
+            "name": "producto",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Zanahoria",
+            "categories": [
+              "Zanahoria"
+            ]
+          },
+          {
+            "name": "estacion",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "verano",
+            "categories": [
+              "verano",
+              "invierno"
+            ]
+          },
+          {
+            "name": "produccion",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.626,
+              "maximum": 5598.718
+            }
+          },
+          {
+            "name": "superficie",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.376,
+              "maximum": 300.609
+            }
+          },
+          {
+            "name": "rendimiento",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.741,
+              "maximum": 18.625
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
