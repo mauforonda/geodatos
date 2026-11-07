@@ -1,0 +1,221 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_inventario_presas_2010",
+  "title": "Inventario Presas",
+  "description": "Inventario de Presas al 2010",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_inventario_presas_2010/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 20759,
+      "hash": "sha256:42d1d108a475f344fb183d6880b463a6e46c49642a784e22e01606c17e83bf72",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "PRESA",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Trinchera Cabildo"
+          },
+          {
+            "name": "CODIGO",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "TJ-G-008"
+          },
+          {
+            "name": "ESTADO",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Funciona",
+            "categories": [
+              "Funciona",
+              "F/Problemas",
+              "C/Problema",
+              "No Funciona",
+              "F/Problema",
+              "S/D",
+              "En Construccion",
+              "En construccion"
+            ]
+          },
+          {
+            "name": "USO",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Conservacion",
+            "categories": [
+              "Riego",
+              "Agua Potable",
+              "Mineria",
+              "Energia",
+              "Conservacion",
+              "Riego / Agua Potable",
+              "M�ltiple",
+              "Riego/Energia",
+              "Energia/Riego",
+              "Multiple",
+              "Otros"
+            ]
+          },
+          {
+            "name": "TIPO",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Tierra",
+            "categories": [
+              "Tierra",
+              "Gravedad",
+              "Arco",
+              "Enrocado",
+              "Rustica/Roca",
+              "Contrafuertes",
+              "Gravedad/Arco",
+              "Rustica",
+              "Tierra/Enrocado"
+            ]
+          },
+          {
+            "name": "AreaCuenca",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "3,18_Km2"
+          },
+          {
+            "name": "ALT_PRESA",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "27,00_m"
+          },
+          {
+            "name": "LON_CORON",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "75,74_m"
+          },
+          {
+            "name": "CAP_EMBAL",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "301.510_m3"
+          },
+          {
+            "name": "COTA_CORON",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "2.066,20 msnm"
+          },
+          {
+            "name": "DEPTO",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Tarija",
+            "categories": [
+              "Cochabamba",
+              "Potosi",
+              "Chuquisaca",
+              "La Paz",
+              "Oruro",
+              "Santa Cruz",
+              "Tarija"
+            ]
+          },
+          {
+            "name": "MUNICIPIO",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Padcaya"
+          },
+          {
+            "name": "NOMBRE",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "",
+            "categories": [
+              "",
+              "Cuenca Rio Rocha",
+              "Cuenca Rio Pampa-Huari",
+              "Cuenca Rio Grande",
+              "Cuenca Lago Poopo",
+              "Cuenca Rio Mizque",
+              "Cuenca Guadalquivir",
+              "Cuenca Rio Katari - Lago Menor",
+              "Cuenca Rio San Pedro",
+              "Cuenca Rio Azero",
+              "Cuenca Rio Cachimayu",
+              "Cuenca Rio Yapacani"
+            ]
+          },
+          {
+            "name": "PDC",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "",
+            "categories": [
+              "",
+              "PDCRR",
+              "PDCRPH",
+              "PDCRG",
+              "PDCLP",
+              "PDCRM",
+              "PDCRGu",
+              "PDCRK",
+              "PDCRSP",
+              "PDCRA",
+              "PDCRCa",
+              "PDCRY"
+            ]
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
