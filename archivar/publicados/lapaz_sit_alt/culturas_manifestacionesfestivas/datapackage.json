@@ -1,0 +1,184 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_alt_culturas_manifestacionesfestivas",
+  "title": "Manifestaciones Festivas",
+  "description": "Mapa Cultural, Manifestaciones Festivas",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)",
+      "path": "http://sitservicios.lapaz.bo/ows38.jsp"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_culturas_manifestacionesfestivas/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 39006,
+      "hash": "sha256:a35fe08fea1971d9d89437568f93ac2a875e11ccf1bd2a2d79a3c5bbec326ce5",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "manifestacionesFestivas.172"
+          },
+          {
+            "name": "IdFestividad",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 160
+            }
+          },
+          {
+            "name": "Lugar",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Av. Entre Rios esq. Av. Kollasuyo, C. Reyes Cardona, Av. Héroes del Pacífico, C José María Asin, Av."
+          },
+          {
+            "name": "Macrodistrito",
+            "type": "string",
+            "example": "Max Paredes \nZona 14 de Septiembre ",
+            "categories": [
+              "Todos los macrodistritos del Municipio de La Paz",
+              "Centro",
+              "Periférica",
+              "Max Paredes",
+              "San Antonio",
+              "Sur",
+              "Cotahuma",
+              "Hampaturi",
+              "Zongo",
+              "Centro ",
+              "Siete macrodistritos urbanos (Cotahuma, Max Paredes, Periférica, Centro, San Antonio, Sur, Mallasa)",
+              "Cotahuma ",
+              "Mallasa",
+              "Centro \nSur",
+              "Centro, Cotahuma",
+              "CotahumaZona Alpacoma",
+              "Max Paredes\nCentro \n",
+              "Max Paredes\nZona Alto Ch'ijini ",
+              "Max Paredes ",
+              "Max Paredes \nZona 14 de Septiembre ",
+              "Max ParedesCaja Ferroviaria",
+              "Max ParedesCentro",
+              "Max ParedesZona El Tejar",
+              "Max ParedesZona La Portada",
+              "Maximiliano Paredes",
+              "Periferica",
+              "PeriféricaZona 3er Milenio",
+              "PeriféricaZona Cochabamba",
+              "Períferica ",
+              "Sur \nPeriférica\nSan Antonio\nCotahuma "
+            ]
+          },
+          {
+            "name": "IdMacrodistrito",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.0,
+              "maximum": 8.0
+            }
+          },
+          {
+            "name": "Distrito",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.0,
+              "maximum": 22.0
+            }
+          },
+          {
+            "name": "DistritoMcpal",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "7"
+          },
+          {
+            "name": "NoUbicable",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.0,
+              "maximum": 1.0
+            }
+          },
+          {
+            "name": "NroFraternidades",
+            "type": "string",
+            "example": "13"
+          },
+          {
+            "name": "Responsables",
+            "type": "string",
+            "example": "Asociación de Conjuntos Folklóricos de El Tejar Sr. de la Exaltación - Junta de Vecinos 14 de Septie"
+          },
+          {
+            "name": "owner",
+            "type": "string",
+            "example": "nelson.huanquiri",
+            "categories": [
+              "nelson.huanquiri",
+              "nhuanquiri"
+            ]
+          },
+          {
+            "name": "usuario",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "clara.revollo",
+            "categories": [
+              "vida.tedesqui",
+              "maria.garron",
+              "clara.revollo",
+              "nhuanquiri",
+              "nelson.huanquiri"
+            ]
+          },
+          {
+            "name": "fechaActual",
+            "type": "datetime",
+            "constraints": {
+              "required": true,
+              "minimum": "2016-03-11T19:28:07.360000+00:00",
+              "maximum": "2026-01-06T21:39:45.523000+00:00"
+            }
+          },
+          {
+            "name": "observaciones",
+            "type": "string",
+            "example": "",
+            "categories": [
+              "",
+              "La entrada se realiza en toda la avenida Max Fernandez hasta llegar a la iglesia Santa Barbara"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point, LineString, Polygon. Filas sin geometría: 83. Geometrías inválidas, conservadas sin reparar: 3."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
