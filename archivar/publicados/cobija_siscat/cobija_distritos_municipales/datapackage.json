@@ -1,0 +1,67 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_cobija_siscat_cobija_distritos_municipales",
+  "title": "distritos_municipales",
+  "sources": [
+    {
+      "title": "Sistema de Catastro del Gobierno Autónomo Municipal de Cobija",
+      "path": "https://siscat.cobija.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_cobija_siscat_cobija_distritos_municipales/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 13540,
+      "hash": "sha256:ac5d0e28cdf418e11112443a3a6fd207194ef242f1e609369e2d8b6b4b190f13",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "example": "distritos_municipales.5"
+          },
+          {
+            "name": "ASFALTO",
+            "type": "integer",
+            "constraints": {
+              "minimum": 16,
+              "maximum": 194
+            }
+          },
+          {
+            "name": "TIERRA",
+            "type": "integer",
+            "constraints": {
+              "minimum": 5,
+              "maximum": 78
+            }
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "example": "Distrito 5"
+          },
+          {
+            "name": "distrito",
+            "type": "string",
+            "example": "D-05"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
