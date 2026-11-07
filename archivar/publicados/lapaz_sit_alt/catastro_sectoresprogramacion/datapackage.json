@@ -1,0 +1,91 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_alt_catastro_sectoresprogramacion",
+  "title": "Sectores para la programación de levantamientos catastrales",
+  "description": "Sectores para la programación de levantamientos catastrales.",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)",
+      "path": "http://sitservicios.lapaz.bo/ows38.jsp"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_catastro_sectoresprogramacion/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 42772,
+      "hash": "sha256:8472aa1a906054c6893cbfe6ed79216e75f17f2495183088bd8a005aad6dbdde",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "sectoresprogramacion.49"
+          },
+          {
+            "name": "classid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 68,
+              "maximum": 68
+            }
+          },
+          {
+            "name": "revisionnumber",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 0
+            }
+          },
+          {
+            "name": "fecharegistro",
+            "type": "datetime",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": "2014-05-05T21:41:28.830000+00:00",
+              "maximum": "2017-07-20T13:17:39.447000+00:00"
+            }
+          },
+          {
+            "name": "idusuario",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1393,
+              "maximum": 2134
+            }
+          },
+          {
+            "name": "idtramitelev",
+            "type": "number",
+            "constraints": {
+              "minimum": 7.0,
+              "maximum": 66057.0
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Polygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
