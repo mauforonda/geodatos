@@ -1,0 +1,86 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_sectores_ruraleswgs84",
+  "title": "Mapa de Sectores Rurales en el Municipio de La Paz",
+  "description": "El Mapa presenta información de las lo distribución y localización espacial de los sectores rurales en relacion con las subcuencas o microcuencas en el Municipio de La Paz. Elaborado por Oficialía Mayor de Planificación para el Desarrollo (OMPD) del Gobierno Autónomo Municipal de La Paz, en el año 2013.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_sectores_ruraleswgs84/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 83497,
+      "hash": "sha256:ef6ce041e54f1a7eb51d2220b79a7f9c45d024c49ee9e34d8fba0832b43ee7cc",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "example": "sectores_ruraleswgs84.1"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 7
+            }
+          },
+          {
+            "name": "objectid_1",
+            "type": "integer",
+            "constraints": {
+              "minimum": 4,
+              "maximum": 41
+            }
+          },
+          {
+            "name": "objectid",
+            "type": "integer",
+            "constraints": {
+              "minimum": 4,
+              "maximum": 14
+            }
+          },
+          {
+            "name": "cuenc_sec",
+            "type": "string",
+            "example": "Achumani"
+          },
+          {
+            "name": "shape_leng",
+            "type": "string",
+            "example": "50728.4930972"
+          },
+          {
+            "name": "shape_area",
+            "type": "string",
+            "example": "52984446.7337"
+          },
+          {
+            "name": "sector",
+            "type": "string",
+            "example": "SECTOR ACHUMANI"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
