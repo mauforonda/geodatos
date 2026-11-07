@@ -1,0 +1,88 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_lp_vi_precipitacion_etp2000",
+  "title": "Mapa de saldo de precipitacion menos evapotranspiración de los valles interandinos del departamento de  La Paz_ 2000",
+  "description": "Este mapa muestra el saldo de precipitación menos evapotranspiración de los valles interandinos de La Paz, representando el excedente de agua generado, cuyo almacenamiento es útil en época seca. Producido por el proyecto ZONISIG (Zonificacion Agroecológica y Socioeconomica de los Valles Interandinos de La Paz) y convenios de cooperación en el año 2000, a escala 1:25000.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_lp_vi_precipitacion_etp2000/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 92080,
+      "hash": "sha256:c11ae9c2d5ffd78ecca62050a0413e6126e0da2d75d36a19513c700269fe93eb",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "example": "lp_vi_precipitacion_etp2000.3"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 8
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "example": "lp_vi_Precipitacion-ETP2000.3"
+          },
+          {
+            "name": "entity",
+            "type": "string",
+            "example": "Polyline",
+            "categories": [
+              "Polyline"
+            ]
+          },
+          {
+            "name": "layer",
+            "type": "string",
+            "example": "0",
+            "categories": [
+              "0",
+              "BORDE"
+            ]
+          },
+          {
+            "name": "color",
+            "type": "integer",
+            "constraints": {
+              "minimum": 7,
+              "maximum": 24
+            }
+          },
+          {
+            "name": "pp___etp__",
+            "type": "integer",
+            "constraints": {
+              "minimum": 0,
+              "maximum": 1000
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
