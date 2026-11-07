@@ -1,0 +1,151 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_criotupiza_mineriapertenencia",
+  "title": "Plan Director Cuenca Río Tupiza - Minería Pertenencias_ Bolivia",
+  "description": "El mapa muestra la ubicación y la información relevante de las pertenencias mineras en la cuenca del río Tupiza. Información obtenida del Viceministerio de Recursos Hídricos y Riego, ha febrero del 2019.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_criotupiza_mineriapertenencia/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 38961,
+      "hash": "sha256:cb47cc889b6c9b87a0852eae57c0e65225e90e1ea2025bac79d6c927d46d3628",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 76
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0,
+              "maximum": 75
+            }
+          },
+          {
+            "name": "nomcon",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "CHILCO III"
+          },
+          {
+            "name": "tipcon",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "EXPLOTACION",
+            "categories": [
+              "EXPLOTACION",
+              "AGUAS"
+            ]
+          },
+          {
+            "name": "unipert",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "HAS",
+            "categories": [
+              "HAS",
+              "M2"
+            ]
+          },
+          {
+            "name": "propie",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "CORPORACION MINERA DE BOLIVIA"
+          },
+          {
+            "name": "depto",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "POTOSI",
+            "categories": [
+              "POTOSI"
+            ]
+          },
+          {
+            "name": "provincia",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "SUD CHICHAS",
+            "categories": [
+              "SUD CHICHAS",
+              "SUD CHICHAS (ACTUAL, NOR LIPEZ)"
+            ]
+          },
+          {
+            "name": "canton",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "PORTUGALETE",
+            "categories": [
+              "PORTUGALETE",
+              "SAN VICENTE",
+              "TUPIZA",
+              "CHILCO",
+              "OPLOCA",
+              "SAN VICENTE PORTUGALETE",
+              "TATASI (ACTUAL COCANI)",
+              "GUADALUPE",
+              "ORO INGENIO",
+              "SALO",
+              "CHILCO PORTUGALETE",
+              "PORTUGALETE SAN VICENTE",
+              "SAN VICENTE CHILCO"
+            ]
+          },
+          {
+            "name": "nropert",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "76"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 4."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
