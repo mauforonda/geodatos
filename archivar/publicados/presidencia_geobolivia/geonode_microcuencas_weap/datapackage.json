@@ -1,0 +1,93 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_microcuencas_weap",
+  "title": "PDC Cuenca Alta del río La Paz - Microcuencas WEAP",
+  "description": "Este mapa muestra la delimitación de las microcuencas de la zona de estudio, en total 97 microcuencas delimitadas. El proceso de delimitación se realizó utilizando el modelo Sistema de Evaluación y Planificación del Agua – WEAP. La ultima edición de esta capa de microcuencas fue el 2022. Este dato fue obtenido de su geoportal del Ministerio de Medio Ambiente y Agua en fecha septiembre del 2022.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_microcuencas_weap/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 70199,
+      "hash": "sha256:052fcb88f56e3a40c78bec59e2a50a6a6b400c82c4ce58a9bb8cb5abed2e2628",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "microcuencas_weap.23"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 97
+            }
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "UH_553"
+          },
+          {
+            "name": "area_km2",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0.248,
+              "maximum": 154.822
+            }
+          },
+          {
+            "name": "pourptlon",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -68.165417,
+              "maximum": -67.662917
+            }
+          },
+          {
+            "name": "pourptlat",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -16.78125,
+              "maximum": -16.317917
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 20."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
