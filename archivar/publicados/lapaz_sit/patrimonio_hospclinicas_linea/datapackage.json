@@ -1,0 +1,100 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_patrimonio_hospclinicas_linea",
+  "title": "Trazos Hospital de Clinicas",
+  "description": "Trazos hospital de Clínicas, DM 17 2025",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz",
+      "path": "http://sitservicios.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_patrimonio_hospclinicas_linea/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 59348,
+      "hash": "sha256:dbfbcf4f9af8291a5e97a337f7a9952c0609af3994a1b626300a852c8d7f1e98",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "hospClinicas_linea.1284"
+          },
+          {
+            "name": "ENTITY",
+            "type": "string",
+            "example": "Line",
+            "categories": [
+              "Line",
+              "Polyline"
+            ]
+          },
+          {
+            "name": "LAYER",
+            "type": "string",
+            "example": "Limite de Manzana",
+            "categories": [
+              "Techo de Edificacion",
+              "Contorno de Edificacion",
+              "Jardinera",
+              "Plaza",
+              "Linea Divisoria de Aguas",
+              "Muro",
+              "Terraza",
+              "Limite de Manzana",
+              "0",
+              "Campo Deportivo",
+              "Parque"
+            ]
+          },
+          {
+            "name": "ELEVATION",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 0
+            }
+          },
+          {
+            "name": "THICKNESS",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 0
+            }
+          },
+          {
+            "name": "COLOR",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 251
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
