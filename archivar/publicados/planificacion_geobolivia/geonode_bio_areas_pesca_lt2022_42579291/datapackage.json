@@ -1,0 +1,128 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geobolivia_geonode_bio_areas_pesca_lt2022_42579291",
+  "title": "Áreas de Pesca del Lago Titicaca (2022)",
+  "description": "Representa la distribución de las áreas de pesca en el lago Titicaca hasta el año 2022.",
+  "sources": [
+    {
+      "title": "Nueva plataforma GeoBolivia",
+      "path": "https://geonode.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geobolivia_geonode_bio_areas_pesca_lt2022_42579291/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 24717,
+      "hash": "sha256:e20190a3301f1258cdf65fba965db503bf52309f413566cf79f7728d16760a01",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "bio_areas_pesca_lt2022_42579291.39"
+          },
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 54
+            }
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 54
+            }
+          },
+          {
+            "name": "esp",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Carachi gris o negro",
+            "categories": [
+              "Carachi gris o negro",
+              "Carachi amarillo, punku",
+              "Pejerrey",
+              "Trucha arco iris",
+              "Mauri",
+              "Ispi o complejo ispi",
+              "Carachi enano o picachu",
+              "Gringuito o carachi gringo",
+              "Suche"
+            ]
+          },
+          {
+            "name": "sup_km2",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 2.04714945646,
+              "maximum": 56.9817086282
+            }
+          },
+          {
+            "name": "sup_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 204.714945646,
+              "maximum": 5698.17086282
+            }
+          },
+          {
+            "name": "pai",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Perú",
+            "categories": [
+              "Bolivia",
+              "Perú"
+            ]
+          },
+          {
+            "name": "cue_pla",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Lago Titicaca",
+            "categories": [
+              "Lago Titicaca"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
