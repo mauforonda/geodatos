@@ -1,0 +1,97 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_ductos_ypfb",
+  "title": "Plan Director Cuenca Río Guadalquivir - Ductos",
+  "description": "PDCRGu (Plan Director de la Cuenca Río Guadalquivir).  Muestra la distribución espacial de ductos en el marco del Plan Director de la Cuenca del Río Guadalquivir.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_ductos_ypfb/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 54551,
+      "hash": "sha256:83d65a2460299a8d05f7fcad3236dd9a53279908f0603cda78cce459edf7c581",
+      "schema": {
+        "fields": [
+          {
+            "name": "EventID",
+            "type": "string",
+            "example": "{6EE756A8-7610-4DD5-9BBD-821FFAB505BC}"
+          },
+          {
+            "name": "BeginStati",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.0,
+              "maximum": 162448.28
+            }
+          },
+          {
+            "name": "EndStation",
+            "type": "number",
+            "constraints": {
+              "minimum": 8923.62988281,
+              "maximum": 174324.796875
+            }
+          },
+          {
+            "name": "Operationa",
+            "type": "string",
+            "example": "Active",
+            "categories": [
+              "Active"
+            ]
+          },
+          {
+            "name": "LineLoopEv",
+            "type": "string",
+            "example": "{00000014-709A-F311-3D48-09E3ADCD70BB}"
+          },
+          {
+            "name": "StationSer",
+            "type": "string",
+            "example": "DGTT"
+          },
+          {
+            "name": "LineDescri",
+            "type": "string",
+            "example": "Derivada Tarija - La Tablada (Ende)"
+          },
+          {
+            "name": "Product",
+            "type": "string",
+            "example": "Gas Domestic",
+            "categories": [
+              "Gas Domestic"
+            ]
+          },
+          {
+            "name": "RuleID",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 1
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
