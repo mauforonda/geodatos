@@ -1,0 +1,85 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_criomizque_rioprincipal",
+  "title": "Plan Director Cuenca Río Mizque - Ríos Principales, Bolivia",
+  "description": "El mapa muestra la ubicación de los ríos principales que conforman la Cuenca Río Mizque aproximadamente son 20.  Información obtenida del Viceministerio de Recursos Hídricos y Riego, ha septiembre del 2016.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_criomizque_rioprincipal/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 67045,
+      "hash": "sha256:9d93da80fd94012712c69f83a73ccc352dfb2508ca4c1e0f7a04de2ddf146075",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 20
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0,
+              "maximum": 19
+            }
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Río Mizque"
+          },
+          {
+            "name": "code",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 2,
+              "maximum": 3
+            }
+          },
+          {
+            "name": "pdc",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "PDC_MIZQUE",
+            "categories": [
+              "PDC_MIZQUE"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
