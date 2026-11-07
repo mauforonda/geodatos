@@ -1,0 +1,205 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_alt_patrimonio_arquitectmoderna",
+  "title": "Arquitectura Moderna, siglo XX y contemporánea",
+  "description": "Arquitectura Moderna, siglo XX y contemporánea con carácter patrimonial.",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)",
+      "path": "http://sitservicios.lapaz.bo/ows38.jsp"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_patrimonio_arquitectmoderna/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 42806,
+      "hash": "sha256:6b9c57c24715aa363db4ec221949860848239b00dfbc8abba12bac472a4571e5",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "arquitectModerna.31"
+          },
+          {
+            "name": "idpredio",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 433591
+            }
+          },
+          {
+            "name": "codigocata",
+            "type": "string",
+            "example": "017001800100000"
+          },
+          {
+            "name": "ID_HICHE",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 131
+            }
+          },
+          {
+            "name": "NOMBRE",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "COLEGIO LIDERMANN"
+          },
+          {
+            "name": "TIPOLOGIA",
+            "type": "string",
+            "example": "DECLARADOS",
+            "categories": [
+              "MENCIÓN",
+              "ICONICO",
+              "DECLARADOS",
+              "NUEVOS",
+              "NUEVOS DE DS 03 2023_2024"
+            ]
+          },
+          {
+            "name": "ZONA",
+            "type": "string",
+            "example": "OBRAJES",
+            "categories": [
+              "CENTRO",
+              "SOPOCACHI",
+              "OBRAJES",
+              "ALTO OBRAJES",
+              "MIRAFLORES",
+              "SAN MIGUEL",
+              "ACHUMANI",
+              "CRISTO REY",
+              "FLORIDA"
+            ]
+          },
+          {
+            "name": "CALLE_AV",
+            "type": "string",
+            "example": "CALLE LINNDEMAN"
+          },
+          {
+            "name": "FICHA_CATA",
+            "type": "string",
+            "example": "PTR_CBI3317",
+            "categories": [
+              "INVENTARIACIÓN SITV2",
+              "PTR_CBI1142",
+              "PTR_CBI1193",
+              "PTR_CBI1237",
+              "PTR_CBI1746",
+              "PTR_CBI177",
+              "PTR_CBI214",
+              "PTR_CBI2313",
+              "PTR_CBI2393",
+              "PTR_CBI2401",
+              "PTR_CBI2815",
+              "PTR_CBI3124",
+              "PTR_CBI3317",
+              "PTR_CBI3377; PTR_CBI3375",
+              "PTR_CBI602",
+              "PTR_CBI722",
+              "PTR_CBI809",
+              "PTR_CBI848",
+              "PTR_CBI995"
+            ]
+          },
+          {
+            "name": "CATEGORIA",
+            "type": "string",
+            "example": "B",
+            "categories": [
+              "B",
+              "A",
+              "C",
+              "A y B"
+            ]
+          },
+          {
+            "name": "REVISION",
+            "type": "string",
+            "example": "Moderno",
+            "categories": [
+              "Moderno"
+            ]
+          },
+          {
+            "name": "Autor",
+            "type": "string",
+            "example": "Luis Zuñiga"
+          },
+          {
+            "name": "Anio",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 2019
+            }
+          },
+          {
+            "name": "CATE_HICHE",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "DECLARATORIA DE PATRIMONIO CULTURAL",
+            "categories": [
+              "IDENTIFICADO CON CARACTER PATRIMONIAL",
+              "DECLARATORIA DE PATRIMONIO CULTURAL"
+            ]
+          },
+          {
+            "name": "Macrodistr",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "SUR",
+            "categories": [
+              "CENTRO",
+              "COTAHUMA",
+              "SUR",
+              "MALLASA"
+            ]
+          },
+          {
+            "name": "Dsitrito",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 21
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
