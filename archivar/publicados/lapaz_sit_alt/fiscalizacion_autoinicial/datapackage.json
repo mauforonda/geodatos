@@ -1,0 +1,79 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_alt_fiscalizacion_autoinicial",
+  "title": "Procesos Administrativos de Fiscalizacion",
+  "description": "Procesos de Fiscalizacion con Auto Inicial",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)",
+      "path": "http://sitservicios.lapaz.bo/ows38.jsp"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_fiscalizacion_autoinicial/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 16764,
+      "hash": "sha256:fe3067ad09fd12052c599e70aa1fe60dd4139cb153c5b6930c4805c1a32ed4c3",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "autoInicial.4750"
+          },
+          {
+            "name": "numeroExpediente",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "692"
+          },
+          {
+            "name": "FechaInicioProceso",
+            "type": "datetime",
+            "constraints": {
+              "required": true,
+              "minimum": "2024-07-08T04:00:00+00:00",
+              "maximum": "2026-08-05T04:00:00+00:00"
+            }
+          },
+          {
+            "name": "codigoCatastral",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "046037000010000"
+          },
+          {
+            "name": "idInsFlujo",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 55034,
+              "maximum": 81797
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
