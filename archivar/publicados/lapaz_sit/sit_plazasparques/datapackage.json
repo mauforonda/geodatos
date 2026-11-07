@@ -1,0 +1,140 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_sit_plazasparques",
+  "title": "plazas parques",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz",
+      "path": "http://sitservicios.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_sit_plazasparques/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 49803,
+      "hash": "sha256:733df9b8229952de9ddb9eec52120b3ece032cacd791cbdcf35778d1e79d7cf1",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "plazasparques.221"
+          },
+          {
+            "name": "Nombre",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "De Los Duendes"
+          },
+          {
+            "name": "Zona",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Isla Verde"
+          },
+          {
+            "name": "IdTipo",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 4
+            }
+          },
+          {
+            "name": "Tipo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Parque",
+            "categories": [
+              "Area Verde",
+              "Plaza",
+              "Parque",
+              "Plaza/Parque"
+            ]
+          },
+          {
+            "name": "distrito",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 23
+            }
+          },
+          {
+            "name": "owner",
+            "type": "string",
+            "example": "NULL",
+            "categories": [
+              "NULL",
+              "abel.gonzales",
+              "soren.rodriguez",
+              "orieta.mamani",
+              "",
+              "rolandop.quisbert"
+            ]
+          },
+          {
+            "name": "usuario",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "marcelo.espinoza",
+            "categories": [
+              "abel.gonzales",
+              "soren.rodriguez",
+              "orieta.mamani",
+              "gustavo.nao",
+              "rolandop.quisbert",
+              "carlos.callisayat",
+              "veronica.huanca",
+              "marcelo.espinoza",
+              "pablo.jordan",
+              "marcial.marin"
+            ]
+          },
+          {
+            "name": "fechaActual",
+            "type": "datetime",
+            "constraints": {
+              "required": true,
+              "minimum": "2025-05-14T13:07:49.510000+00:00",
+              "maximum": "2026-04-08T20:50:30.803000+00:00"
+            }
+          },
+          {
+            "name": "observaciones",
+            "type": "string",
+            "example": ""
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
