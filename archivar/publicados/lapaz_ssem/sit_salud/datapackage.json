@@ -1,0 +1,210 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_ssem_sit_salud",
+  "title": "salud",
+  "sources": [
+    {
+      "title": "Servicio de Seguimiento Estratégico Municipal del Gobierno Autónomo Municipal de La Paz",
+      "path": "https://ssem.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_ssem_sit_salud/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 18534,
+      "hash": "sha256:806d0549754e93bfbd842039967c49d05a4a627b870d3eaa8610164af1de7d59",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "salud.3"
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Pasankery"
+          },
+          {
+            "name": "direccion",
+            "type": "string",
+            "example": "Av. Marcelo Quiroga esquina Heroes del Chaco"
+          },
+          {
+            "name": "idfuente",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.0,
+              "maximum": 2.0
+            }
+          },
+          {
+            "name": "fuente",
+            "type": "string",
+            "example": "GAMLP",
+            "categories": [
+              "GAMLP",
+              "SEDES",
+              "GMLP"
+            ]
+          },
+          {
+            "name": "zona",
+            "type": "string",
+            "example": "Pasankery"
+          },
+          {
+            "name": "idtipo",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 4
+            }
+          },
+          {
+            "name": "tipo",
+            "type": "string",
+            "example": "Centro de Salud",
+            "categories": [
+              "Centro de Salud",
+              "Clinica",
+              "Hospital",
+              "Policlínico"
+            ]
+          },
+          {
+            "name": "idsector",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 5
+            }
+          },
+          {
+            "name": "sector",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Público",
+            "categories": [
+              "Público",
+              "Privado",
+              "Seguro Social",
+              "Iglesia"
+            ]
+          },
+          {
+            "name": "idnivel",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.0,
+              "maximum": 3.0
+            }
+          },
+          {
+            "name": "nivel",
+            "type": "string",
+            "example": "Primer Nivel",
+            "categories": [
+              "Primer Nivel",
+              "Tercer Nivel",
+              "Segundo Nivel"
+            ]
+          },
+          {
+            "name": "red",
+            "type": "string",
+            "example": "1",
+            "categories": [
+              "1",
+              "Red - 2 Nor Oeste",
+              "3",
+              "5",
+              "4"
+            ]
+          },
+          {
+            "name": "tipoatenci",
+            "type": "string",
+            "example": "CS AMBULATORIO",
+            "categories": [
+              "CS AMBULATORIO",
+              "CS INTEGRAL",
+              "C.S. Ambulatorio"
+            ]
+          },
+          {
+            "name": "distrito",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 23
+            }
+          },
+          {
+            "name": "owner",
+            "type": "string",
+            "example": "clara.revollo",
+            "categories": [
+              "clara.revollo",
+              "juan.alba",
+              "gustavo.nao"
+            ]
+          },
+          {
+            "name": "usuario",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "lioner.flores",
+            "categories": [
+              "lioner.flores",
+              "gustavo.nao",
+              "clara.revollo"
+            ]
+          },
+          {
+            "name": "fechaactua",
+            "type": "datetime",
+            "constraints": {
+              "required": true,
+              "minimum": "2016-06-03T09:52:35.240000",
+              "maximum": "2024-08-08T20:38:30"
+            }
+          },
+          {
+            "name": "observacio",
+            "type": "string",
+            "example": "Teléfono:  2320994\nHorario de atención: 12 Hrs."
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
