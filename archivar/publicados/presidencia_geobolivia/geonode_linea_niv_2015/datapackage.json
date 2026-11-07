@@ -1,0 +1,92 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_linea_niv_2015",
+  "title": "linea_niv_2015",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_linea_niv_2015/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 95236,
+      "hash": "sha256:1f541bd32b91bcb30375db65cf7d859ddb2de0a11746bea2ee9dcfa20d1062b9",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 467
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 0
+            }
+          },
+          {
+            "name": "linea",
+            "type": "string",
+            "example": "BF"
+          },
+          {
+            "name": "gestion",
+            "type": "string",
+            "example": "1964"
+          },
+          {
+            "name": "orden",
+            "type": "string",
+            "example": "1ER.ORDEN",
+            "categories": [
+              "1ER.ORDEN",
+              "1ER ORDEN",
+              "2DO.ORDEN"
+            ]
+          },
+          {
+            "name": "de_donde_a",
+            "type": "string",
+            "example": "POTOSI-VILLAZON"
+          },
+          {
+            "name": "antiguedad",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Antigua",
+            "categories": [
+              "Antigua",
+              "Nueva"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString. Filas sin geometría: 6."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
