@@ -1,0 +1,46 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_precip_anu",
+  "title": "Plan Director Cuenca Río Pampa Huari – Precipitación Anual",
+  "description": "PDCRPH (Plan Director de la Cuenca Rio Pampa Huari) Describe la precipitación total disponible en la cuenca del rio pampa Huari, elaborado en base a datos disponibles de estaciones meteorológicas disponibles hasta el año 2017 fuente SENAMHI\nValores: \n                         464 mm       410 mm\n                         450 mm       400 mm\n                         440 mm       390 mm\n                         430 mm       380 mm\n                         420 mm       370 mm",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_precip_anu/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 18276,
+      "hash": "sha256:77b24ffc3aa2e45fcb9c25e35af50d878438d231dfbec23223b9ab94b4c77b1d",
+      "schema": {
+        "fields": [
+          {
+            "name": "PCP_ANUAL",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 370,
+              "maximum": 464
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
