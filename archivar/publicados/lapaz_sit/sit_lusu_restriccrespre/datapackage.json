@@ -1,0 +1,58 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_sit_lusu_restriccrespre",
+  "title": "Restriccion Residencia Presidencial",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz",
+      "path": "http://sitservicios.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_sit_lusu_restriccrespre/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 15503,
+      "hash": "sha256:54fe053e947c594a0610b007cd0a3d2bbc01d082b67b8622d28168c5ab6efa7c",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "example": "lusu_restriccrespre.1"
+          },
+          {
+            "name": "distancia",
+            "type": "string",
+            "example": "300 - 350 m"
+          },
+          {
+            "name": "altura",
+            "type": "integer",
+            "constraints": {
+              "minimum": 8,
+              "maximum": 51
+            }
+          },
+          {
+            "name": "idcartilla",
+            "type": "integer"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Polygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
