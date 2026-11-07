@@ -1,0 +1,78 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_alt_lapaz_cuadriculasmineras2023",
+  "title": "Cuadriculas Mineras 2023",
+  "description": "Relacion Planimetrica Informativa, Autotirad Jurisdiccional Administrativa Minera, Dirección de Catastro y Cuadriculado Minero, 17 de mayo de 2023.",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)",
+      "path": "http://sitservicios.lapaz.bo/ows38.jsp"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_lapaz_cuadriculasmineras2023/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 94673,
+      "hash": "sha256:94808d1f5ee1406ca3e56c54c93e95213c9f0f7798aff80fea21c5d11f0e0ab6",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "cuadriculasmineras2023.323"
+          },
+          {
+            "name": "NAME",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 73,
+              "maximum": 2041287
+            }
+          },
+          {
+            "name": "tipo_area_",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Tramite Ley 535",
+            "categories": [
+              "Tramite Ley 535",
+              "ATEs Por Cuadricula",
+              "Solicitudes de Contrato y/o Peticiones Mineras",
+              "Contratos Mineros",
+              "Reserva ley 535",
+              "Contrato Administrativo Minero",
+              "Area Inmovilizada",
+              "Area Revertida",
+              "ATEs Por Pertenencia"
+            ]
+          },
+          {
+            "name": "GDB_GEOMATTR_DATA",
+            "type": "integer"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Polygon. Geometrías inválidas, conservadas sin reparar: 5."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
