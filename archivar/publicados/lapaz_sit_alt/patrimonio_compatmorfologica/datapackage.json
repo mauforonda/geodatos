@@ -1,0 +1,157 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_alt_patrimonio_compatmorfologica",
+  "title": "Compatibilidad Morfológica",
+  "description": "Compatibilidad Morfologica, DM 117/2025",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)",
+      "path": "http://sitservicios.lapaz.bo/ows38.jsp"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_patrimonio_compatmorfologica/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 64935,
+      "hash": "sha256:d3bafda3e9a6771fdca82a19d21a111ae26d7b2af5887de29693f7c77c8acfee",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "compatMorfologica.101"
+          },
+          {
+            "name": "COD_SIFCA",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "022002200160000"
+          },
+          {
+            "name": "CATEGORIA",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "CM",
+            "categories": [
+              "CM"
+            ]
+          },
+          {
+            "name": "CONJUNTO",
+            "type": "string",
+            "example": "Conjunto Plaza Isabel La Católica",
+            "categories": [
+              "Conjunto Centro Histórico",
+              "Conjunto Rosendo Gutiérrez",
+              "Conjunto San Francisco",
+              "Conjunto Plaza Riosinho",
+              "Conjunto Obrajes",
+              "Conjunto San Sebastián",
+              "Conjunto Ismael Montes",
+              "Conjunto Luis Villanueva",
+              "Conjunto Plaza Isabel La Católica",
+              "Conjunto San Pedro",
+              "TRAMO",
+              "Conjunto Casas Alborta - Vickers",
+              "FCYT"
+            ]
+          },
+          {
+            "name": "FICHA",
+            "type": "string",
+            "example": "PTR_CBI233"
+          },
+          {
+            "name": "CAT_CM",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "C",
+            "categories": [
+              "SIN FICHA",
+              "C",
+              "B",
+              "D",
+              "A",
+              "DECL.  S/C",
+              "S/D"
+            ]
+          },
+          {
+            "name": "CAT_CM_FIN",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "CM-C",
+            "categories": [
+              "SIN FICHA",
+              "CM-C",
+              "CM-B",
+              "CM-D",
+              "CM-A",
+              "DECL.  S/C",
+              "S/D"
+            ]
+          },
+          {
+            "name": "ID_HICHE",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0,
+              "maximum": 517
+            }
+          },
+          {
+            "name": "MACRO",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "CENTRO",
+            "categories": [
+              "CENTRO",
+              "COTAHUMA",
+              "PERIFÉRICA",
+              "SUR"
+            ]
+          },
+          {
+            "name": "DISTRITO",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 21
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
