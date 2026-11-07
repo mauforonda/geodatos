@@ -1,0 +1,66 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_fallas_geologicas",
+  "title": "Plan Director Cuenca Río Rocha – Fallas Geologicas",
+  "description": "PDCRR (Plan Director de la Cuenca Río Rocha). Muestra la información relevante de las fallas geologicas, en el marco del Plan Director de la Cuenca Río Rocha.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_fallas_geologicas/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 31138,
+      "hash": "sha256:4a658ab600bfd4ee38702f6a075346fd25459dad1f8013ce52fdef73a8a619c9",
+      "schema": {
+        "fields": [
+          {
+            "name": "OBJECTID",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 8
+            }
+          },
+          {
+            "name": "ID",
+            "type": "integer",
+            "constraints": {
+              "minimum": 0,
+              "maximum": 0
+            }
+          },
+          {
+            "name": "CLASES",
+            "type": "string",
+            "example": "Derrumbes"
+          },
+          {
+            "name": "Shape_Leng",
+            "type": "number",
+            "constraints": {
+              "minimum": 12759.4882504,
+              "maximum": 512426.453554
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
