@@ -1,0 +1,117 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geobolivia_geonode_mercado2017_a7785b88",
+  "title": "Localización de mercados Bolivia (2017)",
+  "description": "Información geoespacial de la localización de los mercados populares que se hallan en el territorio nacional, donde se desarrollan diferentes actvidades económicas, datos actualizados por el Ministerio de Desarrollo Productivo y Economia Plural a marzo 2017.",
+  "sources": [
+    {
+      "title": "Nueva plataforma GeoBolivia",
+      "path": "https://geonode.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geobolivia_geonode_mercado2017_a7785b88/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 37521,
+      "hash": "sha256:a869f7786e5e631fa3d614dcf101ca1dc395288c0c4f79976e18869126ca1d81",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "mercado2017_a7785b88.380"
+          },
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 628
+            }
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 628
+            }
+          },
+          {
+            "name": "departamen",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Potosí",
+            "categories": [
+              "Santa Cruz",
+              "La Paz",
+              "Cochabamba",
+              "Potosí",
+              "Oruro",
+              "Tarija",
+              "Beni",
+              "Chuquisaca",
+              "Pando"
+            ]
+          },
+          {
+            "name": "provincia",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Antonio Quijarro"
+          },
+          {
+            "name": "municipio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Uyuni"
+          },
+          {
+            "name": "ciudad",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Uyuni"
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "MERCADO EL PROGRESO"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
