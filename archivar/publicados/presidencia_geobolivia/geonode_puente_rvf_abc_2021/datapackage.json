@@ -1,0 +1,110 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_puente_rvf_abc_2021",
+  "title": "Puentes de la Red Vial Fundamental de Bolivia_ 2021",
+  "description": "El mapa presenta información sobre la localización de puentes que forman parte de la red vial fundamental del país (de tipo linea), aproximadamente son 776 puentes, la longitud esta en metros, se menciona el nombre del puente, la coordenadas geográficas latitud y longitud. Los puentes son construcciones que permiten salvar los accidentes geográficos para una mejor estructuración del territorio nacional. Información administrada por la Administradora Boliviana de Carreteras (ABC), elaborada por la Gerencia Nacional Técnica, dato de la gestión 2021.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_puente_rvf_abc_2021/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 81195,
+      "hash": "sha256:1a496fbf459e5f7ab4b8499da129b9a23a1b3b86a019a8cb9a370dddb8e65029",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 776
+            }
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Puente (Rio Colorado)"
+          },
+          {
+            "name": "longitud",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 1400.0
+            }
+          },
+          {
+            "name": "dpto_1",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "POTOSI",
+            "categories": [
+              "LA PAZ",
+              "SANTA_CRUZ",
+              "COCHABAMBA",
+              "TARIJA",
+              "BENI",
+              "POTOSI",
+              "ORURO",
+              "CHUQUISACA",
+              "PANDO"
+            ]
+          },
+          {
+            "name": "latitud",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "20° 36' 45.650\" S"
+          },
+          {
+            "name": "long_",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "66° 50' 54.221\" W"
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0,
+              "maximum": 775
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
