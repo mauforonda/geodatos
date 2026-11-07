@@ -1,0 +1,123 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geobolivia_geonode_distritos_macrodistritos_10470a7c",
+  "title": "Distritos y Macrodistritos de las ciudades de La Paz y El Alto",
+  "description": "Información geoespacial de la división distrital del municipio de El Alto y por macrodistritos al municipio de La Paz. Debido a que la ciudad de El Alto no tiene una división por macrodistritos y por el tamaño de estos es que se tiene esta división político administrativa. Elaborado por el Programa Andino de Formación y de Investigación sobre la Vulnerabilidad y los Riesgos Urbanos - Bolivia, Ecuador, Perú - PACIVUR del Instituto de Investigaciones para el Desarrollo (IRD).",
+  "sources": [
+    {
+      "title": "Nueva plataforma GeoBolivia",
+      "path": "https://geonode.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geobolivia_geonode_distritos_macrodistritos_10470a7c/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 19242,
+      "hash": "sha256:c22d645bd74c580afa5bd136bc9a5b3ae75691202c9dfd36689bf38d70dcd6f3",
+      "schema": {
+        "fields": [
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 20
+            }
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 20
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Distritos_Macrodistritos.10"
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 12
+            }
+          },
+          {
+            "name": "municip",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "El Alto",
+            "categories": [
+              "El Alto",
+              "La Paz"
+            ]
+          },
+          {
+            "name": "subalcal_1",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "11"
+          },
+          {
+            "name": "macro_1",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 9
+            }
+          },
+          {
+            "name": "distr_ea",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 12
+            }
+          },
+          {
+            "name": "codigo",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "EA011"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
