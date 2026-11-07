@@ -1,0 +1,88 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_lp_vi_evapotranspiracion2000",
+  "title": "Mapa de evapotranspiración de los valles interandinos del departamento de La Paz, 2000",
+  "description": "Este mapa muestra la pérdida de humedad de una superficie por evaporación directa junto con la pérdida de agua por transpiración de la vegetación de los valles interandinos de La Paz. Producido por el proyecto ZONISIG (Zonificacion Agroecológica y Socioeconomica de los Valles Interandinos de La Paz) y convenios de cooperación en el año 2000, a escala 1:25000.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_lp_vi_evapotranspiracion2000/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 91226,
+      "hash": "sha256:b7359a5695f7023acd659c5208d9314d960d271d85f4b49fdfe71d018edfefce",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "example": "lp_vi_evapotranspiracion2000.3"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 9
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "example": "lp_vi_Evapotranspiracion2000.3"
+          },
+          {
+            "name": "entity",
+            "type": "string",
+            "example": "Polyline",
+            "categories": [
+              "Polyline"
+            ]
+          },
+          {
+            "name": "layer",
+            "type": "string",
+            "example": "CURVAS",
+            "categories": [
+              "CURVAS",
+              "BORDE"
+            ]
+          },
+          {
+            "name": "color",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 62
+            }
+          },
+          {
+            "name": "etp__mm_",
+            "type": "integer",
+            "constraints": {
+              "minimum": 0,
+              "maximum": 800
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
