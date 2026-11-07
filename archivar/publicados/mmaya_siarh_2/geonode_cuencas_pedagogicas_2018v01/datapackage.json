@@ -1,0 +1,65 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_cuencas_pedagogicas_2018v01",
+  "title": "Cuencas Pedagógicas 2018 (PNC II)",
+  "description": "Proyectos de Cuencas Pedagógicas para la gestión 2018, en el marco del Plan Nacional de Cuencas (PNC)",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_cuencas_pedagogicas_2018v01/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 32955,
+      "hash": "sha256:f833e0b5722ba89710e47dc9af1be46fde920e3f0057019d7747fe798950bd0e",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "Nombre",
+            "type": "string",
+            "example": "UH SULLOMA CARANGUILLAS"
+          },
+          {
+            "name": "Depto",
+            "type": "string",
+            "example": "Oruro"
+          },
+          {
+            "name": "Municipio",
+            "type": "string",
+            "example": "C. Carangas - S.P. Totora"
+          },
+          {
+            "name": "Sup_Km2_",
+            "type": "number",
+            "constraints": {
+              "minimum": 187.28,
+              "maximum": 319.32
+            }
+          },
+          {
+            "name": "UHG",
+            "type": "string",
+            "example": "013945"
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
