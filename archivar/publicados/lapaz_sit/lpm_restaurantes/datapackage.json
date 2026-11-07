@@ -1,0 +1,154 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_lpm_restaurantes",
+  "title": "Restaurantes",
+  "description": "Agencia La Paz Maravillosa",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz",
+      "path": "http://sitservicios.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_lpm_restaurantes/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 31972,
+      "hash": "sha256:408204c52e56eebf15ac0e40366e3641cfd96835b534b818a1327086f733278d",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "restaurantes.137"
+          },
+          {
+            "name": "Nombre",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Rex"
+          },
+          {
+            "name": "Zona",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Alto Següencoma"
+          },
+          {
+            "name": "Direccion",
+            "type": "string",
+            "example": "Av. Del Policia 1era curva"
+          },
+          {
+            "name": "Telefono",
+            "type": "string",
+            "example": ""
+          },
+          {
+            "name": "Celular",
+            "type": "string",
+            "example": "70597600"
+          },
+          {
+            "name": "PaginaWeb",
+            "type": "string",
+            "example": ""
+          },
+          {
+            "name": "Fuente",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Bre's",
+            "categories": [
+              "amarillas",
+              "empresa",
+              "Bre's",
+              "Q",
+              "GBT",
+              "guia",
+              "bolivia",
+              "lonely planet",
+              "pag"
+            ]
+          },
+          {
+            "name": "IdTipo",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 53
+            }
+          },
+          {
+            "name": "distrito",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.0,
+              "maximum": 21.0
+            }
+          },
+          {
+            "name": "owner",
+            "type": "integer"
+          },
+          {
+            "name": "usuario",
+            "type": "string",
+            "example": "jeanine.blanco",
+            "categories": [
+              "gustavo.nao",
+              "jeanine.blanco",
+              "nhuanquiri"
+            ]
+          },
+          {
+            "name": "fechaActual",
+            "type": "datetime",
+            "constraints": {
+              "minimum": "2017-06-05T22:26:55.307000+00:00",
+              "maximum": "2019-12-27T22:41:26.860000+00:00"
+            }
+          },
+          {
+            "name": "observaciones",
+            "type": "string",
+            "example": "",
+            "categories": [
+              "",
+              "Cerrado permanentemente",
+              "Cerrado",
+              "Restaurante ubicado en la ciudad de El Alto",
+              "Restaurante ubicado en la ciudad de El Alto.",
+              "cerrado permanentemente",
+              "no existe"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point. Filas sin geometría: 48."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
