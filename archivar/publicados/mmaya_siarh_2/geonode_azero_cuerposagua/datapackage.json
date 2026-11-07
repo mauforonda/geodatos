@@ -1,0 +1,59 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_azero_cuerposagua",
+  "title": "Plan Director Cuenca Río Azero - Cuerpos de Agua",
+  "description": "PDCRA (Plan Director de la Cuenca Río Azero). Muestra los cuerpos de agua a partir del análisis de imágenes del satélite Sentinel-2 de Julio de 2017, en el marco del estudio: Diagnóstico Integral y formulación de la propuesta de lineamientos estratégicos e institucionales para el PDCRA(2018), a una escala de 1:50.000.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_azero_cuerposagua/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 57507,
+      "hash": "sha256:9a8f9cbf4f318e8d330650768451897ab07c5846968dd1147cd934f799f3f627",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "area_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.13,
+              "maximum": 15.24
+            }
+          },
+          {
+            "name": "Categoria",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Presa",
+            "categories": [
+              "Atajados",
+              "Presa",
+              "Mini presa"
+            ]
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
