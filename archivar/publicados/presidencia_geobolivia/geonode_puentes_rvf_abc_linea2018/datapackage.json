@@ -1,0 +1,111 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_puentes_rvf_abc_linea2018",
+  "title": "Puentes de la Red Vial Fundamental de Bolivia (líneas)_ 2018",
+  "description": "El mapa presenta información sobre la ubicación de puentes que forman parte de la red vial fundamental del país, aproximadamente son 686 puentes, la longitud y ancho esta en metros, el código de ruta corresponde a la ruta donde se encuentra el puente. Los puentes son construcciones que permiten salvar los accidentes geográficos para una mejor estructuración del territorio nacional. Información obtenida por la Gerencia Nacional Técnica de la Administradora Boliviana de Carreteras (ABC), actualizado hasta diciembre del 2017.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_puentes_rvf_abc_linea2018/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 74208,
+      "hash": "sha256:6e3db75c189f34ca1020f0e2e13cda7364091b49e266135752ed58fdd9238045",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 686
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 1383
+            }
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Puente (Rio Colorado)"
+          },
+          {
+            "name": "cod_ruta",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 50
+            }
+          },
+          {
+            "name": "x_geo",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": -69.3212274535,
+              "maximum": -58.4311252384
+            }
+          },
+          {
+            "name": "y_geo",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": -22.71776455,
+              "maximum": -10.962156999
+            }
+          },
+          {
+            "name": "long_aprox",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 1400.0
+            }
+          },
+          {
+            "name": "ancho",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 30.0
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
