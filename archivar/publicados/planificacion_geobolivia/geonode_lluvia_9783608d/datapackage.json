@@ -1,0 +1,123 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geobolivia_geonode_lluvia_9783608d",
+  "title": "Precipitacion anual media de la cuenca del altiplano del departamento de La Paz (1998)",
+  "description": "Información geoespacial de las isoyetas de precipitación media que se encuentran en un rango de 350mm a 800mm en el Altiplano de La Paz. El mapa fue realizado a partir de los datos de precipitación de las estaciones meteorológicas. Procesado por el Proyecto de Zonificación Agroecológica y Establecimiento de una Base de Datos y Red de Sistema de Información Geográfica en Bolivia - ZONISIG, en el año 1998 a escala 1:250000.",
+  "sources": [
+    {
+      "title": "Nueva plataforma GeoBolivia",
+      "path": "https://geonode.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geobolivia_geonode_lluvia_9783608d/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 31569,
+      "hash": "sha256:128ddc346f79bc94ef3d8e7365528ba57e7fbd1e0473a56f572990edb75ed22b",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "lluvia_9783608d.15"
+          },
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 17
+            }
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 17
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "lluvia.14"
+          },
+          {
+            "name": "area",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 48862500.0,
+              "maximum": 7003950000.0
+            }
+          },
+          {
+            "name": "perimeter",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 35202.82,
+              "maximum": 581104.9
+            }
+          },
+          {
+            "name": "lluvia",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 2,
+              "maximum": 18
+            }
+          },
+          {
+            "name": "lluvia_id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 17
+            }
+          },
+          {
+            "name": "domain",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "350-400 mm/año"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
