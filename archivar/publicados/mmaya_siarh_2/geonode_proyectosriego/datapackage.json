@@ -1,0 +1,170 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_proyectosriego",
+  "title": "Plan Director Cuenca Rio Grande - Proyectos Riego",
+  "description": "PDCRM (Plan Director de la Cuenca Río Mizque). Muestra la ubicacion y la información relevante de los proyectos de riego, en el marco del Plan Director de la Cuenca Río Mizque.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_proyectosriego/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 22159,
+      "hash": "sha256:c84ba88ed00ecf237c501a9f595d535370af82a91726366f1ed600a40975d24d",
+      "schema": {
+        "fields": [
+          {
+            "name": "Proyecto",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "CONST. LAGUNAS (ATAJADOS) EN LA COMUNIDAD THOLA MAYU"
+          },
+          {
+            "name": "Municipio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "AIQUILE"
+          },
+          {
+            "name": "Area_regab",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 1220.0
+            }
+          },
+          {
+            "name": "Naturaleza",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "",
+            "categories": [
+              "",
+              "Mejoramiento",
+              "Nuevo",
+              "Ampliación",
+              "Reconstrucción",
+              "Rehabilitación"
+            ]
+          },
+          {
+            "name": "Costo_de",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 16370000.0
+            }
+          },
+          {
+            "name": "ESTADO",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "PROGRAMADO",
+            "categories": [
+              "",
+              "Idea",
+              "CONCLUIDO",
+              "EJECUCION",
+              "PROGRAMADO",
+              "RECEPCION PROVISIONAL",
+              "Factibilidad",
+              "Perfil",
+              "PARALIZACION",
+              "Diseño Final",
+              "Diseño final",
+              "LICIT./CONTRAT.",
+              "Paralizado por recisión de contrato"
+            ]
+          },
+          {
+            "name": "FAM_",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 480
+            }
+          },
+          {
+            "name": "TIPO",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Riego",
+            "categories": [
+              "",
+              "Riego",
+              "MICRORIEGO",
+              "RIEGO SIN PRESA",
+              "RIEGO CON  PRESA"
+            ]
+          },
+          {
+            "name": "ORGANISMO",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "PARC - BELGAS",
+            "categories": [
+              "",
+              "MI AGUA 2",
+              "MI AGUA 3",
+              "MIAGUA - CAF",
+              "MI AGUA",
+              "PARC - BELGAS",
+              "PROAR - CAF",
+              "PIACC - BID",
+              "PRONAREC - BID (1ra Cartera)",
+              "Pronarec",
+              "SIRIC - KfW"
+            ]
+          },
+          {
+            "name": "ENTIDAD_EJ",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "EMAGUA",
+            "categories": [
+              "",
+              "FPS",
+              "EMAGUA",
+              "GAD",
+              "PRONAREC"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
