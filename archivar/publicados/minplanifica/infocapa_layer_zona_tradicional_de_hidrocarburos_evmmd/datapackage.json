@@ -1,0 +1,69 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_minplanifica_infocapa_layer_zona_tradicional_de_hidrocarburos_evmmd",
+  "title": "layer_zona_tradicional_de_hidrocarburos_evmmd",
+  "sources": [
+    {
+      "title": "Geoserver del Ministerio de Planificación del Desarollo",
+      "path": "https://geoserver.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_minplanifica_infocapa_layer_zona_tradicional_de_hidrocarburos_evmmd/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 6318,
+      "hash": "sha256:5b687847c3ca7fa4200bf1ecbb4400d0a7653b26fae9c0af8ac4d0915191823f",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "example": "layer_zona_tradicional_de_hidrocarburos_evmmd.1"
+          },
+          {
+            "name": "sup_ha",
+            "type": "integer",
+            "constraints": {
+              "minimum": 6500000,
+              "maximum": 6500000
+            }
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "example": "Zona tradicional"
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "example": "Santa Cruz"
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "example": "Cordillera"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "example": "Lagunillas"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
