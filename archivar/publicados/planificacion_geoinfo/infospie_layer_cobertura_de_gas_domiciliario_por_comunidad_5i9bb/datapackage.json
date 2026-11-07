@@ -1,0 +1,134 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_cobertura_de_gas_domiciliario_por_3225cab6bb07",
+  "title": "Cobertura de Gas Domiciliario por Comunidad",
+  "description": "El mapa presenta localidades con cobertura de gas domiciliario, indicando el estado del servicio y el tipo de suministro.",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_cobertura_de_gas_domiciliario_por_3225cab6bb07/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 27214,
+      "hash": "sha256:164f85d32ac4a9681b994c2d7a88e84bc0b872768fe2fa7dd6611d1ac42dc4e1",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_cobertura_de_gas_domiciliario_por_comunidad_5i9bb.46"
+          },
+          {
+            "name": "nom_comuni",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "UYUNI"
+          },
+          {
+            "name": "sdgn",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Con Servicio",
+            "categories": [
+              "Con Servicio",
+              "Sin Servicio"
+            ]
+          },
+          {
+            "name": "tipo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Virtual",
+            "categories": [
+              "Convencional",
+              "Virtual",
+              "Sin dato"
+            ]
+          },
+          {
+            "name": "coord_x",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": -69.085483174,
+              "maximum": -57.712941417
+            }
+          },
+          {
+            "name": "coord_y",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": -22.085273269,
+              "maximum": -10.825657933
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "POTOSI",
+            "categories": [
+              "POTOSI",
+              "SANTA CRUZ",
+              "COCHABAMBA",
+              "CHUQUISACA",
+              "TARIJA",
+              "LA PAZ",
+              "ORURO",
+              "BENI",
+              "PANDO"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Antonio Quijarro"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Uyuni"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
