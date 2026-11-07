@@ -1,0 +1,100 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_mancha_urbana2017",
+  "title": "Plan Director Cuenca Río Yapacaní – Mancha Urbana 2017",
+  "description": "PDCRY (Plan Director de la Cuenca Río Yapacaní). Muestra la información relevante deL crecimiento de la mancha urbana al  año 2017, en el marco del Plan Director de la Cuenca del Río Yapacaní.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_mancha_urbana2017/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 46991,
+      "hash": "sha256:a78fb4af6603bfa5363cb5790b23e125067795aeffbffa16d56564754b906c88",
+      "schema": {
+        "fields": [
+          {
+            "name": "Urbano",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "",
+            "categories": [
+              "",
+              "Buena Vista",
+              "Mairana",
+              "Pampa Grande",
+              "Quirusillas",
+              "San Carlos",
+              "San Juan",
+              "Trigal",
+              "Vallegrande",
+              "Yapacani"
+            ]
+          },
+          {
+            "name": "Year",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "",
+            "categories": [
+              "",
+              "2017",
+              "2016"
+            ]
+          },
+          {
+            "name": "Areahas",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0.523014711513,
+              "maximum": 1198.18322801
+            }
+          },
+          {
+            "name": "Shape_Leng",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 321.060730523,
+              "maximum": 64604.4266404
+            }
+          },
+          {
+            "name": "Shape_Area",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 5230.14711513,
+              "maximum": 11981832.2801
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
