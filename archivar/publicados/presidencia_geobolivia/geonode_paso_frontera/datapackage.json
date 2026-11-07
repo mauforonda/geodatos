@@ -1,0 +1,204 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_paso_frontera",
+  "title": "Mapa Paso de Frontera Sudamérica COSIPLAN_ 2015",
+  "description": "Puntos que representan la ubicación geográfica de lugares para la entrada y salida de un país oficialmente reconocidos por éste. Puede ser marítimo, fluvial, terrestre y aeroportuario. contiene información acerda de: nombre, tipo de paso, control fronterizo asociado entre otras.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_paso_frontera/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 50577,
+      "hash": "sha256:9d5a59140c517a86aac1da360c6795527b7d42b10801354901c4ec63bad0856f",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "paso_frontera.35"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 719
+            }
+          },
+          {
+            "name": "idusco",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 18003000000.0,
+              "maximum": 19010000004.0
+            }
+          },
+          {
+            "name": "acc",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": -1,
+              "maximum": 2
+            }
+          },
+          {
+            "name": "nam",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Río Puelo"
+          },
+          {
+            "name": "zch",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": -1,
+              "maximum": -1
+            }
+          },
+          {
+            "name": "zpp",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 19
+            }
+          },
+          {
+            "name": "zts",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": -1,
+              "maximum": 6
+            }
+          },
+          {
+            "name": "zvf",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Río Puelo"
+          },
+          {
+            "name": "acc_lbl",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Aproximada",
+            "categories": [
+              "Aproximada",
+              "Exacta",
+              "Información no disponible",
+              "Exacto",
+              "Approximate",
+              "Exact"
+            ]
+          },
+          {
+            "name": "zpp_lbl",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "ARG",
+            "categories": [
+              "ARG",
+              "BRA",
+              "COL",
+              "ECU",
+              "CHL",
+              "PRY",
+              "PER",
+              "VEN",
+              "URY",
+              "BOL",
+              "GUY",
+              "SUR"
+            ]
+          },
+          {
+            "name": "zch_lbl",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Información no disponible",
+            "categories": [
+              "Información no disponible",
+              "Informaçăo năo disponível",
+              "Information not available"
+            ]
+          },
+          {
+            "name": "zts_lbl",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Terrestre",
+            "categories": [
+              "Terrestre",
+              "Fluvial",
+              "Aeroportuario",
+              "Información no disponible",
+              "Marítimo",
+              "Fluvial Con Puente",
+              "Maritime",
+              "Aeropuertuario",
+              "Airport",
+              "Terrestre Con Túnel",
+              "Terrestre y Ferroviario",
+              "Ferroviario",
+              "Terrestre Ferroviario"
+            ]
+          },
+          {
+            "name": "obs",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Oficial - Validada",
+            "categories": [
+              "Oficial - Validada",
+              "No Oficial - Validada"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
