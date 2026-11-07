@@ -1,0 +1,100 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_transporte_masivowgs84",
+  "title": "Mapa de Transporte Masivo en el Municipio de La Paz",
+  "description": "El mapa presenta información de un sistema masivo de transporte por buses de alta capacidad, los corredores de transporte masivo se conformarán por la red de Vías primerias principalmente, de manera que en estos corredores realmente se cuente con una función mixta, pero el transporte público debe ser el principal protagonista. Elaborado por Oficialía Mayor de Planificación para el Desarrollo (OMPD) del Gobierno Autónomo Municipal de La Paz, en el año 2013.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_transporte_masivowgs84/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 45981,
+      "hash": "sha256:d0401e068c88bd7f9d8458b54f2d89a06e88a5f2ae8906f06911fd02bdeab54d",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 36
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "transporte_masivowgs84.33"
+          },
+          {
+            "name": "objectid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 36
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 3
+            }
+          },
+          {
+            "name": "caracteriz",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Rutas Alimentadoras de La Paz Bus",
+            "categories": [
+              "Rutas Alimentadoras de La Paz Bus",
+              "Carril de Buses El Alto",
+              "Posibles Rutas Telefricos",
+              "Posible Ruta de La Paz Bus",
+              "Posible Ruta para Buses Articuladores"
+            ]
+          },
+          {
+            "name": "shape_leng",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 80.6639478208,
+              "maximum": 23455.2387128
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
