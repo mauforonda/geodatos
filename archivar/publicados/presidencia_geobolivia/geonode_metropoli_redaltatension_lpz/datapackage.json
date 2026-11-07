@@ -1,0 +1,171 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_metropoli_redaltatension_lpz",
+  "title": "Mapa Red de Alta Tensión de la Región Metropolitana del Departamento de La Paz, Bolivia 2017",
+  "description": "El mapa muestra la red de alta tensión para el suministro de energía en la Región Metropolitana del Departamento de La Paz. Elaborado por la Secretaria Municipal de Planificación para el Desarrollo del Gobierno Autónomo Municipal de La Paz y el Instituto de Investigaciones Geográficas, Carrera de Ingeniería Geográfica - UMSA y presentado en el mes de agosto del 2017.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_metropoli_redaltatension_lpz/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 57255,
+      "hash": "sha256:5824e27d4bc33637cd204b528d25050abce7866f680457daca0ae75bc4283502",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 77
+            }
+          },
+          {
+            "name": "objectid_1",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 77
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 7,
+              "maximum": 337
+            }
+          },
+          {
+            "name": "objectid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 421,
+              "maximum": 5637
+            }
+          },
+          {
+            "name": "empresa",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "ENDE TRANSMISIÓN S.A.",
+            "categories": [
+              "Electricidad de La Paz S.A. (ELECTROPAZ)",
+              "Compañia Boliviana de Energía Eléctrica (COBEE)",
+              "ENDE TRANSMISIÓN S.A.",
+              "Empresa Nacional de Electricidad (ENDE)",
+              "Empresa de Luz y Fuerza Eléctrica de Oruro S.A. (ELFEO)",
+              "Hidroeléctrica Boliviana S.A. (HB)",
+              "Empresa Nacional de Electricidad (ENDE) - Trinidad",
+              "Empresa de Luz y Fuerza Aroma S. A. (ELFA)"
+            ]
+          },
+          {
+            "name": "nivel_volt",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "230",
+            "categories": [
+              "115",
+              "69",
+              "230"
+            ]
+          },
+          {
+            "name": "tipo_condu",
+            "type": "string",
+            "example": "Rail (954) H9",
+            "categories": [
+              "Arvidal (544) T1",
+              "Arvidal (544)",
+              "Ibis (397) H1",
+              "Arvidal (151.7)",
+              "Darien (559.5)",
+              "Ibis (397)",
+              "Ibis (397) T4",
+              "Rail (954) H3",
+              "Rail (954) H4",
+              "Rail (954) H9",
+              "Rail 954 MCM"
+            ]
+          },
+          {
+            "name": "linea",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Mazocruz - Vinto"
+          },
+          {
+            "name": "sistema",
+            "type": "string",
+            "example": "STI",
+            "categories": [
+              "NO",
+              "STI",
+              "SIN - Area Rural"
+            ]
+          },
+          {
+            "name": "codigo",
+            "type": "string",
+            "example": "AAC-TIQ11502",
+            "categories": [
+              "AAC-TIQ11501",
+              "AAC-TIQ11502",
+              "AAC-RSE115",
+              "CHJ-PIC115",
+              "CHS-PIC115",
+              "CHS-TCH115",
+              "CRN-CHS115",
+              "CRN-GUN115",
+              "CRN-YUC115",
+              "YAN-PIC115"
+            ]
+          },
+          {
+            "name": "shape_leng",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 101.36487199165488,
+              "maximum": 179846.92144652724
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
