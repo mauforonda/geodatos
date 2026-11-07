@@ -1,0 +1,82 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_minplanifica_infocapa_layer_deforestacion_en_el_municipio_de_camiri_llovt",
+  "title": "layer_deforestacion_en_el_municipio_de_camiri_llovt",
+  "sources": [
+    {
+      "title": "Geoserver del Ministerio de Planificación del Desarollo",
+      "path": "https://geoserver.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_minplanifica_infocapa_layer_deforestacion_en_el_municipio_de_camiri_llovt/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 33766,
+      "hash": "sha256:4591b76cbd774186c03a9fea72fd05f62388539b97a1347da72bb77782e8acc0",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_deforestacion_en_el_municipio_de_camiri_llovt.6"
+          },
+          {
+            "name": "vegetacion",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Bosque chaqueño transicional del preandino seco - d4b",
+            "categories": [
+              "Bosque seco boliviano-tucumano transicional del piso basimontano inferior septentrional - t11a",
+              "Bosque chaqueño transicional del preandino seco - d4b",
+              "Vegetación ribereña subandina e interandina boliviano-tucumana - t14",
+              "Bosque chaqueño transicional del preandino seco  - d4b",
+              "Áreas antrópicas - da"
+            ]
+          },
+          {
+            "name": "sup_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0.232,
+              "maximum": 759.27
+            }
+          },
+          {
+            "name": "dep",
+            "type": "integer"
+          },
+          {
+            "name": "prov",
+            "type": "integer"
+          },
+          {
+            "name": "mun",
+            "type": "integer"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
