@@ -1,0 +1,110 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_unidades_vecinales_del_municipio_d_5c074d982457",
+  "title": "Unidades Vecinales del Municipio de Montero - PTDI",
+  "description": "El mapa muestra la distribución de unidades vecinales dentro del área urbana en el municipio de Montero, según el PTDI 2021 - 2025",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_unidades_vecinales_del_municipio_d_5c074d982457/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 43373,
+      "hash": "sha256:cd3a117bb616f689dcc4d46445d978c3aae24ff79a798b49308020804ef9fa28",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_unidades_vecinales_del_municipio_de_montero__ptdi_tru5r.78"
+          },
+          {
+            "name": "uv",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "UV"
+          },
+          {
+            "name": "sup_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": -49.971,
+              "maximum": 158.596
+            }
+          },
+          {
+            "name": "categoria",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Unidades Vecinales",
+            "categories": [
+              "Unidades Vecinales"
+            ]
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "SANTA CRUZ",
+            "categories": [
+              "SANTA CRUZ"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Obispo Santisteban",
+            "categories": [
+              "Obispo Santisteban",
+              "Warnes"
+            ]
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Montero",
+            "categories": [
+              "Montero",
+              "Warnes"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
