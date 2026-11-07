@@ -1,0 +1,157 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_sit_educacionprivada",
+  "title": "educacion privada",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz",
+      "path": "http://sitservicios.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_sit_educacionprivada/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 13769,
+      "hash": "sha256:d55cfbd32c377e75b48ff41e5a87e579ccdb43706ac0cc376048553568a933bd",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "educacionprivada.192"
+          },
+          {
+            "name": "Nombre",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "internacional Tierras Altas"
+          },
+          {
+            "name": "Direccion",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Sector Valle del Sol C. 6"
+          },
+          {
+            "name": "Zona",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Mallasilla"
+          },
+          {
+            "name": "CodMacro",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 7
+            }
+          },
+          {
+            "name": "CodDistrito",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 21
+            }
+          },
+          {
+            "name": "distrito",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 21
+            }
+          },
+          {
+            "name": "owner",
+            "type": "string",
+            "example": "gustavo.nao",
+            "categories": [
+              "gustavo.nao",
+              "jorge.mamani",
+              "clara.revollo"
+            ]
+          },
+          {
+            "name": "usuario",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "jorge.mamani",
+            "categories": [
+              "jorge.mamani"
+            ]
+          },
+          {
+            "name": "fechaActual",
+            "type": "datetime",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": "2025-07-17T13:15:35.577000+00:00",
+              "maximum": "2025-07-17T20:01:43.350000+00:00"
+            }
+          },
+          {
+            "name": "observaciones",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Nivel: Inicial, Primaria, Secundaria",
+            "categories": [
+              "Nivel: Inicial, Primaria, Secundaria",
+              "Nivel: Inicial",
+              "Nivel: Primaria, Secundaria",
+              "Nivel: Inicial, Primaria",
+              "",
+              "Nivel: Secundaria"
+            ]
+          },
+          {
+            "name": "IdTipo",
+            "type": "integer"
+          },
+          {
+            "name": "Nombreback",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "internacional Tierras Altas"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
