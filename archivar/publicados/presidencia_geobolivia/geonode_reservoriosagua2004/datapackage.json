@@ -1,0 +1,173 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_reservoriosagua2004",
+  "title": "Mapa de reservorios de agua de Bolivia, 2004",
+  "description": "Este mapa muestra los reservorios de agua que se ubican a lo largo del territorio boliviano, acumulaciones de agua producidas por una obstrucción en el lecho de un río o arroyo que cierra parcial o totalmente su cauce. Publicado por la Universidad de Texas y elaborado por el Viceministerio de medio ambiente y recursos naturales en el año 2004.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_reservoriosagua2004/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 40566,
+      "hash": "sha256:a166a23b24ecc61da845ef18656196b157df58af357bcf7280a1bad0351a8c3e",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "reservoriosagua2004.145"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 552
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "ReservoriosAgua2004.145"
+          },
+          {
+            "name": "objectid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 552
+            }
+          },
+          {
+            "name": "número",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 84
+            }
+          },
+          {
+            "name": "nombre_zon",
+            "type": "string",
+            "example": "Chuscuayllo",
+            "categories": [
+              "SAGUAPAC",
+              "COOPAGUAS",
+              "COOPLAN",
+              "Cocaña",
+              "COOPAPPI",
+              "COSPHUL",
+              "Cercado",
+              "EL Paso II",
+              "El Paso I",
+              "COSPAIL",
+              "Costi",
+              "El Paso III",
+              "COOSERPAC",
+              "COSCHAL",
+              "Jalsuri",
+              "Parco",
+              "Chuscuayllo"
+            ]
+          },
+          {
+            "name": "tipo_fuent",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Subsuperficial",
+            "categories": [
+              "Subterranea",
+              "Superficial",
+              "Subsuperficial"
+            ]
+          },
+          {
+            "name": "nombre_fue",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Vertiente 1"
+          },
+          {
+            "name": "x",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 181458,
+              "maximum": 850350
+            }
+          },
+          {
+            "name": "y",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 7486740,
+              "maximum": 8800650
+            }
+          },
+          {
+            "name": "depart_ciu",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Uyuni"
+          },
+          {
+            "name": "caudal_exp",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 3060.35
+            }
+          },
+          {
+            "name": "area_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 91060.4
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
