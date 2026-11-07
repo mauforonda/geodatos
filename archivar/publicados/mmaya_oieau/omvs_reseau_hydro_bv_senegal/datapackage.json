@@ -1,0 +1,94 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_oieau_omvs_reseau_hydro_bv_senegal",
+  "title": "OMVS_SW_Reseau hydro",
+  "sources": [
+    {
+      "title": "Sistema para la Gestión Integral de Recursos Hídricos desarrollado por la Oficina Internacional del Agua (OiEau)",
+      "path": "https://www.oieau-wiss.org/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_oieau_omvs_reseau_hydro_bv_senegal/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 53098,
+      "hash": "sha256:ebc2b7170a7993481c83aefab0df778fdcf91e30141c14d0088bff9ae63ef2b6",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Reseau hydro bv senegal.57"
+          },
+          {
+            "name": "titre",
+            "type": "string",
+            "example": "Ferlo",
+            "categories": [
+              "S�n�gal",
+              "Bafing",
+              "Bakoye",
+              "Bakoy�",
+              "Baoul�",
+              "Dou�",
+              "Fal�m�",
+              "Ferlo",
+              "Gorgol",
+              "Gorgol Blanc",
+              "Gorgol Noir",
+              "Karakoro",
+              "Kolimbin�",
+              "Lac de Rkiz",
+              "Ngalam",
+              "O.Garfa",
+              "O.Gu�loua",
+              "Tiallaki",
+              "T�r�kol�"
+            ]
+          },
+          {
+            "name": "nom",
+            "type": "string",
+            "example": "4",
+            "categories": [
+              "4",
+              "8",
+              "0"
+            ]
+          },
+          {
+            "name": "valeur",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 2
+            }
+          },
+          {
+            "name": "date",
+            "type": "integer"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
