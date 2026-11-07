@@ -1,0 +1,131 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_ssem_publicidad_puntos_publicidad",
+  "title": "puntos_publicidad",
+  "sources": [
+    {
+      "title": "Servicio de Seguimiento Estratégico Municipal del Gobierno Autónomo Municipal de La Paz",
+      "path": "https://ssem.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_ssem_publicidad_puntos_publicidad/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 20351,
+      "hash": "sha256:caeeb9a8a92bc4aa4c370ccf7d3393ca8924ac2c8fe7105d398b1f7aa7ac22a0",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 250
+            }
+          },
+          {
+            "name": "direccion",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Calle 3"
+          },
+          {
+            "name": "latitud",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "-16.532403200000"
+          },
+          {
+            "name": "longitud",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "-68.140323300000"
+          },
+          {
+            "name": "macro",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "COTAHUMA",
+            "categories": [
+              "SUR",
+              "CENTRO",
+              "COTAHUMA",
+              "MAX PAREDES",
+              "PERIFERICA",
+              "SAN ANTONIO"
+            ]
+          },
+          {
+            "name": "idcontribuyente",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 178,
+              "maximum": 266903
+            }
+          },
+          {
+            "name": "idpublicidad",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 497,
+              "maximum": 23298
+            }
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "PEDRO PATZI CALLATA"
+          },
+          {
+            "name": "x",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 590988.5946723495,
+              "maximum": 599239.3947316573
+            }
+          },
+          {
+            "name": "y",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 8170359.274506784,
+              "maximum": 8177450.397480565
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
