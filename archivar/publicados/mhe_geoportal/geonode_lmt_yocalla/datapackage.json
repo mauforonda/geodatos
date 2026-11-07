@@ -1,0 +1,87 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mhe_geoportal_geonode_lmt_yocalla",
+  "title": "LMT_Yocalla",
+  "sources": [
+    {
+      "title": "Geoportal del Viceministerio de Electricidad y Energías Renovables",
+      "path": "https://geoportal.mhe.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mhe_geoportal_geonode_lmt_yocalla/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 45470,
+      "hash": "sha256:570f4fd8f2523ee1a76178923d84744637a1d3a9b1103526554b01d1e18b9f91",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 56
+            }
+          },
+          {
+            "name": "SUBTIPO",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 18
+            }
+          },
+          {
+            "name": "FUENTEALIM",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "D455",
+            "categories": [
+              "D455"
+            ]
+          },
+          {
+            "name": "SHAPE_Leng",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 7.17937440143e-05,
+              "maximum": 502.686726472
+            }
+          },
+          {
+            "name": "Propiedad",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Sepsa",
+            "categories": [
+              "Sepsa"
+            ]
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
