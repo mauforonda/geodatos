@@ -1,0 +1,156 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_culturas_infrpatrimonial",
+  "title": "Edificaciones y Monumentos Patrimoniales",
+  "description": "Mapa Cultural, Edificacion y monumentos patrimoniales, SMC",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz",
+      "path": "http://sitservicios.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_culturas_infrpatrimonial/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 33627,
+      "hash": "sha256:4bd5a148fa4dff56186e8afab70780ce9dc2af223c4f17127e900ad8e8de3753",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "infrPatrimonial.50"
+          },
+          {
+            "name": "IdSubcategoria",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 3
+            }
+          },
+          {
+            "name": "NombreCentro",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Monumento Juana Azurduy de Padilla"
+          },
+          {
+            "name": "Descripcion",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Juana Azurduy de Padilla (1780-1862) fue heroína de la Guerra de la Independencia junto a su marido "
+          },
+          {
+            "name": "Direccion",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Plazoleta Juana Azurduy de Padilla entre las C. Rafael Bustillos y Adolfo González"
+          },
+          {
+            "name": "idMacrodistrito",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.0,
+              "maximum": 7.0
+            }
+          },
+          {
+            "name": "Distrito",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.0,
+              "maximum": 21.0
+            }
+          },
+          {
+            "name": "Macrodistrito",
+            "type": "string",
+            "example": "43"
+          },
+          {
+            "name": "Caracteristicas",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Escultura estatuaria de bulto redondo, de tipo busto. Tiene una altura de 70 cm y un peso aproximado"
+          },
+          {
+            "name": "AnioConstruccion",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "2003"
+          },
+          {
+            "name": "owner",
+            "type": "string",
+            "example": "alejandra.moscoso",
+            "categories": [
+              "alejandra.moscoso"
+            ]
+          },
+          {
+            "name": "usuario",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "clara.revollo",
+            "categories": [
+              "clara.revollo",
+              "daniel.lima",
+              "alejandra.moscoso"
+            ]
+          },
+          {
+            "name": "fechaActual",
+            "type": "datetime",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": "2016-03-30T13:46:29.147000+00:00",
+              "maximum": "2018-02-16T22:53:38.043000+00:00"
+            }
+          },
+          {
+            "name": "observaciones",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": ""
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
