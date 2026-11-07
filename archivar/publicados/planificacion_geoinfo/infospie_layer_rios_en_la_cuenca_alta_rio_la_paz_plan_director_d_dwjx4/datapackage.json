@@ -1,0 +1,108 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_rios_en_la_cuenca_alta_rio_la_paz_80abb3c6a91b",
+  "title": "Ríos en la Cuenca Alta Río La Paz (Plan Director de la Cuenca Alta del Río La Paz)",
+  "description": "El mapa representa los ríos en la Cuenca Alta Rio La Paz, generado en el marco del Plan Director de la Cuenca Alta del rio La Paz (PDC).",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_rios_en_la_cuenca_alta_rio_la_paz_80abb3c6a91b/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 22819,
+      "hash": "sha256:8e5d92987462d4c0f5f16d2943802f26dbc4d078d6f94dc338ef63411488d67a",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_rios_en_la_cuenca_alta_rio_la_paz_plan_director_d_dwjx4.50"
+          },
+          {
+            "name": "nomb",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Rio Khauimayu"
+          },
+          {
+            "name": "long_km",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0.049,
+              "maximum": 46.549
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "LA PAZ",
+            "categories": [
+              "LA PAZ"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Murillo",
+            "categories": [
+              "Murillo",
+              "Sur Yungas",
+              "Loayza",
+              "Los Andes"
+            ]
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Mecapaca",
+            "categories": [
+              "Nuestra Señora de La Paz",
+              "Mecapaca",
+              "Palca",
+              "Achocalla",
+              "Yanacachi",
+              "El Alto",
+              "Irupana",
+              "Cairoma",
+              "Laja"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
