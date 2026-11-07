@@ -1,0 +1,109 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_patrimonio_patrimonio_conjuntos",
+  "title": "Conjuntos patrimoniales",
+  "description": "Conjuntos patrimoniales, Informe GAMLP SMCT DFPDCP UPAC No 937/2024",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz",
+      "path": "http://sitservicios.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_patrimonio_patrimonio_conjuntos/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 22379,
+      "hash": "sha256:2468c258d71ab05283e816403c6dac179dd47b1d98b5b627112ae620f3959324",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "patrimonio_conjuntos.6"
+          },
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 25
+            }
+          },
+          {
+            "name": "Layer",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "CONJUNTOS cementerio",
+            "categories": [
+              "CONJUNTOS Y AREAS (LUSU)",
+              "CONJUNTOS cementerio"
+            ]
+          },
+          {
+            "name": "PaperSpace",
+            "type": "integer"
+          },
+          {
+            "name": "SubClasses",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "AcDbEntity:AcDbPolyline",
+            "categories": [
+              "AcDbEntity:AcDbPolyline"
+            ]
+          },
+          {
+            "name": "Linetype",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Continuous",
+            "categories": [
+              "ByBlock",
+              "Continuous",
+              "ACAD_ISO06W100"
+            ]
+          },
+          {
+            "name": "EntityHandle",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "6C"
+          },
+          {
+            "name": "Text",
+            "type": "integer"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 4."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
