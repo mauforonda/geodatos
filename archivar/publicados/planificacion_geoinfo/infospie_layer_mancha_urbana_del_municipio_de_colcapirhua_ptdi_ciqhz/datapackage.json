@@ -1,0 +1,102 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_mancha_urbana_del_municipio_de_col_1495ecf4ba9a",
+  "title": "Mancha Urbana del Municipio de Colcapirhua - PTDI",
+  "description": "El mapa muestra la mancha urbana del municipio de Colcapirhua",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_mancha_urbana_del_municipio_de_col_1495ecf4ba9a/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 36856,
+      "hash": "sha256:8a79534d18930baae69be5b80bd6b43a6b9ac87d3197c7134c9b686fb7b98f6f",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_mancha_urbana_del_municipio_de_colcapirhua__ptdi_ciqhz.27"
+          },
+          {
+            "name": "area_tip_1",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Extensiva",
+            "categories": [
+              "Extensiva",
+              "Preservación",
+              "Intensiva",
+              "Protección"
+            ]
+          },
+          {
+            "name": "sup_ha",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 1703
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "COCHABAMBA",
+            "categories": [
+              "COCHABAMBA"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Quillacollo",
+            "categories": [
+              "Quillacollo"
+            ]
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Colcapirhua",
+            "categories": [
+              "Colcapirhua"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 1."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
