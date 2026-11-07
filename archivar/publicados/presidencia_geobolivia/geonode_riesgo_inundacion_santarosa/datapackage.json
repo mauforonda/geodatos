@@ -1,0 +1,87 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_riesgo_inundacion_santarosa",
+  "title": "riesgo_inundacion_santarosa",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_riesgo_inundacion_santarosa/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 66138,
+      "hash": "sha256:b26b217009329040317265661d65de66bc8485e99c9131510a7df14053e425f1",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "example": "riesgo_inundacion_santarosa.3"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 5
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "example": "Riesgo_inundacion_SantaRosa.3"
+          },
+          {
+            "name": "descin3",
+            "type": "string",
+            "example": "PIOE",
+            "categories": [
+              "PIOE"
+            ]
+          },
+          {
+            "name": "count",
+            "type": "integer",
+            "constraints": {
+              "minimum": 0,
+              "maximum": 480
+            }
+          },
+          {
+            "name": "descrip",
+            "type": "string",
+            "example": "Planicies de inundacin ocasional a estacional",
+            "categories": [
+              "Planicies de inundacin ocasional a estacional"
+            ]
+          },
+          {
+            "name": "ries_inund",
+            "type": "string",
+            "example": "Media",
+            "categories": [
+              "Media",
+              "Alta"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Filas sin geometría: 1."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
