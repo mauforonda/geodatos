@@ -1,0 +1,104 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_deforestacion_en_el_municipio_de_c_36e416d23924",
+  "title": "Deforestación en el Municipio de Camiri - PTDI",
+  "description": "El mapa presenta la superficie en hectáreas (ha) de deforestación en el municipio de Camiri, realiza el seguimiento y monitoreo de la pérdida de bosque, en base al PTDI 2021 - 2025.",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_deforestacion_en_el_municipio_de_c_36e416d23924/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 34842,
+      "hash": "sha256:1c9a0913eacbe3849bfac8cdf894785c4020e53d0840fc865c8a42613ce83553",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_deforestacion_en_el_municipio_de_camiri__ptdi_fgyl9.14"
+          },
+          {
+            "name": "vegetacion",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Bosque chaqueño transicional del preandino seco - d4b",
+            "categories": [
+              "Bosque seco boliviano-tucumano transicional del piso basimontano inferior septentrional - t11a",
+              "Bosque chaqueño transicional del preandino seco - d4b",
+              "Vegetación ribereña subandina e interandina boliviano-tucumana - t14",
+              "Bosque chaqueño transicional del preandino seco  - d4b",
+              "Áreas antrópicas - da"
+            ]
+          },
+          {
+            "name": "sup_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0.231,
+              "maximum": 756.907
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "SANTA CRUZ",
+            "categories": [
+              "SANTA CRUZ"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Cordillera",
+            "categories": [
+              "Cordillera"
+            ]
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Camiri",
+            "categories": [
+              "Camiri"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
