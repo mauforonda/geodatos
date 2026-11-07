@@ -1,0 +1,128 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_miagua_ii",
+  "title": "Localización de Proyectos Mi Agua II Bolivia_ 2017",
+  "description": "En el mapa se muestra la ubicación de los proyectos de agua potable y riego del Programa MIAGUA II ejecutados a través del FPS.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_miagua_ii/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 43071,
+      "hash": "sha256:6795bdbe6eaef9db4efa4fb2b966f82528db5848d111a3741113874348790032",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "miagua_ii.752"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 1006
+            }
+          },
+          {
+            "name": "nº",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 1006
+            }
+          },
+          {
+            "name": "departamen",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "POTOSI",
+            "categories": [
+              "LA PAZ",
+              "COCHABAMBA",
+              "ORURO",
+              "SANTA CRUZ",
+              "POTOSI",
+              "PANDO",
+              "TARIJA",
+              "BENI",
+              "CHUQUISACA"
+            ]
+          },
+          {
+            "name": "proyecto",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "CONST. SIST. AGUA POTABLE HUANAQUE LLICA)"
+          },
+          {
+            "name": "hectareas",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "HAS:0"
+          },
+          {
+            "name": "familias",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "FAM:73"
+          },
+          {
+            "name": "latitud",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -22.7330555556,
+              "maximum": -10.0591666667
+            }
+          },
+          {
+            "name": "longitud",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -69.5672222222,
+              "maximum": -57.7975
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
