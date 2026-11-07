@@ -1,0 +1,187 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_sit_farmacias_smde",
+  "title": "Farmacias SMDE",
+  "description": "Base de Farmacias de la Secretaría Municipal de Desarrollo Económico",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz",
+      "path": "http://sitservicios.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_sit_farmacias_smde/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 38765,
+      "hash": "sha256:fa0f84b855ab27c66ebd8d14460b66fdc30935f486548e5c6356b5913dd0b1aa",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "farmacias_smde.544"
+          },
+          {
+            "name": "Nombre",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Mi Farma Ayala"
+          },
+          {
+            "name": "Direccion",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Av. Mario Mercado"
+          },
+          {
+            "name": "Zona",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Bajo Llojeta"
+          },
+          {
+            "name": "Tipo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Comercio y Servicios",
+            "categories": [
+              "Comercio y Servicios"
+            ]
+          },
+          {
+            "name": "ActividadEconomica",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "COMERC.ESP.P/MENOR DE PRODUC.FARMAC,MEDIC;FARMACIA",
+            "categories": [
+              "COMERC.ESP.P/MENOR DE PRODUC.FARMAC,MEDIC;FARMACIA",
+              "VENT.P/MENOR PROD.FARMAC,MEDICI,COSMET, DE TOCADOR",
+              "VENT.P/MAYOR DE PRODUC.FARMACEUTICOS Y MEDICINALES",
+              "VENT.P/MENOR N.C.P. PRODUC.FARMAC,MEDIC,COSMET,TOC"
+            ]
+          },
+          {
+            "name": "MacroDistrito",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "COTAHUMA",
+            "categories": [
+              "CENTRO",
+              "COTAHUMA",
+              "SUR",
+              "MAX PAREDES",
+              "PERIFERICA",
+              "SAN ANTONIO",
+              "MALLASA"
+            ]
+          },
+          {
+            "name": "DistritoVarchar",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "DISTRITO 4",
+            "categories": [
+              "DISTRITO 1",
+              "DISTRITO 2",
+              "DISTRITO 18",
+              "DISTRITO 6",
+              "DISTRITO 3",
+              "DISTRITO 13",
+              "DISTRITO 7",
+              "DISTRITO 8",
+              "DISTRITO 11",
+              "DISTRITO 21",
+              "DISTRITO 14",
+              "DISTRITO 5",
+              "DISTRITO 4",
+              "DISTRITO 12",
+              "DISTRITO 15",
+              "DISTRITO 17",
+              "DISTRITO 16",
+              "DISTRITO 9",
+              "DISTRITO 10",
+              "DISTRITO 19",
+              "DISTRITO 20"
+            ]
+          },
+          {
+            "name": "distrito",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 21
+            }
+          },
+          {
+            "name": "owner",
+            "type": "string",
+            "example": "gustavo.nao",
+            "categories": [
+              "gustavo.nao"
+            ]
+          },
+          {
+            "name": "usuario",
+            "type": "string",
+            "example": "gustavo.nao",
+            "categories": [
+              "gustavo.nao",
+              "nhuanquiri",
+              "angel.gutierrezg",
+              "clara.revollo"
+            ]
+          },
+          {
+            "name": "fechaActual",
+            "type": "datetime",
+            "constraints": {
+              "minimum": "2016-06-09T18:37:02.357000+00:00",
+              "maximum": "2024-08-27T14:14:35.200000+00:00"
+            }
+          },
+          {
+            "name": "observaciones",
+            "type": "string",
+            "example": "",
+            "categories": [
+              ""
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
