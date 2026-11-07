@@ -1,0 +1,70 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_zona_tradicional_de_hidrocarburos_m0nzc",
+  "title": "Zona Tradicional de Hidrocarburos",
+  "description": "El mapa muestra la zona tradicional de hidrocarburos donde se han encontrado y explotado reservas de petróleo y gas de manera convencional durante muchos años. Estas zonas suelen tener características geológicas bien conocidas y establecidas, lo que facilita la exploración y extracción de hidrocarburos.",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_zona_tradicional_de_hidrocarburos_m0nzc/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 6318,
+      "hash": "sha256:b2a54856dc9db5a0e45d99271685b0fc2a6495fb470cca976d1cd87cfb95b3c7",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "example": "layer_zona_tradicional_de_hidrocarburos_m0nzc.1"
+          },
+          {
+            "name": "sup_ha",
+            "type": "integer",
+            "constraints": {
+              "minimum": 6500000,
+              "maximum": 6500000
+            }
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "example": "Zona tradicional"
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "example": "SANTA CRUZ"
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "example": "Cordillera"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "example": "Lagunillas"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
