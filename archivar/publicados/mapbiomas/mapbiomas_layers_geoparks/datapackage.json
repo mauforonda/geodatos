@@ -1,0 +1,94 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mapbiomas_mapbiomas_layers_geoparks",
+  "title": "geoparks",
+  "sources": [
+    {
+      "title": "MapBiomas",
+      "path": "https://shared-geoserver.mapbiomas.org/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mapbiomas_mapbiomas_layers_geoparks/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 41632,
+      "hash": "sha256:d9990350e554816291346c924a75bdd9036cc50cab3899a8ee7c4c42ce86b823",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "example": "geoparks.fid-1430c10_19d8c047bc2_-5c85"
+          },
+          {
+            "name": "OBJECTID_1",
+            "type": "integer",
+            "constraints": {
+              "minimum": 0,
+              "maximum": 29
+            }
+          },
+          {
+            "name": "Nome",
+            "type": "string",
+            "example": "Caminhos dos Cânions do Sul"
+          },
+          {
+            "name": "Situacao",
+            "type": "string",
+            "example": "Geoparque Mundial",
+            "categories": [
+              "Geoparque Mundial"
+            ]
+          },
+          {
+            "name": "Shape_Leng",
+            "type": "number",
+            "constraints": {
+              "minimum": 1.32818111988,
+              "maximum": 5.67682842324
+            }
+          },
+          {
+            "name": "Shape_Area",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.05022339149,
+              "maximum": 0.26220366311
+            }
+          },
+          {
+            "name": "geometry_analysis",
+            "type": "string",
+            "example": "Valid Geometry",
+            "categories": [
+              "Valid Geometry"
+            ]
+          },
+          {
+            "name": "category",
+            "type": "string",
+            "example": "geopark",
+            "categories": [
+              "geopark"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
