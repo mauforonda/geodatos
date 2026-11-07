@@ -1,0 +1,73 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_justiciabeckii",
+  "title": "justiciabeckii",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_justiciabeckii/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 52074,
+      "hash": "sha256:32b0d1846a7975dde67ff6626974e0b5b1c7c8790be4249be51968819153b984",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "justiciabeckii.250"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 1156
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "JusticiaBeckii.250"
+          },
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 288
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 16."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
