@@ -1,0 +1,83 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_alt_catastro_lapazlimpia_zona",
+  "title": "lapazlimpia_zona",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)",
+      "path": "http://sitservicios.lapaz.bo/ows38.jsp"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_catastro_lapazlimpia_zona/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 18088,
+      "hash": "sha256:ef46cc704869ec3773ed2c7fbfac0409ed4d372106599100536f8030c2c03ebe",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "example": "lapazlimpia_zona.1"
+          },
+          {
+            "name": "Layer",
+            "type": "string",
+            "example": "limites",
+            "categories": [
+              "limites"
+            ]
+          },
+          {
+            "name": "PaperSpace",
+            "type": "integer"
+          },
+          {
+            "name": "SubClasses",
+            "type": "string",
+            "example": "AcDbEntity:AcDbHatch",
+            "categories": [
+              "AcDbEntity:AcDbHatch"
+            ]
+          },
+          {
+            "name": "Linetype",
+            "type": "string",
+            "example": "ByBlock",
+            "categories": [
+              "ByBlock"
+            ]
+          },
+          {
+            "name": "EntityHandle",
+            "type": "string",
+            "example": "7F"
+          },
+          {
+            "name": "Text",
+            "type": "string",
+            "example": "ANSI31",
+            "categories": [
+              "SOLID",
+              "ANSI31"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Polygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
