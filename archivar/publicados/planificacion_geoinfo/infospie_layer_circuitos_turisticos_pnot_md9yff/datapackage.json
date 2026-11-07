@@ -1,0 +1,112 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_circuitos_turisticos_pnot_md9yff",
+  "title": "layer_circuitos_turisticos_pnot_md9yff",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_circuitos_turisticos_pnot_md9yff/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 62970,
+      "hash": "sha256:a00775d0953ef66eaaa3bf34d2e7b49db16fe0542ad46df0a1dad2eae7349306",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_circuitos_turisticos_pnot_md9yff.129"
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Sin dato",
+            "categories": [
+              "Sin dato",
+              "santa_cruz_ruta",
+              "la_paz_ruta",
+              "tarija_ruta",
+              "cbba_ruta",
+              "potosi_ruta",
+              "oruro_ruta",
+              "pando_ruta",
+              "beni_ruta",
+              "chuquisaca_ruta"
+            ]
+          },
+          {
+            "name": "long_km",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.203,
+              "maximum": 187.585
+            }
+          },
+          {
+            "name": "tipo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Propuesta",
+            "categories": [
+              "Definido",
+              "Propuesta"
+            ]
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "example": "ORURO",
+            "categories": [
+              "LA PAZ",
+              "SANTA CRUZ",
+              "COCHABAMBA",
+              "ORURO",
+              "POTOSI",
+              "BENI",
+              "CHUQUISACA",
+              "TARIJA",
+              "PANDO"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "example": "Abaroa"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "example": "Santuario de Quillacas"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
