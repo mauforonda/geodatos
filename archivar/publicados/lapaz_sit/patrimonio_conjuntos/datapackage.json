@@ -1,0 +1,113 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_patrimonio_conjuntos",
+  "title": "Conjuntos patrimoniales",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz",
+      "path": "http://sitservicios.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_patrimonio_conjuntos/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 22062,
+      "hash": "sha256:222c1c2e8361df04b7408271308082f7fd74dab261a121d682fbd82cf2626be2",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "conjuntos.17"
+          },
+          {
+            "name": "ENTITY",
+            "type": "string",
+            "example": "Polyline",
+            "categories": [
+              "Polyline"
+            ]
+          },
+          {
+            "name": "CONJUNTO",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Conjunto Cementerio General"
+          },
+          {
+            "name": "TIPO",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Conjuntos Patrimoniales de 1º Orden",
+            "categories": [
+              "Conjuntos Patrimoniales de 1º Orden",
+              "Conjuntos Patrimoniales de 2º Orden"
+            ]
+          },
+          {
+            "name": "CATEGORIA",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Conjuntos Patrimoniales",
+            "categories": [
+              "Conjuntos Patrimoniales",
+              "Areas de Interes Urbano y Arquitectonico objeto de Renovacion Urbana"
+            ]
+          },
+          {
+            "name": "BASE_LEG",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "LMA - 338",
+            "categories": [
+              "LUSU - LMA 17-24-50-80",
+              "LMA - 338",
+              "LMA - 349"
+            ]
+          },
+          {
+            "name": "CATEGO_1",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Conjuntos Patrimoniales LMA - 338",
+            "categories": [
+              "Conjuntos Patrimoniales LUSU",
+              "Areas de Interes Urbano y Arquitectonico objeto de Renovacion Urbana",
+              "Conjuntos Patrimoniales LMA - 338",
+              "Conjuntos Patrimoniales LMA - 349"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 1."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
