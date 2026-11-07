@@ -1,0 +1,87 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geobolivia_geonode_viaferro_6077adf4",
+  "title": "Vías férreas de Bolivia (2002)",
+  "description": "Información geoespacial de la red ferroviaria, que fue obtenida a partir de datos proporcionados por la Empresa Nacional de Ferrocarriles (ENFE, 1996), el Viceministerio de Transportes y Comunicaciones así como el Proyecto ZONISIG. en este marco, el sistema ferroviario está compuesto por dos subsistemas: El subsistema de la Red Andina y el de la Red Oriental con 2.082 y 1.383 Km. de extensión respectivamente. Elaborado por la Unidad de Ordenamiento Territorial del Ministerio de Planificación del Desarrollo",
+  "sources": [
+    {
+      "title": "Nueva plataforma GeoBolivia",
+      "path": "https://geonode.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geobolivia_geonode_viaferro_6077adf4/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 22558,
+      "hash": "sha256:8f0bf2c3ac60d7839f431e7a45b754fc0dbc45a8ca20328ed3b55d92e0664797",
+      "schema": {
+        "fields": [
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 19
+            }
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 19
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "viaferro.5"
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 0
+            }
+          },
+          {
+            "name": "tipo_red",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Operable",
+            "categories": [
+              "No operable",
+              "Operable"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
