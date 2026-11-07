@@ -1,0 +1,111 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_oieau_c_cv_all_station",
+  "title": "CV_MO_todas_estacoes_precipitacao",
+  "sources": [
+    {
+      "title": "Sistema para la Gestión Integral de Recursos Hídricos desarrollado por la Oficina Internacional del Agua (OiEau)",
+      "path": "https://www.oieau-wiss.org/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_oieau_c_cv_all_station/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 24408,
+      "hash": "sha256:837979c9fa22e9d4250c0dd4859c0d04930426608ea465da03b6b2d68d245b3a",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "All_station.fid-75f29474_19d840cd59a_-629f"
+          },
+          {
+            "name": "moscode",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "MOS_INGM_Fogo_Filipe_8"
+          },
+          {
+            "name": "mosname",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Lagariça"
+          },
+          {
+            "name": "smoncode",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "MON_CV_00002",
+            "categories": [
+              "MON_CV_00002"
+            ]
+          },
+          {
+            "name": "mosx",
+            "type": "number",
+            "constraints": {
+              "minimum": -25.4166666666667,
+              "maximum": -20.0292
+            }
+          },
+          {
+            "name": "mosy",
+            "type": "number",
+            "constraints": {
+              "minimum": 14.55477,
+              "maximum": 17.34027777777778
+            }
+          },
+          {
+            "name": "MOSyearsta",
+            "type": "number",
+            "constraints": {
+              "minimum": 1883.0,
+              "maximum": 2019.0
+            }
+          },
+          {
+            "name": "MOScomm",
+            "type": "string",
+            "example": "Bom",
+            "categories": [
+              "Novo",
+              "Bom",
+              "Avariado",
+              "Substituido",
+              "Substituicao",
+              "Nao Encontrado",
+              "INHUCO???"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point. Filas sin geometría: 43."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
