@@ -1,0 +1,159 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mdpyep_sitap_industriales_sesamo_load_2023",
+  "title": "Sesamo_Load_2023",
+  "sources": [
+    {
+      "title": "Sistema Territorial de Apoyo a la Producción (SITAP) del Ministerio de Desarrollo Productivo y Economía Plural",
+      "path": "https://geodata-bolivia.produccion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mdpyep_sitap_industriales_sesamo_load_2023/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 25373,
+      "hash": "sha256:79f8e9f15480685dcab6f7db0cbaf7b4a2350973ed7b1a14ebdb4a823ed6c569",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Sesamo_Load_2023.282"
+          },
+          {
+            "name": "departamento",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Santa Cruz",
+            "categories": [
+              "Santa Cruz",
+              "La Paz",
+              "Beni",
+              "Chuquisaca",
+              "Cochabamba"
+            ]
+          },
+          {
+            "name": "provincia",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Cordillera",
+            "categories": [
+              "Velasco",
+              "Ñuflo de Chavez",
+              "Guarayos",
+              "Cordillera",
+              "Chiquitos",
+              "Sara",
+              "Andres Ibañez",
+              "Obispo Santistevan",
+              "Itenez",
+              "Caranavi",
+              "Warnes",
+              "Sud Yungas",
+              "Ichilo",
+              "Marban",
+              "Tiraque",
+              "Abel Iturralde",
+              "Belisario Boeto",
+              "German Busch",
+              "Zudañez",
+              "Oropeza",
+              "Tomina",
+              "Valle Grande"
+            ]
+          },
+          {
+            "name": "municipio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Charagua Iyambae"
+          },
+          {
+            "name": "comunidad",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "AKAE"
+          },
+          {
+            "name": "producto",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Sésamo",
+            "categories": [
+              "Sésamo"
+            ]
+          },
+          {
+            "name": "estacion",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "verano",
+            "categories": [
+              "verano",
+              "invierno"
+            ]
+          },
+          {
+            "name": "produccion",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.101,
+              "maximum": 2734.65
+            }
+          },
+          {
+            "name": "superficie",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0.923,
+              "maximum": 3099.982
+            }
+          },
+          {
+            "name": "rendimiento",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.039,
+              "maximum": 4.039
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
