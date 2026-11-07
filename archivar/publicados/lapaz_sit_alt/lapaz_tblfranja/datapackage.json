@@ -1,0 +1,103 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_alt_lapaz_tblfranja",
+  "title": "TblFranja",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)",
+      "path": "http://sitservicios.lapaz.bo/ows38.jsp"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_lapaz_tblfranja/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 24808,
+      "hash": "sha256:cce555c625b8e3419c9817dbf3e7a9a79710db487c640ce11eb9c85149a1fe8a",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "TblFranja.5"
+          },
+          {
+            "name": "IdTipololgiaSector",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 17
+            }
+          },
+          {
+            "name": "IdTipoFranja",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 8
+            }
+          },
+          {
+            "name": "color",
+            "type": "string",
+            "example": "AMARILLO",
+            "categories": [
+              "VERDE",
+              "ROJO",
+              "AZUL",
+              "AMARILLO",
+              "FUERA DE FRANJA",
+              "NARANJA"
+            ]
+          },
+          {
+            "name": "descFranja",
+            "type": "string",
+            "example": "COLAPSADO",
+            "categories": [
+              "EN MONITOREO",
+              "A DEMOLER",
+              "COLAPSADO",
+              "COLAPSADOS Y A DEMOLER",
+              "EN EVALUACION",
+              "EVALUACIÓN",
+              "FUERA DE FRANJA",
+              "S/D"
+            ]
+          },
+          {
+            "name": "descFranjaDetallada",
+            "type": "string",
+            "example": "A DEMOLER (INTERVENCIÓN Y DEMOLICIÓN)",
+            "categories": [
+              "A DEMOLER (INTERVENCIÓN Y DEMOLICIÓN)",
+              "COLAPSADOS (DESLIZAMIENTO ACTIVO)",
+              "EN MONITOREO (SEGURIDAD EN MONITOREO)",
+              "FUERA DE FRANJA",
+              "S/D"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Polygon, MultiPolygon. Filas sin geometría: 3."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
