@@ -1,0 +1,66 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geobolivia_geonode_criopampahuari_forestal_4157debe",
+  "title": "Plan Director de la cuenca del río Pampa Huari — áreas forestales",
+  "description": "Información geoespacial de las áreas forestales que existe en la cuenca del rió pampa Huari, clasificados según tipo; área forestal y áreas verdes urbano. Información obtenida del Viceministerio de Recursos Hídricos y Riego a febrero del 2019.",
+  "sources": [
+    {
+      "title": "Nueva plataforma GeoBolivia",
+      "path": "https://geonode.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geobolivia_geonode_criopampahuari_forestal_4157debe/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 32941,
+      "hash": "sha256:86ba851fd5fc8b72ac97634966bb73a48c77434acdd6e85217141bdc40ba7d88",
+      "schema": {
+        "fields": [
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 2
+            }
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 2
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 2
+            }
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "example": "Area forestal"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
