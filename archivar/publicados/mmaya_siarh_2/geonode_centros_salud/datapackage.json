@@ -1,0 +1,130 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_centros_salud",
+  "title": "Plan Director Cuenca Río Grande - Centros de Salud",
+  "description": "PDCRG (Plan Director de la Cuenca Rio Grande). Muestra la ubicación y la información relevante de los centros de salud, en el marco del Plan Director de la Cuenca del Río Grande.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_centros_salud/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 43844,
+      "hash": "sha256:86ba7e902240cf22819d187dfa0c3beeb27590283cee2b9587d8049aa41d791a",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Establecimientos.1372"
+          },
+          {
+            "name": "ID",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 2576
+            }
+          },
+          {
+            "name": "TIPO",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "6",
+            "categories": [
+              "3",
+              "4",
+              "6",
+              "2",
+              "1",
+              "5"
+            ]
+          },
+          {
+            "name": "TIPO_DESCR",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Centro de Salud con Camas",
+            "categories": [
+              "Centro de Salud",
+              "Puesto de Salud",
+              "Centro de Salud con Camas",
+              "Hospital de Segundo Nivel",
+              "Hospital General ó de Tercer Nivel",
+              "Instituto Especializado"
+            ]
+          },
+          {
+            "name": "NOMBRE_EST",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "C.S.C.C. CRUCE CULTA"
+          },
+          {
+            "name": "LAT",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -19.93,
+              "maximum": -16.395891
+            }
+          },
+          {
+            "name": "LONG",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -66.749,
+              "maximum": -62.554
+            }
+          },
+          {
+            "name": "CODIGO_SNI",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "400058"
+          },
+          {
+            "name": "Nivel_6",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "466996"
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
