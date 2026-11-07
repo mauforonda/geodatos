@@ -1,0 +1,105 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_limite_macrodistritalwgs84",
+  "title": "Mapa del Limite Macrodistrital en el Municipio de La Paz",
+  "description": "El mapa presenta información de limites macrodistritales en el Municipio de La Paz.  Elaborado por Oficialía Mayor de Planificación para el Desarrollo (OMPD) del Gobierno Autónomo Municipal de La Paz, en el año 2013.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_limite_macrodistritalwgs84/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 73711,
+      "hash": "sha256:638454bcca7adbd169b252e6f649b02e92e780ff3e750cf466dd28d7b7457ad3",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "example": "limite_macrodistritalwgs84.1"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 7
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "example": "limite_macrodistritalwgs84.1"
+          },
+          {
+            "name": "gdbsdistm",
+            "type": "string",
+            "example": "1"
+          },
+          {
+            "name": "distrito",
+            "type": "integer",
+            "constraints": {
+              "minimum": 2,
+              "maximum": 21
+            }
+          },
+          {
+            "name": "tipo",
+            "type": "string",
+            "example": "UR",
+            "categories": [
+              "UR"
+            ]
+          },
+          {
+            "name": "shape_area",
+            "type": "number",
+            "constraints": {
+              "minimum": 2742521.58848,
+              "maximum": 33217438.8991
+            }
+          },
+          {
+            "name": "ha",
+            "type": "number",
+            "constraints": {
+              "minimum": 274.252158848,
+              "maximum": 3321.74388991
+            }
+          },
+          {
+            "name": "macros",
+            "type": "string",
+            "example": "COTAHUMA"
+          },
+          {
+            "name": "inv_07_13",
+            "type": "integer",
+            "constraints": {
+              "minimum": 0,
+              "maximum": 0
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
