@@ -1,0 +1,127 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_elalto_uso_actual",
+  "title": "Mapa Cobertura y Uso Actual de la Tierra del Municipio El Alto 2015",
+  "description": "La información de Cobertura y Uso Actual de la Tierra muestra la clasificación de uso de suelo y su respectiva descripción, con sistema de referencia WGS 84, proyección UTM 19 Sur, a escala 1: 15000, obtenida del Vice Ministerio de Tierras año 2012. Información proporcionada del Atlas Geográfico del Municipio de El Alto gestión 2015.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_elalto_uso_actual/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 67597,
+      "hash": "sha256:a8835ce110d054bd16db71bd162379b27cc191aedc279cf88a50804830baf691",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "elalto_uso_actual.29"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 36
+            }
+          },
+          {
+            "name": "gid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 114
+            }
+          },
+          {
+            "name": "__gid",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "103"
+          },
+          {
+            "name": "clasific",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Areas Hidromorficas",
+            "categories": [
+              "Cuerpos de Agua",
+              "Areas Hidromorficas",
+              "Pastos y Arbustos",
+              "Depositos Fluviales",
+              "Pastos y Cultivos",
+              "Afloramientos Rocosos",
+              "Area Urbana",
+              "Nevados",
+              "Pastos en Periodo Humedo",
+              "Arbustos",
+              "Cultivos"
+            ]
+          },
+          {
+            "name": "descrip",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Areas Hidromorficas",
+            "categories": [
+              "Laguna",
+              "Areas Hidromorficas",
+              "Pastos y Arbustos",
+              "Depositos Fluviales",
+              "Pastos y Cultivos",
+              "Afloramientos Rocosos",
+              "Area Urbana",
+              "Lago",
+              "Nevados",
+              "Patos en Periodo Humedo",
+              "Arbustos",
+              "Cultivos"
+            ]
+          },
+          {
+            "name": "area_ha",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 8627
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
