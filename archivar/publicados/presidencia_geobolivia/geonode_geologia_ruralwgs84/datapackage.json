@@ -1,0 +1,110 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_geologia_ruralwgs84",
+  "title": "Mapa Geológico del Área Rural del Municipio de La Paz",
+  "description": "El mapa presenta información de las características geológicas en el área rural del Municipio de La Paz.   Elaborado por Oficialía Mayor de Planificación para el Desarrollo (OMPD) del Gobierno Autónomo Municipal de La Paz, en el año 2013.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_geologia_ruralwgs84/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 57865,
+      "hash": "sha256:65db36364a9eca7e36a075a4b1b9d7284323d09f03f2dc1ba8ad1c4995f29289",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "geologia_ruralwgs84.11"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 20
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "geologia_ruralwgs84.8"
+          },
+          {
+            "name": "provincias",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Ng1",
+            "categories": [
+              "Ng1",
+              "S1",
+              "Tri1",
+              "D1",
+              "O1",
+              "Pg-Ng1",
+              "Q1",
+              "Tri-Ji1"
+            ]
+          },
+          {
+            "name": "simbolo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Ng",
+            "categories": [
+              "Ng",
+              "S",
+              "Tri",
+              "D",
+              "O",
+              "Pg-Ng",
+              "Q",
+              "Tri-Ji"
+            ]
+          },
+          {
+            "name": "pesolit",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 3
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
