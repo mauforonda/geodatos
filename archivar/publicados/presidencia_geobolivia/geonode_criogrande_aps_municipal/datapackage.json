@@ -1,0 +1,197 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_criogrande_aps_municipal",
+  "title": "Plan Director de la Cuenca Río Grande - Áreas Protegidas Municipales_ Bolivia",
+  "description": "El mapa muestra la georreferenciación y la información de Áreas Protegidas a nivel Municipal en la Cuenca del Plan Director del Río Grande, dato del Viceministerio de Recursos Hídricos y Riego a octubre 2016.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_criogrande_aps_municipal/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 101375,
+      "hash": "sha256:e8443ddbdfdca98c78ffa3d973b3fbbf61efdb89d47307e4282335eff751e0c5",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "criogrande_aps_municipal.6"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 23
+            }
+          },
+          {
+            "name": "objectid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 23
+            }
+          },
+          {
+            "name": "categoria",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Zona de Proteccion Paisajistica",
+            "categories": [
+              "Area Protegida Municipal",
+              "Area Natural de Manejo Integrado",
+              "Area de Protección Ambiental",
+              "Monumento Arqueologico Natural",
+              "Parque Arqueologico",
+              "Parque Metropolitano",
+              "Reserva de Vida Silvestre",
+              "Zona de Inmovilizacion Forestal e Hidrica",
+              "Zona de Proteccion Paisajistica"
+            ]
+          },
+          {
+            "name": "municipio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Sucre"
+          },
+          {
+            "name": "base_legal",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "OM SN/88"
+          },
+          {
+            "name": "jurisdicc",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Municipal",
+            "categories": [
+              "Municipal"
+            ]
+          },
+          {
+            "name": "depto",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Chuquisaca",
+            "categories": [
+              "Cochabamba",
+              "Santa Cruz",
+              "Chuquisaca"
+            ]
+          },
+          {
+            "name": "codigo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "M-01"
+          },
+          {
+            "name": "area_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 194.2676,
+              "maximum": 179614.3278
+            }
+          },
+          {
+            "name": "limites",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "NO",
+            "categories": [
+              "SI",
+              "NO"
+            ]
+          },
+          {
+            "name": "fecha",
+            "type": "datetime",
+            "constraints": {
+              "required": true,
+              "minimum": "1988-01-01T00:00:00",
+              "maximum": "2010-01-01T00:00:00"
+            }
+          },
+          {
+            "name": "nomb",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Sucre (Paisaje)"
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Sucre (Paisaje)"
+          },
+          {
+            "name": "shape_leng",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0692817548359,
+              "maximum": 2.47458194468
+            }
+          },
+          {
+            "name": "shape_area",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.000164963840234,
+              "maximum": 0.153640536861
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 2."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
