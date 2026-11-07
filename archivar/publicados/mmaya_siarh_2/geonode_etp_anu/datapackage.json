@@ -1,0 +1,46 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_etp_anu",
+  "title": "Plan Director Cuenca Río Pampa Huari – Evapotranspiración Potencial",
+  "description": "PDCRPH (Plan Director de la Cuenca Rio Pampa Huari) Describe las variaciones meteorológicas de la evapotranspiración potencial en la cuenca del rio pampa Huari, elaborado en base a datos disponibles de SENAMHI 2017.\n\nETP en m.m.: 460 mm, 450 mm, 440 mm, 430 mm, 420 mm, 410 mm, 400 mm, 390 mm, 387 mm.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_etp_anu/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 43125,
+      "hash": "sha256:297c5e2ae08d76525fd99759be31ef49a663b232afa0948437df8a242a2651a8",
+      "schema": {
+        "fields": [
+          {
+            "name": "ETP",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1336,
+              "maximum": 1350
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
