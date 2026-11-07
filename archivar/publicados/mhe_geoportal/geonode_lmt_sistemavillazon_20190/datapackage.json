@@ -1,0 +1,87 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mhe_geoportal_geonode_lmt_sistemavillazon_20190",
+  "title": "LMT_SistemaVillazon_20190",
+  "sources": [
+    {
+      "title": "Geoportal del Viceministerio de Electricidad y Energías Renovables",
+      "path": "https://geoportal.mhe.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mhe_geoportal_geonode_lmt_sistemavillazon_20190/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 51350,
+      "hash": "sha256:42b07368cb5c07afb0bee986e59bd65094fbad772c31310b233484ee9cf46d42",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 350
+            }
+          },
+          {
+            "name": "SUBTIPO",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 15
+            }
+          },
+          {
+            "name": "FUENTEALIM",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Lampaya",
+            "categories": [
+              "Lampaya"
+            ]
+          },
+          {
+            "name": "PROPIEDAD",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "S",
+            "categories": [
+              "S",
+              "P"
+            ]
+          },
+          {
+            "name": "SHAPE_Leng",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 4.29021298403,
+              "maximum": 13709.2128047
+            }
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
