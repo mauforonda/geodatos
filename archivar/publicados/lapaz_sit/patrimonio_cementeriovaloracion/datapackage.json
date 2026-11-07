@@ -1,0 +1,97 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_patrimonio_cementeriovaloracion",
+  "title": "Cementerio General valoración patrimonial",
+  "description": "Valoración Cementerio General, DM 17 2025",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz",
+      "path": "http://sitservicios.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_patrimonio_cementeriovaloracion/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 74336,
+      "hash": "sha256:3a54af329f08b44f2610a668257898ef2f9090c178aa05235800e5356ac9d2b0",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "cementerioValoracion.1063"
+          },
+          {
+            "name": "ENTITY",
+            "type": "string",
+            "example": "Polyline",
+            "categories": [
+              "Polyline"
+            ]
+          },
+          {
+            "name": "LAYER",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "MAUSOLEOS",
+            "categories": [
+              "MAUSOLEOS",
+              "PM",
+              "CM"
+            ]
+          },
+          {
+            "name": "CATEGORI",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Sin Valor",
+            "categories": [
+              "Sin Valor",
+              "C",
+              "B",
+              "A",
+              "Patrimonio Cultural Inmaterial"
+            ]
+          },
+          {
+            "name": "CATE_HICHE",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Sin Valor",
+            "categories": [
+              "Sin Valor",
+              "C",
+              "B",
+              "A",
+              "Patrimonio Cultural Inmaterial"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
