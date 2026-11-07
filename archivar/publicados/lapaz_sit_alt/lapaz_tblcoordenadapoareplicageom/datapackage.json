@@ -1,0 +1,87 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_alt_lapaz_tblcoordenadapoareplicageom",
+  "title": "tblCoordenadaPOAReplicaGeom",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)",
+      "path": "http://sitservicios.lapaz.bo/ows38.jsp"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_lapaz_tblcoordenadapoareplicageom/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 50342,
+      "hash": "sha256:5733aafd04b8b789e11ee0a1db5360a0bc43b61d1c6e194367fa1e46b8927983",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "tblCoordenadaPOAReplicaGeom.35091.2"
+          },
+          {
+            "name": "cod_coordenada",
+            "type": "integer"
+          },
+          {
+            "name": "cod_poa",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 53947,
+              "maximum": 55223
+            }
+          },
+          {
+            "name": "estadoBloqueo",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 0
+            }
+          },
+          {
+            "name": "is_area",
+            "type": "integer"
+          },
+          {
+            "name": "is_patrimonio",
+            "type": "integer"
+          },
+          {
+            "name": "is_tramo",
+            "type": "integer"
+          },
+          {
+            "name": "is_circuito",
+            "type": "integer"
+          },
+          {
+            "name": "is_predio",
+            "type": "integer"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: LineString, Polygon, Point. Filas sin geometría: 4."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
