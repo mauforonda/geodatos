@@ -1,0 +1,117 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geobolivia_geonode_vuln_cobertura_vegetalwgs84_da76d12d",
+  "title": "Vuln cobertura vegetal",
+  "description": "Capa geográfica publicada en el catálogo local de GeoBolivia.",
+  "sources": [
+    {
+      "title": "Nueva plataforma GeoBolivia",
+      "path": "https://geonode.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geobolivia_geonode_vuln_cobertura_vegetalwgs84_da76d12d/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 48889,
+      "hash": "sha256:3c0fc373031522c8ec79c9ddb08de56d6697aeaaebdfd1203d7d1de9b6ddedf0",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "vuln_cobertura_vegetalwgs84_da76d12d.8"
+          },
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 17
+            }
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 17
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Vuln_cobertura_vegetalwgs84.8"
+          },
+          {
+            "name": "clase1",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "p2+p26+(p5d)+p8"
+          },
+          {
+            "name": "nom_dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "La Paz",
+            "categories": [
+              "La Paz"
+            ]
+          },
+          {
+            "name": "descrip",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "p2+p26+(p5d)+p8; p2= Pajonales altoandinos de la Puna h?meda sobre suelos bien drenados (CES409.084)"
+          },
+          {
+            "name": "vulnerabi",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Alta",
+            "categories": [
+              "Media",
+              "Alta",
+              "Baja"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
