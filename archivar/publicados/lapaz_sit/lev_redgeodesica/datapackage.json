@@ -1,0 +1,166 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_lev_redgeodesica",
+  "title": "Red Geodesica",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz",
+      "path": "http://sitservicios.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_lev_redgeodesica/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 31936,
+      "hash": "sha256:69ae8219c79b5c8f93240a729e7baf81bfab7f836385be73b7ade322d0d515eb",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "RedGeodesica.fid-ea168ff_19fd38c5967_-715d"
+          },
+          {
+            "name": "classid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 64,
+              "maximum": 64
+            }
+          },
+          {
+            "name": "revisionnumber",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 0
+            }
+          },
+          {
+            "name": "estado",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 1
+            }
+          },
+          {
+            "name": "fecha",
+            "type": "datetime",
+            "constraints": {
+              "required": true,
+              "minimum": "2013-01-09T04:00:00+00:00",
+              "maximum": "2013-01-17T04:00:00+00:00"
+            }
+          },
+          {
+            "name": "factorCombinado",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.99902,
+              "maximum": 0.99922
+            }
+          },
+          {
+            "name": "AlturaElipsoidal",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 3185.62392,
+              "maximum": 4364.6917
+            }
+          },
+          {
+            "name": "Longitud",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "68°06'27,34907\"W"
+          },
+          {
+            "name": "Latitud",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "16°34'10,78763\"S"
+          },
+          {
+            "name": "Altura",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 3140.1932,
+              "maximum": 4318.87249
+            }
+          },
+          {
+            "name": "coordenadaNorte",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 8164274.80651,
+              "maximum": 8183091.37112
+            }
+          },
+          {
+            "name": "coordenadaEste",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 588621.91897,
+              "maximum": 603672.56258
+            }
+          },
+          {
+            "name": "codigoPunto",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "M6-230"
+          },
+          {
+            "name": "idPuntoControl",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 365
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
