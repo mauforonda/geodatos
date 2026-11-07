@@ -1,0 +1,223 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_control_fronterizo",
+  "title": "Mapa Control Fronterizo Sudamérica COSIPLAN_ 2015",
+  "description": "Puntos que representan la ubicación geográfica de instalaciones establecidas y reconocidas oficialmente como puestos de control de gobierno donde se regula la entrada y salida de personas y bienes de un país. Entre otra información contiene: nombre, habilitación, tipo de tráfico permitido, paso de frontera asociado.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_control_fronterizo/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 43745,
+      "hash": "sha256:4de199e66a6abfaf4c97bd92bdf2eb7118f6977ee557ebac230ee69e456d9dee",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "control_fronterizo.298"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 643
+            }
+          },
+          {
+            "name": "idusco",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 19004000057.0
+            }
+          },
+          {
+            "name": "nam",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Tenencia de Carabineros Puerto Ingeniero Ibáńez"
+          },
+          {
+            "name": "zch",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Permanente",
+            "categories": [
+              "Permanente",
+              "Información no disponible",
+              "Informaçăo năo disponível",
+              "Parmanente",
+              "PERMANENTE",
+              "Temporal",
+              "Frontera B",
+              "Frontera C",
+              "Information not available",
+              "Frontera",
+              "Frontera A"
+            ]
+          },
+          {
+            "name": "zha",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "SI",
+            "categories": [
+              "SI",
+              "-1",
+              "Si"
+            ]
+          },
+          {
+            "name": "ztt",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Información no disponible",
+            "categories": [
+              "Información no disponible",
+              "Pasajeros",
+              "Pasajeros, Cargas",
+              "TVF, Pasajeros",
+              "Informaçăo năo disponível",
+              "TVF",
+              "TVF, Pasajeros, Cargas",
+              "TVF, Cargas",
+              "Cargas",
+              "Information not available",
+              "Gasoducto",
+              "Migraciones",
+              "TVF, Pasajeros,Cargas",
+              "CARGAS Y TRANSPORTE AUTOMOTO",
+              "Oleoducto",
+              "Oleoducto / Gasoducto",
+              "Operatoria Energetica",
+              "Pasajeros, Chile-Chile",
+              "Pasajeros, Gasoducto",
+              "Personas, Vahículos, Cargas",
+              "Poliducto",
+              "Proyecto Minero",
+              "TVF, Pasajeros, Chile - Chile, Cargas\""
+            ]
+          },
+          {
+            "name": "acc_lbl",
+            "type": "string",
+            "example": "Exacta",
+            "categories": [
+              "Aproximada",
+              "Exacta",
+              "Información No Disponible",
+              "Approximate",
+              "Exact"
+            ]
+          },
+          {
+            "name": "zpp_lbl",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "CHL",
+            "categories": [
+              "ARG",
+              "BRA",
+              "COL",
+              "VEN",
+              "CHL",
+              "URY",
+              "PRY",
+              "PER",
+              "BOL",
+              "ECU",
+              "GUY",
+              "SUR"
+            ]
+          },
+          {
+            "name": "ztc_lbl",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Información no disponible",
+            "categories": [
+              "Tradicional",
+              "Información no disponible",
+              "Informaçăo năo disponível",
+              "Integrado de Cabecera Única",
+              "Information not available",
+              "Integrado de Doble Cabecera",
+              "Integrado de cabecera única"
+            ]
+          },
+          {
+            "name": "zts_lbl",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Terrestre",
+            "categories": [
+              "Terrestre",
+              "Fluvial",
+              "Aeroportuario",
+              "Información no disponible",
+              "Marítimo",
+              "Fluvial con puente",
+              "Airport",
+              "Maritime",
+              "Terrestre con túnel",
+              "Terrestre / Fluvial"
+            ]
+          },
+          {
+            "name": "obs",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Oficial Validada",
+            "categories": [
+              "Oficial Validada",
+              "No Oficial Validada"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
