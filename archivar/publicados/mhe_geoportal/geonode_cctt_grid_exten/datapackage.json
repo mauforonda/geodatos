@@ -1,0 +1,82 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mhe_geoportal_geonode_cctt_grid_exten",
+  "title": "CCTT_Grid_Exten",
+  "sources": [
+    {
+      "title": "Geoportal del Viceministerio de Electricidad y Energías Renovables",
+      "path": "https://geoportal.mhe.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mhe_geoportal_geonode_cctt_grid_exten/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 392645,
+      "hash": "sha256:0160ded6aab51b34e29d2f4af1c390e70124dfeba2346e16eba8e0b12a65b320",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "fid_1",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 8767
+            }
+          },
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 8767
+            }
+          },
+          {
+            "name": "Size_kVA",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 30,
+              "maximum": 75
+            }
+          },
+          {
+            "name": "Tension",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 24.9,
+              "maximum": 24.9
+            }
+          },
+          {
+            "name": "System",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "POTOSI_altiplano_ext_1536"
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
