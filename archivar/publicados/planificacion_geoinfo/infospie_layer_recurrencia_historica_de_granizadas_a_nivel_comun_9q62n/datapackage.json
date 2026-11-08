@@ -1,0 +1,94 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_recurrencia_historica_de_granizada_1e04776d8bdd",
+  "title": "Recurrencia histórica de granizadas a nivel comunidades 2002-2023",
+  "description": "La presente información muestra la recurrencia de granizadas suscitados en todo el Estado a nivel comunidades, la misma fue compilada con información recabada por el Observatorio Nacional de Desastres dependiente del Viceministerio de Defensa Civil mediante los formularios de Evaluación de Daños y Análisis de Necesidades (EDAN) que generan las Unidades de Gestión de Riesgo (UGR) municipales.",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_recurrencia_historica_de_granizada_1e04776d8bdd/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 230602,
+      "hash": "sha256:93cda34668757314377f61279a533a13d1bc34f2ef00b05deabf55da860f3042",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_recurrencia_historica_de_granizadas_a_nivel_comun_9q62n.180"
+          },
+          {
+            "name": "categoria",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Baja recurrencia",
+            "categories": [
+              "Baja recurrencia",
+              "Media",
+              "Alta",
+              "Muy alta"
+            ]
+          },
+          {
+            "name": "sup_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 12.256,
+              "maximum": 3800000.0
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "example": "POTOSI",
+            "categories": [
+              "POTOSI",
+              "LA PAZ",
+              "CHUQUISACA",
+              "COCHABAMBA",
+              "ORURO",
+              "TARIJA",
+              "PANDO",
+              "SANTA CRUZ"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "example": "Enrique Baldivieso"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "example": "San Agustín"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
