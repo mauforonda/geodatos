@@ -1,0 +1,146 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_densidad_poblacionalwgs84",
+  "title": "Mapa de densidad poblacional del Municipio de La Paz, 2013",
+  "description": "El mapa muestra información  de la densidad poblacional de la ciudad de La Paz por zonas.  Elaborado por Oficialía Mayor de Planificación para el Desarrollo (OMPD) del Gobierno Autónomo Municipal de La Paz, en el año 2013.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_densidad_poblacionalwgs84/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 237040,
+      "hash": "sha256:c4262020b01be3edcbe13cdfc31397ca79d5147a52beac86d7deb985b68c8d7f",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "densidad_poblacionalwgs84.9"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 611
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "densidad_poblacionalwgs84.7"
+          },
+          {
+            "name": "nom_otb",
+            "type": "string",
+            "example": "ISLA VERDE"
+          },
+          {
+            "name": "sub_alcald",
+            "type": "string",
+            "example": "MALLASA",
+            "categories": [
+              "SUR",
+              "PERIFERICA",
+              "MAX PAREDES",
+              "SAN ANTONIO",
+              "COTAHUMA",
+              "CENTRO",
+              "MALLASA"
+            ]
+          },
+          {
+            "name": "estado",
+            "type": "string",
+            "example": "VALIDADA",
+            "categories": [
+              "VALIDADA",
+              "PROPUESTA TECNICA",
+              "(*) PROPUESTA TECNICA",
+              "SERVIDUMBRES ECOLOGICAS",
+              "AREA SUJETA A ESTUDIO"
+            ]
+          },
+          {
+            "name": "numero",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 60
+            }
+          },
+          {
+            "name": "distrito",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 21
+            }
+          },
+          {
+            "name": "codigo",
+            "type": "string",
+            "example": "MA20-01"
+          },
+          {
+            "name": "area_m2",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 9169345.7556
+            }
+          },
+          {
+            "name": "area_has",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 916.93457556
+            }
+          },
+          {
+            "name": "densidad",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 75851.321458
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Filas sin geometría: 2. Geometrías inválidas, conservadas sin reparar: 3."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
