@@ -1,0 +1,215 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_vendedores_en_mercados_por_rubro_venta",
+  "title": "Vendedores en Mercados por Rubro de Venta Según Distrito, Anuario Estadístico 2018",
+  "description": "El mapa muestra la cantidad de vendedores en mercados por rubro de venta (abarrotes, artículos de bazar, carnes y pescados, comidas y refrescos, flores y plantas, friales, legumbres y frutas, pan y galletas, productos lácteos, varios) según distrito. Elaborado por la Dirección de Investigación e Información Municipal. Dato obtenido del geoportal IDE La Paz en fecha octubre del 2022.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_vendedores_en_mercados_por_rubro_venta/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 165272,
+      "hash": "sha256:5dc6a0263c47e80d28122d6a30cedac77fddb5e4118b880951f9c3dca5a57857",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "vendedores_en_mercados_por_rubro_venta.2"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 23
+            }
+          },
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 23
+            }
+          },
+          {
+            "name": "tipo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Urbano",
+            "categories": [
+              "Urbano",
+              "Rural"
+            ]
+          },
+          {
+            "name": "no_macro",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 9
+            }
+          },
+          {
+            "name": "macrodistr",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Max Paredes",
+            "categories": [
+              "Cotahuma",
+              "Max Paredes",
+              "San Antonio",
+              "Periferica",
+              "Sur",
+              "Centro",
+              "Hampaturi",
+              "Mallasa",
+              "Zongo"
+            ]
+          },
+          {
+            "name": "distrito_m",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 23
+            }
+          },
+          {
+            "name": "abarrotes",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 315
+            }
+          },
+          {
+            "name": "arti_baza",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 41
+            }
+          },
+          {
+            "name": "carn_pesca",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 266
+            }
+          },
+          {
+            "name": "comid_refr",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 229
+            }
+          },
+          {
+            "name": "flores_pla",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 62
+            }
+          },
+          {
+            "name": "friales",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 25
+            }
+          },
+          {
+            "name": "legumb_fru",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 265
+            }
+          },
+          {
+            "name": "pan_y_gall",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 5
+            }
+          },
+          {
+            "name": "prod_lact",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 13
+            }
+          },
+          {
+            "name": "varios",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 8
+            }
+          },
+          {
+            "name": "total",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 933
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
