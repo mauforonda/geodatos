@@ -1,0 +1,86 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_sit_macrodistritos_nrocasos",
+  "title": "macrodistrito_nro_casos",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz",
+      "path": "http://sitservicios.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_sit_macrodistritos_nrocasos/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 88576,
+      "hash": "sha256:aee97bbd955845f658895d3836d43b0cf39313919f794bd467e00102c66b89e4",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "example": "macrodistritos_nrocasos.7"
+          },
+          {
+            "name": "cod_macro",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 9
+            }
+          },
+          {
+            "name": "macro_ante",
+            "type": "string",
+            "example": "PERIFERICA"
+          },
+          {
+            "name": "POSITIVO",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 656
+            }
+          },
+          {
+            "name": "RECUPERADO",
+            "type": "integer",
+            "constraints": {
+              "minimum": 36,
+              "maximum": 34936
+            }
+          },
+          {
+            "name": "FALLECIDO",
+            "type": "integer",
+            "constraints": {
+              "minimum": 0,
+              "maximum": 308
+            }
+          },
+          {
+            "name": "TOTAL",
+            "type": "integer",
+            "constraints": {
+              "minimum": 37,
+              "maximum": 35868
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Polygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
