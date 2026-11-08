@@ -1,0 +1,142 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_colcapirhua_geoportal_urbanismo_prediosc",
+  "title": "prediosc",
+  "description": "Predios del GAMC",
+  "sources": [
+    {
+      "title": "Geoportal del Gobierno Municipal de Colcapirhua",
+      "path": "https://geoserver.geotec-srl.com/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_colcapirhua_geoportal_urbanismo_prediosc/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 2818230,
+      "hash": "sha256:c5885077e785ce44e78bc116d44ab301ff0c1d77fbea3cf621c171ad5f17630e",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "prediosc.1605"
+          },
+          {
+            "name": "dist",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "0E",
+            "categories": [
+              "0B",
+              "0A",
+              "0C",
+              "0D",
+              "0E"
+            ]
+          },
+          {
+            "name": "codigo",
+            "type": "string",
+            "example": "17805"
+          },
+          {
+            "name": "codsist",
+            "type": "string",
+            "example": "080021028"
+          },
+          {
+            "name": "shape_leng",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 2260.93516709
+            }
+          },
+          {
+            "name": "shape_area",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 104098.135934
+            }
+          },
+          {
+            "name": "manzano",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "0191"
+          },
+          {
+            "name": "predio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "011"
+          },
+          {
+            "name": "observ",
+            "type": "string",
+            "example": "recorte con afectacion"
+          },
+          {
+            "name": "cod_sist_n",
+            "type": "string",
+            "example": "080021028"
+          },
+          {
+            "name": "categoria",
+            "type": "string",
+            "example": "Area Extensiva",
+            "categories": [
+              "Area Homologada",
+              "Area Extensiva",
+              "Area Productiva"
+            ]
+          },
+          {
+            "name": "cod_cat",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "0E0191011"
+          },
+          {
+            "name": "registro",
+            "type": "string",
+            "example": "REGISTRADO EN SIGM",
+            "categories": [
+              "REGISTRADO EN SIGM",
+              "NUEVO SIN RESOLUCION"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 3. La fuente declaraba EPSG:4326 pero sus coordenadas estaban en EPSG:32719 (sistema inferido por la ubicación de las geometrías en Bolivia); se reproyectaron."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
