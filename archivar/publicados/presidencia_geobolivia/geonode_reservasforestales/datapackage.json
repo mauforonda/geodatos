@@ -1,0 +1,130 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_reservasforestales",
+  "title": "Mapa de Reservas Forestales de Bolivia_ 2002",
+  "description": "Este mapa representa la distribución geográfica y los limites de las reservas forestales en Bolivia que presentan una figura jurídica proponiendo la protección de las áreas naturales de bosque nativo por su importancia en la producción de oxigeno, absorción de CO2, fijación del hidrógeno a la tierra y por ende producción de agua. Publicado por el Ministerio de Planificación del Desarrollo en el año 2002 a escala 1:1000000.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_reservasforestales/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 239480,
+      "hash": "sha256:ab31db9313f558372945af376be2949e437e0a85fb0808def9ea768df7b40bfc",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "reservasforestales.16"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 23
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "ReservasForestales.16"
+          },
+          {
+            "name": "objectid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 23
+            }
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "CUENCA DEL RIO BOOPI"
+          },
+          {
+            "name": "tipo_de_de",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "RESERVA FORESTAL DE INMOVILIZACION",
+            "categories": [
+              "RESERVA FORESTAL DE INMOVILIZACION",
+              "RESERVA FORESTAL",
+              "ZONA FORESTAL DE RESERVA FISCAL",
+              "AREA CRITICA PROTEGIDA CUENCA HIDROGRAFICA",
+              "AREA DE PROTECCION DE CUENCAS HIDROGRAFICAS",
+              "RESERVA FORESTA",
+              "RESERVA FORESTAL DE PRODUCCION"
+            ]
+          },
+          {
+            "name": "id_c",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 39
+            }
+          },
+          {
+            "name": "shape_leng",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0.0791996277309,
+              "maximum": 13.4537133257
+            }
+          },
+          {
+            "name": "shape_area",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0.000268945497261,
+              "maximum": 3.30976058023
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
