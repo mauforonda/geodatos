@@ -1,0 +1,190 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_territorio_tramitesterritorio",
+  "title": "Tramites Territorio",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz",
+      "path": "http://sitservicios.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_territorio_tramitesterritorio/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 194570,
+      "hash": "sha256:f49abaf8e3ff958c8b28ebe34951742736c833a2ede59067c978ac28f5988c88",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "tramitesTerritorio.4113"
+          },
+          {
+            "name": "descripcion",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "PERMISO DE CONSTRUCCION",
+            "categories": [
+              "PERMISO DE CONSTRUCCION",
+              "AUTORIZACIONES MENORES",
+              "AS BUILT + CERTIFICACION",
+              "AS BUILT + FRACCIONAMIENTO + CERTIFICACION",
+              "FRACCIONAMIENTO + CERTIFICACION",
+              "DIVISION Y PARTICION"
+            ]
+          },
+          {
+            "name": "subtipotramite",
+            "type": "string",
+            "example": "AUTORIZACIÓN MENOR CONSTRUCCIÓN DE MURO DE CERCO",
+            "categories": [
+              "AUTORIZACIÓN MENOR POR DEMOLICIÓN",
+              "AUTORIZACIÓN MENOR DE MOVIMIENTO DE TIERRAS Y/O CONSTRUCCIÓN DE MURO DE CONTENCIÓN",
+              "AUTORIZACIÓN MENOR CONSTRUCCIÓN DE MURO DE CERCO",
+              "AUTORIZACIÓN MENOR DE OCUPACIÓN DE VÍA",
+              "AUTORIZACIÓN MENOR DE  OCUPACIÓN TEMPORAL DE RETIRO FRONTAL",
+              "AUTORIZACIÓN MENOR DE AMPLIACIÓN DE OCUPACIÓN DE VÍA",
+              "AUTORIZACIÓN MENOR DE TRABAJOS DE REFACCIÓN Y MANTENIMIENTO"
+            ]
+          },
+          {
+            "name": "idTipoTramite",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 6
+            }
+          },
+          {
+            "name": "idSubTipoTramite",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 18
+            }
+          },
+          {
+            "name": "fechaIngresoFormulario",
+            "type": "datetime",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": "2017-11-14T16:34:40.303000+00:00",
+              "maximum": "2020-08-17T21:14:46.743000+00:00"
+            }
+          },
+          {
+            "name": "Solicitante",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "ALEJANDRO PEMINTELECHENIQUE"
+          },
+          {
+            "name": "arquitectoNombre",
+            "type": "string",
+            "example": "MARCIAL CARDENAS ROSSEL"
+          },
+          {
+            "name": "arquitectoRegistroNacionalCAB",
+            "type": "string",
+            "example": "4981"
+          },
+          {
+            "name": "nroInmueble",
+            "type": "string",
+            "example": "961143"
+          },
+          {
+            "name": "idProyectoDesarrollo",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.0,
+              "maximum": 11.0
+            }
+          },
+          {
+            "name": "idTipoObra",
+            "type": "number",
+            "constraints": {
+              "minimum": 1.0,
+              "maximum": 2.0
+            }
+          },
+          {
+            "name": "TipoProyecto",
+            "type": "string",
+            "example": "Residencial",
+            "categories": [
+              "Residencial",
+              "Residencial Mixta",
+              "Comercial",
+              "Hospedaje",
+              "Salud",
+              "Estación de Servicio",
+              "Educativo",
+              "Industrial",
+              "Diversión y Espectaculos"
+            ]
+          },
+          {
+            "name": "TipoObra",
+            "type": "string",
+            "example": "Construcción Nueva",
+            "categories": [
+              "Construcción Nueva",
+              "Ampliación"
+            ]
+          },
+          {
+            "name": "NumeroTramite",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 25871
+            }
+          },
+          {
+            "name": "EstadoTramite",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "FINALIZADO",
+            "categories": [
+              "FINALIZADO",
+              "REGISTRADO",
+              "PAGADO"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point. Filas sin geometría: 187."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
