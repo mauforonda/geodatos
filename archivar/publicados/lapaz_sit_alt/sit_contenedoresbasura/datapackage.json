@@ -1,0 +1,139 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_alt_sit_contenedoresbasura",
+  "title": "Contenedores de Basura",
+  "description": "Contenedores de Basura.",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)",
+      "path": "http://sitservicios.lapaz.bo/ows38.jsp"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_sit_contenedoresbasura/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 120398,
+      "hash": "sha256:f4ae050aab18b408b65c718a46734adb67da8b51a36ca13ba38ecd233e90b0c2",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "contenedoresbasura.7978"
+          },
+          {
+            "name": "Codigo",
+            "type": "string",
+            "example": "CD-20-01"
+          },
+          {
+            "name": "Direccion",
+            "type": "string",
+            "example": "Mercado San Jose"
+          },
+          {
+            "name": "tipo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "contenedores domiciliarios 3_2m3",
+            "categories": [
+              "contenedores domiciliarios 3_2m3",
+              "contenedores 1_1m3",
+              "contenedores 1_5m3",
+              "contenedores diferenciados 3_2m3",
+              "islas verdes 20m3",
+              "contenedores 10m3",
+              "soterrados 4m3",
+              "compactacion mercados 20m3",
+              "contenedores 2.2 m3"
+            ]
+          },
+          {
+            "name": "macro",
+            "type": "string",
+            "example": "Mallasa",
+            "categories": [
+              "Sur",
+              "Cotahuma",
+              "Centro",
+              "Max Paredes",
+              "San Antonio",
+              "Periferica",
+              "Mallasa",
+              "Hampaturi",
+              ""
+            ]
+          },
+          {
+            "name": "distrito",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.0,
+              "maximum": 22.0
+            }
+          },
+          {
+            "name": "otb",
+            "type": "string",
+            "example": "Mallasilla"
+          },
+          {
+            "name": "owner",
+            "type": "string",
+            "example": "gustavo.nao",
+            "categories": [
+              "gustavo.nao"
+            ]
+          },
+          {
+            "name": "usuario",
+            "type": "string",
+            "example": "jaime.mendiola",
+            "categories": [
+              "jaime.mendiola",
+              "gustavo.nao",
+              "base-antigua"
+            ]
+          },
+          {
+            "name": "fechaActual",
+            "type": "datetime",
+            "constraints": {
+              "minimum": "2025-05-21T13:50:28+00:00",
+              "maximum": "2025-12-24T15:36:48.653000+00:00"
+            }
+          },
+          {
+            "name": "observaciones",
+            "type": "string",
+            "example": "cont antiguos",
+            "categories": [
+              "Empresa Trebol S.A.",
+              "cont antiguos"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point. Filas sin geometría: 3."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
