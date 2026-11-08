@@ -1,0 +1,81 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_alt_lapaz_macrodistritos_2019",
+  "title": "Macrodistritos Municipales 2019",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)",
+      "path": "http://sitservicios.lapaz.bo/ows38.jsp"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_lapaz_macrodistritos_2019/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 119408,
+      "hash": "sha256:3fdbbc222be1ca5688e9ecffaea7510e706ce50f95d19181f0ba1d1500e6ba77",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "macrodistritos_2019.7"
+          },
+          {
+            "name": "ha",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 481,
+              "maximum": 241613
+            }
+          },
+          {
+            "name": "macro_ante",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "PERIFERICA"
+          },
+          {
+            "name": "macro_vige",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "PERIFERICA"
+          },
+          {
+            "name": "cod_macro",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 9
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 1."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
