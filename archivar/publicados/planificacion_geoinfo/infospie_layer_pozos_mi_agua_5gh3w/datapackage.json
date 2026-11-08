@@ -1,0 +1,134 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_pozos_mi_agua_5gh3w",
+  "title": "Pozos: Mi agua",
+  "description": "El mapa presenta información sobre el proyecto \"Pozos:Mi agua\" y su localización en todo el territorio nacional.",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_pozos_mi_agua_5gh3w/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 179569,
+      "hash": "sha256:75e4d25fd4ba89f2e8942af69f15e5251a11add5324d89816f9721ce148fe30c",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_pozos_mi_agua_5gh3w.149"
+          },
+          {
+            "name": "tipo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Agua",
+            "categories": [
+              "Agua",
+              "Riego"
+            ]
+          },
+          {
+            "name": "total_ejec",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 9856744.16
+            }
+          },
+          {
+            "name": "estado",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Ejecucion",
+            "categories": [
+              "Concluido",
+              "Ejecucion",
+              "Licit./contrat",
+              "Evaluacion",
+              "Licit/con"
+            ]
+          },
+          {
+            "name": "nombre_pro",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "CONST. SIST. AGUA POTABLE AVAROA (SAN PEDRO DE QUEMES)"
+          },
+          {
+            "name": "monto_tota",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 10000.0,
+              "maximum": 18059648.4
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "POTOSI",
+            "categories": [
+              "LA PAZ",
+              "COCHABAMBA",
+              "SANTA CRUZ",
+              "POTOSI",
+              "ORURO",
+              "CHUQUISACA",
+              "BENI",
+              "PANDO",
+              "TARIJA"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Nor Lipez"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "San Pedro de Quemes"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPoint."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
