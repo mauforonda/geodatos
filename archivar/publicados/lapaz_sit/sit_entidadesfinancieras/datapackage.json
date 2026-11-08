@@ -1,0 +1,177 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_sit_entidadesfinancieras",
+  "title": "Entidades Financieras",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz",
+      "path": "http://sitservicios.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_sit_entidadesfinancieras/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 65343,
+      "hash": "sha256:f305125d3eee927b0e89c3d6ded4519d01baf59a6ed7884c423b4e9f2afae309",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "entidadesfinancieras.537"
+          },
+          {
+            "name": "Nombre",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Banco BISA S.A."
+          },
+          {
+            "name": "IdTipoEntidad",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 9
+            }
+          },
+          {
+            "name": "Entidad",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Bancos",
+            "categories": [
+              "Bancos",
+              "Fondos Financieros Privados",
+              "Mutuales de Ahorro y Préstamo",
+              "Instituciones Financieras de Desarrollo",
+              "Cooperativas de Ahorro y Crédito Societarias",
+              "Empresas de Arrendamiento Financiero",
+              "Almacenes Generales de Depósitos",
+              "Burós De Información",
+              "Administradora de Cámaras Compensación"
+            ]
+          },
+          {
+            "name": "IdTipoOficina",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 6
+            }
+          },
+          {
+            "name": "tipo_ofi",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Cajero Automático",
+            "categories": [
+              "Cajero Automático",
+              "Agencia Fija",
+              "Oficina Externa",
+              "Oficina Central",
+              "Ventanilla",
+              "Sucursal"
+            ]
+          },
+          {
+            "name": "NombreOficina",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "OBRAJES C/8"
+          },
+          {
+            "name": "Direccion",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Av. Ormachea esq. calle 8 Nº 5390 - Obrajes"
+          },
+          {
+            "name": "Zona",
+            "type": "integer"
+          },
+          {
+            "name": "Telefono",
+            "type": "string",
+            "example": "(591-2) 2491158"
+          },
+          {
+            "name": "latitud",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -17.0,
+              "maximum": -10.0
+            }
+          },
+          {
+            "name": "longitud",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -68.1676166667,
+              "maximum": -57.0
+            }
+          },
+          {
+            "name": "enlace",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "http://maps.google.com/maps/api/staticmap?zoom=16&size=700x700&markers=color:red|color:green|label:B"
+          },
+          {
+            "name": "distrito",
+            "type": "integer"
+          },
+          {
+            "name": "owner",
+            "type": "integer"
+          },
+          {
+            "name": "usuario",
+            "type": "integer"
+          },
+          {
+            "name": "fechaActual",
+            "type": "integer"
+          },
+          {
+            "name": "observaciones",
+            "type": "integer"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
