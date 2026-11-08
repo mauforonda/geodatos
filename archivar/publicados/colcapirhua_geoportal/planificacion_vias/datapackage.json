@@ -1,0 +1,110 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_colcapirhua_geoportal_planificacion_vias",
+  "title": "vias",
+  "description": "Layer-Group type layer: Planificacion:vias",
+  "sources": [
+    {
+      "title": "Geoportal del Gobierno Municipal de Colcapirhua",
+      "path": "https://geoserver.geotec-srl.com/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_colcapirhua_geoportal_planificacion_vias/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 154148,
+      "hash": "sha256:b99b1bcef98ab40005c9edcfeef09b6c2ec2d87aa21317c77bddc76190dfc3c0",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "vias.5173"
+          },
+          {
+            "name": "objectid_1",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 1724
+            }
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "example": "AV. RIO. SULTI 60.00 M"
+          },
+          {
+            "name": "categorias",
+            "type": "string",
+            "example": "2DO ORDEN - ESTRUCTURANTES",
+            "categories": [
+              "3ER ORDEN - VIAS COLECTORAS",
+              "VIAS PEATONALES Y PASAJES",
+              "2DO ORDEN - ESTRUCTURANTES",
+              "1ER ORDEN - GRAN TRAFICO",
+              "1ER ORDEN - VIAS DE GRAN TRAF*",
+              "2DO ORDEN - VIAS COLECTORAS",
+              "COM RMTA",
+              "NO SE FIRMO",
+              "RMTA-149/1997"
+            ]
+          },
+          {
+            "name": "observacio",
+            "type": "string",
+            "example": "RMTA 1153/2023",
+            "categories": [
+              "SE MODIFICO",
+              "RMTA 1153/2023",
+              "SE CAMBIO PERFILL A 12.50",
+              "SE CAMBIO DE PERFIL 15 A 12.50",
+              "SE CAMBIO ELL PERFILL DE 12.50  15.00",
+              "SE DESPLAZO LA VIA PARA LA CONTINUIDAD",
+              "C. INNOMINADA 9.00 M",
+              "CONSOLIDACION DE PASAJE",
+              "MODIFICADO",
+              "RMTA 1119/2024",
+              "SE CAMBIO A PASAJE",
+              "SE CAMBIO A PSAJE DE 7 M",
+              "SE CAMBIO DE PERFIL 12.50 A 6",
+              "SE CAMBIO EL PERFIL DE 12.50 A 20",
+              "SE CAMBIO EL PERFIL DE 8 A 15",
+              "SE CAMBIO NOMINACION A PASAJE",
+              "SE CAMBIO PERFIL DE 24 A 8",
+              "Se Desplazada de norte a sud"
+            ]
+          },
+          {
+            "name": "shape_leng",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 4844.83407544
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString. Filas sin geometría: 4."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
