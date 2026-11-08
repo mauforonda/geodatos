@@ -1,0 +1,121 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_tco_2018",
+  "title": "tco_2018",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_tco_2018/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 6799854,
+      "hash": "sha256:caec454323c17376e838379a7ecb4072d797a6c78406424bc3b6867c988dcf13",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 54
+            }
+          },
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 54
+            }
+          },
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "15-61-42"
+          },
+          {
+            "name": "namelevels",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "{\"level_1\": \"TIOC Tierras altas\"}"
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "TIOC Tierras altas"
+          },
+          {
+            "name": "categoryid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 61,
+              "maximum": 61
+            }
+          },
+          {
+            "name": "geocode",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "5"
+          },
+          {
+            "name": "featureid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 54
+            }
+          },
+          {
+            "name": "sup_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1165.8298611872494,
+              "maximum": 11218729.441402446
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
