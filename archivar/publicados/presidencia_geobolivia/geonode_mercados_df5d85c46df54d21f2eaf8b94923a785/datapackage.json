@@ -1,0 +1,123 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_mercados_df5d85c46df54d21f2eaf8b94923a785",
+  "title": "mercados_df5d85c46df54d21f2eaf8b94923a785",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_mercados_df5d85c46df54d21f2eaf8b94923a785/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 31042,
+      "hash": "sha256:96dac9ff5ae3bf0e8d7e4f3ab26eb511d3fe2a9795e998d25034899d36cbd277",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "mercados_df5d85c46df54d21f2eaf8b94923a785.149"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 365
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "POTOSI",
+            "categories": [
+              "SANTA CRUZ",
+              "LA PAZ",
+              "COCHABAMBA",
+              "TARIJA",
+              "POTOSI",
+              "CHUQUISACA",
+              "ORURO",
+              "BENI",
+              "PANDO"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Nor Lipez"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Colcha \"K\""
+          },
+          {
+            "name": "nom",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Mercado Campesino de San Cristobal"
+          },
+          {
+            "name": "via_acc",
+            "type": "string",
+            "example": "Calle Sucre"
+          },
+          {
+            "name": "longitud",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": -69.08584147768254,
+              "maximum": -57.70860456578186
+            }
+          },
+          {
+            "name": "latitud",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": -22.73562536082103,
+              "maximum": -11.0002458
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPoint."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
