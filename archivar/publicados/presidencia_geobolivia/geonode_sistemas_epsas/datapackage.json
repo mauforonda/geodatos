@@ -1,0 +1,71 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_sistemas_epsas",
+  "title": "PDC Cuenca Alta del río La Paz - Sistemas de Redes de Distribución de Aguas EPSAS",
+  "description": "El mapa muestra la distribución y ubicación de los sistemas de agua potable por redes de distribución de la Empresa Pública Social de Agua y Saneamiento (EPSAS) 2022. Este plano muestra los sistemas de distribución de agua potable que son siete sistemas: Chuquiaguillo, Achachicala, Pampahasi, El_Alto, San_Felipe, Tilata y Linea_Oeste. Este dato fue obtenido de su geoportal del Ministerio de Medio Ambiente y Agua en fecha septiembre del 2022.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_sistemas_epsas/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 235193,
+      "hash": "sha256:cc851abce8dc74ecca074ab2912afc550fb3008e56a9b4dda69cfc4b6d8d7ea8",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "example": "sistemas_epsas.6"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 7
+            }
+          },
+          {
+            "name": "gid",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 7
+            }
+          },
+          {
+            "name": "sistema",
+            "type": "string",
+            "example": "TILATA"
+          },
+          {
+            "name": "departamen",
+            "type": "string",
+            "example": "La Paz",
+            "categories": [
+              "La Paz"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 1."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
