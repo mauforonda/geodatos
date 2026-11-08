@@ -1,0 +1,145 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_elalto_urbanizaciones",
+  "title": "Mapa Urbanizaciones del Municipio El Alto 2015",
+  "description": "La información geográfica muestra la ubicación y características de las Urbanizaciones del Municipio de El Alto, con sistema de referencia WGS84, proyección UTM Zona 19Sur a escala 1:1000. Obtenida a través de DATC-GAMEA y actualizada por DOTPE-GAMEA.  Información proporcionada del Atlas Geográfico del Municipio de El Alto gestión 2015.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_elalto_urbanizaciones/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 109925,
+      "hash": "sha256:4961a510707235f8ad39bb4e36f51e1dc5c11edafb2c108e5ec4ecee86d5b892",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "elalto_urbanizaciones.579"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 698
+            }
+          },
+          {
+            "name": "gid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 698
+            }
+          },
+          {
+            "name": "__gid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 698
+            }
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "SANTA FE - HOMOLOGACION"
+          },
+          {
+            "name": "c_dist_mun",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 14
+            }
+          },
+          {
+            "name": "rta",
+            "type": "string",
+            "example": "012/02"
+          },
+          {
+            "name": "fecha_rta",
+            "type": "string",
+            "example": "2002-02-27"
+          },
+          {
+            "name": "rm",
+            "type": "string",
+            "example": "004/11"
+          },
+          {
+            "name": "fecha_rm",
+            "type": "string",
+            "example": "2011-01-21"
+          },
+          {
+            "name": "fecha_aniv",
+            "type": "string",
+            "example": "06-01-2008"
+          },
+          {
+            "name": "poblacion",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 16151
+            }
+          },
+          {
+            "name": "gid_urb",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 699
+            }
+          },
+          {
+            "name": "area_m2",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 2442200
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
