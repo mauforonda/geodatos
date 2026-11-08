@@ -1,0 +1,116 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_carp_habitantes_ciudad",
+  "title": "carp_habitantes_ciudad",
+  "description": "No abstract provided",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_carp_habitantes_ciudad/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 11939,
+      "hash": "sha256:b9199d7e3f9c35f5d7424d5437c5cc1cbedca833eb8656ff254a4c59064bcfed",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "carp_habitantes_ciudad.10816"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 123,
+              "maximum": 17588
+            }
+          },
+          {
+            "name": "osm_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "5063491076"
+          },
+          {
+            "name": "code",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1001,
+              "maximum": 1004
+            }
+          },
+          {
+            "name": "fclass",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "hamlet",
+            "categories": [
+              "hamlet",
+              "village",
+              "city",
+              "town"
+            ]
+          },
+          {
+            "name": "population",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 11,
+              "maximum": 18701
+            }
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Capirenda"
+          },
+          {
+            "name": "lugar",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Alta del Rio Paraguay",
+            "categories": [
+              "Alta del Rio Paraguay"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
