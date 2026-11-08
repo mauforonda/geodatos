@@ -1,0 +1,95 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_iniaf_geo_iniaf_layer_establecimientos_de_salud_2012_hybu8",
+  "title": "layer_establecimientos_de_salud_2012_hybu8",
+  "sources": [
+    {
+      "title": "GeoServer del Instituto Nacional de Innovación Agropecuaria y Forestal",
+      "path": "https://geoserver.iniaf.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_iniaf_geo_iniaf_layer_establecimientos_de_salud_2012_hybu8/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 111408,
+      "hash": "sha256:280b88ce1a2c92977bcd45e5b0f64fa80f0ab128e2209b14b0157baefdbb6948",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_establecimientos_de_salud_2012_hybu8.1776"
+          },
+          {
+            "name": "nombre_est",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "P.S. BELLA VISTA"
+          },
+          {
+            "name": "descrip",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Puesto de Salud",
+            "categories": [
+              "Centro de Salud",
+              "Puesto de Salud",
+              "Centro de Salud con Camas",
+              "Hospital de Segundo Nivel",
+              "Hospital General de Tercer Nivel",
+              "Instituto Especializado"
+            ]
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "example": "Potosi",
+            "categories": [
+              "La Paz",
+              "Potosi",
+              "Santa Cruz",
+              "Cochabamba",
+              "Chuquisaca",
+              "Beni",
+              "Tarija",
+              "Oruro",
+              "Pando"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "example": "Daniel Campos"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "example": "Llica"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPoint."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
