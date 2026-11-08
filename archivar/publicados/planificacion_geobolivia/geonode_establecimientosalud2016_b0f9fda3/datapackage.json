@@ -1,0 +1,212 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geobolivia_geonode_establecimientosalud2016_b0f9fda3",
+  "title": "Establecimientos de Salud Bolivia (2016)",
+  "description": "Información geoespacial de la distribución de establecimientos de salud en todo el territorio boliviano, de acuerdo al sistema de salud, la cobertura cuenta con información acerca de los diferentes tipos de establecimiento. Elaborado por el Ministerio de Salud con datos actualizados al año 2016.",
+  "sources": [
+    {
+      "title": "Nueva plataforma GeoBolivia",
+      "path": "https://geonode.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geobolivia_geonode_establecimientosalud2016_b0f9fda3/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 189110,
+      "hash": "sha256:8d1ddbbc2b54945736f630a8bbe6a33343b8e18baada706345b323e5c02de8e2",
+      "schema": {
+        "fields": [
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 3241
+            }
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 3241
+            }
+          },
+          {
+            "name": "gmlp_id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 3241
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 3243
+            }
+          },
+          {
+            "name": "codsnis",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 99,
+              "maximum": 900094
+            }
+          },
+          {
+            "name": "estsalud",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "P.S. BELLAVISTA"
+          },
+          {
+            "name": "nivelres",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "1er NIVEL",
+            "categories": [
+              "1er NIVEL",
+              "2do NIVEL",
+              "3er NIVEL"
+            ]
+          },
+          {
+            "name": "tipoest",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "PUESTO DE SALUD",
+            "categories": [
+              "PUESTO DE SALUD",
+              "CENTRO SALUD",
+              "C.S. AMBULATORIO",
+              "C.S. CON INTERNACION",
+              "HOSPITAL SEGUNDO NIVEL",
+              "C.S. INTEGRAL",
+              "HOSPITAL GENERAL",
+              "INSTITUTO ESPECIALIZADO",
+              "POLICLINICO",
+              "POLICONSULTORIO",
+              "C. CARACTERISTICAS PART.",
+              "BANCO DE SANGRE"
+            ]
+          },
+          {
+            "name": "subsector",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Publico",
+            "categories": [
+              "Publico",
+              "Organismos Privados",
+              "Seguridad Social (CAJAS)",
+              "Organismos no Gubernamentales",
+              "Iglesia",
+              "Policia Nacional",
+              "FF.AA. de la Nacion"
+            ]
+          },
+          {
+            "name": "ambitogeo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "R",
+            "categories": [
+              "R",
+              "U"
+            ]
+          },
+          {
+            "name": "lat",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -22.852826,
+              "maximum": -10.015206
+            }
+          },
+          {
+            "name": "long",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -69.569824,
+              "maximum": -57.71275
+            }
+          },
+          {
+            "name": "municipio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Llica"
+          },
+          {
+            "name": "departamen",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Potosi",
+            "categories": [
+              "La Paz",
+              "Santa Cruz",
+              "Potosi",
+              "Cochabamba",
+              "Chuquisaca",
+              "Tarija",
+              "Beni",
+              "Oruro",
+              "Pando"
+            ]
+          },
+          {
+            "name": "year",
+            "type": "datetime",
+            "constraints": {
+              "required": true,
+              "minimum": "2016-10-01T00:00:00",
+              "maximum": "2016-10-01T00:00:00"
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
