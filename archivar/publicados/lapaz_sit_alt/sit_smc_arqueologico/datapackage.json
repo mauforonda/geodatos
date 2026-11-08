@@ -1,0 +1,63 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_alt_sit_smc_arqueologico",
+  "title": "Areas de interes arqueologico",
+  "description": "Areas de interés por potencial presencia de patrimonio arqueológico en subsuelo.",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)",
+      "path": "http://sitservicios.lapaz.bo/ows38.jsp"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_sit_smc_arqueologico/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 82782,
+      "hash": "sha256:d2c65caf0bea7b10a533a80710609fdda3c8ae82449d47e9ee850d32bdb1dccd",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "smc_arqueologico.27"
+          },
+          {
+            "name": "area",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 8498337.45728234
+            }
+          },
+          {
+            "name": "tipo",
+            "type": "string",
+            "example": "AREAS_DE_INTERÉS_POR_POTE",
+            "categories": [
+              "AREAS_DE_INTERÉS_POR_POTE"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
