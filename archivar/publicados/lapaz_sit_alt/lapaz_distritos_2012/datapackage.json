@@ -1,0 +1,113 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_alt_lapaz_distritos_2012",
+  "title": "Distritos Municipales OM 192/2012",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)",
+      "path": "http://sitservicios.lapaz.bo/ows38.jsp"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_lapaz_distritos_2012/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 74292,
+      "hash": "sha256:5fa69e8823153493e438f08d6045dd81a76939063523caf88c2f2dddac4d988d",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "distritos_2012.1"
+          },
+          {
+            "name": "GDBSDISTM",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "1",
+            "categories": [
+              "1",
+              "2",
+              "4",
+              "3",
+              "5",
+              "7",
+              "6",
+              "8"
+            ]
+          },
+          {
+            "name": "DISTRITO",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 22
+            }
+          },
+          {
+            "name": "TIPO",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "UR",
+            "categories": [
+              "UR",
+              "RU"
+            ]
+          },
+          {
+            "name": "Shape_Leng",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 5281.19967475,
+              "maximum": 155063.899672
+            }
+          },
+          {
+            "name": "SUBALCALDI",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "COTAHUMA",
+            "categories": [
+              "COTAHUMA",
+              "MAX PAREDES",
+              "SAN ANTONIO",
+              "PERIFERICA",
+              "SUR",
+              "CENTRO",
+              "HAMPATURI",
+              "MALLASA"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
