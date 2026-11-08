@@ -1,0 +1,80 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geobolivia_geonode_canalizaciones_lp_ea_500d1e60",
+  "title": "Canalización de ríos en las ciudades de La Paz y El Alto (2011)",
+  "description": "Información geoespacial de la distribución y localización de las canalizaciones de los ríos de las ciudades de La Paz y El Alto, y así poder realizar estudios hidrológicos, así como para el diseño de obras de ingeniería, a fin de elaborar los proyectos de adecuación y protección para los demás afluentes. Elaborado por el Programa Andino de formación y de Investigación sobre la Vulnerabilidad y los Riesgos urbanos - Bolivia, Ecuador, Perú - PACIVUR en el año 2011.",
+  "sources": [
+    {
+      "title": "Nueva plataforma GeoBolivia",
+      "path": "https://geonode.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geobolivia_geonode_canalizaciones_lp_ea_500d1e60/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 259904,
+      "hash": "sha256:01262960d0985adf1d3c449bddd978fffce1823317c70f8196b7dec13069fd75",
+      "schema": {
+        "fields": [
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 332
+            }
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 332
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "canalizaciones_LP_EA.31"
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 0
+            }
+          },
+          {
+            "name": "rio_canali",
+            "type": "string",
+            "example": "Rio Seke"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
