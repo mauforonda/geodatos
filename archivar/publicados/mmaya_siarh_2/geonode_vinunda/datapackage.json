@@ -1,0 +1,49 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_vinunda",
+  "title": "Plan Director Cuenca Lago Poopó - Riesgos de Inundación",
+  "description": "PDCLP (Plan Director de la Cuenca Lago Poopó). Muestra las áreas con riesgo de inundación, en el marco del Plan Director de la Cuenca del Lago Poopó.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_vinunda/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 136213,
+      "hash": "sha256:e4ce66609ca98f9881117553bb0a0fd97eef05281dab96c0a0707a0c47777a5a",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 4."
+          },
+          {
+            "name": "INUND",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Zona_vulnerable_a_inundacion",
+            "categories": [
+              "Zona_vulnerable_a_inundacion",
+              "?"
+            ]
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
