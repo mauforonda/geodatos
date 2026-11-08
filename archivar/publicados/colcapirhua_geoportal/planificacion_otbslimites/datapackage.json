@@ -1,0 +1,68 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_colcapirhua_geoportal_planificacion_otbslimites",
+  "title": "otbsLimites",
+  "description": "Layer-Group type layer: Planificacion:otbsLimites",
+  "sources": [
+    {
+      "title": "Geoportal del Gobierno Municipal de Colcapirhua",
+      "path": "https://geoserver.geotec-srl.com/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_colcapirhua_geoportal_planificacion_otbslimites/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 51593,
+      "hash": "sha256:9bf1c32cbc19b45f359b6f98f47deb786b860ba9beeb8d86e968d62db1e70669",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 0
+            }
+          },
+          {
+            "name": "nombre_otb",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "SINDICATO AGRARIO ESQUILAN GRANDE"
+          },
+          {
+            "name": "nuevas_otb",
+            "type": "string",
+            "example": "SINDICATO AGRARIO",
+            "categories": [
+              "OTB",
+              "JUNTA VECINAL",
+              "OTB JUNTA VECINAL",
+              "SINDICATO AGRARIO",
+              "COMUNIDAD",
+              "COMUNIDAD CAMPESINA",
+              "URBANIZACION"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
