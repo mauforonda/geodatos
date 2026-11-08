@@ -1,0 +1,151 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_lapaz_inmuebles_phau",
+  "title": "Inmuebles patrimoniales",
+  "description": "Inmuebles patrimoniales históricos, arquitectónicos y urbanos. Recopilados desde 2007 a 2012, por la OMC-UPMN, OMPD-DATC, en el marco de la O.D. No. 529/2012.",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz",
+      "path": "http://sitservicios.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_lapaz_inmuebles_phau/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 146641,
+      "hash": "sha256:f9942fefd2513afb27c724d5c2189e0f99e7f76a2b2c357af17542f5ae2f163b",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "inmuebles_phau.1094"
+          },
+          {
+            "name": "COD_SIFCA",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "022003500010000"
+          },
+          {
+            "name": "ID_1",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 1102
+            }
+          },
+          {
+            "name": "Cat_Patrim",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "A",
+            "categories": [
+              " ",
+              "A",
+              "B",
+              "C"
+            ]
+          },
+          {
+            "name": "Cod_Cat",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "02200350001"
+          },
+          {
+            "name": "Ley_Mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": " ",
+            "categories": [
+              " ",
+              "079"
+            ]
+          },
+          {
+            "name": "OM",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "330/2014",
+            "categories": [
+              " ",
+              "330/2014"
+            ]
+          },
+          {
+            "name": "Fecha",
+            "type": "datetime",
+            "constraints": {
+              "minimum": "2014-06-25T08:00:00.053000+00:00",
+              "maximum": "2014-06-27T08:00:00.994000+00:00"
+            }
+          },
+          {
+            "name": "Ubicacion",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Avenida del Libertador # 7 entre Av. del Ejército y Plaza Confucio. San Jorge"
+          },
+          {
+            "name": "Fic_Catal",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 3626
+            }
+          },
+          {
+            "name": "Denominac",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Casa Rafael Gisbert"
+          },
+          {
+            "name": "Estilo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": " "
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
