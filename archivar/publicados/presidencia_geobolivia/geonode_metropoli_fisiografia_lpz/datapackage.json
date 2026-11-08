@@ -1,0 +1,95 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_metropoli_fisiografia_lpz",
+  "title": "Mapa Fisiográfico Región Metropolitana de La Paz, 2017",
+  "description": "La Región Metropolitana del Departamento de La Paz se encuentra ubicado entre dos grandes unidades  fisiográficas, las cuales son: Cordillera y Altiplano con una distribución de 68% y 30% respectivamente, al mismo tiempo estas dos grandes unidades se subdividen en otras categorías más especificas como ser: Colinas, Serranías, Llanuras, Montañas, Morrenas, Piedemontes y Valles. Esta información fue obtenida del Atlas de la Región Metropolitana del Departamento de La Paz, elaborado por la Secretaria Municipal de Planificación para el Desarrollo del Gobierno Autónomo Municipal de La Paz y el Instituto de Investigaciones Geográficas, Carrera de Ingeniería Geográfica - UMSA y presentado en el mes de agosto del 2017.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_metropoli_fisiografia_lpz/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 120572,
+      "hash": "sha256:7333ea6b457f71f8d00033dc5193ffbdf57c851007b42eda9f038dfe7acaa83c",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "metropoli_fisiografia_lpz.1"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 13
+            }
+          },
+          {
+            "name": "objectid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 13
+            }
+          },
+          {
+            "name": "descripcio",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "ALTIPLANO: SERRANIAS CON MATORRALES Y PASTOS"
+          },
+          {
+            "name": "shape_leng",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 52958.59816038488,
+              "maximum": 735527.9427781394
+            }
+          },
+          {
+            "name": "shape_area",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 27520846.17628076,
+              "maximum": 1259004538.817555
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
