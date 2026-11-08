@@ -1,0 +1,55 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_estructura",
+  "title": "Plan Director Cuenca Rio Grande - Geología Estructural",
+  "description": "PDCRG (Plan Director de la Cuenca Río Grande). Muestra las estructuras geológicas en la Cuenca del Río Grande: Fallas, anticlinales y sinclinales",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_estructura/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 120757,
+      "hash": "sha256:d1332cd179d5413ae77795c7112b49c6838874315eb1ef8f13bff3b1fb5e9ed3",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "Tipo_Estru",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Falla",
+            "categories": [
+              "Falla",
+              "Sinclinal",
+              "Anticlinal",
+              "Falla inversa",
+              "Anticlinal volcado",
+              "Falla inferida",
+              "Sinclinal inferido",
+              "Anticlinal inferido"
+            ]
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
