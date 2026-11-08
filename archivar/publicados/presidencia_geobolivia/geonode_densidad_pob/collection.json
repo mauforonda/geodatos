@@ -1,0 +1,198 @@
+{
+  "type": "Collection",
+  "id": "geodatosbolivia_presidencia_geobolivia_geonode_densidad_pob",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json",
+    "https://stac-extensions.github.io/vector/v0.1.0/schema.json",
+    "https://stac-extensions.github.io/projection/v2.0.0/schema.json",
+    "https://stac-extensions.github.io/file/v2.1.0/schema.json",
+    "https://stac-extensions.github.io/web-map-links/v1.3.0/schema.json"
+  ],
+  "title": "densidad_pob",
+  "description": "densidad_pob",
+  "license": "other",
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -65.69322724,
+          -21.51162702,
+          -62.19603168,
+          -18.34391569
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "providers": [
+    {
+      "name": "GeoBolivia en Presidencia",
+      "roles": [
+        "producer"
+      ],
+      "url": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    },
+    {
+      "name": "Internet Archive",
+      "roles": [
+        "host"
+      ],
+      "url": "https://archive.org/details/geodatosbolivia_presidencia_geobolivia_geonode_densidad_pob"
+    }
+  ],
+  "table:primary_geometry": "geometry",
+  "table:row_count": 51,
+  "table:columns": [
+    {
+      "name": "id",
+      "type": "string"
+    },
+    {
+      "name": "ogc_fid",
+      "type": "int32"
+    },
+    {
+      "name": "gml_id",
+      "type": "string"
+    },
+    {
+      "name": "fid_",
+      "type": "int32"
+    },
+    {
+      "name": "area",
+      "type": "double"
+    },
+    {
+      "name": "perimeter",
+      "type": "double"
+    },
+    {
+      "name": "densidad_",
+      "type": "int32"
+    },
+    {
+      "name": "densidad_i",
+      "type": "int32"
+    },
+    {
+      "name": "domain",
+      "type": "string"
+    },
+    {
+      "name": "geometry",
+      "type": "binary",
+      "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+    }
+  ],
+  "summaries": {
+    "vector:geometry_types": [
+      "MultiPolygon"
+    ]
+  },
+  "assets": {
+    "data": {
+      "href": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_densidad_pob/dataset.geoparquet",
+      "type": "application/vnd.apache.parquet",
+      "title": "GeoParquet",
+      "roles": [
+        "data"
+      ],
+      "proj:code": "EPSG:4326",
+      "file:size": 107734,
+      "file:checksum": "1220fdfe5299c2103dce86e4a2cc6219c0f90206a9919cb3cbee15713118fc1d4164"
+    },
+    "datapackage": {
+      "href": "./datapackage.json",
+      "type": "application/json",
+      "title": "Data Package: columnas, tipos y categorías",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "pmtiles": {
+      "href": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_densidad_pob/dataset.pmtiles",
+      "type": "application/vnd.pmtiles",
+      "title": "Teselas vectoriales (PMTiles)",
+      "roles": [
+        "visual"
+      ],
+      "file:size": 104238,
+      "file:checksum": "12206a2eafff8ae6ea5bc2074ce012229ae1674d4352311a6bcfa6e7968c6da6a66c"
+    }
+  },
+  "pmtiles:min_zoom": 8,
+  "pmtiles:max_zoom": 10,
+  "pmtiles:tile_type": "mvt",
+  "pmtiles:center": [
+    -63.9446294,
+    -19.9277713,
+    9
+  ],
+  "pmtiles:properties": [
+    {
+      "nombre": "domain",
+      "tipo": "string",
+      "categorias": [
+        "Media (5 - 10 habitantes/km2)",
+        "Alta (10 - 15 habitantes/km2)",
+        "Baja (0 - 5 habitantes/km2)",
+        "Muy alta (> 15 habitantes/km2)"
+      ]
+    },
+    {
+      "nombre": "densidad_i",
+      "tipo": "number",
+      "minimo": 1.0,
+      "maximo": 51.0
+    },
+    {
+      "nombre": "area",
+      "tipo": "number",
+      "minimo": 240940.7,
+      "maximo": 32124600000.0
+    },
+    {
+      "nombre": "perimeter",
+      "tipo": "number",
+      "minimo": 2035.906,
+      "maximo": 4716480.0
+    }
+  ],
+  "links": [
+    {
+      "rel": "root",
+      "href": "../../../catalog.json",
+      "type": "application/json",
+      "title": "Datos geográficos de Bolivia"
+    },
+    {
+      "rel": "parent",
+      "href": "../catalog.json",
+      "type": "application/json",
+      "title": "GeoBolivia en Presidencia"
+    },
+    {
+      "rel": "via",
+      "href": "https://geobolivia.presidencia.gob.bo/geoserver/ows",
+      "type": "text/html",
+      "title": "Servicio de origen"
+    },
+    {
+      "rel": "pmtiles",
+      "href": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_densidad_pob/dataset.pmtiles",
+      "type": "application/vnd.pmtiles",
+      "pmtiles:layers": [
+        "dataset"
+      ]
+    }
+  ]
+}
