@@ -1,0 +1,95 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_criopampahuari_alcantarillado",
+  "title": "Plan Director Cuenca Río Pampa Huari – Alcantarillado Cuidad de Potosí_ Bolivia",
+  "description": "El mapa muestra el acceso a la red de alcantarillado de la ciudad de Potosí en la Cuenca del Río Pampa Huari. Información obtenida del Viceministerio de Recursos Hídricos y Riego a febrero del 2019.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_criopampahuari_alcantarillado/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 121716,
+      "hash": "sha256:eb7a28d5f139e98a36012f60f11927ce005c24380d95d87a0c5b7500629b4512",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 828
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0,
+              "maximum": 827
+            }
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "76 m."
+          },
+          {
+            "name": "long_m",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 10.3124419861,
+              "maximum": 3877.25419583
+            }
+          },
+          {
+            "name": "long_km",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0103124419861,
+              "maximum": 3.87725419583
+            }
+          },
+          {
+            "name": "tipo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Embovedado",
+            "categories": [
+              "Embovedado",
+              "Alcantarillado"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
