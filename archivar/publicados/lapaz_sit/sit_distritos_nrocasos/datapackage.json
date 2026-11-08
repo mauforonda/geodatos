@@ -1,0 +1,141 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_sit_distritos_nrocasos",
+  "title": "Distritos numero de casos",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz",
+      "path": "http://sitservicios.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_sit_distritos_nrocasos/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 151174,
+      "hash": "sha256:164aa8731523c9c3db36e4c926c7afeb3f53344d6e1f697c2940ecbc697f3dea",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "distritos_nrocasos.2"
+          },
+          {
+            "name": "CodDistrito",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "10"
+          },
+          {
+            "name": "CodMacro",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 9
+            }
+          },
+          {
+            "name": "Macrodistrito",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "MAX PAREDES",
+            "categories": [
+              "COTAHUMA",
+              "MAX PAREDES",
+              "SAN ANTONIO",
+              "PERIFÉRICA",
+              "CENTRO",
+              "CALACOTO",
+              "HAMPATURI",
+              "MALLASA",
+              "OBRAJES",
+              "OVEJUYO",
+              "ZONGO"
+            ]
+          },
+          {
+            "name": "SubAlcaldia",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "MAX PAREDES",
+            "categories": [
+              "COTAHUMA",
+              "MAX PAREDES",
+              "SAN ANTONIO",
+              "PERIFÉRICA",
+              "SUR",
+              "CENTRO",
+              "HAMPATURI",
+              "MALLASA",
+              "ZONGO"
+            ]
+          },
+          {
+            "name": "POSITIVO",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 369
+            }
+          },
+          {
+            "name": "RECUPERADO",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 36,
+              "maximum": 19094
+            }
+          },
+          {
+            "name": "FALLECIDO",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 157
+            }
+          },
+          {
+            "name": "TOTAL",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 37,
+              "maximum": 19596
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Polygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
