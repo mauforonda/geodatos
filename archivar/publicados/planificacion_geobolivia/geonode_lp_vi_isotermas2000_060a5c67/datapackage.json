@@ -1,0 +1,96 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geobolivia_geonode_lp_vi_isotermas2000_060a5c67",
+  "title": "Isotermas de los valles interandinos del departamento de La Paz (2000)",
+  "description": "Información geoespacial de la gradiente térmica de los valles interandinos de La Paz, con una equidistancia entre isotermas de dos grados y de acuerdo a la temperatura se presentan cuatro zonas térmicas. Producido por el proyecto ZONISIG (Zonificacion Agroecológica y Socioeconomica de los Valles Interandinos de La Paz) y convenios de cooperación en el año 2000, a escala 1:25000.",
+  "sources": [
+    {
+      "title": "Nueva plataforma GeoBolivia",
+      "path": "https://geonode.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geobolivia_geonode_lp_vi_isotermas2000_060a5c67/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 154812,
+      "hash": "sha256:4dc83397e643ff63389a0afc153d6b6935d24c73985cd2ce265303a10b5cb614",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "lp_vi_isotermas2000_060a5c67.17"
+          },
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 28
+            }
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 28
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "lp_vi_Isotermas2000.16"
+          },
+          {
+            "name": "layer",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "CURVAS",
+            "categories": [
+              "CURVAS",
+              "BORDE"
+            ]
+          },
+          {
+            "name": "tem_prom",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 20
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
