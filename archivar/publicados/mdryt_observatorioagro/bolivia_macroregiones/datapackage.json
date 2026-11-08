@@ -1,0 +1,65 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mdryt_observatorioagro_bolivia_macroregiones",
+  "title": "Macroregiones",
+  "sources": [
+    {
+      "title": "Geovisor del Observatorio Agroambiental y Productivo del Ministerio de Desarrollo Rural y Tierras (MDRyT)",
+      "path": "http://geoserver.observatorioagro.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mdryt_observatorioagro_bolivia_macroregiones/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 146817,
+      "hash": "sha256:b7aaab838cc9ddeaac26638ff4ae165b8d17b0b784035ea4db786e1ff4117ecc",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 1."
+          },
+          {
+            "name": "MACROREG",
+            "type": "string",
+            "example": "Valles"
+          },
+          {
+            "name": "CODIGO",
+            "type": "string",
+            "example": "000000",
+            "categories": [
+              "000000"
+            ]
+          },
+          {
+            "name": "X",
+            "type": "number",
+            "constraints": {
+              "minimum": -7519154.22466,
+              "maximum": -6821231.93689
+            }
+          },
+          {
+            "name": "Y",
+            "type": "number",
+            "constraints": {
+              "minimum": -2247628.62389,
+              "maximum": -1377821.1833
+            }
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
