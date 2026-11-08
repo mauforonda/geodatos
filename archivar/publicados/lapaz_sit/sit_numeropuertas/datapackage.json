@@ -1,0 +1,155 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_sit_numeropuertas",
+  "title": "Numero Puertas",
+  "description": "Direcciones o números de puertas, obtenido a partir de registros catastrales, números de inmueble, otras fuentes.",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz",
+      "path": "http://sitservicios.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_sit_numeropuertas/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 195634,
+      "hash": "sha256:6cdc00941bc11a662b865c94f593f51563fc5e96b9b60c88fc63769f602c1afe",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "numeropuertas.19716"
+          },
+          {
+            "name": "cod_sifca",
+            "type": "string",
+            "example": "030008300180000"
+          },
+          {
+            "name": "num_puerta",
+            "type": "string",
+            "example": "3002"
+          },
+          {
+            "name": "fuente",
+            "type": "string",
+            "example": "SERCAT",
+            "categories": [
+              "SIFCA",
+              "SERCAT",
+              " ",
+              "INE",
+              "RUAT"
+            ]
+          },
+          {
+            "name": "n_inmueble",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 303545
+            }
+          },
+          {
+            "name": "tipo_via",
+            "type": "string",
+            "example": "Avenida",
+            "categories": [
+              "Calle",
+              "Avenida",
+              "Callejón",
+              "Pasaje Peatonal",
+              " ",
+              "Pasaje Vehicular",
+              "Gradería"
+            ]
+          },
+          {
+            "name": "nombre_via",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Panorámica"
+          },
+          {
+            "name": "distrito",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 4,
+              "maximum": 19
+            }
+          },
+          {
+            "name": "otb",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "San Juan Tembladerani Final",
+            "categories": [
+              "Irpavi",
+              "San Pedro Bajo",
+              "San Pedro Alto I",
+              "Central Bajo Tacagua",
+              "San Juan Tembladerani Parte Baja",
+              "Cota Cota",
+              "San Juan Tembladerani Parte Alta",
+              "Huacollo",
+              "Phajchani Tacagua Centro",
+              "Bajo Tacagua San Jose",
+              "Bajo Tejada",
+              "San Juan Tembladerani Final",
+              "Lomas Del Sur",
+              "Entel 1-24",
+              "San Pedro Parque Libano",
+              "Huantaqui I",
+              "Tacagua Norte Bajo Calvario",
+              "Huantaqui Ii",
+              "Morocollo Santos Pariamo",
+              "Calacoto Alto Huayñajahuira",
+              "*"
+            ]
+          },
+          {
+            "name": "zona",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "San Juan de Cotahuma",
+            "categories": [
+              "Irpavi",
+              "San Pedro",
+              "Tacagua",
+              "San Juan de Cotahuma",
+              "Huantaqui",
+              "Cota Cota"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
