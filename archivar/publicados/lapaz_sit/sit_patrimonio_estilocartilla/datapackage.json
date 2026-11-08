@@ -1,0 +1,111 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_sit_patrimonio_estilocartilla",
+  "title": "Estilo cartilla en predios patrimoniales",
+  "description": "Publicidad urbana en áreas patrimoniales",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz",
+      "path": "http://sitservicios.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_sit_patrimonio_estilocartilla/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 199299,
+      "hash": "sha256:4aacf8a21b92a722fff1f0ea46d5c8fb80283172d3facdffb6ef30f73b5f8c83",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "patrimonio_estilocartilla.1011"
+          },
+          {
+            "name": "layer",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "y-estilo 4_Pen_No__153",
+            "categories": [
+              "y-estilo 6_Pen_No__94",
+              "y-estilo 1_Pen_No__14",
+              "y-estilo 2_Pen_No__182",
+              "y-estilo 3_Pen_No__144",
+              "y-estilo 4_Pen_No__153",
+              "y-estilo 5_Pen_No__231"
+            ]
+          },
+          {
+            "name": "estilo",
+            "type": "string",
+            "example": "Ncol",
+            "categories": [
+              "Rep",
+              "Eclec",
+              "Rac",
+              "Mod",
+              "Nver",
+              "Acad",
+              "Ncla",
+              "Col",
+              "Ncol",
+              "Cal",
+              "Deco",
+              "Inter",
+              "Barr",
+              "Pmod",
+              "Neo Tiwanacota",
+              "Noveau",
+              "Vict",
+              "Ngot",
+              "Tudor",
+              "Brutalista",
+              "Geor"
+            ]
+          },
+          {
+            "name": "codigoscat",
+            "type": "string",
+            "example": "028010400020000"
+          },
+          {
+            "name": "cartilla",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Estilo 4",
+            "categories": [
+              "Estilo 6",
+              "Estilo 1",
+              "Estilo 2",
+              "Estilo 3",
+              "Estilo 4",
+              "Estilo 5"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
