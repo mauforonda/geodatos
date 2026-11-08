@@ -1,0 +1,88 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_lt_17051994",
+  "title": "Espejo de Agua del Lago Titicaca 17-05-1994",
+  "description": "Representación geoespacial del espejo de agua del lago Titicaca, que permite identificar y delimitar la extensión superficial del cuerpo de agua en una fecha determinada. La información facilita el análisis de su distribución espacial, el seguimiento de posibles variaciones en su superficie y el monitoreo de la dinámica hídrica del lago Titicaca.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_lt_17051994/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 534502,
+      "hash": "sha256:537c5b0b74bab45ffcd008a9a5884623b213fe6f9d3a243d93b5bca7fa3c02bd",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "example": "lt_17051994.1"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 1
+            }
+          },
+          {
+            "name": "nom",
+            "type": "string",
+            "example": "Lago Titicaca"
+          },
+          {
+            "name": "sup_ha",
+            "type": "number",
+            "constraints": {
+              "minimum": 832991.986128,
+              "maximum": 832991.986128
+            }
+          },
+          {
+            "name": "niv_agu",
+            "type": "integer"
+          },
+          {
+            "name": "sup_km2",
+            "type": "number",
+            "constraints": {
+              "minimum": 8329.92,
+              "maximum": 8329.92
+            }
+          },
+          {
+            "name": "cue_pla",
+            "type": "string",
+            "example": "Lago Titicaca"
+          },
+          {
+            "name": "fec",
+            "type": "datetime",
+            "constraints": {
+              "minimum": "1994-05-17T00:00:00",
+              "maximum": "1994-05-17T00:00:00"
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
