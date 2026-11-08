@@ -1,0 +1,147 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_alt_ubi_ubiprediopunto",
+  "title": "Predios Unidad de Bienes Inmuebles",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)",
+      "path": "http://sitservicios.lapaz.bo/ows38.jsp"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_ubi_ubiprediopunto/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 118464,
+      "hash": "sha256:48c0835aaa30612cfda297d8048aeffea2ceed4a28bebe721ac12c5902854ad1",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "ubiprediopunto.11506"
+          },
+          {
+            "name": "classid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 5,
+              "maximum": 6
+            }
+          },
+          {
+            "name": "revisionnumber",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 3
+            }
+          },
+          {
+            "name": "superficielevantada",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.0,
+              "maximum": 0.0
+            }
+          },
+          {
+            "name": "saneado",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.0,
+              "maximum": 1.0
+            }
+          },
+          {
+            "name": "observacion",
+            "type": "string",
+            "example": "SANEADO dentro del área mayor SAM-MD1-009 con Tarjeta de Propiedad 1248469 con una sup= 24049.00 m2"
+          },
+          {
+            "name": "idpredioalf",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.0,
+              "maximum": 10976.0
+            }
+          },
+          {
+            "name": "codigocatastral",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "031130100010000"
+          },
+          {
+            "name": "idzona",
+            "type": "string",
+            "example": "31"
+          },
+          {
+            "name": "distrito",
+            "type": "number",
+            "constraints": {
+              "minimum": 1.0,
+              "maximum": 21.0
+            }
+          },
+          {
+            "name": "macrodistrito",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.0,
+              "maximum": 7.0
+            }
+          },
+          {
+            "name": "idusuario",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1323,
+              "maximum": 2686
+            }
+          },
+          {
+            "name": "fecharegistro",
+            "type": "datetime",
+            "constraints": {
+              "required": true,
+              "minimum": "2014-09-01T04:00:00+00:00",
+              "maximum": "2025-06-11T04:00:00+00:00"
+            }
+          },
+          {
+            "name": "superficielegal",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.0,
+              "maximum": 4183100.0
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
