@@ -1,0 +1,92 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_red_hidrica_corregida",
+  "title": "Plan Director Cuenca Río Pampa Huari – Hidrografia",
+  "description": "PDCRPH (Plan Director de la Cuenca Rio Pampa Huari). Muestra la red hídrica de la cuenca del rio Pampa Huari.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_red_hidrica_corregida/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 151002,
+      "hash": "sha256:15fb06cb2b05fdf2f194f2188881a1ba3b87386278f2bb136648d5badc397732",
+      "schema": {
+        "fields": [
+          {
+            "name": "TIPO_DES",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Flujo permanente",
+            "categories": [
+              "Flujo Temporal",
+              "Flujo permanente"
+            ]
+          },
+          {
+            "name": "NOMBRE",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Rio Masu Mayu"
+          },
+          {
+            "name": "CATEG_DES",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Terciario",
+            "categories": [
+              "Terciario",
+              "Principal"
+            ]
+          },
+          {
+            "name": "GRANDESCUE",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Cuenca del Plata",
+            "categories": [
+              "Cuenca del Plata",
+              "Cuenca del Altiplano"
+            ]
+          },
+          {
+            "name": "Escala",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "1:100.000",
+            "categories": [
+              "1:100.000"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
