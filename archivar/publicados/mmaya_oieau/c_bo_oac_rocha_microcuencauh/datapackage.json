@@ -1,0 +1,133 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_oieau_c_bo_oac_rocha_microcuencauh",
+  "title": "OAC_SW_ROCHA Microcuenca",
+  "sources": [
+    {
+      "title": "Sistema para la Gestión Integral de Recursos Hídricos desarrollado por la Oficina Internacional del Agua (OiEau)",
+      "path": "https://www.oieau-wiss.org/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_oieau_c_bo_oac_rocha_microcuencauh/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 76817,
+      "hash": "sha256:c7a5f94fe1c14eda4f773ce409b03897539a67e8ed638c203b254531ca4de879",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "ROCHA_MicrocuencaUH.20"
+          },
+          {
+            "name": "objectid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 186
+            }
+          },
+          {
+            "name": "cod_uh",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "UH88"
+          },
+          {
+            "name": "cod_map",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "UH19"
+          },
+          {
+            "name": "ruleid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 1
+            }
+          },
+          {
+            "name": "shape_leng",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0416666719999,
+              "maximum": 3.013333356
+            }
+          },
+          {
+            "name": "shape_area",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 7.01388944443e-05,
+              "maximum": 0.0524965276981
+            }
+          },
+          {
+            "name": "area_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 82.4929706651,
+              "maximum": 61772.688826
+            }
+          },
+          {
+            "name": "subcuenca",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Sulty",
+            "categories": [
+              "Sulty",
+              "Rocha",
+              "Maylanco"
+            ]
+          },
+          {
+            "name": "cuentauhsu",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 31,
+              "maximum": 96
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
