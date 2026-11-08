@@ -1,0 +1,74 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_trafico_de_personas_por_municipios_2022_p9dqt",
+  "title": "Trafico de Personas por Municipios 2022",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_trafico_de_personas_por_municipios_2022_p9dqt/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 169717,
+      "hash": "sha256:fcc31675b758bb9c863f6ccc27d170b66d41614095ce19b82be439cab52f298f",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "example": "layer_trafico_de_personas_por_municipios_2022_p9dqt.6"
+          },
+          {
+            "name": "categoria",
+            "type": "string",
+            "example": "ALTO",
+            "categories": [
+              "BAJO",
+              "MEDIO",
+              "ALTO"
+            ]
+          },
+          {
+            "name": "sup_ha",
+            "type": "integer",
+            "constraints": {
+              "minimum": 5531,
+              "maximum": 1896529
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "example": "LA PAZ"
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "example": "Ingavi"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "example": "Desaguadero"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
