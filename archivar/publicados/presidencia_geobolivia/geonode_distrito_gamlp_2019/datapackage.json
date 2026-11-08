@@ -1,0 +1,128 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_distrito_gamlp_2019",
+  "title": "Mapa Distritos Municipio Nuestra Señora de La Paz, Bolivia 2020",
+  "description": "El mapa muestra los 23 distritos que conforman el municipio de Nuestra Señora de La Paz tanto urbano y rural, los límites corresponde a la gestión 2019. Información obtenida del Gobierno Autónomo Municipal de La Paz al 20 octubre del 2020.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_distrito_gamlp_2019/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 163864,
+      "hash": "sha256:4ad06d252a6832ca691f7d028c2d03b84e629810c8cd8a545a804facf6ecb07a",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 23
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0,
+              "maximum": 22
+            }
+          },
+          {
+            "name": "tipo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "UR",
+            "categories": [
+              "UR",
+              "RU"
+            ]
+          },
+          {
+            "name": "macro_ante",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Max Paredes",
+            "categories": [
+              "Cotahuma",
+              "Max Paredes",
+              "San Antonio",
+              "Periferica",
+              "Sur",
+              "Centro",
+              "Hampaturi",
+              "Mallasa",
+              "Zongo"
+            ]
+          },
+          {
+            "name": "macro_vige",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Max Paredes",
+            "categories": [
+              "Cotahuma",
+              "Max Paredes",
+              "San Antonio",
+              "Periferica",
+              "Centro",
+              "Calacoto",
+              "Hampaturi",
+              "Mallasa",
+              "Obrajes",
+              "Ovejuyo",
+              "Zongo"
+            ]
+          },
+          {
+            "name": "distrito",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 23
+            }
+          },
+          {
+            "name": "cod_macro",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 9
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
