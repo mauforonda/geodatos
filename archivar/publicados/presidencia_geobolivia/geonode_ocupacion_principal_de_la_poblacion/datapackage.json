@@ -1,0 +1,128 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_ocupacion_principal_de_la_poblacion",
+  "title": "Ocupación Principal de la Población Según Macrodistrito, Anuario Estadístico 2018",
+  "description": "El mapa presenta información sobre el porcentaje de la población ocupada según su ocupación principal, (industria manufacturera, venta y reparaciones, transporte, servicios inmobiliarios y de alquiler, administración pública defensa y seguridad social, educación) según macrodistritos. Elaborado por la Dirección de Investigación e Información Municipal. Dato obtenido de su geoportal IDE La Paz en el mes de octubre 2022.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_ocupacion_principal_de_la_poblacion/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 128712,
+      "hash": "sha256:7f1c9a8564e989283b75d50beb761acd68fa2c442e438231e86ce957fef23ae0",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "example": "ocupacion_principal_de_la_poblacion.6"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 9
+            }
+          },
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 9
+            }
+          },
+          {
+            "name": "tipo",
+            "type": "string",
+            "example": "Urbano",
+            "categories": [
+              "Urbano",
+              "Rural"
+            ]
+          },
+          {
+            "name": "no_macro",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 9
+            }
+          },
+          {
+            "name": "macrodistr",
+            "type": "string",
+            "example": "Periferica"
+          },
+          {
+            "name": "ind__manuf",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.7,
+              "maximum": 15.1
+            }
+          },
+          {
+            "name": "ven_repara",
+            "type": "number",
+            "constraints": {
+              "minimum": 2.9,
+              "maximum": 29.8
+            }
+          },
+          {
+            "name": "tran_almac",
+            "type": "number",
+            "constraints": {
+              "minimum": 1.8,
+              "maximum": 10.7
+            }
+          },
+          {
+            "name": "serv_inmob",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.3,
+              "maximum": 13.4
+            }
+          },
+          {
+            "name": "adm_publi",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.3,
+              "maximum": 10.0
+            }
+          },
+          {
+            "name": "educacion",
+            "type": "number",
+            "constraints": {
+              "minimum": 1.6,
+              "maximum": 10.3
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
