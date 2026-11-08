@@ -1,0 +1,159 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_minplanifica_pnot_vias_ferreas",
+  "title": "vias_ferreas",
+  "sources": [
+    {
+      "title": "Geoserver del Ministerio de Planificación del Desarollo",
+      "path": "https://geoserver.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_minplanifica_pnot_vias_ferreas/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 71971,
+      "hash": "sha256:7b1755c2b77d05536644e5eefbcf7d9f543315a959f9fef61e54b7c1a44658ce",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "vias_ferreas.44"
+          },
+          {
+            "name": "v_automot",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 59
+            }
+          },
+          {
+            "name": "v_pasajero",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 47,
+              "maximum": 60
+            }
+          },
+          {
+            "name": "v_mixto",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 30,
+              "maximum": 45
+            }
+          },
+          {
+            "name": "v_carga",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 30,
+              "maximum": 39
+            }
+          },
+          {
+            "name": "tipo_red",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Red Occidental",
+            "categories": [
+              "Red Occidental",
+              "Red Oriental"
+            ]
+          },
+          {
+            "name": "long_km",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0.213,
+              "maximum": 186.93
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "example": "Potosi",
+            "categories": [
+              "Potosi",
+              "Santa Cruz",
+              "La Paz",
+              "Cochabamba",
+              "Tarija",
+              "Oruro",
+              "Chuquisaca"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "example": "Nor Lipez",
+            "categories": [
+              "Antonio Quijarro",
+              "Gran Chaco",
+              "Andres Ibañez",
+              "Chiquitos",
+              "Cordillera",
+              "German Busch",
+              "Ingavi",
+              "Murillo",
+              "Nor Lipez",
+              "Pacajes",
+              "Cercado",
+              "Cornelio Saavedra",
+              "Mizque",
+              "Sur Chichas",
+              "Aroma",
+              "Luis Calvo",
+              "Modesto Omiste",
+              "Tomas Frias",
+              "Abaroa",
+              "Arque",
+              "Campero",
+              "Capinota",
+              "Esteban Arce",
+              "Los Andes",
+              "Pantaleon Dalence",
+              "Poopo",
+              "Punata",
+              "Rafael Bustillo",
+              "Sara",
+              "Yamparaez"
+            ]
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "example": "San Pedro de Quemes"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
