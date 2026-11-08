@@ -1,0 +1,72 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_azero_rios_50000_1",
+  "title": "Plan Director Cuenca Río Azero -Ríos 1:50.000",
+  "description": "PDCRA (Plan Director de la Cuenca Río Azero). Muestra la georreferenciación y la información relevante de los ríos escala 1:50.000 en el marco del Plan Director de la Cuenca del Rio Azero.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_azero_rios_50000_1/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 110674,
+      "hash": "sha256:3e4a3097bc07125e704397b022bd38d6e6ea3d669a2a4acf965684e88a06df5a",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "NOMBRE",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "",
+            "categories": [
+              "",
+              "Río Azero",
+              "Río Barro",
+              "Río Horcas",
+              "Río Límon",
+              "Río Milanis",
+              "Río Mojo Torrillo",
+              "Río Molino Mayu",
+              "Río Orka Mayu",
+              "Río Pescado",
+              "Río Pili Pili"
+            ]
+          },
+          {
+            "name": "Categoria",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Río Secundario",
+            "categories": [
+              "Río Secundario",
+              "Río Principal 2",
+              "Río Secundario 2",
+              "Quebrada"
+            ]
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
