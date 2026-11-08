@@ -1,0 +1,116 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_minplanifica_pnot_gaiocs",
+  "title": "gaiocs",
+  "sources": [
+    {
+      "title": "Geoserver del Ministerio de Planificación del Desarollo",
+      "path": "https://geoserver.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_minplanifica_pnot_gaiocs/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 290340,
+      "hash": "sha256:5662ff049e472542e7295bcfc8030efed8176c952eaf580bced44c912c6a8398",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "example": "gaiocs.7"
+          },
+          {
+            "name": "c_ut",
+            "type": "string",
+            "example": "040801"
+          },
+          {
+            "name": "departamen",
+            "type": "string",
+            "example": "ORURO"
+          },
+          {
+            "name": "provincia",
+            "type": "string",
+            "example": "Ladislao Cabrera"
+          },
+          {
+            "name": "municipio",
+            "type": "string",
+            "example": "Salinas de Garci Mendoza"
+          },
+          {
+            "name": "n°_ley",
+            "type": "integer",
+            "constraints": {
+              "minimum": 0,
+              "maximum": 1497
+            }
+          },
+          {
+            "name": "fecha_ley",
+            "type": "datetime",
+            "constraints": {
+              "minimum": "2016-07-12T00:00:00",
+              "maximum": "2023-03-01T00:00:00"
+            }
+          },
+          {
+            "name": "zona",
+            "type": "string",
+            "example": "19",
+            "categories": [
+              "19",
+              "20",
+              "19-20",
+              "20_21"
+            ]
+          },
+          {
+            "name": "id_ut",
+            "type": "integer",
+            "constraints": {
+              "minimum": 11002,
+              "maximum": 80901
+            }
+          },
+          {
+            "name": "bl_comli_m",
+            "type": "string",
+            "example": "CSL_13/10/1941"
+          },
+          {
+            "name": "capital",
+            "type": "string",
+            "example": "GAIOCSalinas"
+          },
+          {
+            "name": "c_siot",
+            "type": "string",
+            "example": "21"
+          },
+          {
+            "name": "tioc_aioc",
+            "type": "string",
+            "example": "Conversión (AIOC 2019-EAIOC)"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
