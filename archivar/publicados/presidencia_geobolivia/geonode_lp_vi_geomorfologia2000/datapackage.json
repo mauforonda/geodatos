@@ -1,0 +1,154 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_lp_vi_geomorfologia2000",
+  "title": "Mapa geomorfológico de los valles interandinos del departamento de La Paz_ 2000",
+  "description": "Este mapa muestra el relieve de la superficie terrestre de los valles interandinos del departamento de La Paz, identificando formas o unidades geomorfológicas que combinan aspectos estructurales y erosivos de la región. Producido por el proyecto ZONISIG (Zonificacion Agroecologica y Socioeconomica de los Valles Interandinos de La Paz) y convenios de cooperación en el año 2000, a escala 1:25000.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_lp_vi_geomorfologia2000/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 310507,
+      "hash": "sha256:b532c669a4ecdfb733794ee088aa3534944291f2c043e1c2f40653f00d3d19ff",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "lp_vi_geomorfologia2000.17"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 68
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "lp_vi_Geomorfologia2000.17"
+          },
+          {
+            "name": "id_ut",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 16
+            }
+          },
+          {
+            "name": "u_suelo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Cs(b)2",
+            "categories": [
+              "Cs(a)3",
+              "Cm(a)2",
+              "Cm(b)3",
+              "Cs(b)2",
+              "Cs(w)3",
+              "Cs(a)2",
+              "Cm(w)3",
+              "Cs(w)2",
+              "Ci(a)2",
+              "Cm(w)2",
+              "Cs(a)1",
+              "Cc(w)2",
+              "Ci(w)1",
+              "Cp(t)1",
+              "Ci(a)1",
+              "Cl(l)1",
+              "UR"
+            ]
+          },
+          {
+            "name": "clave_leye",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Cs(b)2:  Serranía baja con disección media",
+            "categories": [
+              "Cs(a)3:  Serranía alta con disección alta",
+              "Cm(a)2:  Montaña alta con disección media",
+              "Cm(b)3:  Montaña baja con disección alta",
+              "Cs(b)2:  Serranía baja con disección media",
+              "Cs(w)3:  Serranía media con disección alta",
+              "Cs(a)2:  Serranía alta con disección media",
+              "Cm(w)3:  Montaña media con disección alta",
+              "Cs(w)2:  Serranía baja con disección media",
+              "Ci(a)2:  Piedemonte alto con disección media",
+              "Cm(w)2:  Montaña media con disección media",
+              "Cs(a)1:  Serranía alta con disección baja",
+              "Cc(w)2:  Colina media con disección media",
+              "Ci(w)1:  Piedemonte medio con disección baja",
+              "Cp(t)1:  Terraza con disección baja",
+              "Ci(a)1:  Piedemonte alto con disección baja",
+              "Cl(l)1:  Llanura aluvial con disección baja",
+              "UR     :  Area urbana"
+            ]
+          },
+          {
+            "name": "leyenda",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Serranía baja con disección media",
+            "categories": [
+              "Serranía alta con disección alta",
+              "Serranía baja con disección media",
+              "Montaña alta con disección media",
+              "Montaña baja con disección alta",
+              "Serranía media con disección alta",
+              "Serranía alta con disección media",
+              "Montaña media con disección alta",
+              "Montaña media con disección media",
+              "Piedemonte alto con disección media",
+              "Serranía alta con disección baja",
+              "Colina media con disección media",
+              "Piedemonte medio con disección baja",
+              "Terraza con disección baja",
+              "Area urbana",
+              "Llanura aluvial con disección baja",
+              "Piedemonte alto con disección baja"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
