@@ -1,0 +1,147 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_lim_pro_pe",
+  "title": "lim_pro_pe",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_lim_pro_pe/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 782032,
+      "hash": "sha256:63a070f9b594dfeed2c70ddd0d6955727f3465539f3a457077a6b6d712e7c3e6",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "lim_pro_pe.14"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 15
+            }
+          },
+          {
+            "name": "cap",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "TACNA"
+          },
+          {
+            "name": "sup_km2",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 416.417845465,
+              "maximum": 12659.2627634
+            }
+          },
+          {
+            "name": "pob_2007",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 7805,
+              "maximum": 262731
+            }
+          },
+          {
+            "name": "pob_2017",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 6094,
+              "maximum": 307417
+            }
+          },
+          {
+            "name": "reg",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Tacna",
+            "categories": [
+              "Puno",
+              "Tacna"
+            ]
+          },
+          {
+            "name": "pro",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Tacna"
+          },
+          {
+            "name": "cue_pla",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Rio Desaguadero",
+            "categories": [
+              "Lago Titicaca",
+              "Rio Desaguadero"
+            ]
+          },
+          {
+            "name": "pai",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Perú",
+            "categories": [
+              "Perú"
+            ]
+          },
+          {
+            "name": "nom",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Tacna"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
