@@ -1,0 +1,104 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_sitios_ramsar",
+  "title": "Localización Sitios Ramsar en Bolivia_ 2020",
+  "description": "La información muestra la localización de los sitios Ramsar que se hallan en el territorio nacional, un sitio Ramsar es un humedal, los humedales son vitales para la supervivencia humana, son uno de los entornos más productivos del mundo, y son cunas de diversidad biológica y fuentes de agua y productividad primaria de las que innumerables especies vegetales y animales dependen para subsistir. Designado como de importancia internacional bajo la Convención de Ramsar, identifica humedales de importancia internacional, especialmente aquellos que proporcionan hábitat para aves acuáticas. Información obtenida del Viceministerio de Medio Ambiente, Biodiversidad, Cambios Climáticos y Gestión y Desarrollo Forestal a fecha septiembre del 2020.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_sitios_ramsar/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 281779,
+      "hash": "sha256:30fec3c66d7bb01579d5efc811545a86699afc3f606375b8789c5ab7ed387db0",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "sitios_ramsar.4"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 13
+            }
+          },
+          {
+            "name": "objectid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 13
+            }
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Los Lipez"
+          },
+          {
+            "name": "area_kilom",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 465.086093021,
+              "maximum": 27998.9554006
+            }
+          },
+          {
+            "name": "perimeter_",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 106.062451371,
+              "maximum": 1904.22854055
+            }
+          },
+          {
+            "name": "area_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 46508.6093021,
+              "maximum": 2799895.54006
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
