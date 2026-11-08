@@ -1,0 +1,129 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_alt_sit_zonasref",
+  "title": "zonas_gu2016",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)",
+      "path": "http://sitservicios.lapaz.bo/ows38.jsp"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_sit_zonasref/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 230347,
+      "hash": "sha256:c11aeabc3febbd788703fe267d7975f7c8912dae1acfd3421b9c661c7131b4f4",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "zonasref.42"
+          },
+          {
+            "name": "zonaref",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "ISLA VERDE"
+          },
+          {
+            "name": "macrodistrito",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "MALLASA",
+            "categories": [
+              "SUR",
+              "PERIFERICA",
+              "MAX PAREDES",
+              "COTAHUMA",
+              "SAN ANTONIO",
+              "MALLASA",
+              "CENTRO",
+              "HAMPATURI"
+            ]
+          },
+          {
+            "name": "zona",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Isla Verde"
+          },
+          {
+            "name": "subalcaldia",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "MALLASA",
+            "categories": [
+              "PERIFERICA",
+              "MAX PAREDES",
+              "CALACOTO",
+              "COTAHUMA",
+              "SAN ANTONIO",
+              "OVEJUYO",
+              "OBRAJES",
+              "MALLASA",
+              "CENTRO",
+              "HAMPATURI"
+            ]
+          },
+          {
+            "name": "codigozona",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1001,
+              "maximum": 22002
+            }
+          },
+          {
+            "name": "macro",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 8
+            }
+          },
+          {
+            "name": "distrito",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 22
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Polygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
