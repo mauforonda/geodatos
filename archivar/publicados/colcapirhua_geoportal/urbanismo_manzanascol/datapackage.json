@@ -1,0 +1,101 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_colcapirhua_geoportal_urbanismo_manzanascol",
+  "title": "manzanasCol",
+  "description": "Manzanas del Gobierno Autónomo Municipal de Colcapirhua",
+  "sources": [
+    {
+      "title": "Geoportal del Gobierno Municipal de Colcapirhua",
+      "path": "https://geoserver.geotec-srl.com/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_colcapirhua_geoportal_urbanismo_manzanascol/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 1027041,
+      "hash": "sha256:f0fe83dcdc35dff7b8aa2e66b2f130a893c9afea42f4fe419bc182b8e9de217e",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "manzanasCol.7536"
+          },
+          {
+            "name": "distrito",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "E",
+            "categories": [
+              "A",
+              "B",
+              "E",
+              "D",
+              "C"
+            ]
+          },
+          {
+            "name": "zonas",
+            "type": "string",
+            "example": "10",
+            "categories": [
+              "8",
+              "3",
+              "7",
+              "2",
+              "9",
+              "6",
+              "4",
+              "5",
+              "1",
+              "10"
+            ]
+          },
+          {
+            "name": "dist_planu",
+            "type": "string",
+            "example": "E",
+            "categories": [
+              "A",
+              "E",
+              "29-NORTE",
+              "31-NORTE",
+              "29-SUD",
+              "31-SUD",
+              "30-NORTE",
+              "30-SUD"
+            ]
+          },
+          {
+            "name": "manzano",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "0356"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 1."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
