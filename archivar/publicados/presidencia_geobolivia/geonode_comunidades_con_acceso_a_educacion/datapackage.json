@@ -1,0 +1,138 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_comunidades_con_acceso_a_educacion",
+  "title": "comunidades_con_acceso_a_educacion",
+  "description": "No abstract provided",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_comunidades_con_acceso_a_educacion/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 927267,
+      "hash": "sha256:f9506c96f6bc7e3f6f14ecc720478728f0277151f538b0f3b6467b5f49833757",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "comunidades_con_acceso_a_educacion.6"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 18261
+            }
+          },
+          {
+            "name": "objectid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 18261
+            }
+          },
+          {
+            "name": "osm_id",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "214184845"
+          },
+          {
+            "name": "code",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1001,
+              "maximum": 1050
+            }
+          },
+          {
+            "name": "fclass",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "village",
+            "categories": [
+              "hamlet",
+              "village",
+              "locality",
+              "farm",
+              "county",
+              "city",
+              "town",
+              "suburb",
+              "island",
+              "national_capital"
+            ]
+          },
+          {
+            "name": "population",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 2000000
+            }
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "example": "Ollagüe"
+          },
+          {
+            "name": "acceso",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "1",
+            "categories": [
+              "1",
+              "2"
+            ]
+          },
+          {
+            "name": "niv_acceso",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Alto",
+            "categories": [
+              "Alto",
+              "Bajo"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
