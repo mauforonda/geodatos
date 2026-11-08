@@ -1,0 +1,64 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_lapaz_carpetaspoa",
+  "title": "Carpetas de inversion POAs",
+  "description": "Programas Operativos Anual a nivel de carpetas de inversion",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz",
+      "path": "http://sitservicios.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_lapaz_carpetaspoa/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 491953,
+      "hash": "sha256:c38d4e35acea77db28ebf129dd447082e82935b3b2fc92399f52b074eb5c9ab3",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "carpetaspoa.2701"
+          },
+          {
+            "name": "cod_coordcarp",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 574,
+              "maximum": 18839
+            }
+          },
+          {
+            "name": "cod_carpeta",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1512,
+              "maximum": 74124
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPoint, MultiPolygon, MultiLineString, LineString, Point, Polygon, GeometryCollection. Geometrías inválidas, conservadas sin reparar: 13."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
