@@ -1,0 +1,113 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_cotagaita_geologia",
+  "title": "Plan Director Cuenca Río Cotagaita – Geología",
+  "description": "PDCRCo (Plan Director de la Cuenca Río Cotagaita). Muestra la información relevante de la geología en el marco del Plan Director de la Cuenca del Río Cotagaita.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_cotagaita_geologia/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 124661,
+      "hash": "sha256:a03575cb41568d51badf419b31eccea04d0c2ab2a18a2f4a26011303da7a08ff",
+      "schema": {
+        "fields": [
+          {
+            "name": "SIMBOLO",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Pg-Ng",
+            "categories": [
+              "Q",
+              "K",
+              "O",
+              "S",
+              "Ng",
+              "Ni",
+              "Pg-Ng",
+              "J-K",
+              "Nt"
+            ]
+          },
+          {
+            "name": "REG_MORFO",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Cordillera Occidental, Altiplano y Cordillerra Oriental",
+            "categories": [
+              "Cordillera Occidental, Altiplano y Cordillerra Oriental"
+            ]
+          },
+          {
+            "name": "PERIODO",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Paleógeno - Neógeno",
+            "categories": [
+              "Neógeno",
+              "Cuaternario",
+              "Cretácico",
+              "Ordovícico",
+              "Silúrico",
+              "Paleógeno - Neógeno",
+              "Jurásico - Cretácico"
+            ]
+          },
+          {
+            "name": "DESCRIPCIO",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Conglomerados, areniscas, limolitas, calizas, margas, diapiros intercalan tobas y lavas",
+            "categories": [
+              "Depósitos aluviales, fluvio lacustres, fluvioglaciales, coluviales, lacustres, morrenas y dunas",
+              "Areniscas, limolitas, cuarcitas, pizarras, lutitas y lavas almohadilladas",
+              "Conglomerados, calizas, areniscas, limolitas, margas y basaltos intercalados",
+              "Lutitas, limolitas, cuarcitas y diamictitas",
+              "Conglomerados, areniscas, arcilitas, yesos, margas, tobas, lavas intercaladas y diapiros",
+              "Conglomerados, areniscas, limolitas, calizas, margas, diapiros intercalan tobas y lavas",
+              "Plutones de granitoides",
+              "Areniscas",
+              "Tobas soldadas"
+            ]
+          },
+          {
+            "name": "Area_Km2",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0.00040510363453,
+              "maximum": 3454.65263995
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 1."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
