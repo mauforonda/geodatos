@@ -1,0 +1,88 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_lp_27072024",
+  "title": "Espejo de Agua del Lago Poopó 27-07-2024",
+  "description": "Representación geoespacial del espejo de agua del lago Poopó, ubicado en el departamento de Oruro, Bolivia, que permite identificar y delimitar la extensión superficial del cuerpo de agua en una fecha determinada. La información facilita el análisis de su distribución espacial, el seguimiento de las variaciones de su superficie y el estudio de la dinámica hídrica del lago mediante comparaciones multitemporales.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_lp_27072024/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 1254660,
+      "hash": "sha256:2ef1039ddb1ec27419c64d433d84750a70b0ecfdfee21ccb41eada4d8b16bedc",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "example": "lp_27072024.1"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 1
+            }
+          },
+          {
+            "name": "nom",
+            "type": "string",
+            "example": "Lago Poopó"
+          },
+          {
+            "name": "sup_km2",
+            "type": "number",
+            "constraints": {
+              "minimum": 576.7,
+              "maximum": 576.7
+            }
+          },
+          {
+            "name": "sup_ha",
+            "type": "number",
+            "constraints": {
+              "minimum": 57669.59,
+              "maximum": 57669.59
+            }
+          },
+          {
+            "name": "niv_agu",
+            "type": "integer"
+          },
+          {
+            "name": "cue_pla",
+            "type": "string",
+            "example": "Lago Poopó"
+          },
+          {
+            "name": "fec",
+            "type": "datetime",
+            "constraints": {
+              "minimum": "2024-07-27T00:00:00",
+              "maximum": "2024-07-27T00:00:00"
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 1."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
