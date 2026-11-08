@@ -1,0 +1,99 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_colcapirhua_geoportal_urbanismo_manzanas",
+  "title": "manzanas",
+  "description": "Manzanas del Gobierno Autónomo Municipal de Colcapirhua",
+  "sources": [
+    {
+      "title": "Geoportal del Gobierno Municipal de Colcapirhua",
+      "path": "https://geoserver.geotec-srl.com/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_colcapirhua_geoportal_urbanismo_manzanas/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 1053291,
+      "hash": "sha256:b9bfcc83a4ab167f72bb7ef69e7ec673772c288ba2319ac6535192a46d1ce384",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "manzanas.667"
+          },
+          {
+            "name": "codificaci",
+            "type": "string",
+            "example": "0017"
+          },
+          {
+            "name": "planur_cod",
+            "type": "string",
+            "example": "091"
+          },
+          {
+            "name": "n_manzana",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "0169"
+          },
+          {
+            "name": "distrito",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "E",
+            "categories": [
+              "A",
+              "B",
+              "E",
+              "D",
+              "C"
+            ]
+          },
+          {
+            "name": "shape_leng",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 43.5783107005,
+              "maximum": 3285.90074691
+            }
+          },
+          {
+            "name": "shape_area",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 140.222341969,
+              "maximum": 325996.448395
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 1."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
