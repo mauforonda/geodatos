@@ -1,0 +1,189 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_umsa_iiag_saludeducacion_establecimientos_de_salud",
+  "title": "establecimientosalud",
+  "sources": [
+    {
+      "title": "Geoportal del Instituto de Investigaciones y Aplicaciones Geomáticas (IIAG) de la Universidad Mayor de San Andrés (UMSA)",
+      "path": "http://gtggeoportal.umsa.bo:8087/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_umsa_iiag_saludeducacion_establecimientos_de_salud/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 203891,
+      "hash": "sha256:8764fabe1ac72cfe943dab32ee4f7668e7250f870f42ed96dc816844cf3b9fca",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Establecimientos de Salud.2175"
+          },
+          {
+            "name": "gmlp_id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 3241
+            }
+          },
+          {
+            "name": "codsnis",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 99,
+              "maximum": 900094
+            }
+          },
+          {
+            "name": "estsalud",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "P.S. BELLAVISTA"
+          },
+          {
+            "name": "nivelres",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "1er NIVEL",
+            "categories": [
+              "1er NIVEL",
+              "2do NIVEL",
+              "3er NIVEL"
+            ]
+          },
+          {
+            "name": "tipoest",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "PUESTO DE SALUD",
+            "categories": [
+              "PUESTO DE SALUD",
+              "CENTRO SALUD",
+              "C.S. AMBULATORIO",
+              "C.S. CON INTERNACION",
+              "HOSPITAL SEGUNDO NIVEL",
+              "C.S. INTEGRAL",
+              "HOSPITAL GENERAL",
+              "INSTITUTO ESPECIALIZADO",
+              "POLICLINICO",
+              "POLICONSULTORIO",
+              "C. CARACTERISTICAS PART.",
+              "BANCO DE SANGRE"
+            ]
+          },
+          {
+            "name": "subsector",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Publico",
+            "categories": [
+              "Publico",
+              "Organismos Privados",
+              "Seguridad Social (CAJAS)",
+              "Organismos no Gubernamentales",
+              "Iglesia",
+              "Policia Nacional",
+              "FF.AA. de la Nacion"
+            ]
+          },
+          {
+            "name": "ambitogeo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "R",
+            "categories": [
+              "R",
+              "U"
+            ]
+          },
+          {
+            "name": "lat",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -22.852826,
+              "maximum": -10.015206
+            }
+          },
+          {
+            "name": "long",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -69.569824,
+              "maximum": -57.71275
+            }
+          },
+          {
+            "name": "municipio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Llica"
+          },
+          {
+            "name": "departamen",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Potosi",
+            "categories": [
+              "La Paz",
+              "Santa Cruz",
+              "Potosi",
+              "Cochabamba",
+              "Chuquisaca",
+              "Tarija",
+              "Beni",
+              "Oruro",
+              "Pando"
+            ]
+          },
+          {
+            "name": "tco",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "P.S. BELLAVISTA"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
