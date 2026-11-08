@@ -1,0 +1,121 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_sit_pl_texto",
+  "title": "Texto Planimetrias",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz",
+      "path": "http://sitservicios.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_sit_pl_texto/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 207550,
+      "hash": "sha256:9d2c91ed70355be99a51cafe96c8b733d2c79dfde8b67d556a6cf3b2cf65df2b",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "pl_texto.70780"
+          },
+          {
+            "name": "LAYER",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "T_COTA_VIA",
+            "categories": [
+              "T_COTA_VIA",
+              "T_COTA_OCHAVE",
+              "T_NOMBRE_VIA",
+              "T_VIA_PLANIFICADA"
+            ]
+          },
+          {
+            "name": "DWGNAME",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "1008.dwg",
+            "categories": [
+              "1008.dwg",
+              "1004.dwg",
+              "1006.dwg",
+              "1005.dwg",
+              "5227.dwg",
+              "4007.dwg",
+              "1007.dwg",
+              "4002.dwg",
+              "3070.dwg",
+              "5106.dwg",
+              "2070.dwg",
+              "3075.dwg",
+              "3020.dwg",
+              "3089.dwg"
+            ]
+          },
+          {
+            "name": "TEXT_SIZE",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.8,
+              "maximum": 2.5
+            }
+          },
+          {
+            "name": "TEXT_ANGLE",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 360.0
+            }
+          },
+          {
+            "name": "ROTATION",
+            "type": "integer"
+          },
+          {
+            "name": "TEXTSTRING",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "4"
+          },
+          {
+            "name": "ACTO ADMINISTRATIVO",
+            "type": "integer"
+          },
+          {
+            "name": "FECHA_ACTUALIZACION",
+            "type": "integer"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
