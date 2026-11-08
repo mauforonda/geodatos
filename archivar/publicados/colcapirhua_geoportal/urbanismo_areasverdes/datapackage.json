@@ -1,0 +1,124 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_colcapirhua_geoportal_urbanismo_areasverdes",
+  "title": "areasVerdes",
+  "description": "Layer-Group type layer: Urbanismo:areasVerdes",
+  "sources": [
+    {
+      "title": "Geoportal del Gobierno Municipal de Colcapirhua",
+      "path": "https://geoserver.geotec-srl.com/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_colcapirhua_geoportal_urbanismo_areasverdes/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 83268,
+      "hash": "sha256:9ef700ef540a742ad2dd729776e61362ea6e09075d441ddd11261e630383c85d",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "areasVerdes.1501"
+          },
+          {
+            "name": "dist",
+            "type": "string",
+            "example": "0E",
+            "categories": [
+              "0B",
+              "0A",
+              "0C",
+              "0D",
+              "0E",
+              "31",
+              "A",
+              "29",
+              "E",
+              "30"
+            ]
+          },
+          {
+            "name": "shape_leng",
+            "type": "integer"
+          },
+          {
+            "name": "shape_area",
+            "type": "integer"
+          },
+          {
+            "name": "n_av",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "AV-250"
+          },
+          {
+            "name": "otb",
+            "type": "string",
+            "example": "ESQUILAN CHIJLLAWIRI"
+          },
+          {
+            "name": "gestion",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 2025
+            }
+          },
+          {
+            "name": "descripcio",
+            "type": "string",
+            "example": "AREA VERDE Y/O EQUIPAMIENTO"
+          },
+          {
+            "name": "tipo",
+            "type": "string",
+            "example": "AREA VERDE Y EQUIPAMIENTO",
+            "categories": [
+              "AREA VERDE Y EQUIPAMIENTO",
+              "EQUIPAMIENTO",
+              "AREA VERDE",
+              "EQUIPAMIENTO EDUCATIVO",
+              "EQUIPAMIENTO DEPORTIVO",
+              "EQUIPAMIENTO SALUD",
+              "AREA VERDE Y/O EQUIPAMIENTO",
+              "EQUIPAMIENTO POLICIAL",
+              "PREDIOS UMSS"
+            ]
+          },
+          {
+            "name": "cod_sist_n",
+            "type": "string",
+            "example": "080061017"
+          },
+          {
+            "name": "sup_m2",
+            "type": "string",
+            "example": "31.2"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
