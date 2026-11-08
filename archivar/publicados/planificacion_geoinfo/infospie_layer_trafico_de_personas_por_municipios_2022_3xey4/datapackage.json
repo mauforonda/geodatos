@@ -1,0 +1,66 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_trafico_de_personas_por_municipios_2022_3xey4",
+  "title": "layer_trafico_de_personas_por_municipios_2022_3xey4",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_trafico_de_personas_por_municipios_2022_3xey4/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 169566,
+      "hash": "sha256:8dba9e7b726e9b026ccb3711e7bd43eb2a57014df11fbf64e6a3c9cacf5b7552",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "example": "layer_trafico_de_personas_por_municipios_2022_3xey4.6"
+          },
+          {
+            "name": "trafico",
+            "type": "string",
+            "example": "ALTO",
+            "categories": [
+              "BAJO",
+              "MEDIO",
+              "ALTO"
+            ]
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "example": "LA PAZ"
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "example": "Ingavi"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "example": "Desaguadero"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
