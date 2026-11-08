@@ -1,0 +1,68 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_criomizque_ecoregiones",
+  "title": "Plan Director Cuenca Río Mizque - Ecorregiones, Bolivia",
+  "description": "El mapa muestra la zonificación de las ecorregiones en el marco en la Cuenca del Río Mizque, los tipos son: Tierras altas, valles secos y bosques húmedo y subhúmedo. Información obtenida del Viceministerio de Recursos Hídricos y Riego, ha septiembre del 2016.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_criomizque_ecoregiones/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 359195,
+      "hash": "sha256:e36b80b95fa4a25b3479ca1c800dc0b87732f5a6e8b3610a1b7cd9621ac3aa64",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 4
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "minimum": 0,
+              "maximum": 3
+            }
+          },
+          {
+            "name": "codigo",
+            "type": "string",
+            "example": "ER-01"
+          },
+          {
+            "name": "descripcio",
+            "type": "string",
+            "example": "Tierras Altas (Cordilleras, Praderas Altoandinas, Punas y Páramo Yungueño)"
+          },
+          {
+            "name": "rango_altm",
+            "type": "string",
+            "example": "6.500 - 3.600"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
