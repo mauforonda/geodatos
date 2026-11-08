@@ -1,0 +1,72 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_cuerpos_agua",
+  "title": "Plan Director Cuenca Río Grande - Cuerpos de Agua",
+  "description": "PDCRG (Plan Director de la Cuenca Rio Grande). Muestra la georreferenciación de cuerpos de agua en la Cuenca  del Plan Director del Río Grande.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_cuerpos_agua/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 125371,
+      "hash": "sha256:afdf6998007d5097127d817eaa16e7e62a1e8befe84281ecb350033065915af0",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "NOMBRE",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "",
+            "categories": [
+              "",
+              "SN",
+              "LGNA. ACERO KOCHA",
+              "LGNA. ALALAY",
+              "LGNA. ANGOSTURA",
+              "LGNA. OPABUSU",
+              "LGNA. PARCO KOCHA",
+              "LGNA. PIRAY",
+              "LGNA. PISTOLA",
+              "RÍO GRANDE O GUAPAY",
+              "LGNA. EL CURICHON",
+              "LGNA. GRANDE",
+              "LGNA. PIRIRENDA",
+              "LGNA. SANTO DOMINGO",
+              "RÍO YAPACANI"
+            ]
+          },
+          {
+            "name": "Shape_Area",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 2.76628576018e-06,
+              "maximum": 0.0300567108873
+            }
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
