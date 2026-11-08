@@ -1,0 +1,110 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_lp_vi_densidadpoblacional2000",
+  "title": "Mapa de densidad poblacional de los valles interandinos del departamento de La Paz_ 2000",
+  "description": "Este mapa muestra la relación existente entre el numero de habitantes de una región administrativa por kilómetro cuadrado, en tres clases poblacionales. Producido por el proyecto ZONISIG (Zonificacion Agroecológica y Socioeconomica de los Valles Interandinos de La Paz) y convenios de cooperación en el año 2000, a escala 1:25000.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_lp_vi_densidadpoblacional2000/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 179779,
+      "hash": "sha256:2293b992f9e6bcae88a5b323397905ebb9df3623dda9830c7cb4d97ee664876b",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "lp_vi_densidadpoblacional2000.107"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 178
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "lp_vi_DensidadPoblacional2000.107"
+          },
+          {
+            "name": "provincia",
+            "type": "string",
+            "example": "AROMA",
+            "categories": [
+              "INQUISIVI",
+              "LOAYZA",
+              "AROMA",
+              "LARECAJA",
+              "MURILLO",
+              "BAUTISTA SAAVEDRA",
+              "CAMACHO",
+              "MUÑECAS",
+              "SUD YUNGAS",
+              "LOS ANDES",
+              "FRANZ TAMAYO",
+              "OMASUYOS",
+              "NOR YUNGAS"
+            ]
+          },
+          {
+            "name": "municipios",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Ayo_Ayo"
+          },
+          {
+            "name": "canton",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "COLLANA TOLAR"
+          },
+          {
+            "name": "dens_pob",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 72.81
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
