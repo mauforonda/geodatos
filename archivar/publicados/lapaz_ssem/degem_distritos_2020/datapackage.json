@@ -1,0 +1,116 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_ssem_degem_distritos_2020",
+  "title": "distritos_2020",
+  "sources": [
+    {
+      "title": "Servicio de Seguimiento Estratégico Municipal del Gobierno Autónomo Municipal de La Paz",
+      "path": "https://ssem.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_ssem_degem_distritos_2020/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 160002,
+      "hash": "sha256:1989c7e361160a35ebbb60a71cc64073505f0694855448514c0ef1e026432f86",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "distritos_2020.2"
+          },
+          {
+            "name": "tipo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "UR",
+            "categories": [
+              "UR",
+              "RU"
+            ]
+          },
+          {
+            "name": "macro_ante",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Max Paredes",
+            "categories": [
+              "Cotahuma",
+              "Max Paredes",
+              "San Antonio",
+              "Periferica",
+              "Sur",
+              "Centro",
+              "Hampaturi",
+              "Mallasa",
+              "Zongo"
+            ]
+          },
+          {
+            "name": "macro_vige",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Max Paredes",
+            "categories": [
+              "Cotahuma",
+              "Max Paredes",
+              "San Antonio",
+              "Periferica",
+              "Centro",
+              "Calacoto",
+              "Hampaturi",
+              "Mallasa",
+              "Obrajes",
+              "Ovejuyo",
+              "Zongo"
+            ]
+          },
+          {
+            "name": "distrito",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 23
+            }
+          },
+          {
+            "name": "cod_macro",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 9
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
