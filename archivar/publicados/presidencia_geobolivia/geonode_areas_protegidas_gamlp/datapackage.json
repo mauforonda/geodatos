@@ -1,0 +1,107 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_areas_protegidas_gamlp",
+  "title": "PDC Cuenca Alta del río La Paz - Áreas Protegidas",
+  "description": "El mapa de Áreas Protegidas fue proporcionado por el SERNAP y corresponde mayormente áreas protegidas municipales y una a nivel Nacional. La mayor cantidad de áreas se localizan en el Municipio de La Paz. En total son 27 áreas protegidas de la Cuenca Alta del Río La Paz 2022. Este dato fue obtenido de su geoportal del Ministerio de Medio Ambiente y Agua en fecha septiembre del 2022.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_areas_protegidas_gamlp/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 279630,
+      "hash": "sha256:82ba60ba73c2ef3cf05dccd0efff7c61dc653f17419d6fbee86dabfb7eb172c7",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "areas_protegidas_gamlp.25"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 28
+            }
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Cerros Challaloma"
+          },
+          {
+            "name": "categoria",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Areas/Monumentos",
+            "categories": [
+              "Area",
+              "Sitio",
+              "Monumentos",
+              "Areas",
+              "Areas/Monumentos",
+              "Creacion dcl Espacio Natural de Conservacion (ENC) del agua",
+              "Cuchilla Chuquiaguillo y Quebradas del Rio Callapa",
+              "Parque Nacional y Área Natural de Manejo",
+              "Parque natural de preservación y conservación de la Ciudad de La Paz",
+              "Sitio/Area",
+              "Sitio/Monumento",
+              "sitio"
+            ]
+          },
+          {
+            "name": "baselegal",
+            "type": "string",
+            "example": "RP 372/99 OM 168/98"
+          },
+          {
+            "name": "areaha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0.54422799539,
+              "maximum": 61517.2355438
+            }
+          },
+          {
+            "name": "descrip",
+            "type": "string",
+            "example": "Cerros Challaloma, Cóndor Samaña, Serranías de amor de Dios, Serranías Coloradas de la Florida y Azu"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 1."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
