@@ -1,0 +1,111 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_levantamiento_levpuntocontrolcatastro",
+  "title": "levpuntocontrol",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz",
+      "path": "http://sitservicios.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_levantamiento_levpuntocontrolcatastro/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 245198,
+      "hash": "sha256:8d2feb8cb19c307e41315bdae7923acd7b615f07213847fb196c64b66aa49b1b",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "levpuntocontrolCatastro.14439"
+          },
+          {
+            "name": "numsitram",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "21762"
+          },
+          {
+            "name": "codigopuntocontraol",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 348
+            }
+          },
+          {
+            "name": "referencia",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "RIR-02"
+          },
+          {
+            "name": "idtramite",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 24116
+            }
+          },
+          {
+            "name": "idusuario",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1840,
+              "maximum": 1945
+            }
+          },
+          {
+            "name": "fecharegistro",
+            "type": "datetime",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": "2014-07-11T22:05:36.403000+00:00",
+              "maximum": "2015-12-11T20:34:56.310000+00:00"
+            }
+          },
+          {
+            "name": "idestado",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 0
+            }
+          },
+          {
+            "name": "idlevpuntocontrolmaterial",
+            "type": "integer"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
