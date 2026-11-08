@@ -1,0 +1,121 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_alt_lapaz_patrimoniales_ubi",
+  "title": "Predios Patrimoniales segun UBI",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)",
+      "path": "http://sitservicios.lapaz.bo/ows38.jsp"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_lapaz_patrimoniales_ubi/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 80692,
+      "hash": "sha256:00aae03703a6b83a270005a49a778d764d0fc2b37231a386a22e2dd95532913e",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "patrimoniales_ubi.1081"
+          },
+          {
+            "name": "OBJECTID",
+            "type": "number",
+            "constraints": {
+              "minimum": 1.0,
+              "maximum": 1096.0
+            }
+          },
+          {
+            "name": "CODIGO1",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "031091700010000"
+          },
+          {
+            "name": "CODIGO3",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "RELL01"
+          },
+          {
+            "name": "Nombre",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Administrativo Relleno Sanitario \"Nuevo Jardin\" Alpacoma-Camino a Alpacoma"
+          },
+          {
+            "name": "estado",
+            "type": "number",
+            "constraints": {
+              "minimum": 1.0,
+              "maximum": 4.0
+            }
+          },
+          {
+            "name": "uso",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Areas de relleno sanitario"
+          },
+          {
+            "name": "superficie",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 2131317.0
+            }
+          },
+          {
+            "name": "superfic_1",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 2174284.0
+            }
+          },
+          {
+            "name": "numero",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "2.01.0.99.0114601"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
