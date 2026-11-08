@@ -1,0 +1,89 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_vegetacion_2",
+  "title": "Plan Director Cuenca Río Tupiza – Vegetación",
+  "description": "PDCRT (Plan Director Cuenca Río Tupiza). Muestra la información relevante de la cobertura de vegetación de la cuenca, en el marco del Plan Director de la Cuenca del Río Tupiza.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_vegetacion_2/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 207005,
+      "hash": "sha256:59454e08b15237105815c77e561029f919a73f46523723e358bfc6693b6995cd",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "CLASE1",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "p10d+p13b"
+          },
+          {
+            "name": "LABEL",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "P-119"
+          },
+          {
+            "name": "DESCRIP",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "p10d+p13b; p10d= Pajonal subnival de la Puna Xerofítica suroriental: asociación prov. Parastrephio p"
+          },
+          {
+            "name": "CLASE1_OK",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "p10d+p13b"
+          },
+          {
+            "name": "SUP_KM2",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0.359299925193,
+              "maximum": 869.854970951
+            }
+          },
+          {
+            "name": "SUP_HA",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 35.9299925193,
+              "maximum": 86985.4970951
+            }
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
