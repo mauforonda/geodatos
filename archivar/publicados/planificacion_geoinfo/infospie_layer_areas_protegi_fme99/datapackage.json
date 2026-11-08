@@ -1,0 +1,129 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_areas_protegi_fme99",
+  "title": "Áreas Protegidas Municipales",
+  "description": "El mapa presenta zonas geográficas, ubicados dentro de la jurisdicción territorial municipal y declaradas bajo protección perpetua mediante Ordenanza Municipal.",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_areas_protegi_fme99/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 232139,
+      "hash": "sha256:b316ba24fa653b250f00c2a0ec5bdf56586acc07e8efa0f5cc653bfca6af56d4",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_areas_protegi_fme99.25"
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Jardín de Cactáceas de Bolivia"
+          },
+          {
+            "name": "jurisdicci",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Áreas protegidas municipales",
+            "categories": [
+              "Áreas protegidas municipales"
+            ]
+          },
+          {
+            "name": "sup_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0.382,
+              "maximum": 460000.0
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "COCHABAMBA",
+            "categories": [
+              "SANTA CRUZ",
+              "PANDO",
+              "LA PAZ",
+              "BENI",
+              "CHUQUISACA",
+              "COCHABAMBA"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Campero",
+            "categories": [
+              "Cordillera",
+              "Abuná",
+              "Florida",
+              "Ichilo",
+              "Chiquitos",
+              "General José Ballivían",
+              "Nicolas Suarez",
+              "Velasco",
+              "Abel Iturralde",
+              "Luis Calvo",
+              "Manuel María Caballero",
+              "Manuripi",
+              "Murillo",
+              "Sara",
+              "Yacuma",
+              "Ñuflo De Chavez",
+              "Campero",
+              "Franz Tamayo",
+              "Larecaja",
+              "Valle Grande"
+            ]
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Pasorapa"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 2."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
