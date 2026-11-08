@@ -1,0 +1,123 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_vias_ferreas_en_bolivia_u1b2u",
+  "title": "Vías Férreas en Bolivia",
+  "description": "El mapa muestra la clasificación de la red ferroviaria a nivel nacional, proporcionando una visión detallada de su ubicación y tipo.",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_vias_ferreas_en_bolivia_u1b2u/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 70334,
+      "hash": "sha256:77c47f1b765d0ef899a657172f36ea0c59df6f1e0bff060c3807f6e9c757d97b",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_vias_ferreas_en_bolivia_u1b2u.44"
+          },
+          {
+            "name": "tipo_red",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Red Occidental",
+            "categories": [
+              "Red Occidental",
+              "Red Oriental"
+            ]
+          },
+          {
+            "name": "long_km",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0.213,
+              "maximum": 186.93
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "example": "POTOSI",
+            "categories": [
+              "POTOSI",
+              "SANTA CRUZ",
+              "LA PAZ",
+              "COCHABAMBA",
+              "TARIJA",
+              "ORURO",
+              "CHUQUISACA"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "example": "Nor Lipez",
+            "categories": [
+              "Antonio Quijarro",
+              "Gran Chaco",
+              "Andres Ibañez",
+              "Chiquitos",
+              "Cordillera",
+              "German Busch",
+              "Ingavi",
+              "Murillo",
+              "Nor Lipez",
+              "Pacajes",
+              "Cercado",
+              "Cornelio Saavedra",
+              "Mizque",
+              "Sur Chichas",
+              "Aroma",
+              "Esteban Arze",
+              "Luis Calvo",
+              "Modesto Omiste",
+              "Tomas Frias",
+              "Abaroa",
+              "Arque",
+              "Campero",
+              "Los Andes",
+              "Pantaleon Dalence",
+              "Poopo",
+              "Punata",
+              "Rafael Bustillo",
+              "Sara",
+              "Yamparaez"
+            ]
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "example": "San Pedro de Quemes"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
