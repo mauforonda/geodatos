@@ -1,0 +1,65 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mhe_geoportal_geonode_bolivia_noche_2017",
+  "title": "Bolivia_Noche_2017",
+  "sources": [
+    {
+      "title": "Geoportal del Viceministerio de Electricidad y Energías Renovables",
+      "path": "https://geoportal.mhe.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mhe_geoportal_geonode_bolivia_noche_2017/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 170934,
+      "hash": "sha256:28f16d8f9dbcdd42d3a8842e98c8fbf6945ff1f4ffd856c1b9a1380b002b90a7",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 10."
+          },
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 1806
+            }
+          },
+          {
+            "name": "ID",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 12,
+              "maximum": 2979
+            }
+          },
+          {
+            "name": "GRIDCODE",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 2,
+              "maximum": 2
+            }
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
