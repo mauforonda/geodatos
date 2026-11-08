@@ -1,0 +1,88 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_luu_31122016",
+  "title": "Espejo de Agua del Lago Uru Uru 31-12-2016",
+  "description": "Representación geoespacial del espejo de agua del lago Uru Uru, ubicado en el departamento de Oruro, Bolivia, correspondiente a la fecha 31-12-2016. La capa delimita la extensión superficial del cuerpo de agua, permitiendo identificar su distribución espacial y analizar las variaciones de su superficie a lo largo del tiempo.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_luu_31122016/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 686142,
+      "hash": "sha256:1f20be99b3b698ece3964a3171aac3b7939f2ae950a79f4a4e4d7dbc6b61577a",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "example": "luu_31122016.1"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 1
+            }
+          },
+          {
+            "name": "nom",
+            "type": "string",
+            "example": "Lago Uru Uru"
+          },
+          {
+            "name": "sup_km2",
+            "type": "number",
+            "constraints": {
+              "minimum": 19.79,
+              "maximum": 19.79
+            }
+          },
+          {
+            "name": "sup_ha",
+            "type": "number",
+            "constraints": {
+              "minimum": 1978.83,
+              "maximum": 1978.83
+            }
+          },
+          {
+            "name": "niv_agu",
+            "type": "integer"
+          },
+          {
+            "name": "cue_pla",
+            "type": "string",
+            "example": "Lago Poopó"
+          },
+          {
+            "name": "fec",
+            "type": "datetime",
+            "constraints": {
+              "minimum": "2016-12-31T00:00:00",
+              "maximum": "2016-12-31T00:00:00"
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 1."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
