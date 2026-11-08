@@ -1,0 +1,118 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_alt_sit_ac_zonasusuarios",
+  "title": "Censo Zonas Usuarios",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)",
+      "path": "http://sitservicios.lapaz.bo/ows38.jsp"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_sit_ac_zonasusuarios/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 227923,
+      "hash": "sha256:020e26be831b7e2dccf336a95696d568a2e6df3f5d0875ad976f37ec43076023",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "ac_zonasusuarios.29"
+          },
+          {
+            "name": "macro",
+            "type": "string",
+            "example": "Mallasa",
+            "categories": [
+              "Sur",
+              "Periferica",
+              "Max Paredes",
+              "Cotahuma",
+              "San Antonio",
+              "Centro",
+              "Mallasa",
+              "Hampaturi"
+            ]
+          },
+          {
+            "name": "distrito",
+            "type": "string",
+            "example": "Distrito 20",
+            "categories": [
+              "Distrito 18",
+              "Distrito 19",
+              "Distrito 11",
+              "Distrito 13",
+              "Distrito 21",
+              "Distrito 12",
+              "Distrito 9",
+              "Distrito 4",
+              "Distrito 7",
+              "Distrito 20",
+              "Distrito 10",
+              "Distrito 17",
+              "Distrito 8",
+              "Distrito 1",
+              "Distrito 14",
+              "Distrito 16",
+              "Distrito 3",
+              "Distrito 5",
+              "Distrito 6",
+              "Distrito 2",
+              "Distrito 15",
+              "Distrito 22"
+            ]
+          },
+          {
+            "name": "zona",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Isla Verde"
+          },
+          {
+            "name": "usuario",
+            "type": "string",
+            "example": "Gina Benavente",
+            "categories": [
+              "Gina Benavente",
+              "Ariel Rodriguez",
+              "Eliseo Lopez Quispe",
+              "Grover Matta Quispe",
+              "Jose Manuel Aguilar",
+              "José Felix Gutierrez",
+              "Juan Arteaga Apaza",
+              "Juan Garay Machicado",
+              "Maria Eugenia Perez Yupanqui",
+              "Paola Andrea Chavez Lima",
+              "Victor Siñani",
+              "Daniel Condori Contreras",
+              "Jorge Castro Jurado"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
