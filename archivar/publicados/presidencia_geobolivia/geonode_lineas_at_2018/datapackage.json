@@ -1,0 +1,133 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_lineas_at_2018",
+  "title": "Red eléctrica de alta tensión en Bolivia_ 2018",
+  "description": "Este mapa representa la distribución espacial de la red eléctrica de alta tensión para el suministro de energía en Bolivia a escala 1:4.500.000, representado en tres categorías de distinto color rojo 69, azul 115 y verde 230 en KV . Elaborado por la Autoridad de Fiscalización y Control Social de Electricidad (AE) con datos actualizados a marzo del año 2018.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_lineas_at_2018/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 283921,
+      "hash": "sha256:ca88c55de77ca1e910ca74172e196f018f96b40fc7b64fabcd7b81a591d499bc",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 233
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0,
+              "maximum": 232
+            }
+          },
+          {
+            "name": "empresa",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "ENDE TRANSMISIÓN S.A.",
+            "categories": [
+              "ENDE TRANSMISIÓN S.A.",
+              "Distribuidora de Electricidad La Paz S.A. (DELAPAZ)",
+              "Compañia Boliviana de Energía Eléctrica (COBEE)",
+              "Cooperativa Rural de Electrificación Ltda. (CRE)",
+              "Distribuidora de Electricidad ENDE DEORURO S.A.",
+              "Empresa Nacional de Electricidad (ENDE)",
+              "Empresa de Luz y Fuerza Electrica Cochabamba S.A. (ELFEC)",
+              "Servicios Eléctricos de Tarija S.A. (SETAR)",
+              "Empresa Nacional de Electricidad (ENDE) - Trinidad",
+              "Interconexión Eléctrica - ISA BOLIVIA S.A. (ISA)",
+              "Empresa Río Eléctrico S.A. (ERESA)",
+              "Hidroeléctrica Boliviana S.A. (HB)",
+              "Servicios Eléctricos Potosí S.A. (SEPSA)",
+              "Empresa Minera Inti Raymi  S. A .(EMIRSA)",
+              "SDB",
+              "Compañia Eléctrica Sucre S.A. (CESSA)",
+              "Compañía Eléctrica Central Bulo Bulo S.A. (CECBB)",
+              "ENDE DEORURO",
+              "ENDE GUARACACHI S.A.",
+              "ENDE Transmisión S.A.",
+              "ERESA G",
+              "Empresa Guabira Energia S.A.",
+              "Empresa Nacional de Electricidad Andina (ENDE ANDINA)",
+              "Empresa de Luz y Fuerza Aroma S. A. (ELFA)",
+              "Servicios Electricos Potosi S.A.",
+              "Servicios de Desarrollo de Bolivia S.A. (SDB S.A.)",
+              "Transmisora de Electricidad San Cristóbal S.A. (TESA)"
+            ]
+          },
+          {
+            "name": "nivel_volt",
+            "type": "string",
+            "example": "69",
+            "categories": [
+              "69",
+              "115",
+              "230",
+              "24,9"
+            ]
+          },
+          {
+            "name": "tipo_condu",
+            "type": "string",
+            "example": "Ibis (397)  T2"
+          },
+          {
+            "name": "distancia1",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 247.17247899
+            }
+          },
+          {
+            "name": "linea",
+            "type": "string",
+            "example": "Telamayu-Tupiza"
+          },
+          {
+            "name": "sistema",
+            "type": "string",
+            "example": "NO",
+            "categories": [
+              "NO",
+              "STI"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
