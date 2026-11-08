@@ -1,0 +1,111 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mapbiomas_mapbiomas_uruguay_national_protected_areas",
+  "title": "national_protected_areas",
+  "sources": [
+    {
+      "title": "MapBiomas",
+      "path": "https://shared-geoserver.mapbiomas.org/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mapbiomas_mapbiomas_uruguay_national_protected_areas/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 121245,
+      "hash": "sha256:41dd52d701857750f1a15906f82da834714ced549900532c5118a3637896dbff",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "national_protected_areas.10"
+          },
+          {
+            "name": "FEATURE_ID",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 82,
+              "maximum": 103
+            }
+          },
+          {
+            "name": "NAME",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Humedales del Santa Lucla"
+          },
+          {
+            "name": "LEVEL_1",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "",
+            "categories": [
+              ""
+            ]
+          },
+          {
+            "name": "AP_CATEGOR",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "�rea Protegida con Recursos Manejados",
+            "categories": [
+              "Paisaje Protegido",
+              "sin definir",
+              "Parque Nacional",
+              "�rea de manejo de h�bitats y/o especies",
+              "�rea Protegida con Recursos Manejados",
+              "Monumento Natural"
+            ]
+          },
+          {
+            "name": "CATEGORY",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "areas_protegidas",
+            "categories": [
+              "areas_protegidas"
+            ]
+          },
+          {
+            "name": "NAME_PT_BR",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Humedales del Santa Lucla [�rea Protegida con Recursos Manejados]"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 7."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
