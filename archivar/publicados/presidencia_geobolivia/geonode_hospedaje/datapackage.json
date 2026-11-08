@@ -1,0 +1,147 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_hospedaje",
+  "title": "hospedaje",
+  "description": "No abstract provided",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_hospedaje/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 9140,
+      "hash": "sha256:89fe07eaa33099ebe3d691470662ae6715d1d1badbfe8bf90982d4f76db8d1b1",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "hospedaje.43"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 87
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "POTOSI",
+            "categories": [
+              "LA PAZ",
+              "BENI",
+              "TARIJA",
+              "SANTA CRUZ",
+              "COCHABAMBA",
+              "PANDO",
+              "POTOSI",
+              "CHUQUISACA",
+              "ORURO"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Daniel Campos"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Llica"
+          },
+          {
+            "name": "nomb",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Geotermas Sol Mañana"
+          },
+          {
+            "name": "hosp",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Albergue",
+            "categories": [
+              "Alojamiento básico, Hostal, Hotel",
+              "Alojamiento básico",
+              "Alojamiento básico, Cabaña, Hostal, Hotel",
+              "Albergue",
+              "Albergue, Hostal, Hotel",
+              "Alojamiento básico, Hotel, Residencial",
+              "Albergue, Cabaña",
+              "Alojamiento básico, Hotel",
+              "Cabaña",
+              "Casa de campo, Hostal, Hotel",
+              "Hotel",
+              "Alojamiento básico básico",
+              "Albergue, Alojamiento básico , Hotel",
+              "Albergue, Hotel",
+              "Alojamiento básico, Cabaña",
+              "Alojamiento básico, Área Camping",
+              "Alojamiento básico, Área Camping, Cabaña",
+              "Cabaña, Hotel",
+              "Ecoresort"
+            ]
+          },
+          {
+            "name": "longitud",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -69.071,
+              "maximum": -58.149
+            }
+          },
+          {
+            "name": "latitud",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -21.944,
+              "maximum": -11.018
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPoint."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
