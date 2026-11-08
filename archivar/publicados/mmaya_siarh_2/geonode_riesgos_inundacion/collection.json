@@ -1,0 +1,184 @@
+{
+  "type": "Collection",
+  "id": "geodatosbolivia_mmaya_siarh_2_geonode_riesgos_inundacion",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json",
+    "https://stac-extensions.github.io/vector/v0.1.0/schema.json",
+    "https://stac-extensions.github.io/projection/v2.0.0/schema.json",
+    "https://stac-extensions.github.io/file/v2.1.0/schema.json",
+    "https://stac-extensions.github.io/web-map-links/v1.3.0/schema.json"
+  ],
+  "title": "Plan Director Cuenca Rio Guadalquivir - Riesgos Inundación",
+  "description": "PDCRGu (Plan Director de la Cuenca Río Guadalquivir). Muestra la informacion de zonas con riesgo de inundacion, en el marco del Plan Director de la Cuenca del Río Guadalquivir.",
+  "license": "other",
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -65.05103161,
+          -22.06210118,
+          -64.40247644,
+          -21.21358912
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "providers": [
+    {
+      "name": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "roles": [
+        "producer"
+      ],
+      "url": "https://sig02.siarh.gob.bo/geoserver/ows"
+    },
+    {
+      "name": "Internet Archive",
+      "roles": [
+        "host"
+      ],
+      "url": "https://archive.org/details/geodatosbolivia_mmaya_siarh_2_geonode_riesgos_inundacion"
+    }
+  ],
+  "table:primary_geometry": "geometry",
+  "table:row_count": 3,
+  "table:columns": [
+    {
+      "name": "geometry",
+      "type": "binary",
+      "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+    },
+    {
+      "name": "gml_id",
+      "type": "string"
+    },
+    {
+      "name": "DESCIN3",
+      "type": "string"
+    },
+    {
+      "name": "COUNT",
+      "type": "int64"
+    },
+    {
+      "name": "DESCRIP",
+      "type": "string"
+    },
+    {
+      "name": "Pond",
+      "type": "double"
+    }
+  ],
+  "summaries": {
+    "vector:geometry_types": [
+      "MultiPolygon"
+    ]
+  },
+  "assets": {
+    "data": {
+      "href": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_riesgos_inundacion/dataset.geoparquet",
+      "type": "application/vnd.apache.parquet",
+      "title": "GeoParquet",
+      "roles": [
+        "data"
+      ],
+      "proj:code": "EPSG:4326",
+      "file:size": 128295,
+      "file:checksum": "12200d65df417f495d68e628ed521fc8bae48b530aae9b1038ded7c1e1e56c2865f2"
+    },
+    "datapackage": {
+      "href": "./datapackage.json",
+      "type": "application/json",
+      "title": "Data Package: columnas, tipos y categorías",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "pmtiles": {
+      "href": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_riesgos_inundacion/dataset.pmtiles",
+      "type": "application/vnd.pmtiles",
+      "title": "Teselas vectoriales (PMTiles)",
+      "roles": [
+        "visual"
+      ],
+      "file:size": 61919,
+      "file:checksum": "1220e6ad5b34c75821ec36b5a196d62318b0c7ffe700dbcc822626fccbef47930c74"
+    }
+  },
+  "pmtiles:min_zoom": 10,
+  "pmtiles:max_zoom": 12,
+  "pmtiles:tile_type": "mvt",
+  "pmtiles:center": [
+    -64.726754,
+    -21.6378451,
+    11
+  ],
+  "pmtiles:properties": [
+    {
+      "nombre": "DESCIN3",
+      "tipo": "string",
+      "categorias": [
+        "PIOE",
+        "PIoc",
+        "TO"
+      ]
+    },
+    {
+      "nombre": "DESCRIP",
+      "tipo": "string",
+      "categorias": [
+        "Menor Probabilidad de inundacion",
+        "Planicies de inundación ocasional",
+        "Planicies de inundación ocasional a estacional"
+      ]
+    },
+    {
+      "nombre": "COUNT",
+      "tipo": "number",
+      "minimo": 44.0,
+      "maximo": 480.0
+    },
+    {
+      "nombre": "Pond",
+      "tipo": "number",
+      "minimo": 0.2,
+      "maximo": 0.6
+    }
+  ],
+  "links": [
+    {
+      "rel": "root",
+      "href": "../../../catalog.json",
+      "type": "application/json",
+      "title": "Datos geográficos de Bolivia"
+    },
+    {
+      "rel": "parent",
+      "href": "../catalog.json",
+      "type": "application/json",
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)"
+    },
+    {
+      "rel": "via",
+      "href": "https://sig02.siarh.gob.bo/geoserver/ows",
+      "type": "text/html",
+      "title": "Servicio de origen"
+    },
+    {
+      "rel": "pmtiles",
+      "href": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_riesgos_inundacion/dataset.pmtiles",
+      "type": "application/vnd.pmtiles",
+      "pmtiles:layers": [
+        "dataset"
+      ]
+    }
+  ]
+}
