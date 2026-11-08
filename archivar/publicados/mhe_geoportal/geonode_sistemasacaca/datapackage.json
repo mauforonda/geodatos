@@ -1,0 +1,79 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mhe_geoportal_geonode_sistemasacaca",
+  "title": "SistemaSacaca",
+  "sources": [
+    {
+      "title": "Geoportal del Viceministerio de Electricidad y Energías Renovables",
+      "path": "https://geoportal.mhe.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mhe_geoportal_geonode_sistemasacaca/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 262371,
+      "hash": "sha256:9fd485fab19a883fd88399884b144997c4b995db396042a1699ffee60d4d162b",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 5945
+            }
+          },
+          {
+            "name": "LENGTH",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.001,
+              "maximum": 17.092
+            }
+          },
+          {
+            "name": "FASE",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 5
+            }
+          },
+          {
+            "name": "SISTEMA",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "SACACA",
+            "categories": [
+              "SACACA",
+              "ACASIO",
+              "SPBV",
+              "ARAMPAMPA",
+              ""
+            ]
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
