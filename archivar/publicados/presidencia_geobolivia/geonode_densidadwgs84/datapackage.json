@@ -1,0 +1,184 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_densidadwgs84",
+  "title": "Mapa de Densidad de Población del Municipio de La Paz",
+  "description": "El mapa muestra la densidad de población según las Organizaciones Territoriales de Base (OTB), como unidad básica de carácter comunitario y vecinal, que ocupa un espacio territorial determinado y comprende una población sin diferenciación de grado de instrucción, ocupación, sexo o religión, en el Municipio de La Paz.  Elaborado por Oficialía Mayor de Planificación para el Desarrollo (OMPD) del Gobierno Autónomo Municipal de La Paz, en el año 2013.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_densidadwgs84/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 271900,
+      "hash": "sha256:c0ec25767dc0e3f2c2677aa9d4171a1e74d428c6f9e6c567e521c640aad69cf0",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "densidadwgs84.362"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 496
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "densidadwgs84.362"
+          },
+          {
+            "name": "objectid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 496
+            }
+          },
+          {
+            "name": "dist",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "20",
+            "categories": [
+              "19",
+              "11",
+              "13",
+              "18",
+              "21",
+              "12",
+              "04",
+              "07",
+              "05",
+              "10",
+              "14",
+              "15",
+              "09",
+              "16",
+              "17",
+              "03",
+              "06",
+              "20",
+              "02",
+              "01",
+              "08"
+            ]
+          },
+          {
+            "name": "nom_otb",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "ISLA VERDE"
+          },
+          {
+            "name": "sub_alcald",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "MALLASA",
+            "categories": [
+              "SUR",
+              "PERIFERICA",
+              "SAN ANTONIO",
+              "COTAHUMA",
+              "MAX PAREDES",
+              "CENTRO",
+              "MALLASA"
+            ]
+          },
+          {
+            "name": "n",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 496
+            }
+          },
+          {
+            "name": "usos",
+            "type": "string",
+            "example": "azul",
+            "categories": [
+              "morado",
+              "amarillo",
+              "azul",
+              "naranja",
+              "rojo"
+            ]
+          },
+          {
+            "name": "shape_leng",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 362.199067005,
+              "maximum": 9393.91353186
+            }
+          },
+          {
+            "name": "shape_area",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 7278.03493602,
+              "maximum": 4678835.21296
+            }
+          },
+          {
+            "name": "densidad",
+            "type": "string",
+            "example": "Muy Baja",
+            "categories": [
+              "Baja",
+              "Media Residencial",
+              "Muy Baja",
+              "Media Comercial",
+              "Alta"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
