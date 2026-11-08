@@ -1,0 +1,66 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_radiacion_anual",
+  "title": "Plan Director Cuenca Río Pampa Huari – Radiación Solar",
+  "description": "PDCRPH (Plan Director de la Cuenca Rio Pampa Huari) Describe las variaciones meteorológicas de la radiación solar en la cuenca del rio pampa Huari, elaborado en base a datos disponibles de SENAMHI 2017.\n\nValor en Kj/m2/dia:\n15500 Kj/m2/dia, 16000 Kj/m2/dia, 16500 Kj/m2/dia., 1700 Kj/m2/dia, 17500 Kj/m2/dia, 18000 Kj/m2/dia., 18500 Kj/m2/dia.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_radiacion_anual/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 127710,
+      "hash": "sha256:3028208f12b095e974467c309aab8dca43ac4b853d370ccaba251f761fcd0b9c",
+      "schema": {
+        "fields": [
+          {
+            "name": "SUP_KM2",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0.0102214042276,
+              "maximum": 508.469917637
+            }
+          },
+          {
+            "name": "Radiacion",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 15500,
+              "maximum": 18500
+            }
+          },
+          {
+            "name": "SUP_HA",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1.02214042276,
+              "maximum": 50846.9917637
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 1."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
