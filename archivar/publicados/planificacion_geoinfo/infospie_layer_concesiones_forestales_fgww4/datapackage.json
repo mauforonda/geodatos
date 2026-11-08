@@ -1,0 +1,198 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_concesiones_forestales_fgww4",
+  "title": "Concesiones Forestales",
+  "description": "El mapa presenta una representación visual de las áreas específicas de tierras fiscales donde se permite la actividad de explotación forestal bajo regulaciones específicas, identificando las áreas asignadas para la gestión sostenible de los recursos forestales.",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_concesiones_forestales_fgww4/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 126561,
+      "hash": "sha256:70c48d93bcd4d3d9273b1f58a5fb704ac5d35599131a89785c8519f2d125604b",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_concesiones_forestales_fgww4.37"
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "SAMS"
+          },
+          {
+            "name": "razon_soci",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "SOCIEDAD AGROPECUARIA MADERERA DEL SUR LTDA. \"S.A.M.S. LTDA.\"\n"
+          },
+          {
+            "name": "rpgm_no",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "012/2001"
+          },
+          {
+            "name": "rpgm_fecha",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "09/02/2001_"
+          },
+          {
+            "name": "observacio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Sin dato",
+            "categories": [
+              "Sin dato",
+              "AREA PARA INVEST",
+              "un solo pgm",
+              "AREA AMPLIADA",
+              "AREA INMOVILIZAD",
+              "EN PROCESO DE",
+              "EX MADRE SELVA",
+              "Ex.LOS INDIOS",
+              "RES. RENUNCIA",
+              "AREA INMOVILIZADA RE",
+              "EN PROCESO DE RE",
+              "EX LAM. SAN MIGUEL",
+              "EX P-CINCO",
+              "EX VASBER",
+              "EX YUCUMO",
+              "Ex.RIO NEGRO",
+              "UN SOLO PGM",
+              "EX LA LUNA",
+              "EX LAGO VERDE",
+              "EX SELVA NEGR",
+              "Ex.SAN JOAQUI"
+            ]
+          },
+          {
+            "name": "codigo_der",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "COSN-030084"
+          },
+          {
+            "name": "sup_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.05,
+              "maximum": 360000.0
+            }
+          },
+          {
+            "name": "etiquet",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Concesiones Forestales",
+            "categories": [
+              "Concesiones Forestales"
+            ]
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "TARIJA",
+            "categories": [
+              "SANTA CRUZ",
+              "PANDO",
+              "BENI",
+              "LA PAZ",
+              "TARIJA",
+              "COCHABAMBA"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "O'Connor",
+            "categories": [
+              "Guarayos",
+              "Velasco",
+              "Federico Roman",
+              "Abel Iturralde",
+              "Ichilo",
+              "Nicolas Suarez",
+              "Ñuflo De Chavez",
+              "Chiquitos",
+              "German Busch",
+              "Abuná",
+              "Itenez",
+              "Angel Sandoval",
+              "General José Ballivían",
+              "Territorio Indigena Multi",
+              "Marban",
+              "Yacuma",
+              "Carrasco",
+              "Gran Chaco",
+              "O'Connor",
+              "Avilez",
+              "Manuripi",
+              "Sara",
+              "Valle Grande",
+              "Cordillera",
+              "Madre De Dios",
+              "Moxos",
+              "Obispo Santisteban"
+            ]
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Entre Ríos"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
