@@ -1,0 +1,116 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_cuencas",
+  "title": "Cuencas principales Direccion Nacional de Cuencas Hidrograficas - Plan Nacional de Manejo de Cuencas Hidrograficas en Bolivia (PLAMACH-BOL)",
+  "description": "Bolivia, desde el punto de vista hidrográfico, cuenta con tres grandes cuencas hidrográficas, denominadas del Amazonas, del Plata y Cerrada o del Altiplano, además de la vertiente del Pacífico, mucho menor pero de mucha importancia económica.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_cuencas/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 244766,
+      "hash": "sha256:a58b5e1e167e33cbb2da172a14545732792a6036b24b5107e75ddad4ad970204",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "example": "cuencas.2"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 3
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "example": "cuencas.2"
+          },
+          {
+            "name": "area",
+            "type": "number",
+            "constraints": {
+              "minimum": 149104000000.0,
+              "maximum": 716569000000.0
+            }
+          },
+          {
+            "name": "perimeter",
+            "type": "integer",
+            "constraints": {
+              "minimum": 2708190,
+              "maximum": 4929140
+            }
+          },
+          {
+            "name": "bocunal_",
+            "type": "integer",
+            "constraints": {
+              "minimum": 2,
+              "maximum": 4
+            }
+          },
+          {
+            "name": "bocunal_id",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 3
+            }
+          },
+          {
+            "name": "internal",
+            "type": "string",
+            "example": "Cuenca del Altiplano"
+          },
+          {
+            "name": "nalarea",
+            "type": "integer",
+            "constraints": {
+              "minimum": 151681,
+              "maximum": 728953
+            }
+          },
+          {
+            "name": "nalcod",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 3
+            }
+          },
+          {
+            "name": "nal_",
+            "type": "number",
+            "constraints": {
+              "minimum": 13.81,
+              "maximum": 66.35
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
