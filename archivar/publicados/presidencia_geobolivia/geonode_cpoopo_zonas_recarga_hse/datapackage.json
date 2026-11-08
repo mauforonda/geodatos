@@ -1,0 +1,101 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_cpoopo_zonas_recarga_hse",
+  "title": "Plan Director Cuenca Lago Poopó - Zonas de Recarga HSE_ Bolivia",
+  "description": "El mapa muestra las áreas de recarga HSE en la Cuenca del Lago Poopó, corresponden al Holoceno Sedimentario Eólico, de arena de grano fino a medio (fuente Sergeotecmin), dato del Viceministerio de Recursos Hídricos y Riego a marzo 2018.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_cpoopo_zonas_recarga_hse/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 170544,
+      "hash": "sha256:a198c084a44ae37b3b3cd32a860f0aede626795d0ea03808af833a85143f2930",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 84
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0,
+              "maximum": 83
+            }
+          },
+          {
+            "name": "unidad",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Hse",
+            "categories": [
+              "Hse"
+            ]
+          },
+          {
+            "name": "descripcio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Holoceno sedimentario, eolico",
+            "categories": [
+              "Holoceno sedimentario, eolico"
+            ]
+          },
+          {
+            "name": "estati",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Arenas de grano fino a medio",
+            "categories": [
+              "Arenas de grano fino a medio"
+            ]
+          },
+          {
+            "name": "fuente",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "SERGEOTECMIN",
+            "categories": [
+              "SERGEOTECMIN"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
