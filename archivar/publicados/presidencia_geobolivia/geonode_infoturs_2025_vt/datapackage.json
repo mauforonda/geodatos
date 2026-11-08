@@ -1,0 +1,148 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_infoturs_2025_vt",
+  "title": "infoturs_2025_vt",
+  "description": "No abstract provided",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_infoturs_2025_vt/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 9134,
+      "hash": "sha256:8294fbed67f59e7fac4980d5aeaacad212d0d795b1da86e6cf4387a9e4924579",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "infoturs_2025_vt.9"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 26
+            }
+          },
+          {
+            "name": "departamen",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Potosi",
+            "categories": [
+              "Potosí",
+              "Chuquisaca",
+              "La Paz",
+              "Potosi",
+              "Santa Cruz",
+              "Oruro",
+              "Tarija",
+              "Beni",
+              "Cochabamba"
+            ]
+          },
+          {
+            "name": "ent_adm",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Gobierno Autónomo Departamental de Potosi"
+          },
+          {
+            "name": "municipio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Tupiza"
+          },
+          {
+            "name": "distancia",
+            "type": "string",
+            "example": "0 km"
+          },
+          {
+            "name": "inf",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Gobierno Departamental"
+          },
+          {
+            "name": "año",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Año 1"
+          },
+          {
+            "name": "materiales",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Material elaborado por la Secretaría Departamental"
+          },
+          {
+            "name": "equipamien",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Escritorio y material de actividades en el departamento"
+          },
+          {
+            "name": "longitud",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": -68.1496535,
+              "maximum": -63.1407962
+            }
+          },
+          {
+            "name": "latitud",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": -21.5471212,
+              "maximum": -14.8367626
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
