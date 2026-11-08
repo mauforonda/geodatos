@@ -1,0 +1,95 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_sistemas_de_riego_2012_f3osy",
+  "title": "layer_sistemas_de_riego_2012_f3osy",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_sistemas_de_riego_2012_f3osy/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 218437,
+      "hash": "sha256:87252591f5acffa93d11ad4768292123c9a10629abade27f0bfdc982a07a7b8e",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_sistemas_de_riego_2012_f3osy.766"
+          },
+          {
+            "name": "situacion",
+            "type": "integer"
+          },
+          {
+            "name": "nombre_sis",
+            "type": "string",
+            "example": "Sora"
+          },
+          {
+            "name": "caudal_anu",
+            "type": "integer"
+          },
+          {
+            "name": "vol_anual",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 81581249.09
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "example": "POTOSI",
+            "categories": [
+              "COCHABAMBA",
+              "LA PAZ",
+              "POTOSI",
+              "CHUQUISACA",
+              "TARIJA",
+              "ORURO",
+              "SANTA CRUZ",
+              "Cochabamba"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Enrique Baldivieso"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "example": "San Agustín"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPoint."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
