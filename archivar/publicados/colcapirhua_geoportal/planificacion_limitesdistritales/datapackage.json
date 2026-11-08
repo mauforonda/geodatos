@@ -1,0 +1,90 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_colcapirhua_geoportal_planificacion_limitesdistritales",
+  "title": "limitesDistritales",
+  "description": "Layer-Group type layer: Planificacion:limitesDistritales",
+  "sources": [
+    {
+      "title": "Geoportal del Gobierno Municipal de Colcapirhua",
+      "path": "https://geoserver.geotec-srl.com/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_colcapirhua_geoportal_planificacion_limitesdistritales/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 9308,
+      "hash": "sha256:94f8d30ea35a5ffa40e298ef26d0d45e48f9f22d16f5d2d08d786d1747422f29",
+      "schema": {
+        "fields": [
+          {
+            "name": "objectid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 7
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 0
+            }
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "example": "DISTRITO E",
+            "categories": [
+              "DISTRITO B",
+              "DISTRITO C",
+              "DISTRITO D",
+              "DISTRITO A",
+              "DISTRITO E"
+            ]
+          },
+          {
+            "name": "shape_leng",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 70.38425103,
+              "maximum": 16705.0778053
+            }
+          },
+          {
+            "name": "shape_area",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.76410221395,
+              "maximum": 11579279.3612
+            }
+          },
+          {
+            "name": "distrito",
+            "type": "string",
+            "example": "DISTRITO E"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
