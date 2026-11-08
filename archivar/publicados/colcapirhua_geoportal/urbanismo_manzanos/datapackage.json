@@ -1,0 +1,78 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_colcapirhua_geoportal_urbanismo_manzanos",
+  "title": "manzanos",
+  "description": "Manzanos de Gobierno Autonomo Municipal de Colcapirhua",
+  "sources": [
+    {
+      "title": "Geoportal del Gobierno Municipal de Colcapirhua",
+      "path": "https://geoserver.geotec-srl.com/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_colcapirhua_geoportal_urbanismo_manzanos/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 1111308,
+      "hash": "sha256:65942890ee2559b7c5be5b64609f401ce5c3761984e156e16ae76d18d2faa499",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "manzanos.68"
+          },
+          {
+            "name": "OBJECTID",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 1822
+            }
+          },
+          {
+            "name": "Shape_Leng",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 3285.90074691
+            }
+          },
+          {
+            "name": "Shape_Area",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 325996.448395
+            }
+          },
+          {
+            "name": "CODIFICACI",
+            "type": "string",
+            "example": "030"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Polygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
