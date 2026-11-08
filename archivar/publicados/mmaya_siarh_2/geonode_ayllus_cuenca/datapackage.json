@@ -1,0 +1,66 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_ayllus_cuenca",
+  "title": "Plan Director Cuenca Lago Poopó - Ayllus",
+  "description": "PDCLP (Plan Director de la Cuenca Lago Poopó). Muestra la ubicación y la información relevante de las comunidades familiares originarias (ayllus), en el marco del Plan Director de la Cuenca del Lago Poopó.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_ayllus_cuenca/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 83451,
+      "hash": "sha256:2b8a822cf40e1518c4ff54b150e6f24bbaaa895f53eecbfd4aa5c6bd37aadfff",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "Nro_Ayllu",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 19,
+              "maximum": 236
+            }
+          },
+          {
+            "name": "Nombre_Ayl",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Ayllu Villa Huanapa y Ayllu Collo Huanapa"
+          },
+          {
+            "name": "area_km2",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 3.80846615437,
+              "maximum": 3228.82535445
+            }
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
