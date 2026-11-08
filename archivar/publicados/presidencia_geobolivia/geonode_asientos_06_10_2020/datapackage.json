@@ -1,0 +1,117 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_asientos_06_10_2020",
+  "title": "Localización de Asientos Electorales - Elecciones Generales 2020_ Bolivia",
+  "description": "El mapa muestra las localizaciones de los asientos electorales para las elecciones generales 2020 que se desarrollaran este domingo 18 de octubre del presente año, en todo el territorio nacional, haciendo un total 3.534 asientos. Un asiento electoral es el lugar o punto geográfico determinado, pudiendo ser ciudad capital, ciudad intermedia o localidad, en el que se establece el servicio o facilitaciones físicas y legales necesarias para el ejercicio del sufragio, compuesto por notarías, recintos y mesas electorales. Información proporcionada por la Unidad de Geografía y Logística Electoral del Tribunal Supremo Electoral que es parte del Órgano Electoral Plurinacional de Bolivia en fecha 13 de octubre del 2020.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_asientos_06_10_2020/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 247491,
+      "hash": "sha256:721faa26c84e0e227e33561902ca53766898dc9e3f6f76197dbce2d5e738f557",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "asientos_06_10_2020.2371"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 3534
+            }
+          },
+          {
+            "name": "departamen",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Potosí",
+            "categories": [
+              "La Paz",
+              "Potosí",
+              "Santa Cruz",
+              "Cochabamba",
+              "Chuquisaca",
+              "Oruro",
+              "Tarija",
+              "Beni",
+              "Pando"
+            ]
+          },
+          {
+            "name": "provincia",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Daniel Campos"
+          },
+          {
+            "name": "municipio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Llica"
+          },
+          {
+            "name": "asiento",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Chacoma"
+          },
+          {
+            "name": "latitud",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -22.806989,
+              "maximum": -10.05801
+            }
+          },
+          {
+            "name": "longitud",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -69.563647,
+              "maximum": -57.70963
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
