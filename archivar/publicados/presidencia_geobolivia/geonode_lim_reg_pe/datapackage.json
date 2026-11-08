@@ -1,0 +1,91 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_lim_reg_pe",
+  "title": "lim_reg_pe",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_lim_reg_pe/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 471407,
+      "hash": "sha256:b014e8bdbf0bac7dcce77574f54139094f94dc9b8ce5840b9daf6a759916c72d",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "example": "lim_reg_pe.2"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 2
+            }
+          },
+          {
+            "name": "sup_km2",
+            "type": "number",
+            "constraints": {
+              "minimum": 15990.681759,
+              "maximum": 67414.97843
+            }
+          },
+          {
+            "name": "pob_2017",
+            "type": "integer",
+            "constraints": {
+              "minimum": 329332,
+              "maximum": 1172697
+            }
+          },
+          {
+            "name": "pob_2007",
+            "type": "integer",
+            "constraints": {
+              "minimum": 288781,
+              "maximum": 1268441
+            }
+          },
+          {
+            "name": "pai",
+            "type": "string",
+            "example": "Perú",
+            "categories": [
+              "Perú"
+            ]
+          },
+          {
+            "name": "reg",
+            "type": "string",
+            "example": "Tacna"
+          },
+          {
+            "name": "nom",
+            "type": "string",
+            "example": "Tacna"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
