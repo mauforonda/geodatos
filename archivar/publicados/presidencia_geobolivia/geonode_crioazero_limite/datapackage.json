@@ -1,0 +1,78 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_crioazero_limite",
+  "title": "Plan Director Cuenca Río Azero - Límite Cuenca, Bolivia",
+  "description": "El mapa muestra el límite del área de intervención de la Cuenca del Río Azero ubicada en el Departamento de Chuquisaca, con una superficie de 5.689 Km2. Información obtenida del Viceministerio de Recursos Hídricos y Riego, ha noviembre del 2020.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_crioazero_limite/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 117748,
+      "hash": "sha256:d39e97e70d987463b9cd4241503d30b920dee87431fd82518c557a5e020d3f3b",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "example": "crioazero_limite.1"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 1
+            }
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "example": "Cuenca Rio Azero"
+          },
+          {
+            "name": "cod_pfaf",
+            "type": "string",
+            "example": "46694"
+          },
+          {
+            "name": "nivel",
+            "type": "string",
+            "example": "Nivel 5"
+          },
+          {
+            "name": "sup_km2",
+            "type": "number",
+            "constraints": {
+              "minimum": 5689.28,
+              "maximum": 5689.28
+            }
+          },
+          {
+            "name": "clasific",
+            "type": "string",
+            "example": "Subcuenca"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
