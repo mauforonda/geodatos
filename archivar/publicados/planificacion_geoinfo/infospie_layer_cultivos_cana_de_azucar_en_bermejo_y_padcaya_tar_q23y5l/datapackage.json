@@ -1,0 +1,71 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_cultivos_cana_de_azucar_en_bermejo_f61dab14bf3e",
+  "title": "Cultivos caña de azúcar en Bermejo y Padcaya - Tarija",
+  "description": "El mapa muestra las estimaciones de superficie de cultivos priorizados de  caña de Azúcar en Bermejo y Padcaya a través de un análisis multicriterio, elaborado por el Observatorio Agroambiental y Productivo - OAP",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_cultivos_cana_de_azucar_en_bermejo_f61dab14bf3e/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 226415,
+      "hash": "sha256:c71c93c6defbe3106583981876a966a2e7336ac26a088d2cb70245c469c2de50",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "example": "layer_cultivos_cana_de_azucar_en_bermejo_y_padcaya__tar_q23y5l.1"
+          },
+          {
+            "name": "sup_ha",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1528,
+              "maximum": 7383
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "example": "TARIJA",
+            "categories": [
+              "TARIJA"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "example": "Arce",
+            "categories": [
+              "Arce"
+            ]
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "example": "Bermejo"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 2."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
