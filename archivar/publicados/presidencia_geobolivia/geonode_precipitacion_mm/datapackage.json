@@ -1,0 +1,92 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_precipitacion_mm",
+  "title": "Mapa de precipitación medias anuales en Bolivia_ 2002",
+  "description": "El presente mapa muestra seis rangos de precipitaciones medias anuales que van desde mayor a 4000mm hasta 0 a 199mm, asignados por el estudio del Balance Hídrico y el estudio de Cuencas Hidrográficas de Bolivia. Elaborado por la Unidad de Ordenamiento Territorial del Ministerio de Planificación del Desarrollo, en el año 2002 a escala 1:1000000.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_precipitacion_mm/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 228359,
+      "hash": "sha256:4f566a4140163cc77beb1450082a581c95abc23955c7c38093d79fdae89f9ae1",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "precipitacion_mm.16"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 24
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Precipitacion_mm.16"
+          },
+          {
+            "name": "preccls",
+            "type": "string",
+            "example": "1",
+            "categories": [
+              "?",
+              "1",
+              "4",
+              "2",
+              "3",
+              "5",
+              "6"
+            ]
+          },
+          {
+            "name": "rangos",
+            "type": "string",
+            "example": "0 - 199",
+            "categories": [
+              "0 - 199",
+              "1500 - 1999",
+              "200 - 669",
+              "2000 - 3999",
+              "700 - 1499",
+              "mayor a 4000"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
