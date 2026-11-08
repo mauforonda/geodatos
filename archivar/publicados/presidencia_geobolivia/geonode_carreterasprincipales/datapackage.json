@@ -1,0 +1,138 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_carreterasprincipales",
+  "title": "Mapa de carreteras principales de Bolivia, 2002",
+  "description": "El presente mapa muestra las principales carreteras del territorio boliviano, su origen y destino de los mismos y muestra las vías troncales de transitabilidad, siendo un rol preponderante en el crecimiento económico de Bolivia por constituir un factor crítico para el desarrollo de los sectores productivos, en especial los de agricultura e industria. Así mismo por constituir un medio incuestionable para el desarrollo de la integración física entre los países de la subregión. Elaborado por la Unidad de Ordenamiento Territorial del Ministerio de Planificación del Desarrollo en el año 2002 a escala 1:1000000",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_carreterasprincipales/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 299548,
+      "hash": "sha256:75cd1af5d8cff23573c1cd826303c4f08db83989e8d18b1514021caa2f4891b2",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "carreterasprincipales.128"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 395
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "CarreterasPrincipales.128"
+          },
+          {
+            "name": "value",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 19737
+            }
+          },
+          {
+            "name": "red_tipo",
+            "type": "string",
+            "example": "V",
+            "categories": [
+              "V",
+              "F",
+              "C"
+            ]
+          },
+          {
+            "name": "pavimento",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 403
+            }
+          },
+          {
+            "name": "ripio",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 356
+            }
+          },
+          {
+            "name": "tierra",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 460
+            }
+          },
+          {
+            "name": "viasp",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 25
+            }
+          },
+          {
+            "name": "vipesos",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 161
+            }
+          },
+          {
+            "name": "orig_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 370
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
