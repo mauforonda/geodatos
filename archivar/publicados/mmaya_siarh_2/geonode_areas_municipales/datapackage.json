@@ -1,0 +1,58 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_areas_municipales",
+  "title": "Plan Director Cuenca Río Yapacaní - Áreas Protegidas Municipales",
+  "description": "PDCRY (Plan Director de la Cuenca Río Yapacaní). Muestra la ubicación y la información relevante de las áreas protegidas Municipales, en el marco del Plan Director de la Cuenca del Río Yapacaní.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_areas_municipales/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 122693,
+      "hash": "sha256:7457c4ce31041274c25b3f3deb06ca33c9bc4de1b2fda8c0aeb7c997ee1beff9",
+      "schema": {
+        "fields": [
+          {
+            "name": "OBJECTID",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 5
+            }
+          },
+          {
+            "name": "NOMBRE",
+            "type": "string",
+            "example": "Jardín de Cactáceas de Bolivia"
+          },
+          {
+            "name": "areaha",
+            "type": "number",
+            "constraints": {
+              "minimum": 710.949442831,
+              "maximum": 107801.899302
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
