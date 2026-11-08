@@ -1,0 +1,126 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_zonas_colonizacion",
+  "title": "Mapa de zonas de colonizacion de Bolivia_ 2009",
+  "description": "El mapa muestra la distribución de la colonización de las zonas donde la población ocupa un espacio determinado: A, B, C, D, E, F central, F norte, F sud oriental, G, Rurrenabaque Eva Eva, Caranavi, Florida, Alto Beni. Elaborado por el Sistema Nacional de Información para el Desarrollo del Ministerio de Planificación del Desarrollo en el año 2009.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_zonas_colonizacion/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 124790,
+      "hash": "sha256:76e31d2f6abaddba581f49f45f8a5692f7e3c3197b3c8b24dbcd3f9b4689cf6b",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "zonas_colonizacion.12"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 16
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Zonas_Colonizacion.12"
+          },
+          {
+            "name": "docname",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "colonizacion.dgn",
+            "categories": [
+              "colonizacion.dgn"
+            ]
+          },
+          {
+            "name": "docpath",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Catografia_2009_colonizacion",
+            "categories": [
+              "Catografia_2009_colonizacion"
+            ]
+          },
+          {
+            "name": "descrip",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "AMPLIACION PROYECTO ALTO BENI"
+          },
+          {
+            "name": "sup_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 50096.4326,
+              "maximum": 1664776.5908
+            }
+          },
+          {
+            "name": "shape_leng",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 108247.460784,
+              "maximum": 876039.477706
+            }
+          },
+          {
+            "name": "shape_area",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 500964326.402,
+              "maximum": 16647765908.1
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 2."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
