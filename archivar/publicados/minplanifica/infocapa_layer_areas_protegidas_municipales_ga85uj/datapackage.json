@@ -1,0 +1,117 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_minplanifica_infocapa_layer_areas_protegidas_municipales_ga85uj",
+  "title": "layer_areas_protegidas_municipales_ga85uj",
+  "sources": [
+    {
+      "title": "Geoserver del Ministerio de Planificación del Desarollo",
+      "path": "https://geoserver.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_minplanifica_infocapa_layer_areas_protegidas_municipales_ga85uj/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 231724,
+      "hash": "sha256:6bee5e3f92cf23b81c9829d4866583b8b9f8c23c4be16c022fc5d10a607fee7b",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_areas_protegidas_municipales_ga85uj.9"
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "example": "Jardín de Cactáceas de Bolivia"
+          },
+          {
+            "name": "jurisdicci",
+            "type": "integer"
+          },
+          {
+            "name": "sup_ha",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 431755
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Cochabamba",
+            "categories": [
+              "Santa Cruz",
+              "Pando",
+              "La Paz",
+              "Beni",
+              "Chuquisaca",
+              "Cochabamba"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Campero",
+            "categories": [
+              "Cordillera",
+              "Abuná",
+              "Florida",
+              "Ichilo",
+              "Chiquitos",
+              "General José Ballivían",
+              "Nicolas Suarez",
+              "Velasco",
+              "Abel Iturralde",
+              "Luis Calvo",
+              "Manuel María Caballero",
+              "Manuripi",
+              "Murillo",
+              "Sara",
+              "Yacuma",
+              "Ñuflo De Chavez",
+              "Campero",
+              "Franz Tamayo",
+              "Larecaja",
+              "Valle Grande"
+            ]
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Pasorapa"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 2."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
