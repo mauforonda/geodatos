@@ -1,0 +1,89 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_lev_levpunto",
+  "title": "Levantamiento punto",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz",
+      "path": "http://sitservicios.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_lev_levpunto/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 166601,
+      "hash": "sha256:48528ad80b059a5ce1944c9d48ba1dd065c635c16b4998297e8caa754f1fabfa",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "levpunto.8806"
+          },
+          {
+            "name": "fecharegistro",
+            "type": "datetime",
+            "constraints": {
+              "required": true,
+              "minimum": "2014-06-02T19:22:09.470000+00:00",
+              "maximum": "2014-06-13T14:17:46.487000+00:00"
+            }
+          },
+          {
+            "name": "idusuario",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1443,
+              "maximum": 1443
+            }
+          },
+          {
+            "name": "idtipopunto",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 27,
+              "maximum": 34
+            }
+          },
+          {
+            "name": "idtramite",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 7,
+              "maximum": 9
+            }
+          },
+          {
+            "name": "gestion",
+            "type": "integer"
+          },
+          {
+            "name": "vigente",
+            "type": "integer"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
