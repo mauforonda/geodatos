@@ -1,0 +1,158 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_cotagaita_suelos",
+  "title": "Plan Director Cuenca Río Cotagaita – Suelos",
+  "description": "PDCRCo (Plan Director de la Cuenca Río Cotagaita). Muestra la ubicación y la información relevante de suelos en el marco del Plan Director de la Cuenca del Río Cotagaita.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_cotagaita_suelos/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 222652,
+      "hash": "sha256:5df724127ccc6448f3a2318402687a1e134bddf08c6908964895512f3fe9ee50",
+      "schema": {
+        "fields": [
+          {
+            "name": "OBJECTID",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 123
+            }
+          },
+          {
+            "name": "SOILs",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Consociación Cambisoles con inclusión Regosoles",
+            "categories": [
+              "Consociación Cambisoles con inclusión Leptosoles",
+              "Consociación Leptosoles con inclusión  Fluvisoles",
+              "Consociación Calcisoles con inclusión Regosoles",
+              "Asociación Cambisoles - Leptosoles con inclusión Fluvisoles",
+              "Consociación Leptosoles",
+              "Asociación Leptosoles - Fluvisoles",
+              "Consociación Leptosoles con inclusión Cambisoles",
+              "Consociación Regosoles",
+              "Asociación Calcisoles - Cambisoles",
+              "Asociación Fluvisoles - Cambisoles",
+              "Consociación Cambisoles con inclusión Leptosoles y Fluvisoles",
+              "Consociación Leptosoles con inclusión Cambisoles, Regosoles, Arenosoles y Fluvisoles",
+              "Asociación Leptosoles - Cambisoles",
+              "Consociación Cambisoles con inclusión Regosoles",
+              "Consociación Leptosoles con inclusión Fluvisoles y Arenosoles"
+            ]
+          },
+          {
+            "name": "PROVINCIA",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Sur Chichas",
+            "categories": [
+              "Sur Chichas",
+              "Nor Chichas",
+              "Antonio Quijarro"
+            ]
+          },
+          {
+            "name": "MUNICIPIO",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Atocha",
+            "categories": [
+              "Atocha",
+              "Cotagaita",
+              "Tupiza",
+              "Tomave",
+              "Uyuni"
+            ]
+          },
+          {
+            "name": "CODIGO",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "050802",
+            "categories": [
+              "050802",
+              "050601",
+              "050801",
+              "051202",
+              "051201"
+            ]
+          },
+          {
+            "name": "cod_soil",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "CCiRe",
+            "categories": [
+              "CCiL",
+              "CLiF",
+              "CCiR",
+              "ACLiF",
+              "CL",
+              "ALF",
+              "CLiC",
+              "CR",
+              "ACC",
+              "AFC",
+              "CCiLF",
+              "CLiCRAF",
+              "ALC",
+              "CCiRe",
+              "CLLiFA"
+            ]
+          },
+          {
+            "name": "SUP_KM2",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 1.33328642537e-05,
+              "maximum": 1577.29116926
+            }
+          },
+          {
+            "name": "SUP_HA",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.00133328642537,
+              "maximum": 157729.116926
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
