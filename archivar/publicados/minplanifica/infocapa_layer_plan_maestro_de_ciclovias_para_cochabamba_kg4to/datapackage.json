@@ -1,0 +1,111 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_minplanifica_infocapa_layer_plan_maestro_de_ciclovias_para_cochabamba_kg4to",
+  "title": "layer_plan_maestro_de_ciclovias_para_cochabamba_kg4to",
+  "sources": [
+    {
+      "title": "Geoserver del Ministerio de Planificación del Desarollo",
+      "path": "https://geoserver.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_minplanifica_infocapa_layer_plan_maestro_de_ciclovias_para_cochabamba_kg4to/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 86866,
+      "hash": "sha256:b12fd360d87e691d2a638d010ffcca3492861af10ff4eac2354dd13d2d2689d6",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_plan_maestro_de_ciclovias_para_cochabamba_kg4to.185"
+          },
+          {
+            "name": "color",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "VERDE",
+            "categories": [
+              "ROJO",
+              "AZUL",
+              "VERDE",
+              "MORADA",
+              "AMARILLO"
+            ]
+          },
+          {
+            "name": "long_km",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.031,
+              "maximum": 20.98
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Cochabamba",
+            "categories": [
+              "Cochabamba"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Tapacari",
+            "categories": [
+              "Cercado",
+              "Quillacollo",
+              "Chapare",
+              "Tapacari"
+            ]
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Sipesipe",
+            "categories": [
+              "Cochabamba",
+              "Sacaba",
+              "Tiquipaya",
+              "Colcapirhua",
+              "Quillacollo",
+              "Sipesipe",
+              "Vinto"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
