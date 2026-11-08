@@ -1,0 +1,81 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_smtcc_smtcc_raster_isoyetas_rbbsof",
+  "title": "raster_isoyetas_rbbsof",
+  "sources": [
+    {
+      "title": "Sistema de Monitoreo de La Madre Tierra y Cambio Climático del Ministerio de Medio Ambiente y Agua (MMAyA)",
+      "path": "https://geoserver.madretierra.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_smtcc_smtcc_raster_isoyetas_rbbsof/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 227904,
+      "hash": "sha256:bca93260b90312a6db3d90cb285ddd93b4c7a38706b0d24e5b42f1c3a702ab38",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "raster_isoyetas_rbbsof.3"
+          },
+          {
+            "name": "boi",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 200,
+              "maximum": 5500
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "example": "Oruro",
+            "categories": [
+              "Cochabamba",
+              "La Paz",
+              "Santa Cruz",
+              "Potosi",
+              "Chuquisaca",
+              "Beni",
+              "Oruro",
+              "Tarija",
+              "Pando",
+              "LA PAZ"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "example": "Ladislao Cabrera"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "example": "Salinas de Garci Mendoza"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
