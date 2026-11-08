@@ -1,0 +1,138 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_lp_vi_riesgoclimatico2000",
+  "title": "Mapa de riesgo climático de los valles interandinos del departamento de La Paz_ 2000",
+  "description": "Este mapa muestra la amenaza de variación o alteración climática por eventos climáticos extremos, y por variación de variables meteorológicas, mismo que considera seis clases de riesgo a heladas, granizadas o inundaciones probables. Producido por el proyecto ZONISIG (Zonificacion Agroecológica y Socioeconomica de los Valles Interandinos de La Paz) y convenios de cooperación en el año 2000, a escala 1:25000.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_lp_vi_riesgoclimatico2000/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 134317,
+      "hash": "sha256:39457eed3f0ebc14e54b3ccbf28237301e1d3da41ca86266df9c3920936d2a29",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "lp_vi_riesgoclimatico2000.1"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 23
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "lp_vi_RiesgoClimatico2000.1"
+          },
+          {
+            "name": "he",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "m",
+            "categories": [
+              "b",
+              "m",
+              "l",
+              "a"
+            ]
+          },
+          {
+            "name": "gran",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "m",
+            "categories": [
+              "b",
+              "m",
+              "l",
+              "a"
+            ]
+          },
+          {
+            "name": "crec_rio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "l",
+            "categories": [
+              "l",
+              "b",
+              "m"
+            ]
+          },
+          {
+            "name": "h_g_r",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "m.l.",
+            "categories": [
+              "b.l.",
+              "m.l.",
+              "a.l.",
+              "b.b.",
+              "l.m.",
+              "l.b."
+            ]
+          },
+          {
+            "name": "riesgo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "m. l. : mediano riesgo a heladas y granizadas",
+            "categories": [
+              "b. l. : bajo riesgo a heladas y granizadas",
+              "m. l. : mediano riesgo a heladas y granizadas",
+              "a. l. : alto riesgo a heladas y granizadas",
+              "b. b. : bajo riesgo a heladas y granizadas e inundaciones",
+              "l. m. : mediano riesgo a inundaciones",
+              "l. b. : bajo riesgo a inundaciones"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
