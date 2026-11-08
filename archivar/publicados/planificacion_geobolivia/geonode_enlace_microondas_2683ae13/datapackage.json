@@ -1,0 +1,128 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geobolivia_geonode_enlace_microondas_2683ae13",
+  "title": "Red Enlaces Microondas (2024)",
+  "description": "Información geográfica que establece la Red de Enlaces de Microondas (Nodos) de los Operadores que brindan dicho servicio en el Estado Plurinacional de Bolivia. Información obtenida de la Autoridad de Regulación y Fiscalización de Telecomunicaciones y Transportes - ATT (2024).",
+  "sources": [
+    {
+      "title": "Nueva plataforma GeoBolivia",
+      "path": "https://geonode.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geobolivia_geonode_enlace_microondas_2683ae13/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 209417,
+      "hash": "sha256:26e8062ef9ca707ad1375ed3cd8d61db6718bae69e13b3a7178b6de6ab9bc906",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "enlace_microondas_2683ae13.377"
+          },
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 3872
+            }
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 3872
+            }
+          },
+          {
+            "name": "operador",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "ENTEL S,A,",
+            "categories": [
+              "ENTEL S,A,",
+              "ENTEL S.A.",
+              "ENTEL",
+              "Nuevatel",
+              "TIGO",
+              "COMTECO"
+            ]
+          },
+          {
+            "name": "nombre_de",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "CO_BELEN-LLICA"
+          },
+          {
+            "name": "tipo_estac",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "A",
+            "categories": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "name": "nombre_est",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "CO_BELEN"
+          },
+          {
+            "name": "latitud",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -22.73295,
+              "maximum": -10.328247
+            }
+          },
+          {
+            "name": "longitud",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -69.4664,
+              "maximum": -57.719369
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
