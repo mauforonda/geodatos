@@ -1,0 +1,179 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_biodiversidad",
+  "title": "biodiversidad",
+  "description": "No abstract provided",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_biodiversidad/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 30991303,
+      "hash": "sha256:1381c85253be9c6255bb45b98d66a2d85210e5c91c1608ab76c3eb51d37ef2df",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "biodiversidad.44"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 262
+            }
+          },
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 262
+            }
+          },
+          {
+            "name": "bio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Area Hidromorfica",
+            "categories": [
+              "Arbustos",
+              "Laguna",
+              "Pastizal",
+              "Bosquetes",
+              "Herbaceo",
+              "Chilliguar",
+              "Roquedales",
+              "Bofedal",
+              "Deposito Fluvial",
+              "Area Hidromorfica",
+              "Gramadal",
+              "Rio Principal",
+              "Nevados",
+              "Totoral - Grupo de Orestias Exepto Ispi",
+              "Grupo de Orestias Exepto Ispi y Pentlandi",
+              "Arenal",
+              "Lago",
+              "Orestias Ispi",
+              "Salar"
+            ]
+          },
+          {
+            "name": "val",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Alto",
+            "categories": [
+              "Alto",
+              "Bajo",
+              "Medio"
+            ]
+          },
+          {
+            "name": "sup_km2",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0.0721592313239,
+              "maximum": 8243.21200657
+            }
+          },
+          {
+            "name": "per_km",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1.56505732666,
+              "maximum": 7233.05946976
+            }
+          },
+          {
+            "name": "pai",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Chile",
+            "categories": [
+              "Perú",
+              "Bolivia",
+              "Chile"
+            ]
+          },
+          {
+            "name": "cue_pla",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Salar de Coipasa",
+            "categories": [
+              "Lago Titicaca",
+              "Río Desaguadero",
+              "Salar de Coipasa",
+              "Lago Poopó"
+            ]
+          },
+          {
+            "name": "zon_hid",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "COIPASA",
+            "categories": [
+              "CIRCUNLACUSTRE",
+              "MAURI",
+              "COIPASA",
+              "ALTO DESAGUADERO",
+              "SUCHES",
+              "HUAYCHO",
+              "ILAVE",
+              "RAMIS",
+              "COATA",
+              "POOPO",
+              "HUANCANE",
+              "ILLPA",
+              "KATARI",
+              "MEDIO DESAGUADERO"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 28."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
