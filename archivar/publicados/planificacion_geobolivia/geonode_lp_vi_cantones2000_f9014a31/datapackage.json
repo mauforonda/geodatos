@@ -1,0 +1,111 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geobolivia_geonode_lp_vi_cantones2000_f9014a31",
+  "title": "Límites cantonales de los valles interandinos del departamento de La Paz (2000)",
+  "description": "Información geoespacial de la división político administrativa de los cantones de los valles interandinos de La Paz. Producido por el proyecto ZONISIG (Zonificacion Agroecológica y Socioeconomica de los Valles Interandinos de La Paz) y convenios de cooperación en el año 2000, a escala 1:25000.",
+  "sources": [
+    {
+      "title": "Nueva plataforma GeoBolivia",
+      "path": "https://geonode.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geobolivia_geonode_lp_vi_cantones2000_f9014a31/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 178071,
+      "hash": "sha256:87b127e5b2b4c3b10a9945b09dd453b500fee8c29088fd8459d852a52ed3ea13",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "lp_vi_cantones2000_f9014a31.112"
+          },
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 178
+            }
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 178
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "lp_vi_Cantones2000.107"
+          },
+          {
+            "name": "provincia",
+            "type": "string",
+            "example": "AROMA",
+            "categories": [
+              "INQUISIVI",
+              "LOAYZA",
+              "AROMA",
+              "LARECAJA",
+              "MURILLO",
+              "BAUTISTA SAAVEDRA",
+              "CAMACHO",
+              "MUÑECAS",
+              "SUD YUNGAS",
+              "LOS ANDES",
+              "FRANZ TAMAYO",
+              "OMASUYOS",
+              "NOR YUNGAS"
+            ]
+          },
+          {
+            "name": "municipios",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Ayo_Ayo"
+          },
+          {
+            "name": "canton",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "COLLANA TOLAR"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
