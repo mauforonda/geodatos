@@ -1,0 +1,120 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_geosit_mora_atm_centro",
+  "title": "Mora ATM Centro",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz",
+      "path": "http://sitservicios.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_geosit_mora_atm_centro/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 209284,
+      "hash": "sha256:37b7da4cb1d4c9d056800b5c772ebda7d2ca8b0b6103a4d861f2cece180b5fac",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "mora_atm_centro.2313"
+          },
+          {
+            "name": "codigocatastral",
+            "type": "string",
+            "example": "022000200090000"
+          },
+          {
+            "name": "distrito",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "1",
+            "categories": [
+              "1",
+              "2"
+            ]
+          },
+          {
+            "name": "macrodistr",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Centro",
+            "categories": [
+              "Centro"
+            ]
+          },
+          {
+            "name": "zona",
+            "type": "string",
+            "example": "CASCO URBANO CENTRAL"
+          },
+          {
+            "name": "identifica",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 11691169.0,
+              "maximum": 33022083465400.0
+            }
+          },
+          {
+            "name": "num_inmueble",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 35,
+              "maximum": 1101093
+            }
+          },
+          {
+            "name": "direccion",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "PASAJE GRAL. BERNARDO TRIGO #447, ZONA/BARRIO CASCO URBANO CENTRAL EDIF: MILLAN BLOQUE:  PISO: 2 OFI"
+          },
+          {
+            "name": "n_segmento",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "1_69"
+          },
+          {
+            "name": "cod_encues",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "1_69_15"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
