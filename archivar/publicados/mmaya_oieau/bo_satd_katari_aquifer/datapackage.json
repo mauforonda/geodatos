@@ -1,0 +1,75 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_oieau_bo_satd_katari_aquifer",
+  "title": "aquifer",
+  "sources": [
+    {
+      "title": "Sistema para la Gestión Integral de Recursos Hídricos desarrollado por la Oficina Internacional del Agua (OiEau)",
+      "path": "https://www.oieau-wiss.org/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_oieau_bo_satd_katari_aquifer/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 66571,
+      "hash": "sha256:fc4ef92ae6df38d363e601f47f2f3ac976bb61f4695286c0f63224bd1c92aded",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "example": "aquifer.2"
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "example": "Viacha"
+          },
+          {
+            "name": "area",
+            "type": "number",
+            "constraints": {
+              "minimum": 35.095,
+              "maximum": 371.416
+            }
+          },
+          {
+            "name": "alias",
+            "type": "string",
+            "example": "Viacha"
+          },
+          {
+            "name": "last_edited_date",
+            "type": "datetime",
+            "constraints": {
+              "minimum": "2022-03-11T09:53:39+00:00",
+              "maximum": "2022-03-11T09:53:39+00:00"
+            }
+          },
+          {
+            "name": "last_edited_user",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 1
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
