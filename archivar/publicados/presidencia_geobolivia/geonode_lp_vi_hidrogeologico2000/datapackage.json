@@ -1,0 +1,111 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_lp_vi_hidrogeologico2000",
+  "title": "Mapa hidrogeológico de los valles interandinos del departamento La Paz_ 2000",
+  "description": "Este mapa muestra la morfología de las napas freáticas y dinámicas de flujo del medio subterráneo, poniendo énfasis en sus condicionantes climáticas, geológicas e hidráulicas. Identificando grupos principales de acuiferos y unidades hidrogeológicas de ocurrencia de aguas subterraneas. Producido por el proyecto ZONISIG (Zonificacion Agroecológica y Socioeconomica de los Valles Interandinos de La Paz) y convenios de cooperación en el año 2000, a escala 1:25000.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_lp_vi_hidrogeologico2000/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 105918,
+      "hash": "sha256:c5ac28d4b281dc3852d4f8f21223167b083f855ce2215dc9c861ec2b07bdee3b",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "lp_vi_hidrogeologico2000.10"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 15
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "lp_vi_Hidrogeologico2000.10"
+          },
+          {
+            "name": "color",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 3,
+              "maximum": 201
+            }
+          },
+          {
+            "name": "clave",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 4
+            }
+          },
+          {
+            "name": "zonas",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Al/Re",
+            "categories": [
+              "Ac/Rn",
+              "Aa/Ri",
+              "Al/Re",
+              "Al/Rc"
+            ]
+          },
+          {
+            "name": "leyenda",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Al/Re: Acuiferos libres/ Rocas efusivas",
+            "categories": [
+              "Ac/Rn: Acuiferos continuos / Rocas no consolidada",
+              "Aa/Ri : Acuiferos ausente / Rocas intrusivas",
+              "Al/Re: Acuiferos libres/ Rocas efusivas",
+              "Al/Rc: Acuiferos libres/ Rocas carbonaticas"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
