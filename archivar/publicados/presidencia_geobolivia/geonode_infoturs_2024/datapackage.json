@@ -1,0 +1,174 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_infoturs_2024",
+  "title": "infoturs_2024",
+  "description": "No abstract provided",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_infoturs_2024/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 5726,
+      "hash": "sha256:185cdbc16ff344bc2a338fcca722f3744999e7b29e18374cce39ebc171389d9d",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "infoturs_2024.9"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 23
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Potosi",
+            "categories": [
+              "Potosí",
+              "Chuquisaca",
+              "La Paz",
+              "Potosi",
+              "Santa Cruz",
+              "Tarija",
+              "Beni",
+              "Cochabamba"
+            ]
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Tupiza",
+            "categories": [
+              "La Paz",
+              "Potosí",
+              "Sucre",
+              "Potosi",
+              "Tarija",
+              "Uyuni",
+              "Cercado",
+              "Trinidad",
+              "Tupiza",
+              "Warnes",
+              "Ándres Ibañez"
+            ]
+          },
+          {
+            "name": "entid_resp",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Gobierno Autónomo Departamental de Potosi"
+          },
+          {
+            "name": "resp_gest",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Gobierno Departamental"
+          },
+          {
+            "name": "dist_km",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.01,
+              "maximum": 17.5
+            }
+          },
+          {
+            "name": "aÑo",
+            "type": "number",
+            "constraints": {
+              "minimum": 2005.0,
+              "maximum": 2024.0
+            }
+          },
+          {
+            "name": "mat_disp",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "-"
+          },
+          {
+            "name": "equip",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Exhibición e información, Mobilario",
+            "categories": [
+              "Computación, Mobiliario",
+              "Audiovisual, Computación,  Exhibición e informativo, Mobiliario",
+              "Audiovisual, Exhibición e informativo, Mobiliario",
+              "Exhibición e información, Mobilario",
+              "Mobiliario",
+              "Audiovisual",
+              "Audiovisual, Computación, Mobiliario",
+              "Computación, Exhibición e informativo, Mobiliario"
+            ]
+          },
+          {
+            "name": "longitud",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": -21.547121,
+              "maximum": -14.836763
+            }
+          },
+          {
+            "name": "latitud",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": -68.149654,
+              "maximum": -63.140796
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
