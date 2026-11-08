@@ -1,0 +1,68 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_cuencas_rios_arque_tapacari",
+  "title": "Plan Director Cuenca Río Arque y Tapacarí - Límite Cuenca",
+  "description": "PDCRAyT (Plan Director de la Cuenca Rio Arque y Tapacarí). Muestra el límite de la cuenca de los Ríos Arque y Tapacarí.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_cuencas_rios_arque_tapacari/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 145872,
+      "hash": "sha256:0f2e42d8abed6daec1f89e1fc14c2e7547fae7f676e903a070c1c8bd8d39784b",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "NOMBRE",
+            "type": "string",
+            "example": "Cuenca Rio Arque"
+          },
+          {
+            "name": "COD_PFAF",
+            "type": "string",
+            "example": "466982"
+          },
+          {
+            "name": "NIVEL",
+            "type": "string",
+            "example": "Nivel 6",
+            "categories": [
+              "Nivel 6"
+            ]
+          },
+          {
+            "name": "SUP_KM2",
+            "type": "number",
+            "constraints": {
+              "minimum": 990.15,
+              "maximum": 2195.59
+            }
+          },
+          {
+            "name": "CLASIFIC",
+            "type": "string",
+            "example": "Subcuenca"
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
