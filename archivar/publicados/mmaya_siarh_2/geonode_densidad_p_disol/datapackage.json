@@ -1,0 +1,55 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_densidad_p_disol",
+  "title": "Plan Director Cuenca Río Pampa Huari – Densidad Poblacional",
+  "description": "PDCRPH (Plan Director de la Cuenca Rio Pampa Huari) Describe la densidad poblacional en relación a superficie de la cuenca del rio pampa Huari.\n\nDensidad (Hab/km2)\n0-12734\n12734-45574\n45574-98521\n98521-170904\n>170904",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_densidad_p_disol/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 76181,
+      "hash": "sha256:2a1a7f26fec77e1f3ee4ee8a60a034b19dcc1b4d4b9f19152a8c4d2ac674f07e",
+      "schema": {
+        "fields": [
+          {
+            "name": "gridcode",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 5
+            }
+          },
+          {
+            "name": "Densidad",
+            "type": "string",
+            "example": "0 - 12734"
+          },
+          {
+            "name": "Pob_Km2",
+            "type": "string",
+            "example": "0"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
