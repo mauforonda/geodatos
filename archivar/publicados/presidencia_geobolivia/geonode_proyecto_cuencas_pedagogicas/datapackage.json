@@ -1,0 +1,126 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_proyecto_cuencas_pedagogicas",
+  "title": "Cuencas Pedagógicas a nivel Bolivia en el marco del PNC_ 2017",
+  "description": "El mapa muestra las 13 cuencas hidrográficas en el territorio nacional. El Programa Intercultural de Cuencas Pedagógicas se encuentra enmarcado el Plan Nacional de Cuencas (PNC) instrumento de planificación desde el cual se ejecutan proyectos de Gestión Integrada de Recursos Hídricos y Manejo Integral de Cuencas (GIRH/MIC). Este programa nace a partir de la necesidad de articular esfuerzos para impulsar la acción sobre temas críticos del agua y promover conocimiento a través de la investigación - acción entre comunidades, entidades públicas del gobierno central como locales y universidades. El programa tiene el objetivo de desarrollar y fortalecer capacidades de gestión solidaria, equitativa y sustentable del agua y los recursos naturales asociados en espacios territoriales de cuenca, mediante la interacción pedagógica e intercultural entre saberes locales y conocimientos académicos, con potencial de aprendizaje y recreación en otras cuencas. A escala 1:100.000",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_proyecto_cuencas_pedagogicas/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 149060,
+      "hash": "sha256:0ff0b5cc0b7188a2ed911d967adf70cd34a53013f39a823f6f5924268a3f7c0e",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "proyecto_cuencas_pedagogicas.6"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 13
+            }
+          },
+          {
+            "name": "objectid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 13
+            }
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "UH CORPUMA"
+          },
+          {
+            "name": "depto",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "La Paz",
+            "categories": [
+              "Cochabamba",
+              "La Paz",
+              "Potosi",
+              "Chuquisaca",
+              "Oruro",
+              "Santa Cruz"
+            ]
+          },
+          {
+            "name": "municipio",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Jesús de Machaca"
+          },
+          {
+            "name": "sup_km2_",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 7.34070970796,
+              "maximum": 506.663366237
+            }
+          },
+          {
+            "name": "limite",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Cuenca Hidrográfica",
+            "categories": [
+              "Cuenca Hidrográfica"
+            ]
+          },
+          {
+            "name": "uhg",
+            "type": "string",
+            "example": "015349"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
