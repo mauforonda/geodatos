@@ -1,0 +1,177 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_sit_alumbradopublico",
+  "title": "Alumbrado Publico",
+  "description": "Alumbrado público, luminarias.",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz",
+      "path": "http://sitservicios.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_sit_alumbradopublico/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 229258,
+      "hash": "sha256:89d8b32c9861df01dc56b2b8246f9d6a18793ac7455c88df1b87030c649ff45a",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "AlumbradoPublico.5179"
+          },
+          {
+            "name": "Codigo_pi",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "2-02576"
+          },
+          {
+            "name": "Zona",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Bajo Pacajes"
+          },
+          {
+            "name": "Direccion",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "AV/ NACIONES UNIDAS ENTRE C/ MANUEL ASCENCIO PADILLA Y C/ GRAL  MANUEL ASCENCIO PADILLA"
+          },
+          {
+            "name": "Distrito",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 23
+            }
+          },
+          {
+            "name": "Propietari",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "GAMLP",
+            "categories": [
+              "GAMLP",
+              "DELAPAZ",
+              "PARTICULAR",
+              "COBEE",
+              "COTEL"
+            ]
+          },
+          {
+            "name": "Tipo_poste",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "METAL",
+            "categories": [
+              "METAL",
+              "CONCRETO",
+              "MADERA",
+              "TECHO",
+              "PARED",
+              "SUELO"
+            ]
+          },
+          {
+            "name": "Tipo_lampa",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "VNA",
+            "categories": [
+              "VNA",
+              "LED",
+              "HM",
+              "VHG",
+              "FLU"
+            ]
+          },
+          {
+            "name": "Potencia",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 7,
+              "maximum": 400
+            }
+          },
+          {
+            "name": "Macrodistr",
+            "type": "string",
+            "example": "MAXIMILIANO PAREDES",
+            "categories": [
+              "SUR",
+              "COTAHUMA",
+              "PERIFERICA",
+              "SAN ANTONIO",
+              "MAXIMILIANO PAREDES",
+              "HAMPATURI",
+              "ZONGO"
+            ]
+          },
+          {
+            "name": "owner",
+            "type": "integer"
+          },
+          {
+            "name": "usuario",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "carlos.zenteno",
+            "categories": [
+              "carlos.zenteno"
+            ]
+          },
+          {
+            "name": "fechaActual",
+            "type": "datetime",
+            "constraints": {
+              "required": true,
+              "minimum": "2025-05-13T15:59:28+00:00",
+              "maximum": "2025-05-13T15:59:28+00:00"
+            }
+          },
+          {
+            "name": "observaciones",
+            "type": "integer"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}

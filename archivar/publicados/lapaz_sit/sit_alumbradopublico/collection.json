@@ -1,0 +1,249 @@
+{
+  "type": "Collection",
+  "id": "geodatosbolivia_lapaz_sit_sit_alumbradopublico",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json",
+    "https://stac-extensions.github.io/vector/v0.1.0/schema.json",
+    "https://stac-extensions.github.io/projection/v2.0.0/schema.json",
+    "https://stac-extensions.github.io/file/v2.1.0/schema.json",
+    "https://stac-extensions.github.io/web-map-links/v1.3.0/schema.json"
+  ],
+  "title": "Alumbrado Publico",
+  "description": "Alumbrado público, luminarias.",
+  "license": "other",
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -68.1716386082862,
+          -16.554122206489005,
+          -67.70663300000002,
+          -15.667624000000016
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "providers": [
+    {
+      "name": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz",
+      "roles": [
+        "producer"
+      ],
+      "url": "http://sitservicios.lapaz.bo/geoserver/ows"
+    },
+    {
+      "name": "Internet Archive",
+      "roles": [
+        "host"
+      ],
+      "url": "https://archive.org/details/geodatosbolivia_lapaz_sit_sit_alumbradopublico"
+    }
+  ],
+  "table:primary_geometry": "geometry",
+  "table:row_count": 5000,
+  "table:columns": [
+    {
+      "name": "id",
+      "type": "string"
+    },
+    {
+      "name": "Codigo_pi",
+      "type": "string"
+    },
+    {
+      "name": "Zona",
+      "type": "string"
+    },
+    {
+      "name": "Direccion",
+      "type": "string"
+    },
+    {
+      "name": "Distrito",
+      "type": "int32"
+    },
+    {
+      "name": "Propietari",
+      "type": "string"
+    },
+    {
+      "name": "Tipo_poste",
+      "type": "string"
+    },
+    {
+      "name": "Tipo_lampa",
+      "type": "string"
+    },
+    {
+      "name": "Potencia",
+      "type": "int32"
+    },
+    {
+      "name": "Macrodistr",
+      "type": "string"
+    },
+    {
+      "name": "owner",
+      "type": "int32"
+    },
+    {
+      "name": "usuario",
+      "type": "string"
+    },
+    {
+      "name": "fechaActual",
+      "type": "timestamp[us, tz=UTC]"
+    },
+    {
+      "name": "observaciones",
+      "type": "int32"
+    },
+    {
+      "name": "geometry",
+      "type": "binary",
+      "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+    }
+  ],
+  "summaries": {
+    "vector:geometry_types": [
+      "Point"
+    ]
+  },
+  "assets": {
+    "data": {
+      "href": "https://archive.org/download/geodatosbolivia_lapaz_sit_sit_alumbradopublico/dataset.geoparquet",
+      "type": "application/vnd.apache.parquet",
+      "title": "GeoParquet",
+      "roles": [
+        "data"
+      ],
+      "proj:code": "EPSG:4326",
+      "file:size": 229258,
+      "file:checksum": "122089d8b32c9861df01dc56b2b8246f9d6a18793ac7455c88df1b87030c649ff45a"
+    },
+    "datapackage": {
+      "href": "./datapackage.json",
+      "type": "application/json",
+      "title": "Data Package: columnas, tipos y categorías",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "pmtiles": {
+      "href": "https://archive.org/download/geodatosbolivia_lapaz_sit_sit_alumbradopublico/dataset.pmtiles",
+      "type": "application/vnd.pmtiles",
+      "title": "Teselas vectoriales (PMTiles)",
+      "roles": [
+        "visual"
+      ],
+      "file:size": 105406,
+      "file:checksum": "12203e48dde4c98247165415d8a04470f2b44d26603f1381232bc59e2f61f01c5cbf"
+    }
+  },
+  "pmtiles:min_zoom": 10,
+  "pmtiles:max_zoom": 12,
+  "pmtiles:tile_type": "mvt",
+  "pmtiles:center": [
+    -67.9391358,
+    -16.1108731,
+    11
+  ],
+  "pmtiles:properties": [
+    {
+      "nombre": "Propietari",
+      "tipo": "string",
+      "categorias": [
+        "GAMLP",
+        "DELAPAZ",
+        "PARTICULAR",
+        "COBEE",
+        "COTEL"
+      ]
+    },
+    {
+      "nombre": "Tipo_poste",
+      "tipo": "string",
+      "categorias": [
+        "METAL",
+        "CONCRETO",
+        "MADERA",
+        "TECHO",
+        "PARED",
+        "SUELO"
+      ]
+    },
+    {
+      "nombre": "Tipo_lampa",
+      "tipo": "string",
+      "categorias": [
+        "VNA",
+        "LED",
+        "HM",
+        "VHG",
+        "FLU"
+      ]
+    },
+    {
+      "nombre": "Macrodistr",
+      "tipo": "string",
+      "categorias": [
+        "SUR",
+        "COTAHUMA",
+        "PERIFERICA",
+        "SAN ANTONIO",
+        "MAXIMILIANO PAREDES",
+        "HAMPATURI",
+        "ZONGO"
+      ]
+    },
+    {
+      "nombre": "Distrito",
+      "tipo": "number",
+      "minimo": 0.0,
+      "maximo": 23.0
+    },
+    {
+      "nombre": "Potencia",
+      "tipo": "number",
+      "minimo": 7.0,
+      "maximo": 400.0
+    }
+  ],
+  "links": [
+    {
+      "rel": "root",
+      "href": "../../../catalog.json",
+      "type": "application/json",
+      "title": "Datos geográficos de Bolivia"
+    },
+    {
+      "rel": "parent",
+      "href": "../catalog.json",
+      "type": "application/json",
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz"
+    },
+    {
+      "rel": "via",
+      "href": "http://sitservicios.lapaz.bo/geoserver/ows",
+      "type": "text/html",
+      "title": "Servicio de origen"
+    },
+    {
+      "rel": "pmtiles",
+      "href": "https://archive.org/download/geodatosbolivia_lapaz_sit_sit_alumbradopublico/dataset.pmtiles",
+      "type": "application/vnd.pmtiles",
+      "pmtiles:layers": [
+        "dataset"
+      ]
+    }
+  ]
+}
