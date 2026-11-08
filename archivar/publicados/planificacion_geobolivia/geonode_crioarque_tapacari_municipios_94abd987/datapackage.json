@@ -1,0 +1,105 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geobolivia_geonode_crioarque_tapacari_municipios_94abd987",
+  "title": "Plan Director Cuenca Río Arque y Tapacarí - Municipios, Bolivia",
+  "description": "Información geoespacial de los 12 municipios que conforman la cuenca del río Arque y Tapacarí. Información obtenida del Viceministerio de Recursos Hídricos y Riego, ha noviembre del 2020.",
+  "sources": [
+    {
+      "title": "Nueva plataforma GeoBolivia",
+      "path": "https://geonode.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geobolivia_geonode_crioarque_tapacari_municipios_94abd987/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 142469,
+      "hash": "sha256:68254ebef9d047ee2a5e1befd8b89a763aa7051a51949831354100e8945a9926",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "crioarque_tapacari_municipios_94abd987.11"
+          },
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 12
+            }
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 12
+            }
+          },
+          {
+            "name": "departamen",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Cochabamba",
+            "categories": [
+              "Cochabamba",
+              "Potosí",
+              "Oruro"
+            ]
+          },
+          {
+            "name": "provincia",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Bolivar"
+          },
+          {
+            "name": "municipio",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Bolivar"
+          },
+          {
+            "name": "capital",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Bolivar"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
