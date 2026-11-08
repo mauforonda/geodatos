@@ -1,0 +1,130 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_cguadalquivir_fisiografia",
+  "title": "Plan Director de la Cuenca Río Guadalquivir - Fisiografia_ Bolivia",
+  "description": "Muestra la georreferenciación e información de unidades fisiográficas del Plan Director de la Cuenca del Río Guadalquivir. Dato del Viceministerio de Recursos Hídricos y Riego a marzo 2017.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_cguadalquivir_fisiografia/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 263168,
+      "hash": "sha256:cf750a689d3432bcfa7f468b41891d46039fcfeed06a7659f297a1ee05f2aea3",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "cguadalquivir_fisiografia.5"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 25
+            }
+          },
+          {
+            "name": "objectid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 25
+            }
+          },
+          {
+            "name": "codfis_s",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "CmbF"
+          },
+          {
+            "name": "descripcio",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Montanas Bajas, con diseccion  Fuerte"
+          },
+          {
+            "name": "cod_geol",
+            "type": "string",
+            "example": "O"
+          },
+          {
+            "name": "cod_veg",
+            "type": "string",
+            "example": "IIIB,IIIC"
+          },
+          {
+            "name": "gpaisaje",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Cm",
+            "categories": [
+              "Cc",
+              "Cm",
+              "Cs",
+              "Ci",
+              "Cl",
+              "Cp",
+              "A",
+              "Ur"
+            ]
+          },
+          {
+            "name": "paisaje",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Cmb"
+          },
+          {
+            "name": "area",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 83.78,
+              "maximum": 30088.15
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
