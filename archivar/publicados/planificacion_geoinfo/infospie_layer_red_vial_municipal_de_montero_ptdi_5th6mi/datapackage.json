@@ -1,0 +1,143 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_red_vial_municipal_de_montero_ptdi_5th6mi",
+  "title": "Red Vial Municipal de Montero - PTDI",
+  "description": "El mapa muestra la distribución geográfica de la red vial a nivel municipal en Montero, en el departamento de Santa Cruz, así como la clasificación de los caminos por tipo, según el PTDI 2021 - 2025.",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_red_vial_municipal_de_montero_ptdi_5th6mi/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 138755,
+      "hash": "sha256:14e1b323d9f945b17d309b7d5826d278e9e81f58fb1cc16225dcbcec412885c5",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_red_vial_municipal_de_montero__ptdi_5th6mi.908"
+          },
+          {
+            "name": "fclass",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Caminos - ruta",
+            "categories": [
+              "Residencial",
+              "Caminos - ruta",
+              "Ruta de servicio",
+              "Vías terciarias",
+              "Sin clasificar",
+              "Carretera principal",
+              "Camino Peatonal - Senda",
+              "Camino primario",
+              "Calles residenciales",
+              "Camino secundario",
+              "Carretera de enlace",
+              "Enlace vial",
+              "Calle Peatonal"
+            ]
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Sin dirección"
+          },
+          {
+            "name": "veloc_max_",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Sin restricción",
+            "categories": [
+              "Sin restricción",
+              "80",
+              "60"
+            ]
+          },
+          {
+            "name": "long_km",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.001,
+              "maximum": 12.006
+            }
+          },
+          {
+            "name": "clase",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Red Vial Municipal",
+            "categories": [
+              "Red Vial Municipal"
+            ]
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "SANTA CRUZ",
+            "categories": [
+              "SANTA CRUZ"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Obispo Santisteban",
+            "categories": [
+              "Obispo Santisteban"
+            ]
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Montero",
+            "categories": [
+              "Montero"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
