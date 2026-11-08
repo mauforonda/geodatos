@@ -1,0 +1,141 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_zonas_gamlp_2019",
+  "title": "Zonas Ciudad de La Paz_ Bolivia 2020",
+  "description": "Información geográfica de las zonas que conforman la ciudad de Nuestra Señora de La Paz, aproximadamente 188 zonas delimitas de forma referencial, información obtenida por el Gobierno Autónomo Municipal de La Paz en fecha 20 octubre del 2020",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_zonas_gamlp_2019/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 232805,
+      "hash": "sha256:bed8db4d6d07982d6e81fac6f37746c4e3035ddf6cbd0ec60b46ebc4b968cacf",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 188
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0,
+              "maximum": 187
+            }
+          },
+          {
+            "name": "zonaref",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "ISLA VERDE"
+          },
+          {
+            "name": "macrodistr",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "MALLASA",
+            "categories": [
+              "SUR",
+              "PERIFERICA",
+              "MAX PAREDES",
+              "COTAHUMA",
+              "SAN ANTONIO",
+              "MALLASA",
+              "CENTRO",
+              "HAMPATURI"
+            ]
+          },
+          {
+            "name": "zona",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Isla Verde"
+          },
+          {
+            "name": "subalcaldi",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "MALLASA",
+            "categories": [
+              "PERIFERICA",
+              "MAX PAREDES",
+              "CALACOTO",
+              "COTAHUMA",
+              "SAN ANTONIO",
+              "OVEJUYO",
+              "OBRAJES",
+              "MALLASA",
+              "CENTRO",
+              "HAMPATURI"
+            ]
+          },
+          {
+            "name": "codigozona",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1001,
+              "maximum": 22002
+            }
+          },
+          {
+            "name": "macro",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 8
+            }
+          },
+          {
+            "name": "distrito",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 22
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
