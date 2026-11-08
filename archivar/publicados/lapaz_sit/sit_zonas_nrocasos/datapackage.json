@@ -1,0 +1,132 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_sit_zonas_nrocasos",
+  "title": "Zonas segun numero de casos",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz",
+      "path": "http://sitservicios.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_sit_zonas_nrocasos/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 230370,
+      "hash": "sha256:eac852142f05a7edefe4491cf0cefcd4d499dc375299633ba519ed0f88928d38",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "zonas_nrocasos.42"
+          },
+          {
+            "name": "macrodistrito",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "MALLASA",
+            "categories": [
+              "SUR",
+              "PERIFERICA",
+              "MAX PAREDES",
+              "COTAHUMA",
+              "SAN ANTONIO",
+              "MALLASA",
+              "CENTRO",
+              "HAMPATURI"
+            ]
+          },
+          {
+            "name": "zona",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Isla Verde"
+          },
+          {
+            "name": "codigozona",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1001,
+              "maximum": 22002
+            }
+          },
+          {
+            "name": "macro",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 8
+            }
+          },
+          {
+            "name": "distrito",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 22
+            }
+          },
+          {
+            "name": "POSITIVO",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.0,
+              "maximum": 182.0
+            }
+          },
+          {
+            "name": "RECUPERADO",
+            "type": "number",
+            "constraints": {
+              "minimum": 1.0,
+              "maximum": 8196.0
+            }
+          },
+          {
+            "name": "FALLECIDO",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.0,
+              "maximum": 86.0
+            }
+          },
+          {
+            "name": "TOTAL",
+            "type": "number",
+            "constraints": {
+              "minimum": 1.0,
+              "maximum": 8464.0
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Polygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
