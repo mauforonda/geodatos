@@ -1,0 +1,112 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mhe_geoportal_geonode_bt_minired",
+  "title": "BT_Minired",
+  "sources": [
+    {
+      "title": "Geoportal del Viceministerio de Electricidad y Energías Renovables",
+      "path": "https://geoportal.mhe.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mhe_geoportal_geonode_bt_minired/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 189543,
+      "hash": "sha256:19185bcdd7669b827c73c7bdebed20557fc2c876c9118d4ed4f32a59799edfcb",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "fid_1",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 4427
+            }
+          },
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 4427
+            }
+          },
+          {
+            "name": "TipoCond",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Cuadruplex2",
+            "categories": [
+              "Cuadruplex2",
+              "Cuadruplex1"
+            ]
+          },
+          {
+            "name": "Long",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.002,
+              "maximum": 2.942
+            }
+          },
+          {
+            "name": "Amperios",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.5,
+              "maximum": 87.9
+            }
+          },
+          {
+            "name": "Ratio_pu",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 0.4
+            }
+          },
+          {
+            "name": "Flujo_kVA",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.33,
+              "maximum": 62.21
+            }
+          },
+          {
+            "name": "System",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "POTOSI_altiplano_ug_12"
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
