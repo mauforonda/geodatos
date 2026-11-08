@@ -1,0 +1,105 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_colcapirhua_geoportal_urbanismo_zonastributarias",
+  "title": "zonasTributarias",
+  "description": "Layer-Group type layer: Urbanismo:zonasTributarias",
+  "sources": [
+    {
+      "title": "Geoportal del Gobierno Municipal de Colcapirhua",
+      "path": "https://geoserver.geotec-srl.com/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_colcapirhua_geoportal_urbanismo_zonastributarias/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 1025618,
+      "hash": "sha256:25aade69a5f23bd36cb8f0fe741ee07d62ccb2377f01f75c1dd4b003d633a8af",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "zonasTributarias.3022"
+          },
+          {
+            "name": "distrito",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "E",
+            "categories": [
+              "A",
+              "B",
+              "E",
+              "D",
+              "C"
+            ]
+          },
+          {
+            "name": "n_manzano_",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "0169"
+          },
+          {
+            "name": "zonas",
+            "type": "string",
+            "example": "9",
+            "categories": [
+              "8",
+              "3",
+              "7",
+              "2",
+              "9",
+              "6",
+              "4",
+              "5",
+              "1",
+              "10"
+            ]
+          },
+          {
+            "name": "dist_planu",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "E",
+            "categories": [
+              "A",
+              "E",
+              "29 N",
+              "30 N",
+              "30 S",
+              "31 N",
+              "29 S",
+              "31 S",
+              "29-N"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 1."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
