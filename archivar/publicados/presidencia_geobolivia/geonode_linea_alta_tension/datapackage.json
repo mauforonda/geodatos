@@ -1,0 +1,86 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_linea_alta_tension",
+  "title": "Red eléctrica de alta tensión en Bolivia_ 2012",
+  "description": "Este mapa representa la distribución espacial de la red eléctrica de alta tensión para el suministro de energía en Bolivia, representado en tres categorías de distinto color rojo 69, azul 115 y verde 230 en KV . Elaborado por la Autoridad de fiscalización y control de electricidad (AE) con datos actualizados a diciembre del año 2012 a escala 1:4500000.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_linea_alta_tension/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 134924,
+      "hash": "sha256:084641ebb82173b396950b5ed9324706e46f8ca6b2511a8a2641d2e918be5bf7",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 118
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "LINEA_ALTA_TENSION.52"
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 0
+            }
+          },
+          {
+            "name": "docname",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Telamayu-Tupiza"
+          },
+          {
+            "name": "tension",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "69 kV",
+            "categories": [
+              "69 kV",
+              "115 kV",
+              "230 kV"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString. Geometrías inválidas, conservadas sin reparar: 5."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
