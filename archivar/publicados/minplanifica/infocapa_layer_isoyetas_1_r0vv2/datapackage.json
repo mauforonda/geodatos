@@ -1,0 +1,94 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_minplanifica_infocapa_layer_isoyetas_1_r0vv2",
+  "title": "layer_isoyetas_1_r0vv2",
+  "sources": [
+    {
+      "title": "Geoserver del Ministerio de Planificación del Desarollo",
+      "path": "https://geoserver.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_minplanifica_infocapa_layer_isoyetas_1_r0vv2/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 264650,
+      "hash": "sha256:9c457f8d25d1e13ca83829a9be2a231694ac4cf096546b4383bd7d96a168869f",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_isoyetas_1_r0vv2.54"
+          },
+          {
+            "name": "boisoyet_i",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 200,
+              "maximum": 5500
+            }
+          },
+          {
+            "name": "long_km",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 388
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "example": "Oruro",
+            "categories": [
+              "La Paz",
+              "Cochabamba",
+              "Santa Cruz",
+              "Potosi",
+              "Chuquisaca",
+              "Beni",
+              "Oruro",
+              "Tarija",
+              "Pando",
+              "LA PAZ",
+              "SANTA CRUZ"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Ladislao Cabrera"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "example": "Salinas de Garci Mendoza"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString. Geometrías inválidas, conservadas sin reparar: 932."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
