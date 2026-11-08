@@ -1,0 +1,91 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_girh_mic",
+  "title": "Plan Director Cuenca Katari y Lago Menor del Titicaca - GIRH - MIC",
+  "description": "PDCKyLMT (Plan Director Cuenca Katari y Lago Menor del Titicaca). Muestra la ubicación y la información relevante de GIRH - MIC, en el marco del Plan Director Cuenca Katari y Lago Menor del Titicaca.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_girh_mic/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 136086,
+      "hash": "sha256:de41ee63d796aa58c2c869cb46df318b859bd39ff098ff8ddce2d55868d58f68",
+      "schema": {
+        "fields": [
+          {
+            "name": "NIVEL_UH",
+            "type": "string",
+            "example": "015349"
+          },
+          {
+            "name": "COD_SISIN",
+            "type": "string",
+            "example": "B79-79000-00000"
+          },
+          {
+            "name": "X",
+            "type": "number",
+            "constraints": {
+              "minimum": -68.8488706934,
+              "maximum": -68.5016314622
+            }
+          },
+          {
+            "name": "Y",
+            "type": "number",
+            "constraints": {
+              "minimum": -16.6636234033,
+              "maximum": -16.0923397798
+            }
+          },
+          {
+            "name": "NOM_PROYEC",
+            "type": "string",
+            "example": "Manejo Integral de la Cuenca del Río Corpuma"
+          },
+          {
+            "name": "DEPARTAMEN",
+            "type": "string",
+            "example": "La Paz",
+            "categories": [
+              "La Paz"
+            ]
+          },
+          {
+            "name": "MUNICIPIO",
+            "type": "string",
+            "example": "Jesús de Machaca"
+          },
+          {
+            "name": "PROVINCIA",
+            "type": "string",
+            "example": "Ingavi",
+            "categories": [
+              "Ingavi",
+              "Omasuyos",
+              "Los Andes"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
