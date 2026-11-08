@@ -1,0 +1,94 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_vallesiii_fase2_30cm_2010",
+  "title": "Mosaico de fotografias aereas Region Valles III Fase 2, 2010",
+  "description": "Cobertura de fotografías aéreas de la región de los valles de los Departamentos de Oruro (Provincias Pantaleon Dalence, Cercado, Poopo, Abaroa y Tomás Barron), Potosí (Provincias Chayanta, Alonzo de Ibañez, General Bernardino, Charcas, Rafael Bustillos y Cornelio Saavedra), Cochabamba (Provincia Bolivar) y Chuquisaca (Provincias Oropeza y Yamparaez). Capturadas en el año 2010 por la Fase 2 del vuelo aerofotogramétrico (Region Valles III) con una resolución espacial de 30 centímetros.\\\\n\\\\nElaborado por el Servicio Nacional de Aerofotogrametría (SNA), única entidad autorizada para realizar este tipo de trabajo aéreo.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_vallesiii_fase2_30cm_2010/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 131419,
+      "hash": "sha256:4b5bc98c8517a0b7082389134866475780ca2b60c3e319eafc8290d3f4376e10",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "vallesiii_fase2_30cm_2010.1556"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 2062
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "vallesIII_fase2_30cm_2010.1556"
+          },
+          {
+            "name": "area",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 0
+            }
+          },
+          {
+            "name": "objectid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 8,
+              "maximum": 2367
+            }
+          },
+          {
+            "name": "numero",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 8,
+              "maximum": 2367
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
