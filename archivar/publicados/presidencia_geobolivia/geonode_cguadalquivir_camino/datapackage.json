@@ -1,0 +1,108 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_cguadalquivir_camino",
+  "title": "Plan Director de la Cuenca Río Guadalquivir - Caminos_ Bolivia",
+  "description": "El mapa muestra la georreferenciación e información relevante de las vías de acceso del Plan Director de la Cuenca del Río Guadalquivir, dato de la Administradora Boliviana de Carreteras (ABC). Información del Viceministerio de Recursos Hídricos y Riego a mayo 2017.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_cguadalquivir_camino/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 201015,
+      "hash": "sha256:0c8910efb497610e1efdfeb2922d4526c273384e5b3fcf2696fc74517666ba87",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "cguadalquivir_camino.30"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 40
+            }
+          },
+          {
+            "name": "objectid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 40
+            }
+          },
+          {
+            "name": "categoria",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 3
+            }
+          },
+          {
+            "name": "detalle",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Camino (transitable con movilidad pero con poco trafico)",
+            "categories": [
+              "Camino (transitable con movilidad pero con poco trafico)",
+              "Camino principal (mucho trafico, varias flotas y camiones grandes por dia)",
+              "Principal (mucho trafico, varias flotas y camiones grandes por dia)",
+              "Secundario (movilidades diarias, transporte publico y de carga)"
+            ]
+          },
+          {
+            "name": "valoracion",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 3,
+              "maximum": 10
+            }
+          },
+          {
+            "name": "length",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0.051,
+              "maximum": 40.376
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
