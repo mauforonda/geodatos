@@ -1,0 +1,62 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mapbiomas_mapbiomas_venezuela_wildlife_reserve",
+  "title": "wildlife_reserve",
+  "sources": [
+    {
+      "title": "MapBiomas",
+      "path": "https://shared-geoserver.mapbiomas.org/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mapbiomas_mapbiomas_venezuela_wildlife_reserve/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 64488,
+      "hash": "sha256:d2d4bd675f84feff87f4e3e2751e77bf933a5f7269e9671cebc4c050533ed7d7",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "example": "wildlife_reserve.2"
+          },
+          {
+            "name": "Shape_Leng",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.0813119970201,
+              "maximum": 2.07222399481
+            }
+          },
+          {
+            "name": "Shape_Area",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.000404420208916,
+              "maximum": 0.107426283292
+            }
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "example": "Esteros de Camaguán"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 1."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
