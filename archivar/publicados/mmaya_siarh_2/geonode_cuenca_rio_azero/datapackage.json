@@ -1,0 +1,65 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_cuenca_rio_azero",
+  "title": "Plan Director Cuenca Río Azero - Límite Cuenca",
+  "description": "PDCRA (Plan Director de la Cuenca Rio Azero). Muestra los límites del Plan Director de la Cuenca del Río Azero.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_cuenca_rio_azero/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 86706,
+      "hash": "sha256:d6f6906e25f345354c7f087051036c05892d28ff5f5bec4ee75165bee2d686c7",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "NOMBRE",
+            "type": "string",
+            "example": "Cuenca Rio Azero"
+          },
+          {
+            "name": "COD_PFAF",
+            "type": "string",
+            "example": "46694"
+          },
+          {
+            "name": "NIVEL",
+            "type": "string",
+            "example": "Nivel 5"
+          },
+          {
+            "name": "SUP_KM2",
+            "type": "number",
+            "constraints": {
+              "minimum": 5689.28,
+              "maximum": 5689.28
+            }
+          },
+          {
+            "name": "CLASIFIC",
+            "type": "string",
+            "example": "Subcuenca"
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
