@@ -1,0 +1,92 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_macrodistrito_gamlp_2019",
+  "title": "Mapa Macrodistritos Municipio de La Paz, Bolivia 2020",
+  "description": "El municipio Nuestra Señora de La Paz se halla dividido, para su administración, en 9 macrodistritos, cada uno de ellos bajo la tuición de una subalcaldía y una autoridad denominada subalcalde, a través de estas entidades se descentralizan algunas actividades administrativas e impositivas. Estos macrodistritos son: Centro, Cotahuma, Hampaturi, Mallasa, Max Paredes, Periférica, San Antonio, Sur (subdivida en Calacoto, Obrajes y Ovejuyo), Zongo, los límites corresponde a la gestión 2019. Los Macrodistritos están formados por los distritos. Información obtenida del Gobierno Autónomo Municipal de La Paz en fecha 20 octubre del 2020.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_macrodistrito_gamlp_2019/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 133546,
+      "hash": "sha256:750ed89bbd4f0edb0939357347e376fbd408004f5ebea898a62d08e8b283f853",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 11
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0,
+              "maximum": 10
+            }
+          },
+          {
+            "name": "macro_ante",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "PERIFERICA"
+          },
+          {
+            "name": "macro_vige",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "PERIFERICA"
+          },
+          {
+            "name": "cod_macro",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 9
+            }
+          },
+          {
+            "name": "ha",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "1718"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 2."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
