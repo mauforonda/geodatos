@@ -1,0 +1,138 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_sit_toponimia2",
+  "title": "Toponimia",
+  "description": "Toponimia, lugares, anotaciones",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz",
+      "path": "http://sitservicios.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_sit_toponimia2/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 252187,
+      "hash": "sha256:af711d2dcb1f00e2e8974a07824e4b4bddfd981afd217992271f636fd426b2f4",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "toponimia2.1915"
+          },
+          {
+            "name": "tipo",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 16
+            }
+          },
+          {
+            "name": "sub_tipo",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 97
+            }
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "example": "Isla Verde"
+          },
+          {
+            "name": "alias",
+            "type": "string",
+            "example": "Área Verde Isla Verde"
+          },
+          {
+            "name": "fuente",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "SIT",
+            "categories": [
+              "INE",
+              "SIT",
+              "PROCART",
+              "PAIM",
+              "SUB HAMPATURI",
+              "UGT"
+            ]
+          },
+          {
+            "name": "categoria",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 5,
+              "maximum": 5
+            }
+          },
+          {
+            "name": "zonaref",
+            "type": "string",
+            "example": "Isla Verde"
+          },
+          {
+            "name": "tipo_desc",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Espacios Públicos",
+            "categories": [
+              "Instituciones",
+              "Espacios Públicos",
+              "Industria y Servicios",
+              "Deportes y Recreación",
+              "Administración",
+              "Centros Religiosos",
+              "Gastronomía y Hospedaje",
+              "Salud",
+              "Educación y Cultura",
+              "Defensa y Seguridad",
+              "Comercio",
+              "Telecomunicación",
+              "Hidrología",
+              "Entidades Financieras",
+              "Transporte",
+              "Energía Eléctrica"
+            ]
+          },
+          {
+            "name": "subtipo_desc",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Área Verde"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
