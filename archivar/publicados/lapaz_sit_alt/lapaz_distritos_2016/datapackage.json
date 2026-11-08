@@ -1,0 +1,117 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_alt_lapaz_distritos_2016",
+  "title": "Distritos Municipales 2016 (Redistritacion)",
+  "description": "Redistritacion segun Ley Municipal Nro. 166/2016.",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)",
+      "path": "http://sitservicios.lapaz.bo/ows38.jsp"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_lapaz_distritos_2016/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 153561,
+      "hash": "sha256:626336b13b8ff5957630e1ba99d14dff99604fa719e0759046d9714ffb72a41d",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "distritos_2016.2"
+          },
+          {
+            "name": "tipo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "UR",
+            "categories": [
+              "UR",
+              "RU"
+            ]
+          },
+          {
+            "name": "coddistrito",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 23
+            }
+          },
+          {
+            "name": "macrodistrito",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "MAX PAREDES",
+            "categories": [
+              "COTAHUMA",
+              "MAX PAREDES",
+              "SAN ANTONIO",
+              "PERIFÉRICA",
+              "SUR",
+              "CENTRO",
+              "HAMPATURI",
+              "MALLASA",
+              "ZONGO"
+            ]
+          },
+          {
+            "name": "subalcaldia",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "MAX PAREDES",
+            "categories": [
+              "COTAHUMA",
+              "MAX PAREDES",
+              "SAN ANTONIO",
+              "PERIFÉRICA",
+              "CENTRO",
+              "CALACOTO",
+              "HAMPATURI",
+              "MALLASA",
+              "OBRAJES",
+              "OVEJUYO",
+              "ZONGO"
+            ]
+          },
+          {
+            "name": "codmacro",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 9
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Polygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
