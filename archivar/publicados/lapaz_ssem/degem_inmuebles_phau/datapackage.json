@@ -1,0 +1,152 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_ssem_degem_inmuebles_phau",
+  "title": "inmuebles_phau",
+  "sources": [
+    {
+      "title": "Servicio de Seguimiento Estratégico Municipal del Gobierno Autónomo Municipal de La Paz",
+      "path": "https://ssem.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_ssem_degem_inmuebles_phau/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 144202,
+      "hash": "sha256:5a44e8c4ab94cc8dd76b2c7999b3c7224aa4e0a4976d3c30f387eef4d30cce35",
+      "schema": {
+        "fields": [
+          {
+            "name": "cod_sifca",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "022003500010000"
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 1102
+            }
+          },
+          {
+            "name": "cat_patrim",
+            "type": "string",
+            "example": "A",
+            "categories": [
+              "A",
+              "B",
+              "C"
+            ]
+          },
+          {
+            "name": "cod_cat",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "02200350001"
+          },
+          {
+            "name": "ley_mun",
+            "type": "string",
+            "example": "079",
+            "categories": [
+              "079"
+            ]
+          },
+          {
+            "name": "om",
+            "type": "string",
+            "example": "330/2014",
+            "categories": [
+              "330/2014"
+            ]
+          },
+          {
+            "name": "fecha",
+            "type": "datetime",
+            "constraints": {
+              "minimum": "2014-06-25T00:00:00.033000",
+              "maximum": "2014-06-27T00:00:00.986000"
+            }
+          },
+          {
+            "name": "ubicacion",
+            "type": "string",
+            "example": "Avenida del Libertador # 7 entre Av. del Ejército y Plaza Confucio. San Jorge"
+          },
+          {
+            "name": "fic_catal",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 3626
+            }
+          },
+          {
+            "name": "denominac",
+            "type": "string",
+            "example": "Casa Rafael Gisbert"
+          },
+          {
+            "name": "estilo",
+            "type": "string",
+            "example": "Neovernacular",
+            "categories": [
+              "Republicano",
+              "Contemporáneo",
+              "Ecléctico",
+              "Moderno",
+              "Californiana",
+              "Racionalista",
+              "Academicista",
+              "Neoclásico",
+              "Internacional",
+              "Colonial",
+              "Art Deco",
+              "Neovernacular",
+              "Neocolonial",
+              "Art Noveau",
+              "Postmoderno",
+              "Art. Deco",
+              "Barroco",
+              "Ecléctico, Moderno",
+              "Ecléctico, Neocolonial",
+              "Ecléctico, Republicano",
+              "Funcionalista",
+              "Historicista",
+              "Neogotico",
+              "Neogótigo",
+              "Neovernacula",
+              "Racionalismo",
+              "Republicano, Contemporáneo",
+              "Republicano, Moderno",
+              "Republicano, Neogótico",
+              "S/E"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
