@@ -1,0 +1,74 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_lapaz_macrodistritos",
+  "title": "Macrodistritos Municipales",
+  "description": "Macrodistritos actualizado según O.M. 198/2013. Fuente: OMPD-DOT.",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz",
+      "path": "http://sitservicios.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_lapaz_macrodistritos/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 77847,
+      "hash": "sha256:1b724e3d7ee17803ace5b34646a591a298c5cece8ac7e5a2c6c88fb4699bcca4",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "example": "macrodistritos.6"
+          },
+          {
+            "name": "MACRODISTR",
+            "type": "string",
+            "example": "PERIFERICA"
+          },
+          {
+            "name": "TIPO",
+            "type": "string",
+            "example": "URBANO",
+            "categories": [
+              "URBANO",
+              "RURAL"
+            ]
+          },
+          {
+            "name": "DISTRITOS",
+            "type": "string",
+            "example": "11, 12, 13"
+          },
+          {
+            "name": "SUP_KM2",
+            "type": "number",
+            "constraints": {
+              "minimum": 4.9988,
+              "maximum": 2395.3855
+            }
+          },
+          {
+            "name": "NUM_MACRO",
+            "type": "string",
+            "example": "3"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
