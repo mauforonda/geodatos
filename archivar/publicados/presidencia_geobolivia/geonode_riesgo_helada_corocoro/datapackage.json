@@ -1,0 +1,108 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_riesgo_helada_corocoro",
+  "title": "Mapa de riesgo por helada del Municipio de Coro Coro_ 2012",
+  "description": "El mapa presenta información respecto a los riesgos agroclimáticos del territorio municipal de Coro Coro, en base a un análisis conjunto de vulnerabilidades por exposición física a heladas que es un análisis y cruce de la información de alturas y pendientes, en conjunción con áreas de amenaza de heladas fruto de lo anterior, se realiza el cruce entre amenazas y vulnerabilidades que dan como resultado el mapa de riesgos por heladas, que expresa la mayor o menor cuantía del riesgo en términos de la influencia de la amenaza o la vulnerabilidad que contiene. Elaborado por el programa de Promoción de la Sustentabilidad y Conocimientos Compartidos - PROSUCO con intervención del Programa de Reducción de Riesgos y Desastres PRRD III componente 2, en el año 2012.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_riesgo_helada_corocoro/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 177971,
+      "hash": "sha256:aad3df625cded667854f14ac7f1dfc8efcdb7523ff6868bc4aa4d43c8d93047f",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "riesgo_helada_corocoro.17"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 190
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "riesgo_helada_corocoro.17"
+          },
+          {
+            "name": "riesgo1",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Media por vulnerabilidad y amenaza media",
+            "categories": [
+              "Media por vulnerabilidad y amenaza media",
+              "Media: por vulnerabilidad alta y amenaza media",
+              "Alta: por vulnerabilidad y amenaza alta",
+              "Muy alta: por vulnerabilidad alta y amenaza muy alta",
+              "Alta: por vulnerabilidad media y amenaza muy alta",
+              "Alta: por vulnerabilidad media y amenaza alta"
+            ]
+          },
+          {
+            "name": "orig_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 12
+            }
+          },
+          {
+            "name": "shape_leng",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 0
+            }
+          },
+          {
+            "name": "shape_area",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 0
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 1."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
