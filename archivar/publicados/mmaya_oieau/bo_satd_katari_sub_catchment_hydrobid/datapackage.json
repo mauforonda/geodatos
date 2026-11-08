@@ -1,0 +1,102 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_oieau_bo_satd_katari_sub_catchment_hydrobid",
+  "title": "sub_catchment_hydrobid",
+  "sources": [
+    {
+      "title": "Sistema para la Gestión Integral de Recursos Hídricos desarrollado por la Oficina Internacional del Agua (OiEau)",
+      "path": "https://www.oieau-wiss.org/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_oieau_bo_satd_katari_sub_catchment_hydrobid/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 72793,
+      "hash": "sha256:c3e3efc66f9724cffd1e873f3ab7b2693262b309fbcb7cbe1d0c7f1140d88d39",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "sub_catchment_hydrobid.126"
+          },
+          {
+            "name": "comid",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 311116300.0,
+              "maximum": 311661300.0
+            }
+          },
+          {
+            "name": "grid_code",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 311049400.0,
+              "maximum": 311615300.0
+            }
+          },
+          {
+            "name": "grid_count",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 2193
+            }
+          },
+          {
+            "name": "prod_unit",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "3",
+            "categories": [
+              "3"
+            ]
+          },
+          {
+            "name": "area",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0.205,
+              "maximum": 450.991
+            }
+          },
+          {
+            "name": "is_app_visible",
+            "type": "boolean",
+            "constraints": {
+              "required": true
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
