@@ -1,0 +1,162 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_poblacion_segun_necesidades_basicas",
+  "title": "Población por Necesidades Básicas Satisfechas según Distrito_ Anuario Estadístico 2018",
+  "description": "El mapa presenta información de las necesidades básicas satisfechas de la población según distrito, este índice refleja el porcentaje de la población que cubre y satisface sus necesidades básicas (Vivienda, Educación, Economía, etc.) . Elaborado por la Dirección de Investigación e Información Municipal. Dato obtenido del geoportal IDE La Paz en fecha octubre del 2022.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_poblacion_segun_necesidades_basicas/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 164477,
+      "hash": "sha256:218b4fb887e1e0e9aa2962a62b67411850eb9f20973af8875d1d61f9987ed33f",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "poblacion_segun_necesidades_basicas.2"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 23
+            }
+          },
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 23
+            }
+          },
+          {
+            "name": "tipo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Urbano",
+            "categories": [
+              "Urbano",
+              "Rural"
+            ]
+          },
+          {
+            "name": "no_macro",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 9
+            }
+          },
+          {
+            "name": "macrodistr",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Max Paredes",
+            "categories": [
+              "Cotahuma",
+              "Max Paredes",
+              "San Antonio",
+              "Periferica",
+              "Sur",
+              "Centro",
+              "Hampaturi",
+              "Mallasa",
+              "Zongo"
+            ]
+          },
+          {
+            "name": "distrito_m",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 23
+            }
+          },
+          {
+            "name": "nbs",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 13.8,
+              "maximum": 80.9
+            }
+          },
+          {
+            "name": "en_umbral",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 12.9,
+              "maximum": 47.5
+            }
+          },
+          {
+            "name": "moderados",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 3.1,
+              "maximum": 48.2
+            }
+          },
+          {
+            "name": "indigentes",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 7.1
+            }
+          },
+          {
+            "name": "marginales",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 0.2
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
