@@ -1,0 +1,122 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_umsa_iiag_medioambiente_areas_protegidas_municipales",
+  "title": "aps_municipales",
+  "sources": [
+    {
+      "title": "Geoportal del Instituto de Investigaciones y Aplicaciones Geomáticas (IIAG) de la Universidad Mayor de San Andrés (UMSA)",
+      "path": "http://gtggeoportal.umsa.bo:8087/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_umsa_iiag_medioambiente_areas_protegidas_municipales/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 100031,
+      "hash": "sha256:231443714ee2fbb822f0c0bcb3a566b1b1921d9cfb50a6095319b5375fea5a25",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Areas Protegidas Municipales.5"
+          },
+          {
+            "name": "OBJECTID_1",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 30
+            }
+          },
+          {
+            "name": "OBJECTID",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 2,
+              "maximum": 257
+            }
+          },
+          {
+            "name": "NOMBRE",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Jardín de Cactáceas de Bolivia"
+          },
+          {
+            "name": "JURISDICC",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Municipal",
+            "categories": [
+              "Municipal",
+              "Municpial"
+            ]
+          },
+          {
+            "name": "CATEGORIA",
+            "type": "string",
+            "example": "Parque Municipal",
+            "categories": [
+              "Area de proteccion de cuencas",
+              "Parque Municipal",
+              "Area de protegida",
+              "Parque municipal"
+            ]
+          },
+          {
+            "name": "BASE_LEGAL",
+            "type": "string",
+            "example": "OM 06/2005"
+          },
+          {
+            "name": "Shape_Leng",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0.0692817548361,
+              "maximum": 3.90603633828
+            }
+          },
+          {
+            "name": "Shape_Area",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0.000164963840234,
+              "maximum": 0.49857501477
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 2."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
