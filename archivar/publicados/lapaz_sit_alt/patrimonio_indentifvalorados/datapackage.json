@@ -1,0 +1,183 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_alt_patrimonio_indentifvalorados",
+  "title": "Inmuebles identificados y valorados",
+  "description": "Mapa 04 - Inmuebles identificados y valorados del patrimonio histórico, arquitectónico y urbano del Municipio de La Paz, DM 17 2025.",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)",
+      "path": "http://sitservicios.lapaz.bo/ows38.jsp"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_patrimonio_indentifvalorados/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 149813,
+      "hash": "sha256:eceb2b71405721faa2286c7806dfdd139055929e5437ff01162e6c0163092a11",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "indentifValorados.782"
+          },
+          {
+            "name": "CAT_DM_3",
+            "type": "string",
+            "example": "Observados",
+            "categories": [
+              "Predios Valorados dentro de la R.E. 134/2018",
+              "Observados",
+              "Predios Declarados como Patrimonio Arquitectonico dentro de la R.E. 134/2018",
+              "Predios con Edificios dentro de la R.E. 134/2018",
+              "Predios Demolidos dentro de la R.E. 134/2018",
+              "No Categorizado"
+            ]
+          },
+          {
+            "name": "COD_SIFCA",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "028004300290000"
+          },
+          {
+            "name": "TODO_PATRI",
+            "type": "string",
+            "example": "B",
+            "categories": [
+              "PM",
+              "CM",
+              "B",
+              "A",
+              "S/C",
+              "C"
+            ]
+          },
+          {
+            "name": "CONJUNTO",
+            "type": "string",
+            "example": "Conjunto Francisco Bedregal",
+            "categories": [
+              "Conjunto Agustín Aspiazu",
+              "Conjunto Montículo",
+              "TRAMO",
+              "Conjunto Heriberto Gutiérrez",
+              "Conjunto Capitán Castrillo",
+              "FCYT",
+              "Conjunto Rosendo Gutiérrez",
+              "Conjunto Francisco Bedregal",
+              "Conjunto San Pedro"
+            ]
+          },
+          {
+            "name": "CATEGO",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "DECRETO MUNICIPAL 03/2024",
+            "categories": [
+              "DECRETO MUNICIPAL 03/2023",
+              "DECRETO MUNICIPAL 03/2024",
+              "INCORPORACIÓN NUEVA CON VERIFICACIÓN",
+              "INCORPORACIÓN ZONAS",
+              "ACTOS ADMINISTRATIVOS"
+            ]
+          },
+          {
+            "name": "FINAL",
+            "type": "string",
+            "example": "SALE",
+            "categories": [
+              "SE QUEDA",
+              "SALE LUSU",
+              "SALE",
+              "SALE EDIFICIO GOOGLE",
+              "SE QUEDA NUEVO",
+              "SALE PM",
+              "SALE A PATRIMONIO MO",
+              "SALE ESPACIO PÚBLIC",
+              "SALE DECLA LM 115",
+              "SALE DUPLICADO",
+              "SALE DEMOLIDOS GRUPO"
+            ]
+          },
+          {
+            "name": "REVISION",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "SALE",
+            "categories": [
+              "VERIFICADO",
+              "SALE POR DECLARADO",
+              "SALE",
+              "SALE POR SER EDIFICIO",
+              "SALE A PATRIMONIO MODERNO",
+              "SALE A ESPACIO PÚBLICO",
+              "SALE POR DUPLICADO",
+              "SIN RESPALDO FOTOGRÁFICO",
+              "SALE POR ACTO ADMINISTRATIVO",
+              "SALE POR DEMOLIDO",
+              "SIN RESPADO FOTOGRÁFICO"
+            ]
+          },
+          {
+            "name": "COD_HICHE",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 625
+            }
+          },
+          {
+            "name": "Macrodistr",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "COTAHUMA",
+            "categories": [
+              "COTAHUMA",
+              "CENTRO",
+              "SUR",
+              "PERIFÉRICA",
+              "MAXIMILIANO PAREDES"
+            ]
+          },
+          {
+            "name": "DISTRITO",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 21
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
