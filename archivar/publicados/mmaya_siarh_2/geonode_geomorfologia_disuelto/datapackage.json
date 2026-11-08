@@ -1,0 +1,68 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_geomorfologia_disuelto",
+  "title": "Plan Director Cuenca Río Pampa Huari – Geomorfologia",
+  "description": "PDCRPH (Plan Director de la Cuenca Rio Pampa Huari) Describe las formaciones geomorfológicas en la cuenca de rio pampa huari como unidades de origen aluviales-material aluvial, presentes en cauces de ríos actuales.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_geomorfologia_disuelto/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 87269,
+      "hash": "sha256:16769e3786ba6a1a7c50274ef445631ba6304877ce289c5ba57ae3a5ac6c076f",
+      "schema": {
+        "fields": [
+          {
+            "name": "U_O_Volc",
+            "type": "string",
+            "example": "Mesetas de ignimbritas y depósitos de Piroclastitas con relieve uniforme y ligeramente ondulado,con "
+          },
+          {
+            "name": "Geomorfo",
+            "type": "string",
+            "example": "Unidad de origen volcánico"
+          },
+          {
+            "name": "Simb_Geom",
+            "type": "string",
+            "example": "Vtlf"
+          },
+          {
+            "name": "SUP_KM2",
+            "type": "number",
+            "constraints": {
+              "minimum": 10.8271500134,
+              "maximum": 421.623198852
+            }
+          },
+          {
+            "name": "SUP_HA",
+            "type": "number",
+            "constraints": {
+              "minimum": 1082.71500134,
+              "maximum": 42162.3198852
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 1."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
