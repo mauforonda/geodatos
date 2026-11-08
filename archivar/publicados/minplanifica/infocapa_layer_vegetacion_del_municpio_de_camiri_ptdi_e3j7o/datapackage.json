@@ -1,0 +1,111 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_minplanifica_infocapa_layer_vegetacion_del_municpio_de_camiri_ptdi_e3j7o",
+  "title": "layer_vegetacion_del_municpio_de_camiri__ptdi_e3j7o",
+  "sources": [
+    {
+      "title": "Geoserver del Ministerio de Planificación del Desarollo",
+      "path": "https://geoserver.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_minplanifica_infocapa_layer_vegetacion_del_municpio_de_camiri_ptdi_e3j7o/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 51377,
+      "hash": "sha256:92d00e4442a94b8d7f6dd465890b2120edf1f53325163b915f1e8862d7fdbebd",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_vegetacion_del_municpio_de_camiri__ptdi_e3j7o.25"
+          },
+          {
+            "name": "vegetacion",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "t11a. Bosque seco boliviano-tucumano transicional del piso basimontano inferior septentrional"
+          },
+          {
+            "name": "area_prote",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "No protegida",
+            "categories": [
+              "No protegida",
+              "Serrania Sararenda"
+            ]
+          },
+          {
+            "name": "sup_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0.011,
+              "maximum": 33562.093
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Santa Cruz",
+            "categories": [
+              "Santa Cruz"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Cordillera",
+            "categories": [
+              "Cordillera"
+            ]
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Camiri",
+            "categories": [
+              "Camiri",
+              "Lagunillas",
+              "Charagua",
+              "Cuevo"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
