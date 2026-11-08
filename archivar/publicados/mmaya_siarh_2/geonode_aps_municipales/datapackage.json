@@ -1,0 +1,141 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_aps_municipales",
+  "title": "Plan Director Cuenca Río Grande - Áreas Protegidas Municipales",
+  "description": "PDCRG (Plan Director de la Cuenca Rio Grande). Muestra la georreferenciación y la información de Áreas Protegidas a nivel Municipal en la Cuenca del Plan Director del Río Grande.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_aps_municipales/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 76010,
+      "hash": "sha256:9dc25b39db83287915c6ea91487c1a8721e099edad4d8d854fe95069447cecbc",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 2."
+          },
+          {
+            "name": "CATEGORIA",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Zona de Proteccion Paisajistica",
+            "categories": [
+              "Area Protegida Municipal",
+              "Área Natural de Manejo Integrado",
+              "Area de Protección Ambiental",
+              "Monumento Arqueologico Natural",
+              "Parque Arqueologico",
+              "Parque Metropolitano",
+              "Reserva de Vida Silvestre",
+              "Zona de Inmovilizacion Forestal e Hídrica",
+              "Zona de Proteccion Paisajistica"
+            ]
+          },
+          {
+            "name": "MUNICIPIO",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Sucre"
+          },
+          {
+            "name": "BASE_LEGAL",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "OM SN/88"
+          },
+          {
+            "name": "JURISDICC",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Municipal",
+            "categories": [
+              "Municipal"
+            ]
+          },
+          {
+            "name": "DEPTO",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Chuquisaca",
+            "categories": [
+              "Cochabamba",
+              "Santa Cruz",
+              "Chuquisaca"
+            ]
+          },
+          {
+            "name": "CODIGO",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "M-01"
+          },
+          {
+            "name": "AREA_HA",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 194.2676,
+              "maximum": 179614.3278
+            }
+          },
+          {
+            "name": "LIMITES",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "NO",
+            "categories": [
+              "SI",
+              "NO"
+            ]
+          },
+          {
+            "name": "FECHA",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "1988-01-01T04:00:00Z"
+          },
+          {
+            "name": "NOMBRE",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": ""
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
