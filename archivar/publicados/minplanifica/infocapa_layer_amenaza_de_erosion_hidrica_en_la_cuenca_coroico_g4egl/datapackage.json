@@ -1,0 +1,120 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_minplanifica_infocapa_layer_amenaza_de_erosion_hidrica_en_la_cuenca_coroico_g4egl",
+  "title": "layer_amenaza_de_erosion_hidrica_en_la_cuenca_coroico_g4egl",
+  "sources": [
+    {
+      "title": "Geoserver del Ministerio de Planificación del Desarollo",
+      "path": "https://geoserver.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_minplanifica_infocapa_layer_amenaza_de_erosion_hidrica_en_la_cuenca_coroico_g4egl/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 63029,
+      "hash": "sha256:85390cbb67b3a6566b5c44a38f2a640819a3ce79c5f768627222a0b15d187b6f",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_amenaza_de_erosion_hidrica_en_la_cuenca_coroico_g4egl.221"
+          },
+          {
+            "name": "gridcode",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 5
+            }
+          },
+          {
+            "name": "leyenda",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Baja",
+            "categories": [
+              "Alta",
+              "Media",
+              "Baja",
+              "Muy alta",
+              "Muy baja"
+            ]
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "LA PAZ",
+            "categories": [
+              "LA PAZ"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Sur Yungas",
+            "categories": [
+              "Larecaja",
+              "Nor Yungas",
+              "Caranavi",
+              "Sur Yungas",
+              "Murillo",
+              "Franz Tamayo"
+            ]
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Yanacachi",
+            "categories": [
+              "Guanay",
+              "Caranavi",
+              "Nuestra Señora de La Paz",
+              "Coripata",
+              "Coroico",
+              "La Asunta",
+              "Teoponte",
+              "Alto Beni",
+              "Mapiri",
+              "Apolo",
+              "Yanacachi",
+              "Chulumani",
+              "Sorata",
+              "Tipuani"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 8."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
