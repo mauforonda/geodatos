@@ -1,0 +1,64 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_rios_area",
+  "title": "Mapa de Rios (area) de Bolivia_ 2002",
+  "description": "Este mapa presenta la distribución y características hidrológicas de los ríos Mamore, río Madera, río Madre de Dios, río Beni, río Itenez y el río Pilcomayo que se encuentran entre los departamento de Pando, Beni, Santa Cruz y Tarija del territorio boliviano. Elaborado por la Unidad de Ordenamiento Territorial del Ministerio de Planificación del Desarrollo, en el año 2002 a escala 1:1000000.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_rios_area/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 248850,
+      "hash": "sha256:5ce0e1d340f47e672ada2b10a75e582d4d233b70af6f085ec4df5f6cee56f3ff",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "example": "rios_area.1"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 6
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "example": "Rios_Area.1"
+          },
+          {
+            "name": "codigo",
+            "type": "integer"
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "example": "RIO MADRE DE DIO"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
