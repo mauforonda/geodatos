@@ -1,0 +1,109 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_mancomunidad_region_andina",
+  "title": "Plan Director Cuenca Río Grande - Mancomunidad Region Andina",
+  "description": "PDCRG (Plan Director de la Cuenca Rio Grande). Muestra la georreferenciación y la información demográfica relevante de los municipios que componen la Mancomunidad de Municipios de la Region Andina. Información provista en el marco del Plan Director de la Cuenca del Río Grande.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_mancomunidad_region_andina/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 85259,
+      "hash": "sha256:4373f2ee0891b1df29aea892a9c4629d493de1ce95798495044240ef897096c0",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "ID",
+            "type": "integer",
+            "constraints": {
+              "minimum": 53,
+              "maximum": 268
+            }
+          },
+          {
+            "name": "CODSECCION",
+            "type": "string",
+            "example": "031501"
+          },
+          {
+            "name": "COD_DEP",
+            "type": "string",
+            "example": "3",
+            "categories": [
+              "3"
+            ]
+          },
+          {
+            "name": "NOM_DEP",
+            "type": "string",
+            "example": "Cochabamba",
+            "categories": [
+              "Cochabamba"
+            ]
+          },
+          {
+            "name": "COD_PROV",
+            "type": "string",
+            "example": "15"
+          },
+          {
+            "name": "NOM_PROV",
+            "type": "string",
+            "example": "Bolivar"
+          },
+          {
+            "name": "COD_MUN",
+            "type": "string",
+            "example": "1"
+          },
+          {
+            "name": "CAT_SEC",
+            "type": "string",
+            "example": "PRIMERA"
+          },
+          {
+            "name": "NOM_MUN",
+            "type": "string",
+            "example": "Bolivar"
+          },
+          {
+            "name": "CANTONES",
+            "type": "string",
+            "example": "9"
+          },
+          {
+            "name": "POBLACION",
+            "type": "string",
+            "example": "7081"
+          },
+          {
+            "name": "AREA_KM2",
+            "type": "number",
+            "constraints": {
+              "minimum": 131.5,
+              "maximum": 1634.59
+            }
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
