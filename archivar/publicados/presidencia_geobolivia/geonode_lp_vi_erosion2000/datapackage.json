@@ -1,0 +1,85 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_lp_vi_erosion2000",
+  "title": "Mapa de erosion de suelos de los valles interandinos del departamento de La Paz_ 2000",
+  "description": "El mapa presenta el proceso de erosión, caracterizado por el arrastre del suelo por acción del agua o del viento - hídrica o eólica - o como un proceso de desprendimiento y arrastre del suelo. Producido por el proyecto ZONISIG (Zonificación Agroecológica y Socioeconomica de los Valles Interandinos de La Paz) y convenios de cooperación en el año 2000. Escala 1:25000.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_lp_vi_erosion2000/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 159322,
+      "hash": "sha256:0e5b4ea83aca692b9a214c03615a7e583acf641dc4e19c95e344666fbbdbfb2a",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "lp_vi_erosion2000.4"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 52
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "lp_vi_Erosion2000.4"
+          },
+          {
+            "name": "clave",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "a",
+            "categories": [
+              "N",
+              "h",
+              "e",
+              "f",
+              "i",
+              "b",
+              "a",
+              "c",
+              "d",
+              "g"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
