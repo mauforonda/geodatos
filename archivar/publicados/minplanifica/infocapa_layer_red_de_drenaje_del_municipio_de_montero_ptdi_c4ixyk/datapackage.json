@@ -1,0 +1,134 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_minplanifica_infocapa_layer_red_de_drenaje_del_municipio_de_montero_ptdi_c4ixyk",
+  "title": "layer_red_de_drenaje_del_municipio_de_montero__ptdi_c4ixyk",
+  "sources": [
+    {
+      "title": "Geoserver del Ministerio de Planificación del Desarollo",
+      "path": "https://geoserver.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_minplanifica_infocapa_layer_red_de_drenaje_del_municipio_de_montero_ptdi_c4ixyk/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 65352,
+      "hash": "sha256:a207f247d78a38c48be6fcc5672f02e39695ab2ac3c7d3c7e79b6eb37e06bd30",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_red_de_drenaje_del_municipio_de_montero__ptdi_c4ixyk.8"
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Río seco o aluvión",
+            "categories": [
+              "Río seco o aluvión",
+              "Quebrada",
+              "Laguna",
+              "Perenne",
+              "Isla",
+              "Río Bibosi",
+              "Río La Madre",
+              "Río Piraí",
+              "Río Rincón del Nayco"
+            ]
+          },
+          {
+            "name": "clase_num",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 13
+            }
+          },
+          {
+            "name": "clase",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Río seco o aluvión",
+            "categories": [
+              "Río seco o aluvión",
+              "Quebrada sin nombre",
+              "Río Principal",
+              "Laguna Perenne",
+              "Perenne",
+              "Isla con o sin vegetación"
+            ]
+          },
+          {
+            "name": "long_km",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0.245,
+              "maximum": 28.796
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Santa Cruz",
+            "categories": [
+              "Santa Cruz"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Obispo Santisteban",
+            "categories": [
+              "Obispo Santisteban",
+              "Sara"
+            ]
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Montero",
+            "categories": [
+              "Montero",
+              "Portachuelo"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
