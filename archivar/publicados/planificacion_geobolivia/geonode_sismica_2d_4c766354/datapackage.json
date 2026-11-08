@@ -1,0 +1,126 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geobolivia_geonode_sismica_2d_4c766354",
+  "title": "Localización de Líneas Sísmicas 2D YPFB, Bolivia",
+  "description": "Localización de Líneas Sísmica 2D recopiladas de la base de datos histórico del Sistema Catastro Hidrocarburífero del Estado Plurinacional de Bolivia. Esta información proviene de la Infraestructura de Datos Espaciales de Hidrocarburos de Yacimientos Petrolíferos Fiscales Bolivianos - YPFB.",
+  "sources": [
+    {
+      "title": "Nueva plataforma GeoBolivia",
+      "path": "https://geonode.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geobolivia_geonode_sismica_2d_4c766354/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 194003,
+      "hash": "sha256:d3ddac2b30235130da669b52defc129cfba31e8eb087e8f33daf1aee474db6a1",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "sismica_2d_4c766354.295"
+          },
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 2943
+            }
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 2943
+            }
+          },
+          {
+            "name": "objectid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 2943
+            }
+          },
+          {
+            "name": "line_name",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "2548-28"
+          },
+          {
+            "name": "compl_date",
+            "type": "datetime",
+            "constraints": {
+              "required": true,
+              "minimum": "1899-12-30T00:00:00",
+              "maximum": "1899-12-30T00:00:00"
+            }
+          },
+          {
+            "name": "ba_name",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "YPFB Corporacion",
+            "categories": [
+              "YPFB Corporacion",
+              "YPFB Andina S.A.",
+              "YPFB Petroandina",
+              "Repsol E&P Bolivia S.A.",
+              "Petrobras Bolivia S.A.",
+              "Vintage Petroleum Boliviana Ltd.",
+              "B.G. Bolivia Corporation Sucursal Bolivia",
+              "Pluspetrol Bolivia Corporation S.A.",
+              "Petrobras Argentina S.A. Sucursal Bolivia"
+            ]
+          },
+          {
+            "name": "sys_coord",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "PSAD_1956_UTM_Zone_19S",
+            "categories": [
+              "PSAD_1956_UTM_Zone_20S",
+              "PSAD_1956_UTM_Zone_19S",
+              "PSAD_1956_UTM_Zone_21S"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
