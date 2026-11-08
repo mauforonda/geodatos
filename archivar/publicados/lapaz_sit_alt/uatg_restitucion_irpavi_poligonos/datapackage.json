@@ -1,0 +1,99 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_alt_uatg_restitucion_irpavi_poligonos",
+  "title": "Resitucion Irpavi Poligonos",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)",
+      "path": "http://sitservicios.lapaz.bo/ows38.jsp"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_uatg_restitucion_irpavi_poligonos/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 290496,
+      "hash": "sha256:47712e98c75368723750125e501700231b3d00535337ac7e4cc001d19b8ca1c9",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "restitucion_irpavi_poligonos.2555"
+          },
+          {
+            "name": "layer",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "_Limite Lote",
+            "categories": [
+              "_Limite Lote"
+            ]
+          },
+          {
+            "name": "cod_cat",
+            "type": "string",
+            "example": "0044127500070000",
+            "categories": [
+              "0044127500060000",
+              "0044127500070000"
+            ]
+          },
+          {
+            "name": "distrito",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "47",
+            "categories": [
+              "44",
+              "47"
+            ]
+          },
+          {
+            "name": "manzano",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "169A"
+          },
+          {
+            "name": "lote",
+            "type": "string",
+            "example": "S"
+          },
+          {
+            "name": "sup_ag",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 19.0057557883,
+              "maximum": 49856.1748249
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 38."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
