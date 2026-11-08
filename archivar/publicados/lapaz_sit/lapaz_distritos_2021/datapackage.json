@@ -1,0 +1,147 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_lapaz_distritos_2021",
+  "title": "Distritos Municipales 2021",
+  "description": "modificación mediante la RE 195/2021 en los distritos 15, 16 y 17 del macrodistrito San Antonio",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz",
+      "path": "http://sitservicios.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_lapaz_distritos_2021/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 165304,
+      "hash": "sha256:217b7cb0d6047156831d4110338cac22d50c98e0ec3ff9287073cc6cc0a39afc",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "distritos_2021.2"
+          },
+          {
+            "name": "shape_area",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1.28874795074,
+              "maximum": 2415.02207233
+            }
+          },
+          {
+            "name": "supkm2",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1.3998076846,
+              "maximum": 2415.02207233
+            }
+          },
+          {
+            "name": "supha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 139.98076846,
+              "maximum": 241502.207233
+            }
+          },
+          {
+            "name": "tipo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "UR",
+            "categories": [
+              "UR",
+              "RU"
+            ]
+          },
+          {
+            "name": "macro_ante",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Max Paredes",
+            "categories": [
+              "Cotahuma",
+              "Max Paredes",
+              "San Antonio",
+              "Periferica",
+              "Sur",
+              "Centro",
+              "Hampaturi",
+              "Mallasa",
+              "Zongo"
+            ]
+          },
+          {
+            "name": "macro_vige",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Max Paredes",
+            "categories": [
+              "Cotahuma",
+              "Max Paredes",
+              "San Antonio",
+              "Periferica",
+              "Centro",
+              "Calacoto",
+              "Hampaturi",
+              "Mallasa",
+              "Obrajes",
+              "Ovejuyo",
+              "Zongo"
+            ]
+          },
+          {
+            "name": "distrito",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 23
+            }
+          },
+          {
+            "name": "cod_macro",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 9
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
