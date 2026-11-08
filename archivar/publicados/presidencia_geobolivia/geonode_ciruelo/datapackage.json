@@ -1,0 +1,157 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_ciruelo",
+  "title": "Producción de Ciruelo en el Departamento de La Paz",
+  "description": "Las zonas de producción de este cultivo se ubican en las zonas de los Valles Cerrados y parte del Altiplano. La zona de producción con potencial se ubica al sur-este de la zona de los Valles Cerrados. Los municipios de Sapahaqui, Palca y Luribay, representan los municipios con mayor producción de ciruelo, representan el 99% de la producción total del departamento.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_ciruelo/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 179855,
+      "hash": "sha256:3b076a1ba01cd674bcfdb5642efde07f51bf1fc9451ebd0415ff38898a56d812",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "ciruelo.6"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 10
+            }
+          },
+          {
+            "name": "departamen",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "La Paz",
+            "categories": [
+              "La Paz"
+            ]
+          },
+          {
+            "name": "provincia",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Manco Kapac"
+          },
+          {
+            "name": "municipio",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Tito Yupanqui"
+          },
+          {
+            "name": "cod_mun",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "021703"
+          },
+          {
+            "name": "macroregio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "ALTIPLANO",
+            "categories": [
+              "ALTIPLANO",
+              "VALLES",
+              "YUNGAS-CHAPARE"
+            ]
+          },
+          {
+            "name": "sup_total",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0.005,
+              "maximum": 39.087963
+            }
+          },
+          {
+            "name": "prod_qq",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0.0,
+              "maximum": 2138.75187
+            }
+          },
+          {
+            "name": "cultivo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "CIRUELO",
+            "categories": [
+              "CIRUELO"
+            ]
+          },
+          {
+            "name": "codigo_87",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 80
+            }
+          },
+          {
+            "name": "prod_ton",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0.0,
+              "maximum": 98.38258602
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
