@@ -1,0 +1,114 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_riesgo_por_sequia_en_el_municipio_cf51474e2c4c",
+  "title": "Riesgo por sequía en el municipio de Camiri - PTDI",
+  "description": "El mapa describe el nivel de riesgo por sequía en el municipio de Camiri, según el PTDI 2021 - 2025.",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_riesgo_por_sequia_en_el_municipio_cf51474e2c4c/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 74059,
+      "hash": "sha256:4018868dfda77a526e9ee49070abb15b9043b8f0f0cdae478d5ce0b329784516",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_riesgo_por_sequia_en_el_municipio_de_camiri__ptdi_8nyuu.544"
+          },
+          {
+            "name": "riesgo",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 4
+            }
+          },
+          {
+            "name": "riesgo_tex",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Alto",
+            "categories": [
+              "Alto",
+              "Bajo",
+              "Medio",
+              "Sin Riesgo"
+            ]
+          },
+          {
+            "name": "sup_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 33193.046
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "SANTA CRUZ",
+            "categories": [
+              "SANTA CRUZ"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Cordillera",
+            "categories": [
+              "Cordillera"
+            ]
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Camiri",
+            "categories": [
+              "Camiri",
+              "Charagua",
+              "Cuevo",
+              "Lagunillas"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 22."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
