@@ -1,0 +1,158 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_destinos_turisticos_lp_or",
+  "title": "destinos_turisticos_lp_or",
+  "description": "No abstract provided",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_destinos_turisticos_lp_or/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 4989,
+      "hash": "sha256:f8690815a1e4c3abbeee84893ec805a3e4d4471c10a3204b97ab19ce39dc5b3f",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "destinos_turisticos_lp_or.1"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 11
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "ORURO",
+            "categories": [
+              "LA PAZ",
+              "ORURO"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Sajama"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Curahuara de Carangas"
+          },
+          {
+            "name": "nom",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Sajama National Park and Natural Integrated Management Area"
+          },
+          {
+            "name": "mot",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Aventura",
+            "categories": [
+              "Recreativo, Participativo y vivencial",
+              "Aventura",
+              "Aventura, Recreativo",
+              "Participativo y vivencial",
+              "Participativo y vivencial, Recreativo"
+            ]
+          },
+          {
+            "name": "mod",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Ecológicos o de ecoturismo",
+            "categories": [
+              "Comunitario",
+              "Ecológicos o de ecoturismo",
+              "Comunitario, Sostenibles"
+            ]
+          },
+          {
+            "name": "voc",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Naturaleza"
+          },
+          {
+            "name": "tip_ter",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Andino, Montaña"
+          },
+          {
+            "name": "longitud",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": -69.252055,
+              "maximum": -66.903494
+            }
+          },
+          {
+            "name": "latitud",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": -18.12826,
+              "maximum": -14.189209
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
