@@ -1,0 +1,122 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_geosit_mora_atm",
+  "title": "Mora ATM",
+  "description": "Mora ATM Operativo",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz",
+      "path": "http://sitservicios.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_geosit_mora_atm/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 146528,
+      "hash": "sha256:b6497d85f8b34fa6fadab1a91b5cb31c8a64f01ed459053a0c92f8133867e98d",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "mora_atm.2314"
+          },
+          {
+            "name": "codigocatastral",
+            "type": "string",
+            "example": "027077600010000"
+          },
+          {
+            "name": "distrito",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "21",
+            "categories": [
+              "18",
+              "21",
+              "19"
+            ]
+          },
+          {
+            "name": "macrodistr",
+            "type": "string",
+            "example": "Obrajes",
+            "categories": [
+              "Calacoto",
+              "Obrajes",
+              "Ovejuyo"
+            ]
+          },
+          {
+            "name": "zona",
+            "type": "string",
+            "example": "SEGUENCOMA BAJO"
+          },
+          {
+            "name": "identifica",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 13701370,
+              "maximum": 33035103466990
+            }
+          },
+          {
+            "name": "num_inmueble",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 78,
+              "maximum": 1098298
+            }
+          },
+          {
+            "name": "direccion",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "AVENIDA VICTOR ZAPANA SERNA S/N, ZONA/BARRIO SEGUENCOMA BAJO"
+          },
+          {
+            "name": "n_segmento",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "2140"
+          },
+          {
+            "name": "cod_encues",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "2140_6"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
