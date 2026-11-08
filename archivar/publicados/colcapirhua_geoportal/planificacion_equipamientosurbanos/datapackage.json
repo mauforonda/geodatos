@@ -1,0 +1,117 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_colcapirhua_geoportal_planificacion_equipamientosurbanos",
+  "title": "equipamientosUrbanos",
+  "description": "Equipamientos Urbanos del Gobierno Autónomo Municipal de Colcapirhua",
+  "sources": [
+    {
+      "title": "Geoportal del Gobierno Municipal de Colcapirhua",
+      "path": "https://geoserver.geotec-srl.com/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_colcapirhua_geoportal_planificacion_equipamientosurbanos/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 8517,
+      "hash": "sha256:ba28348769f4ad77b45e8affbb371f2f79a815de73dd44749a4b5cadc3d50845",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "equipamientosUrbanos.1"
+          },
+          {
+            "name": "objectid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 489
+            }
+          },
+          {
+            "name": "shape_leng",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 752.867535339
+            }
+          },
+          {
+            "name": "shape_area",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 24860.5415675
+            }
+          },
+          {
+            "name": "tipos_cod",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 6
+            }
+          },
+          {
+            "name": "tipo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Equipamientos Educativos",
+            "categories": [
+              "Equipamientos Educativos",
+              "Equipamientos Centros de Salud",
+              "Equipamiento (Modulo Policial)"
+            ]
+          },
+          {
+            "name": "info",
+            "type": "string",
+            "example": "Unidad Educativa Simon Bolivar",
+            "categories": [
+              "Unidad Educativa",
+              "Unidad Educativa 27 de Mayo",
+              "Unidad Educativa  Colcapirhua",
+              "Unidad Educativa Carlos Villegas",
+              "Unidad Educativa Max Fernandez",
+              "Unidad Educativa Nuestra San Jose de Kami",
+              "Unidad Educativa Nuestra San Lorenzo",
+              "Unidad Educativa Nuestra Señora de La Paz",
+              "Unidad Educativa Pablo Cano",
+              "Unidad Educativa Simon Bolivar"
+            ]
+          },
+          {
+            "name": "codigo_sig",
+            "type": "string",
+            "example": "AV-63"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
