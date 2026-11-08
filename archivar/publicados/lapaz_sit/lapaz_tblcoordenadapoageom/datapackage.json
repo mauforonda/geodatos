@@ -1,0 +1,82 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_lapaz_tblcoordenadapoageom",
+  "title": "tblCoordenadaPOAGeom",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz",
+      "path": "http://sitservicios.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_lapaz_tblcoordenadapoageom/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 360693,
+      "hash": "sha256:1ed10476779f7ab7847cd3029af12bbb7944864e79f975eb5e2971d5d65e4417",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "tblCoordenadaPOAGeom.2480"
+          },
+          {
+            "name": "cod_coordenada",
+            "type": "integer"
+          },
+          {
+            "name": "cod_poa",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 94,
+              "maximum": 10825
+            }
+          },
+          {
+            "name": "nroReformulado",
+            "type": "integer"
+          },
+          {
+            "name": "is_area",
+            "type": "integer"
+          },
+          {
+            "name": "is_patrimonio",
+            "type": "integer"
+          },
+          {
+            "name": "is_tramo",
+            "type": "integer"
+          },
+          {
+            "name": "is_circuito",
+            "type": "integer"
+          },
+          {
+            "name": "is_predio",
+            "type": "integer"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPoint, MultiLineString, LineString, Point, MultiPolygon, Polygon. Geometrías inválidas, conservadas sin reparar: 3."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
