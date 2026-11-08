@@ -1,0 +1,106 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_ssem_cementerio_cementerio_bloques",
+  "title": "cementerio_bloques",
+  "sources": [
+    {
+      "title": "Servicio de Seguimiento Estratégico Municipal del Gobierno Autónomo Municipal de La Paz",
+      "path": "https://ssem.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_ssem_cementerio_cementerio_bloques/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 87562,
+      "hash": "sha256:8409fd5ba68ebec27e7fa21fe8d962490b3055dd5cc04b0e37868294da195a3c",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "cementerio_bloques.725"
+          },
+          {
+            "name": "entity",
+            "type": "string",
+            "example": "Polyline",
+            "categories": [
+              "Polyline"
+            ]
+          },
+          {
+            "name": "tipobloque",
+            "type": "string",
+            "example": "MAUSOLEOS",
+            "categories": [
+              "MAUSOLEOS",
+              "PM",
+              "CM",
+              "MAUSOLEO"
+            ]
+          },
+          {
+            "name": "categoria",
+            "type": "string",
+            "example": "Sin Valor",
+            "categories": [
+              "Sin Valor",
+              "C",
+              "B",
+              "A",
+              "Patrimonio Cultural Inmaterial"
+            ]
+          },
+          {
+            "name": "codigo_caronte",
+            "type": "string",
+            "example": "998"
+          },
+          {
+            "name": "sigla",
+            "type": "string",
+            "example": "",
+            "categories": [
+              "",
+              "100",
+              "22",
+              "303",
+              "392"
+            ]
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "example": "CUARTEL 1"
+          },
+          {
+            "name": "id_estado",
+            "type": "number",
+            "constraints": {
+              "minimum": 1.0,
+              "maximum": 2.0
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Filas sin geometría: 7. Geometrías inválidas, conservadas sin reparar: 1."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
