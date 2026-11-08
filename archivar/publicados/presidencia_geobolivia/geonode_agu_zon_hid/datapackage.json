@@ -1,0 +1,189 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_agu_zon_hid",
+  "title": "agu_zon_hid",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_agu_zon_hid/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 9208705,
+      "hash": "sha256:d9f3256df6f5d6125a0f18caf455004bd14f664cf76db946ecc0d5f41d1b41a0",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "agu_zon_hid.3"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 14
+            }
+          },
+          {
+            "name": "zon_hid",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "MAURI"
+          },
+          {
+            "name": "cod_uh",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "014"
+          },
+          {
+            "name": "sup_km2",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 838.543887103,
+              "maximum": 34182.526759
+            }
+          },
+          {
+            "name": "per_km",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 197.734823455,
+              "maximum": 1491.54995022
+            }
+          },
+          {
+            "name": "pob_tot",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 13903,
+              "maximum": 1007100
+            }
+          },
+          {
+            "name": "pob_urb",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 934508
+            }
+          },
+          {
+            "name": "pob_rur",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 11722,
+              "maximum": 409848
+            }
+          },
+          {
+            "name": "pob_per",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 423214
+            }
+          },
+          {
+            "name": "pob_bol",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 1007100
+            }
+          },
+          {
+            "name": "rio_pri",
+            "type": "string",
+            "example": "Mauri"
+          },
+          {
+            "name": "uni_adm",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "3 municipios, 4 distritos"
+          },
+          {
+            "name": "pai",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Perú-Bolivia",
+            "categories": [
+              "Perú",
+              "Perú-Bolivia",
+              "Bolivia"
+            ]
+          },
+          {
+            "name": "cue_pla",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Río Desaguadero",
+            "categories": [
+              "Lago Titicaca",
+              "Río Desaguadero",
+              "Lago Poopó",
+              "Salar Coipasa"
+            ]
+          },
+          {
+            "name": "nom",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Mauri"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
