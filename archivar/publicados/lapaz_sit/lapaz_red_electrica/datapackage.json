@@ -1,0 +1,69 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_lapaz_red_electrica",
+  "title": "Red de Energia Electrica",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz",
+      "path": "http://sitservicios.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_lapaz_red_electrica/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 196754,
+      "hash": "sha256:6880ce5ed6afed4a96807e657aaa78497905ac1563cb0c9c43e9f099dbb6f2cb",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "red_electrica.2829"
+          },
+          {
+            "name": "gdbselec",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 5
+            }
+          },
+          {
+            "name": "gdbsdesc",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Línea media tensión 6.9 kV aérea",
+            "categories": [
+              "Línea media tensión 6.9 kV aérea",
+              "Línea media tensión 6.9 kV subterraneo",
+              "Línea alta tensión 115 kV",
+              "Línea alta tensión 69 kV",
+              "Línea alta tensión 115 kV subterranea"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
