@@ -1,0 +1,97 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mapbiomas_mapbiomas_pampa_col3_protected_areas",
+  "title": "protected_areas",
+  "sources": [
+    {
+      "title": "MapBiomas",
+      "path": "https://shared-geoserver.mapbiomas.org/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mapbiomas_mapbiomas_pampa_col3_protected_areas/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 339146,
+      "hash": "sha256:70726fb1bcaea096c8b0daf56af3da15a13b948201e407bf11c2e8611cd15da8",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "protected_areas.62"
+          },
+          {
+            "name": "FEATURE_ID",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1253,
+              "maximum": 1359
+            }
+          },
+          {
+            "name": "NAME",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Reserva Provincial Natural La Reforma"
+          },
+          {
+            "name": "LEVEL_1",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Argentina",
+            "categories": [
+              "Argentina",
+              "Brazil",
+              "Uruguay"
+            ]
+          },
+          {
+            "name": "CATEGORY",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "protected_areas",
+            "categories": [
+              "protected_areas"
+            ]
+          },
+          {
+            "name": "NAME_PT_BR",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Reserva Provincial Natural La Reforma [Argentina]"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 28."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
