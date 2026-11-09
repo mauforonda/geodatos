@@ -1,0 +1,193 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_movilidad_viaspendiente",
+  "title": "Pendiente Vias Catastro",
+  "description": "Pendiente de Vias Catastro, SMM-DPVTA",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz",
+      "path": "http://sitservicios.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_movilidad_viaspendiente/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 570656,
+      "hash": "sha256:bc344b4818e6ee9eb704416b34b5b752a5cf5891844dffec68e846d63d267a15",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "viaspendiente.2947"
+          },
+          {
+            "name": "idvias",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 5438
+            }
+          },
+          {
+            "name": "classid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 41,
+              "maximum": 41
+            }
+          },
+          {
+            "name": "revisionnu",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 9
+            }
+          },
+          {
+            "name": "nombrevia",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "S/N 3"
+          },
+          {
+            "name": "identifica",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 0
+            }
+          },
+          {
+            "name": "idpendient",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "1",
+            "categories": [
+              "1",
+              "0",
+              "2",
+              "3",
+              "9",
+              "4"
+            ]
+          },
+          {
+            "name": "idmatcalle",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "5",
+            "categories": [
+              "1",
+              "5",
+              "7",
+              "3",
+              "07",
+              "01",
+              "05",
+              "03",
+              "4",
+              " ",
+              "2",
+              "02",
+              "04",
+              "0"
+            ]
+          },
+          {
+            "name": "anchovia",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 1200
+            }
+          },
+          {
+            "name": "objectid_s",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 4,
+              "maximum": 24087
+            }
+          },
+          {
+            "name": "idtipovia",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 8
+            }
+          },
+          {
+            "name": "idusuario",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 2134
+            }
+          },
+          {
+            "name": "instrument",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": " "
+          },
+          {
+            "name": "observacio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": " "
+          },
+          {
+            "name": "Pendiente",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 61
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: LineString, MultiLineString."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
