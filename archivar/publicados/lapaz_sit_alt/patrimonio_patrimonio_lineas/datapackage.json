@@ -1,0 +1,107 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_alt_patrimonio_patrimonio_lineas",
+  "title": "Patrimonio dibujo de lineas ó trazos",
+  "description": "Patrimonio declarado Informe GAMLP SMCT DFPDCP UPAC No 937/2024",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)",
+      "path": "http://sitservicios.lapaz.bo/ows38.jsp"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_patrimonio_patrimonio_lineas/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 305535,
+      "hash": "sha256:e4abc41a2ae06adfa203fcce2ba554b7ec40a9acb4b89023150e2601728b3eeb",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "patrimonio_lineas.368"
+          },
+          {
+            "name": "fid",
+            "type": "number",
+            "constraints": {
+              "minimum": 1.0,
+              "maximum": 3621.0
+            }
+          },
+          {
+            "name": "Layer",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "CE_PATRIMONIAL",
+            "categories": [
+              "CE_PATRIMONIAL",
+              "predios",
+              "CE_LIMITE"
+            ]
+          },
+          {
+            "name": "PaperSpace",
+            "type": "integer"
+          },
+          {
+            "name": "SubClasses",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "AcDbEntity:AcDbPolyline",
+            "categories": [
+              "AcDbEntity:AcDbLine",
+              "AcDbEntity:AcDbPolyline",
+              "AcDbEntity:AcDbCircle:AcDbArc",
+              "AcDbEntity:AcDbCircle",
+              "AcDbEntity:AcDb2dPolyline"
+            ]
+          },
+          {
+            "name": "Linetype",
+            "type": "string",
+            "example": "Continuous",
+            "categories": [
+              "Continuous",
+              "DASHED2",
+              "SDASH"
+            ]
+          },
+          {
+            "name": "EntityHandle",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "1E9"
+          },
+          {
+            "name": "Text",
+            "type": "integer"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: LineString. La fuente declaraba EPSG:4326 pero sus coordenadas estaban en EPSG:32719 (sistema inferido por la ubicación de las geometrías en Bolivia); se reproyectaron."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
