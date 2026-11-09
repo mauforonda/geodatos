@@ -1,0 +1,163 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mhe_geoportal_geonode_munsafem",
+  "title": "MunsAFEM",
+  "sources": [
+    {
+      "title": "Geoportal del Viceministerio de Electricidad y Energías Renovables",
+      "path": "https://geoportal.mhe.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mhe_geoportal_geonode_munsafem/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 343512,
+      "hash": "sha256:150ad8b5ce548053d09beca728f4e4eb2133dc208b232bd27bf99bee4a90cb59",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 14
+            }
+          },
+          {
+            "name": "OBJECTID",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 14
+            }
+          },
+          {
+            "name": "Cod_INE",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 90102,
+              "maximum": 90503
+            }
+          },
+          {
+            "name": "FIRST_Depa",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Pando",
+            "categories": [
+              "Pando"
+            ]
+          },
+          {
+            "name": "FIRST_Prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Manuripi",
+            "categories": [
+              "Federico Roman",
+              "Madre de Dios",
+              "Manuripi",
+              "Nicolas Suarez",
+              "Abuna"
+            ]
+          },
+          {
+            "name": "FIRST_Muni",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Filadelfia"
+          },
+          {
+            "name": "FIRST_Cob_",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 59.414226,
+              "maximum": 99.582027
+            }
+          },
+          {
+            "name": "AFEM",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "AFEM",
+            "categories": [
+              "AFEM"
+            ]
+          },
+          {
+            "name": "Sistema",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "PICO SISTEMA FOTOVOLTAICO",
+            "categories": [
+              "PICO SISTEMA FOTOVOLTAICO"
+            ]
+          },
+          {
+            "name": "No_PSFV",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 124,
+              "maximum": 1050
+            }
+          },
+          {
+            "name": "Shape_Leng",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 2.20058492621,
+              "maximum": 6.17059135222
+            }
+          },
+          {
+            "name": "Shape_Area",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0.088175974543,
+              "maximum": 0.971896368854
+            }
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
