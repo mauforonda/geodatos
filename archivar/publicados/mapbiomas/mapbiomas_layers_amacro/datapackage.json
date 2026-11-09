@@ -1,0 +1,54 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mapbiomas_mapbiomas_layers_amacro",
+  "title": "amacro",
+  "sources": [
+    {
+      "title": "MapBiomas",
+      "path": "https://shared-geoserver.mapbiomas.org/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mapbiomas_mapbiomas_layers_amacro/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 340910,
+      "hash": "sha256:82dc9d79a6ba3f730b3530ef8caa31c94f9b16dea164b61d2040392ac6474178",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "example": "amacro.fid-1430c10_19d8c257cbb_-7fdf"
+          },
+          {
+            "name": "feature_id",
+            "type": "integer",
+            "constraints": {
+              "minimum": 16415,
+              "maximum": 16415
+            }
+          },
+          {
+            "name": "name_pt_br",
+            "type": "string",
+            "example": "AMACRO"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Polygon. Geometrías inválidas, conservadas sin reparar: 1."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
