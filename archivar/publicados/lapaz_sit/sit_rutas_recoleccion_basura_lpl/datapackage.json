@@ -1,0 +1,87 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_sit_rutas_recoleccion_basura_lpl",
+  "title": "Rutas de recoleccion de basura LPL",
+  "description": "Rutas de recolección de basura empresa La Paz Limpia",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz",
+      "path": "http://sitservicios.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_sit_rutas_recoleccion_basura_lpl/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 419799,
+      "hash": "sha256:f43d94f11ae90a81b860204b9baaec744580d593ec92b6414798c5c54557e641",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "rutas_recoleccion_basura_lpl.118"
+          },
+          {
+            "name": "descripcio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "RECOLECCION DOMICILIARIA CARGA TRASERA DIURNA",
+            "categories": [
+              "RECOLECCION DOMICILIARIA CARGA TRASERA DIURNA",
+              "RECOLECCION CARGA TRASERA LADERA OESTE",
+              "RECOLECCION CARGA LATERAL NOCTURNA",
+              "RECOLECCION CARGA LATERAL TARDE",
+              "RECOLECCION CARGA LATERAL MAÑANA",
+              "RECOLECCION CARGA TRASERA TARDE",
+              "RECOLECCION CARGA TRASERA NOCTURNA"
+            ]
+          },
+          {
+            "name": "turno",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "MAÑANA",
+            "categories": [
+              "MAÑANA",
+              "NOCHE",
+              "TARDE"
+            ]
+          },
+          {
+            "name": "empresa",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "La Paz Limpia (LPL)",
+            "categories": [
+              "La Paz Limpia (LPL)"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString. Filas sin geometría: 8."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
