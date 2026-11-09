@@ -1,0 +1,73 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_minplanifica_infocapa_layer_cultivos_de_arroz_en_beni_thfgq",
+  "title": "layer_cultivos_de_arroz_en_beni_thfgq",
+  "sources": [
+    {
+      "title": "Geoserver del Ministerio de Planificación del Desarollo",
+      "path": "https://geoserver.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_minplanifica_infocapa_layer_cultivos_de_arroz_en_beni_thfgq/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 548505,
+      "hash": "sha256:1d1a7f6152f4b92cf5692c5565114b2e0832ad4f55e94abd61d2cd44da6d9101",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "example": "layer_cultivos_de_arroz_en_beni_thfgq.1"
+          },
+          {
+            "name": "sup_ha",
+            "type": "integer",
+            "constraints": {
+              "minimum": 5009,
+              "maximum": 5009
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "example": "Beni",
+            "categories": [
+              "Beni"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "example": "Marban",
+            "categories": [
+              "Marban"
+            ]
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "example": "San Andrés",
+            "categories": [
+              "San Andrés"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
