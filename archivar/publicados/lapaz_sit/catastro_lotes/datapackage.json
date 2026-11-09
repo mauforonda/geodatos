@@ -1,0 +1,113 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_catastro_lotes",
+  "title": "Lotes fuera de linea",
+  "description": "Lotes de catastro fuera de linea.",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz",
+      "path": "http://sitservicios.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_catastro_lotes/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 705837,
+      "hash": "sha256:7fb9fcc7dff0d4a88e84070555b6134b3bae58b62ab1c33c1e2a74c6f7d02bdc",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "lotes.372229"
+          },
+          {
+            "name": "codigocatastral",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "031025400140000"
+          },
+          {
+            "name": "distritocatastral",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 3,
+              "maximum": 47
+            }
+          },
+          {
+            "name": "manzana",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 3274
+            }
+          },
+          {
+            "name": "predio",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 176
+            }
+          },
+          {
+            "name": "estadopredio",
+            "type": "number",
+            "constraints": {
+              "minimum": 1.0,
+              "maximum": 15.0
+            }
+          },
+          {
+            "name": "fuente",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "EXTERNO",
+            "categories": [
+              "EXTERNO",
+              "SIT",
+              "LEVANTAMIENTO",
+              "PROYECTO"
+            ]
+          },
+          {
+            "name": "fechamodificacion",
+            "type": "datetime",
+            "constraints": {
+              "required": true,
+              "minimum": "2017-11-13T04:30:00+00:00",
+              "maximum": "2026-09-18T15:31:30.483000+00:00"
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon, Polygon. Geometrías inválidas, conservadas sin reparar: 1."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
