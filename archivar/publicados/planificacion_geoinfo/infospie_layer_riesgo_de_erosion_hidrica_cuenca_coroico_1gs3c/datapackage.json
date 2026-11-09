@@ -1,0 +1,137 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_riesgo_de_erosion_hidrica_cuenca_coroico_1gs3c",
+  "title": "Riesgo de erosión hídrica Cuenca Coroico",
+  "description": "El mapa muestra la amenaza de erosión hídrica en la Cuenca Coroico. Respecto a la erosión hídrica en la cuenca del río Coroico, en función de la cantidad de metros cúbicos de agua por hectárea al año (MU mm/ha/año), las áreas más afectadas por la erosión hídrica están representadas en tonos rojos y naranjas, con valores de erosión que van de 3,000 hasta 11,000 MU mm/ha/año, indicando una alta vulnerabilidad a la erosión del suelo, particularmente en zonas de pendientes pronunciadas y con vegetación escasa. Estas áreas se encuentran principalmente en los municipios de Teoponte, Guanay y Caranavi.\nPor otro lado, las zonas de menor riesgo de erosión hídrica están representadas en tonos azules y verdes, con valores de erosión que van desde 1,439 hasta 3,000 MU mm/ha/año, lo que indica una menor susceptibilidad a la pérdida de suelo. Estas áreas se encuentran en los municipios de Coroico y Tipuani, en terrenos con características más estables.",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_riesgo_de_erosion_hidrica_cuenca_coroico_1gs3c/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 257215,
+      "hash": "sha256:e463d2c267de9277851af3c03ac8b6a6b13f1ff1bdf2478cbd8029edaabf9b69",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_riesgo_de_erosion_hidrica_cuenca_coroico_1gs3c.295"
+          },
+          {
+            "name": "gridcode",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 5
+            }
+          },
+          {
+            "name": "leyenda",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Muy baja",
+            "categories": [
+              "Alta",
+              "Media",
+              "Baja",
+              "Muy alta",
+              "Muy baja"
+            ]
+          },
+          {
+            "name": "sup_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 80.9943,
+              "maximum": 266818.2327
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "LA PAZ",
+            "categories": [
+              "LA PAZ"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Los Andes",
+            "categories": [
+              "Larecaja",
+              "Nor Yungas",
+              "Sur Yungas",
+              "Caranavi",
+              "Murillo",
+              "Franz Tamayo",
+              "Los Andes",
+              "Omasuyos"
+            ]
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Pucarani",
+            "categories": [
+              "Guanay",
+              "Caranavi",
+              "Coripata",
+              "Nuestra Señora de La Paz",
+              "Coroico",
+              "La Asunta",
+              "Chulumani",
+              "Teoponte",
+              "Sorata",
+              "Tipuani",
+              "Mapiri",
+              "Yanacachi",
+              "Alto Beni",
+              "Apolo",
+              "Achacachi",
+              "Batallas",
+              "El Alto",
+              "Palos Blancos",
+              "Pucarani"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 23."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
