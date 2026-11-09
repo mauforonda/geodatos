@@ -1,0 +1,92 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_elalto_rios",
+  "title": "Mapa Ríos del Municipio El Alto 2015",
+  "description": "Este mapa identifica los principales ríos que se encuentran en el Municipio de El Alto, los ríos que cruzan la ciudad se encuentran en la zona norte (distritos 4, 5, 7, 9, 11 y 13), los cuales nacen al pie de los nevados y corren paralelos hacia el sur, entre los principales se tienen: Río Seco, Río Seque, Río Negro, al sur del Municipio se tienen los ríos Achicala y Oripacha que pasan por los distritos 8 y 10. Información obtenida del Altas Geográfico del Municipio de El Alto presentado el año 2015 por la Infraestructura de Datos Espaciales - El Alto.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_elalto_rios/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 395488,
+      "hash": "sha256:2fa50a7a65ca12235b5501dd4331627e9a54b2966b9cb5b0dd5d2cbdd5d16181",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "elalto_rios.625"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 821
+            }
+          },
+          {
+            "name": "gid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 821
+            }
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "example": "Rio Jacha Jahuira"
+          },
+          {
+            "name": "clase",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Ríos intermitentes - quebradas",
+            "categories": [
+              "Ríos intermitentes - quebradas",
+              "Ríos perennes"
+            ]
+          },
+          {
+            "name": "long",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 38.1993911262,
+              "maximum": 45123.0820486
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
