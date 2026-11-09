@@ -1,0 +1,62 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mapbiomas_mapbiomas_venezuela_biosphere_reserve",
+  "title": "biosphere_reserve",
+  "sources": [
+    {
+      "title": "MapBiomas",
+      "path": "https://shared-geoserver.mapbiomas.org/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mapbiomas_mapbiomas_venezuela_biosphere_reserve/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 300878,
+      "hash": "sha256:d6aa88acd8f33e256a84665614feb1838f6cd87f8c1fd55f971fe5c320ca0744",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "example": "biosphere_reserve.1"
+          },
+          {
+            "name": "Shape_Leng",
+            "type": "number",
+            "constraints": {
+              "minimum": 5.31567130391,
+              "maximum": 19.0529484094
+            }
+          },
+          {
+            "name": "Shape_Area",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.713227968254,
+              "maximum": 6.66151067632
+            }
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "example": "Alto Orinoco Casiquiare"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 2."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
