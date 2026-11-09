@@ -1,0 +1,147 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_geologia_cuenca_poopo",
+  "title": "Plan Director Cuenca Lago Poopó - Geologia",
+  "description": "PDCLP (Plan Director de la Cuenca Lago Poopó). Muestra la información relevante de las unidades geológicas, en el marco del Plan Director de la Cuenca del Lago Poopó.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_geologia_cuenca_poopo/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 292827,
+      "hash": "sha256:3c262e0c307fd0bd0f57ca2f95c141c94d744c83dd08dc7a8338f55c85fc45be",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 1."
+          },
+          {
+            "name": "PROVINCIAS",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Nl1",
+            "categories": [
+              "S1",
+              "K1",
+              "D1",
+              "Ni1",
+              "Nt1",
+              "Q1",
+              "Ng1",
+              "Pg-Ng1",
+              "Nl1",
+              "J-K1",
+              "Pd1",
+              "Nd1",
+              "Nl-Nt1",
+              "Pl1"
+            ]
+          },
+          {
+            "name": "SIMBOLO",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Nl",
+            "categories": [
+              "S",
+              "K",
+              "D",
+              "Ni",
+              "Nt",
+              "Q",
+              "Ng",
+              "Pg-Ng",
+              "Nl",
+              "J-K",
+              "Pd",
+              "Nd",
+              "Nl-Nt",
+              "Pl"
+            ]
+          },
+          {
+            "name": "REG_MORFO",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Cordillera Occidental, Altiplano y Cordillerra Oriental",
+            "categories": [
+              "Cordillera Occidental, Altiplano y Cordillerra Oriental"
+            ]
+          },
+          {
+            "name": "PERIODO",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Neógeno",
+            "categories": [
+              "Silúrico",
+              "Neógeno",
+              "Cretácico",
+              "Devónico",
+              "Cuaternario",
+              "Paleógeno - Neógeno",
+              "Jurásico - Cretácico",
+              "Paleógeno"
+            ]
+          },
+          {
+            "name": "DESCRIPCIO",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Flujos de lavas, estrato volcanes",
+            "categories": [
+              "Lutitas, limolitas, cuarcitas y diamictitas",
+              "Conglomerados, calizas, areniscas, limolitas, margas y basaltos intercalados",
+              "Areniscas, lutitas y limolitas",
+              "Plutones de granitoides",
+              "Tobas soldadas",
+              "Depósitos aluviales, fluvio lacustres, fluvioglaciales, coluviales, lacustres, morrenas y dunas",
+              "Conglomerados, areniscas, arcilitas, yesos, margas, tobas, lavas intercaladas y diapiros",
+              "Conglomerados, areniscas, limolitas, calizas, margas, diapiros intercalan tobas y lavas",
+              "Flujos de lavas, estrato volcanes",
+              "Areniscas",
+              "Domos volcánicos (intermedios a ácidos)",
+              "Coladas de lava, tobas estrato volcanes y suceciones volcano sedimentarias",
+              "Flujos de lavas, estrato volcanes / Tobas soldadas"
+            ]
+          },
+          {
+            "name": "Hectares",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 8.28955345283,
+              "maximum": 1416909.98766
+            }
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
