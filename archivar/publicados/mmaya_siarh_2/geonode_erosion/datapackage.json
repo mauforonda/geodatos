@@ -1,0 +1,146 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_erosion",
+  "title": "Plan Director Cuenca Río Cotagaita – Erosión",
+  "description": "PDCRCo (Plan Director de la Cuenca Río Cotagaita). Muestra la información relevante de zonas bajo riesgo en la cuenca, en el marco del Plan Director de la Cuenca del Río Cotagaita.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_erosion/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 371803,
+      "hash": "sha256:8f9ef046ca5d5fbd030e3cd04e2b83abe69df4e4968cf45f803f3aebcd00e3ac",
+      "schema": {
+        "fields": [
+          {
+            "name": "ENTITY",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Complex Shape",
+            "categories": [
+              "Complex Shape",
+              "Cell",
+              ""
+            ]
+          },
+          {
+            "name": "NOMBRE",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "E3-E2",
+            "categories": [
+              "E2-E1",
+              "E2-E3",
+              "E1-E2",
+              "E3-E2",
+              "E3-E4",
+              "S3",
+              "S5",
+              "S1-S2",
+              "S2",
+              "S2-S3",
+              "S3-S4",
+              "E4-E3",
+              "S4"
+            ]
+          },
+          {
+            "name": "TIPO",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Erosión",
+            "categories": [
+              "Erosión",
+              "Sedimentación"
+            ]
+          },
+          {
+            "name": "DESCRIPCI",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Fuerte y Moderado",
+            "categories": [
+              "Moderado y Ligero",
+              "Moderado y Fuerte",
+              "Fuerte y Grave",
+              "Ligero y Moderado",
+              "Fuerte y Moderado",
+              "Fuerte",
+              "Muy Grave",
+              "Ligera y Moderada",
+              "Moderada",
+              "Moderada y Fuerte",
+              "Grave"
+            ]
+          },
+          {
+            "name": "AREA",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 139902.653,
+              "maximum": 1515930033.5
+            }
+          },
+          {
+            "name": "PERIMETER",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 2296.428,
+              "maximum": 317757.605
+            }
+          },
+          {
+            "name": "ACRES",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 34.571,
+              "maximum": 374592.971
+            }
+          },
+          {
+            "name": "HECTARES",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 13.99,
+              "maximum": 151593.003
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
