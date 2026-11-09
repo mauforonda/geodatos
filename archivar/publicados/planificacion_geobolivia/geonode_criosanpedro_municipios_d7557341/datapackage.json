@@ -1,0 +1,106 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geobolivia_geonode_criosanpedro_municipios_d7557341",
+  "title": "Plan Director Cuenca Río San Pedro - Municipios, Bolivia",
+  "description": "Información geoespacial de los 19 municipios que conforman la cuenca del río San Pedro. Información obtenida del Viceministerio de Recursos Hídricos y Riego, ha noviembre del 2020.",
+  "sources": [
+    {
+      "title": "Nueva plataforma GeoBolivia",
+      "path": "https://geonode.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geobolivia_geonode_criosanpedro_municipios_d7557341/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 384596,
+      "hash": "sha256:019f3a8b9bc3fbe5ce2659d06c3c4aef412a4e940de2024983d04671ad42f2b1",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "criosanpedro_municipios_d7557341.17"
+          },
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 19
+            }
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 19
+            }
+          },
+          {
+            "name": "departamen",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Oruro",
+            "categories": [
+              "Potosí",
+              "Cochabamba",
+              "Oruro",
+              "Chuquisaca"
+            ]
+          },
+          {
+            "name": "provincia",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Abaroa"
+          },
+          {
+            "name": "municipio",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Challapata"
+          },
+          {
+            "name": "capital",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Challapata"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
