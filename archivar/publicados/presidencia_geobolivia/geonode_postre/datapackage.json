@@ -1,0 +1,170 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_postre",
+  "title": "Producción de Plátano Postre en el Departamento de La Paz",
+  "description": "Las zonas de producción de este cultivo se ubican entre las zonas de la Amazonia, los Yungas del Norte y los Valles Cerrados del Departamento. La zona de mayor producción potencial se ubica entre el norte y este de la zona de los Yungas del Norte. Los municipios de Palos Blancos, Alto Beni, Apolo, Caranavi, Teoponte, La Asunta y San Buenaventura, representan a los municipios con mayor producción de Postre, con el 91% del total. De manera significativa, la producción de postre en el municipio de Palos Blancos es importante ya que es el 28% de la producción del departamento.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_postre/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 773175,
+      "hash": "sha256:e1d7769fdc4b96dbc5b776294049ad5fa8163d2100d657d470479bdff15d26cc",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "postre.10"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 27
+            }
+          },
+          {
+            "name": "departamen",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "La Paz",
+            "categories": [
+              "La Paz"
+            ]
+          },
+          {
+            "name": "provincia",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Larecaja",
+            "categories": [
+              "Larecaja",
+              "Sud Yungas",
+              "Inquisivi",
+              "Abel Iturralde",
+              "Caranavi",
+              "Murillo",
+              "Muñecas",
+              "Nor Yungas",
+              "Bautista Saavedra",
+              "Franz Tamayo"
+            ]
+          },
+          {
+            "name": "municipio",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Sorata"
+          },
+          {
+            "name": "cod_mun",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "020601"
+          },
+          {
+            "name": "macroregio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "YUNGAS-CHAPARE",
+            "categories": [
+              "YUNGAS-CHAPARE",
+              "VALLES",
+              "ALTIPLANO",
+              "AMAZONICA"
+            ]
+          },
+          {
+            "name": "sup_total",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0.36,
+              "maximum": 4392.572214
+            }
+          },
+          {
+            "name": "prod_qq",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 6.727136,
+              "maximum": 150335.495203
+            }
+          },
+          {
+            "name": "cultivo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "POSTRE",
+            "categories": [
+              "POSTRE"
+            ]
+          },
+          {
+            "name": "codigo_87",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 87
+            }
+          },
+          {
+            "name": "prod_ton",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0.309448256,
+              "maximum": 6915.43277934
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
