@@ -1,0 +1,189 @@
+{
+  "type": "Collection",
+  "id": "geodatosbolivia_lapaz_sit_alt_sit_patrimonio_sispac",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json",
+    "https://stac-extensions.github.io/vector/v0.1.0/schema.json",
+    "https://stac-extensions.github.io/projection/v2.0.0/schema.json",
+    "https://stac-extensions.github.io/file/v2.1.0/schema.json",
+    "https://stac-extensions.github.io/web-map-links/v1.3.0/schema.json"
+  ],
+  "title": "Patrimonio SISPAC",
+  "description": "Cruce de la tabla SISPAC y lotes catastro por medio del Código Catastral.",
+  "license": "other",
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -68.15282203309326,
+          -16.54108052430982,
+          -68.08354160928431,
+          -16.464931077566003
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "providers": [
+    {
+      "name": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)",
+      "roles": [
+        "producer"
+      ],
+      "url": "http://sitservicios.lapaz.bo/ows38.jsp"
+    },
+    {
+      "name": "Internet Archive",
+      "roles": [
+        "host"
+      ],
+      "url": "https://archive.org/details/geodatosbolivia_lapaz_sit_alt_sit_patrimonio_sispac"
+    }
+  ],
+  "table:primary_geometry": "geometry",
+  "table:row_count": 2933,
+  "table:columns": [
+    {
+      "name": "id",
+      "type": "string"
+    },
+    {
+      "name": "ogc_fid",
+      "type": "int32"
+    },
+    {
+      "name": "codigocatastral",
+      "type": "string"
+    },
+    {
+      "name": "zona_cat",
+      "type": "string"
+    },
+    {
+      "name": "direccion_cat",
+      "type": "string"
+    },
+    {
+      "name": "cas_id",
+      "type": "int32"
+    },
+    {
+      "name": "cas_nro_caso",
+      "type": "int32"
+    },
+    {
+      "name": "numeroficha",
+      "type": "string"
+    },
+    {
+      "name": "usuario",
+      "type": "string"
+    },
+    {
+      "name": "categoria",
+      "type": "string"
+    },
+    {
+      "name": "fecha_creacion",
+      "type": "timestamp[us]"
+    },
+    {
+      "name": "geometry",
+      "type": "binary",
+      "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+    }
+  ],
+  "summaries": {
+    "vector:geometry_types": [
+      "MultiPolygon"
+    ]
+  },
+  "assets": {
+    "data": {
+      "href": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_sit_patrimonio_sispac/dataset.geoparquet",
+      "type": "application/vnd.apache.parquet",
+      "title": "GeoParquet",
+      "roles": [
+        "data"
+      ],
+      "proj:code": "EPSG:4326",
+      "file:size": 566097,
+      "file:checksum": "122087e7b4eb563b40498b840057072390b49274b23df9aa86b2efb1a400ea6ef72a"
+    },
+    "datapackage": {
+      "href": "./datapackage.json",
+      "type": "application/json",
+      "title": "Data Package: columnas, tipos y categorías",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "pmtiles": {
+      "href": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_sit_patrimonio_sispac/dataset.pmtiles",
+      "type": "application/vnd.pmtiles",
+      "title": "Teselas vectoriales (PMTiles)",
+      "roles": [
+        "visual"
+      ],
+      "file:size": 163769,
+      "file:checksum": "1220bfca0a1025f026b19b84e069178539167ed5d8769fd7fb27ce202812ee8feb50"
+    }
+  },
+  "pmtiles:min_zoom": 12,
+  "pmtiles:max_zoom": 14,
+  "pmtiles:tile_type": "mvt",
+  "pmtiles:center": [
+    -68.1181818,
+    -16.5030058,
+    13
+  ],
+  "pmtiles:properties": [
+    {
+      "nombre": "categoria",
+      "tipo": "string",
+      "categorias": [
+        "C",
+        "B",
+        "A",
+        "NULL",
+        "D"
+      ]
+    }
+  ],
+  "links": [
+    {
+      "rel": "root",
+      "href": "../../../catalog.json",
+      "type": "application/json",
+      "title": "Datos geográficos de Bolivia"
+    },
+    {
+      "rel": "parent",
+      "href": "../catalog.json",
+      "type": "application/json",
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)"
+    },
+    {
+      "rel": "via",
+      "href": "http://sitservicios.lapaz.bo/ows38.jsp",
+      "type": "text/html",
+      "title": "Servicio de origen"
+    },
+    {
+      "rel": "pmtiles",
+      "href": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_sit_patrimonio_sispac/dataset.pmtiles",
+      "type": "application/vnd.pmtiles",
+      "pmtiles:layers": [
+        "dataset"
+      ]
+    }
+  ]
+}

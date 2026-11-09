@@ -1,0 +1,179 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_alt_sit_patrimonio_sispac",
+  "title": "Patrimonio SISPAC",
+  "description": "Cruce de la tabla SISPAC y lotes catastro por medio del Código Catastral.",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)",
+      "path": "http://sitservicios.lapaz.bo/ows38.jsp"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_sit_patrimonio_sispac/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 566097,
+      "hash": "sha256:87e7b4eb563b40498b840057072390b49274b23df9aa86b2efb1a400ea6ef72a",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "patrimonio_sispac.fid--314a5bbc_19fd3911010_78c4"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 22,
+              "maximum": 147295
+            }
+          },
+          {
+            "name": "codigocatastral",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "029002300470000"
+          },
+          {
+            "name": "zona_cat",
+            "type": "string",
+            "example": "SOPOCACHI",
+            "categories": [
+              "MIRAFLORES",
+              "SOPOCACHI",
+              "CENTRAL",
+              "SAN PEDRO",
+              "NORTE",
+              "SAN SEBASTIAN",
+              "SAN JORGE",
+              "EL ROSARIO",
+              "OBRAJES",
+              "BELEN",
+              "CHALLAPAMPA",
+              "GRAN PODER",
+              "SANTA BARBARA",
+              "AGUA DE LA VIDA",
+              "14 DE SEPTIEMBRE",
+              "VILLA FATIMA",
+              "ALTO MIRAFLORES",
+              "CALACOTO",
+              "LOS ANDES",
+              "BAJO SEGUENCOMA",
+              "KANTUTANI",
+              "SAN JUAN LAZARETO",
+              "VILLA DE LA CRUZ",
+              "VINO TINTO"
+            ]
+          },
+          {
+            "name": "direccion_cat",
+            "type": "string",
+            "example": "CALLE JAIME ZUDAÃEZ Nro. 1052"
+          },
+          {
+            "name": "cas_id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 3661
+            }
+          },
+          {
+            "name": "cas_nro_caso",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 16,
+              "maximum": 3614
+            }
+          },
+          {
+            "name": "numeroficha",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "PTR_CBI837/2016"
+          },
+          {
+            "name": "usuario",
+            "type": "string",
+            "example": "s.blanco",
+            "categories": [
+              "s.anaya",
+              "s.blanco",
+              "c.carrasco",
+              "o.ogalde",
+              "m.castro",
+              "z.tirado",
+              "daniela.vasquez",
+              "carolina.hernandez",
+              "ALEJANDRA PAOLA MOSCOSO BELTRAN",
+              "CLAUDIA TARRAGA LIQUEN",
+              "j.barriga",
+              "PATRICIA TANIA VÁSQUEZ .",
+              "CLAUDIA LUCIA CAMPUZANO RODRIGUEZ",
+              "EDMUNDO DALVATTORE DE LA RIVA CASTILLO",
+              "EDSON RODRIGO RUIZ SOLIZ",
+              "YSRAEL ALAN MENDOZA MALDONADO",
+              "alejandra.moscoso",
+              "Isabel Mamani Lopez",
+              "admin",
+              "Lenny Aida Irusta Perez",
+              "PATRICIA TANIA VÁSQUEZ AGUILERA",
+              "EDMUNDO SALVATTORE DE LA RIVA CASTILLO",
+              "christian.frade",
+              "ever.coharite"
+            ]
+          },
+          {
+            "name": "categoria",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "C",
+            "categories": [
+              "C",
+              "B",
+              "A",
+              "NULL",
+              "D"
+            ]
+          },
+          {
+            "name": "fecha_creacion",
+            "type": "datetime",
+            "constraints": {
+              "minimum": "2010-04-12T00:00:00",
+              "maximum": "2022-06-28T00:00:00"
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
