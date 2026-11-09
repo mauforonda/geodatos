@@ -1,0 +1,130 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_minplanifica_infocapa_layer_lineas_de_transmision_sin_bolivia_2023_g08vn",
+  "title": "layer_lineas_de_transmision_sin_bolivia_2023_g08vn",
+  "sources": [
+    {
+      "title": "Geoserver del Ministerio de Planificación del Desarollo",
+      "path": "https://geoserver.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_minplanifica_infocapa_layer_lineas_de_transmision_sin_bolivia_2023_g08vn/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 370399,
+      "hash": "sha256:192da9688fb5002e301e19b66226a692f70dfe9422cfa7c990aa48d324f8cdd3",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_lineas_de_transmision_sin_bolivia_2023_g08vn.556"
+          },
+          {
+            "name": "codigo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "THU-LIT23001"
+          },
+          {
+            "name": "propietari",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "SUR",
+            "categories": [
+              "CENTRAL",
+              "NORTE",
+              "ORIENTAL",
+              "ORURO",
+              "SUR",
+              "TARIJA",
+              "SUCRE",
+              "TRINIDAD"
+            ]
+          },
+          {
+            "name": "nodo_1",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "THU23001"
+          },
+          {
+            "name": "nodo_2",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "LIT23001"
+          },
+          {
+            "name": "long_km",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.01012918688,
+              "maximum": 118.9462985691
+            }
+          },
+          {
+            "name": "un",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 25,
+              "maximum": 500
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "example": "Potosi",
+            "categories": [
+              "La Paz",
+              "Cochabamba",
+              "Santa Cruz",
+              "Potosi",
+              "Oruro",
+              "Tarija",
+              "Chuquisaca",
+              "Beni"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "example": "Sur Chichas"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "example": "Tupiza"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
