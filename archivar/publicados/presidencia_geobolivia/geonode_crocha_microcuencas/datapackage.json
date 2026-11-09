@@ -1,0 +1,126 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_crocha_microcuencas",
+  "title": "Plan Director Cuenca Río Rocha - Microcuencas, Bolivia",
+  "description": "El mapa muestra las microcuencas que conforman la Cuenca del Río Rocha, que se encuentra en el departamento de Cochabamba, a escala 1:250.000, información obtenida del  Viceministerio de Recursos Hídricos y Riego, ha marzo del 2017.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_crocha_microcuencas/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 566374,
+      "hash": "sha256:496d80b3e9536c41ce5187faf74fd766e5832ca7965fa37ea1c32863863018df",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "crocha_microcuencas.5"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 68
+            }
+          },
+          {
+            "name": "objectid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 68
+            }
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Río Rocha",
+            "categories": [
+              "Río Rocha"
+            ]
+          },
+          {
+            "name": "uh",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "466985-466986-466987-466988-466989",
+            "categories": [
+              "466985-466986-466987-466988-466989"
+            ]
+          },
+          {
+            "name": "uhg",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "4669874"
+          },
+          {
+            "name": "dens_pob",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 632013
+            }
+          },
+          {
+            "name": "shape_leng",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 3729.50567778,
+              "maximum": 82014.942377
+            }
+          },
+          {
+            "name": "shape_area",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 435609.936247,
+              "maximum": 169338697.747
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
