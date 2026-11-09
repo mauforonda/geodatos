@@ -1,0 +1,79 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_corredoresecon",
+  "title": "Plan Director Cuenca Río Mizque - Corredores Económicos",
+  "description": "PDCRM (Plan Director de la Cuenca Río Mizque).  Muestra la ubicacion y la información relevante de los corredores economicos, en el marco del Plan Director de la Cuenca Río  Mizque.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_corredoresecon/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 591706,
+      "hash": "sha256:f8058409c3c681f96559f38b9ddf612fd6922cb87b7fdffe928ca462c7fe8d51",
+      "schema": {
+        "fields": [
+          {
+            "name": "gml_id",
+            "type": "string",
+            "example": "Caminos.28178"
+          },
+          {
+            "name": "NBVIALIDAD",
+            "type": "string",
+            "example": "Principal"
+          },
+          {
+            "name": "COCLASIFVI",
+            "type": "integer",
+            "constraints": {
+              "minimum": 0,
+              "maximum": 1
+            }
+          },
+          {
+            "name": "COESCALA",
+            "type": "integer",
+            "constraints": {
+              "minimum": 0,
+              "maximum": 2
+            }
+          },
+          {
+            "name": "LENG",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.0,
+              "maximum": 1.896
+            }
+          },
+          {
+            "name": "BUFF_DIST",
+            "type": "integer",
+            "constraints": {
+              "minimum": 5000,
+              "maximum": 5000
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
