@@ -1,0 +1,117 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mapbiomas_mapbiomas_colombia_ramsar_site",
+  "title": "ramsar_site",
+  "sources": [
+    {
+      "title": "MapBiomas",
+      "path": "https://shared-geoserver.mapbiomas.org/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mapbiomas_mapbiomas_colombia_ramsar_site/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 393860,
+      "hash": "sha256:95e3e79e9d0f84d3f469124c7a2c0f3874bfd6a09b664d4082b24bfa3e818d74",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "ramsar_site.5"
+          },
+          {
+            "name": "FEATURE_ID",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 4162,
+              "maximum": 4173
+            }
+          },
+          {
+            "name": "NAME",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Laguna de La Cocha"
+          },
+          {
+            "name": "LEVEL_1",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "",
+            "categories": [
+              ""
+            ]
+          },
+          {
+            "name": "LEVEL_2",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "",
+            "categories": [
+              ""
+            ]
+          },
+          {
+            "name": "COUNTRY",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "",
+            "categories": [
+              ""
+            ]
+          },
+          {
+            "name": "CATEGORY",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "ramsar",
+            "categories": [
+              "ramsar"
+            ]
+          },
+          {
+            "name": "NAME_PT_BR",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Laguna de La Cocha"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 6."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
