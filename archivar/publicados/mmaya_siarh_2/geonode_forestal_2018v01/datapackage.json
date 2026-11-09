@@ -1,0 +1,123 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_forestal_2018v01",
+  "title": "Proyectos Forestales 2018 (PNC II)",
+  "description": "Proyectos Forestales a nivel de microcuencas para la gestión 2018, en el marco del Plan Nacional de Cuencas (PNC)",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_forestal_2018v01/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 335512,
+      "hash": "sha256:c62b4d340345dbb7dfff9097886f7999b0e09bcea7982dda279e25f9160889e5",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "",
+            "categories": [
+              "",
+              "Rio Challaque",
+              "Unidad Hidrográfica 46697384"
+            ]
+          },
+          {
+            "name": "Codif",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "4644858"
+          },
+          {
+            "name": "Sup_Km2",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 428.398145053
+            }
+          },
+          {
+            "name": "Municipio",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Cairoma"
+          },
+          {
+            "name": "Departamen",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "La Paz",
+            "categories": [
+              "La Paz",
+              "Cochabamba",
+              "Potosi",
+              "Oruro",
+              "Santa Cruz",
+              "Tarija"
+            ]
+          },
+          {
+            "name": "Proyecto",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Agroforestación en la Microcuenca Pucarani, Municipio Cairoma"
+          },
+          {
+            "name": "Ano",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "2018",
+            "categories": [
+              "2018"
+            ]
+          },
+          {
+            "name": "Micrcuenca",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1587.0,
+              "maximum": 466999832.0
+            }
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
