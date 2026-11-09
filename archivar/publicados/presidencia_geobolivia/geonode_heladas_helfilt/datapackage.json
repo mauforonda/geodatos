@@ -1,0 +1,86 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_heladas_helfilt",
+  "title": "Zonas afectadas por heladas en Bolivia_ 2002",
+  "description": "El mapa temático presenta una categoría con ocho grados de ocurrencia de heladas las cuales están en relación con el numero de días promedio por año en que se presenta este fenómeno atmosférico, en gran parte del Altiplano al ser una zona muy afectada debe prepararse para más heladas, tormentas, inundaciones y granizos, perjudicando así a la producción agrícola, pecuaria, crecerán las necesidades de agua para riego y la competencia para el acceso al líquido elemental, problemas con la generación de energía. Se prevé un problema de desertización en áreas altiplánicas y de las cordilleras occidental y oriental”. Elaborado por la Unidad de Ordenamiento Territorial del Ministerio de Planificación del Desarrollo, en el año 2002 a escala 1: 1000000.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_heladas_helfilt/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 386037,
+      "hash": "sha256:cbb77089144238dd5dc0034c3593e77bc90affe674d8266f5f831672119cbc8e",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "heladas_helfilt.581"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 887
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "heladas_helfilt.581"
+          },
+          {
+            "name": "helf",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "1",
+            "categories": [
+              "1",
+              "6",
+              "4",
+              "3",
+              "5",
+              "7",
+              "2",
+              "8",
+              "9",
+              "10",
+              "11"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 11."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
