@@ -1,0 +1,114 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_inundacion_2008",
+  "title": "Mapa de áreas y predios afectados por la inundacion provocada por el fenómeno de la niña_ 2007 - 2008",
+  "description": "El mapa muestra una cuantificación de las superficies de áreas y predios afectados por las inundaciones causadas por el fenómeno de la Niña en el periodo 2007 - 2008. Como antecedente se tiene el espacio-mapa elaborado por el INRA el año 2007 de los predios afectados por el fenómeno del Niño. Por su parte el SUNIT dispuso de un equipo de personal técnico especializado para ejecución de las actividades del trabajo de campo para la definición del perímetro de las zonas afectadas por las inundaciones en la cuenca del Rió Mamoré y sus afluentes. Elaborado por Unidad Técnica Nacional de Información de la Tierra (SUNIT) en el año 2008 a escala 1:250000.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_inundacion_2008/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 525110,
+      "hash": "sha256:f8aa5127e91772781c726cdb6d022915c0fa0f3a0a026a5d5c7b184fc8ffd42a",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "inundacion_2008.1"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 26
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "inundacion_2008.1"
+          },
+          {
+            "name": "objectid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 26
+            }
+          },
+          {
+            "name": "area",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 0
+            }
+          },
+          {
+            "name": "hectares",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 798.037,
+              "maximum": 8345867.75
+            }
+          },
+          {
+            "name": "shape_leng",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0.114937081698,
+              "maximum": 98.0367162644
+            }
+          },
+          {
+            "name": "shape_area",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0.000666514024841,
+              "maximum": 6.99755881813
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
