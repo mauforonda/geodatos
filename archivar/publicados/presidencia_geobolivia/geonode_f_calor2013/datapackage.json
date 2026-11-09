@@ -1,0 +1,199 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_f_calor2013",
+  "title": "Monitoreo de focos de calor en Bolivia - ABT_ 2013",
+  "description": "Este mapa muestra la identificación y monitoreo a focos de calor en territorio nacional en la gestion 2012, realizadas por medio de imagenes satelitales para la detección de altas temperaturas, los cuales necesariamente tienen que ser inspeccionados para determinar si son quemas o incendios forestales. Elaborado por la Autoridad de Fiscalización y Control Social de Bosques y Tierra (ABT) con datos del año 2012.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_f_calor2013/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 622572,
+      "hash": "sha256:b43031fc1fe5bf71f9c8605abc8c55d06a480cc6fb2f190f6fea0c9c13db701c",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 19646
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 19646
+            }
+          },
+          {
+            "name": "join_count",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 3
+            }
+          },
+          {
+            "name": "data",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 20130101,
+              "maximum": 20131223
+            }
+          },
+          {
+            "name": "hora",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 14848,
+              "maximum": 185500
+            }
+          },
+          {
+            "name": "satelite",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "TERRA_M-T",
+            "categories": [
+              "AQUA_M-T",
+              "TERRA_M-T",
+              "TERRA_M-M",
+              "AQUA-T",
+              "AQUA_M-M",
+              "TERRA-T",
+              "TERRA-M",
+              "AQUA-M"
+            ]
+          },
+          {
+            "name": "prec",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 6,
+              "maximum": 507
+            }
+          },
+          {
+            "name": "buff_dist",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 0
+            }
+          },
+          {
+            "name": "orig_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 26459
+            }
+          },
+          {
+            "name": "codigo",
+            "type": "string",
+            "example": "051401"
+          },
+          {
+            "name": "nom_dep",
+            "type": "string",
+            "example": "Potosi",
+            "categories": [
+              "Beni",
+              "Santa Cruz",
+              "La Paz",
+              "Pando",
+              "Cochabamba",
+              "Tarija",
+              "Chuquisaca",
+              "Oruro",
+              "Potosi",
+              "SALAR",
+              "LAGO"
+            ]
+          },
+          {
+            "name": "nom_prov",
+            "type": "string",
+            "example": "Daniel Campos"
+          },
+          {
+            "name": "nom_mun",
+            "type": "string",
+            "example": "Llica"
+          },
+          {
+            "name": "shape_leng",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 0
+            }
+          },
+          {
+            "name": "shape_area",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 0
+            }
+          },
+          {
+            "name": "point_x",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": -69,
+              "maximum": -57
+            }
+          },
+          {
+            "name": "point_y",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": -22,
+              "maximum": -9
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPoint."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
