@@ -1,0 +1,71 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_lapaz_carpetas2",
+  "title": "Carpetas de Inversion 2",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz",
+      "path": "http://sitservicios.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_lapaz_carpetas2/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 654846,
+      "hash": "sha256:3bc50211b5d06f8775ad8a88b8699e73260078e8de5dc8edf63f6eec41dedc00",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "carpetas2.2701"
+          },
+          {
+            "name": "cod_coordcarp",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 574,
+              "maximum": 18839
+            }
+          },
+          {
+            "name": "cod_carpeta",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1512,
+              "maximum": 74124
+            }
+          },
+          {
+            "name": "forma2",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "MULTIPOINT(588860.625 8177904.5)"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPoint, MultiPolygon, MultiLineString, LineString, Point, Polygon, GeometryCollection. Geometrías inválidas, conservadas sin reparar: 13."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
