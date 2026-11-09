@@ -1,0 +1,130 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_criocotagaita_aptitud",
+  "title": "Plan Director Cuenca Río Cotagaita - Aptitud de Uso de la Tierra_ Bolivia",
+  "description": "Muestra la información relevante de Aptitud de Uso de la Tierra en la cuenca del Río Cotagaita como ser: Uso agrícola extensivo, Uso ganadero extensivo, Uso agropecuario extensivo, Protección con uso ganadero extensivo limitado, Protección con uso ganadero extensivo limitado, Protección con uso agropecuario extensivo limitado, Protección. Información obtenida del Viceministerio de Recursos Hídricos y Riego, ha febrero del 2019.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_criocotagaita_aptitud/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 378361,
+      "hash": "sha256:7a2f61a503fad796fbb98d31587b192f02f3e23c5d97e889dbff8276d88d4cab",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 25
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0,
+              "maximum": 24
+            }
+          },
+          {
+            "name": "zae",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "B2",
+            "categories": [
+              "E1",
+              "B2",
+              "B1",
+              "E7",
+              "E11",
+              "E2",
+              "B3"
+            ]
+          },
+          {
+            "name": "des",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Uso ganadero extensivo",
+            "categories": [
+              "Protección con uso ganadero extensivo limitado",
+              "Uso ganadero extensivo",
+              "Uso agrícola extensivo",
+              "Protección",
+              "Protección con uso agropecuario extensivo limitado",
+              "Uso agropecuario extensivo"
+            ]
+          },
+          {
+            "name": "shape_leng",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1353.71763695,
+              "maximum": 435854.510522
+            }
+          },
+          {
+            "name": "shape_area",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 38832.8434396,
+              "maximum": 1640006332.23
+            }
+          },
+          {
+            "name": "sup_km2",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0.0388328434396,
+              "maximum": 1640.00633223
+            }
+          },
+          {
+            "name": "sup_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 3.88328434396,
+              "maximum": 164000.633223
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
