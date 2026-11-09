@@ -1,0 +1,137 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_riesgo_de_erosion_hidrica_en_la_cu_d83a16f1f011",
+  "title": "Riesgo de erosión hídrica en la Cuenca Coroico",
+  "description": "El mapa muestra el riesgo de erosión hídrica en la Cuenca Coroico. Este mapa muestra la distribución del riesgo de erosión hídrica en la cuenca del Río Coroico, ubicada en el departamento de La Paz, Bolivia. Las diferentes tonalidades en el mapa indican los niveles de riesgo de erosión hídrica en cada municipio. Las áreas en rojo representan zonas con mayor riesgo de erosión hídrica, mientras que las áreas en verde indican un riesgo menor.\nEste mapa combina información geoespacial con datos estadísticos, representando de manera detallada la distribución del riesgo de erosión hídrica en la Cuenca del Río Coroico. La categorización del riesgo se presenta en cinco niveles: muy bajo, bajo, medio, alto y muy alto, lo que permite una interpretación clara y jerarquizada de las áreas más vulnerables. Dentro del análisis, se destaca el municipio de Teoponte, que enfrenta un 78% de su territorio con riesgo muy alto, evidenciando una alta susceptibilidad a la pérdida de suelos por erosión hídrica.\nEn contraste, el municipio de Coroico presenta un 9% de su superficie en riesgo muy bajo, indicando condiciones más favorables en términos de estabilidad del suelo.\nEl mapa sirve para evaluar la vulnerabilidad ambiental y como una herramienta estratégica para la toma de decisiones en la gestión territorial y la planificación del uso de la tierra. Esta información es clave para priorizar intervenciones, como la implementación de prácticas de conservación de suelos, reforestación o gestión sostenible de las actividades agropecuarias, especialmente en las áreas con mayor exposición al riesgo.",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_riesgo_de_erosion_hidrica_en_la_cu_d83a16f1f011/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 284015,
+      "hash": "sha256:dc09fd3bda6432373fb8dad4ad9b7b6fc56acf0620567392ac7e8110349fe709",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_riesgo_de_erosion_hidrica_en_la_cuenca_coroico_d8znh.614"
+          },
+          {
+            "name": "sup_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.108,
+              "maximum": 121844.1127
+            }
+          },
+          {
+            "name": "gridcode",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 5
+            }
+          },
+          {
+            "name": "leyenda",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Medio",
+            "categories": [
+              "Alto",
+              "Medio",
+              "Muy alto",
+              "Bajo",
+              "Muy bajo"
+            ]
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "LA PAZ",
+            "categories": [
+              "LA PAZ"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Los Andes",
+            "categories": [
+              "Larecaja",
+              "Caranavi",
+              "Nor Yungas",
+              "Murillo",
+              "Sur Yungas",
+              "Franz Tamayo",
+              "Los Andes",
+              "Omasuyos"
+            ]
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Batallas",
+            "categories": [
+              "Guanay",
+              "Caranavi",
+              "Nuestra Señora de La Paz",
+              "Coroico",
+              "Teoponte",
+              "Coripata",
+              "Tipuani",
+              "Chulumani",
+              "Mapiri",
+              "Alto Beni",
+              "La Asunta",
+              "Apolo",
+              "Yanacachi",
+              "Sorata",
+              "Palos Blancos",
+              "Batallas",
+              "El Alto",
+              "Achacachi",
+              "Pucarani"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 41."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
