@@ -1,0 +1,109 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_minplanifica_infocapa_layer_potencial_productivo_del_municipio_de_camiri_ptdi_yfn1k",
+  "title": "layer_potencial_productivo_del_municipio_de_camiri__ptdi_yfn1k",
+  "sources": [
+    {
+      "title": "Geoserver del Ministerio de Planificación del Desarollo",
+      "path": "https://geoserver.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_minplanifica_infocapa_layer_potencial_productivo_del_municipio_de_camiri_ptdi_yfn1k/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 417024,
+      "hash": "sha256:411545cd2f983d3f5e925631c0afd5678934bad247da4b67bee95d2e48142eaf",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_potencial_productivo_del_municipio_de_camiri__ptdi_yfn1k.20"
+          },
+          {
+            "name": "tipos",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "PASTOREO Y RAMONEO",
+            "categories": [
+              "CULTIVOS AGRICOLAS",
+              "CULTIVOS AGRICOLAS MERCADO LOCAL",
+              "EXTRACTIVO FORESTAL Y PETROLERO",
+              "PASTOREO Y RAMONEO",
+              "PISCICOLA Y CAPTACION DE AGUA",
+              "GANADERIA",
+              "SILVOPASTORIL",
+              "ZONA  URBANA"
+            ]
+          },
+          {
+            "name": "sup_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0.001,
+              "maximum": 52158.459
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Santa Cruz",
+            "categories": [
+              "Santa Cruz"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Cordillera",
+            "categories": [
+              "Cordillera"
+            ]
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Camiri",
+            "categories": [
+              "Camiri",
+              "Lagunillas",
+              "Charagua",
+              "Gutiérrez"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 4."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
