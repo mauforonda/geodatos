@@ -1,0 +1,95 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geobolivia_geonode_criotupiza_caminos_d43124ca",
+  "title": "Plan Director Cuenca Río Tupiza - Caminos, Bolivia",
+  "description": "Información geoespacial de la red vial en el área del Plan Director de la Cuenca del Río Tupiza. Información obtenida del Viceministerio de Recursos Hídricos y Riego, ha enero del 2019.",
+  "sources": [
+    {
+      "title": "Nueva plataforma GeoBolivia",
+      "path": "https://geonode.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geobolivia_geonode_criotupiza_caminos_d43124ca/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 428184,
+      "hash": "sha256:5d30a4cc73ab2d693f5c7e28a986602f88dfd132876a052e22d7335330fd8bf8",
+      "schema": {
+        "fields": [
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 1080
+            }
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 1080
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0,
+              "maximum": 1079
+            }
+          },
+          {
+            "name": "vialidad",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Secundario o Vecinal",
+            "categories": [
+              "Senda, Rodera o Vereda",
+              "Secundario o Vecinal",
+              "Principal o Carretero",
+              "Terciario"
+            ]
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "example": "Camino Tupiza-San Vicente"
+          },
+          {
+            "name": "dist_m",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 1.42,
+              "maximum": 32878.53
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
