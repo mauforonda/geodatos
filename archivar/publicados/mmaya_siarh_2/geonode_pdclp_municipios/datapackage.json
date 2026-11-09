@@ -1,0 +1,77 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_pdclp_municipios",
+  "title": "Plan Director Cuenca Lago Poopo  - Municipios",
+  "description": "Limite de municipios de la cuenca del Lago Poopo",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_pdclp_municipios/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 486587,
+      "hash": "sha256:25042808a6fc434181bb13a56a0030f52d14ae0d46a31d9c7a4624c0c3872b1e",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "DEPARTAMEN",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Oruro",
+            "categories": [
+              "Oruro",
+              "La Paz",
+              "Potosí",
+              "Cochabamba"
+            ]
+          },
+          {
+            "name": "PROVINCIA",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Ladislao Cabrera"
+          },
+          {
+            "name": "MUNICIPIO",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Pampa Aullagas"
+          },
+          {
+            "name": "CAPITAL",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Pampa Aullagas"
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
