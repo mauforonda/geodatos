@@ -1,0 +1,108 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mhe_geoportal_geonode_bol_roads",
+  "title": "BOL_roads",
+  "sources": [
+    {
+      "title": "Geoportal del Viceministerio de Electricidad y Energías Renovables",
+      "path": "https://geoportal.mhe.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mhe_geoportal_geonode_bol_roads/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 361711,
+      "hash": "sha256:e67c0088dca7d9b538b9736dabd740fa3d229dcf454fed005accc87a901389de",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 1735
+            }
+          },
+          {
+            "name": "MED_DESCRI",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Without Median",
+            "categories": [
+              "Without Median",
+              "",
+              "Unknown"
+            ]
+          },
+          {
+            "name": "RTT_DESCRI",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Secondary Route",
+            "categories": [
+              "Secondary Route",
+              "",
+              "Primary Route",
+              "Unknown"
+            ]
+          },
+          {
+            "name": "F_CODE_DES",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Road",
+            "categories": [
+              "Road",
+              "Trail"
+            ]
+          },
+          {
+            "name": "ISO",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "BOL",
+            "categories": [
+              "BOL"
+            ]
+          },
+          {
+            "name": "ISOCOUNTRY",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "",
+            "categories": [
+              "BOLIVIA",
+              ""
+            ]
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
