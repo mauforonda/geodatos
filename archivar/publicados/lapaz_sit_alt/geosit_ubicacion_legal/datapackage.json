@@ -1,0 +1,163 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_alt_geosit_ubicacion_legal",
+  "title": "ubicacion_legal",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)",
+      "path": "http://sitservicios.lapaz.bo/ows38.jsp"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_geosit_ubicacion_legal/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 526429,
+      "hash": "sha256:38e266384a5de3a6399798c3b9ce1246b8edcbf845210d2a06a027ed1945b596",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "ubicacion_legal.9409"
+          },
+          {
+            "name": "nro_documento_identidad",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "6740075"
+          },
+          {
+            "name": "codigo_catastral",
+            "type": "string",
+            "example": "046091200150000"
+          },
+          {
+            "name": "fecha_registro",
+            "type": "datetime",
+            "constraints": {
+              "required": true,
+              "minimum": "2019-09-03T14:32:57.571000+00:00",
+              "maximum": "2023-08-08T19:49:06.879000+00:00"
+            }
+          },
+          {
+            "name": "fecha_modificacion",
+            "type": "datetime",
+            "constraints": {
+              "minimum": "2019-09-03T15:54:03.837000+00:00",
+              "maximum": "2025-08-15T15:13:27.905000+00:00"
+            }
+          },
+          {
+            "name": "tipo_documento",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "CI",
+            "categories": [
+              "CI",
+              "NIT",
+              "RUAT"
+            ]
+          },
+          {
+            "name": "expedido",
+            "type": "string",
+            "example": "LP",
+            "categories": [
+              "LP",
+              "OR",
+              "PO",
+              "CO",
+              "CH",
+              "SC",
+              "TA",
+              "BE",
+              "EXT",
+              "PA"
+            ]
+          },
+          {
+            "name": "usuario_registro",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "chris.valenzuela"
+          },
+          {
+            "name": "usuario_modificacion",
+            "type": "string",
+            "example": "jahel.soraide"
+          },
+          {
+            "name": "macrodistrito",
+            "type": "string",
+            "example": "Mallasa",
+            "categories": [
+              "Cotahuma",
+              "Periferica",
+              "Calacoto",
+              "Centro",
+              "Max Paredes",
+              "San Antonio",
+              "Obrajes",
+              "Ovejuyo",
+              "Hampaturi",
+              "Mallasa"
+            ]
+          },
+          {
+            "name": "distrito",
+            "type": "string",
+            "example": "20",
+            "categories": [
+              "18",
+              "21",
+              "2",
+              "11",
+              "3",
+              "1",
+              "4",
+              "13",
+              "6",
+              "7",
+              "12",
+              "16",
+              "8",
+              "5",
+              "10",
+              "14",
+              "19",
+              "17",
+              "15",
+              "9",
+              "22",
+              "20"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point. La fuente declaraba EPSG:4326 pero sus coordenadas estaban en EPSG:32719 (sistema inferido por la ubicación de las geometrías en Bolivia); se reproyectaron."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
