@@ -1,0 +1,64 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_lapaz_red_agua",
+  "title": "Red de Cañerias de Agua Potable",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz",
+      "path": "http://sitservicios.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_lapaz_red_agua/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 599663,
+      "hash": "sha256:345151e80f6cdbfa8876acad5e2556a6ff139c0ca00129e9920706a6c5ef70da",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "red_agua.955"
+          },
+          {
+            "name": "gdbsdesc",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "TUB-DSEC-002-050"
+          },
+          {
+            "name": "gdbsnomb",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "TUBERIA",
+            "categories": [
+              "TUBERIA"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
