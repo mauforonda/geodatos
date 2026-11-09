@@ -1,0 +1,97 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_criomizque_suelo",
+  "title": "Plan Director Cuenca Río Mizque - Suelos, Bolivia",
+  "description": "El mapa muestra los suelos que existen en la  Cuenca del Río Mizque,  Información obtenida del Viceministerio de Recursos Hídricos y Riego, ha septiembre del 2016.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_criomizque_suelo/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 647371,
+      "hash": "sha256:fbc933f32a2ff4851d0a157075dac46ad268fc486a762304bee8e4051b4b01da",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "criomizque_suelo.11"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 12
+            }
+          },
+          {
+            "name": "objectid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 12
+            }
+          },
+          {
+            "name": "dato",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Suelo",
+            "categories": [
+              "Suelo"
+            ]
+          },
+          {
+            "name": "descripci",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Ultisoles"
+          },
+          {
+            "name": "pdc",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "PDC_MIZQUE",
+            "categories": [
+              "PDC_MIZQUE"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
