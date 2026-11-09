@@ -1,0 +1,100 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mhe_geoportal_geonode_bol_water_areas_dcw",
+  "title": "BOL_water_areas_dcw",
+  "sources": [
+    {
+      "title": "Geoportal del Viceministerio de Electricidad y Energías Renovables",
+      "path": "https://geoportal.mhe.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mhe_geoportal_geonode_bol_water_areas_dcw/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 297001,
+      "hash": "sha256:3818b55ec1b082f32b7f4936b4b410cf6fb76f17024338e86db7080dc677a1db",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 1."
+          },
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 652
+            }
+          },
+          {
+            "name": "ISO",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "BOL",
+            "categories": [
+              "BOL"
+            ]
+          },
+          {
+            "name": "COUNTRY",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Bolivia",
+            "categories": [
+              "Bolivia"
+            ]
+          },
+          {
+            "name": "F_CODE_DES",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Inland Water",
+            "categories": [
+              "Inland Water",
+              "Land Subject to Inundation"
+            ]
+          },
+          {
+            "name": "HYC_DESCRI",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Perennial/Permanent",
+            "categories": [
+              "Perennial/Permanent",
+              "Non-Perennial/Intermittent/Fluctuating"
+            ]
+          },
+          {
+            "name": "NAME",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "UNK"
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
