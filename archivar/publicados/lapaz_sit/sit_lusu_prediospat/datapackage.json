@@ -1,0 +1,96 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_sit_lusu_prediospat",
+  "title": "LUSU Predios Patrimoniales",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz",
+      "path": "http://sitservicios.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_sit_lusu_prediospat/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 532772,
+      "hash": "sha256:6d04c3a761e94cd49bf5613009d34b0f4df885632e6fa7d1c3314ff7f4e4ed2f",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "lusu_prediospat.106844"
+          },
+          {
+            "name": "cod_sifca",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "046055100020000"
+          },
+          {
+            "name": "numerrya",
+            "type": "integer"
+          },
+          {
+            "name": "categoria",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "O",
+            "categories": [
+              "O"
+            ]
+          },
+          {
+            "name": "instlegal",
+            "type": "integer"
+          },
+          {
+            "name": "anio",
+            "type": "integer"
+          },
+          {
+            "name": "conjunto",
+            "type": "integer"
+          },
+          {
+            "name": "inslegal",
+            "type": "integer"
+          },
+          {
+            "name": "nume",
+            "type": "integer"
+          },
+          {
+            "name": "observacio",
+            "type": "integer"
+          },
+          {
+            "name": "id_predio",
+            "type": "integer"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
