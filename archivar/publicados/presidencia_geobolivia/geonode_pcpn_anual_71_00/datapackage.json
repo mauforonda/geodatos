@@ -1,0 +1,66 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_pcpn_anual_71_00",
+  "title": "Mapa de la distribución de precipitaciones medias anuales de Bolivia - SENAMHI 2014",
+  "description": "Esta información presenta la distribución de precipitaciones medias anuales em milímetros por año, elaborada en base al empleo de isoyetas (lineas que unen puntos de similar precipitación), brindando un panorama del comportamiento de precipitación en nuestro país. Elaborado por el Servicio Nacional de Meteorologia e Hidrología (SENAMHI) con datos actualizados a mayo de 2014.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_pcpn_anual_71_00/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 423720,
+      "hash": "sha256:766ca789279df16cc11248edbda3563479967367caa141176880055f926d8cd3",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 83
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 83
+            }
+          },
+          {
+            "name": "contour",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 100,
+              "maximum": 5000
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
