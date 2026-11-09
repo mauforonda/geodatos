@@ -1,0 +1,170 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_locoto",
+  "title": "Producción de Locoto en el Departamento de La Paz",
+  "description": "Las zonas de producción de este cultivo se extienden por las zonas de los Yungas del Norte, Valles Cerrados y Altiplano Norte del Departamento. El área con potencial de producción de este cultivo principalmente se ubica en la zona de los Yungas del Norte, hacia el sur-este, colindando con municipios productores de la zona de los Valles Cerrados (sur-este). Los municipios de Ayata, Palca, Inquisivi y Cairoma son los mas representativos en la producción de locoto, hacen el 78% de la producción total. La producción del municipio de Ayata es importante debido a que alcanza al 36% de producción a nivel departamental.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_locoto/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 688094,
+      "hash": "sha256:5655a7597f0333beb629bacd1df8d19e99b0ffd76c5d5c700bfdac11c4d4dd66",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "locoto.3"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 31
+            }
+          },
+          {
+            "name": "departamen",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "La Paz",
+            "categories": [
+              "La Paz"
+            ]
+          },
+          {
+            "name": "provincia",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Aroma",
+            "categories": [
+              "Sud Yungas",
+              "Larecaja",
+              "Inquisivi",
+              "Loayza",
+              "Murillo",
+              "Muñecas",
+              "Aroma",
+              "Nor Yungas",
+              "Bautista Saavedra",
+              "Camacho",
+              "Caranavi",
+              "Franz Tamayo",
+              "Ingavi",
+              "Omasuyos"
+            ]
+          },
+          {
+            "name": "municipio",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Calamarca"
+          },
+          {
+            "name": "cod_mun",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "021304"
+          },
+          {
+            "name": "macroregio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "ALTIPLANO",
+            "categories": [
+              "YUNGAS-CHAPARE",
+              "ALTIPLANO",
+              "VALLES"
+            ]
+          },
+          {
+            "name": "sup_total",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0001,
+              "maximum": 57.4684
+            }
+          },
+          {
+            "name": "prod_qq",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 7233.425
+            }
+          },
+          {
+            "name": "cultivo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "LOCOTO",
+            "categories": [
+              "LOCOTO"
+            ]
+          },
+          {
+            "name": "codigo_87",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 86
+            }
+          },
+          {
+            "name": "prod_ton",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 332.73755
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
