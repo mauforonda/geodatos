@@ -1,0 +1,57 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_geologia_yapacani",
+  "title": "Plan Director Cuenca Río Yapacaní - Geologia",
+  "description": "PDCRY (Plan Director de la Cuenca Río Yapacaní). Muestra la información relevante de las unidades geológicas, en el marco del Plan Director de la Cuenca del Río Yapacaní.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_geologia_yapacani/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 640843,
+      "hash": "sha256:1ed08bc2cacbc92189ec18b10012945117a494fbc457735688bbbda77af6e9dd",
+      "schema": {
+        "fields": [
+          {
+            "name": "Sistema",
+            "type": "string",
+            "example": "Crétacico"
+          },
+          {
+            "name": "Simbolo",
+            "type": "string",
+            "example": "K"
+          },
+          {
+            "name": "Formacione",
+            "type": "string",
+            "example": "Formación Cajones"
+          },
+          {
+            "name": "Litologia",
+            "type": "string",
+            "example": "Areniscas calcareas y areniscas limosas grises y blanquesinas"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
