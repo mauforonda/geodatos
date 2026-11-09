@@ -1,0 +1,142 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_catastro_lotes2",
+  "title": "Compilacion Predios 2011",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz",
+      "path": "http://sitservicios.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_catastro_lotes2/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 567180,
+      "hash": "sha256:ca14983a848dbbf8cd3897b991d0c5778264ec8acdbf47b471686d97505dc7f5",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "lotes2.57293"
+          },
+          {
+            "name": "COD_SIFCA",
+            "type": "string",
+            "example": "031045600160000"
+          },
+          {
+            "name": "NRO_LOTE",
+            "type": "number",
+            "constraints": {
+              "minimum": 1.0,
+              "maximum": 175.0
+            }
+          },
+          {
+            "name": "MANZANA",
+            "type": "number",
+            "constraints": {
+              "minimum": 1.0,
+              "maximum": 2762.0
+            }
+          },
+          {
+            "name": "DISTCAT",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 47
+            }
+          },
+          {
+            "name": "FECHA_ELAB",
+            "type": "integer"
+          },
+          {
+            "name": "LINAJE",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "5",
+            "categories": [
+              "5",
+              "3"
+            ]
+          },
+          {
+            "name": "GSBSSERV",
+            "type": "string",
+            "example": " ",
+            "categories": [
+              "11111000",
+              " ",
+              "11101000",
+              "11100000",
+              "11110000",
+              "11011000",
+              "00000000",
+              "11001000",
+              "10000000",
+              "11000000",
+              "11111100"
+            ]
+          },
+          {
+            "name": "CODIGOSANT",
+            "type": "string",
+            "example": "031022800170000",
+            "categories": [
+              "044018200080000",
+              "002000000230000",
+              "002000000260000",
+              "002001200200000",
+              "002003300030000",
+              "002003300070000",
+              "002003300200000",
+              "002003300260000",
+              "006025000130000",
+              "007001700540000",
+              "007002500020000",
+              "021000000210000",
+              "029009700150000",
+              "029009700510000",
+              "029009700560000",
+              "029010900570000",
+              "031022800170000",
+              "031038300190000",
+              "032004900270000",
+              "036007100140000",
+              "036077500200000",
+              "044018200050000",
+              "044018200090000",
+              "044018200110000",
+              "044026300190000",
+              "046008700100000"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon, Polygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
