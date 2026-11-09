@@ -1,0 +1,94 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_minplanifica_infocapa_layer_recurrencia_historica_de_inundaciones_0v44p",
+  "title": "layer_recurrencia_historica_de_inundaciones_0v44p",
+  "sources": [
+    {
+      "title": "Geoserver del Ministerio de Planificación del Desarollo",
+      "path": "https://geoserver.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_minplanifica_infocapa_layer_recurrencia_historica_de_inundaciones_0v44p/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 391702,
+      "hash": "sha256:41eb1db450e253ebe8e539b7f870bb16a37472602f1200827f1ff31f7406888d",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_recurrencia_historica_de_inundaciones_0v44p.321"
+          },
+          {
+            "name": "categoria",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Baja recurrencia",
+            "categories": [
+              "Baja recurrencia",
+              "Media",
+              "Alta",
+              "Muy alta"
+            ]
+          },
+          {
+            "name": "sup_ha",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 34,
+              "maximum": 2444184
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "example": "Potosi",
+            "categories": [
+              "Beni",
+              "La Paz",
+              "Santa Cruz",
+              "Potosi",
+              "Cochabamba",
+              "Chuquisaca",
+              "Tarija",
+              "Pando",
+              "Oruro"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "example": "Daniel Campos"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "example": "Llica"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
