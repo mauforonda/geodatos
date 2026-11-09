@@ -1,0 +1,137 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_riegos_de_sequia_en_la_cuenca_coroico_3n0ct",
+  "title": "Riegos de sequia en la cuenca Coroico",
+  "description": "El mapa muestra el riego de sequia en la cuenca del Río Coroico",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_riegos_de_sequia_en_la_cuenca_coroico_3n0ct/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 474383,
+      "hash": "sha256:1058ced5398f98d286b1f5b4741eccffe02eae23cc76eadeba7bb8bbee67fa1a",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_riegos_de_sequia_en_la_cuenca_coroico_3n0ct.550"
+          },
+          {
+            "name": "gridcode",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 5
+            }
+          },
+          {
+            "name": "leyenda",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Medio",
+            "categories": [
+              "Medio",
+              "Alto",
+              "Bajo",
+              "Muy alto",
+              "Muy bajo"
+            ]
+          },
+          {
+            "name": "sup_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.003,
+              "maximum": 92398.8879
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "LA PAZ",
+            "categories": [
+              "LA PAZ"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Los Andes",
+            "categories": [
+              "Larecaja",
+              "Caranavi",
+              "Nor Yungas",
+              "Murillo",
+              "Sur Yungas",
+              "Los Andes",
+              "Franz Tamayo",
+              "Omasuyos"
+            ]
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Batallas",
+            "categories": [
+              "Guanay",
+              "Caranavi",
+              "Nuestra Señora de La Paz",
+              "Coroico",
+              "Coripata",
+              "Teoponte",
+              "Tipuani",
+              "Yanacachi",
+              "Batallas",
+              "Chulumani",
+              "La Asunta",
+              "Alto Beni",
+              "Mapiri",
+              "Sorata",
+              "Apolo",
+              "Palos Blancos",
+              "Pucarani",
+              "El Alto",
+              "Achacachi"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 36."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
