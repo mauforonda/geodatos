@@ -1,0 +1,164 @@
+{
+  "type": "Collection",
+  "id": "geodatosbolivia_lapaz_sit_alt_sit_ac_inepuntos",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json",
+    "https://stac-extensions.github.io/vector/v0.1.0/schema.json",
+    "https://stac-extensions.github.io/projection/v2.0.0/schema.json",
+    "https://stac-extensions.github.io/file/v2.1.0/schema.json",
+    "https://stac-extensions.github.io/web-map-links/v1.3.0/schema.json"
+  ],
+  "title": "Actualizacion Censo puntos",
+  "description": "Actualizacion Censo puntos",
+  "license": "other",
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -68.1714761175,
+          -16.616287591822392,
+          -67.64215285999997,
+          -15.510686725999946
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "providers": [
+    {
+      "name": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)",
+      "roles": [
+        "producer"
+      ],
+      "url": "http://sitservicios.lapaz.bo/ows38.jsp"
+    },
+    {
+      "name": "Internet Archive",
+      "roles": [
+        "host"
+      ],
+      "url": "https://archive.org/details/geodatosbolivia_lapaz_sit_alt_sit_ac_inepuntos"
+    }
+  ],
+  "table:primary_geometry": "geometry",
+  "table:row_count": 23368,
+  "table:columns": [
+    {
+      "name": "id",
+      "type": "string"
+    },
+    {
+      "name": "macrodistr",
+      "type": "string"
+    },
+    {
+      "name": "comunidad",
+      "type": "int32"
+    },
+    {
+      "name": "tipo",
+      "type": "int32"
+    },
+    {
+      "name": "geometry",
+      "type": "binary",
+      "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point. Filas sin geometría: 25. La fuente declaraba EPSG:4326 pero sus coordenadas estaban en EPSG:32719 (sistema inferido por la ubicación de las geometrías en Bolivia); se reproyectaron."
+    }
+  ],
+  "summaries": {
+    "vector:geometry_types": [
+      "Point"
+    ]
+  },
+  "assets": {
+    "data": {
+      "href": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_sit_ac_inepuntos/dataset.geoparquet",
+      "type": "application/vnd.apache.parquet",
+      "title": "GeoParquet",
+      "roles": [
+        "data"
+      ],
+      "proj:code": "EPSG:4326",
+      "file:size": 700479,
+      "file:checksum": "12206923b10d6a75752670b0bdc5ceaccf72632c8c53be922aa15e6ee9c7aeaf8d54"
+    },
+    "datapackage": {
+      "href": "./datapackage.json",
+      "type": "application/json",
+      "title": "Data Package: columnas, tipos y categorías",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "pmtiles": {
+      "href": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_sit_ac_inepuntos/dataset.pmtiles",
+      "type": "application/vnd.pmtiles",
+      "title": "Teselas vectoriales (PMTiles)",
+      "roles": [
+        "visual"
+      ],
+      "file:size": 193538,
+      "file:checksum": "12205d79b8dd0bc1753e20e446e61ba65c391ac993dd61890ebc285ae65f2658406f"
+    }
+  },
+  "pmtiles:min_zoom": 9,
+  "pmtiles:max_zoom": 11,
+  "pmtiles:tile_type": "mvt",
+  "pmtiles:center": [
+    -67.9068144,
+    -16.0634871,
+    10
+  ],
+  "pmtiles:properties": [
+    {
+      "nombre": "macrodistr",
+      "tipo": "string",
+      "categorias": [
+        "Sur",
+        "Zongo",
+        "San Antonio",
+        "Periferica",
+        "Cotahuma",
+        "Hampaturi",
+        "Max Paredes",
+        "Centro"
+      ]
+    }
+  ],
+  "links": [
+    {
+      "rel": "root",
+      "href": "../../../catalog.json",
+      "type": "application/json",
+      "title": "Datos geográficos de Bolivia"
+    },
+    {
+      "rel": "parent",
+      "href": "../catalog.json",
+      "type": "application/json",
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)"
+    },
+    {
+      "rel": "via",
+      "href": "http://sitservicios.lapaz.bo/ows38.jsp",
+      "type": "text/html",
+      "title": "Servicio de origen"
+    },
+    {
+      "rel": "pmtiles",
+      "href": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_sit_ac_inepuntos/dataset.pmtiles",
+      "type": "application/vnd.pmtiles",
+      "pmtiles:layers": [
+        "dataset"
+      ]
+    }
+  ]
+}
