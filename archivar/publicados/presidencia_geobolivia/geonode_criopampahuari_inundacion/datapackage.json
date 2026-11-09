@@ -1,0 +1,74 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_criopampahuari_inundacion",
+  "title": "Plan Director Cuenca Río Pampa Huari - Riesgo de Inundación_ Bolivia",
+  "description": "Muestra los grados de riesgo de inundación en la cuenca Pampa Huari, elaborado en base a la ecuación de riesgos del Plan de Reducción de Riesgos y Desastres: Muy bajo, Bajo, Moderado, Alto y Muy Alto. Información obtenida del Viceministerio de Recursos Hídricos y Riego a febrero del 2019.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_criopampahuari_inundacion/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 807614,
+      "hash": "sha256:65fcaa37b047417f71acba19bc4ad4879bc3d8d5b316f6c8e78013452c3ac0f0",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 5
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "minimum": 0,
+              "maximum": 4
+            }
+          },
+          {
+            "name": "riesgo",
+            "type": "string",
+            "example": "Muy Bajo"
+          },
+          {
+            "name": "sup_km2",
+            "type": "number",
+            "constraints": {
+              "minimum": 13.9864722899,
+              "maximum": 975.633247468
+            }
+          },
+          {
+            "name": "sup_ha",
+            "type": "number",
+            "constraints": {
+              "minimum": 1398.64722899,
+              "maximum": 97563.3247468
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 5."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
