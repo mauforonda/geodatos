@@ -1,0 +1,115 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_minplanifica_infocapa_layer_areas_urbanos_homologados_py70p",
+  "title": "layer_areas_urbanos_homologados_py70p",
+  "sources": [
+    {
+      "title": "Geoserver del Ministerio de Planificación del Desarollo",
+      "path": "https://geoserver.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_minplanifica_infocapa_layer_areas_urbanos_homologados_py70p/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 583516,
+      "hash": "sha256:252fd70c603604f68c5ca56b75ffdaea776ce7dbb370ff87f1052644fce6442f",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_areas_urbanos_homologados_py70p.16"
+          },
+          {
+            "name": "centro_pob",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Villazon"
+          },
+          {
+            "name": "resolucion",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "S/N",
+            "categories": [
+              "S/N"
+            ]
+          },
+          {
+            "name": "numero",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "078/18"
+          },
+          {
+            "name": "sup_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0.01451604717,
+              "maximum": 37667.016109
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Potosi",
+            "categories": [
+              "Santa Cruz",
+              "Cochabamba",
+              "Chuquisaca",
+              "Potosi",
+              "Tarija",
+              "Beni",
+              "Pando"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Modesto Omiste"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Villazón"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 2."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
