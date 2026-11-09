@@ -1,0 +1,112 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_microcuencas_1",
+  "title": "Plan Director Cuenca Río Cotagaita - Microcuencas",
+  "description": "PDCRCo (Plan Director de la Cuenca Río Cotagaita). Muestra las microcuencas delimitado y Codificado por el método Pfafstetter para la Identificación de las Cuencas Hidrográficas en el marco del Plan Director de la Cuenca del Río Cotagaita.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_microcuencas_1/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 460972,
+      "hash": "sha256:8e3f004d9ed60ebe20add4b0db25543e7465feb1a545941aef3319ce04cf1933",
+      "schema": {
+        "fields": [
+          {
+            "name": "SUP_KM2",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 16.1669922699,
+              "maximum": 164.55660973
+            }
+          },
+          {
+            "name": "SUP_HA",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1616.69922699,
+              "maximum": 16455.660973
+            }
+          },
+          {
+            "name": "NOMBRE_MC",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Río Tuctacani"
+          },
+          {
+            "name": "Nivel_UH5",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "86848",
+            "categories": [
+              "86848",
+              "86842",
+              "86849",
+              "86846",
+              "86844",
+              "86845",
+              "86841",
+              "86843",
+              "86847"
+            ]
+          },
+          {
+            "name": "Nombre_UH5",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Rio Quechisla",
+            "categories": [
+              "Rio Quechisla",
+              "Rio Blanco",
+              "Rio Limeta",
+              "Rio Caiti",
+              "Rio Totora",
+              "Parte Media del Rio Cotagaita",
+              "Desembocadura del Rio Cotagaita",
+              "Parte Baja del Rio Cotagaita",
+              "Parte Alta del Rio Cotagaita"
+            ]
+          },
+          {
+            "name": "Nivel_UH6",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "86848R16"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 8."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
