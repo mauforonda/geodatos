@@ -1,0 +1,101 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_minplanifica_infocapa_layer_bosques_del_municipio_de_camiri_6phd1",
+  "title": "layer_bosques_del_municipio_de__camiri_6phd1",
+  "sources": [
+    {
+      "title": "Geoserver del Ministerio de Planificación del Desarollo",
+      "path": "https://geoserver.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_minplanifica_infocapa_layer_bosques_del_municipio_de_camiri_6phd1/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 608235,
+      "hash": "sha256:18d009f0674a16b0c23d9a123aaf0f689bd007c6b91d48ded452a9b6e7887c8f",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_bosques_del_municipio_de__camiri_6phd1.23"
+          },
+          {
+            "name": "tipo_bosqu",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Bosque Tucumano-Boliviano",
+            "categories": [
+              "Bosque Tucumano-Boliviano",
+              "Bosque Chaqueño"
+            ]
+          },
+          {
+            "name": "sup_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.012,
+              "maximum": 37883.918
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Santa Cruz",
+            "categories": [
+              "Santa Cruz"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Cordillera",
+            "categories": [
+              "Cordillera"
+            ]
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Camiri",
+            "categories": [
+              "Camiri",
+              "Cuevo",
+              "Lagunillas"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 7."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
