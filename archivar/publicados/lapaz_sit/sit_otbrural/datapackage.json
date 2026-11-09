@@ -1,0 +1,208 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_sit_otbrural",
+  "title": "OTBs Rurales",
+  "description": "Organizaciones Territorial de Base Rurales, elaborados por la SMPD-DPE.",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz",
+      "path": "http://sitservicios.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_sit_otbrural/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 266763,
+      "hash": "sha256:b5ec8e6b1576ef050710d54ace08b11168924e7ec5e748fa8310c5a1f5e9d630",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "otbrural.50"
+          },
+          {
+            "name": "objectid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 99
+            }
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "CHACALTAYA"
+          },
+          {
+            "name": "sa",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "HAMPATURI",
+            "categories": [
+              "ZONGO",
+              "HAMPATURI"
+            ]
+          },
+          {
+            "name": "estado",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "CONCLUIDA",
+            "categories": [
+              "CONCLUIDA",
+              "PROPUESTA TECNICA",
+              "TENDENCIA A OTRO MUNICIPIO",
+              "EN PROCESO DE CREACION"
+            ]
+          },
+          {
+            "name": "autoidenti",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "LA PAZ",
+            "categories": [
+              "LA PAZ",
+              "LA PAZ - PALCA",
+              "PALCA",
+              "CARANAVI",
+              "COROICO",
+              "GUANAY"
+            ]
+          },
+          {
+            "name": "central",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "CUENCA  ACHACHICALA",
+            "categories": [
+              "ZONGO",
+              "ZONGO CHORO",
+              "CUENCA HAMPATURI",
+              "CON TENDENCIA A OTRO MUNICIPIO",
+              "CUENCA  ACHACHICALA",
+              "RIO COLORADO",
+              "BUENOS AIRES",
+              "CUENCA ACHUMANI",
+              "CUENCA  APAÑA",
+              "CUENCA CHINCHAYA",
+              "CUENCA CHUQUIAGUILLO",
+              "AREA DE PASTOREO"
+            ]
+          },
+          {
+            "name": "sub_centra",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "SIN SUB",
+            "categories": [
+              "SIN SUB",
+              "SIN SUB CENTRAL",
+              "TROPICO",
+              "BUENOS AIRES",
+              "CHUCURA",
+              "HUAYLIPAYA",
+              "VILLA HARCA",
+              "ASUNTA",
+              "CAÑAVIRI",
+              "COSCAPA",
+              "APANA",
+              "INGENIO",
+              "RIO COLORADO",
+              "JUNTA DE VECINOS"
+            ]
+          },
+          {
+            "name": "area_m2",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 317954390.998
+            }
+          },
+          {
+            "name": "area_has",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 58.60600332,
+              "maximum": 31795.5081935
+            }
+          },
+          {
+            "name": "area_km2",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 317.954391
+            }
+          },
+          {
+            "name": "recorr",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "40,3360531622352"
+          },
+          {
+            "name": "distrito",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 22,
+              "maximum": 24
+            }
+          },
+          {
+            "name": "ate",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": " ",
+            "categories": [
+              " ",
+              "ATE"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
