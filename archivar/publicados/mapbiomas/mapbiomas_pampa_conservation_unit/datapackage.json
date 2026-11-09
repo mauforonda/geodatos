@@ -1,0 +1,108 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mapbiomas_mapbiomas_pampa_conservation_unit",
+  "title": "conservation-unit",
+  "sources": [
+    {
+      "title": "MapBiomas",
+      "path": "https://shared-geoserver.mapbiomas.org/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mapbiomas_mapbiomas_pampa_conservation_unit/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 381235,
+      "hash": "sha256:f48a38289122abc4c0563bc0ebb69cf90f50227a260179ef25827f182900bd45",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "conservation-unit.11"
+          },
+          {
+            "name": "feature_id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1240,
+              "maximum": 1344
+            }
+          },
+          {
+            "name": "territory",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Reserva Provincial Natural La Reforma (Argentina)"
+          },
+          {
+            "name": "type",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "conservation_units",
+            "categories": [
+              "conservation_units"
+            ]
+          },
+          {
+            "name": "country",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "",
+            "categories": [
+              ""
+            ]
+          },
+          {
+            "name": "pol_level1",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "",
+            "categories": [
+              ""
+            ]
+          },
+          {
+            "name": "pol_level2",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "",
+            "categories": [
+              ""
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 26."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
