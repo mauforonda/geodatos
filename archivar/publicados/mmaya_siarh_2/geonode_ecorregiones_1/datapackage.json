@@ -1,0 +1,60 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_ecorregiones_1",
+  "title": "Plan Director Cuenca Río Mizque - Ecorregiones",
+  "description": "PDCRM (Plan Director de la Cuenca Río Mizque). Muestra la información relevante de las unidades geográficas con flora, fauna y ecosistemas característicos, en el marco del Plan Director de la Cuenca Río Mizque.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_ecorregiones_1/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 358087,
+      "hash": "sha256:f3118eff933058488bfd38da0ea63eafd2ebdbcddfec2983096d607dc04a90bf",
+      "schema": {
+        "fields": [
+          {
+            "name": "CODIGO",
+            "type": "string",
+            "example": "ER-01"
+          },
+          {
+            "name": "DESCRIPCIO",
+            "type": "string",
+            "example": "Tierras Altas (Cordilleras, Praderas Altoandinas, Punas y Páramo Yungueño)"
+          },
+          {
+            "name": "RANGO_ALTM",
+            "type": "string",
+            "example": "6.500 - 3.600"
+          },
+          {
+            "name": "ID_C",
+            "type": "integer",
+            "constraints": {
+              "minimum": 4,
+              "maximum": 61
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
