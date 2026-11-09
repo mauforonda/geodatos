@@ -1,0 +1,161 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_asfi2017",
+  "title": "Localización de Entidades Bancarias en Bolivia_ 2017",
+  "description": "El mapa muestra la distribución espacial de: Agencias, Oficinas, Cajeros Automáticos Externo Internos, Cajeros Automáticos para Personas con Discapacidad, Puntos de Atención, Sucursales y Ventanillas, de las entidades financieras conocidas como Bancos, las cuales ofrecen servicios de ahorro créditos en Bolivia. Elaborado por la Autoridad de Supervisión del Sistema Financiero (ASFI) con datos actualizados a abril 2017.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_asfi2017/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 619482,
+      "hash": "sha256:41df6ddad47511f0e6c462a67cabe8d89493628417494e9ce95cfed52c6c8f17",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "asfi2017.6956"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 7269
+            }
+          },
+          {
+            "name": "entidad",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "E-fectivo ESPM S.A."
+          },
+          {
+            "name": "identifica",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 8601
+            }
+          },
+          {
+            "name": "nombrepaf",
+            "type": "string",
+            "example": "Centro de Llamadas Maddy - Locutorio"
+          },
+          {
+            "name": "tipooficin",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Punto de Atención Corresponsal No Financiero",
+            "categories": [
+              "Cajero Automático Externo - Con Recinto",
+              "Punto de Atención Corresponsal No Financiero",
+              "Agencia Fija",
+              "Cajero Automático Interno",
+              "Punto de Atención Corresponsal Financiero",
+              "Oficina Externa",
+              "Ventanilla",
+              "Cajero Automático Externo - Sin Recinto",
+              "Sucursal",
+              "Oficina Central",
+              "Cajero Automático para Personas con Discapacidad Externo - Con Recinto",
+              "Cajero Automático para Personas con Discapacidad Interno",
+              "Punto Promocional Fijo",
+              "Agencia Móvil",
+              "Oficina Ferial"
+            ]
+          },
+          {
+            "name": "departamen",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "POTOSÍ",
+            "categories": [
+              "SANTA CRUZ",
+              "LA PAZ",
+              "COCHABAMBA",
+              "TARIJA",
+              "CHUQUISACA",
+              "ORURO",
+              "POTOSÍ",
+              "BENI",
+              "PANDO"
+            ]
+          },
+          {
+            "name": "ciudad",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "UYUNI"
+          },
+          {
+            "name": "direccion",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "C/ Arce # 373 entre C/ Bolivar y Uyuni"
+          },
+          {
+            "name": "telefono",
+            "type": "string",
+            "example": "72384368"
+          },
+          {
+            "name": "latitud",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -22.7387416667,
+              "maximum": -10.8102055556
+            }
+          },
+          {
+            "name": "longitud",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -69.448425,
+              "maximum": -57.7081055556
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
