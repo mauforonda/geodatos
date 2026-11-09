@@ -1,0 +1,136 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_municipios_referendu_autonomico052019",
+  "title": "Referendo de Cartas Orgánicas y Estatutos Autonómicos en 10 Entidades Territoriales en Mayo_ Bolivia 2019",
+  "description": "El mapa muestra los 10 municipios que este 26 de mayo del presente año, participaran en sus referendos autonómicos, según los 5 Tribunales Electorales Departamentales las personas habilitadas son: 75.743, Es el sexto referendo autonómico que se efectuará en el país, después de los que se llevaron a cabo en septiembre de 2015, noviembre de 2016, julio de 2017 y en agosto y noviembre de 2018. La población acudirán por la vigencia o no de sus cartas orgánicas y son: Tres municipios de La Paz (Cajuata, Sorata y Pelechuco); cuatro de Santa Cruz (San Juan, San Julián, Mairana y Comarapa); Alcalá de Chuquisaca y Chuquihuta de Potosí. Mientras que en Salinas de Garci Mendoza, Oruro, votarán por su Estatuto Autonómico Indígena Originario Campesino. Con 378 mesas de sufragio, a cargo de 1.134 jurados mujeres y 1.134 varones, se llevará adelante la jornada electoral en estos municipios. Las cartas orgánicas municipales son un mandato directo de visión y misión para el alcalde, son un pacto o contrato social entre la población y el Gobierno Municipal, las cartas fueron elaboradas con participación de los sectores. Información obtenida del Órgano Electoral Plurinacional de Bolivia a mayo del 2019.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_municipios_referendu_autonomico052019/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 401602,
+      "hash": "sha256:75828cf121038fcb1aa92202033908d2743e4a8d85399f0a698505602b914bc3",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 10
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0,
+              "maximum": 9
+            }
+          },
+          {
+            "name": "cod_ut",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "040801"
+          },
+          {
+            "name": "departamen",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Oruro",
+            "categories": [
+              "Santa Cruz",
+              "La Paz",
+              "Chuquisaca",
+              "Oruro",
+              "Potosí"
+            ]
+          },
+          {
+            "name": "provincia",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Ladislao Cabrera"
+          },
+          {
+            "name": "municipio",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Salinas de Garcí Mendoza"
+          },
+          {
+            "name": "capital",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Salinas de Garcí Mendoza"
+          },
+          {
+            "name": "recintos",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 2,
+              "maximum": 23
+            }
+          },
+          {
+            "name": "mesas",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 8,
+              "maximum": 56
+            }
+          },
+          {
+            "name": "habilitado",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1669,
+              "maximum": 25056
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
