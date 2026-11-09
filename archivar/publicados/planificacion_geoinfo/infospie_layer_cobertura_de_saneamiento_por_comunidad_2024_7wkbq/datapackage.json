@@ -1,0 +1,127 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_cobertura_de_saneamiento_por_comun_5f7c3f0f11e6",
+  "title": "Cobertura de saneamiento por comunidad (2024)",
+  "description": "El mapa de cobertura de saneamiento a nivel de comunidad al mes de abril de 2024, presenta la proporción de población que cuenta con servicio de saneamiento. En área urbana, es aquella que tiene conexión a la red de alcantarillado o cuenta con un baño ecológico. En área rural, es aquella que accede al servicio mediante conexión a la red de alcantarillado, baño ecológico, conexión a cámara séptica, letrina con descarga a pozo de absorción o letrina de pozo con loza (tapa).",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_cobertura_de_saneamiento_por_comun_5f7c3f0f11e6/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 1009396,
+      "hash": "sha256:c9f996e7c5b0d302ec741d6d6212455d4a48975b41e43fbd5b43525758d301e3",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "layer_cobertura_de_saneamiento_por_comunidad_2024_7wkbq.14613"
+          },
+          {
+            "name": "cod_com",
+            "type": "integer"
+          },
+          {
+            "name": "comun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "SECSIGUA"
+          },
+          {
+            "name": "urb_rur",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "RURAL",
+            "categories": [
+              "RURAL",
+              "URBANO"
+            ]
+          },
+          {
+            "name": "pob_tot_es",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "42"
+          },
+          {
+            "name": "t_pob_ser_",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "0"
+          },
+          {
+            "name": "cob_san",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "0.0"
+          },
+          {
+            "name": "x",
+            "type": "integer"
+          },
+          {
+            "name": "y",
+            "type": "integer"
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "example": "POTOSI",
+            "categories": [
+              "LA PAZ",
+              "COCHABAMBA",
+              "POTOSI",
+              "SANTA CRUZ",
+              "CHUQUISACA",
+              "ORURO",
+              "BENI",
+              "TARIJA",
+              "PANDO"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "example": "Daniel Campos"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "example": "Llica"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
