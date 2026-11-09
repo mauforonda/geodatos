@@ -1,0 +1,90 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mhe_geoportal_geonode_ext_soli_24",
+  "title": "Ext_soli_24",
+  "sources": [
+    {
+      "title": "Geoportal del Viceministerio de Electricidad y Energías Renovables",
+      "path": "https://geoportal.mhe.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mhe_geoportal_geonode_ext_soli_24/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 426418,
+      "hash": "sha256:5c5829b1b6be9797a0c52acdfbbadf827d2df65dc35609d0a66008b38e2d2a92",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString. Geometrías inválidas, conservadas sin reparar: 2."
+          },
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 20
+            }
+          },
+          {
+            "name": "OBJECTID",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 3303
+            }
+          },
+          {
+            "name": "Tramo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Charaña"
+          },
+          {
+            "name": "HR",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "2024-09044"
+          },
+          {
+            "name": "INFORME",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "MHE-VMEER-DGER-INF/2024-0242"
+          },
+          {
+            "name": "SHAPE_Leng",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0.019994084593,
+              "maximum": 5.12108177815
+            }
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
