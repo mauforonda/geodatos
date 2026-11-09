@@ -1,0 +1,112 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_s19_10_2010",
+  "title": "s19_10_2010",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_s19_10_2010/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 522774,
+      "hash": "sha256:b46b92b2ce5ab0fcea1d2d30a98fe69bc7fc386e7d62d7226cafff3083b0bfae",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "s19_10_2010.16"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 20
+            }
+          },
+          {
+            "name": "filename",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "p004_r070_l5_20100211"
+          },
+          {
+            "name": "path",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "004",
+            "categories": [
+              "001",
+              "002",
+              "003",
+              "004",
+              "233"
+            ]
+          },
+          {
+            "name": "row",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "070",
+            "categories": [
+              "067",
+              "068",
+              "069",
+              "070"
+            ]
+          },
+          {
+            "name": "date",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "20100211",
+            "categories": [
+              "20090908",
+              "20080901",
+              "20090906",
+              "20091001",
+              "20080825",
+              "20090913",
+              "20090805",
+              "20090830",
+              "20100211"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
