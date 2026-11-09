@@ -1,0 +1,117 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_plan_uso_suelo_2",
+  "title": "Plan Director Cuenca Río Guadalquivir - Plan Uso del Suelo",
+  "description": "PDCRGu (Plan Director de la Cuenca Río Guadalquivir). Muestra la  cobertura del Plan de Uso del Suelo de la Cuenca del Rio Guadalquivir.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_plan_uso_suelo_2/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 315521,
+      "hash": "sha256:46f18c80b37abb0c371e90f8f9b87a680b4344f6a9845f10661cf27ca36db7d4",
+      "schema": {
+        "fields": [
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Tarija_Uso.319"
+          },
+          {
+            "name": "USO",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "9",
+            "categories": [
+              "11",
+              "14",
+              "17",
+              "18",
+              "9",
+              "2",
+              "1",
+              "7",
+              "10",
+              "3",
+              "4",
+              "6",
+              "19",
+              "5",
+              "Tarija",
+              "cuerpo_de_agua"
+            ]
+          },
+          {
+            "name": "ID",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 13,
+              "maximum": 319
+            }
+          },
+          {
+            "name": "USO2",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 19
+            }
+          },
+          {
+            "name": "Descrip",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Agropecuario extensivo con cultivos anuales y perennes y vacunos, ovinos y capri",
+            "categories": [
+              "Agropecuario extensivo con caprinos, ovinos y cultivos anuales. Uso secundario:",
+              "Agrosilvopastoril en matorrales con cultivos anuales, caprinos, ovinos, vacunos",
+              "Silvopastoril con vacunos, caprinos, ovinos y extracci?n de productos del bosque",
+              "Agrosilvopastoril en matorrales con caprinos, ovinos y cultivos anuales",
+              "Agropecuario extensivo con cultivos anuales y perennes y vacunos, ovinos y capri",
+              "Agr?cola intensivo con cultivos perennes y anuales",
+              "Agr?cola intensivo con cultivos anuales",
+              "Ganadero extensivo con ovinos y caprinos",
+              "Agropecuario extensivo con cultivos anuales, ovinos, caprinos y vacunos. Uso sec",
+              "Agropecuario intensivo con cultivos anuales y perennes y vacunos",
+              "Ganadero extensivo con ovinos",
+              "Ganadero extensivo con ovinos. Uso secundario: areas sin uso (afloramiento rocos",
+              "Bosque implantado. Uso secundario: ganadero extensivo con vacunos y caprinos",
+              "Cuerpo de agua",
+              "Ganadero extensivo con ovinos y vacunos",
+              "Tarija"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
