@@ -1,0 +1,137 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_sensibilidad_al_cambio_climatico_e_cb0a83febae4",
+  "title": "Sensibilidad al cambio climático en la Cuenca Coroico",
+  "description": "El mapa muestra la Sensibilidad al cambio climático en la Cuenca Coroico. Este mapa, al enfocarse en la sensibilidad de los ecosistemas, complementa la información del mapa anterior sobre exposición a riesgos. Mientras que el mapa anterior identificaba las zonas con mayor probabilidad de sufrir impactos, este mapa identifica las zonas cuyos ecosistemas son más vulnerables a esos impactos.\nTipuani y Teoponte destacan por su alta sensibilidad, lo que significa que sus ecosistemas tienen una menor capacidad de adaptación al cambio climático. Esto podría traducirse en mayores impactos en la biodiversidad, los recursos hídricos y los servicios ecosistémicos \nque estos municipios proveen.\nCoripata y Coroico muestran una menor sensibilidad, lo que sugiere una mayor resiliencia de sus ecosistemas",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_sensibilidad_al_cambio_climatico_e_cb0a83febae4/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 275070,
+      "hash": "sha256:fc4943fa33055f135c6e5e226ce883bde62b5534fcd88576737a6ad458991e3e",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_sensibilidad_al_cambio_climatico_en_la_cuenca_cor_296ta.73"
+          },
+          {
+            "name": "gridcode",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 5
+            }
+          },
+          {
+            "name": "leyenda",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Muy alta",
+            "categories": [
+              "Media",
+              "Muy alta",
+              "Alta",
+              "Baja",
+              "Muy baja"
+            ]
+          },
+          {
+            "name": "sup_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 106080.8683
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "LA PAZ",
+            "categories": [
+              "LA PAZ"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Los Andes",
+            "categories": [
+              "Larecaja",
+              "Nor Yungas",
+              "Sur Yungas",
+              "Caranavi",
+              "Murillo",
+              "Franz Tamayo",
+              "Los Andes",
+              "Omasuyos"
+            ]
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Pucarani",
+            "categories": [
+              "Coripata",
+              "Coroico",
+              "Guanay",
+              "Tipuani",
+              "Nuestra Señora de La Paz",
+              "Chulumani",
+              "Caranavi",
+              "Mapiri",
+              "La Asunta",
+              "Palos Blancos",
+              "Teoponte",
+              "Sorata",
+              "Alto Beni",
+              "Apolo",
+              "Yanacachi",
+              "Achacachi",
+              "Batallas",
+              "El Alto",
+              "Pucarani"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 6."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
