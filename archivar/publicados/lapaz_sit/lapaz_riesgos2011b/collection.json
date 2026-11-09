@@ -1,0 +1,184 @@
+{
+  "type": "Collection",
+  "id": "geodatosbolivia_lapaz_sit_lapaz_riesgos2011b",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json",
+    "https://stac-extensions.github.io/vector/v0.1.0/schema.json",
+    "https://stac-extensions.github.io/projection/v2.0.0/schema.json",
+    "https://stac-extensions.github.io/file/v2.1.0/schema.json",
+    "https://stac-extensions.github.io/web-map-links/v1.3.0/schema.json"
+  ],
+  "title": "Mapa de Riesgos 2011",
+  "description": "Mapa de Riesgos 2011",
+  "license": "other",
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -68.17101478839442,
+          -16.556650611065297,
+          -68.02527053107625,
+          -16.436584299751285
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "providers": [
+    {
+      "name": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz",
+      "roles": [
+        "producer"
+      ],
+      "url": "http://sitservicios.lapaz.bo/geoserver/ows"
+    },
+    {
+      "name": "Internet Archive",
+      "roles": [
+        "host"
+      ],
+      "url": "https://archive.org/details/geodatosbolivia_lapaz_sit_lapaz_riesgos2011b"
+    }
+  ],
+  "table:primary_geometry": "geometry",
+  "table:row_count": 5000,
+  "table:columns": [
+    {
+      "name": "id",
+      "type": "int32"
+    },
+    {
+      "name": "gridcode",
+      "type": "int32"
+    },
+    {
+      "name": "grado",
+      "type": "string"
+    },
+    {
+      "name": "shape_length",
+      "type": "double"
+    },
+    {
+      "name": "shape_area",
+      "type": "double"
+    },
+    {
+      "name": "geometry",
+      "type": "binary",
+      "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 72."
+    }
+  ],
+  "summaries": {
+    "vector:geometry_types": [
+      "MultiPolygon"
+    ]
+  },
+  "assets": {
+    "data": {
+      "href": "https://archive.org/download/geodatosbolivia_lapaz_sit_lapaz_riesgos2011b/dataset.geoparquet",
+      "type": "application/vnd.apache.parquet",
+      "title": "GeoParquet",
+      "roles": [
+        "data"
+      ],
+      "proj:code": "EPSG:4326",
+      "file:size": 680854,
+      "file:checksum": "1220a8de75c9c55e0eb95551a0897b2be77dd23584151dd1740993fdeaaaad695d6b"
+    },
+    "datapackage": {
+      "href": "./datapackage.json",
+      "type": "application/json",
+      "title": "Data Package: columnas, tipos y categorías",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "pmtiles": {
+      "href": "https://archive.org/download/geodatosbolivia_lapaz_sit_lapaz_riesgos2011b/dataset.pmtiles",
+      "type": "application/vnd.pmtiles",
+      "title": "Teselas vectoriales (PMTiles)",
+      "roles": [
+        "visual"
+      ],
+      "file:size": 613146,
+      "file:checksum": "1220072a86f429a3bb17fcc781feebc41b67a0798e31f031f3daea3994570c996f01"
+    }
+  },
+  "pmtiles:min_zoom": 12,
+  "pmtiles:max_zoom": 14,
+  "pmtiles:tile_type": "mvt",
+  "pmtiles:center": [
+    -68.0981426,
+    -16.4966174,
+    13
+  ],
+  "pmtiles:properties": [
+    {
+      "nombre": "grado",
+      "tipo": "string",
+      "categorias": [
+        "Alto",
+        "Moderado",
+        "Bajo",
+        "Muy Alto",
+        "Muy Bajo",
+        " "
+      ]
+    },
+    {
+      "nombre": "gridcode",
+      "tipo": "number",
+      "minimo": 0.0,
+      "maximo": 255.0
+    },
+    {
+      "nombre": "shape_area",
+      "tipo": "number",
+      "minimo": 64.0548260420258,
+      "maximo": 10673109.1483988
+    },
+    {
+      "nombre": "shape_length",
+      "tipo": "number",
+      "minimo": 37.5029120912424,
+      "maximo": 134314.671038748
+    }
+  ],
+  "links": [
+    {
+      "rel": "root",
+      "href": "../../../catalog.json",
+      "type": "application/json",
+      "title": "Datos geográficos de Bolivia"
+    },
+    {
+      "rel": "parent",
+      "href": "../catalog.json",
+      "type": "application/json",
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz"
+    },
+    {
+      "rel": "via",
+      "href": "http://sitservicios.lapaz.bo/geoserver/ows",
+      "type": "text/html",
+      "title": "Servicio de origen"
+    },
+    {
+      "rel": "pmtiles",
+      "href": "https://archive.org/download/geodatosbolivia_lapaz_sit_lapaz_riesgos2011b/dataset.pmtiles",
+      "type": "application/vnd.pmtiles",
+      "pmtiles:layers": [
+        "dataset"
+      ]
+    }
+  ]
+}
