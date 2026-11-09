@@ -1,0 +1,105 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_unidades_hidrograficas_de_la_cuenc_6f92fc5d3f6e",
+  "title": "Unidades Hidrograficas de la Cuenca Alta Rio La Paz (Plan Director de la Cuenca Alta del Río La Paz)",
+  "description": "Se presenta las unidades hidrográficas empleadas en el balance del Plan Director de la Cuenca Alta del Río La Paz.",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_unidades_hidrograficas_de_la_cuenc_6f92fc5d3f6e/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 258226,
+      "hash": "sha256:c4eb8ec58053a3b56e2d81e6bbbb4ba21cffd1ded2106f0e0f1a7690413385bf",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_unidades_hidrograficas_de_la_cuenca_alta_rio_la_p_v90sz.102"
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Milliri"
+          },
+          {
+            "name": "sup_ha",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 14089
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "LA PAZ",
+            "categories": [
+              "LA PAZ"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Murillo",
+            "categories": [
+              "Murillo",
+              "Sur Yungas",
+              "Loayza"
+            ]
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Achocalla",
+            "categories": [
+              "Nuestra Señora de La Paz",
+              "Mecapaca",
+              "Palca",
+              "Achocalla",
+              "El Alto",
+              "Irupana",
+              "Yanacachi",
+              "Sapahaqui"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
