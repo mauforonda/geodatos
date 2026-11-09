@@ -1,0 +1,197 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geobolivia_geonode_suelos_4421f72f",
+  "title": "Suelos de Bolivia - FAO/UNESCO",
+  "description": "Información geoespacial de los suelos del mundo correspondiente a Bolivia, elaborado por la FAO-UNESCO y publicado entre 1974 y 1978 a escala 1:5 000000. En este trabajo, la FAO ha recogido información de perfiles de suelo de proyectos ejecutados anteriormente por este organismo. La información de perfiles de suelos contenida en los volúmenes que acompañan este mapa de suelos del mundo (FAO-UNESCO, 1971-81), fue publicada en la taxonomía del suelo (encuesta sobre suelo Staff, 1972) que fue lanzada por el ISRIC. Para este trabajo, un total de 1700 perfiles de suelos fueron analizados y agrupados por la unidad de suelos y el grupo textural de la FAO. Lastimosamente, no todas las combinaciones de textura de la Unidad Tierra-Vegetal del suelo pudieron ser documentadas. Sin embargo, se solicito consejo a los expertos: Dr. F.Nachtergaele y el Dr. E. De Pauw (consultor de clasificación de suelo) para terminar los campos en los cuales no hubieron datos disponibles.",
+  "sources": [
+    {
+      "title": "Nueva plataforma GeoBolivia",
+      "path": "https://geonode.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geobolivia_geonode_suelos_4421f72f/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 264134,
+      "hash": "sha256:d71961060a1a6fb0f20dc9796111a07944136ee46f0052c72fa076b92dc0d394",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "suelos_4421f72f.173"
+          },
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 222
+            }
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 222
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "suelos.165"
+          },
+          {
+            "name": "snum",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 3264,
+              "maximum": 6998
+            }
+          },
+          {
+            "name": "faosoil",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "I-Tv-c"
+          },
+          {
+            "name": "domsoi",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "I"
+          },
+          {
+            "name": "phase1",
+            "type": "string",
+            "example": "10",
+            "categories": [
+              "10",
+              "12"
+            ]
+          },
+          {
+            "name": "phase2",
+            "type": "integer"
+          },
+          {
+            "name": "misclu1",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "0",
+            "categories": [
+              "0",
+              "3"
+            ]
+          },
+          {
+            "name": "misclu2",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "0",
+            "categories": [
+              "0"
+            ]
+          },
+          {
+            "name": "permafrost",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "0",
+            "categories": [
+              "0"
+            ]
+          },
+          {
+            "name": "cntcode",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 9,
+              "maximum": 170
+            }
+          },
+          {
+            "name": "cntname",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "BL",
+            "categories": [
+              "BL",
+              "PE",
+              "BR",
+              "AR",
+              "PA",
+              "CI"
+            ]
+          },
+          {
+            "name": "sqkm",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 16,
+              "maximum": 169141
+            }
+          },
+          {
+            "name": "country",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "BOLIVIA",
+            "categories": [
+              "BOLIVIA",
+              "PERU",
+              "BRAZIL",
+              "ARGENTINA",
+              "PARAGUAY",
+              "CHILE"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
