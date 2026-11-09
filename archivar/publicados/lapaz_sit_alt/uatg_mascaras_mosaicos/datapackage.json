@@ -1,0 +1,100 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_alt_uatg_mascaras_mosaicos",
+  "title": "Poligonos de mascaras mosaicos",
+  "description": "Poligonos de vuelo de drones",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)",
+      "path": "http://sitservicios.lapaz.bo/ows38.jsp"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_uatg_mascaras_mosaicos/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 589497,
+      "hash": "sha256:7cf1df22ed4b16243c94653a7cec8d64d54e85825215880cd3395d31c2d02cc2",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "mascaras_mosaicos.133"
+          },
+          {
+            "name": "area",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.75,
+              "maximum": 397.2
+            }
+          },
+          {
+            "name": "mosaico",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "ISLA_VERDE_16052019.tif"
+          },
+          {
+            "name": "fecha",
+            "type": "datetime",
+            "constraints": {
+              "required": true,
+              "minimum": "2016-12-29T00:00:00",
+              "maximum": "2026-06-25T00:00:00"
+            }
+          },
+          {
+            "name": "fuente",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "SMPD-PICTURE",
+            "categories": [
+              "SMPD-UATG",
+              "SMP-UIGG",
+              "SMPD-PICTURE",
+              "SMCPH-DCSP",
+              "SMGIR-USAT"
+            ]
+          },
+          {
+            "name": "formatos",
+            "type": "string",
+            "example": "DWG",
+            "categories": [
+              "",
+              "DWG"
+            ]
+          },
+          {
+            "name": "urlext",
+            "type": "string",
+            "example": "saka_churu.html"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 1."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
