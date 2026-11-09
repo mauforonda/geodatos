@@ -1,0 +1,106 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_lp_vi_unidadestierra2000",
+  "title": "Mapa de zonificación de unidades de tierra de los valles interandinos del departamento de La Paz Bolivia",
+  "description": "Este mapa muestra las unidades de tierra de los valles interandinos del departamento de La Paz Bolivia. Determinadas en base al análisis geomorfológico del relieve y fisiografía del terreno, que constituyen dos variables de importancia crucial para la evaluación de los recursos de la región. Producido por el proyecto ZONISIG (Zonificacion Agroecológica y Socioeconomica de los Valles Interandinos de La Paz) y convenios de cooperación en el año 2000, a escala 1:250000.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_lp_vi_unidadestierra2000/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 380673,
+      "hash": "sha256:a850a60aed016813988604a78e22e222e873c95bdf60b574614be2140f7a3de1",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "lp_vi_unidadestierra2000.117"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 145
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "lp_vi_UnidadesTierra2000.117"
+          },
+          {
+            "name": "sub_u_t",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Cs(a)3Ma/2"
+          },
+          {
+            "name": "id_zona",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Z-26"
+          },
+          {
+            "name": "id_ut",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 99
+            }
+          },
+          {
+            "name": "ut_fin",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "18 Cs(a)3Ma/2"
+          },
+          {
+            "name": "leyenda",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "18 Cs(a)3Ma/2:  Serranía alta con disección alta y matorral"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
