@@ -1,0 +1,141 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_alt_lapaz_otb_dot",
+  "title": "Organizaciones Territorial de Base 2013 - DOT",
+  "description": "OTBs validadas por la Dirección de Ordenamiento Territorial, según estado.",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)",
+      "path": "http://sitservicios.lapaz.bo/ows38.jsp"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_lapaz_otb_dot/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 402384,
+      "hash": "sha256:0724cadbf3a3859b11e59406c84f5ffabf06949f930d7a954fb8426be02db930",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "otb_dot.560"
+          },
+          {
+            "name": "NOM_OTB",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "ISLA VERDE"
+          },
+          {
+            "name": "SUB_ALCALD",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "MALLASA",
+            "categories": [
+              "SUR",
+              "PERIFERICA",
+              "MAX PAREDES",
+              "SAN ANTONIO",
+              "COTAHUMA",
+              "CENTRO",
+              "MALLASA",
+              " "
+            ]
+          },
+          {
+            "name": "ESTADO",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "VALIDADA",
+            "categories": [
+              "VALIDADA",
+              "PROPUESTA TECNICA",
+              "(*) PROPUESTA TECNICA",
+              "SERVIDUMBRES ECOLOGICAS",
+              "AREA SUJETA A ESTUDIO",
+              " "
+            ]
+          },
+          {
+            "name": "NUMERO",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 60
+            }
+          },
+          {
+            "name": "DISTRITO",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 21
+            }
+          },
+          {
+            "name": "CODIGO",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "MA20-01"
+          },
+          {
+            "name": "AREA_m2",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 9169345.7556
+            }
+          },
+          {
+            "name": "AREA_Has",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 916.93457556
+            }
+          },
+          {
+            "name": "AREA_km2",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 9.16934575
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Filas sin geometría: 2."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
