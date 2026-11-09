@@ -1,0 +1,116 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_azero_zae",
+  "title": "Plan Director Cuenca Río Azero – Zonificación Agroecológica (ZAE).",
+  "description": "PDCRA (Plan Director Cuenca Río Grande). Nuestra la zonificacion agroecologica, elaborado por el Proyecto de Zonificación Agroecológica y Establecimiento de una Base de Datos y Red de Sistema de Información Geográfica en Bolivia (ZONISIG) de la Unidad de Ordenamiento Territorial, en el año 2000 a escala 1:250000.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_azero_zae/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 258938,
+      "hash": "sha256:1d552a3fb9bbf0378dad8e0d853217a14e1aae0a4636e5251c8ac30122476c81",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "DOMAIN_",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "E2",
+            "categories": [
+              "E2",
+              "D31",
+              "E7",
+              "E73",
+              "E51",
+              "E5",
+              "E11",
+              "E22",
+              "A3",
+              "B11",
+              "E4",
+              "A11",
+              "C3"
+            ]
+          },
+          {
+            "name": "ZAE",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Protección con uso agropecuario extensivo limitado",
+            "categories": [
+              "Protección",
+              "Protección con uso agropecuario extensivo limitado",
+              "Protección con uso forestal limitado",
+              "Rehabilitación de la vegetación y/o suelo",
+              "Protección con uso ganadero extensivo limitado",
+              "Protección con uso agrosilvopastoril limitado",
+              "Uso agropecuario intensivo",
+              "Uso agrícola extensivo",
+              "Uso agrosilvopastoril",
+              "Uso agrícola intensivo"
+            ]
+          },
+          {
+            "name": "Nivel6",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "466948",
+            "categories": [
+              "466942",
+              "466944",
+              "466945",
+              "466941-466943",
+              "466949",
+              "466947",
+              "466946",
+              "466948"
+            ]
+          },
+          {
+            "name": "Nombre",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Cruz Mayu",
+            "categories": [
+              "Pescado",
+              "Mojo Torilllo",
+              "Azero Alto",
+              "Azero Bajo",
+              "Marcani",
+              "Yotala",
+              "Casas",
+              "Cruz Mayu"
+            ]
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
