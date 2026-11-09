@@ -1,0 +1,77 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_pdcrph_caminos",
+  "title": "Plan Director Cuenca Río Pampa Huari - Caminos",
+  "description": "PDCRPH (Plan Director de la Cuenca Río Pampa Huari). Muestra la georreferenciación de la red vial en el área del Plan Director de la Cuenca del Río Pampa Huari.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_pdcrph_caminos/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 639473,
+      "hash": "sha256:a583c5c1ea87659cb4d84900e8ed19a00a78ec4c1fc79781f43fc977b5e3d465",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "ID_OSM",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "498886031"
+          },
+          {
+            "name": "VIALIDAD",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Senda, Rodera o Vereda",
+            "categories": [
+              "Senda, Rodera o Vereda",
+              "Principal o Carretero",
+              "Terciario",
+              "Secundario o Vecinal"
+            ]
+          },
+          {
+            "name": "NOMBRE",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": ""
+          },
+          {
+            "name": "DIST_M",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 2.89,
+              "maximum": 15784.81
+            }
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
