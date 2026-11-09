@@ -1,0 +1,137 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_amenaza_de_olas_de_calor_en_la_cue_c8b2abbeb7c7",
+  "title": "Amenaza de olas de calor en la Cuenca Coroico",
+  "description": "El mapa muestra  la amenaza de olas de calor en la Cuenca Coroico. Este mapa representa la distribución de la amenaza de olas de calor en la cuenca del Río Coroico, ubicada en el departamento de La Paz, Bolivia. Las áreas están clasificadas en cinco categorías de amenaza: muy baja, baja, media, alta y muy alta, las cuales se diferencian en diferentes tonalidades representadas en el mapa. El municipio de Teoponte se identifica como el más crítico, con un 72% de su territorio en amenaza muy alta, seguido por Tipuani 51%, Guanay 27% y Coripata 19%, lo que los posiciona como zonas altamente vulnerables.\nEn la categoría de amenaza alta, destacan Caranavi con un 65%, Tipuani 48%, Coroico 38% y Coripata 39%, reflejando una exposición significativa al calor extremo. Por su parte, los municipios de Coripata 47% y Coroico 42% concentran la mayor proporción de áreas en amenaza media, indicando condiciones intermedias pero relevantes.\nEn las categorías de amenaza baja y muy baja, los municipios de La Paz con el 33% y Guanay con el 18%, registran las áreas con menor vulnerabilidad, evidenciando condiciones más favorables.",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_amenaza_de_olas_de_calor_en_la_cue_c8b2abbeb7c7/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 386406,
+      "hash": "sha256:574c8f16a42d1fbd1373e6b761f209bb22752fc46254428d07c8094fb3620424",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_amenaza_de_olas_de_calor_en_la_cuenca_coroico_iih38.230"
+          },
+          {
+            "name": "sup_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.108,
+              "maximum": 100333.0612
+            }
+          },
+          {
+            "name": "leyenda",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Muy baja",
+            "categories": [
+              "Media",
+              "Muy alta",
+              "Alta",
+              "Baja",
+              "Muy baja"
+            ]
+          },
+          {
+            "name": "gridcode",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 5
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "LA PAZ",
+            "categories": [
+              "LA PAZ"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Murillo",
+            "categories": [
+              "Larecaja",
+              "Sur Yungas",
+              "Nor Yungas",
+              "Caranavi",
+              "Murillo",
+              "Franz Tamayo",
+              "Los Andes",
+              "Omasuyos"
+            ]
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "El Alto",
+            "categories": [
+              "Guanay",
+              "Caranavi",
+              "Coripata",
+              "La Asunta",
+              "Coroico",
+              "Teoponte",
+              "Nuestra Señora de La Paz",
+              "Alto Beni",
+              "Sorata",
+              "Chulumani",
+              "Yanacachi",
+              "Tipuani",
+              "Apolo",
+              "Mapiri",
+              "Achacachi",
+              "Batallas",
+              "El Alto",
+              "Palos Blancos",
+              "Pucarani"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 6."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
