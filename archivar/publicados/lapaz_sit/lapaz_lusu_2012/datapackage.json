@@ -1,0 +1,101 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_lapaz_lusu_2012",
+  "title": "Ley de Uso Urbano del Suelo 2012",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz",
+      "path": "http://sitservicios.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_lapaz_lusu_2012/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 592721,
+      "hash": "sha256:d99a0f79ee644d5498eb090e05c4a9843bb0bdb1731c68aafa78826db3d535ad",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "lusu_2012.72646"
+          },
+          {
+            "name": "USPA_FINA",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "AR",
+            "categories": [
+              "3",
+              "3C",
+              "1",
+              "3F",
+              "Av",
+              "AF",
+              "2",
+              "6",
+              "E",
+              "3.R",
+              "R1-R2-R3",
+              "Eq",
+              "AR",
+              "6Z",
+              "C1-C2",
+              "5Z",
+              "S2-S3-S4",
+              "4AC",
+              "4P",
+              "CH2"
+            ]
+          },
+          {
+            "name": "DISTRITO",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 20
+            }
+          },
+          {
+            "name": "COD_SIFCA",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": " "
+          },
+          {
+            "name": "SUP",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.137,
+              "maximum": 116662.474
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 3."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
