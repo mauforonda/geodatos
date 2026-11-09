@@ -1,0 +1,92 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_corredores_verticales_pnot_28840k",
+  "title": "layer_corredores_verticales_pnot_28840k",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_corredores_verticales_pnot_28840k/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 523215,
+      "hash": "sha256:b83a08ec86c6d83bec9cb9c540e5c0d1d30e066c54def12f7823eeedf572d1ba",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_corredores_verticales_pnot_28840k.42"
+          },
+          {
+            "name": "corredor",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Cobija-Villazon",
+            "categories": [
+              "Cobija-Villazon",
+              "Guayaramerin-Yacuiba"
+            ]
+          },
+          {
+            "name": "long_km",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0.1,
+              "maximum": 268.109
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "example": "POTOSI",
+            "categories": [
+              "LA PAZ",
+              "SANTA CRUZ",
+              "ORURO",
+              "BENI",
+              "POTOSI",
+              "PANDO",
+              "TARIJA",
+              "CHUQUISACA"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "example": "Sur Chichas"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "example": "Atocha"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
