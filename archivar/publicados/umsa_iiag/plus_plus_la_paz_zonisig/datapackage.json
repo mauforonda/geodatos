@@ -1,0 +1,125 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_umsa_iiag_plus_plus_la_paz_zonisig",
+  "title": "PLUS_LaPaz_ZONISIG",
+  "sources": [
+    {
+      "title": "Geoportal del Instituto de Investigaciones y Aplicaciones Geomáticas (IIAG) de la Universidad Mayor de San Andrés (UMSA)",
+      "path": "http://gtggeoportal.umsa.bo:8087/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_umsa_iiag_plus_plus_la_paz_zonisig/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 317297,
+      "hash": "sha256:7aa28e38b877e23bf0083778ab4dcdcdbe5329c415acc65f0dc937d800638ed6",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "PLUS La Paz ZONISIG.219"
+          },
+          {
+            "name": "FID_",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 0
+            }
+          },
+          {
+            "name": "AREA",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 32239.31,
+              "maximum": 5592860000.0
+            }
+          },
+          {
+            "name": "PERIMETER",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 804.6814,
+              "maximum": 1156580.0
+            }
+          },
+          {
+            "name": "ZAE_",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 2,
+              "maximum": 227
+            }
+          },
+          {
+            "name": "ZAE_ID",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 226
+            }
+          },
+          {
+            "name": "DOMAIN",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "B22",
+            "categories": [
+              "B22",
+              "B21",
+              "cuerpo de agua",
+              "B36",
+              "B23",
+              "B31",
+              "A21",
+              "B35",
+              "nevado",
+              "B11",
+              "B34",
+              "A11",
+              "B32",
+              "D1",
+              "C3",
+              "C4",
+              "B33",
+              "C1",
+              "C2",
+              "D2",
+              "Lago Titicaca"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
