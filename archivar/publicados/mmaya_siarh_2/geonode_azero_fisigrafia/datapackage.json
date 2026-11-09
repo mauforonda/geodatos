@@ -1,0 +1,112 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_azero_fisigrafia",
+  "title": "Plan Director Cuenca Rió Azero – Fisiografía",
+  "description": "PDCRA (Plan Director de la Cuenca Rió Azero). Elaborado por el Proyecto de Zonificación Agroecológica y Establecimiento de una  la Base de Datos y Red de Sistema de Información Geográfica en Bolivia (ZONISIG) de la Unidad de Ordenamiento Territorial, en el año 2000 a escala 1:250000. Información obtenida del diagnóstico Biofísico de la Cuenca Azero, 2012 (GIZ).",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_azero_fisigrafia/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 256369,
+      "hash": "sha256:ea68260cde6a9211421d01f1a9a749774cedad5924b135f68952cf9bfa052c52",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "Code",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "5COSeSA"
+          },
+          {
+            "name": "Subcuenca",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Cruz Mayu",
+            "categories": [
+              "Mojo Torilllo",
+              "Pescado",
+              "Azero Alto",
+              "Azero Bajo",
+              "Yotala",
+              "Marcani",
+              "Cruz Mayu",
+              "Casas"
+            ]
+          },
+          {
+            "name": "Prov_Fis",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Cordillera Oriental",
+            "categories": [
+              "Cordillera Oriental",
+              "Subandino"
+            ]
+          },
+          {
+            "name": "GPaisaje",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Serranias",
+            "categories": [
+              "Serranias",
+              "Colinas",
+              "Montañas",
+              "Piedemontes",
+              "Planicies",
+              "Valles"
+            ]
+          },
+          {
+            "name": "Paisaje",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Serrania Alta",
+            "categories": [
+              "Serrania Alta",
+              "Serrania Media",
+              "Serrania Baja",
+              "Colina Baja",
+              "Cuesta",
+              "Llanura De Piedemonte",
+              "Montaña Media",
+              "Colina Alta",
+              "Colina Media",
+              "Llanura Aluvial"
+            ]
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
