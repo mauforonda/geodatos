@@ -1,0 +1,89 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_sismicidad",
+  "title": "Mapa de áreas segun grado de sismicidad en Bolivia_ 2002",
+  "description": "Para el presente mapa se identificaron dos grados de sismicidad con niveles moderados a bajos, tomando como referencia las zonas de la costa del Pacifico en Chile y Perú como zonas de alta sismicidad, a partir de esta información se generó una zonificación de áreas con actividad sísmica baja y media, las cuales están representadas en el mapa por por un tramado de cuadricula y rombos. Elaborado por la Unidad de Ordenamiento Territorial del Ministerio de Planificación del Desarrollo en el año 2002, a escala 1: 1000000.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_sismicidad/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 511453,
+      "hash": "sha256:d436560d69431689949cf3cbc01c7aeaaba14964fac79cfea9e27655ea446dad",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "sismicidad.112"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 125
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Sismicidad.112"
+          },
+          {
+            "name": "litol",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "U1",
+            "categories": [
+              "U2",
+              "Sc",
+              "U1",
+              "S",
+              "M"
+            ]
+          },
+          {
+            "name": "wlitol",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 4
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 1."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
