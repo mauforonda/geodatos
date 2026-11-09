@@ -1,0 +1,181 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_alt_sit_areas_protegidas",
+  "title": "Areas Protegidas Municipales",
+  "description": "Areas Protegidas Municipales, OD 150/2023 SMAGER, SMP.",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)",
+      "path": "http://sitservicios.lapaz.bo/ows38.jsp"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_sit_areas_protegidas/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 263816,
+      "hash": "sha256:4978db24c4aab3df7170e793627388074c3ca10b18bb930416d9d8b5d27cfba5",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "areas_protegidas.45"
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Gran Jardín de la Revolución"
+          },
+          {
+            "name": "shape_leng",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 280.359543515,
+              "maximum": 103357.468683
+            }
+          },
+          {
+            "name": "ley_nac",
+            "type": "string",
+            "example": "Ley Nacional Nº 2305/2001",
+            "categories": [
+              "Ley Nacional Nº 2305/2001",
+              "Ley Nacional Nº 2305 de 20/12/2001",
+              "Ley Nacional Nº 3137 de 10/08/2005"
+            ]
+          },
+          {
+            "name": "dec_sup",
+            "type": "string",
+            "example": "DS Nº 20922/1985",
+            "categories": [
+              "DS Nº 20922/1985",
+              "DS Nº 22927 de 11/10/1991",
+              "DS Nº 28491/2005",
+              "DS Nº 4309 de 06/02/1956;Nº 10125 de 18/02/1972"
+            ]
+          },
+          {
+            "name": "res_pref",
+            "type": "string",
+            "example": "RP Nº 372/1999 de 27/07/1999",
+            "categories": [
+              "RP Nº 372/1999 de 27/07/1999"
+            ]
+          },
+          {
+            "name": "ley_mun",
+            "type": "string",
+            "example": "LMA Nº 238/2017 de 24/05/2017",
+            "categories": [
+              "LMA Nº 238/2017 de 24/05/2017",
+              "Ley Municipal GAMLP Nº 127/2015;Nº 184/2016"
+            ]
+          },
+          {
+            "name": "ord_mun",
+            "type": "string",
+            "example": "OM Nº 80/1996 HAM-HCM 82/1996;Nº 147/2000 HAM-HCM 117/2000;Nº 62/2001 HAM-HCM 63/2001;Nº 259/2015"
+          },
+          {
+            "name": "res_mun",
+            "type": "string",
+            "example": "RM Nº 112/1996",
+            "categories": [
+              "RM Nº 112/1996",
+              "RM Nº 280/1993",
+              "RM Nº 450/1995;Nº 121/1996"
+            ]
+          },
+          {
+            "name": "cat",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "AMPA",
+            "categories": [
+              "AMPA",
+              "EME",
+              "AMCE",
+              "AMVP",
+              "AMMI",
+              "ENC"
+            ]
+          },
+          {
+            "name": "área_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0.544539926770136,
+              "maximum": 22303.62705079424
+            }
+          },
+          {
+            "name": "num",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "11"
+          },
+          {
+            "name": "tipo_area",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Área Protegida Municipal",
+            "categories": [
+              "Área Protegida Municipal",
+              "Espacio Natural de Conservación"
+            ]
+          },
+          {
+            "name": "desc_cat",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Área Municipal de Proteccion Ambiental",
+            "categories": [
+              "Espacio Natural Ecopedagógico (Urbano)",
+              "Área Municipal de Proteccion Ambiental",
+              "Área Municipal de Conservación Ecológica",
+              "Área Municipal de Valor Monumental y Paisajístico",
+              "Espacio Natural de Conservación (Rural)",
+              "Área Municipal de Manejo Integral"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 1."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
