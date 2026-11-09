@@ -1,0 +1,149 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_catastro_vias2",
+  "title": "Catastro vias",
+  "description": "Catastro vias fuera de linea",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz",
+      "path": "http://sitservicios.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_catastro_vias2/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 484296,
+      "hash": "sha256:42a7e998e1e08da1da47e491085c03b35872e6bd3a4c6c11c5586fd281f7a8d2",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "vias2.4272"
+          },
+          {
+            "name": "idvias",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 6528
+            }
+          },
+          {
+            "name": "tipovia",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "AVENIDA",
+            "categories": [
+              "CALLE",
+              "AVENIDA",
+              "NO TIPIFICADO",
+              "PASAJE",
+              "CALLEJON",
+              "PASAJE PEATONAL",
+              "OTRAS VIAS (PLAZAS, PARQUES)",
+              "PASAJE VEHICULAR",
+              "AUTOPISTA"
+            ]
+          },
+          {
+            "name": "nombrevia",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "MAX FERNANDEZ"
+          },
+          {
+            "name": "matvia",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "ASFALTADO",
+            "categories": [
+              "ASFALTADO",
+              "TIERRA",
+              "CEMENTO",
+              "PIEDRA",
+              "LOSETA",
+              "SIN IDENTIFICAR",
+              "ADOQUIN"
+            ]
+          },
+          {
+            "name": "idmatcalle",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "01",
+            "categories": [
+              "01",
+              "07",
+              "03",
+              "05",
+              "04",
+              "0",
+              "02"
+            ]
+          },
+          {
+            "name": "idtipovia",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 8
+            }
+          },
+          {
+            "name": "instrumentoaprobacion",
+            "type": "string",
+            "example": "OM 457/2013"
+          },
+          {
+            "name": "anchovia",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 48.3
+            }
+          },
+          {
+            "name": "pendientevia",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 61
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
