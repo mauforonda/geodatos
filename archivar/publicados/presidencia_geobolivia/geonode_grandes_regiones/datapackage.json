@@ -1,0 +1,76 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_grandes_regiones",
+  "title": "Mapa de grandes regiones de Bolivia",
+  "description": "El mapa muestra las cinco grandes regiones que cubren el territorio nacional, definidas en función de sus características físicas, biológicas y climáticas. Publicado en el Atlas de riesgo agropecuario y cambio climático por la Unidad de Contingencia Rural (UCR) en el año 2012 a escala 1:5500000.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_grandes_regiones/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 507487,
+      "hash": "sha256:406857c07a66602edfbec6c7db11a0ec6c4c75cac7160c197632b2d14e113e0d",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "example": "grandes_regiones.5"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 5
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "example": "Grandes_regiones.5"
+          },
+          {
+            "name": "region",
+            "type": "string",
+            "example": "VALLES"
+          },
+          {
+            "name": "shape_leng",
+            "type": "number",
+            "constraints": {
+              "minimum": 25.147059866,
+              "maximum": 49.6089746039
+            }
+          },
+          {
+            "name": "shape_area",
+            "type": "number",
+            "constraints": {
+              "minimum": 10.2062967365,
+              "maximum": 39.8819032937
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 1."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
