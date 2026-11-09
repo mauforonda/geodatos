@@ -1,0 +1,188 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mdryt_observatorioagro_bolivia_area_protegida_nacional",
+  "title": "Area_Protegida_Nacional",
+  "sources": [
+    {
+      "title": "Geovisor del Observatorio Agroambiental y Productivo del Ministerio de Desarrollo Rural y Tierras (MDRyT)",
+      "path": "http://geoserver.observatorioagro.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mdryt_observatorioagro_bolivia_area_protegida_nacional/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 396209,
+      "hash": "sha256:fe2164d8574dff5d8c1e444f11defdd84ea4c8c91af1d262f4be7b2821fcc56f",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 1."
+          },
+          {
+            "name": "FID_areas_",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0,
+              "maximum": 60
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 61
+            }
+          },
+          {
+            "name": "aprots",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "AP-05"
+          },
+          {
+            "name": "nombre_ap_",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Eduardo Avaroa"
+          },
+          {
+            "name": "categoria",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Reserva Nacional de Fauna Andina",
+            "categories": [
+              "Area Natural de Manejo Integrado",
+              "Parque Nacional",
+              "Parque Nacional y Territorio Indigena",
+              "Refugio de Vida Silvestre",
+              "Reserva Biológica",
+              "Reserva Nacional de Fauna Andina",
+              "Reserva Nacional de Flora y Fauna",
+              "Reserva Nacional de Vida Silvestre Amazónica",
+              "Reserva de la Biósfera",
+              "Reserva de la Biósfera y Territorio Indígena"
+            ]
+          },
+          {
+            "name": "base_leg_1",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "DS 11239 del 13/12/1973 - DS 19313 del 14/05/1981 - SD 18431 del 26/06/1981"
+          },
+          {
+            "name": "area",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 22445.388,
+              "maximum": 30178101688.2
+            }
+          },
+          {
+            "name": "nomb_corto",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "E. Avaroa"
+          },
+          {
+            "name": "perimeter",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 3285.206
+            }
+          },
+          {
+            "name": "hectares",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 3017810.169
+            }
+          },
+          {
+            "name": "FID_Bol_Mu",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 9,
+              "maximum": 310
+            }
+          },
+          {
+            "name": "DEPARTAMEN",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Potosi",
+            "categories": [
+              "La Paz",
+              "Santa Cruz",
+              "Cochabamba",
+              "Tarija",
+              "Potosi",
+              "Beni",
+              "Chuquisaca"
+            ]
+          },
+          {
+            "name": "PROVINCIA",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Sur Lipez"
+          },
+          {
+            "name": "MUNICIPIO",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "San Pablo de Lipez"
+          },
+          {
+            "name": "CODIGO_1",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "051001"
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
