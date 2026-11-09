@@ -1,0 +1,122 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_clima_actual_en_la_cuenca_coroico_fl9m",
+  "title": "Clima actual en la Cuenca Coroico",
+  "description": "El mapa muestra el Clima actual en la Cuenca Coroico. Esta imagen analiza la precipitación anual en la cuenca del río Coroico, Bolivia, y compara \ndatos actuales (1981-2010) con proyecciones futuras bajo el escenario climático SSP5 85 (2041-2070), además de mostrar la diferencia de precipitación proyectada entre ambos períodos.\nPrecipitación Actual (1981-2010): Los valores de precipitación anual en la cuenca varían considerablemente, con un rango que va desde 842.3 mm en Teoponte hasta 1,643.7 mm en áreas más húmedas cercanas a La Paz. Las áreas con mayor precipitación se ubican en las zonas occidentales y centrales de la cuenca, mientras que las áreas más secas se encuentran en zonas elevadas al norte.\nPrecipitación Futura (2041-2070): Bajo el escenario SSP5-85, se proyecta una disminución general de la precipitación en toda la cuenca, con valores que van desde 630.3 mm en las áreas más secas (Teoponte) hasta 1,474.9 mm en las zonas con mayor precipitación cerca de La Paz. Esto muestra una disminución en los niveles de precipitación en casi todas las áreas, particularmente en las zonas que previamente \nrecibían mayor cantidad de agua.\nDiferencia de Precipitación (Futuro - Actual): El mapa de diferencias muestra una reducción significativa de la precipitación en toda la cuenca, con disminuciones que varían entre 56.9 mm y 121.6 mm. Las reducciones más acentuadas se observan en el centro y el norte de la cuenca, especialmente en áreas como Teoponte, Tipuani y La Paz",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_clima_actual_en_la_cuenca_coroico_fl9m/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 347923,
+      "hash": "sha256:419e54b51f2a3af33e99eaed4b09a8954f25ef317c234ae1d9525fd2d8750b25",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_clima_actual_en_la_cuenca_coroico_fl9m.601"
+          },
+          {
+            "name": "gridcode",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1290,
+              "maximum": 3750
+            }
+          },
+          {
+            "name": "sup_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0109,
+              "maximum": 27723.3836
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "LA PAZ",
+            "categories": [
+              "LA PAZ"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Los Andes",
+            "categories": [
+              "Larecaja",
+              "Nor Yungas",
+              "Sur Yungas",
+              "Murillo",
+              "Caranavi",
+              "Los Andes",
+              "Franz Tamayo",
+              "Omasuyos"
+            ]
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Batallas",
+            "categories": [
+              "Guanay",
+              "Nuestra Señora de La Paz",
+              "Coroico",
+              "Teoponte",
+              "Coripata",
+              "La Asunta",
+              "Caranavi",
+              "Sorata",
+              "Apolo",
+              "Yanacachi",
+              "Alto Beni",
+              "Batallas",
+              "Tipuani",
+              "Mapiri",
+              "Pucarani",
+              "Palos Blancos",
+              "Chulumani",
+              "Achacachi",
+              "El Alto"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 12."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
