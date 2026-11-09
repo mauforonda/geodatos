@@ -1,0 +1,97 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_minplanifica_infocapa_layer_rutas_de_recoleccion_de_b_uw9fi",
+  "title": "layer_rutas_de_recoleccion_de_b_uw9fi",
+  "sources": [
+    {
+      "title": "Geoserver del Ministerio de Planificación del Desarollo",
+      "path": "https://geoserver.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_minplanifica_infocapa_layer_rutas_de_recoleccion_de_b_uw9fi/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 329131,
+      "hash": "sha256:463592ec200a5b79834bd9235124d17b723edd86b7f4f2a13bdee135d6c50afc",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_rutas_de_recoleccion_de_b_uw9fi.106"
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "HIGUERANI"
+          },
+          {
+            "name": "long_km",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.23,
+              "maximum": 5636.0
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Cochabamba",
+            "categories": [
+              "Cochabamba"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Cercado",
+            "categories": [
+              "Cercado",
+              "Chapare"
+            ]
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Cochabamba",
+            "categories": [
+              "Cochabamba",
+              "Sacaba"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
