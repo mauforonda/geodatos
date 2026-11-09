@@ -1,0 +1,119 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_minplanifica_infospie_layer_campos_de_explotacion_petrolera_g29t0i",
+  "title": "layer_campos_de_explotacion_petrolera_g29t0i",
+  "sources": [
+    {
+      "title": "Geoserver del Ministerio de Planificación del Desarollo",
+      "path": "https://geoserver.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_minplanifica_infospie_layer_campos_de_explotacion_petrolera_g29t0i/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 53668,
+      "hash": "sha256:232a74e5b2f10197e6b8cd64aabfc8964c17c3ea7906e8d9b67ddd287a75ce29",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_campos_de_explotacion_petrolera_g29t0i.84"
+          },
+          {
+            "name": "operadora",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Pluspetrol",
+            "categories": [
+              "Andina",
+              "Chaco",
+              "Repsol-YPF",
+              "Pluspetrol",
+              "B.G. Bolivia",
+              "Petrobras",
+              "Vintage",
+              "Petrobras Energia S.A.",
+              "Total",
+              "Don Wong",
+              "Matpetrol",
+              "Canadian Energy"
+            ]
+          },
+          {
+            "name": "campo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Bermejo-Toro-Barredero-Tigre-San Telmo"
+          },
+          {
+            "name": "sup_ha",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 5,
+              "maximum": 74460
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "example": "Tarija",
+            "categories": [
+              "Santa Cruz",
+              "Tarija",
+              "Cochabamba",
+              "Chuquisaca"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "example": "Arce",
+            "categories": [
+              "Cordillera",
+              "Gran Chaco",
+              "Ichilo",
+              "Sara",
+              "Andres Ibañez",
+              "Carrasco",
+              "Luis Calvo",
+              "Arce",
+              "O'Connor",
+              "Warnes",
+              "Hernando Siles",
+              "Obispo Santisteban"
+            ]
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "example": "Bermejo"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
