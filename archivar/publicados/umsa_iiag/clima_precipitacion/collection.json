@@ -1,0 +1,152 @@
+{
+  "type": "Collection",
+  "id": "geodatosbolivia_umsa_iiag_clima_precipitacion",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json",
+    "https://stac-extensions.github.io/vector/v0.1.0/schema.json",
+    "https://stac-extensions.github.io/projection/v2.0.0/schema.json",
+    "https://stac-extensions.github.io/file/v2.1.0/schema.json",
+    "https://stac-extensions.github.io/web-map-links/v1.3.0/schema.json"
+  ],
+  "title": "pcpn_anual",
+  "description": "pcpn_anual",
+  "license": "other",
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -69.89528124,
+          -22.92976974,
+          -57.4091209,
+          -9.64229831
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "providers": [
+    {
+      "name": "Geoportal del Instituto de Investigaciones y Aplicaciones Geomáticas (IIAG) de la Universidad Mayor de San Andrés (UMSA)",
+      "roles": [
+        "producer"
+      ],
+      "url": "http://gtggeoportal.umsa.bo:8087/geoserver/ows"
+    },
+    {
+      "name": "Internet Archive",
+      "roles": [
+        "host"
+      ],
+      "url": "https://archive.org/details/geodatosbolivia_umsa_iiag_clima_precipitacion"
+    }
+  ],
+  "table:primary_geometry": "geometry",
+  "table:row_count": 83,
+  "table:columns": [
+    {
+      "name": "id",
+      "type": "string"
+    },
+    {
+      "name": "contour",
+      "type": "int32"
+    },
+    {
+      "name": "leyenda",
+      "type": "string"
+    },
+    {
+      "name": "geometry",
+      "type": "binary",
+      "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+    }
+  ],
+  "summaries": {
+    "vector:geometry_types": [
+      "MultiLineString"
+    ]
+  },
+  "assets": {
+    "data": {
+      "href": "https://archive.org/download/geodatosbolivia_umsa_iiag_clima_precipitacion/dataset.geoparquet",
+      "type": "application/vnd.apache.parquet",
+      "title": "GeoParquet",
+      "roles": [
+        "data"
+      ],
+      "proj:code": "EPSG:4326",
+      "file:size": 418026,
+      "file:checksum": "1220beb630ed0db6d7529fdd44ccf5c56076a98be098a09d7f4264b137011bf46009"
+    },
+    "datapackage": {
+      "href": "./datapackage.json",
+      "type": "application/json",
+      "title": "Data Package: columnas, tipos y categorías",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "pmtiles": {
+      "href": "https://archive.org/download/geodatosbolivia_umsa_iiag_clima_precipitacion/dataset.pmtiles",
+      "type": "application/vnd.pmtiles",
+      "title": "Teselas vectoriales (PMTiles)",
+      "roles": [
+        "visual"
+      ],
+      "file:size": 131297,
+      "file:checksum": "1220a852f19d61b3f81bc67195b10a9ab5d571581a4b3163899c414c1c03ecea179b"
+    }
+  },
+  "pmtiles:min_zoom": 6,
+  "pmtiles:max_zoom": 8,
+  "pmtiles:tile_type": "mvt",
+  "pmtiles:center": [
+    -63.652201,
+    -16.286034,
+    7
+  ],
+  "pmtiles:properties": [
+    {
+      "nombre": "contour",
+      "tipo": "number",
+      "minimo": 100.0,
+      "maximo": 5000.0
+    }
+  ],
+  "links": [
+    {
+      "rel": "root",
+      "href": "../../../catalog.json",
+      "type": "application/json",
+      "title": "Datos geográficos de Bolivia"
+    },
+    {
+      "rel": "parent",
+      "href": "../catalog.json",
+      "type": "application/json",
+      "title": "Geoportal del Instituto de Investigaciones y Aplicaciones Geomáticas (IIAG) de la Universidad Mayor de San Andrés (UMSA)"
+    },
+    {
+      "rel": "via",
+      "href": "http://gtggeoportal.umsa.bo:8087/geoserver/ows",
+      "type": "text/html",
+      "title": "Servicio de origen"
+    },
+    {
+      "rel": "pmtiles",
+      "href": "https://archive.org/download/geodatosbolivia_umsa_iiag_clima_precipitacion/dataset.pmtiles",
+      "type": "application/vnd.pmtiles",
+      "pmtiles:layers": [
+        "dataset"
+      ]
+    }
+  ]
+}
