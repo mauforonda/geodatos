@@ -1,0 +1,176 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_limites_interdepartamentales_va",
+  "title": "Límites Interdepartamentales Actualizados_ Bolivia 2020",
+  "description": "El mapa muestra los límites interdepartamentales actualizados de una parte del territorio nacional, estos datos corresponden a: Beni con Santa Cruz, Cochabamba con Potosí, Cochabamba con Santa Cruz, Chuquisaca con Cochabamba, Chuquisaca con Potosi, Chuquisaca con Santa Cruz, La Paz con Oruro, Oruro con Potosí, Tarija con Chuquisaca. Información proporcionada por el Viceministerio de Autonomías que es parte del Ministerio de la Presidencia en fecha julio 2020.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_limites_interdepartamentales_va/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 636869,
+      "hash": "sha256:341c99831a9024df0620a8609d621249199bfb5507f63b28a0146ff359fb7c31",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "limites_interdepartamentales_va.6"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 77
+            }
+          },
+          {
+            "name": "cod_siot",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "1919"
+          },
+          {
+            "name": "id_limite",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "CH-PT",
+            "categories": [
+              "CH-PT",
+              "CB-SC",
+              "CH-SC",
+              "BN-SC",
+              "CH-CB",
+              "LP-OR",
+              "TR-CH",
+              "OR-PT",
+              "CB-PT"
+            ]
+          },
+          {
+            "name": "id_tramo",
+            "type": "string",
+            "example": "3",
+            "categories": [
+              "1",
+              "2",
+              "3",
+              "4",
+              "5"
+            ]
+          },
+          {
+            "name": "dist_km",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 2.55619147142,
+              "maximum": 285.915991737
+            }
+          },
+          {
+            "name": "fecha_ley",
+            "type": "datetime",
+            "constraints": {
+              "required": true,
+              "minimum": "1898-11-10T00:00:00",
+              "maximum": "2018-04-30T00:00:00"
+            }
+          },
+          {
+            "name": "limite",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "INTER_D",
+            "categories": [
+              "INTER_D"
+            ]
+          },
+          {
+            "name": "estado",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "LEY DE DELIMITACION",
+            "categories": [
+              "LEY DE DELIMITACION",
+              "LEY 28 NOV 1914",
+              "L_1898_1912_DS_1914",
+              "LEY DE CREACION",
+              "LEY NACIONAL",
+              "LEY_1898 Y 1912",
+              "LEY CREACION TIOC"
+            ]
+          },
+          {
+            "name": "tipo_limit",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "PRECISO",
+            "categories": [
+              "PRECISO"
+            ]
+          },
+          {
+            "name": "ley",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "744",
+            "categories": [
+              "744",
+              "846",
+              "LEY 28 NOV 1914",
+              "LEY_1898_1912_DS_1914",
+              "431",
+              "2727",
+              "LEY_1898 Y 1912",
+              "496",
+              "3462",
+              "794",
+              "1466",
+              "1054",
+              "813"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
