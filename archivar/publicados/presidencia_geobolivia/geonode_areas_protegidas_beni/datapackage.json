@@ -1,0 +1,90 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_areas_protegidas_beni",
+  "title": "Áreas Protegidas Departamento del Beni_ Bolivia 2020",
+  "description": "El mapa muestra las 19 áreas protegidas que se encuentran en el departamento del Beni, según las categorías: Nacional, Departamental, Municipal y privada, considerada en el Plan de uso del Suelo Beni. El Convenio sobre la Diversidad Biológica (CBD) define un área protegida como: “un área geográficamente definida que esta designada o regulada y gestionada para lograr específicos objetivos de conservación”. Información obtenida del Viceministerio de Tierra a octubre del 2020.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_areas_protegidas_beni/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 423034,
+      "hash": "sha256:3a97ef5d2d9725715d3da81be082dc80bbee1efe9be4e9c60e5e4cc25f1565e7",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 20
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 20
+            }
+          },
+          {
+            "name": "nombre_ofi",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Area Protegida Municipal (APM) TCO Tsimane-Río Maniqui"
+          },
+          {
+            "name": "superficie",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 273.984513814,
+              "maximum": 1395530.85314
+            }
+          },
+          {
+            "name": "categoria",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Municipal",
+            "categories": [
+              "Departamental",
+              "Municipal",
+              "Nacional",
+              "Privada"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 3."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
