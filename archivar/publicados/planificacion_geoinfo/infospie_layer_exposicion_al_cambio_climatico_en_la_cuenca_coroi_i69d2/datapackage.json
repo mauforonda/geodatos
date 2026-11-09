@@ -1,0 +1,137 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_exposicion_al_cambio_climatico_en_99d7f360e908",
+  "title": "Exposición al cambio climático en la Cuenca Coroico",
+  "description": "El mapa muestra  la Exposición al cambio climático. El mapa de “Exposición en la Cuenca del Río Coroico” revela cómo diversas áreas se ven \nafectadas por el cambio climático, utilizando una escala cromática que va del verde (muy baja) al rojo (muy alta). Esto facilita una comprensión clara de las áreas más afectadas.\nLa tabla complementa el mapa al proporcionar datos numéricos sobre el índice de exposición en cada municipio y en la cuenca en general. Se divide en cinco categorías: Muy Baja, Baja, Media, Alta y Muy Alta.",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_exposicion_al_cambio_climatico_en_99d7f360e908/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 214322,
+      "hash": "sha256:bb64e9564bfde1e4c3bae91cd9630492c6744fb127e66eb7ac08fc563f23e711",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_exposicion_al_cambio_climatico_en_la_cuenca_coroi_i69d2.7"
+          },
+          {
+            "name": "sup_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0001,
+              "maximum": 84018.2071
+            }
+          },
+          {
+            "name": "gridcode",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 5
+            }
+          },
+          {
+            "name": "leyenda",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Muy bajo",
+            "categories": [
+              "Muy bajo",
+              "Medio",
+              "Bajo",
+              "Alto",
+              "Muy alto"
+            ]
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "LA PAZ",
+            "categories": [
+              "LA PAZ"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Los Andes",
+            "categories": [
+              "Larecaja",
+              "Caranavi",
+              "Sur Yungas",
+              "Nor Yungas",
+              "Murillo",
+              "Franz Tamayo",
+              "Los Andes",
+              "Omasuyos"
+            ]
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Pucarani",
+            "categories": [
+              "Guanay",
+              "Alto Beni",
+              "La Asunta",
+              "Coripata",
+              "Teoponte",
+              "Apolo",
+              "Nuestra Señora de La Paz",
+              "Caranavi",
+              "Coroico",
+              "Tipuani",
+              "Mapiri",
+              "Sorata",
+              "Achacachi",
+              "Batallas",
+              "Chulumani",
+              "El Alto",
+              "Palos Blancos",
+              "Pucarani",
+              "Yanacachi"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 2."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
