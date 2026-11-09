@@ -1,0 +1,107 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_bofedales_de_la_cuenca_alta_rio_la_5d819d4d2ab9",
+  "title": "Bofedales de la Cuenca Alta Rio La Paz (Plan Director de la Cuenca Alta del Río La Paz)",
+  "description": "El mapa muestra las superficies para ecosistemas de altura tipo bofedal en el marco del Plan Director de la Cuenca Alta del Río La Paz.",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_bofedales_de_la_cuenca_alta_rio_la_5d819d4d2ab9/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 718030,
+      "hash": "sha256:e4d139b3eaac642464a1faaa89bf371ba6007e8ecc3521e358efe8b34db333c6",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_bofedales_de_la_cuenca_alta_rio_la_paz_plan_direc_tw4ti.166"
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "N214"
+          },
+          {
+            "name": "estado_de",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Bofedal vigoroso (0,13%), Bofedal bajo déficit hídrico (1.06%), Pajonal  (3.64%), Vegetación escasa "
+          },
+          {
+            "name": "sup_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 54.78
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "LA PAZ",
+            "categories": [
+              "LA PAZ"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Murillo",
+            "categories": [
+              "Murillo"
+            ]
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Mecapaca",
+            "categories": [
+              "Nuestra Señora de La Paz",
+              "Palca",
+              "Mecapaca",
+              "El Alto"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 8."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
