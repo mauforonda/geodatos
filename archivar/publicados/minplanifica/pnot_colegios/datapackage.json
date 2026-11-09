@@ -1,0 +1,159 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_minplanifica_pnot_colegios",
+  "title": "colegios",
+  "sources": [
+    {
+      "title": "Geoserver del Ministerio de Planificación del Desarollo",
+      "path": "https://geoserver.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_minplanifica_pnot_colegios/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 667934,
+      "hash": "sha256:931d003246f7b88b783d54b6f13a9d03bbce92ed3c13ecc1434a2e2d37a7cc69",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "colegios.2869"
+          },
+          {
+            "name": "distrito",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "LLICA/ TAHUA"
+          },
+          {
+            "name": "cod_ue",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "81350013"
+          },
+          {
+            "name": "turnoals",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Mañana y tarde",
+            "categories": [
+              "Mañana",
+              "Mañana y tarde",
+              "Tarde",
+              "Noche",
+              "N_T"
+            ]
+          },
+          {
+            "name": "area",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Rural",
+            "categories": [
+              "Rural",
+              "Urbano"
+            ]
+          },
+          {
+            "name": "depend",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Fiscal",
+            "categories": [
+              "Fiscal",
+              "Privado"
+            ]
+          },
+          {
+            "name": "nivel",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Inicial/Primaria/Secundaria",
+            "categories": [
+              "Inicial/Primaria",
+              "Inicial/Primaria/Secundaria",
+              "Primaria",
+              "Secundaria",
+              "Inicial",
+              "Primaria/Secundaria",
+              "Inicial/Secundaria"
+            ]
+          },
+          {
+            "name": "unidad_edu",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "BELLA VISTA"
+          },
+          {
+            "name": "cod_dist",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1001,
+              "maximum": 9010
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "example": "POTOSI",
+            "categories": [
+              "LA PAZ",
+              "SANTA CRUZ",
+              "COCHABAMBA",
+              "POTOSI",
+              "CHUQUISACA",
+              "BENI",
+              "TARIJA",
+              "ORURO",
+              "PANDO"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "example": "Daniel Campos"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "example": "Llica"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
