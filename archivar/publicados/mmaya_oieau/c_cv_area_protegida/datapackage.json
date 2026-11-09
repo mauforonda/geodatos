@@ -1,0 +1,144 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_oieau_c_cv_area_protegida",
+  "title": "CV_AD_area_protegida",
+  "sources": [
+    {
+      "title": "Sistema para la Gestión Integral de Recursos Hídricos desarrollado por la Oficina Internacional del Agua (OiEau)",
+      "path": "https://www.oieau-wiss.org/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_oieau_c_cv_area_protegida/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 471792,
+      "hash": "sha256:f93eee22fa4c6d3269103f48b689b2278e8e4b40634d1cb2bd2476f6aab9568d",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "area_protegida.10"
+          },
+          {
+            "name": "ilha",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "BRAVA",
+            "categories": [
+              "BOA VISTA",
+              "SAL",
+              "MAIO",
+              "SANTO ANTÃO",
+              "SANTIAGO",
+              "SÃO NICOLAU",
+              "BRAVA",
+              "FOGO",
+              "SANTA LUZIA",
+              "SÃO VICENTE"
+            ]
+          },
+          {
+            "name": "categorias",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Reserva Natural Integral",
+            "categories": [
+              "Reserva Natural",
+              "Parque Natural",
+              "Paisagem Protegida",
+              "Monumento Natural",
+              "Reserva Natural Integral"
+            ]
+          },
+          {
+            "name": "designacao",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Reserva Natural Integral Ilhéus do Rombo"
+          },
+          {
+            "name": "bo",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Decreto-Regulamentar nº 1/2022, I Serie, número 19, sexta-feira, 18 de fevereiro de 2022"
+          },
+          {
+            "name": "link_bo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "https://kiosk.incv.cv/V/2022/2/18/1.1.19.4113/",
+            "categories": [
+              "https://kiosk.incv.cv/V/2022/3/24/1.1.31.4152/",
+              "https://kiosk.incv.cv/V/2022/3/22/1.1.30.4148/p1",
+              "https://kiosk.incv.cv/V/2014/11/25/1.1.72.1932/p2156",
+              "https://kiosk.incv.cv/V/2022/3/17/1.1.29.4151/",
+              "https://kiosk.incv.cv/V/2014/12/17/1.1.79.1947/p2293",
+              "https://kiosk.incv.cv/V/2022/2/18/1.1.19.4113/",
+              "https://kiosk.incv.cv/V/2022/8/9/1.1.77.4349/",
+              "https://kiosk.incv.cv/V/2021/4/9/1.1.37.3703/"
+            ]
+          },
+          {
+            "name": "area_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 4.884,
+              "maximum": 30711.671
+            }
+          },
+          {
+            "name": "area_m2",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 48837.432,
+              "maximum": 307116714.628
+            }
+          },
+          {
+            "name": "foto",
+            "type": "string",
+            "example": "media/licensed-image.jpg",
+            "categories": [
+              "media/licensed-image.jpg"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
