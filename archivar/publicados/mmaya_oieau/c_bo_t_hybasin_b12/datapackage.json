@@ -1,0 +1,86 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_oieau_c_bo_t_hybasin_b12",
+  "title": "BO_SW_GHO Cuenca Rocha",
+  "sources": [
+    {
+      "title": "Sistema para la Gestión Integral de Recursos Hídricos desarrollado por la Oficina Internacional del Agua (OiEau)",
+      "path": "https://www.oieau-wiss.org/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_oieau_c_bo_t_hybasin_b12/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 478755,
+      "hash": "sha256:a4a1c5baf8bce4d43aa29c46ab9abddb5c9c2c8b4636fa8ba1075d304ff71fc0",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "t_hybasin_B12.fid-75f29474_19d840cd59a_-3e36"
+          },
+          {
+            "name": "hybcode",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "HYB_BO_B12_466983-14"
+          },
+          {
+            "name": "hybcodex",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "466983-14"
+          },
+          {
+            "name": "hybdesc",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "SUBCUENCA SULTY",
+            "categories": [
+              "SUBCUENCA SULTY",
+              "SUBCUENCA ROCHA CENTRAL",
+              "SUBCUENCA MAYLANCO"
+            ]
+          },
+          {
+            "name": "link_monitoring",
+            "type": "string",
+            "example": "https://www.aquacoope.org/cat_amlat/bolivia/fre/catalog.search#/map?map=https:%2F%2Fwww.aquacoope.or"
+          },
+          {
+            "name": "link_infrastructures",
+            "type": "string",
+            "example": "https://www.aquacoope.org/cat_amlat/bolivia/fre/catalog.search#/map?map=https:%2F%2Fwww.aquacoope.or"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
