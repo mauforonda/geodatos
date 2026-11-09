@@ -1,0 +1,103 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_pdcrco_caminos",
+  "title": "Plan Director Cuenca Río Cotagaita - Caminos",
+  "description": "PDCRCo (Plan Director de la Cuenca Río Cotagaita). Muestra la georreferenciación de la red vial en el área del Plan Director de la Cuenca del Río Cotagaita.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_pdcrco_caminos/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 576148,
+      "hash": "sha256:1e50e2f8bcc4e723e26f2f774bc48b11ff5e7463623c4333bf90d620d2d23224",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "ID_OSM",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "172396412"
+          },
+          {
+            "name": "VIALIDAD",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Terciario",
+            "categories": [
+              "Senda, Rodera o Vereda",
+              "Principal o Carretero",
+              "Terciario",
+              "Secundario o Vecinal"
+            ]
+          },
+          {
+            "name": "NOMBRE",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Camino Sullchi-San Vicente",
+            "categories": [
+              "",
+              "RN21: Uyuni-Tupiza",
+              "RN14: Hornillos-Santiago de Cotagaita",
+              "Camino Atocha-Tatasi-San Vicente",
+              "Av. Chichas",
+              "Camino a Chorolque",
+              "RN14: Tupiza-Hornillos",
+              "Camino Pe",
+              "Camino a Caracota",
+              "Empalme RN14 y RN20",
+              "Antofagasta",
+              "Calle Medinacelli",
+              "Camino RN21 a Santa Ana",
+              "Camino Santa Ana-Siete Suyos",
+              "Camino Santa Barbara-Sagrario",
+              "Camino Siete Suyos-Animas",
+              "Camino Sullchi-San Vicente",
+              "Control de Peso Vehicular",
+              "Puente Atocha",
+              "Puente Chocaya (Nuevo)",
+              "Puente Chocaya (Viejo)",
+              "Puente Limeta",
+              "RN14: Santiago de Cotagaita-Cruce Calche",
+              "RN20: Las Carreras-Hornillos-Tupiza"
+            ]
+          },
+          {
+            "name": "DIST_M",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 2.3,
+              "maximum": 32878.53
+            }
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
