@@ -1,0 +1,166 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_region_cochabamba_2018",
+  "title": "Asociación de Gobiernos Autónomos Municipales de Cochabamba (AMDECO)_ Bolivia 2018",
+  "description": "El mapa muestra la Asociación de Gobiernos Autónomos Municipales de Cochabamba (AMDECO), conformada por 5 regiones y 47 municipios. Región Metropolitana (comprende 7 Gobiernos Municipales: Cochabamba, Colcapirhua, Quillacollo, Sacaba, Sipe Sipe, Tiquipaya y Vinto). Región Valles (15 Municipios: Punata, Capinota, Santivañez, Arani, Villa Rivero, Cliza, Toco, Tolata, Tarata, Anzaldo, Sacabamba, Arbieto, Tacahi, Villa Gualberto Villarroel - Cuchumuela y San Benito). Región Trópico ( 6 Municipios: Entre Ríos, Shinahota, Colomi, Puerto Villarroel, Villa Tunari y Chimoré). Región Cono Sur (11 Municipios: Vacas, Tiraque, Alalay, Mizque, Aiquile, Vila Vila, Pojo, Omereque, Totora, Pocoma y Pasorapa). Región Andina (8 Municipios: Bolivar, Cocapata, Independencia, Morochata, Tapacarí, Sicaya y Arque). La misión de AMDECO es: Representar los intereses de los Gobiernos Autónomos Municipales del Departamento de Cochabamba y fortalecer sus capacidades de gestión municipal para el desarrollo local y de su Autonomía. Los límites municipales solo son de carácter referencial. Información obtenida de AMDECO a julio del 2018.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_region_cochabamba_2018/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 729646,
+      "hash": "sha256:46a0c5c2d4d3bdfbfa5a45e21f16046066bb6d43346b586e3cb843cde9faecdb",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 47
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 4,
+              "maximum": 340
+            }
+          },
+          {
+            "name": "objectid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 725,
+              "maximum": 2543
+            }
+          },
+          {
+            "name": "c_ut",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "031501"
+          },
+          {
+            "name": "departamen",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Cochabamba",
+            "categories": [
+              "Cochabamba"
+            ]
+          },
+          {
+            "name": "provincia",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Bolivar",
+            "categories": [
+              "Carrasco",
+              "Punata",
+              "Quillacollo",
+              "Esteban Arze",
+              "Ayopaya",
+              "Campero",
+              "Capinota",
+              "Chapare",
+              "Germán Jordán",
+              "Mizque",
+              "Arani",
+              "Arque",
+              "Tiraque",
+              "Bolivar",
+              "Cercado",
+              "Tapacarí"
+            ]
+          },
+          {
+            "name": "municipio",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Bolivar"
+          },
+          {
+            "name": "capital",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Bolivar"
+          },
+          {
+            "name": "shape_leng",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 24659.8566941,
+              "maximum": 880218.905034
+            }
+          },
+          {
+            "name": "shape_area",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 19834794.6344,
+              "maximum": 11091913555.5
+            }
+          },
+          {
+            "name": "region",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Andina",
+            "categories": [
+              "Valles",
+              "Cono Sur",
+              "Andina",
+              "Metropolitana",
+              "Trópico"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
