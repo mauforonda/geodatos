@@ -1,0 +1,148 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_gran_chaco_plus",
+  "title": "Mapa de plan de uso del suelo de la macroregión del Chaco Boliviano_ 2006",
+  "description": "El mapa muestra el Plan de Uso del Suelo (PLUS) como síntesis de las recomendaciones de uso de la tierra en base a multiples factores biofísicos y socioeconómicos de las unidades de terreno de la región chaqueña. Identificando 6 categorias de uso: tierras de uso agropecuario intensivo, tierras de uso agropecuario extensivo, tierras de uso agrosilvopastoril, tierras de uso forestal, tierras de protección con uso restringido y áreas naturales protegidas.\\\\n\\\\nElaborado por el proyecto \"Plan de ordenamiento territorial del chaco boliviano\" (PLANCHACO) en el año 2006, producto del esfuerzo del Estado Boliviano, a través del Ministerio de Planificación del Desarrollo, mediante el Viceministerio de Planificación Territorial y Medio Ambiente en coordinación con la Mancomunidad de Municipios del Chaco Boliviano (MANCHABOL) con el apoyo financiero del PNUD.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_gran_chaco_plus/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 666505,
+      "hash": "sha256:7329afa27418959b7e296cc623fd913a4b59a3e6330a974331c3ac8867d7e9c2",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "gran_chaco_plus.312"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 324
+            }
+          },
+          {
+            "name": "categoria",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Tierras de Uso Agropecuario Extensivo",
+            "categories": [
+              "Tierras de Proteccion con Uso Restringido",
+              "Tierras de Uso Agrosilvopastoril",
+              "Tierras de Uso Agropecuario Intensivo",
+              "Tierras de Uso Agropecuario Extensivo",
+              "Tierrras de Uso Forestal",
+              "Area Natural Protegida",
+              "Cuerpo de Agua",
+              "A. Urbana",
+              "Tierras de Proteccion con Uso RestringidoTierras"
+            ]
+          },
+          {
+            "name": "subcategor",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Uso Agropecuario Extensivo"
+          },
+          {
+            "name": "depto",
+            "type": "string",
+            "example": "Tarija",
+            "categories": [
+              "Tarija",
+              "Chu",
+              "Sta Cruz",
+              "Chuquisaca"
+            ]
+          },
+          {
+            "name": "paisaje",
+            "type": "string",
+            "example": "Llanuras",
+            "categories": [
+              "Serranias",
+              "Colinas",
+              "Llanuras",
+              "Valles",
+              "Piedemontes",
+              "Cuerpo de agua",
+              "Llanuras y Serranias",
+              "Planicies",
+              "Serranias y Colinas",
+              "Colinas y Serranias",
+              "Centro urbano",
+              "Llanuras y Piedemontes",
+              "Piedemontes y Llanuras",
+              "Colinas y Llanuras",
+              "Colinas y Piedemontes",
+              "Llanuras y Planicies"
+            ]
+          },
+          {
+            "name": "subpaisaje",
+            "type": "string",
+            "example": "Llanuras aluviales"
+          },
+          {
+            "name": "id_plus",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "B3"
+          },
+          {
+            "name": "area6",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 18926
+            }
+          },
+          {
+            "name": "area_f",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -2147483648.0,
+              "maximum": 1981622165.0
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
