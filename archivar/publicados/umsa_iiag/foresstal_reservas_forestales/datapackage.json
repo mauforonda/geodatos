@@ -1,0 +1,127 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_umsa_iiag_foresstal_reservas_forestales",
+  "title": "Reservas_Forestales",
+  "sources": [
+    {
+      "title": "Geoportal del Instituto de Investigaciones y Aplicaciones Geomáticas (IIAG) de la Universidad Mayor de San Andrés (UMSA)",
+      "path": "http://gtggeoportal.umsa.bo:8087/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_umsa_iiag_foresstal_reservas_forestales/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 342944,
+      "hash": "sha256:2c96d95c5aa61b49bc5d45b3dff32478c8804d9620ab0c643a07224e985e291f",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Reservas Forestales.18"
+          },
+          {
+            "name": "OBJECTID",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 40
+            }
+          },
+          {
+            "name": "NOMBRE",
+            "type": "string",
+            "example": "CUENCA DEL RIO BOOPI",
+            "categories": [
+              "CUENCA DEL RIO BOOPI",
+              "COVENDO",
+              "ITURRALDE",
+              "SERRANIAS DE BELLA VISTA",
+              "EL CHORE",
+              "BAJO PARAGUA",
+              "CHAPARE",
+              "EVA EVA MOSETENES",
+              "GUARAYOS",
+              "ITENEZ",
+              "QUINERAS DEL ATEN",
+              "RIO EL NUEVE",
+              "RIO GRANDE MASICURI",
+              "Reserva Rios Blanco y Negro"
+            ]
+          },
+          {
+            "name": "TIPO_DE_DE",
+            "type": "string",
+            "example": "RESERVA FORESTAL DE INMOVILIZACION",
+            "categories": [
+              "RESERVA FORESTAL DE INMOVILIZACION",
+              "ZONA FORESTAL DE RESERVA FISCAL",
+              "RESERVA FORESTAL",
+              "AREA CRITICA PROTEGIDA CUENCA HIDROGRAFICA",
+              "AREA DE PROTECCION DE CUENCAS HIDROGRAFICAS",
+              "RESERVA FORESTAL DE PRODUCCION",
+              "Reserva NAcional de Vida Silvestre"
+            ]
+          },
+          {
+            "name": "SUP__HA_",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 1352785.0
+            }
+          },
+          {
+            "name": "DPTO",
+            "type": "string",
+            "example": "CBA",
+            "categories": [
+              "CBA",
+              "SCZ"
+            ]
+          },
+          {
+            "name": "Shape_Le_1",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0.00647849657637,
+              "maximum": 15.8004095771
+            }
+          },
+          {
+            "name": "Shape_Area",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1.47331207105e-06,
+              "maximum": 3.25095466274
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
