@@ -1,0 +1,45 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_uso_actualdetierra",
+  "title": "Plan Director Cuenca Río Rocha - Uso Actual de Tierra",
+  "description": "PDCRR (Plan Director de la Cuenca Río Rocha). Muestra la informacion del uso actual de la tierra, en el marco del Plan Director Cuenca Rio Rocha.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_uso_actualdetierra/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 465118,
+      "hash": "sha256:b6d024bc77289b1db263118f808a034f05475edd24456bd09035407957573218",
+      "schema": {
+        "fields": [
+          {
+            "name": "USO",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Areas Agricolas Sín Riego"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 4."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
