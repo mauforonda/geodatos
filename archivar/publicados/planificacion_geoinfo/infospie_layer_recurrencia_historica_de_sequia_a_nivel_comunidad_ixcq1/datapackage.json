@@ -1,0 +1,104 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_recurrencia_historica_de_sequia_a_740c8ef3c0d9",
+  "title": "Recurrencia histórica de sequía a nivel comunidades 2002-2023",
+  "description": "La presente información muestra la recurrencia de sequias suscitados en todo el Estado a nivel comunidades, la misma fue compilada con información recabada por el Observatorio Nacional de Desastres dependiente del Viceministerio de Defensa Civil mediante los formularios de Evaluación de Daños y Análisis de Necesidades (EDAN) que generan las Unidades de Gestión de Riesgo (UGR) municipales.",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_recurrencia_historica_de_sequia_a_740c8ef3c0d9/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 359330,
+      "hash": "sha256:7d85eba0d521e15bbdd9858a3544bd65af74fde3535463aadc2f5f1add7cd59a",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_recurrencia_historica_de_sequia_a_nivel_comunidad_ixcq1.283"
+          },
+          {
+            "name": "categoria",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Baja recurrencia",
+            "categories": [
+              "Baja recurrencia",
+              "Media",
+              "Alta",
+              "Muy alta"
+            ]
+          },
+          {
+            "name": "sup_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 1.469,
+              "maximum": 1700000.0
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "POTOSI",
+            "categories": [
+              "SANTA CRUZ",
+              "LA PAZ",
+              "POTOSI",
+              "CHUQUISACA",
+              "ORURO",
+              "BENI",
+              "TARIJA",
+              "COCHABAMBA",
+              "PANDO"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Daniel Campos"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Llica"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
