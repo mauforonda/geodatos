@@ -1,0 +1,137 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_riesgo_de_incendios_forestales_en_e0fe53edff96",
+  "title": "Riesgo de incendios forestales en la Cuenca Coroico",
+  "description": "El mapa muestra el riesgo de incendios forestales en la Cuenca Coroico. Este mapa muestra la distribución del riesgo de incendios forestales en la cuenca del Río Coroico, ubicada en el departamento de La Paz, Bolivia. Las diferentes tonalidades en el mapa indican los niveles de riesgo de incendios forestales en cada municipio. Las áreas más oscuras representan zonas con mayor riesgo de incendios forestales, mientras que las áreas más claras indican un riesgo menor.El municipio de Teoponte tiene el mayor porcentaje de riesgo de incendios forestales con el 57% seguido de Tipuani con el 39%, mientras que los municipios con menor riesgo de deforestación son: Guanay con el 40% seguido de Coripata con el 47%.",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_riesgo_de_incendios_forestales_en_e0fe53edff96/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 338889,
+      "hash": "sha256:c9bc08f437b69f62cd5bc73ac84471b746c7bc4a04edada57318126be0bab119",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_riesgo_de_incendios_forestales_en_la_cuenca_coroi_2encn.93"
+          },
+          {
+            "name": "gridcode",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 5
+            }
+          },
+          {
+            "name": "leyenda",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Muy alto",
+            "categories": [
+              "Medio",
+              "Alto",
+              "Bajo",
+              "Muy alto",
+              "Muy bajo"
+            ]
+          },
+          {
+            "name": "sup_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 144038.7684
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "LA PAZ",
+            "categories": [
+              "LA PAZ"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Los Andes",
+            "categories": [
+              "Larecaja",
+              "Sur Yungas",
+              "Nor Yungas",
+              "Caranavi",
+              "Murillo",
+              "Franz Tamayo",
+              "Los Andes",
+              "Omasuyos"
+            ]
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Batallas",
+            "categories": [
+              "Guanay",
+              "Coripata",
+              "Tipuani",
+              "Caranavi",
+              "Teoponte",
+              "Coroico",
+              "Nuestra Señora de La Paz",
+              "Alto Beni",
+              "Mapiri",
+              "Palos Blancos",
+              "Yanacachi",
+              "Apolo",
+              "La Asunta",
+              "Chulumani",
+              "Sorata",
+              "Batallas",
+              "Pucarani",
+              "Achacachi",
+              "El Alto"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 31."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
