@@ -1,0 +1,162 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_sit_otbdpe",
+  "title": "OTBs Urbano",
+  "description": "Organizaciones Territoriales de Base, Area urbana del Municipio de La Paz",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz",
+      "path": "http://sitservicios.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_sit_otbdpe/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 412178,
+      "hash": "sha256:ff3995eef0a7fea7ca503f46fb21d32c7c77167840b9b451e086b9e6f9c8d324",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "otbdpe.7"
+          },
+          {
+            "name": "nom_otb",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "ISLA VERDE"
+          },
+          {
+            "name": "sub_alcald",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "MALLASA",
+            "categories": [
+              "SUR",
+              "PERIFERICA",
+              "MAX PAREDES",
+              "SAN ANTONIO",
+              "COTAHUMA",
+              "CENTRO",
+              "MALLASA"
+            ]
+          },
+          {
+            "name": "estado",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "VALIDADA",
+            "categories": [
+              "VALIDADA",
+              "PROPUESTA TECNICA",
+              "(*) PROPUESTA TECNICA",
+              "SERVIDUMBRES ECOLOGICAS",
+              "AREA SUJETA A ESTUDIO"
+            ]
+          },
+          {
+            "name": "numero",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 60
+            }
+          },
+          {
+            "name": "distrito",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 21
+            }
+          },
+          {
+            "name": "codigo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "MA20-01"
+          },
+          {
+            "name": "area_m2",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 8404.18559393,
+              "maximum": 9169345.7556
+            }
+          },
+          {
+            "name": "area_has",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0.84041855,
+              "maximum": 916.93457556
+            }
+          },
+          {
+            "name": "area_km2",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0.00840418,
+              "maximum": 9.16934575
+            }
+          },
+          {
+            "name": "shape_length",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 388.539344110059,
+              "maximum": 23327.3060994267
+            }
+          },
+          {
+            "name": "shape_area",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 8404.18559392833,
+              "maximum": 9169345.70911649
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
