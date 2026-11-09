@@ -1,0 +1,169 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_caine",
+  "title": "Plan Director Cuenca Rio Grande - Mancomunidad CAINE",
+  "description": "PDCRG (Plan Director de la Cuenca Rio Grande). Muestra la georreferenciación y la información demográfica relevante de los municipios que componen la Mancomunidad de Municipios de la Cuenca del Caine. Información provista en el marco del Plan Director de la Cuenca del Río Grande.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_caine/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 260877,
+      "hash": "sha256:ac154296cd5069a6cd1c8cd8e96a0d53ebc2c38b3ee95f6ddd95e5d0ef85441a",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "ID",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 52,
+              "maximum": 204
+            }
+          },
+          {
+            "name": "CODSECCION",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "050501"
+          },
+          {
+            "name": "COD_DEP",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "5",
+            "categories": [
+              "3",
+              "5",
+              "1"
+            ]
+          },
+          {
+            "name": "NOM_DEP",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Potosi",
+            "categories": [
+              "Cochabamba",
+              "Potosi",
+              "Chuquisaca"
+            ]
+          },
+          {
+            "name": "COD_PROV",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "5",
+            "categories": [
+              "4",
+              "13",
+              "5",
+              "7",
+              "1"
+            ]
+          },
+          {
+            "name": "NOM_PROV",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Charcas"
+          },
+          {
+            "name": "COD_MUN",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "1",
+            "categories": [
+              "1",
+              "2",
+              "3",
+              "4"
+            ]
+          },
+          {
+            "name": "CAT_SEC",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "PRIMERA",
+            "categories": [
+              "PRIMERA",
+              "SEGUNDA",
+              "CUARTA",
+              "TERCERA"
+            ]
+          },
+          {
+            "name": "NOM_MUN",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "San Pedro de Buena Vista"
+          },
+          {
+            "name": "CANTONES",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "6"
+          },
+          {
+            "name": "POBLACION",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "22005"
+          },
+          {
+            "name": "AREA_KM2",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 145.85,
+              "maximum": 2152.47
+            }
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
