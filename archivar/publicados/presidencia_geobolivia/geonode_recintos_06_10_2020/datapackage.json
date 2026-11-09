@@ -1,0 +1,151 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_recintos_06_10_2020",
+  "title": "Localización de Recintos Electorales - Elecciones Generales 2020_ Bolivia",
+  "description": "El mapa muestra las localizaciones de los recintos electorales para las elecciones generales 2020 que se desarrollaran este domingo 18 de octubre del presente año en todo el territorio nacional, son un total de 5.368 recintos. Un recinto electoral es la infraestructura o ambiente ubicado en un asiento electoral, donde se instalan una o varias mesas de sufragio para que la ciudadanía habilitada concurra a emitir su voto en el proceso electoral. Información proporcionada por la Unidad de Geografía y Logística Electoral del Tribunal Supremo Electoral que es parte del Órgano Electoral Plurinacional de Bolivia en fecha 13 de octubre del 2020.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_recintos_06_10_2020/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 439395,
+      "hash": "sha256:a582063e3442780456e3daf3199f5d5d502ae32a68d42f77da5493296cc73b00",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "recintos_06_10_2020.3459"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 5368
+            }
+          },
+          {
+            "name": "departamen",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Potosí",
+            "categories": [
+              "La Paz",
+              "Santa Cruz",
+              "Cochabamba",
+              "Potosí",
+              "Chuquisaca",
+              "Oruro",
+              "Tarija",
+              "Beni",
+              "Pando"
+            ]
+          },
+          {
+            "name": "provincia",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Daniel Campos"
+          },
+          {
+            "name": "municipio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Llica"
+          },
+          {
+            "name": "asiento",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Chacoma"
+          },
+          {
+            "name": "recinto",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "U.E. Pedro Garcia Ignacio"
+          },
+          {
+            "name": "dirección",
+            "type": "string",
+            "example": "Chacoma"
+          },
+          {
+            "name": "tipocircun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Uninominal",
+            "categories": [
+              "Uninominal",
+              "Especial",
+              "Uninominal/Especial"
+            ]
+          },
+          {
+            "name": "latitud",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -22.8059,
+              "maximum": -10.057803
+            }
+          },
+          {
+            "name": "longitud",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -69.56477,
+              "maximum": -57.70963
+            }
+          },
+          {
+            "name": "circunsc_1",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "36"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
