@@ -1,0 +1,168 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_vainita",
+  "title": "Producción de Vainita en el Departamento de La Paz",
+  "description": "Las áreas de producción de este cultivo se extienden por las 5 zonas agroproductivas del Departamento. Existen dos áreas con potencial de producción de este cultivo, ambas se ubican en la zona de los Valles Cerrados, una con municipios al nor-oeste y la otra que se ubica al sur- este que colindan con municipios con potencial productivo, pero, que corresponden a la zona de los Yungas del Norte (sur-este de la zona). Los primeros cuatro municipios (Palca, Chuma, Cajuata y Luribay) son los más representativos en la producción de vainita, llegando a ser el 73% de la producción del departamento.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_vainita/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 379420,
+      "hash": "sha256:cb255257ecbff8b810830669a728f469acfff6a8a50770706bf27044798aa540",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "vainita.1"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 22
+            }
+          },
+          {
+            "name": "departamen",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "La Paz",
+            "categories": [
+              "La Paz"
+            ]
+          },
+          {
+            "name": "provincia",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Gualberto Villarroe",
+            "categories": [
+              "Inquisivi",
+              "Larecaja",
+              "Loayza",
+              "Murillo",
+              "Camacho",
+              "Gualberto Villarroe",
+              "Muñecas",
+              "Abel Iturralde",
+              "Nor Yungas",
+              "Sud Yungas"
+            ]
+          },
+          {
+            "name": "municipio",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Chacarilla"
+          },
+          {
+            "name": "cod_mun",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "021803"
+          },
+          {
+            "name": "macroregio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "ALTIPLANO",
+            "categories": [
+              "YUNGAS-CHAPARE",
+              "ALTIPLANO",
+              "VALLES",
+              "AMAZONICA"
+            ]
+          },
+          {
+            "name": "sup_total",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0.0007,
+              "maximum": 42.0679
+            }
+          },
+          {
+            "name": "prod_qq",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.03,
+              "maximum": 2010.763842
+            }
+          },
+          {
+            "name": "cultivo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "VAINITA",
+            "categories": [
+              "VAINITA"
+            ]
+          },
+          {
+            "name": "codigo_87",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 83
+            }
+          },
+          {
+            "name": "sup_ton",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.00138,
+              "maximum": 92.495136732
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
