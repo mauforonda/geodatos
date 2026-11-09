@@ -1,0 +1,137 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_vulnerabilidad_al_cambio_climatico_d5059e8c7dc0",
+  "title": "Vulnerabilidad al cambio climático en la Cuenca Coroico",
+  "description": "Este mapa muestra la Vulnerabilidad al cambio climático en la Cuenca Coroico. exposición, sensibilidad y capacidad de adaptación. Se puede resumir el proceso de la siguiente manera:\n1. Exposición: Identifica las áreas que estarán expuestas a los impactos del cambio climático (ej. cambios en patrones de lluvia, aumento de temperatura).\n2. Sensibilidad: Evalúa la susceptibilidad de los ecosistemas a esos cambios.\n3. Capacidad de Adaptación: Mide la habilidad de las comunidades para ajustarse a los impactos.\n4. Vulnerabilidad: Combina los tres factores anteriores. Una zona es más vulnerable si está muy expuesta, sus ecosistemas son muy sensibles y su capacidad de adaptación es baja.",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_vulnerabilidad_al_cambio_climatico_d5059e8c7dc0/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 305401,
+      "hash": "sha256:62e92fdf8866f0fdcca885f4e67fa604553701b7e43a3fd723c9f023de7a3882",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_vulnerabilidad_al_cambio_climatico_en_la_cuenca_c_m74hp.43"
+          },
+          {
+            "name": "leyenda",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Muy alta",
+            "categories": [
+              "Media",
+              "Alta",
+              "Baja",
+              "Muy alta",
+              "Muy baja"
+            ]
+          },
+          {
+            "name": "sup_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 110609.4017
+            }
+          },
+          {
+            "name": "gridcode",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 5
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "LA PAZ",
+            "categories": [
+              "LA PAZ"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Los Andes",
+            "categories": [
+              "Larecaja",
+              "Nor Yungas",
+              "Sur Yungas",
+              "Caranavi",
+              "Murillo",
+              "Franz Tamayo",
+              "Los Andes",
+              "Omasuyos"
+            ]
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Batallas",
+            "categories": [
+              "Coripata",
+              "Coroico",
+              "Caranavi",
+              "Tipuani",
+              "Chulumani",
+              "Guanay",
+              "Nuestra Señora de La Paz",
+              "Teoponte",
+              "Alto Beni",
+              "Apolo",
+              "Mapiri",
+              "Palos Blancos",
+              "La Asunta",
+              "Sorata",
+              "Yanacachi",
+              "Batallas",
+              "Pucarani",
+              "El Alto",
+              "Achacachi"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 24."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
