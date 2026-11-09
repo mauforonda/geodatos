@@ -1,0 +1,70 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_cuenca_rio_katari",
+  "title": "Plan Director de la Cuenca Katari y Lago Menor del Titicaca – Límite Cuenca",
+  "description": "PDCKyLMT - (Plan Director de la Cuenca Katari y Lago Menor del Titicaca). Límite del área de intervención de la Unidad de Gestión de la Cuenca Katari y Lago Menor del Titicaca.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_cuenca_rio_katari/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 386905,
+      "hash": "sha256:1ceb01b7bf5dac25c8f342bf799cdb5a2867fee61aa90c22051952526e8cd706",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "NIVEL_UH",
+            "type": "string",
+            "example": "Multinivel"
+          },
+          {
+            "name": "NOMBRE",
+            "type": "string",
+            "example": "Cuenca Rio Katari - Lago Menor"
+          },
+          {
+            "name": "COD_PFAF",
+            "type": "string",
+            "example": "0153 - 0157 - 0158 - 01592 - 01593 - 01594 - 01596"
+          },
+          {
+            "name": "NIVEL",
+            "type": "string",
+            "example": "Multinivel (Nivel 4 y 5)"
+          },
+          {
+            "name": "SUP_KM2",
+            "type": "number",
+            "constraints": {
+              "minimum": 6352.16,
+              "maximum": 6352.16
+            }
+          },
+          {
+            "name": "CLASIFIC",
+            "type": "string",
+            "example": "Subcuenca"
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
