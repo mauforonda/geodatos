@@ -1,0 +1,77 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_quemas",
+  "title": "Plan Director Cuenca Río Mizque - Quemas",
+  "description": "PDCRM (Plan Director de la Cuenca Río Mizque). Muestra la georreferenciación y la información relevante de las quemas en la cuenca, en el marco del Plan Director de la Cuenca Río Mizque.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_quemas/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 94761,
+      "hash": "sha256:ddb03336ae24bf8f29cdde0a9de0d85f1bba580d18e981825037681255a11af7",
+      "schema": {
+        "fields": [
+          {
+            "name": "AREA",
+            "type": "number",
+            "constraints": {
+              "minimum": 2891816.75,
+              "maximum": 922849728.0
+            }
+          },
+          {
+            "name": "PERIMETER",
+            "type": "number",
+            "constraints": {
+              "minimum": 8390.138,
+              "maximum": 585015.188
+            }
+          },
+          {
+            "name": "SENSIBLES_",
+            "type": "integer",
+            "constraints": {
+              "minimum": 714,
+              "maximum": 761
+            }
+          },
+          {
+            "name": "SENSIBLES1",
+            "type": "integer",
+            "constraints": {
+              "minimum": 691,
+              "maximum": 749
+            }
+          },
+          {
+            "name": "CLASE",
+            "type": "string",
+            "example": "En agricultura",
+            "categories": [
+              "En agricultura"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
