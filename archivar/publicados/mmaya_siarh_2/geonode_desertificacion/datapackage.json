@@ -1,0 +1,79 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_desertificacion",
+  "title": "Plan Director Cuenca Río Mizque - Desertificacion",
+  "description": "PDCRM (Plan Director de la Cuenca Río Mizque). Muestra la georreferenciación y la información relevante del estado de decertificacion, en el marco del Plan Director de la Cuenca Río Mizque.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_desertificacion/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 358384,
+      "hash": "sha256:9eb39917dbf61dee49f4bdedf045267170ce8acfdb27b4010ebce7e4ed61299d",
+      "schema": {
+        "fields": [
+          {
+            "name": "DESERTIFI_",
+            "type": "integer",
+            "constraints": {
+              "minimum": 21,
+              "maximum": 33
+            }
+          },
+          {
+            "name": "DESERTIFI1",
+            "type": "integer",
+            "constraints": {
+              "minimum": 21,
+              "maximum": 33
+            }
+          },
+          {
+            "name": "ECODIGO",
+            "type": "string",
+            "example": "JI00000200",
+            "categories": [
+              "JI00000200"
+            ]
+          },
+          {
+            "name": "LLAVE_MD",
+            "type": "string",
+            "example": "PI",
+            "categories": [
+              "PI"
+            ]
+          },
+          {
+            "name": "CODIGO",
+            "type": "string",
+            "example": "ID3C"
+          },
+          {
+            "name": "INDICE",
+            "type": "string",
+            "example": "CLASE DE INDICE DE DESERTIFICACION ALTA"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
