@@ -1,0 +1,109 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_rutas_de_recoleccion_de_basura_en_72b8c79e9174",
+  "title": "Rutas de recolección de basura en el municipio de Cochabamba - PTDI",
+  "description": "El mapa muestra las rutas para la recolección de residuos sólidos en el municipio de Cochabamba.",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_rutas_de_recoleccion_de_basura_en_72b8c79e9174/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 329651,
+      "hash": "sha256:0a1f2a71d8540862d93339fc47e61a7a165b7133960dcde875de01a861f646d8",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_rutas_de_recoleccion_de_basura_en_el_municipio_de_ngdwd.114"
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "HIGUERANI"
+          },
+          {
+            "name": "long_km",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.229,
+              "maximum": 20.526
+            }
+          },
+          {
+            "name": "etiquet",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Rutas de recolección de basura",
+            "categories": [
+              "Rutas de recolección de basura"
+            ]
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "COCHABAMBA",
+            "categories": [
+              "COCHABAMBA"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Cercado",
+            "categories": [
+              "Cercado",
+              "Chapare"
+            ]
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Cochabamba",
+            "categories": [
+              "Cochabamba",
+              "Sacaba"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
