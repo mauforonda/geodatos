@@ -1,0 +1,123 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geobolivia_geonode_s19_10_2010_efd9d56e",
+  "title": "S19 10 2010",
+  "description": "Capa geográfica publicada en el catálogo local de GeoBolivia.",
+  "sources": [
+    {
+      "title": "Nueva plataforma GeoBolivia",
+      "path": "https://geonode.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geobolivia_geonode_s19_10_2010_efd9d56e/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 456994,
+      "hash": "sha256:5c71a98f62f3099469dc5990b2fefe132a32b04dda3654800fd94edab6c2ff7f",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "s19_10_2010_efd9d56e.16"
+          },
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 20
+            }
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 20
+            }
+          },
+          {
+            "name": "filename",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "p004_r070_l5_20100211"
+          },
+          {
+            "name": "path",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "004",
+            "categories": [
+              "001",
+              "002",
+              "003",
+              "004",
+              "233"
+            ]
+          },
+          {
+            "name": "row",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "070",
+            "categories": [
+              "067",
+              "068",
+              "069",
+              "070"
+            ]
+          },
+          {
+            "name": "date",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "20100211",
+            "categories": [
+              "20090908",
+              "20080901",
+              "20090906",
+              "20091001",
+              "20080825",
+              "20090913",
+              "20090805",
+              "20090830",
+              "20100211"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
