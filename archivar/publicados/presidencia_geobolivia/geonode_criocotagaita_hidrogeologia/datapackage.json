@@ -1,0 +1,130 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_criocotagaita_hidrogeologia",
+  "title": "Plan Director Cuenca Río Cotagaita - Hidrogeologia_ Bolivia",
+  "description": "Muestra la información relevante de la hidrogeologia de la superficie de la cuenca en el marco del Plan Director de la Cuenca del Río Cotagaita. Información obtenida del Viceministerio de Recursos Hídricos y Riego, ha febrero del 2019.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_criocotagaita_hidrogeologia/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 461590,
+      "hash": "sha256:5b898fd0c9e78b94c3847a677b402ff8114506e5405f7d2f35b8e5ed6f451f56",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 101
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0,
+              "maximum": 100
+            }
+          },
+          {
+            "name": "unidad_geo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "OMs",
+            "categories": [
+              "Mv",
+              "Os",
+              "Hsarj",
+              "Hsa",
+              "Mvsv",
+              "Ks2",
+              "MPTs",
+              "Ks3",
+              "Ks1",
+              "OMs",
+              "OSs",
+              "PTHsg",
+              "Hsarm",
+              "MPv1",
+              "Ms",
+              "PTHsl",
+              "JKs"
+            ]
+          },
+          {
+            "name": "descripci",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Conglomerados, areniscas, limolitas y arcilitas, localmente yesíferas",
+            "categories": [
+              "Conglomerados, areniscas, limolitas y arcilitas, localmente yesíferas",
+              "Limolitas, areniscas, lutitas, cuarcitas y diamictitas",
+              "Piroclastitas con grado variable de soldadura, coladas de lava, tobas domos y stocks de pórfidos",
+              "Aluviones en cauces de ríos jóvenes:Grava, arena, limo y arcilla",
+              "Calizas, areniscas, calcáreas y margas",
+              "Depósitos aluviales. Bloques, cantos, grava, arena y limo",
+              "Domos",
+              "Depósitos glaciales: Bloques, cantos, grava, arena, limo y arcilla",
+              "Aluvviones en cauces de ríos maduros : Cantos, grava, arena y limo",
+              "Depósitos lacustres: Limo, arcilla, arena y grava",
+              "Areniscas"
+            ]
+          },
+          {
+            "name": "ocurrencia",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "En acuíferos locales e limitados (en rocas porosas ó fisuradas) o carencia de recursos de aguas subt"
+          },
+          {
+            "name": "tipo_de_ac",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Acuíferos en general sin recursos de aguas subterráneas notables no se excluye que existan acuíferos"
+          },
+          {
+            "name": "sup_km2",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 4.8503796002e-05,
+              "maximum": 3986.74310405
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
