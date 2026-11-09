@@ -1,0 +1,91 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_micro_cuencas_pampahuari_051118",
+  "title": "Plan Director Cuenca Río Pampa Huari – Microcuenca",
+  "description": "PDCRPH (Plan Director de la Cuenca Rio Pampa Huari). Muestra las Micro Cuencas de rio Pampa Huari elaborados por  metodología PFAFSTETTER.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_micro_cuencas_pampahuari_051118/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 533531,
+      "hash": "sha256:97542b6fac48cc306101620de1c28859bd0a8adf52a858f990dea5e1b41573c6",
+      "schema": {
+        "fields": [
+          {
+            "name": "Codif",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 866943,
+              "maximum": 8669429
+            }
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Rio Sikhi Mutaya"
+          },
+          {
+            "name": "sup_km2",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1.1197911565,
+              "maximum": 99.1235546856
+            }
+          },
+          {
+            "name": "UHG",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "8669489"
+          },
+          {
+            "name": "NOMBRE_MC",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Rio Sikhi Mutaya"
+          },
+          {
+            "name": "SUP_HA",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 111.97911565,
+              "maximum": 9912.35546856
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
