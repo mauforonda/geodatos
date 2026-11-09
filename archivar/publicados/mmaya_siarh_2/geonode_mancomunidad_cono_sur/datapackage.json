@@ -1,0 +1,56 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_mancomunidad_cono_sur",
+  "title": "Plan Director Cuenca Rio Grande - Mancomunidad Cono Sur",
+  "description": "PDCRG (Plan Director de la Cuenca Rio Grande). Muestra la georreferenciación y la información demográfica relevante de los municipios que componen la Mancomunidad de Municipios del cono sur. Información provista en el marco del Plan Director de la Cuenca del Río Grande.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_mancomunidad_cono_sur/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 348079,
+      "hash": "sha256:32c1383a86c72fd8fee86ae1cbf96275f5d96347868784b997f9efa5f35d3761",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "NOM_MUN",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Aiquile"
+          },
+          {
+            "name": "Area_km2",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 214.42,
+              "maximum": 2703.52
+            }
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
