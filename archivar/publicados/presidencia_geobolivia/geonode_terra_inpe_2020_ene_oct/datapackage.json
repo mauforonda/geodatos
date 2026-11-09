@@ -1,0 +1,168 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_terra_inpe_2020_ene_oct",
+  "title": "Monitoreo de Focos de Calor en Bolivia Satélite TERRA_ INPE 2020",
+  "description": "El mapa muestra la identificación y monitoreo de focos de calor en territorio nacional, información proporcionada por el satélite TERRA y procesada por el División de Procesamiento de Imágenes del INPE de fecha 01 de enero al 05 de octubre del 2020, los datos registrados durante este tiempo llegan a 17.621 focos de calor. Información obtenida de la pagina web del Instituto Nacional de Investigaciones Espaciales del Brasil (INPE).",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_terra_inpe_2020_ene_oct/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 556187,
+      "hash": "sha256:85c5657643e8e12429a42eeca26397d654133ee5c7a6751cd03f78a9a1287a0f",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "terra_inpe_2020_ene_oct.13091"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 17621
+            }
+          },
+          {
+            "name": "datahora",
+            "type": "datetime",
+            "constraints": {
+              "required": true,
+              "minimum": "2020-01-01T03:10:00",
+              "maximum": "2020-10-05T15:00:00"
+            }
+          },
+          {
+            "name": "satelite",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "TERRA_M-T",
+            "categories": [
+              "TERRA_M-T",
+              "TERRA_M-M"
+            ]
+          },
+          {
+            "name": "pais",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Bolivia",
+            "categories": [
+              "Bolivia"
+            ]
+          },
+          {
+            "name": "estado",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Potosi",
+            "categories": [
+              "Santa Cruz",
+              "El Beni",
+              "La Paz",
+              "Chuquisaca",
+              "Pando",
+              "Tarija",
+              "Cochabamba",
+              "Potosi",
+              "Oruro"
+            ]
+          },
+          {
+            "name": "municipio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Nor Lipez"
+          },
+          {
+            "name": "bioma",
+            "type": "integer"
+          },
+          {
+            "name": "diasemchuv",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.0,
+              "maximum": 120.0
+            }
+          },
+          {
+            "name": "precipitac",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.0,
+              "maximum": 73.1
+            }
+          },
+          {
+            "name": "riscofogo",
+            "type": "number",
+            "constraints": {
+              "minimum": -999.0,
+              "maximum": 1.0
+            }
+          },
+          {
+            "name": "latitude",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -22.81,
+              "maximum": -10.17
+            }
+          },
+          {
+            "name": "longitude",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -69.529,
+              "maximum": -57.462
+            }
+          },
+          {
+            "name": "frp",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 1639.8
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
