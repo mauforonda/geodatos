@@ -1,0 +1,110 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_grilla_amenazas_naturales",
+  "title": "grilla_amenazas_naturales",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_grilla_amenazas_naturales/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 1646559,
+      "hash": "sha256:beef0aafc4526b1ec6b923c378939ea2a791ff99158cca28acf8f949412ee0e6",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 32430
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Grilla_amenazas_naturales.22452"
+          },
+          {
+            "name": "join_count",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 5
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 6511
+            }
+          },
+          {
+            "name": "tipo_sup",
+            "type": "string",
+            "example": "Zona Luis Espinal",
+            "categories": [
+              "Area urbana-laderas",
+              "Area urbana-laderas- centro",
+              "Area Urbana-Rios",
+              "Area urbana- centro - laderas",
+              "Urb. Bautista Saavedra",
+              "Periferie - El Alto",
+              "huaycos",
+              "Barrio Alto Chijini",
+              "Urb. 14 de septiembre",
+              "Urb. Junthuma",
+              "Zona Luis Espinal",
+              "Urb. Los Pinos",
+              "av. civica - Instituto Don Bosco",
+              "av. Bolivia esq con la av. 6 de marzo",
+              "final av. Cochabamba",
+              "puente distribuidor - la Ceja"
+            ]
+          },
+          {
+            "name": "amenaza",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "No",
+            "categories": [
+              "No",
+              "Deslizamiento",
+              "Inundacion",
+              "Inundaci?n y deslizamiento"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
