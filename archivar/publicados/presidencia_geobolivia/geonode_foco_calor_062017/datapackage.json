@@ -1,0 +1,216 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_foco_calor_062017",
+  "title": "Monitoreo de Focos de Calor en Bolivia - ABT_ 2017",
+  "description": "Este mapa muestra la identificación y monitoreo a focos de calor en territorio nacional hasta junio del 2017, realizadas por medio de imágenes satelitales para la detección de altas temperaturas, los cuales necesariamente tienen que ser inspeccionados para determinar si son quemas o incendios forestales. Elaborado por la Autoridad de Fiscalización y Control Social de Bosques y Tierra (ABT) con datos del año 2017.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_foco_calor_062017/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 1064507,
+      "hash": "sha256:929e7de99978765d8bbdef9658329fe80a4fa7dd57dbacfabb28443d64b80625",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 53752
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 53751
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "POTOSI",
+            "categories": [
+              "SANTA CRUZ",
+              "BENI",
+              "LA PAZ",
+              "TARIJA",
+              "COCHABAMBA",
+              "PANDO",
+              "CHUQUISACA",
+              "POTOSI",
+              "ORURO"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "DANIEL CAMPOS"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "LLICA"
+          },
+          {
+            "name": "mac_reg",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "ANDINA",
+            "categories": [
+              "CHIQUITANO PANTANAL",
+              "AMAZONICA",
+              "CHACO Y VALLE",
+              "TROPICO HUMEDO",
+              "ANDINA"
+            ]
+          },
+          {
+            "name": "cod_ofi",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "DDCH"
+          },
+          {
+            "name": "coor_x",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "549605"
+          },
+          {
+            "name": "coor_y",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "7785032"
+          },
+          {
+            "name": "fec",
+            "type": "datetime",
+            "constraints": {
+              "required": true,
+              "minimum": "2017-01-01T00:00:00",
+              "maximum": "2017-06-30T00:00:00"
+            }
+          },
+          {
+            "name": "zon_utm",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 19,
+              "maximum": 21
+            }
+          },
+          {
+            "name": "fue_dat",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "INPE_NPP_375",
+            "categories": [
+              "INPE_NPP_375",
+              "INPE_NPP",
+              "INPE_AQUA_M-T",
+              "INPE_NOAA-18",
+              "INPE_METOP-B",
+              "INPE_GOES-13",
+              "EOSDIS_MODIS_TERRA",
+              "INPE_TERRA_M-T",
+              "INPE_TERRA_M-M",
+              "EOSDIS_MODIS_AQUA",
+              "INPE_NOAA-19",
+              "EOSDIS_VIIRS_SNPP",
+              "INPE_AQUA_M-M",
+              "INPE_NOAA-19D",
+              "INPE_NOAA-15",
+              "INPE_NOAA-15D",
+              "INPE_NOAA-18D",
+              "INPE_MSG-03"
+            ]
+          },
+          {
+            "name": "num_sat",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "VARIOS SATELITES",
+            "categories": [
+              "UN SATELITE",
+              "VARIOS SATELITES"
+            ]
+          },
+          {
+            "name": "rie",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "MINIMO",
+            "categories": [
+              "MINIMO",
+              "BAJO",
+              "MEDIO",
+              "CRITICO",
+              "ALTO"
+            ]
+          },
+          {
+            "name": "uso_gen",
+            "type": "string",
+            "example": "OTROS",
+            "categories": [
+              "PRODUCTIVO GANADERO",
+              "PRODUCTIVO AGROPECUARIO",
+              "EXTRACTIVO FORESTAL MADERABLE Y NO MADERABLE",
+              "OTROS",
+              "PRODUCTIVO AGRICOLA",
+              "EXTRACTIVO FORESTAL APROVECHAMIENTO DE RAMAJE PARA COMBUSTIBLE",
+              "EXTRACTIVO FORESTAL EXTRACCION DE LEÃA, PASTOREO DE RAMONEO DIRECTO"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPoint."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
