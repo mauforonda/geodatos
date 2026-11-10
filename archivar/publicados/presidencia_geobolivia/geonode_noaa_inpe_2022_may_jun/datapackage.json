@@ -1,0 +1,168 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_noaa_inpe_2022_may_jun",
+  "title": "Monitoreo de Focos de Calor en Bolivia Satélite NOAA de Mayo a Junio_ INPE 2022",
+  "description": "El mapa muestra la identificación y monitoreo de focos de calor en territorio nacional, información proporcionada por el satélite NOAA y procesada por el División de Procesamiento de Imágenes del INPE de fecha 01 de mayo al 30 de junio del 2022, los datos registrados durante este tiempo llegan a 35.611 focos de calor. Información obtenida de la página web del Instituto Nacional de Investigaciones Espaciales del Brasil (INPE), en fecha 30 junio 2022.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_noaa_inpe_2022_may_jun/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 1701519,
+      "hash": "sha256:cc34128b6a14ed73244dbfaddcd93d6c6bfb6ad70788f9b9237cd04c7d4f9ba8",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "noaa_inpe_2022_may_jun.9211"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 35611
+            }
+          },
+          {
+            "name": "datahora",
+            "type": "datetime",
+            "constraints": {
+              "required": true,
+              "minimum": "2022-05-01T04:17:00",
+              "maximum": "2022-06-30T18:06:00"
+            }
+          },
+          {
+            "name": "satelite",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "NOAA-20",
+            "categories": [
+              "NOAA-20",
+              "NOAA-18D",
+              "NOAA-19",
+              "NOAA-19D",
+              "NOAA-18"
+            ]
+          },
+          {
+            "name": "pais",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Bolivia",
+            "categories": [
+              "Bolivia"
+            ]
+          },
+          {
+            "name": "estado",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Potosi",
+            "categories": [
+              "Santa Cruz",
+              "El Beni",
+              "La Paz",
+              "Cochabamba",
+              "Tarija",
+              "Chuquisaca",
+              "Potosi",
+              "Pando",
+              "Oruro"
+            ]
+          },
+          {
+            "name": "municipio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Daniel Campos"
+          },
+          {
+            "name": "diasemchuv",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.0,
+              "maximum": 155.0
+            }
+          },
+          {
+            "name": "precipitac",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.0,
+              "maximum": 44.44
+            }
+          },
+          {
+            "name": "riscofogo",
+            "type": "number",
+            "constraints": {
+              "minimum": -999.0,
+              "maximum": 1.0
+            }
+          },
+          {
+            "name": "latitude",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -22.79891,
+              "maximum": -9.83642
+            }
+          },
+          {
+            "name": "longitude",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -69.34969,
+              "maximum": -57.72985
+            }
+          },
+          {
+            "name": "frp",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.1,
+              "maximum": 514.1
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
