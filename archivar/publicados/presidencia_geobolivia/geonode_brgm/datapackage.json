@@ -1,0 +1,79 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_brgm",
+  "title": "Zonas de riesgo del BRGM en las ciudades de La Paz y El Alto_ 2011",
+  "description": "Este mapa representa las zonas de riesgo del BRGM - Bureau de Recherche Geologique et Minerie (Oficina de Investigación Geológica y Minería) en las ciudades de La Paz y El Alto. donde se observa las zonas riesgo natural, zonas sin riesgo y zonas sin ningún arreglo, proporcionando la herramienta necesaria, para llevar a cabo las actividades de localizar, controlar, dar seguimiento y representar en forma gráfica, los agentes generadores de riesgos. Elaborado por el Programa Andino de Formación y de Investigación sobre la Vulnerabilidad y los Riesgos Urbanos - Bolivia, Ecuador, Perú - PACIVUR del Instituto de Investigaciones para el Desarrollo (IRD), en el año 2011.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_brgm/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 969576,
+      "hash": "sha256:58dcd51d5b7775b541cbc6e87bbdc0bbb20fa30b9308e30e06ce2742caee3f0a",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 3
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "example": "BRGM.3"
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "minimum": 159,
+              "maximum": 757
+            }
+          },
+          {
+            "name": "brgm",
+            "type": "string",
+            "example": "Sin Riesgo"
+          },
+          {
+            "name": "area_km",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.0171198076077,
+              "maximum": 0.107085921832
+            }
+          },
+          {
+            "name": "poblacion",
+            "type": "integer",
+            "constraints": {
+              "minimum": 150909,
+              "maximum": 339498
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 3."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
