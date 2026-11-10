@@ -1,0 +1,177 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_lechuga",
+  "title": "Producción de Lechuga en el Departamento de La Paz",
+  "description": "Las zonas de producción de este cultivo se extienden por las 5 zonas agroproductivas del Departamento. El área con potencial de producción de este cultivo principalmente se ubica en la zona de los Valles Cerrados, ligeramente al sur, extendiéndose hacia el sur con municipios de la zona del altiplano Norte (sur-este) y un municipio del Altiplano Central ubicada al sur-este. Santiago de Callapa es el municipio con la mayor producción con el 30% del total.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_lechuga/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 1312410,
+      "hash": "sha256:cf558e58fb011d3418ef6376e44ec9c72af42f90d77bfc255164290a66a4f08a",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "lechuga.12"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 74
+            }
+          },
+          {
+            "name": "departamen",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "La Paz",
+            "categories": [
+              "La Paz"
+            ]
+          },
+          {
+            "name": "provincia",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "General José Manuel Pand",
+            "categories": [
+              "Aroma",
+              "Ingavi",
+              "Larecaja",
+              "Pacajes",
+              "Inquisivi",
+              "Murillo",
+              "Omasuyos",
+              "Sud Yungas",
+              "Camacho",
+              "Loayza",
+              "Los Andes",
+              "Abel Iturralde",
+              "Caranavi",
+              "Gualberto Villarroe",
+              "Muñecas",
+              "Nor Yungas",
+              "Bautista Saavedra",
+              "Franz Tamayo",
+              "General José Manuel Pand",
+              "Manco Kapac"
+            ]
+          },
+          {
+            "name": "municipio",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Santiago de Machaca"
+          },
+          {
+            "name": "cod_mun",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "021901"
+          },
+          {
+            "name": "macroregio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "ALTIPLANO",
+            "categories": [
+              "ALTIPLANO",
+              "YUNGAS-CHAPARE",
+              "VALLES",
+              "AMAZONICA"
+            ]
+          },
+          {
+            "name": "sup_total",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0006,
+              "maximum": 806.4312
+            }
+          },
+          {
+            "name": "prod_qq",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.00987,
+              "maximum": 11539.024299
+            }
+          },
+          {
+            "name": "cultivo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "LECHUGA",
+            "categories": [
+              "LECHUGA"
+            ]
+          },
+          {
+            "name": "codigo_87",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 87
+            }
+          },
+          {
+            "name": "prod_ton",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.00045402,
+              "maximum": 530.795117754
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
