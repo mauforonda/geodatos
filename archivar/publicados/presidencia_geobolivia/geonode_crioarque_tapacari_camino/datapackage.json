@@ -1,0 +1,93 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_crioarque_tapacari_camino",
+  "title": "Plan Director Cuenca Río Arque y Tapacarí - Caminos_ Bolivia",
+  "description": "El mapa muestra los caminos que existen en el cuenca del río Arque y Tapacarí. Información obtenida del Viceministerio de Recursos Hídricos y Riego, ha noviembre del 2020.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_crioarque_tapacari_camino/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 2048436,
+      "hash": "sha256:554a4d27ea2ec734854debf7be1d62a79e8f76e5b20044c44aac446025ddac58",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "crioarque_tapacari_camino.1145"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 2564
+            }
+          },
+          {
+            "name": "id_osm",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "374126510"
+          },
+          {
+            "name": "vialidad",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Senda, Rodera o Vereda",
+            "categories": [
+              "Senda, Rodera o Vereda",
+              "Secundario o Vecinal",
+              "Terciario",
+              "Principal o Carretero"
+            ]
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "example": "Puente Tacopaya"
+          },
+          {
+            "name": "dist_m",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 2.66,
+              "maximum": 29623.96
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
