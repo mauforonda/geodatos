@@ -1,0 +1,159 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_red_vial_completa",
+  "title": "Red vial completa de las ciudades de La Paz y El Alto_ 2011",
+  "description": "Este mapa representa la red de vías completa de transitabilidad en las ciudades de La Paz y El Alto, siendo un rol preponderante en el crecimiento económico de estas ciudades. Elaborado por el Programa Andino de Formación y de Investigación sobre la Vulnerabilidad y los Riesgos Urbanos - Bolivia, Ecuador, Perú - PACIVUR del Instituto de Investigaciones para el Desarrollo (IRD), en el año 2011.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_red_vial_completa/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 1973549,
+      "hash": "sha256:baf5b0b56eb2e31f85e9297b1bb6d7b3afbd408542c9397b9fb96d7feb8edae4",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 19572
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "red_vial_completa.10471"
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 0
+            }
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "example": "SN"
+          },
+          {
+            "name": "tipo",
+            "type": "string",
+            "example": "Calle",
+            "categories": [
+              "Calle",
+              "Avenida",
+              "Pasaje Peatonal",
+              "Pasaje Vehicular",
+              "PLAZA/PUENTE/OTROS",
+              "Callejon",
+              "Carretera",
+              "Plaza",
+              "Puente",
+              "Camino",
+              "Tierra"
+            ]
+          },
+          {
+            "name": "shape_leng",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 8951.86045208
+            }
+          },
+          {
+            "name": "revestimie",
+            "type": "string",
+            "example": "Tierra",
+            "categories": [
+              "Tierra",
+              "Empedrado",
+              "Adoquin",
+              "Adoqu?n",
+              "Asfalto",
+              "Empedrada",
+              "Piedra",
+              "empedrado",
+              "Aduquinado",
+              "Pavimentada",
+              "21 de Septiembre",
+              "Adoquinado",
+              "Empedrado12",
+              "Enpedrado",
+              "Pasaje",
+              "Tierra y el r?o",
+              "Tierra y r?o",
+              "Tierra12",
+              "eMPEDRADO"
+            ]
+          },
+          {
+            "name": "ancho",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 60.0
+            }
+          },
+          {
+            "name": "bus_mini_t",
+            "type": "string",
+            "example": "645 Minibus",
+            "categories": [
+              "645 Minibus",
+              "Minibus 658"
+            ]
+          },
+          {
+            "name": "shape_le_1",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 8951.86032717
+            }
+          },
+          {
+            "name": "shape_le_2",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 15841.5414348
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString. Filas sin geometría: 1."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
