@@ -1,0 +1,95 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_criotupiza_aptitud",
+  "title": "Plan Director Cuenca Río Tupiza - Aptitud de Uso de la Tierra, Bolivia",
+  "description": "El mapa muestra la información relevante de la aptitud de uso de la tierra en la cuenca, en el marco del Plan Director de la Cuenca del Río Tupiza. Información obtenida del Viceministerio de Recursos Hídricos y Riego, ha febrero del 2019.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_criotupiza_aptitud/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 1244124,
+      "hash": "sha256:e64d225dc7385238e4f5b9c9d84ace6b83aa24635fa574f9cc6b5af679644a97",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 12
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0,
+              "maximum": 11
+            }
+          },
+          {
+            "name": "aptitud",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "IVsc"
+          },
+          {
+            "name": "sup_km2",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 10.6970222141,
+              "maximum": 778.64480003
+            }
+          },
+          {
+            "name": "sup_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1069.70222141,
+              "maximum": 77864.480003
+            }
+          },
+          {
+            "name": "aptitud_ti",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "IVsc (Tierras aptas para cultivos y otros usos con limitaciones en la zona radicular y climáticas)"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
