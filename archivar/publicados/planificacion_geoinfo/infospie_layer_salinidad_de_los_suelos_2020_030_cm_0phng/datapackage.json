@@ -1,0 +1,111 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_salinidad_de_los_suelos_2020_030_cm_0phng",
+  "title": "Salinidad de los Suelos 2020 (0-30 cm)",
+  "description": "Los suelos afectados por sales consisten en suelos salinos y sódicos, su distribución es \nrelativamente más extensa en las regiones áridas y semiáridas en comparación con las \nregiones húmedas.",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_salinidad_de_los_suelos_2020_030_cm_0phng/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 1110602,
+      "hash": "sha256:73433678a0a4348a4648e83de7a6c2f79459074d97a844ed70a7b0334e08511a",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "layer_salinidad_de_los_suelos_2020_030_cm_0phng.3717"
+          },
+          {
+            "name": "gridcode",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 11
+            }
+          },
+          {
+            "name": "sup_ha",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 86,
+              "maximum": 102193876
+            }
+          },
+          {
+            "name": "grado",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Salinidad Ligera",
+            "categories": [
+              "Salinidad Ligera",
+              "Sodicidad Ligera",
+              "Salinidad Moderada",
+              "Ninguna",
+              "Salinidad Fuerte",
+              "Salinidad Muy Fuerte",
+              "Salinidad Extrema",
+              "Salino Sodico",
+              "Sodicidad Moderada",
+              "Sodicidad Fuerte",
+              "Sodicidad Muy Fuerte"
+            ]
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "example": "POTOSI",
+            "categories": [
+              "POTOSI",
+              "ORURO",
+              "CHUQUISACA",
+              "TARIJA",
+              "LA PAZ",
+              "BENI",
+              "COCHABAMBA",
+              "SANTA CRUZ",
+              "PANDO",
+              "Cochabamba"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "example": "Daniel Campos"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "example": "Llica"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 121."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
