@@ -1,0 +1,108 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_gis_osm_places_free_1",
+  "title": "Centros Poblados. OpenStreetMap",
+  "description": "Esta capa obtenida de la plataforma OpenStreetMap, presenta rcentros poblados en sus distintas categorías a nivel nacional.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_gis_osm_places_free_1/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 1086232,
+      "hash": "sha256:f7acc058dff0f636da7fdd75be3a61cdf2eb17e3eeefcdeb1ede31440bad2145",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "gis_osm_places_free_1.6"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 18261
+            }
+          },
+          {
+            "name": "osm_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "214184845"
+          },
+          {
+            "name": "code",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1001,
+              "maximum": 1050
+            }
+          },
+          {
+            "name": "fclass",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "village",
+            "categories": [
+              "hamlet",
+              "village",
+              "locality",
+              "county",
+              "farm",
+              "city",
+              "town",
+              "suburb",
+              "island",
+              "national_capital"
+            ]
+          },
+          {
+            "name": "population",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 2000000
+            }
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "example": "Ollagüe"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
