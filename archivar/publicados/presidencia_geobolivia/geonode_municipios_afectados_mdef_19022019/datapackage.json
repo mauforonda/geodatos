@@ -1,0 +1,157 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_municipios_afectados_mdef_19022019",
+  "title": "Población Afectada por Municipios a Causa de Lluvias al 18 de febrero 2019_ Bolivia",
+  "description": "El mapa muestra la población afectada y damnificada en 48 municipios de 8 departamentos:Potosí, Santa Cruz, Tarija, Cochabamba, Chuquisaca, La Paz, Beni y Oruro, afectados por fuertes lluvias en el territorio nacional, haciendo un total de: 14.834 familias afectadas, 5.243 familias damnificadas, 16.184 hectáreas de cultivos perdidos, 59 viviendas destruidas, 24 personas fallecidas y 26 personas desaparecidas, reportados hasta el 18 de febrero del presente año. Información obtenida del reporte diario nacional de alerta y afectación Nº 29 del Viceministerio de Defensa Civil, a 18 de febrero del 2019.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_municipios_afectados_mdef_19022019/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 1933793,
+      "hash": "sha256:23d2bc174cbe5cc4eb22ce1d0d0e30a72be13c509e0c82b908a47e0a5f3c1785",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 48
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0,
+              "maximum": 47
+            }
+          },
+          {
+            "name": "cod_ut",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "050104"
+          },
+          {
+            "name": "departamen",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Potosí",
+            "categories": [
+              "Chuquisaca",
+              "La Paz",
+              "Beni",
+              "Cochabamba",
+              "Santa Cruz",
+              "Oruro",
+              "Potosí",
+              "Tarija"
+            ]
+          },
+          {
+            "name": "provincia",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Tomás Frías"
+          },
+          {
+            "name": "municipio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Urmiri"
+          },
+          {
+            "name": "capital",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Belén de Urmiri"
+          },
+          {
+            "name": "fam_afecta",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 3270
+            }
+          },
+          {
+            "name": "fam_damnif",
+            "type": "number",
+            "constraints": {
+              "minimum": 25.0,
+              "maximum": 859.0
+            }
+          },
+          {
+            "name": "has_cperdi",
+            "type": "number",
+            "constraints": {
+              "minimum": 5.0,
+              "maximum": 3149.0
+            }
+          },
+          {
+            "name": "viv_destru",
+            "type": "number",
+            "constraints": {
+              "minimum": 1.0,
+              "maximum": 50.0
+            }
+          },
+          {
+            "name": "fallecidos",
+            "type": "number",
+            "constraints": {
+              "minimum": 1.0,
+              "maximum": 19.0
+            }
+          },
+          {
+            "name": "desapareci",
+            "type": "number",
+            "constraints": {
+              "minimum": 1.0,
+              "maximum": 24.0
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
