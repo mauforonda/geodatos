@@ -1,0 +1,136 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_ckylmt_caminos",
+  "title": "Plan Director de la Cuenca Katari y Lago Menor del Titicaca - Caminos_ Bolivia",
+  "description": "El mapa muestra los caminos en el área de intervención de la Cuenca Katari y Lago Menor del Titicaca, información actualizada en base a imágenes Bing Maps del año 2016. los tipos de via son: Tierra (transitable todo el año) y Asfaltado (una y doble vía) y las clases de vía: Primaria, Secundaria y Terciaria. Dato del Viceministerio de Recursos Hídricos y Riego a julio del 2017.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_ckylmt_caminos/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 999698,
+      "hash": "sha256:7a5e561a53e519a3e514b7f71e80ca4bf1a1ae6ef511a3435ec04d63ad7cb35f",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "ckylmt_caminos.396"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 812
+            }
+          },
+          {
+            "name": "objectid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 812
+            }
+          },
+          {
+            "name": "codigo_ugc",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "UGCK001",
+            "categories": [
+              "UGCK001"
+            ]
+          },
+          {
+            "name": "longitud_m",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0.109103712132,
+              "maximum": 74638.8020348
+            }
+          },
+          {
+            "name": "shape_leng",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0.109103712132,
+              "maximum": 74638.8020348
+            }
+          },
+          {
+            "name": "tipo_ruta",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Terrestre",
+            "categories": [
+              "Terrestre"
+            ]
+          },
+          {
+            "name": "tipo_via",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Tierra (transitable todo el año)",
+            "categories": [
+              "Tierra (transitable todo el año)",
+              "Asfaltado una via",
+              "Asfaltado doble via",
+              "Tierra (transitable en buen tiempo o sec",
+              "Puente"
+            ]
+          },
+          {
+            "name": "clase_via",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Secundaria",
+            "categories": [
+              "Secundaria",
+              "Primaria",
+              "Terciaria"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
