@@ -1,0 +1,95 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geobolivia_geonode_criopampahuari_camino_212af90b",
+  "title": "Plan Director Cuenca Río Pampa Huari - Caminos, Bolivia",
+  "description": "Información geoespacial de los caminos que se hallan en la cuenca del río Pampa Huari. Información obtenida del Viceministerio de Recursos Hídricos y Riego a enero del 2019.",
+  "sources": [
+    {
+      "title": "Nueva plataforma GeoBolivia",
+      "path": "https://geonode.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geobolivia_geonode_criopampahuari_camino_212af90b/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 646883,
+      "hash": "sha256:ecfe2bb806b6e008c38bbaa25f760e4a3e494ecda4d6d65529d19193a5855861",
+      "schema": {
+        "fields": [
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 3112
+            }
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 3112
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0,
+              "maximum": 3111
+            }
+          },
+          {
+            "name": "vialidad",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Senda, Rodera o Vereda",
+            "categories": [
+              "Senda, Rodera o Vereda",
+              "Principal o Carretero",
+              "Terciario",
+              "Secundario o Vecinal"
+            ]
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "example": "RN5: Potosi-Uyuni"
+          },
+          {
+            "name": "dist_m",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 2.89,
+              "maximum": 15784.81
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
