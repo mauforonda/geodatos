@@ -1,0 +1,109 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mdpyep_sitap_prodagropiscifores_castana_pando",
+  "title": "castana_Pando",
+  "sources": [
+    {
+      "title": "Sistema Territorial de Apoyo a la Producción (SITAP) del Ministerio de Desarrollo Productivo y Economía Plural",
+      "path": "https://geodata-bolivia.produccion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mdpyep_sitap_prodagropiscifores_castana_pando/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 532371,
+      "hash": "sha256:dca380276b4ae6a6b1b3e2d417ad106e606010961e63cbb497a29f2415ce4421",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "castana_pando.57"
+          },
+          {
+            "name": "OBJECTID_1",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 65
+            }
+          },
+          {
+            "name": "CASTANA_",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 2,
+              "maximum": 66
+            }
+          },
+          {
+            "name": "DOMAIN",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "5-9 arboles de castana/hectarea",
+            "categories": [
+              "<1 arbol de castana/hectarea",
+              "1-5 arboles de castana/hectarea",
+              "5-9 arboles de castana/hectarea",
+              ">10 arboles de castana/hectarea"
+            ]
+          },
+          {
+            "name": "Shape_Leng",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 6369.89973756,
+              "maximum": 4372180.19985
+            }
+          },
+          {
+            "name": "Shape_Area",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 836165.0082143295,
+              "maximum": 10100212662.538023
+            }
+          },
+          {
+            "name": "sup_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 83.62,
+              "maximum": 1010021.27
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
