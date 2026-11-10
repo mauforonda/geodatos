@@ -1,0 +1,58 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_r_helada_disolv",
+  "title": "Plan Director Cuenca Río Pampa Huari – Riesgo de Helada",
+  "description": "PDCRPH (Plan Director de la Cuenca Rio Pampa Huari) Describe el riesgo de helada en la cuenca del rio pampa Huari, elaborado en base a la ecuación de riesgos del Plan de Reducción de Riesgos y Desastres.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_r_helada_disolv/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 1230577,
+      "hash": "sha256:3541771806f24ffdcfb3766cda8c52545ae209d94b32c6ceefa55cb7a6bb5ee8",
+      "schema": {
+        "fields": [
+          {
+            "name": "riesgo1",
+            "type": "string",
+            "example": "Muy Alto"
+          },
+          {
+            "name": "SUP_KM2",
+            "type": "number",
+            "constraints": {
+              "minimum": 12.5392892361,
+              "maximum": 464.014900554
+            }
+          },
+          {
+            "name": "SUP_Ha",
+            "type": "number",
+            "constraints": {
+              "minimum": 1253.92892361,
+              "maximum": 46401.4900554
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 5."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
