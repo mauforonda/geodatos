@@ -1,0 +1,84 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_cuenca_tdps",
+  "title": "Cuenca TDPS",
+  "description": "Muestra la ubicación y la información relevante del sistema hidrológico, compartido entre Perú y Bolivia el cual comprende cuatro cuencas principales:  El Lago Titicaca (T), Río Desaguadero (D), Lago Poopó (P) y Salar de Coipasa (S).",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_cuenca_tdps/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 933202,
+      "hash": "sha256:a7ad3d6aca4ceb26cf77d014391e919928bda7af70a5896d41b603eac804ce9d",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "NOMBRE",
+            "type": "string",
+            "example": "Cuenca Titicaca_Desaguadero_Poopo_Salar*"
+          },
+          {
+            "name": "CODIGO_UH",
+            "type": "string",
+            "example": "01"
+          },
+          {
+            "name": "ETIQUETA",
+            "type": "string",
+            "example": "SISTEMA TDPS"
+          },
+          {
+            "name": "SUP_KM2",
+            "type": "integer",
+            "constraints": {
+              "minimum": 0,
+              "maximum": 0
+            }
+          },
+          {
+            "name": "SUP_KM2_BO",
+            "type": "integer",
+            "constraints": {
+              "minimum": 0,
+              "maximum": 0
+            }
+          },
+          {
+            "name": "SUP_KM2_PE",
+            "type": "integer",
+            "constraints": {
+              "minimum": 0,
+              "maximum": 0
+            }
+          },
+          {
+            "name": "SUP_KM2_CH",
+            "type": "integer",
+            "constraints": {
+              "minimum": 0,
+              "maximum": 0
+            }
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
