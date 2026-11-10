@@ -1,0 +1,76 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_zonas_productivas",
+  "title": "PDC Cuenca Alta del río La Paz - Zonas Productivas, Bolivia",
+  "description": "Las zonas agrícolas con riego fueron identificadas a partir del mapa de uso del suelo como áreas productivas para cada municipio, se puede observar que el Municipio de Palca y Mecapaca son los que tienen mayor área de producción agrícola, mientras que Nuestra Señora de La Paz y Achocalla tienen porcentajes bajos de producción ya que son zonas con bastante crecimiento urbano. Esta información fue complementada en base a encuestas propias, como también del Diagnóstico - Municipal 2020 y Censo Agropecuario (SEDALP, 2013). Este dato fue obtenido de su geoportal del Ministerio de Medio Ambiente y Agua en fecha septiembre del 2022.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_zonas_productivas/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 1871694,
+      "hash": "sha256:83745bf562d8d72415b0bfb69a650df0a4104481a2340d356d0c33fed95b28ae",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "example": "zonas_productivas.5"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 7
+            }
+          },
+          {
+            "name": "cobertura",
+            "type": "string",
+            "example": "Agricultura bajo riego",
+            "categories": [
+              "Agricultura bajo riego"
+            ]
+          },
+          {
+            "name": "uso",
+            "type": "string",
+            "example": "Productivo: Alimenticios de consumo, subsistencia y mercado local.",
+            "categories": [
+              "Productivo: Alimenticios de consumo, subsistencia y mercado local."
+            ]
+          },
+          {
+            "name": "zonnas",
+            "type": "string",
+            "example": "Zona 3"
+          },
+          {
+            "name": "zona_nombr",
+            "type": "string",
+            "example": "Laderas de montana Mecapaca"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 7."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
