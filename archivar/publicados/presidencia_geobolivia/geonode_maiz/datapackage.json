@@ -1,0 +1,178 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_maiz",
+  "title": "Producción de Maíz en el Departamento de La Paz",
+  "description": "Las zonas de producción de este cultivo se extienden por las 5 zonas agroproductivas del Departamento. Existen dos áreas con potencial de producción de este cultivo, el área principal se extiende desde municipios que se ubican al este de la zona de los Valles Cerrados, abarcando también (hacia el norte) municipios de la zona de los Yungas del Norte (nor-oeste) hasta alcanzar los municipios de la zona de la Amazonia al norte. Otra área importante se ubica al sur- este de la zona de los Yungas del Norte, abarcando también hacia el sur, municipios de la zona de los Valles Cerrados. Son 10 los municipios con mayor producción (61%) donde sobresale el municipio de Inquisivi con el 9%.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_maiz/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 1354590,
+      "hash": "sha256:8fa1646c3af9068e4672ae26be2604976ce517bb2c605950d72dbad0bdd565bc",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "maiz.19"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 66
+            }
+          },
+          {
+            "name": "departamen",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "La Paz",
+            "categories": [
+              "La Paz"
+            ]
+          },
+          {
+            "name": "provincia",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Ingavi",
+            "categories": [
+              "Larecaja",
+              "Inquisivi",
+              "Omasuyos",
+              "Loayza",
+              "Sud Yungas",
+              "Aroma",
+              "Camacho",
+              "Ingavi",
+              "Murillo",
+              "Los Andes",
+              "Manco Kapac",
+              "Muñecas",
+              "Abel Iturralde",
+              "Bautista Saavedra",
+              "Caranavi",
+              "Franz Tamayo",
+              "Nor Yungas",
+              "Pacajes"
+            ]
+          },
+          {
+            "name": "municipio",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Desaguadero"
+          },
+          {
+            "name": "cod_mun",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "020804"
+          },
+          {
+            "name": "macroregio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "ALTIPLANO",
+            "categories": [
+              "ALTIPLANO",
+              "YUNGAS-CHAPARE",
+              "VALLES",
+              "AMAZONICA"
+            ]
+          },
+          {
+            "name": "sup_total",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0.175,
+              "maximum": 3467.964124
+            }
+          },
+          {
+            "name": "prod_qq",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0.05,
+              "maximum": 25696.699593
+            }
+          },
+          {
+            "name": "cultivo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "MAIZ",
+            "categories": [
+              "MAIZ"
+            ]
+          },
+          {
+            "name": "codigo_87",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 87
+            }
+          },
+          {
+            "name": "prod_ton",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0.0023,
+              "maximum": 1182.04818128
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
