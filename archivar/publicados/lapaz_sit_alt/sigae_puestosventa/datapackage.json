@@ -1,0 +1,82 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_alt_sigae_puestosventa",
+  "title": "Puestos de venta en vias públicas",
+  "description": "Base SIGAE de puestos de venta en via publica.",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)",
+      "path": "http://sitservicios.lapaz.bo/ows38.jsp"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_sigae_puestosventa/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 1525214,
+      "hash": "sha256:d9ec0825d65133f0715a08731b147ff16f1760b47cae18e25e99510611d12478",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "puestosventa.11306"
+          },
+          {
+            "name": "dbubiccorx",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 588465.489392,
+              "maximum": 602469.141993
+            }
+          },
+          {
+            "name": "dbubiccory",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 8166857.82662,
+              "maximum": 8181415.546156
+            }
+          },
+          {
+            "name": "dbpstocodi",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 100000,
+              "maximum": 132123
+            }
+          },
+          {
+            "name": "dbpropcodi",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1000000,
+              "maximum": 1034043
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point. La fuente declaraba EPSG:4326 pero sus coordenadas estaban en EPSG:32719 (sistema inferido por la ubicación de las geometrías en Bolivia); se reproyectaron."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
