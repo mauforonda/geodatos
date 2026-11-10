@@ -1,0 +1,136 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_textura_cuenca_del_rio_coroico_2of4y",
+  "title": "Textura (Cuenca del Río Coroico)",
+  "description": "El mapa de Textura de suelos de la cuenca del río Coroico, en su reclasificación se tiene los suelos Franco arcilloso arenoso, Franco arcilloso y Franco para la propuesta de zonificación agroecológica de la cuenca.",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_textura_cuenca_del_rio_coroico_2of4y/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 1223977,
+      "hash": "sha256:93e92f10e1a70b173d2bb3fbf3f36bd5ae9eeba7909a1f74e556009bcc0de221",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_textura_cuenca_del_rio_coroico_2of4y.1803"
+          },
+          {
+            "name": "gridcode",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 3,
+              "maximum": 5
+            }
+          },
+          {
+            "name": "textura",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Franco",
+            "categories": [
+              "Franco",
+              "Franco Arcilloso Arenoso",
+              "Franco Arcilloso"
+            ]
+          },
+          {
+            "name": "sup_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0.00237180210956,
+              "maximum": 136967.674206
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "LA PAZ",
+            "categories": [
+              "LA PAZ"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Los Andes",
+            "categories": [
+              "Larecaja",
+              "Caranavi",
+              "Murillo",
+              "Nor Yungas",
+              "Sur Yungas",
+              "Franz Tamayo",
+              "Los Andes",
+              "Omasuyos"
+            ]
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Pucarani",
+            "categories": [
+              "Guanay",
+              "Caranavi",
+              "Teoponte",
+              "Nuestra Señora de La Paz",
+              "Tipuani",
+              "Coroico",
+              "Apolo",
+              "Alto Beni",
+              "Coripata",
+              "Palos Blancos",
+              "Sorata",
+              "La Asunta",
+              "Batallas",
+              "Mapiri",
+              "Pucarani",
+              "Yanacachi",
+              "Chulumani",
+              "Achacachi",
+              "El Alto"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 44."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
