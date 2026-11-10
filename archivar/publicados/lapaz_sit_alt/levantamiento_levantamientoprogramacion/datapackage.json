@@ -1,0 +1,89 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_alt_levantamiento_levantamientoprogramacion",
+  "title": "vwLevProgramacion",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)",
+      "path": "http://sitservicios.lapaz.bo/ows38.jsp"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_levantamiento_levantamientoprogramacion/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 1445800,
+      "hash": "sha256:f44154a0ecc4f390586c36d174194b6f8cf9e3ebd49205f3574e1a1d6fe5b003",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "LevantamientoProgramacion.fid--314a5bbc_19fd45bb3ed_3ab5"
+          },
+          {
+            "name": "idTramite",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 144476
+            }
+          },
+          {
+            "name": "idTopografo",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1441,
+              "maximum": 3619
+            }
+          },
+          {
+            "name": "FechaProgramacion",
+            "type": "datetime",
+            "constraints": {
+              "required": true,
+              "minimum": "2013-12-20T04:00:00+00:00",
+              "maximum": "2026-08-12T04:00:00+00:00"
+            }
+          },
+          {
+            "name": "idTipoLevantamiento",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 2
+            }
+          },
+          {
+            "name": "Sitram",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "11875"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
