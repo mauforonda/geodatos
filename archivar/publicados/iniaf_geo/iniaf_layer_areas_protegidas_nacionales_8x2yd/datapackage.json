@@ -1,0 +1,135 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_iniaf_geo_iniaf_layer_areas_protegidas_nacionales_8x2yd",
+  "title": "layer_areas_protegidas_nacionales_8x2yd",
+  "sources": [
+    {
+      "title": "GeoServer del Instituto Nacional de Innovación Agropecuaria y Forestal",
+      "path": "https://geoserver.iniaf.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_iniaf_geo_iniaf_layer_areas_protegidas_nacionales_8x2yd/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 1581169,
+      "hash": "sha256:af6715e1a80bb7366567dab644959d117b94f274079f120758aeab4449787923",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_areas_protegidas_nacionales_8x2yd.15"
+          },
+          {
+            "name": "cod_ap",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "AP-0504"
+          },
+          {
+            "name": "nombre_ap",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Eduardo Avaroa"
+          },
+          {
+            "name": "categoria",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Reserva Nacional de Fauna Andina",
+            "categories": [
+              "Parque Nacional",
+              "Área Natural de Manejo Integrado",
+              "Parque Nacional y Territorio Indígena",
+              "Parque Natural y Area de Manejo Integrado",
+              "Reserva Biológica",
+              "Reserva Nacional de Fauna Andina",
+              "Reserva Nacional de Flora y Fauna",
+              "Reserva Nacional de Vida Silvestre Amazónica",
+              "Reserva de la Biosfera",
+              "Reserva de la Biosfera y Territorio Indígena",
+              "Área Natural de Manejo Integrado Nacional"
+            ]
+          },
+          {
+            "name": "base_leg",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "DS 11239 del 13/12/1973 - DS 19313 del 14/05/1981 - SD 18431 del 26/06/1981"
+          },
+          {
+            "name": "sup_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 16688.794,
+              "maximum": 2900000.0
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Potosi",
+            "categories": [
+              "Santa Cruz",
+              "La Paz",
+              "Tarija",
+              "Beni",
+              "Chuquisaca",
+              "Cochabamba",
+              "Potosi",
+              "Oruro",
+              "Pando"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Sur Lipez"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "San Pablo"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 2."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
