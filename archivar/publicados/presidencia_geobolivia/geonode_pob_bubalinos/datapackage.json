@@ -1,0 +1,152 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_pob_bubalinos",
+  "title": "pob_bubalinos",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_pob_bubalinos/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 1435542,
+      "hash": "sha256:04cff42e5aa2c0831ea431605369c24db009c398c30519a5351222843b01f460",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "pob_bubalinos.5"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 32
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Pob_bubalinos.5"
+          },
+          {
+            "name": "codseccion",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "060601"
+          },
+          {
+            "name": "departamen",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Tarija",
+            "categories": [
+              "Santa Cruz",
+              "Beni",
+              "Cochabamba",
+              "Tarija"
+            ]
+          },
+          {
+            "name": "provincia",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Burnet O'Connor"
+          },
+          {
+            "name": "municipio",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Entre Rios (La Moreta)"
+          },
+          {
+            "name": "zonas_agro",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Chaco Serrano",
+            "categories": [
+              "Pampa Inundable de Moxos",
+              "Guarayo Chiquitano",
+              "Llanos de Santa Cruz",
+              "Pampa de Moxos",
+              "Yungas del Sur - Chapare",
+              "Amazonia",
+              "Chaco Serrano",
+              "Llanos del Chaco",
+              "Norte Integrado Santa Cruz"
+            ]
+          },
+          {
+            "name": "bubalino",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 36994
+            }
+          },
+          {
+            "name": "shape_leng",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1.4757091553,
+              "maximum": 12.5497445601
+            }
+          },
+          {
+            "name": "shape_area",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0.0804398408496,
+              "maximum": 4.12530169832
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon, Polygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
