@@ -1,0 +1,92 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_area_de_servicio_de_agua_potable_e_24d81c3840f0",
+  "title": "Área de servicio de agua potable en el municipio de Cochabamba - PTDI",
+  "description": "El mapa muestra el área de servicio de agua potable de las empresas SAMAPA y ASICASUDD en el Municipio de Cochabamba, en base al PTDI 2021-2025.",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_area_de_servicio_de_agua_potable_e_24d81c3840f0/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 1336436,
+      "hash": "sha256:d8787db638cdc14578578e7ec5e8700c41bd631b3646707b3736a0b9ace1ced2",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "layer_area_de_servicio_de_agua_potable_en_el_municipio__uidxa.9094"
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "ASICASUDD",
+            "categories": [
+              "SEMAPA",
+              "ASICASUDD"
+            ]
+          },
+          {
+            "name": "long_km",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 8.108
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "example": "COCHABAMBA",
+            "categories": [
+              "COCHABAMBA"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "example": "Cercado",
+            "categories": [
+              "Cercado",
+              "Chapare"
+            ]
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "example": "Cochabamba",
+            "categories": [
+              "Cochabamba",
+              "Sacaba"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString. Filas sin geometría: 22."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
