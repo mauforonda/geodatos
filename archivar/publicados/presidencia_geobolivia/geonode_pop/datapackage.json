@@ -1,0 +1,134 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_pop",
+  "title": "Planes de ordenamiento predial  - POP Bolivia_ 2012",
+  "description": "La presente información geográfica muestra los planes de ordenamiento predial (POP) realizados en Bolivia, unidades de análisis y gestión que determinan los usos definitivos de la tierra de acuerdo a sus caoacidades de uso y vocación. A su vez se constituyen en instrumentos jurídicos que regulan el uso y función de la tierra para fines de manejo y planificación. Información actualizada y supervisada por la Autoridad de Fiscalización y Control Social de Bosques y Tierra (ABT ) hasta junio de 2012.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_pop/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 2040908,
+      "hash": "sha256:2d29b51f0c5305bcadee311978034b90d83fb82fce4ba31ce07e393ea51d96c0",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "pop.3186"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 3301
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "POP.3186"
+          },
+          {
+            "name": "codigog",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "5061400120"
+          },
+          {
+            "name": "pop",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 15030
+            }
+          },
+          {
+            "name": "predio",
+            "type": "string",
+            "example": "OTB Distrito II Totora \"I\""
+          },
+          {
+            "name": "dpto",
+            "type": "string",
+            "example": "Potos?",
+            "categories": [
+              "Santa Cruz",
+              "Beni",
+              "Cochabamba",
+              "Chuquisaca",
+              "Tarija",
+              "Pando",
+              "La Paz",
+              "SANTA CRUZ",
+              "BENI",
+              "CHUQUISACA",
+              "PANDO",
+              "Potos?",
+              "02/febrero/2004",
+              "COCHABAMBA",
+              "Santa cruz",
+              "TARIJA"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "example": "Nor chichas"
+          },
+          {
+            "name": "fecha_apro",
+            "type": "string",
+            "example": "02/04/2009"
+          },
+          {
+            "name": "has",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 285931275.0
+            }
+          },
+          {
+            "name": "nro_res",
+            "type": "string",
+            "example": "SIA I-T EVAL N? 067/2009"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 8."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
