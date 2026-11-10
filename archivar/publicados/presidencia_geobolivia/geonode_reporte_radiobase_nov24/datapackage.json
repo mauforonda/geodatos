@@ -1,0 +1,151 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_reporte_radiobase_nov24",
+  "title": "Reporte de Radiobases_ 2024",
+  "description": "Información geográfica de la distribución espacial de estaciones base de las empresas telefónicas: COMTECO, ENTEL S.A., NUEVATEL Y TELECEL S.A. en el territorio nacional, una radio base se constituye en un elemento importante dentro de un sistema de telefonía celular ya que transmite información entre la celda y la estación de control y conmutación, además de monitorear la comunicación de los usuarios.  Elaborado por la Autoridad de Fiscalización y Control Social de Telecomunicaciones y Transporte en el año 2024.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_reporte_radiobase_nov24/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 870580,
+      "hash": "sha256:2f4042578f1433746a6bed439677ebce8323c3e70744a90e32bc918cda9abe21",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "reporte_radiobase_nov24.9620"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 20455
+            }
+          },
+          {
+            "name": "latitud",
+            "type": "number",
+            "constraints": {
+              "minimum": -23.0,
+              "maximum": -10.0
+            }
+          },
+          {
+            "name": "longitud",
+            "type": "number",
+            "constraints": {
+              "minimum": -70.0,
+              "maximum": -58.0
+            }
+          },
+          {
+            "name": "departamen",
+            "type": "string",
+            "example": "Potosí",
+            "categories": [
+              "La Paz",
+              "Santa Cruz",
+              "Cochabamba",
+              "Chuquisaca",
+              "Potosí",
+              "Oruro",
+              "Tarija",
+              "Beni",
+              "Pando"
+            ]
+          },
+          {
+            "name": "provincia",
+            "type": "string",
+            "example": "Nor Lípez"
+          },
+          {
+            "name": "municipio",
+            "type": "string",
+            "example": "San Pedro de Quemes"
+          },
+          {
+            "name": "comunidad",
+            "type": "string",
+            "example": "AVAROA"
+          },
+          {
+            "name": "localidad",
+            "type": "string",
+            "example": "AVAROA"
+          },
+          {
+            "name": "nombre_est",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "AVAROA_CCMPR"
+          },
+          {
+            "name": "direccion_",
+            "type": "string",
+            "example": "Ubicado dentro de la localidad, cerca del tanque de agua"
+          },
+          {
+            "name": "nombre_com",
+            "type": "string",
+            "example": "ENTEL S.A.",
+            "categories": [
+              "ENTEL S.A.",
+              "TELECEL S.A.",
+              "NUEVATEL PCS",
+              "COMTECO r.l."
+            ]
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "example": "2G / GSM",
+            "categories": [
+              "4G / LTE",
+              "3G / UMTS",
+              "2G / GSM"
+            ]
+          },
+          {
+            "name": "clasificac",
+            "type": "string",
+            "example": "RURAL",
+            "categories": [
+              "URBANO",
+              "RURAL"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point. Filas sin geometría: 1."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
