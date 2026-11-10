@@ -1,0 +1,88 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_cobija_siscat_seicu_construcciones",
+  "title": "CONSTRUCCIONES",
+  "sources": [
+    {
+      "title": "Sistema de Catastro del Gobierno Autónomo Municipal de Cobija",
+      "path": "https://siscat.cobija.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_cobija_siscat_seicu_construcciones/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 2107137,
+      "hash": "sha256:9d0cc7ab1af7c1e48d3202d371b1601b2e86895ae99ccc75a6502aa994794a59",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "CONSTRUCCIONES.12133"
+          },
+          {
+            "name": "con_identi",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "24272"
+          },
+          {
+            "name": "alturasobr",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 184.21524963,
+              "maximum": 269.83610229
+            }
+          },
+          {
+            "name": "altura_uni",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 2.2,
+              "maximum": 7.91
+            }
+          },
+          {
+            "name": "shape_leng",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 4.17986015899,
+              "maximum": 386.779024274
+            }
+          },
+          {
+            "name": "shape_area",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 1.09191502085,
+              "maximum": 2823.51097618
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. La fuente declaraba EPSG:4326 pero sus coordenadas estaban en EPSG:32719 (sistema inferido por la ubicación de las geometrías en Bolivia); se reproyectaron."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
