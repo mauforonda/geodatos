@@ -1,0 +1,106 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mapbiomas_mapbiomas_uruguay_department",
+  "title": "department",
+  "sources": [
+    {
+      "title": "MapBiomas",
+      "path": "https://shared-geoserver.mapbiomas.org/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mapbiomas_mapbiomas_uruguay_department/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 686165,
+      "hash": "sha256:b153bbe4c841f85ab6507291c7ee8b393738e0d869d7da394390c4c5ccb7de88",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "department.16"
+          },
+          {
+            "name": "FEATURE_ID",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 2,
+              "maximum": 21
+            }
+          },
+          {
+            "name": "NAME",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "COLONIA"
+          },
+          {
+            "name": "LEVEL_1",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "URUGUAY",
+            "categories": [
+              "URUGUAY"
+            ]
+          },
+          {
+            "name": "AP_CATEGOR",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "",
+            "categories": [
+              ""
+            ]
+          },
+          {
+            "name": "CATEGORY",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "nivel_politico_1",
+            "categories": [
+              "nivel_politico_1"
+            ]
+          },
+          {
+            "name": "NAME_PT_BR",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "COLONIA [URUGUAY]"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 8."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
