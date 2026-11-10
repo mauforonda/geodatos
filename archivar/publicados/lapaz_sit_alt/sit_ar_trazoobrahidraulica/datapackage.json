@@ -1,0 +1,133 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_alt_sit_ar_trazoobrahidraulica",
+  "title": "Aire de rio trazo de obra hidraulica",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)",
+      "path": "http://sitservicios.lapaz.bo/ows38.jsp"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_sit_ar_trazoobrahidraulica/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 1013089,
+      "hash": "sha256:5f03d9065250243d816c1d228e076ce6a3d0b17336f42176f4a3b112811830d8",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "ar_trazoobrahidraulica.1562"
+          },
+          {
+            "name": "fid_",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.0,
+              "maximum": 0.0
+            }
+          },
+          {
+            "name": "entity",
+            "type": "string",
+            "example": "3DPolyline",
+            "categories": [
+              "3DPolyline",
+              "Line",
+              "LWPolyline"
+            ]
+          },
+          {
+            "name": "layer",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "ar_obra hidraulica",
+            "categories": [
+              "ar_obra hidraulica",
+              "ar_trazo obra hidraulica",
+              "AR_trazo_de_obras_hidraulicas_2"
+            ]
+          },
+          {
+            "name": "color",
+            "type": "number",
+            "constraints": {
+              "minimum": 5.0,
+              "maximum": 18.0
+            }
+          },
+          {
+            "name": "linetype",
+            "type": "string",
+            "example": "Continuous",
+            "categories": [
+              "Continuous",
+              "CONTINUA",
+              "HIDDEN",
+              "BYBLOCK"
+            ]
+          },
+          {
+            "name": "elevation",
+            "type": "number",
+            "constraints": {
+              "minimum": -3.85,
+              "maximum": 7905038.85686
+            }
+          },
+          {
+            "name": "linewt",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.0,
+              "maximum": 25.0
+            }
+          },
+          {
+            "name": "refname",
+            "type": "integer"
+          },
+          {
+            "name": "respaldo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "RA 06/2023",
+            "categories": [
+              "RA 06/2023",
+              "RA 002/2024",
+              "RA 029/2023",
+              "RA 034/2023"
+            ]
+          },
+          {
+            "name": "estado",
+            "type": "integer"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
