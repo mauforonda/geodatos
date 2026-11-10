@@ -1,0 +1,132 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_criogrande_ecoregiones",
+  "title": "Plan Director de la Cuenca Río Grande - Ecorregiones_ Bolivia",
+  "description": "El mapa muestra información de cobertura de Ecorregiones en la Cuenca del Plan Director del Río Grande, presente las siguientes categorías: Puna Norteña, Amazonia, Sabana Inundable, Bosque Chiquitano, Gran Chaco, Yungas, Bosque Tucumano - Boliviano, Chaco serrano y Bosque Interandinos. Dato del Viceministerio de Recursos Hídricos y Riego a octubre 2016.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_criogrande_ecoregiones/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 1701938,
+      "hash": "sha256:4c7a003e361f282e1bfdacb9c7bd7273ac68a87159561dbcc0f7a6dca6f5e2ed",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "criogrande_ecoregiones.10"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 11
+            }
+          },
+          {
+            "name": "objectid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 11
+            }
+          },
+          {
+            "name": "cat_neu",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1.1,
+              "maximum": 11.2
+            }
+          },
+          {
+            "name": "subecoreg",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "11.2. Puna Semihúmeda"
+          },
+          {
+            "name": "ecoregion",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Puna Nortena"
+          },
+          {
+            "name": "area_km2",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1549.58,
+              "maximum": 28405.77
+            }
+          },
+          {
+            "name": "cat_ecore",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 11
+            }
+          },
+          {
+            "name": "shape_leng",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 10.9100231488,
+              "maximum": 43.0799014362
+            }
+          },
+          {
+            "name": "shape_area",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0.133045724014,
+              "maximum": 2.44342689149
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 4."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
