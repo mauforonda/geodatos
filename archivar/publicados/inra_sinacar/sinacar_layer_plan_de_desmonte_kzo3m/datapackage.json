@@ -1,0 +1,118 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_inra_sinacar_sinacar_layer_plan_de_desmonte_kzo3m",
+  "title": "layer_plan_de_desmonte_kzo3m",
+  "sources": [
+    {
+      "title": "Sistema Nacional de Catastro Rural Ambiental (SINACAR) del Instituto Nacional de Reforma Agraria (INRA)",
+      "path": "https://geoserver.inra.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_inra_sinacar_sinacar_layer_plan_de_desmonte_kzo3m/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 848337,
+      "hash": "sha256:944e91c6b51e4396b5263a07e55c18c7c4a4f08b66c5b1f7b0b1bb3d70b50fb1",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Filas sin geometría: 9. Geometrías inválidas, conservadas sin reparar: 9."
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "PDM.8247"
+          },
+          {
+            "name": "codigo_apr",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "RD-ABT-DDTA-PDMna-213-2010"
+          },
+          {
+            "name": "fecha",
+            "type": "string",
+            "example": "2010-11-11T00:00:00Z"
+          },
+          {
+            "name": "sup_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 2088.0
+            }
+          },
+          {
+            "name": "uobt",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "DDTA"
+          },
+          {
+            "name": "gestion",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "2010",
+            "categories": [
+              "2011",
+              "2010",
+              "2009"
+            ]
+          },
+          {
+            "name": "zona",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 19,
+              "maximum": 21
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "example": "TARIJA",
+            "categories": [
+              "SANTA CRUZ",
+              "LA PAZ",
+              "BENI",
+              "TARIJA",
+              "PANDO",
+              "COCHABAMBA",
+              "CHUQUISACA",
+              "La Paz",
+              "PALOS BLANCOS"
+            ]
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "example": "BERMEJO"
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
