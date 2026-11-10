@@ -1,0 +1,83 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_geologia_2",
+  "title": "Plan Director Cuenca Río Rocha - Geología",
+  "description": "PDCRR (Plan Director de la Cuenca Río Rocha). Muestra la geologia y la informacion relevante, en el marco del Plan Director Cuenca Rio Rocha.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_geologia_2/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 1418650,
+      "hash": "sha256:b84c03c3f4bcd6942170c8629cba6b55fa8bbfce095282ce3b0074aaaf76ddab",
+      "schema": {
+        "fields": [
+          {
+            "name": "PUNTOS",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Qt",
+            "categories": [
+              "Qt",
+              "Osb",
+              "Qaa",
+              "Qa",
+              "Ocu",
+              "Qc",
+              "Oan",
+              "Qg",
+              "Qcf",
+              "Sun",
+              "Kpu",
+              "Qfl",
+              "Tsl",
+              "Agua",
+              "Dic",
+              "Olia",
+              "Dhu",
+              "Kem",
+              "Oa",
+              "Ol",
+              "Qd",
+              "Taar",
+              "Dsr",
+              "Tsb",
+              "Scc",
+              "OCu",
+              "Ocp",
+              "kpu"
+            ]
+          },
+          {
+            "name": "FORMACION",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Depósito de terraza"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 16."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
