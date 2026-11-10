@@ -1,0 +1,71 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_alt_sit_riosurbano",
+  "title": "Rios urbano",
+  "description": "Rios del área urbana del Municipio de La Paz, fuente SMRGV 2025",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)",
+      "path": "http://sitservicios.lapaz.bo/ows38.jsp"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_sit_riosurbano/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 1990181,
+      "hash": "sha256:e5c35af8a31fbbe402ed8c2ce4e6269a829a9993a839652d2050658d2fae97b9",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "riosurbano.1464"
+          },
+          {
+            "name": "objectid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 2874
+            }
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "example": "Río Achocalla"
+          },
+          {
+            "name": "tipo",
+            "type": "string",
+            "example": "Río",
+            "categories": [
+              "Río",
+              "Quebrada",
+              "Afluente"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString. Filas sin geometría: 11."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
