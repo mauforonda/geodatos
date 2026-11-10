@@ -1,0 +1,90 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_cultivos_cana_de_azucar_en_el_nort_92c9b9961bb9",
+  "title": "Cultivos caña de azúcar en el norte integrado de  Santa Cruz",
+  "description": "El mapa muestra las estimaciones de superficie de cultivos priorizados de caña de azúcar en el norte integrado de Santa Cruz a través de un análisis multicriterio, elaborado por el Observatorio Agroambiental y Productivo - OAP.",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_cultivos_cana_de_azucar_en_el_nort_92c9b9961bb9/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 1058707,
+      "hash": "sha256:f041a2442690386e1ded88f8fb8421ab91b6a7b1b5a511886fc585d04cf541b9",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_cultivos_cana_de_azucar_en_el_norte_integrado_de__psav1.13"
+          },
+          {
+            "name": "sup_ha",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 393,
+              "maximum": 33906
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "SANTA CRUZ",
+            "categories": [
+              "SANTA CRUZ"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Sara",
+            "categories": [
+              "Obispo Santisteban",
+              "Andres Ibañez",
+              "Sara",
+              "Warnes",
+              "Ñuflo De Chavez"
+            ]
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Colpa Bélgica"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 12."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
