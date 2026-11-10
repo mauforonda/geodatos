@@ -1,0 +1,74 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_cuencas_nivel6_pfafstetter",
+  "title": "Plan Director Cuenca Río Yapacaní - Cuencas Nivel 6",
+  "description": "PDCRY (Plan Director de la Cuenca Río Yapacaní). Muestra las Cuencas Nivel 6 elaborados en base a la metodología PFAFSTETTER, en el marco del Plan Director de la Cuenca del Río Yapacaní.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_cuencas_nivel6_pfafstetter/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 1187459,
+      "hash": "sha256:4bb8c54f519049f07d14d374a1aaec67258dcd22d52bbe279a3484be5c99e995",
+      "schema": {
+        "fields": [
+          {
+            "name": "ZONA",
+            "type": "string",
+            "example": "20",
+            "categories": [
+              "20"
+            ]
+          },
+          {
+            "name": "Sup_km2",
+            "type": "number",
+            "constraints": {
+              "minimum": 143.999999986,
+              "maximum": 2007877110.29
+            }
+          },
+          {
+            "name": "Areaha",
+            "type": "number",
+            "constraints": {
+              "minimum": 860369.394872,
+              "maximum": 860369.394872
+            }
+          },
+          {
+            "name": "Nombre_UH",
+            "type": "string",
+            "example": "Rio Tembladeras"
+          },
+          {
+            "name": "NIVEL_6",
+            "type": "integer",
+            "constraints": {
+              "minimum": 466841,
+              "maximum": 466849
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 1."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
