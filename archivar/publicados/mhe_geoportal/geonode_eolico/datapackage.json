@@ -1,0 +1,83 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mhe_geoportal_geonode_eolico",
+  "title": "eolico",
+  "sources": [
+    {
+      "title": "Geoportal del Viceministerio de Electricidad y Energías Renovables",
+      "path": "https://geoportal.mhe.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mhe_geoportal_geonode_eolico/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 844939,
+      "hash": "sha256:b053f4bf6cf5d1e23ee2c3de25caa85c053a88294ce1c5c7fab7aebbc36edb48",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 1."
+          },
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 61
+            }
+          },
+          {
+            "name": "NUEVOS_MUN",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 0
+            }
+          },
+          {
+            "name": "COD",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 9
+            }
+          },
+          {
+            "name": "VEL_MED_AN",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "3.5 - 4.0",
+            "categories": [
+              "2.5 - 3.0",
+              "3.5 - 4.0",
+              "3.0 - 3.5",
+              "2.0 - 2.5",
+              "1.5 - 2.0",
+              "4.0 - 4.5",
+              "4.5 - 5.0",
+              "0.9 - 1.0",
+              "1.0 - 1.5"
+            ]
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
