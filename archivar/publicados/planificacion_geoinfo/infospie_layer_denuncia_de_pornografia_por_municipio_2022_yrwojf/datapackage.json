@@ -1,0 +1,106 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_denuncia_de_pornografia_por_munici_0904085083b3",
+  "title": "Denuncia de Pornografía por Municipio. 2022",
+  "description": "El mapa de denuncias de Pornografía esta en El Atlas de Bolivia en Seguridad Ciudadana, publicado por el Observatorio Boliviano de Seguridad Ciudadana y Lucha Contra las Drogas (OBSCD)",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_denuncia_de_pornografia_por_munici_0904085083b3/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 1094176,
+      "hash": "sha256:9f4cf2b21e48d908ffd676b02ef0e4ff0713b6ffc4f3390c4f16850a6a5a41a0",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_denuncia_de_pornografia_por_municipio_2022_yrwojf.17"
+          },
+          {
+            "name": "rango",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Bajo",
+            "categories": [
+              "Bajo",
+              "Muy Bajo",
+              "Medio",
+              "Alto",
+              "Muy Alto"
+            ]
+          },
+          {
+            "name": "sup_ha",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 8568,
+              "maximum": 952411
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "COCHABAMBA",
+            "categories": [
+              "SANTA CRUZ",
+              "COCHABAMBA",
+              "TARIJA",
+              "LA PAZ",
+              "BENI",
+              "CHUQUISACA",
+              "ORURO",
+              "PANDO",
+              "POTOSI"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Quillacollo"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Sipesipe"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
