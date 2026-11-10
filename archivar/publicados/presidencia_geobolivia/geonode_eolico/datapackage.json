@@ -1,0 +1,93 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_eolico",
+  "title": "Mapa de velocidad media anual del viento en Bolivia_ 2008",
+  "description": "El presente mapa muestra información referente al comportamiento de la velocidad media anual del viento (m/s) en Bolivia, componente principal en la elaboración del mapa eólico. Elaborado para el Viceministerio de Electricidad y Energías Alternativas por la entidad Transportadora de Electricidad (TDE) conforme a datos del SENAMHI (Servicio Nacional de Meteorología e Hidrología) y el método Kriging empleado para la interpolación de datos dispersos, en el año 2008 a escala 1: 2500000.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_eolico/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 899940,
+      "hash": "sha256:8e55e9425a8a243e2af599cb13c6660796d7bef476bf28471b916b240f9ddb57",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "eolico.41"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 61
+            }
+          },
+          {
+            "name": "nuevos_mun",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 0
+            }
+          },
+          {
+            "name": "cod",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 9
+            }
+          },
+          {
+            "name": "vel_med_an",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "3.5 - 4.0",
+            "categories": [
+              "2.5 - 3.0",
+              "3.5 - 4.0",
+              "3.0 - 3.5",
+              "2.0 - 2.5",
+              "1.5 - 2.0",
+              "4.0 - 4.5",
+              "4.5 - 5.0",
+              "0.9 - 1.0",
+              "1.0 - 1.5"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 1."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
