@@ -1,0 +1,113 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_oap_trigo_santa_cruz_2019",
+  "title": "Zonas Productoras de Trigo en 11 Municipios - Departamento de Santa Cruz, Bolivia 2019",
+  "description": "El mapa muestra las áreas de cultivo de trigo identificado en los 11 municipios de: Concepción, Cotoca, Cuatro Cañadas, Fernandez Alonzo, Okinawa Uno, Pailon, Saavedra, San Julian, San Pedro, Santa Cruz de la Sierra y Warnes del Departamento de Santa Cruz. Este trabajo fue realizado con uso de imágenes satelitales y monitoreos de campo, a escala. 1:50.000, consolidado de información de años 2017, 2018 y 2019.  Información del Observatorio Agroambiental y Productivo del Ministerio de Desarrollo Rural de Tierras, a fecha 09 octubre 2019.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_oap_trigo_santa_cruz_2019/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 1535295,
+      "hash": "sha256:326f27577686954e5d2be369e7716667be9d3423bd430fb937822f4438b1219a",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 11
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0,
+              "maximum": 10
+            }
+          },
+          {
+            "name": "departamen",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Santa Cruz",
+            "categories": [
+              "Santa Cruz"
+            ]
+          },
+          {
+            "name": "provincia",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Andres Ibañez",
+            "categories": [
+              "Obispo Santisteban",
+              "Ñuflo Chavez",
+              "Andres Ibañez",
+              "Warnes",
+              "Chiquitos"
+            ]
+          },
+          {
+            "name": "municipio",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Santa Cruz de la Sierra"
+          },
+          {
+            "name": "cultivo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Trigo",
+            "categories": [
+              "Trigo"
+            ]
+          },
+          {
+            "name": "shape_area",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 9.72000000004,
+              "maximum": 23117.6475
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 5."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
