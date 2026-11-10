@@ -1,0 +1,170 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_reserva_forestal_j0t2j",
+  "title": "Reserva Forestal",
+  "description": "El mapa presenta la distribución geográfica y los limites de las reservas forestales por municipio y la superficie que cubre el territorio nacional.",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_reserva_forestal_j0t2j/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 920895,
+      "hash": "sha256:1f18cb7745711b0571073b629fcd68fdc3cb281df0f31c37e6522d67e388ce10",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_reserva_forestal_j0t2j.86"
+          },
+          {
+            "name": "nom_res",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "CUENCA DEL RIO BOOPI",
+            "categories": [
+              "CHAPARE",
+              "CUENCA DEL RIO BOOPI",
+              "EL CHORE",
+              "COVENDO",
+              "GUARAYOS",
+              "RESERVA RIOS BLANCO Y NEGRO",
+              "SERRANIAS DE BELLA VISTA",
+              "ITURRALDE",
+              "RIO GRANDE MASICURI",
+              "BAJO PARAGUA",
+              "EVA EVA MOSETENES",
+              "ITENEZ",
+              "QUINERAS DEL ATEN",
+              "RIO EL NUEVE"
+            ]
+          },
+          {
+            "name": "des_rf",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "RESERVA FORESTAL DE INMOVILIZACIÓN",
+            "categories": [
+              "RESERVA FORESTAL DE INMOVILIZACIÓN",
+              "RESERVA FORESTAL",
+              "RESERVA FORESTAL DE INMOVILIZACION",
+              "RESERVA NACIONAL DE VIDA SILVESTRE",
+              "ZONA FORESTAL DE RESERVA FISCAL",
+              "AREA DE PROTECCION DE CUENCAS HIDROGRAFICAS",
+              "RESERVA FORESTAL DE PRODUCCION",
+              "AREA CRITICA PROTEGIDA CUENCA HIDROGRAFICA"
+            ]
+          },
+          {
+            "name": "obs",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "NO REGISTRA",
+            "categories": [
+              "NO REGISTRA",
+              "NO SE ENCUENTRA EN EL DOCUMENTO DEL MDSP"
+            ]
+          },
+          {
+            "name": "sup_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0.238,
+              "maximum": 3644315.8
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "LA PAZ",
+            "categories": [
+              "SANTA CRUZ",
+              "LA PAZ",
+              "BENI",
+              "COCHABAMBA",
+              "TARIJA",
+              "CHUQUISACA",
+              "PANDO"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Sur Yungas",
+            "categories": [
+              "Ichilo",
+              "Carrasco",
+              "Sur Yungas",
+              "Caranavi",
+              "Guarayos",
+              "General José Ballivían",
+              "Itenez",
+              "Abel Iturralde",
+              "Moxos",
+              "Valle Grande",
+              "Marban",
+              "Ñuflo De Chavez",
+              "Arce",
+              "Ayopaya",
+              "Cercado",
+              "Chapare",
+              "Franz Tamayo",
+              "Larecaja",
+              "Obispo Santisteban",
+              "Sara",
+              "Luis Calvo",
+              "Manuripi",
+              "Nor Yungas",
+              "Velasco",
+              "Yacuma"
+            ]
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "La Asunta"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
