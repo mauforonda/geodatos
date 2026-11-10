@@ -1,0 +1,111 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_densidad_poblacional_dpto2012ine",
+  "title": "Densidad Poblacional por Departamento según Censo 2012_ Bolivia",
+  "description": "El mapa muestra la densidad poblacional por departamento, que se refiere al número medio de sujetos que residen en un kilómetro cuadrado de territorio, en base a los datos del censo 2012 Bolivia registro 9.3 habitantes por Km2, los departamentos con mayor densidad poblacional son: Cochabamba, La Paz, Tarija y Oruro; mientras que Potosí, Santa Cruz, Beni y Pando tienen la menor. Información obtenida del Instituto Nacional de Estadística a junio 2019.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_densidad_poblacional_dpto2012ine/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 2401726,
+      "hash": "sha256:a7e61021e52e45e1995e604a3ad0f98630f76821737ecd2f9e6659ef71f0659d",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 9
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "minimum": 0,
+              "maximum": 8
+            }
+          },
+          {
+            "name": "cod_ut",
+            "type": "string",
+            "example": "05"
+          },
+          {
+            "name": "departamen",
+            "type": "string",
+            "example": "Potosí"
+          },
+          {
+            "name": "censo1950",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.3,
+              "maximum": 8.1
+            }
+          },
+          {
+            "name": "censo1976",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.5,
+              "maximum": 13.0
+            }
+          },
+          {
+            "name": "censo1992",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.6,
+              "maximum": 20.0
+            }
+          },
+          {
+            "name": "censo2001",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.8,
+              "maximum": 26.2
+            }
+          },
+          {
+            "name": "censo2012",
+            "type": "integer",
+            "constraints": {
+              "minimum": 2,
+              "maximum": 32
+            }
+          },
+          {
+            "name": "unidad",
+            "type": "string",
+            "example": "Habitantes por Kilómetro Cuadrado",
+            "categories": [
+              "Habitantes por Kilómetro Cuadrado"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
