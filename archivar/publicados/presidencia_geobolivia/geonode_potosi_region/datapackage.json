@@ -1,0 +1,66 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_potosi_region",
+  "title": "Regiones del Departamento de Potosí_ Bolivia 2018",
+  "description": "El mapa muestra las 4 regiones del Departamento de Potosí que son: Norte, Centro, Sur y Sudoeste, conformado por 40 Gobiernos Municipales. Estas regiones geográficas presentan características específicas; en cultura, economía, relieve, clima, política y factores ambientales con sus diferentes especies de flora y fauna. Dato obtenido de la Asociación de Municipalidades de Potosi (AMDEPO) a julio del 2018.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_potosi_region/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 930405,
+      "hash": "sha256:c182871111f4daae7ca5eaffede7b8d055d1b6b1068151d3a9722975a05ffea6",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 5
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "minimum": 0,
+              "maximum": 4
+            }
+          },
+          {
+            "name": "departamen",
+            "type": "string",
+            "example": "Potosí",
+            "categories": [
+              "Potosí"
+            ]
+          },
+          {
+            "name": "region",
+            "type": "string",
+            "example": "Región Sudoeste"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
