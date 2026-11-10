@@ -1,0 +1,79 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_hogar_electricidad2017",
+  "title": "Hogares con Servicio de Electricidad 2017, Bolivia",
+  "description": "El mapa muestra el porcentaje de hogares que disponen de energía eléctrica dentro de la vivienda, a nivel departamental, siendo con mayor porcentaje: Santa Cruz, La Paz, Tarija, Oruro y Beni. Fue elaborado por el Instituto Nacional de Estadística con información de las Encuestas de Hogares 2017",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_hogar_electricidad2017/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 2012274,
+      "hash": "sha256:ca36b15464058aa1d585153e5d11343b07364d5a11d3039d8c9a5aa77958d8dd",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 9
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "minimum": 0,
+              "maximum": 8
+            }
+          },
+          {
+            "name": "c_ut",
+            "type": "string",
+            "example": "05"
+          },
+          {
+            "name": "departamen",
+            "type": "string",
+            "example": "Potosí"
+          },
+          {
+            "name": "km2",
+            "type": "number",
+            "constraints": {
+              "minimum": 37493.628,
+              "maximum": 374608.544
+            }
+          },
+          {
+            "name": "porcentaje",
+            "type": "number",
+            "constraints": {
+              "minimum": 77.8,
+              "maximum": 96.0
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
