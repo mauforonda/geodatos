@@ -1,0 +1,124 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_inra_sinacar_sinacar_layer_sitios_ramsar_ptnqwf",
+  "title": "layer_sitios_ramsar_ptnqwf",
+  "sources": [
+    {
+      "title": "Sistema Nacional de Catastro Rural Ambiental (SINACAR) del Instituto Nacional de Reforma Agraria (INRA)",
+      "path": "https://geoserver.inra.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_inra_sinacar_sinacar_layer_sitios_ramsar_ptnqwf/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 1214537,
+      "hash": "sha256:4422c8771d5d1a036018b95457eb3fc7d5db4013fcbd7218ee6d0ef32513b1bc",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 13
+            }
+          },
+          {
+            "name": "nom_srm",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "LOS LÃÂPEZ",
+            "categories": [
+              "LAGO TITICACA",
+              "LAGOS POOPÃÂ Y URU URU",
+              "PANTANAL BOLIVIANO",
+              "RÃÂO BLANCO",
+              "RÃÂO MATOS",
+              "RÃÂO YATA",
+              "CUENCA DE TAJZARA",
+              "LOS LÃÂPEZ",
+              "BAÃÂADOS DEL IZOZOG Y EL RÃÂO PARAPETÃÂ",
+              "LAGUNA CONCEPCIÃÂN",
+              "PALMAR DE LAS ISLAS Y SALINAS DE SAN JOSÃÂ"
+            ]
+          },
+          {
+            "name": "cod_srm",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "SR-1",
+            "categories": [
+              "SR-2",
+              "SR-8",
+              "SR-6",
+              "SR-10",
+              "SR-11",
+              "SR-9",
+              "SR-1",
+              "SR-3",
+              "SR-4",
+              "SR-7",
+              "SR-5"
+            ]
+          },
+          {
+            "name": "sup_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0.98778691455,
+              "maximum": 1683945.1813130046
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "example": "POTOSI",
+            "categories": [
+              "LA PAZ",
+              "BENI",
+              "ORURO",
+              "SANTA CRUZ",
+              "POTOSI",
+              "TARIJA",
+              "COCHABAMBA"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "NOR LIPEZ"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "example": "SAN PEDRO DE QUEMES"
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
