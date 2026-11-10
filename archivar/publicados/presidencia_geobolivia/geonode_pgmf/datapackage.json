@@ -1,0 +1,167 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_pgmf",
+  "title": "Plan general de manejo forestal - PGMF Bolivia_ 2012",
+  "description": "La presente información geográfica muestra los planes generales de manejo forestal ( PGMF ) de Bolivia, instrumento que documenta las directrices para realizar un adecuado manejo forestal, indica cuanta madera hay, cuanto se puede extraer sosteniblemente, como hacerlo y que se debe hacer para reponer lo extraído. Información actualizada y supervisada por la Autoridad de Fiscalización y Control Social de Bosques y Tierra (ABT ) hasta junio de 2012.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_pgmf/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 917859,
+      "hash": "sha256:7fd83cdc0e1076354c9507cbb88abc63b66ab2192181331b6ee18e41dbfb70e8",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "pgmf.1654"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 1990
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "PGMF.1654"
+          },
+          {
+            "name": "codigo_apr",
+            "type": "string",
+            "example": "RU-ABT-ERS-PGMFp-136-2010"
+          },
+          {
+            "name": "fecha",
+            "type": "datetime",
+            "constraints": {
+              "minimum": "1978-04-01T00:00:00+00:00",
+              "maximum": "2099-11-11T00:00:00+00:00"
+            }
+          },
+          {
+            "name": "sup_pgmf",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 445225.0
+            }
+          },
+          {
+            "name": "uobt",
+            "type": "string",
+            "example": "ERS"
+          },
+          {
+            "name": "gestion",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "2010",
+            "categories": [
+              "2008",
+              "2009",
+              "2010",
+              "2006",
+              "2007",
+              "2002",
+              "2011",
+              "2003",
+              "2004",
+              "2005",
+              "1999",
+              "2001",
+              "2000",
+              "0",
+              "1998"
+            ]
+          },
+          {
+            "name": "departamen",
+            "type": "string",
+            "example": "TARIJA",
+            "categories": [
+              "SANTA CRUZ",
+              "LA PAZ",
+              "BENI",
+              "TARIJA",
+              "PANDO",
+              "CHUQUISACA",
+              "COCHABAMBA",
+              "LAPAZ",
+              "Santa Cruz"
+            ]
+          },
+          {
+            "name": "municipio",
+            "type": "string",
+            "example": "ENTRE RIOS"
+          },
+          {
+            "name": "zona",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 19,
+              "maximum": 21
+            }
+          },
+          {
+            "name": "municipios",
+            "type": "string",
+            "example": "ENTRE RIOS",
+            "categories": [
+              "ENTRE RIOS",
+              "CARAPARI",
+              "PADCAYA",
+              "ASENCION DE GUARAYS",
+              "CONCEPCION",
+              "S. BUENAVENTURA",
+              "SAN IGNACIO DE MOXOS",
+              "SAN MIGUEL",
+              "SAN RAFAEL",
+              "SANTA ANA DE YACUMA, SAN BORJA",
+              "TRINIDAD, SAN JAVIER",
+              "URUBICHA",
+              "VILLA TUNARI, MOROCHATA, SAN IGNACIO DE MOX"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Filas sin geometría: 2. Geometrías inválidas, conservadas sin reparar: 5."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
