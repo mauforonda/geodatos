@@ -1,0 +1,71 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_alt_lapaz_red_electrica",
+  "title": "Red de Energia Electrica",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)",
+      "path": "http://sitservicios.lapaz.bo/ows38.jsp"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_lapaz_red_electrica/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 1442200,
+      "hash": "sha256:cb64c56e9848303b63e3c8e02d59b81d60e12fc7ca5df921c6d6554a1b426da5",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "red_electrica.16032"
+          },
+          {
+            "name": "gdbselec",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 7
+            }
+          },
+          {
+            "name": "gdbsdesc",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Línea baja tensión aérea",
+            "categories": [
+              "Línea baja tensión aérea",
+              "Línea media tensión 6.9 kV aérea",
+              "Línea media tensión 6.9 kV subterraneo",
+              "Línea baja tensión subterranea",
+              "Línea alta tensión 115 kV",
+              "Línea alta tensión 69 kV",
+              "Línea alta tensión 115 kV subterranea"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString. Filas sin geometría: 1. La fuente declaraba EPSG:4326 pero sus coordenadas estaban en EPSG:32719 (sistema inferido por la ubicación de las geometrías en Bolivia); se reproyectaron."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}

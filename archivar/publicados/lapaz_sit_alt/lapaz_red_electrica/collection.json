@@ -1,0 +1,165 @@
+{
+  "type": "Collection",
+  "id": "geodatosbolivia_lapaz_sit_alt_lapaz_red_electrica",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json",
+    "https://stac-extensions.github.io/vector/v0.1.0/schema.json",
+    "https://stac-extensions.github.io/projection/v2.0.0/schema.json",
+    "https://stac-extensions.github.io/file/v2.1.0/schema.json",
+    "https://stac-extensions.github.io/web-map-links/v1.3.0/schema.json"
+  ],
+  "title": "Red de Energia Electrica",
+  "description": "Red de Energia Electrica",
+  "license": "other",
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -68.16770159663704,
+          -16.569831851205613,
+          -68.03311555539833,
+          -16.440960459910798
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "providers": [
+    {
+      "name": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)",
+      "roles": [
+        "producer"
+      ],
+      "url": "http://sitservicios.lapaz.bo/ows38.jsp"
+    },
+    {
+      "name": "Internet Archive",
+      "roles": [
+        "host"
+      ],
+      "url": "https://archive.org/details/geodatosbolivia_lapaz_sit_alt_lapaz_red_electrica"
+    }
+  ],
+  "table:primary_geometry": "geometry",
+  "table:row_count": 33515,
+  "table:columns": [
+    {
+      "name": "id",
+      "type": "string"
+    },
+    {
+      "name": "gdbselec",
+      "type": "int32"
+    },
+    {
+      "name": "gdbsdesc",
+      "type": "string"
+    },
+    {
+      "name": "geometry",
+      "type": "binary",
+      "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString. Filas sin geometría: 1. La fuente declaraba EPSG:4326 pero sus coordenadas estaban en EPSG:32719 (sistema inferido por la ubicación de las geometrías en Bolivia); se reproyectaron."
+    }
+  ],
+  "summaries": {
+    "vector:geometry_types": [
+      "MultiLineString"
+    ]
+  },
+  "assets": {
+    "data": {
+      "href": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_lapaz_red_electrica/dataset.geoparquet",
+      "type": "application/vnd.apache.parquet",
+      "title": "GeoParquet",
+      "roles": [
+        "data"
+      ],
+      "proj:code": "EPSG:4326",
+      "file:size": 1442200,
+      "file:checksum": "1220cb64c56e9848303b63e3c8e02d59b81d60e12fc7ca5df921c6d6554a1b426da5"
+    },
+    "datapackage": {
+      "href": "./datapackage.json",
+      "type": "application/json",
+      "title": "Data Package: columnas, tipos y categorías",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "pmtiles": {
+      "href": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_lapaz_red_electrica/dataset.pmtiles",
+      "type": "application/vnd.pmtiles",
+      "title": "Teselas vectoriales (PMTiles)",
+      "roles": [
+        "visual"
+      ],
+      "file:size": 808729,
+      "file:checksum": "1220aeafa13f25568ec9826434002a746fbc437a15cc6aa8031526f1ac93bc8bb5ba"
+    }
+  },
+  "pmtiles:min_zoom": 12,
+  "pmtiles:max_zoom": 14,
+  "pmtiles:tile_type": "mvt",
+  "pmtiles:center": [
+    -68.1004085,
+    -16.5053961,
+    13
+  ],
+  "pmtiles:properties": [
+    {
+      "nombre": "gdbsdesc",
+      "tipo": "string",
+      "categorias": [
+        "Línea baja tensión aérea",
+        "Línea media tensión 6.9 kV aérea",
+        "Línea media tensión 6.9 kV subterraneo",
+        "Línea baja tensión subterranea",
+        "Línea alta tensión 115 kV",
+        "Línea alta tensión 69 kV",
+        "Línea alta tensión 115 kV subterranea"
+      ]
+    },
+    {
+      "nombre": "gdbselec",
+      "tipo": "number",
+      "minimo": 1.0,
+      "maximo": 7.0
+    }
+  ],
+  "links": [
+    {
+      "rel": "root",
+      "href": "../../../catalog.json",
+      "type": "application/json",
+      "title": "Datos geográficos de Bolivia"
+    },
+    {
+      "rel": "parent",
+      "href": "../catalog.json",
+      "type": "application/json",
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)"
+    },
+    {
+      "rel": "via",
+      "href": "http://sitservicios.lapaz.bo/ows38.jsp",
+      "type": "text/html",
+      "title": "Servicio de origen"
+    },
+    {
+      "rel": "pmtiles",
+      "href": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_lapaz_red_electrica/dataset.pmtiles",
+      "type": "application/vnd.pmtiles",
+      "pmtiles:layers": [
+        "dataset"
+      ]
+    }
+  ]
+}
