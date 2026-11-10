@@ -1,0 +1,106 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_cachimayu_microcuencas",
+  "title": "Plan Director Cuenca Río Cachimayu - Microcuencas",
+  "description": "PDCRCa (Plan Director de la Cuenca Río Yapacani). Muestra las microcuencas y la informacion relevante, en el marco del Plan Director Cuenca Rio Cachimayu.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_cachimayu_microcuencas/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 549752,
+      "hash": "sha256:4a4c9e3356030808216cdb27205f340fa048977e8fb2d45781dd2136c412d776",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "NIVEL_4",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "8668",
+            "categories": [
+              "8668"
+            ]
+          },
+          {
+            "name": "nomb_cuenc",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Rio Khollpa Mayu"
+          },
+          {
+            "name": "Sup_Km2",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0.576959546825,
+              "maximum": 158.150340826
+            }
+          },
+          {
+            "name": "NIVEL_1",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 8,
+              "maximum": 8
+            }
+          },
+          {
+            "name": "NIVEL_2",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "86",
+            "categories": [
+              "86"
+            ]
+          },
+          {
+            "name": "NIVEL_3",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "866",
+            "categories": [
+              "866"
+            ]
+          },
+          {
+            "name": "UHG",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "866852"
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
