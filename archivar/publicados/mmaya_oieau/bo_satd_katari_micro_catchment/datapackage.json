@@ -1,0 +1,142 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_oieau_bo_satd_katari_micro_catchment",
+  "title": "micro_catchment",
+  "sources": [
+    {
+      "title": "Sistema para la Gestión Integral de Recursos Hídricos desarrollado por la Oficina Internacional del Agua (OiEau)",
+      "path": "https://www.oieau-wiss.org/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_oieau_bo_satd_katari_micro_catchment/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 558603,
+      "hash": "sha256:77b7578ae8bc3ada077e29de137242efbb308fe48fdbcafc0d3eafcc43cce230",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "micro_catchment.11"
+          },
+          {
+            "name": "hu_level",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 4,
+              "maximum": 8
+            }
+          },
+          {
+            "name": "id_pfasft",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "015742"
+          },
+          {
+            "name": "population",
+            "type": "number",
+            "constraints": {
+              "minimum": 64.0,
+              "maximum": 851527.0
+            }
+          },
+          {
+            "name": "households",
+            "type": "number",
+            "constraints": {
+              "minimum": 24.0,
+              "maximum": 268759.0
+            }
+          },
+          {
+            "name": "housing_communities",
+            "type": "number",
+            "constraints": {
+              "minimum": 1.0,
+              "maximum": 154869.0
+            }
+          },
+          {
+            "name": "sub_water_basin_name",
+            "type": "string",
+            "example": "Tiahuanacu",
+            "categories": [
+              "Katari",
+              "Sehuenca",
+              "Tiahuanacu",
+              "Batallas",
+              "Jachcha Jahuira",
+              "Khomani}"
+            ]
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Sirca Misicuni"
+          },
+          {
+            "name": "area",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0363700377558,
+              "maximum": 163.391662656
+            }
+          },
+          {
+            "name": "alias",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Sirca Misicuni"
+          },
+          {
+            "name": "last_edited_date",
+            "type": "datetime",
+            "constraints": {
+              "required": true,
+              "minimum": "2022-03-11T10:49:03+00:00",
+              "maximum": "2022-03-11T10:49:03+00:00"
+            }
+          },
+          {
+            "name": "last_edited_user",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 1
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 2."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
