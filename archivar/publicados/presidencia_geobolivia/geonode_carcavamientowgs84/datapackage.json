@@ -1,0 +1,110 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_carcavamientowgs84",
+  "title": "Mapa de Áreas con Procesos de Carcavamiento del Municipio de La Paz",
+  "description": "El mapa muestra información de áreas que presentan cárcavas que  son los socavones producidos en rocas y suelos de lugares con pendiente a causa de las avenidas de agua de lluvia. Estas producen la llamada erosión remontante. Se producen tan sólo en el sustrato de tipo arcilloso, si hay dos o más cárcavas que avanzan paralelas en línea recta se llama rills. Se concretan, normalmente, en abarrancamientos formados en los materiales blandos por el agua de arroyada que, cuando falta una cobertura vegetal suficiente, ataca las pendientes excavando largos surcos de bordes vivos,en el Municipio de La Paz.  Elaborado por Oficialía Mayor de Planificación para el Desarrollo (OMPD) del Gobierno Autónomo Municipal de La Paz, en el año 2013.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_carcavamientowgs84/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 2477876,
+      "hash": "sha256:47772adc7cce6e32f295a782cfc3ed3747bcb6041efb7302e8828e900173a533",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "carcavamientowgs84.5598"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 9717
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "carcavamientowgs84.5581"
+          },
+          {
+            "name": "entity",
+            "type": "string",
+            "example": "Polyline",
+            "categories": [
+              "Polyline"
+            ]
+          },
+          {
+            "name": "layer",
+            "type": "string",
+            "example": "RIO_INTERMITENTE",
+            "categories": [
+              "RIO_INTERMITENTE",
+              "AR_REV_AR_CANAL_REV",
+              "ACEQUIA",
+              "CANALIZACION_DE_RIO",
+              "ACUEDUCTO",
+              "CANALIZACION_VERTIENTE"
+            ]
+          },
+          {
+            "name": "elevation",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 0
+            }
+          },
+          {
+            "name": "thickness",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 0
+            }
+          },
+          {
+            "name": "color",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 40
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
