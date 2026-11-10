@@ -1,0 +1,87 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geobolivia_geonode_ingreso_hogar_depto2017_bf624c90",
+  "title": "Ingreso Per Cápita por Hogar 2017, Bolivia",
+  "description": "Información geoespacial del ingreso promedio por cada individuo dentro de un hogar en monto de Bolivianos (Bs.). Por ejemplo, en un hogar compuesto por 5 integrantes, con un ingreso de Bs. 1000, cada individuo tiene un ingreso per cápita de Bs. 200. Fue elaborado con información del Instituto Nacional de Estadística, quien usó la Encuesta de Hogares del año 2017.",
+  "sources": [
+    {
+      "title": "Nueva plataforma GeoBolivia",
+      "path": "https://geonode.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geobolivia_geonode_ingreso_hogar_depto2017_bf624c90/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 1450400,
+      "hash": "sha256:cb4a64652c0fd06ccbd56c8f3ed6ab2067609cdbd3b4673218681b31091bfcda",
+      "schema": {
+        "fields": [
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 9
+            }
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 9
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "minimum": 0,
+              "maximum": 8
+            }
+          },
+          {
+            "name": "c_ut",
+            "type": "string",
+            "example": "05"
+          },
+          {
+            "name": "departamen",
+            "type": "string",
+            "example": "Potosí"
+          },
+          {
+            "name": "km2",
+            "type": "number",
+            "constraints": {
+              "minimum": 37493.628,
+              "maximum": 374608.544
+            }
+          },
+          {
+            "name": "monto_bs",
+            "type": "integer",
+            "constraints": {
+              "minimum": 947,
+              "maximum": 1634
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
