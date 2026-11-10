@@ -1,0 +1,133 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_catastro_lotescertificados",
+  "title": "Catastro Lotes Certificados",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz",
+      "path": "http://sitservicios.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_catastro_lotescertificados/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 998121,
+      "hash": "sha256:e072245b99d1b6a585ff8c9c226309d4aa791bec391d01f1ef5e195e0e072c64",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "lotesCertificados.fid-233488b5_1a0c42036a4_-6fb0"
+          },
+          {
+            "name": "idpredio",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 4559,
+              "maximum": 10042
+            }
+          },
+          {
+            "name": "codigocatastral",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "031081300010000"
+          },
+          {
+            "name": "distritocatastral",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 47
+            }
+          },
+          {
+            "name": "manzana",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 3407
+            }
+          },
+          {
+            "name": "predio",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 152
+            }
+          },
+          {
+            "name": "estadopredio",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.0,
+              "maximum": 15.0
+            }
+          },
+          {
+            "name": "FechaEmisionCertif",
+            "type": "datetime",
+            "constraints": {
+              "minimum": "2008-03-14T21:29:42+00:00",
+              "maximum": "2026-09-17T15:28:39.237000+00:00"
+            }
+          },
+          {
+            "name": "CertificadoVigente",
+            "type": "number",
+            "constraints": {
+              "minimum": 1.0,
+              "maximum": 1.0
+            }
+          },
+          {
+            "name": "NumInmueble",
+            "type": "string",
+            "example": "259715"
+          },
+          {
+            "name": "UbicacionPredio",
+            "type": "string",
+            "example": "CALLE S/NOMBRE Nro.0 "
+          },
+          {
+            "name": "Valoracion",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.0,
+              "maximum": 149991310.492
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Polygon, MultiPolygon, GeometryCollection. Geometrías inválidas, conservadas sin reparar: 2."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
