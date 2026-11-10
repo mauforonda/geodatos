@@ -1,0 +1,86 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mapbiomas_mapbiomas_pampa_phytogeographic",
+  "title": "phytogeographic",
+  "sources": [
+    {
+      "title": "MapBiomas",
+      "path": "https://shared-geoserver.mapbiomas.org/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mapbiomas_mapbiomas_pampa_phytogeographic/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 770592,
+      "hash": "sha256:7c28ead7094b7a41fb9cd0af31bb76cfdb15cc0c4144d90d27a3a232f5941eb4",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "example": "phytogeographic.2"
+          },
+          {
+            "name": "feature_id",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1377,
+              "maximum": 1379
+            }
+          },
+          {
+            "name": "territory",
+            "type": "string",
+            "example": "Provincia Fitogeografica Pampeana"
+          },
+          {
+            "name": "type",
+            "type": "string",
+            "example": "phytogeographic",
+            "categories": [
+              "phytogeographic"
+            ]
+          },
+          {
+            "name": "country",
+            "type": "string",
+            "example": "",
+            "categories": [
+              ""
+            ]
+          },
+          {
+            "name": "pol_level1",
+            "type": "string",
+            "example": "",
+            "categories": [
+              ""
+            ]
+          },
+          {
+            "name": "pol_level2",
+            "type": "string",
+            "example": "",
+            "categories": [
+              ""
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 3."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
