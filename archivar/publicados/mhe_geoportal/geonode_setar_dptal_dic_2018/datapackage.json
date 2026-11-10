@@ -1,0 +1,162 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mhe_geoportal_geonode_setar_dptal_dic_2018",
+  "title": "SETAR_DPTAL_DIC_2018",
+  "sources": [
+    {
+      "title": "Geoportal del Viceministerio de Electricidad y Energías Renovables",
+      "path": "https://geoportal.mhe.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mhe_geoportal_geonode_setar_dptal_dic_2018/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 1572668,
+      "hash": "sha256:b572e4720ec3fc4e92c764a87c5f1afbe6d861c03b45f62836869b772615bcae",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString. Filas sin geometría: 2. Geometrías inválidas, conservadas sin reparar: 2."
+          },
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 27741
+            }
+          },
+          {
+            "name": "USUARIOCRE",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "saam",
+            "categories": [
+              "saam",
+              "slam"
+            ]
+          },
+          {
+            "name": "FECHAACTUA",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "2018-01-25T04:00:00Z",
+            "categories": [
+              "2018-01-25T04:00:00Z",
+              "2018-01-26T04:00:00Z",
+              "2018-12-31T04:00:00Z",
+              "2018-12-28T04:00:00Z"
+            ]
+          },
+          {
+            "name": "SUBTIPO",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 3
+            }
+          },
+          {
+            "name": "TENSIONNOM",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 6600,
+              "maximum": 24900
+            }
+          },
+          {
+            "name": "TENSIONOPE",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 6600,
+              "maximum": 24900
+            }
+          },
+          {
+            "name": "IDALIMENTA",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "BJ",
+            "categories": [
+              "CT",
+              "YB",
+              "VM",
+              "ER",
+              "BJ",
+              "EP"
+            ]
+          },
+          {
+            "name": "TIPOSERVIC",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Dist",
+            "categories": [
+              "Dist"
+            ]
+          },
+          {
+            "name": "TIPOCONDUC",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "ACSR",
+            "categories": [
+              "ACSR"
+            ]
+          },
+          {
+            "name": "DB2GSE_Sde",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 0
+            }
+          },
+          {
+            "name": "Sistema",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "BERMEJO",
+            "categories": [
+              "CENTRAL",
+              "YACUIBA",
+              "VILLA MONTES",
+              "ENTRE RIOS",
+              "BERMEJO",
+              "EL PUENTE"
+            ]
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
