@@ -1,0 +1,131 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_poaf",
+  "title": "Plan operativo anual forestal - POAF Bolivia_ 2012",
+  "description": "Ésta información geográfica muestra los planes operativos anuales forestales (POAF) en Bolivia, instrumentos operativos que se preparan anualmente tomando como base datos del Censo Forestal, en el que se establecen las actividades de aprovechamiento y silviculturales que se ejecutarán en un determinado periodo, de acuerdo a lo establecido en el plan general de manejo forestal. Información actualizada y supervisada por la Autoridad de Fiscalización y Control Social de Bosques y Tierra (ABT ) hasta junio de 2012.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_poaf/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 1109306,
+      "hash": "sha256:f39f57b43123fc0e76cb70b0ad0cb22964747d26f67cdc3dfeeb2b88afae5180",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "poaf.4342"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 7989
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "POAF.4342"
+          },
+          {
+            "name": "codigo_apr",
+            "type": "string",
+            "example": "RU-ABT-ERS-POAF-195-2009"
+          },
+          {
+            "name": "fecha",
+            "type": "datetime",
+            "constraints": {
+              "minimum": "1999-04-28T00:00:00+00:00",
+              "maximum": "2011-07-30T00:00:00+00:00"
+            }
+          },
+          {
+            "name": "sup_poaf",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 39823.0
+            }
+          },
+          {
+            "name": "uobt",
+            "type": "string",
+            "example": "ERS"
+          },
+          {
+            "name": "zona",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 19,
+              "maximum": 21
+            }
+          },
+          {
+            "name": "departamen",
+            "type": "string",
+            "example": "TARIJA",
+            "categories": [
+              "SANTA CRUZ",
+              "LA PAZ",
+              "BENI",
+              "PANDO",
+              "TARIJA",
+              "CHUQUISACA",
+              "COCHABAMBA",
+              "LAPAZ"
+            ]
+          },
+          {
+            "name": "municipio",
+            "type": "string",
+            "example": "ENTRE RIOS"
+          },
+          {
+            "name": "gestion",
+            "type": "string",
+            "example": "0",
+            "categories": [
+              "0",
+              "2010",
+              "2009",
+              "2006",
+              "2007",
+              "2011"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Filas sin geometría: 31. Geometrías inválidas, conservadas sin reparar: 9."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
