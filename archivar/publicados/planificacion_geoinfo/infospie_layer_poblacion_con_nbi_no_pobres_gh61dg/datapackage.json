@@ -1,0 +1,131 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_poblacion_con_nbi_no_pobres_gh61dg",
+  "title": "Población con NBI no pobres (comunidades)",
+  "description": "“El mapa muestra la distribución espacial de la población que no presenta necesidades básicas insatisfechas (NBI). Permite identificar las áreas con mejores condiciones de vida y mayores niveles de satisfacción de las necesidades básicas de la población.” Al respecto, la información geográfica derivada del Censo de Población y Vivienda 2024 (CPV 2024) se sustenta bajo los siguientes lineamientos técnicos y legales: La base cartográfica de límites de unidades territoriales utilizados para la difusión de los resultados del CPV 2024 se basa en la cobertura oficial del Sistema de Información de Organización Territorial (SIOT), la cual fue remitida formalmente al Instituto Nacional de Estadística (INE) por el Viceministerio de Autonomías el 17 de mayo de 2024. Informar también que la información del CPV 2024 fue actualizada mediante la inclusión de la nueva unidad territorial creada por la \"Ley N° 1689 de Creación de la TIOC Challa\", conforme a lo dispuesto en la Resolución Administrativa INE/DGE/N° 19/2026 de fecha 20 de febrero de 2026. La información del INE es de uso estrictamente geográfico estadístico y tiene carácter referencial e informativo, destinado a la representación espacial de estadísticas e indicadores censales. Se reitera que el INE no tiene competencia legal en materia de delimitación de unidades territoriales. El uso de esta información es estrictamente para fines estadísticos y no genera precedente ni validez legal para la delimitación de unidades territoriales ni otro tipo de trámites.",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_poblacion_con_nbi_no_pobres_gh61dg/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 1274391,
+      "hash": "sha256:5457d3c8ad3f78c7df42c06c747e6a1ef17e37b5b8ebfb8d63f572b4f637611b",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "layer_poblacion_con_nbi_no_pobres_gh61dg.5673"
+          },
+          {
+            "name": "ciu_com",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "MURUMUNTANI"
+          },
+          {
+            "name": "no_pobre",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 1380152
+            }
+          },
+          {
+            "name": "p_no_pobre",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 100.0
+            }
+          },
+          {
+            "name": "rango_n_po",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "21 - 40",
+            "categories": [
+              "0 - 20",
+              "21 - 40",
+              "41 - 60",
+              "61 - 80",
+              "81 - 100"
+            ]
+          },
+          {
+            "name": "total_4",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 1537531
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "POTOSI",
+            "categories": [
+              "LA PAZ",
+              "COCHABAMBA",
+              "SANTA CRUZ",
+              "POTOSI",
+              "ORURO",
+              "CHUQUISACA",
+              "BENI",
+              "TARIJA",
+              "PANDO",
+              "POTOSÍ"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Daniel Campos"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Llica"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
