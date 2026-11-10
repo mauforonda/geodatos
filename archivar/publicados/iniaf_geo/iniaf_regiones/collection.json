@@ -1,0 +1,150 @@
+{
+  "type": "Collection",
+  "id": "geodatosbolivia_iniaf_geo_iniaf_regiones",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json",
+    "https://stac-extensions.github.io/vector/v0.1.0/schema.json",
+    "https://stac-extensions.github.io/projection/v2.0.0/schema.json",
+    "https://stac-extensions.github.io/file/v2.1.0/schema.json",
+    "https://stac-extensions.github.io/web-map-links/v1.3.0/schema.json"
+  ],
+  "title": "regiones",
+  "description": "regiones",
+  "license": "other",
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -65.35341837,
+          -22.33682531,
+          -58.87036736,
+          -13.47760982
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "providers": [
+    {
+      "name": "GeoServer del Instituto Nacional de Innovación Agropecuaria y Forestal",
+      "roles": [
+        "producer"
+      ],
+      "url": "https://geoserver.iniaf.gob.bo/geoserver/ows"
+    },
+    {
+      "name": "Internet Archive",
+      "roles": [
+        "host"
+      ],
+      "url": "https://archive.org/details/geodatosbolivia_iniaf_geo_iniaf_regiones"
+    }
+  ],
+  "table:primary_geometry": "geometry",
+  "table:row_count": 2,
+  "table:columns": [
+    {
+      "name": "id",
+      "type": "string"
+    },
+    {
+      "name": "region",
+      "type": "string"
+    },
+    {
+      "name": "geometry",
+      "type": "binary",
+      "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 1."
+    }
+  ],
+  "summaries": {
+    "vector:geometry_types": [
+      "MultiPolygon"
+    ]
+  },
+  "assets": {
+    "data": {
+      "href": "https://archive.org/download/geodatosbolivia_iniaf_geo_iniaf_regiones/dataset.geoparquet",
+      "type": "application/vnd.apache.parquet",
+      "title": "GeoParquet",
+      "roles": [
+        "data"
+      ],
+      "proj:code": "EPSG:4326",
+      "file:size": 1042753,
+      "file:checksum": "1220897d10b740b5222c37323ecc72a2264bf40be1a34fcada6e60e0ce853b088337"
+    },
+    "datapackage": {
+      "href": "./datapackage.json",
+      "type": "application/json",
+      "title": "Data Package: columnas, tipos y categorías",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "pmtiles": {
+      "href": "https://archive.org/download/geodatosbolivia_iniaf_geo_iniaf_regiones/dataset.pmtiles",
+      "type": "application/vnd.pmtiles",
+      "title": "Teselas vectoriales (PMTiles)",
+      "roles": [
+        "visual"
+      ],
+      "file:size": 76965,
+      "file:checksum": "12202a47f1b76bfab5b03e17080cf790f489272ba339fde07d1847b5c6d76beb490d"
+    }
+  },
+  "pmtiles:min_zoom": 6,
+  "pmtiles:max_zoom": 8,
+  "pmtiles:tile_type": "mvt",
+  "pmtiles:center": [
+    -62.1118928,
+    -17.9072175,
+    7
+  ],
+  "pmtiles:properties": [
+    {
+      "nombre": "region",
+      "tipo": "string",
+      "categorias": [
+        "Chaco",
+        "Chiquitania"
+      ]
+    }
+  ],
+  "links": [
+    {
+      "rel": "root",
+      "href": "../../../catalog.json",
+      "type": "application/json",
+      "title": "Datos geográficos de Bolivia"
+    },
+    {
+      "rel": "parent",
+      "href": "../catalog.json",
+      "type": "application/json",
+      "title": "GeoServer del Instituto Nacional de Innovación Agropecuaria y Forestal"
+    },
+    {
+      "rel": "via",
+      "href": "https://geoserver.iniaf.gob.bo/geoserver/ows",
+      "type": "text/html",
+      "title": "Servicio de origen"
+    },
+    {
+      "rel": "pmtiles",
+      "href": "https://archive.org/download/geodatosbolivia_iniaf_geo_iniaf_regiones/dataset.pmtiles",
+      "type": "application/vnd.pmtiles",
+      "pmtiles:layers": [
+        "dataset"
+      ]
+    }
+  ]
+}
