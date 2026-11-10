@@ -1,0 +1,110 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_areurb_i9zk4",
+  "title": "Áreas Urbanas Homologadas",
+  "description": "El mapa presenta las Áreas urbanas homologadas a nivel nacional. El área urbana es el cambio de uso de suelo de rural a urbano realizado por los Gobiernos Autónomos Municipales y Gobiernos Autónomo Indígena Originario Campesinos, en el marco de la política nacional y concordante con los lineamientos y directrices y cuyo mecanismo de coordinación es la homologación. Las áreas urbanas se delimitan territorialmente cumpliendo ciertos requisitos como ser: prestación de servicios básicos, infraestructura, información demográfica, características geomorfológicas y otros que nos darán como resultado la identificación de los diferentes tipos de áreas como ser: intensiva extensiva, productiva agropecuaria urbana y de protección.",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_areurb_i9zk4/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 1196862,
+      "hash": "sha256:3d6106553303ad88898e7d4163ea299ec8aea64a5255c4ba8f349809b6fd432c",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_areurb_i9zk4.221"
+          },
+          {
+            "name": "centro_pob",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "San Pedro de Quemes"
+          },
+          {
+            "name": "numer",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "095/22"
+          },
+          {
+            "name": "zona",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Zona 19",
+            "categories": [
+              "Zona 20",
+              "Zona 19",
+              "Zona 21"
+            ]
+          },
+          {
+            "name": "sup_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 36602.141
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "example": "POTOSI",
+            "categories": [
+              "COCHABAMBA",
+              "SANTA CRUZ",
+              "LA PAZ",
+              "CHUQUISACA",
+              "POTOSI",
+              "PANDO",
+              "BENI",
+              "ORURO",
+              "TARIJA"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "example": "Nor Lipez"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "example": "San Pedro de Quemes"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 3."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
