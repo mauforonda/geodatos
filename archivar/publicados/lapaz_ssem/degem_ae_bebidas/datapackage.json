@@ -1,0 +1,129 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_ssem_degem_ae_bebidas",
+  "title": "ae_bebidas",
+  "sources": [
+    {
+      "title": "Servicio de Seguimiento Estratégico Municipal del Gobierno Autónomo Municipal de La Paz",
+      "path": "https://ssem.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_ssem_degem_ae_bebidas/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 2278112,
+      "hash": "sha256:533b4ea4a53b86b4f1b0df7a6c41c00039f05487b5aaabdfb0b74728339a9c04",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "ae_bebidas.fid--544cec7f_19d8d5071df_7610"
+          },
+          {
+            "name": "cas_id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 395538,
+              "maximum": 655431
+            }
+          },
+          {
+            "name": "cas_nombre_caso",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "RE-LF7678/2022"
+          },
+          {
+            "name": "id_actividad_economica",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "123622"
+          },
+          {
+            "name": "tipo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "21",
+            "categories": [
+              "31",
+              "17",
+              "27",
+              "23",
+              "26",
+              "13",
+              "32",
+              "20",
+              "16",
+              "18",
+              "21",
+              "30",
+              "24",
+              "25",
+              "22",
+              "11",
+              "14",
+              "19",
+              "29",
+              "28",
+              "15",
+              "12"
+            ]
+          },
+          {
+            "name": "cas_latitud",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "-16.48789274"
+          },
+          {
+            "name": "cas_longitud",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "-68.16962555"
+          },
+          {
+            "name": "cas_gestion",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 2019,
+              "maximum": 2023
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point. Filas sin geometría: 4."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
