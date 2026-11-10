@@ -1,0 +1,136 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_lapaz_prediosriesgo",
+  "title": "Predios en Riesgo",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz",
+      "path": "http://sitservicios.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_lapaz_prediosriesgo/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 721060,
+      "hash": "sha256:890126355fd8d6274776526560510a9829351783a174caccd9679019e278dc1b",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "prediosRiesgo.22947"
+          },
+          {
+            "name": "distrito",
+            "type": "string",
+            "example": "31",
+            "categories": [
+              "34",
+              "23",
+              "20",
+              "28",
+              "31",
+              "44",
+              "47",
+              "46",
+              "24",
+              "2",
+              "33",
+              "35",
+              "27",
+              "1",
+              "45",
+              "0",
+              "12",
+              "14",
+              "17",
+              "36",
+              "444"
+            ]
+          },
+          {
+            "name": "Manzana",
+            "type": "string",
+            "example": "719"
+          },
+          {
+            "name": "Lote",
+            "type": "string",
+            "example": ""
+          },
+          {
+            "name": "codsifca",
+            "type": "string",
+            "example": "031112600020000"
+          },
+          {
+            "name": "predioPlanimetria",
+            "type": "string",
+            "example": ""
+          },
+          {
+            "name": "idLevantamiento",
+            "type": "number",
+            "constraints": {
+              "minimum": -1.0,
+              "maximum": 2.0
+            }
+          },
+          {
+            "name": "codEstado",
+            "type": "number",
+            "constraints": {
+              "minimum": 1.0,
+              "maximum": 1.0
+            }
+          },
+          {
+            "name": "IdSector",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 2132
+            }
+          },
+          {
+            "name": "idFranja",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.0,
+              "maximum": 17.0
+            }
+          },
+          {
+            "name": "codPredio",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 23168
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Polygon. Filas sin geometría: 796. Geometrías inválidas, conservadas sin reparar: 5."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
