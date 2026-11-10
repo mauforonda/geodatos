@@ -1,0 +1,167 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_cuerpos_agua",
+  "title": "Mapa de los cuerpos de agua en Bolivia",
+  "description": "El mapa nos muestra la ubicación y extensión sobre los cuerpos de agua en el territorio de Bolivia, para así conocer la importancia en cuanto a los recursos hídricos que existen en nuestro país para poder tener conocimiento sobre los cuerpos de agua y poder tener reservorios para la demanda cresiente que existe por este vital recurso",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_cuerpos_agua/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 1376970,
+      "hash": "sha256:64bb0c95ebe95ddf8a163d8cd2908bf2ac8caa18f8cfd75dca2ee872ddd97298",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "cuerpos_agua.992"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 1088
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Cuerpos_agua.992"
+          },
+          {
+            "name": "nbhidrogra",
+            "type": "string",
+            "example": "LAGUNA YAPI"
+          },
+          {
+            "name": "categ_des",
+            "type": "string",
+            "example": "Secundario",
+            "categories": [
+              "Terciario",
+              "Principal",
+              "Secundario"
+            ]
+          },
+          {
+            "name": "subcuenca",
+            "type": "string",
+            "example": "BERMEJO",
+            "categories": [
+              "POOPO",
+              "ALTO BENI",
+              "BLANCO",
+              "ICHILO SECURE",
+              "ORTHON",
+              "ACRE ABUNA",
+              "MADRE DE DIOS",
+              "PARAGUA",
+              "PARAPETI",
+              "BAÑADOS IZOZOG",
+              "BENI MEDIO",
+              "BERMEJO",
+              "ITONAMAS",
+              "MAMORE DESEMBOCADURA",
+              "TUCAVACA OTUQUIS",
+              "YATA",
+              "BENI DESEMBOCADURA",
+              "CACERES",
+              "GAIBA PANDO",
+              "GRANDE DE TARIJA",
+              "LAUCA",
+              "MADIDI",
+              "PILCOMAYO CHACO",
+              "RIO GRANDE",
+              "TUICHI",
+              "YAPACANI",
+              "ZUDAÑEZ"
+            ]
+          },
+          {
+            "name": "coclasifhi",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "020P00",
+            "categories": [
+              "020P00",
+              "020P002100",
+              "020P001120",
+              "020P002200"
+            ]
+          },
+          {
+            "name": "coescala",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 6,
+              "maximum": 6
+            }
+          },
+          {
+            "name": "idelemento",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 1088
+            }
+          },
+          {
+            "name": "shape_leng",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0.00220495755421,
+              "maximum": 23.9982563105
+            }
+          },
+          {
+            "name": "shape_area",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 2.0373112e-08,
+              "maximum": 0.70470744537
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
