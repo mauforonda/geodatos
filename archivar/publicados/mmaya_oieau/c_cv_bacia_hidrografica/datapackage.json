@@ -1,0 +1,99 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_oieau_c_cv_bacia_hidrografica",
+  "title": "CV_SW_bacia_hidrografica",
+  "sources": [
+    {
+      "title": "Sistema para la Gestión Integral de Recursos Hídricos desarrollado por la Oficina Internacional del Agua (OiEau)",
+      "path": "https://www.oieau-wiss.org/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_oieau_c_cv_bacia_hidrografica/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 739755,
+      "hash": "sha256:37a3126c2f4c801d5b267297117ba27e9c0c4d6dd16e1ba846f92060457cc9aa",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "bacia_hidrografica.120"
+          },
+          {
+            "name": "codigo",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "BR-AB"
+          },
+          {
+            "name": "designacao",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Ribeira do Figueiral"
+          },
+          {
+            "name": "area_km2_referencia",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 1
+            }
+          },
+          {
+            "name": "area_km2_calculada",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 198
+            }
+          },
+          {
+            "name": "ilha",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Brava",
+            "categories": [
+              "Santiago",
+              "Brava",
+              "Santo Antão",
+              "São Nicolau",
+              "Boavista",
+              "Maio",
+              "São Vicente",
+              "Fogo",
+              "Sal"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Polygon. Geometrías inválidas, conservadas sin reparar: 4."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
