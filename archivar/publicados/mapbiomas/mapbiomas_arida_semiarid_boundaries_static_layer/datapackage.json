@@ -1,0 +1,51 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mapbiomas_mapbiomas_arida_semiarid_boundaries_static_layer",
+  "title": "semiarid-boundaries-static-layer",
+  "sources": [
+    {
+      "title": "MapBiomas",
+      "path": "https://shared-geoserver.mapbiomas.org/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mapbiomas_mapbiomas_arida_semiarid_boundaries_static_layer/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 548209,
+      "hash": "sha256:3c5fcfa8bdfdd45fff871830d486fa4a43e07a7dbc354968fce4f1b6623dfe91",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "example": "semiarid-boundaries-static-layer.1"
+          },
+          {
+            "name": "NM_MUNICIP",
+            "type": "string",
+            "example": "Geral"
+          },
+          {
+            "name": "Semiarido",
+            "type": "string",
+            "example": "SIM"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 1."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
