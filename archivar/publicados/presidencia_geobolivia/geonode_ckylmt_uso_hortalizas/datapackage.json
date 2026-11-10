@@ -1,0 +1,63 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_ckylmt_uso_hortalizas",
+  "title": "Plan Director de la Cuenca Katari y Lago Menor del Titicaca - Aptitud Uso de Hortalizas_ Bolivia 2018",
+  "description": "El mapa muestra la cobertura de aptitud de uso de hortalizas del área de la Cuenca Katari y Lago Menor del Titicaca escala 1:250.000, las hortalizas son plantas cultivadas que se consumen como alimento ya sea cruda o cocida. Información obtenida del Viceministerio de Recursos Hídrico y Riego a octubre del 2018.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_ckylmt_uso_hortalizas/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 1133649,
+      "hash": "sha256:a3e91d51e31a43129c0409b88baff96b14d9b69828a3c9619b4baa7efaf49143",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 6
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 6
+            }
+          },
+          {
+            "name": "aptitud",
+            "type": "string",
+            "example": "Cuerpo de Agua"
+          },
+          {
+            "name": "codigo",
+            "type": "string",
+            "example": "CA"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 3."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
