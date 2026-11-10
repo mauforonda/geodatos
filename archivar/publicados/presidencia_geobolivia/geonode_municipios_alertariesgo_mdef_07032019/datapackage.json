@@ -1,0 +1,152 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_municipios_alertariesgo_mdef_07032019",
+  "title": "Alerta de Riesgo de Inundación_ Deslizamiento_ Desbordes y Riadas por lluvias constantes 07 marzo 2019_ Bolivia",
+  "description": "El mapa muestra los municipios con alerta de riesgo de inundación, deslizamiento, desbordes y riadas por lluvias constantes en el territorio nacional con categorías amarilla y naranja. Sobre la base de los reportes hidrológicos y complementando con los meteorológicos emitidos por el SENAMHI y SNHN, el día 06/03/2019, entre los días jueves 07 al domingo 10 de marzo del 2019, se analiza lo siguiente: Existe Riesgo por lluvias y tormentas eléctricas constantes, generaran la subida de caudales en ríos como el Coroico, Zongo, Boopi, Alto Beni, Tipuani, Mapiri, Rocha, Ichilo, Chapare, Ivirgazama, Chimore, Isiboro, Ichoa, Secure, Mamore, Ibare, Yacuma, Tijamuchi, Maniqui, Tahuamanu y Madre de Dios. Las cuales podría afectar a 63 municipios en los 8 departamentos, existen 28 municipios en alerta amarilla y 35 alerta naranja. Información obtenida del reporte diario nacional de alerta y afectación Nº 42 del Viceministerio de Defensa Civil a 07 de marzo de 2019. Alerta Amarilla: Cuando la proximidad de la ocurrencia de un evento adverso se encuentra en fase inicial de desarrollo o evolución. Alerta Naranja: Cuando se prevé que el evento adverso ocurra y su desarrollo pueda afectar a la población, medios de vida, sistemas productivos, accesibilidad a servicios básicos y otros.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_municipios_alertariesgo_mdef_07032019/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 2147329,
+      "hash": "sha256:9d5fead65a6939da952383a4f9bcc8a457c0a5b8d4235f295efa3913e39f33a5",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 63
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0,
+              "maximum": 62
+            }
+          },
+          {
+            "name": "cod_ut",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "030101"
+          },
+          {
+            "name": "departamen",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Cochabamba",
+            "categories": [
+              "La Paz",
+              "Cochabamba",
+              "Beni",
+              "Pando",
+              "Tarija",
+              "Chuquisaca",
+              "Potosí",
+              "Santa Cruz"
+            ]
+          },
+          {
+            "name": "provincia",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Cercado",
+            "categories": [
+              "Sud Yungas",
+              "General José Ballivián",
+              "Larecaja",
+              "Nicolás Suárez",
+              "Quillacollo",
+              "Carrasco",
+              "Cercado",
+              "Chapare",
+              "Madre de Dios",
+              "Arce",
+              "Caranavi",
+              "Gran Chaco",
+              "Hernando Siles",
+              "Manuripi",
+              "Méndez",
+              "Nor Yungas",
+              "Sur Cinti",
+              "Tiraque",
+              "Yacuma",
+              "Abel Iturralde",
+              "Avilés",
+              "Ayopaya",
+              "Franz Tamayo",
+              "Ichilo",
+              "Marbán",
+              "Moxos",
+              "Murillo",
+              "Sur Chichas",
+              "Vaca Diez"
+            ]
+          },
+          {
+            "name": "municipio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Cochabamba"
+          },
+          {
+            "name": "capital",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Cochabamba"
+          },
+          {
+            "name": "alerta",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Alerta Amarilla",
+            "categories": [
+              "Alerta Naranja",
+              "Alerta Amarilla"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
