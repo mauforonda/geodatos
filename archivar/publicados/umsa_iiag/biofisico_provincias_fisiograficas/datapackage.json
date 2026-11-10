@@ -1,0 +1,69 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_umsa_iiag_biofisico_provincias_fisiograficas",
+  "title": "ProvinciasFisiograficas",
+  "sources": [
+    {
+      "title": "Geoportal del Instituto de Investigaciones y Aplicaciones Geomáticas (IIAG) de la Universidad Mayor de San Andrés (UMSA)",
+      "path": "http://gtggeoportal.umsa.bo:8087/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_umsa_iiag_biofisico_provincias_fisiograficas/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 874392,
+      "hash": "sha256:49f7e3f56c783db17a9b3c4c5722a8ea90873b67853dbb99e8b5888aa49ba711",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "example": "Provincias Fisiograficas.4"
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "example": "ProvinciasFisiograficas.4"
+          },
+          {
+            "name": "profis",
+            "type": "string",
+            "example": "V"
+          },
+          {
+            "name": "area",
+            "type": "number",
+            "constraints": {
+              "minimum": 92546.91,
+              "maximum": 217727245264.85
+            }
+          },
+          {
+            "name": "prov_fis",
+            "type": "string",
+            "example": "V"
+          },
+          {
+            "name": "leyenda",
+            "type": "string",
+            "example": "V"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 1."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
