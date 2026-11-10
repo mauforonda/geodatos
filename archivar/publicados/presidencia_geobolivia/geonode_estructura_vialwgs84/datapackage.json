@@ -1,0 +1,131 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_estructura_vialwgs84",
+  "title": "Mapa de la Estructura Vial del Municipio de La Paz",
+  "description": "El mapa muestra información de la estructura vial, jerarquizada según la conformación de la red actual en el Municipio de La Paz. Elaborado por Oficialía Mayor de Planificación para el Desarrollo (OMPD) del Gobierno Autónomo Municipal de La Paz, en el año 2013.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_estructura_vialwgs84/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 2422374,
+      "hash": "sha256:fded934638ce9e79a8b6ed48ef991d2b0af0586503c282dd1f55a75a9d301ff5",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "estructura_vialwgs84.1224"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 1905
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "estructura_vialwgs84.1246"
+          },
+          {
+            "name": "objectid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 2585
+            }
+          },
+          {
+            "name": "nbvialidad",
+            "type": "string",
+            "example": "Senda, Rodera o Vereda",
+            "categories": [
+              "Senda, Rodera o Vereda",
+              "Secundario o Vecinal",
+              "Principal o Carretero"
+            ]
+          },
+          {
+            "name": "idelemento",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 45781
+            }
+          },
+          {
+            "name": "coclasifvi",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 3
+            }
+          },
+          {
+            "name": "coescala",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 2
+            }
+          },
+          {
+            "name": "tipo",
+            "type": "string",
+            "example": "Senda, Rodera o Vereda",
+            "categories": [
+              "Senda, Rodera o Vereda",
+              "Secundario o Vecinal",
+              "Principal o Carretero"
+            ]
+          },
+          {
+            "name": "shape_len",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.01290968629,
+              "maximum": 36274.4002623
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
