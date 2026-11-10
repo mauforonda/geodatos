@@ -1,0 +1,170 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_pnc_inversion",
+  "title": "Proyectos MIC Inversión",
+  "description": "Muestra la distribución de proyectos MIC encarados por el Plan Nacional de Cuencas.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_pnc_inversion/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 1860622,
+      "hash": "sha256:1113dc869876b4259c43b3a78e1cf4cf5f8c7d923897f1cab900f44a788db31a",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 1."
+          },
+          {
+            "name": "Municipio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "SANTUARIO DE QUILLACAS"
+          },
+          {
+            "name": "Sup_Km2_",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 5.84,
+              "maximum": 5811.36
+            }
+          },
+          {
+            "name": "NIVEL_UH",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "01332"
+          },
+          {
+            "name": "DEPTO_1",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Oruro",
+            "categories": [
+              "Chuquisaca",
+              "Oruro",
+              "La Paz",
+              "Cochabamba",
+              "Potosí",
+              "Tarija",
+              "Beni",
+              "Santa Cruz"
+            ]
+          },
+          {
+            "name": "PROVINCI_1",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Eduardo Avaroa"
+          },
+          {
+            "name": "NOM_PROY",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Manejo y Conservación de los Recursos Naturales Cuenca Rio Sevaruyo"
+          },
+          {
+            "name": "Estado",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "PROGRAMADO",
+            "categories": [
+              "EJECUCION",
+              "PROGRAMADO",
+              "CONCLUIDO",
+              "PARALIZADO"
+            ]
+          },
+          {
+            "name": "FASE",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Inversion PNC II",
+            "categories": [
+              "Inversion PNC II"
+            ]
+          },
+          {
+            "name": "IDs",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 76
+            }
+          },
+          {
+            "name": "NOMBRE",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Cuenca Lago Poopo",
+            "categories": [
+              "",
+              "Cuenca Rio Grande",
+              "Cuenca Lago Poopo",
+              "Cuenca Rio Katari - Lago Menor",
+              "Cuenca Rio Mizque",
+              "Cuenca Rio Azero",
+              "Cuenca Rio San Pedro",
+              "Cuenca Rio Arque",
+              "Cuenca Rio Yapacani"
+            ]
+          },
+          {
+            "name": "PDC",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "PDCLP",
+            "categories": [
+              "",
+              "PDCRG",
+              "PDCLP",
+              "PDCRK",
+              "PDCRM",
+              "PDCRA",
+              "PDCRSP",
+              "PDCRAyT",
+              "PDCRY"
+            ]
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
