@@ -1,0 +1,103 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geobolivia_geonode_crioazero_camino_8f4efb27",
+  "title": "Plan Director Cuenca Río Azero - Caminos, Bolivia",
+  "description": "Información geoespacial de los diferentes tipos de caminos que existe en la cuenca del río Azero estos son: Principal o Carretero, Secundario o Vecinal, Senda, Rodera o Vereda. Información obtenida del Viceministerio de Recursos Hídricos y Riego del Ministerio de Medio Ambiente y Agua, ha noviembre del 2020.",
+  "sources": [
+    {
+      "title": "Nueva plataforma GeoBolivia",
+      "path": "https://geonode.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geobolivia_geonode_crioazero_camino_8f4efb27/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 1320975,
+      "hash": "sha256:40a7cd0cb69da2a0b7446602dc3b9e9747eb732e58dcafa8b9cdaf12689b88b7",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "crioazero_camino_8f4efb27.209"
+          },
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 2592
+            }
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 2592
+            }
+          },
+          {
+            "name": "id_osm",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "283587649"
+          },
+          {
+            "name": "vialidad",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Senda, Rodera o Vereda",
+            "categories": [
+              "Senda, Rodera o Vereda",
+              "Terciario",
+              "Principal o Carretero",
+              "Secundario o Vecinal"
+            ]
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "example": "Camino a Horcani-Abra Ckasa"
+          },
+          {
+            "name": "dist_m",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 3.0,
+              "maximum": 8062.21
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
