@@ -1,0 +1,93 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geobolivia_geonode_saldomigratorio_0f91c8dd",
+  "title": "Tasa neta de migración por provincias en Bolivia (2002)",
+  "description": "Información geoespacial de las mayores tasas de expulsión migratoria están localizadas principalmente en los departamentos de Oruro, Potosí, Chuquisaca, Sur de La Paz y Cochabamba cuyos emigrantes se dirigen a los principales centros urbanos . La información fue elaborado por la Unidad de Ordenamiento Territorial del Ministerio de Planificación del Desarrollo en el año 2002 a escala 1:1000000.",
+  "sources": [
+    {
+      "title": "Nueva plataforma GeoBolivia",
+      "path": "https://geonode.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geobolivia_geonode_saldomigratorio_0f91c8dd/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 616496,
+      "hash": "sha256:864f0b51f681f380a4e32e9be3fb0095aee0e3b7681fcf147c7667d8429366ba",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "saldomigratorio_0f91c8dd.5"
+          },
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 26
+            }
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 26
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "SaldoMigratorio.5"
+          },
+          {
+            "name": "saldomigra",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -0.18,
+              "maximum": 0.13
+            }
+          },
+          {
+            "name": "count",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 14
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
