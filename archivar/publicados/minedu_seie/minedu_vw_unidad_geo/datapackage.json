@@ -1,0 +1,188 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_minedu_seie_minedu_vw_unidad_geo",
+  "title": "vw_unidad_geo",
+  "sources": [
+    {
+      "title": "Sistema de Estadísticas e Indicadores Educativos (SEIE) del Ministerio de Educación",
+      "path": "https://seie.minedu.gob.bo:8443/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_minedu_seie_minedu_vw_unidad_geo/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 859519,
+      "hash": "sha256:024239a24e29b5d0b4b1efee1091f78d0fcbb6c117bf518991e351c094062a08",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "vw_unidad_geo.fid--3967e51a_19d8f5a5bd5_-21ef"
+          },
+          {
+            "name": "cod_pol_dep",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 9
+            }
+          },
+          {
+            "name": "des_dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "SANTA CRUZ  ",
+            "categories": [
+              "LA PAZ      ",
+              "SANTA CRUZ  ",
+              "COCHABAMBA  ",
+              "POTOSI      ",
+              "CHUQUISACA  ",
+              "BENI        ",
+              "TARIJA      ",
+              "ORURO       ",
+              "PANDO       "
+            ]
+          },
+          {
+            "name": "cod_pol_pro",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 101,
+              "maximum": 905
+            }
+          },
+          {
+            "name": "des_pro",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "ANDRES IBAÑEZ                                     "
+          },
+          {
+            "name": "cod_pol_mun",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 10101,
+              "maximum": 90503
+            }
+          },
+          {
+            "name": "des_sec",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "CAPITAL (SANTA CRUZ DE LA SIERRA)                                                                   "
+          },
+          {
+            "name": "depend",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "2",
+            "categories": [
+              "1",
+              "2"
+            ]
+          },
+          {
+            "name": "area",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "U",
+            "categories": [
+              "R",
+              "U"
+            ]
+          },
+          {
+            "name": "cod_ue",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "81981690"
+          },
+          {
+            "name": "cod_le",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "81980913  "
+          },
+          {
+            "name": "des_ue",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "OPENHEIMMER"
+          },
+          {
+            "name": "cod_dis",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1001,
+              "maximum": 9010
+            }
+          },
+          {
+            "name": "des_dis",
+            "type": "string",
+            "example": "SANTA CRUZ 2                                                                                        "
+          },
+          {
+            "name": "latitud",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -89.809555529842,
+              "maximum": 84.7705283207591
+            }
+          },
+          {
+            "name": "longitud",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -244.6875,
+              "maximum": -28.828125
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
