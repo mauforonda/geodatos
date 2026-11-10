@@ -1,0 +1,134 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_forestal_2013_2017v01",
+  "title": "Proyectos Forestales 2013 - 2017 (PNC II)",
+  "description": "Proyectos Forestales a nivel de microcuencas entre las gestiones 2013 - 2017, en el marco del Plan Nacional de Cuencas (PNC)",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_forestal_2013_2017v01/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 1470023,
+      "hash": "sha256:c792b9db92e7b1fda5c70b37d3c9753db7b9ed71acd3000c0c420217035136eb",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Río Chocaya"
+          },
+          {
+            "name": "Codif",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "868486"
+          },
+          {
+            "name": "Sup_Km2",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 327.33
+            }
+          },
+          {
+            "name": "Municipio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Atocha"
+          },
+          {
+            "name": "Departamen",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Potosi",
+            "categories": [
+              "Chuquisaca",
+              "Cochabamba",
+              "Potosi",
+              "La Paz",
+              "Santa Cruz",
+              "Tarija",
+              "Cchabamba",
+              "L a Paz",
+              "Oruro"
+            ]
+          },
+          {
+            "name": "Proyecto",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Forestacion y Proteccion de Bosques Nativos en la Microcuenca del Rio Atocha"
+          },
+          {
+            "name": "Ano",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "2017",
+            "categories": [
+              "2015",
+              "2014",
+              "2016",
+              "2017"
+            ]
+          },
+          {
+            "name": "Micrcuenca",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 15923.0,
+              "maximum": 466997297.0
+            }
+          },
+          {
+            "name": "MED",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "2013-2017",
+            "categories": [
+              "2013-2017"
+            ]
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
