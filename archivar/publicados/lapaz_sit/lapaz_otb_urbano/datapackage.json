@@ -1,0 +1,232 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_lapaz_otb_urbano",
+  "title": "OTBs urbanos",
+  "description": "OTBs urbanos, fuente unidad de Limites DPOUT.",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz",
+      "path": "http://sitservicios.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_lapaz_otb_urbano/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 726243,
+      "hash": "sha256:f73b5ec3e9e1aa6b26cdb7d253a912835983aaea8773ea0356c8c107211c6b95",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "otb_urbano.594"
+          },
+          {
+            "name": "nom_otb",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "AREA DE PRESERVACION MALLASA 2"
+          },
+          {
+            "name": "macro",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "MALLASA",
+            "categories": [
+              "SUR",
+              "PERIFERICA",
+              "MAXIMILIANO PAREDES",
+              "SAN ANTONIO",
+              "COTAHUMA",
+              "CENTRO",
+              "MALLASA"
+            ]
+          },
+          {
+            "name": "distrito",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "20",
+            "categories": [
+              "18",
+              "13",
+              "21",
+              "11",
+              "19",
+              "10",
+              "12",
+              "4",
+              "14",
+              "5",
+              "9",
+              "7",
+              "16",
+              "15",
+              "17",
+              "20",
+              "2",
+              "3",
+              "6",
+              "1",
+              "8"
+            ]
+          },
+          {
+            "name": "estado",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "SERVIDUMBRES ECOLOGICAS",
+            "categories": [
+              "PROPUESTA TECNICA",
+              "VALIDADA",
+              "CONCLUIDO",
+              "SERVIDUMBRES ECOLOGICAS",
+              "EN ANALISIS",
+              "EQUIPAMIENTO"
+            ]
+          },
+          {
+            "name": "codigo",
+            "type": "string",
+            "example": "MA20-03"
+          },
+          {
+            "name": "pers_juri",
+            "type": "string",
+            "example": "NO",
+            "categories": [
+              "NO",
+              "SI"
+            ]
+          },
+          {
+            "name": "nombre_pj",
+            "type": "string",
+            "example": "URBANIZACION SAJETEJE",
+            "categories": [
+              "Junta de Vecinos Alto Santiago de Lacaya \"20 de Enero\"",
+              "REMODELACIÓN VIRGEN MARIA",
+              "URBANIZACION SAJETEJE"
+            ]
+          },
+          {
+            "name": "respaldo",
+            "type": "string",
+            "example": "SIN ACTAS DE CONFORMIDAD",
+            "categories": [
+              "SIN ACTAS DE CONFORMIDAD",
+              "CON ACTAS DE CONFORMIDAD",
+              "",
+              "OM  Nº506/2017",
+              "OM Nº 515/2016",
+              "ORDENANZA MUNICIPAL 054/2019 "
+            ]
+          },
+          {
+            "name": "observ",
+            "type": "string",
+            "example": "CONCLUIDO",
+            "categories": [
+              "CONCLUIDO",
+              "FIRMADA CON UN COLINDANTE",
+              "FIRMADA CON DOS COLINDANTES",
+              "FIRMADA CON TRES COLINDANTES",
+              "FIRMADA CON SEIS COLINDANTES"
+            ]
+          },
+          {
+            "name": "nom_reg_pj",
+            "type": "string",
+            "example": "Junta de Vecinos zona Aranjuez"
+          },
+          {
+            "name": "año_regpj",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 2021
+            }
+          },
+          {
+            "name": "no_rgpj",
+            "type": "string",
+            "example": "181/96"
+          },
+          {
+            "name": "fecha_reg",
+            "type": "datetime",
+            "constraints": {
+              "minimum": "1899-12-30T00:00:00",
+              "maximum": "2021-10-28T00:00:00"
+            }
+          },
+          {
+            "name": "reg_pj",
+            "type": "string",
+            "example": "NO",
+            "categories": [
+              "SI",
+              "NO"
+            ]
+          },
+          {
+            "name": "area",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 5556.40944854,
+              "maximum": 8133305.03926
+            }
+          },
+          {
+            "name": "sup_has",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0.555640944854,
+              "maximum": 813.330503926
+            }
+          },
+          {
+            "name": "categoria",
+            "type": "string",
+            "example": "Sector",
+            "categories": [
+              "Unidad Urbana",
+              "Sector"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 1."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
