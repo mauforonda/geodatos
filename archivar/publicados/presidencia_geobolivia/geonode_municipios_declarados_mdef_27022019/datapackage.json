@@ -1,0 +1,121 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_municipios_declarados_mdef_27022019",
+  "title": "Municipios Declarados en Emergencia y/o Desastre al 27 febrero 2019_ Bolivia",
+  "description": "El mapa muestra los 61 municipios declarados en emergencia y desastre en el territorio nacional producto de las lluvias fuertes, 40 están en desastre y 21 en emergencia, en los 9 departamentos: La Paz, Beni, Cochabamba, Santa Cruz, Potosí, Chuquisaca, Tarija, Pando y Oruro. Sobre la base de los reportes hidrológicos y complementando con los meteorológicos emitidos por el SENAMHI y SNHN, el día 25/02/2019, entre los días miércoles 27 de febrero al viernes 01 de marzo del 2019, se analiza lo siguiente: Existe riesgo por lluvias y tormentas eléctricas fuertes a moderadas, generaran la subida de caudales en ríos como el coroico, zongo, boopi, alto beni, tipuani mapiri, rocha, ichilo, chapare, ivirgazama, chimore, isiboro, ichoa, secure, mamore, ibare yacuma, tijamuchi y maniqui, madre de dios, san juan del oro y pilcomayo. Información obtenida del reporte diario nacional de alerta y afectación Nº 34 del Viceministerio de Defensa Civil a 27 de febrero de 2019.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_municipios_declarados_mdef_27022019/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 2351993,
+      "hash": "sha256:d3cefd7f2cafda670743eac067ae6829988d6777f9d9c6d5826ba4b9e3e9658d",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 61
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0,
+              "maximum": 60
+            }
+          },
+          {
+            "name": "cod_ut",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "051401"
+          },
+          {
+            "name": "departamen",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Potosí",
+            "categories": [
+              "La Paz",
+              "Potosí",
+              "Tarija",
+              "Beni",
+              "Cochabamba",
+              "Santa Cruz",
+              "Oruro",
+              "Chuquisaca",
+              "Pando"
+            ]
+          },
+          {
+            "name": "provincia",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Daniel Campos"
+          },
+          {
+            "name": "municipio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Llica"
+          },
+          {
+            "name": "capital",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Llica"
+          },
+          {
+            "name": "declarado",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Desastre",
+            "categories": [
+              "Desastre",
+              "Emergencia"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
