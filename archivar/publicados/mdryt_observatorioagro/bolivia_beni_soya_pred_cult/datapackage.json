@@ -1,0 +1,101 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mdryt_observatorioagro_bolivia_beni_soya_pred_cult",
+  "title": "BENI_SOYA_PRED_CULT",
+  "sources": [
+    {
+      "title": "Geovisor del Observatorio Agroambiental y Productivo del Ministerio de Desarrollo Rural y Tierras (MDRyT)",
+      "path": "http://geoserver.observatorioagro.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mdryt_observatorioagro_bolivia_beni_soya_pred_cult/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 1581053,
+      "hash": "sha256:a5674b36d9eef61bc6dc44d591beb579d4841947db8f52c18bde3d8cac9d3f6f",
+      "schema": {
+        "fields": [
+          {
+            "name": "CODCAT",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "08060266113515"
+          },
+          {
+            "name": "NOMPRED",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "LOS CONEJOS"
+          },
+          {
+            "name": "BENEFICIAR",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "SANDRA YBAÃEZ LOPEZ DE CORTEZ Y VIADOR CORTEZ ARTEAGA"
+          },
+          {
+            "name": "SUP_PRED",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0.0185769832,
+              "maximum": 28609.1329138
+            }
+          },
+          {
+            "name": "Sup_Cult",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 2.57399962007e-08,
+              "maximum": 3817.53227619
+            }
+          },
+          {
+            "name": "Shape_Leng",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 54.7339993151,
+              "maximum": 148612.030093
+            }
+          },
+          {
+            "name": "Shape_Area",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 185.769832,
+              "maximum": 286091329.138
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
