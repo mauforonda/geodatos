@@ -1,0 +1,149 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_agamdepaz_caprino",
+  "title": "Población Ganadera de Caprinos en el Departamento de La Paz",
+  "description": "La población de caballos en el departamento está distribuida en todas las zonas agroproductivas.Se identifican 2 áreas con potencial, el área principal se ubica entre los municipios de la zona de la Amazonia y la zona de los Yungas del Norte (norte). Existe un área potencial que se ubica en la zona de los Valles Cerrados y municipios colindantes tanto de la zona de los Yungas del Norte como municipios de la zona del Altiplano Norte.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_agamdepaz_caprino/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 1304951,
+      "hash": "sha256:e5ea80f1f66bb0c6da132a815d309b84d01b00694191632d7ab7ba18eb1ade08",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "agamdepaz_caprino.12"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 68
+            }
+          },
+          {
+            "name": "departamen",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "La Paz",
+            "categories": [
+              "La Paz"
+            ]
+          },
+          {
+            "name": "provincia",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "General José Manuel Pand",
+            "categories": [
+              "Inquisivi",
+              "Larecaja",
+              "Aroma",
+              "Loayza",
+              "Murillo",
+              "Pacajes",
+              "Camacho",
+              "Ingavi",
+              "Los Andes",
+              "Omasuyos",
+              "Sud Yungas",
+              "Manco Kapac",
+              "Muñecas",
+              "Abel Iturralde",
+              "Bautista Saavedra",
+              "Gualberto Villarroe",
+              "Caranavi",
+              "General José Manuel Pand",
+              "Gualberto Villarroel",
+              "Nor Yungas"
+            ]
+          },
+          {
+            "name": "municipio",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Santiago de Machaca"
+          },
+          {
+            "name": "macroregio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "ALTIPLANO",
+            "categories": [
+              "ALTIPLANO",
+              "YUNGAS-CHAPARE",
+              "VALLES",
+              "AMAZONICA"
+            ]
+          },
+          {
+            "name": "codmun",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 20101,
+              "maximum": 22001
+            }
+          },
+          {
+            "name": "caprino",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 1379
+            }
+          },
+          {
+            "name": "codigo_87",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 86
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
