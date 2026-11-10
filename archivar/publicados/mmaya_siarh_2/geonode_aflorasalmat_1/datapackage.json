@@ -1,0 +1,66 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_aflorasalmat_1",
+  "title": "Plan Director Cuenca Lago Poopó - Afloramiento Salino",
+  "description": "PDCLP (Plan Director de la Cuenca Lago Poopó). Muestra la informacion relevante del afloramiento salino en la cuenca Lago Poopó, en el marco del Plan Director de la Cuenca del Lago Poopó.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_aflorasalmat_1/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 1493827,
+      "hash": "sha256:8922156e87bf11ed50912e1cab4741fbf026b31e7c7658996c4cc8933fee32af",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 85."
+          },
+          {
+            "name": "desFinal",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "03. Afloramientos salinos",
+            "categories": [
+              "03. Afloramientos salinos"
+            ]
+          },
+          {
+            "name": "ORIG_FID",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 0
+            }
+          },
+          {
+            "name": "Area",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 6,
+              "maximum": 11948
+            }
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
