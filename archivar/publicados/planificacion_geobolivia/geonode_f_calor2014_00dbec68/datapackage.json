@@ -1,0 +1,202 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geobolivia_geonode_f_calor2014_00dbec68",
+  "title": "Monitoreo de focos de calor en Bolivia - ABT (2014)",
+  "description": "Información geoespacial de la identificación y monitoreo a focos de calor en territorio nacional en la gestion 2014 , realizadas por medio de imagenes satelitales para la detección de altas temperaturas, los cuales necesariamente tienen que ser inspeccionados para determinar si son quemas o incendios forestales. Elaborado por la Autoridad de Fiscalización y Control Social de Bosques y Tierra (ABT) con datos actualizados al 12 de diciembre del año 2014.",
+  "sources": [
+    {
+      "title": "Nueva plataforma GeoBolivia",
+      "path": "https://geonode.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geobolivia_geonode_f_calor2014_00dbec68/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 1011851,
+      "hash": "sha256:c85b8f88bc0edf5f704ccacffd469fd90e5e81df31ebc7140e945fdf09ed4202",
+      "schema": {
+        "fields": [
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 33546
+            }
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 33546
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 33546
+            }
+          },
+          {
+            "name": "uobt",
+            "type": "string",
+            "example": "DD SUCRE"
+          },
+          {
+            "name": "nom_dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Potosi",
+            "categories": [
+              "Santa Cruz",
+              "Beni",
+              "La Paz",
+              "Cochabamba",
+              "Pando",
+              "Tarija",
+              "Chuquisaca",
+              "Potosi",
+              "Oruro"
+            ]
+          },
+          {
+            "name": "nom_prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Daniel Campos"
+          },
+          {
+            "name": "nom_mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Llica"
+          },
+          {
+            "name": "utm",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "19z",
+            "categories": [
+              "20z",
+              "19z",
+              "21z"
+            ]
+          },
+          {
+            "name": "riesgo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Medio",
+            "categories": [
+              "Medio",
+              "Alto",
+              "Critico",
+              "Bajo",
+              "Minimo"
+            ]
+          },
+          {
+            "name": "fecha",
+            "type": "datetime",
+            "constraints": {
+              "required": true,
+              "minimum": "2014-01-01T00:00:00",
+              "maximum": "2014-12-11T00:00:00"
+            }
+          },
+          {
+            "name": "hora",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 174500
+            }
+          },
+          {
+            "name": "inra_f",
+            "type": "string",
+            "example": "No Titulado",
+            "categories": [
+              "No Titulado",
+              "Titulado"
+            ]
+          },
+          {
+            "name": "nombre_f",
+            "type": "string",
+            "example": "Sin Datos"
+          },
+          {
+            "name": "predio_f",
+            "type": "string",
+            "example": "Sin Datos"
+          },
+          {
+            "name": "coord_x",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 874583
+            }
+          },
+          {
+            "name": "coord_y",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 8822429
+            }
+          },
+          {
+            "name": "caminos",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Lejano_a_Caminos",
+            "categories": [
+              "Lejano_a_Caminos",
+              "Proximo_a_Caminos"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPoint."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
