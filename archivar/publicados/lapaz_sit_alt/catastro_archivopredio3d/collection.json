@@ -1,0 +1,180 @@
+{
+  "type": "Collection",
+  "id": "geodatosbolivia_lapaz_sit_alt_catastro_archivopredio3d",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json",
+    "https://stac-extensions.github.io/vector/v0.1.0/schema.json",
+    "https://stac-extensions.github.io/projection/v2.0.0/schema.json",
+    "https://stac-extensions.github.io/file/v2.1.0/schema.json",
+    "https://stac-extensions.github.io/web-map-links/v1.3.0/schema.json"
+  ],
+  "title": "ArchivoPredio3D",
+  "description": "ArchivoPredio3D",
+  "license": "other",
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -68.16511630259188,
+          -16.548700020401323,
+          -68.07437794187588,
+          -16.48294782526291
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "providers": [
+    {
+      "name": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)",
+      "roles": [
+        "producer"
+      ],
+      "url": "http://sitservicios.lapaz.bo/ows38.jsp"
+    },
+    {
+      "name": "Internet Archive",
+      "roles": [
+        "host"
+      ],
+      "url": "https://archive.org/details/geodatosbolivia_lapaz_sit_alt_catastro_archivopredio3d"
+    }
+  ],
+  "table:primary_geometry": "geometry",
+  "table:row_count": 6940,
+  "table:columns": [
+    {
+      "name": "id",
+      "type": "string"
+    },
+    {
+      "name": "IdPredio",
+      "type": "int32"
+    },
+    {
+      "name": "punto",
+      "type": "string"
+    },
+    {
+      "name": "fechaRegistro",
+      "type": "timestamp[us]"
+    },
+    {
+      "name": "idEstado",
+      "type": "int32"
+    },
+    {
+      "name": "codigoCatastral",
+      "type": "string"
+    },
+    {
+      "name": "idArchivoPredio3dTipo",
+      "type": "int32"
+    },
+    {
+      "name": "geometry",
+      "type": "binary",
+      "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 4."
+    }
+  ],
+  "summaries": {
+    "vector:geometry_types": [
+      "MultiPolygon"
+    ]
+  },
+  "assets": {
+    "data": {
+      "href": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_catastro_archivopredio3d/dataset.geoparquet",
+      "type": "application/vnd.apache.parquet",
+      "title": "GeoParquet",
+      "roles": [
+        "data"
+      ],
+      "proj:code": "EPSG:4326",
+      "file:size": 1188864,
+      "file:checksum": "1220d1ffd4b0c947de63627bda2410c6531eda639ecfca073ce535a0fe61c9bda6b6"
+    },
+    "datapackage": {
+      "href": "./datapackage.json",
+      "type": "application/json",
+      "title": "Data Package: columnas, tipos y categorías",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "pmtiles": {
+      "href": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_catastro_archivopredio3d/dataset.pmtiles",
+      "type": "application/vnd.pmtiles",
+      "title": "Teselas vectoriales (PMTiles)",
+      "roles": [
+        "visual"
+      ],
+      "file:size": 439680,
+      "file:checksum": "1220631c1329d839e24de2f4656f5ac58fe206a4cf3258955c72c297205b3b985cef"
+    }
+  },
+  "pmtiles:min_zoom": 12,
+  "pmtiles:max_zoom": 14,
+  "pmtiles:tile_type": "mvt",
+  "pmtiles:center": [
+    -68.1197471,
+    -16.5158239,
+    13
+  ],
+  "pmtiles:properties": [
+    {
+      "nombre": "idEstado",
+      "tipo": "number",
+      "minimo": 1.0,
+      "maximo": 2.0
+    },
+    {
+      "nombre": "idArchivoPredio3dTipo",
+      "tipo": "number",
+      "minimo": 1.0,
+      "maximo": 2.0
+    },
+    {
+      "nombre": "IdPredio",
+      "tipo": "number",
+      "minimo": 12.0,
+      "maximo": 14951.0
+    }
+  ],
+  "links": [
+    {
+      "rel": "root",
+      "href": "../../../catalog.json",
+      "type": "application/json",
+      "title": "Datos geográficos de Bolivia"
+    },
+    {
+      "rel": "parent",
+      "href": "../catalog.json",
+      "type": "application/json",
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)"
+    },
+    {
+      "rel": "via",
+      "href": "http://sitservicios.lapaz.bo/ows38.jsp",
+      "type": "text/html",
+      "title": "Servicio de origen"
+    },
+    {
+      "rel": "pmtiles",
+      "href": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_catastro_archivopredio3d/dataset.pmtiles",
+      "type": "application/vnd.pmtiles",
+      "pmtiles:layers": [
+        "dataset"
+      ]
+    }
+  ]
+}

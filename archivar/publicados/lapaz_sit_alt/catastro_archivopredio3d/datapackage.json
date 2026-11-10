@@ -1,0 +1,99 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_alt_catastro_archivopredio3d",
+  "title": "ArchivoPredio3D",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)",
+      "path": "http://sitservicios.lapaz.bo/ows38.jsp"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_catastro_archivopredio3d/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 1188864,
+      "hash": "sha256:d1ffd4b0c947de63627bda2410c6531eda639ecfca073ce535a0fe61c9bda6b6",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "ArchivoPredio3D.fid--314a5bbc_19fd452709c_-65ef"
+          },
+          {
+            "name": "IdPredio",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 12,
+              "maximum": 14951
+            }
+          },
+          {
+            "name": "punto",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "POINT((589117.3394119433 , 8176911.4599133795))"
+          },
+          {
+            "name": "fechaRegistro",
+            "type": "datetime",
+            "constraints": {
+              "required": true,
+              "minimum": "2015-06-17T00:00:00",
+              "maximum": "2017-12-29T00:00:00"
+            }
+          },
+          {
+            "name": "idEstado",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 2
+            }
+          },
+          {
+            "name": "codigoCatastral",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "038014300020000"
+          },
+          {
+            "name": "idArchivoPredio3dTipo",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 2
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 4."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
