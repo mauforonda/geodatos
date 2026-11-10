@@ -1,0 +1,86 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_gis_osm_pois_free_1",
+  "title": "Equipamientos OpenStreetMap",
+  "description": "Esta capa obtenida de la plataforma OpenStreetMap, presenta equipamientos en sus distintas categorías a nivel nacional.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_gis_osm_pois_free_1/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 2436686,
+      "hash": "sha256:e00c50075d17f1eeba8f6c3deb3a62d7070371464bdad92adc0f221b84259f15",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "gis_osm_pois_free_1.2412"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 41627
+            }
+          },
+          {
+            "name": "osm_id",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "3119696108"
+          },
+          {
+            "name": "code",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 2001,
+              "maximum": 2964
+            }
+          },
+          {
+            "name": "fclass",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "viewpoint"
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "example": "Mirador del Cráter del Volcán Ollagüe (Este)"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
