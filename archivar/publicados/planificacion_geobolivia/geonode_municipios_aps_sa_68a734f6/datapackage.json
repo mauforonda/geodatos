@@ -1,0 +1,138 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geobolivia_geonode_municipios_aps_sa_68a734f6",
+  "title": "Municipios de Intervención áreas protegidas -SA, Bolivia (2020)",
+  "description": "Información geoespacial de los 36 municipios de intervención del programa de Apoyo Presupuestario Sectorial de Seguridad Alimentaria (APS-SA) en donde interviene el Fondo Nacional de Desarrollo Integral (FONADIN), estos municipios se encuentran en 4 departamentos: La Paz (con 4 municipios), Oruro (3), Potosí (10), Chuquisaca (1) y Cochabamba (18). Para la implementación del APS-SA se identifican 36 Municipios y que se constituyen en la zona de intervención, en tales municipios se observan situaciones muy diversas de migración, vulnerabilidad y condiciones socio económicas, habiendo sido clasificados en tres categorías, desde los municipios con mayor migración y más vulnerables hasta los de menos migración y vulnerables, de tal manera que el programa pueda focalizar y concentrar desde el principio sus esfuerzos en los Municipios más frágiles. Información obtenida de FONADIN a diciembre 2020.",
+  "sources": [
+    {
+      "title": "Nueva plataforma GeoBolivia",
+      "path": "https://geonode.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geobolivia_geonode_municipios_aps_sa_68a734f6/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 694107,
+      "hash": "sha256:d83dd939cd7ebb5c606b425c6207a60a005837a06b6fcea36a5c5ffa5bfe9cd7",
+      "schema": {
+        "fields": [
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 36
+            }
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 36
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0,
+              "maximum": 51
+            }
+          },
+          {
+            "name": "c_ut",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "050203"
+          },
+          {
+            "name": "departamen",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Potosí",
+            "categories": [
+              "Cochabamba",
+              "Potosí",
+              "La Paz",
+              "Oruro",
+              "Chuquisaca"
+            ]
+          },
+          {
+            "name": "provincia",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Rafael Bustillo"
+          },
+          {
+            "name": "municipio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Llallagua"
+          },
+          {
+            "name": "capital",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Llallagua"
+          },
+          {
+            "name": "dato",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Convenio APS - Seguridad Alimentaria",
+            "categories": [
+              "Convenio APS - Seguridad Alimentaria"
+            ]
+          },
+          {
+            "name": "prioridad",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Grupo 2",
+            "categories": [
+              "Grupo 1",
+              "Grupo 2",
+              "Grupo 3"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
