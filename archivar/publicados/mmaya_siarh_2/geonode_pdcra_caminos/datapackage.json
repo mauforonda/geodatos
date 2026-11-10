@@ -1,0 +1,77 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_pdcra_caminos",
+  "title": "Plan Director Cuenca  Río Azero – Caminos",
+  "description": "PDCRA (Plan Director de la Cuenca Río Azero). Muestra la georreferenciación e información relevante de las Vías de acceso del Plan Director de la Cuenca del Río Azero.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_pdcra_caminos/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 1307032,
+      "hash": "sha256:d0dd094b0e2273b33af3162648dd2bb5864c71d0035d118ade3342eb68a409d6",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "ID_OSM",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "283587649"
+          },
+          {
+            "name": "VIALIDAD",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Senda, Rodera o Vereda",
+            "categories": [
+              "Senda, Rodera o Vereda",
+              "Terciario",
+              "Principal o Carretero",
+              "Secundario o Vecinal"
+            ]
+          },
+          {
+            "name": "NOMBRE",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": ""
+          },
+          {
+            "name": "DIST_M",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 3.0,
+              "maximum": 8062.21
+            }
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
