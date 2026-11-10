@@ -1,0 +1,142 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mhe_geoportal_geonode_edicion_comunidades_2017",
+  "title": "Edicion_Comunidades_2017",
+  "sources": [
+    {
+      "title": "Geoportal del Viceministerio de Electricidad y Energías Renovables",
+      "path": "https://geoportal.mhe.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mhe_geoportal_geonode_edicion_comunidades_2017/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 1236668,
+      "hash": "sha256:49eb284ef2dad847b1c1a816ebef9bf9318d9adbc5e5cd27975006b7d8c30b48",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 22395
+            }
+          },
+          {
+            "name": "gid",
+            "type": "string",
+            "example": "1451"
+          },
+          {
+            "name": "depto_esta",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "POTOSÍ",
+            "categories": [
+              "LA PAZ",
+              "COCHABAMBA",
+              "POTOSÍ",
+              "SANTA CRUZ",
+              "CHUQUISACA",
+              "ORURO",
+              "BENI",
+              "TARIJA",
+              "PANDO"
+            ]
+          },
+          {
+            "name": "prov_estad",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "DANIEL CAMPOS"
+          },
+          {
+            "name": "mun_estadi",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "LLICA"
+          },
+          {
+            "name": "nom_comuni",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "SECSIGUA"
+          },
+          {
+            "name": "cod_ine",
+            "type": "string",
+            "example": "3002932727-D"
+          },
+          {
+            "name": "Area",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Rural",
+            "categories": [
+              "Rural",
+              "Urbana"
+            ]
+          },
+          {
+            "name": "Usuar_2017",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 20689
+            }
+          },
+          {
+            "name": "Tarif_Dig",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 3401
+            }
+          },
+          {
+            "name": "EMPRESA",
+            "type": "string",
+            "example": "",
+            "categories": [
+              "",
+              "ENDE COBIJA",
+              "CER",
+              "ENDE SENA",
+              "COOPELECT",
+              "EMDEECRUZ"
+            ]
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
