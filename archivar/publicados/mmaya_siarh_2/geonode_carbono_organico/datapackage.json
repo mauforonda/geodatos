@@ -1,0 +1,139 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_carbono_organico",
+  "title": "Plan Director Cuenca Río Yapacaní - Carbono Organico",
+  "description": "PDCRY (Plan Director de la Cuenca Río Yapacaní). Muestra la información relevante del carbono organico, en el marco del Plan Director de la Cuenca del Río Yapacaní.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_carbono_organico/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 726255,
+      "hash": "sha256:bd34760c1fc2bb327a3466a953d6cdad4e3020365891ef450b5fd4df84c74355",
+      "schema": {
+        "fields": [
+          {
+            "name": "gridcode",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 2,
+              "maximum": 5
+            }
+          },
+          {
+            "name": "Valor",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Medio",
+            "categories": [
+              "Alto",
+              "Muy Alto",
+              "Medio",
+              "Bajo"
+            ]
+          },
+          {
+            "name": "DEPARTAMEN",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Santa Cruz",
+            "categories": [
+              "Santa Cruz"
+            ]
+          },
+          {
+            "name": "PROVINCIA",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Manuel María Caballero",
+            "categories": [
+              "Ichilo",
+              "Florida",
+              "Valle Grande",
+              "Andres Ibañez",
+              "Sara",
+              "Manuel María Caballero"
+            ]
+          },
+          {
+            "name": "MUNICIPIO",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Comarapa",
+            "categories": [
+              "Buena Vista",
+              "Mairana",
+              "Samaipata",
+              "San Carlos",
+              "San Juan",
+              "Santa Rosa del Sara",
+              "Yapacaní",
+              "Ayacucho",
+              "Comarapa",
+              "Moro Moro",
+              "Pampa Grande",
+              "Quirusillas",
+              "Trigal",
+              "Valle Grande",
+              "El Torno",
+              "Postrer Valle"
+            ]
+          },
+          {
+            "name": "CODIGO",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "071301",
+            "categories": [
+              "070401",
+              "070402",
+              "070403",
+              "070404",
+              "070602",
+              "070901",
+              "070903",
+              "070103",
+              "070801",
+              "070802",
+              "070803",
+              "070902",
+              "070904",
+              "071301",
+              "070105",
+              "070804"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 25."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
