@@ -1,0 +1,126 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_plan_de_uso_de_suelos_de_santa_cruz_f825y",
+  "title": "Plan de uso de suelos de Santa Cruz",
+  "description": "El mapa presenta el plan de uso de suelos del departamento de Santa Cruz, el cual es un instrumento técnico normativo del ordenamiento territorial que determina las opciones de uso de suelo.",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_plan_de_uso_de_suelos_de_santa_cruz_f825y/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 903131,
+      "hash": "sha256:800943968a3c435b62ca8b10d37bf7f6119e37ecd25d32ebc79cfb38639751b9",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_plan_de_uso_de_suelos_de_santa_cruz_f825y.273"
+          },
+          {
+            "name": "categoria",
+            "type": "string",
+            "example": "AGROINT",
+            "categories": [
+              "AGUA",
+              "RESTRINGIDO",
+              "AGROINT",
+              "AGROEXT",
+              "AGROSILVO",
+              "PROTEGIDAS",
+              "FORESTAL",
+              "FPPZAyP_NKM",
+              "STACRUZ"
+            ]
+          },
+          {
+            "name": "plus",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "AR"
+          },
+          {
+            "name": "descrip",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Agricultura bajo riego"
+          },
+          {
+            "name": "sup_ha",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 2637250
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "example": "SANTA CRUZ",
+            "categories": [
+              "SANTA CRUZ",
+              "COCHABAMBA",
+              "BENI"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "example": "Cordillera",
+            "categories": [
+              "Cordillera",
+              "Velasco",
+              "Chiquitos",
+              "Guarayos",
+              "Ichilo",
+              "Ñuflo De Chavez",
+              "Angel Sandoval",
+              "German Busch",
+              "Sara",
+              "Andres Ibañez",
+              "Obispo Santisteban",
+              "Valle Grande",
+              "Florida",
+              "Manuel María Caballero",
+              "Warnes",
+              "Carrasco",
+              "Marban"
+            ]
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "example": "Lagunillas"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Filas sin geometría: 1. Geometrías inválidas, conservadas sin reparar: 2."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
