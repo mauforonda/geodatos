@@ -1,0 +1,164 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_criogrande_fisiografia",
+  "title": "Plan Director de la Cuenca Río Grande - Fisiografía_ Bolivia",
+  "description": "El mapa muestra la descripción fisiográfica que existe en la Cuenca del Río Grande, compuesta de montañas, serranías, colinas, llanuras, planicies. Dato del Viceministerio de Recursos Hídricos y Riego a mayo 2017.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_criogrande_fisiografia/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 2047786,
+      "hash": "sha256:c422227e176e6ba9bb253594773a840f73433a75dbf2a681f6f63c8ab0823796",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "criogrande_fisiografia.16"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 53
+            }
+          },
+          {
+            "name": "objectid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 53
+            }
+          },
+          {
+            "name": "codfis_s",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "CiiL"
+          },
+          {
+            "name": "idsj12",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 54,
+              "maximum": 172
+            }
+          },
+          {
+            "name": "descripcio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Llanuras de Piedemonte, con diseccion Ligera"
+          },
+          {
+            "name": "cod_geol",
+            "type": "string",
+            "example": "Q",
+            "categories": [
+              "Q",
+              "T",
+              "O, D,",
+              "O, K,",
+              "T, C",
+              "T, Q",
+              "D, C,",
+              "D, O",
+              "D, Q",
+              "D, S",
+              "D, S-D",
+              "O",
+              "O, D",
+              "O, S",
+              "O, S,",
+              "O, S-D",
+              "O, T,",
+              "Q, D,",
+              "Q, O,",
+              "S",
+              "T, C,",
+              "T, K",
+              "Ti, Ti",
+              "Tl",
+              "Tl, Ti"
+            ]
+          },
+          {
+            "name": "cod_veg",
+            "type": "string",
+            "example": "VC,VF,IIIB,IVB,"
+          },
+          {
+            "name": "gpaisaje",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Ci",
+            "categories": [
+              "Sc",
+              "Bl",
+              "Cs",
+              "Ss",
+              "Cm",
+              "Cc",
+              "Cp",
+              "Cl",
+              "Si",
+              "Ci",
+              "Sl",
+              "A",
+              "Bc",
+              "Bi",
+              "Hi",
+              "Ur"
+            ]
+          },
+          {
+            "name": "paisaje",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Cii"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 3."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
