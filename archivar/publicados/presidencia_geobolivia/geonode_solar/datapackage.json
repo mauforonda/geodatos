@@ -1,0 +1,64 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_solar",
+  "title": "Mapa solar de Bolivia_ 2010",
+  "description": "El presente mapa muestra información basada en la implementación de técnicas de interpolación, a partir de Sistemas de Información Geográfica (SIG) e imágenes satelitales, aplicando la metodología SSE (Surface meteorology and Solar Energy)de la Nasa. obteniendo así con estos valores la distribución temporal y espacial de la radiación solar. La presencia de la Cordillera de los Andes modifica en alguna medida la radiación solar, beneficiando con una mayor tasa a las zonas altas como el altiplano. Elaborado en el proyecto de Energía Solar de la Universidad Mayor de San Simón de Cochabamba difundido a través del Proyecto El Sol que ejecuta ENERGETICA y la windkraft Simonsfeld AG, en el año 2010.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_solar/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 865794,
+      "hash": "sha256:69989d3b3629275d99cf07f9ab1e8bc28f4143fb3dc2b1bb9c63b081ca22e70a",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "solar.3"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 17
+            }
+          },
+          {
+            "name": "radiacion",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "6.6 - 6.9"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
