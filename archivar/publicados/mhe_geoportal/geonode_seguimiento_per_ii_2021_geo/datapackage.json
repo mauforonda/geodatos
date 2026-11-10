@@ -1,0 +1,206 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mhe_geoportal_geonode_seguimiento_per_ii_2021_geo",
+  "title": "Seguimiento_PER_II_2021_Geo",
+  "sources": [
+    {
+      "title": "Geoportal del Viceministerio de Electricidad y Energías Renovables",
+      "path": "https://geoportal.mhe.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mhe_geoportal_geonode_seguimiento_per_ii_2021_geo/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 982663,
+      "hash": "sha256:2ac836144fb238bbf6b869cdb1512ac15f25485cf290b897813b7b8e549a21b7",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 31
+            }
+          },
+          {
+            "name": "Numero",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 31
+            }
+          },
+          {
+            "name": "Proyecto",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Proyecto “Ampliación Electrificación Rural Cantón Sauces”"
+          },
+          {
+            "name": "Estado",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "En Ejecucion",
+            "categories": [
+              "Ejecutado",
+              "En Ejecucion",
+              "REMITIDOS A ENDE PARA SU EJECUCION"
+            ]
+          },
+          {
+            "name": "Departamen",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Chuquisaca",
+            "categories": [
+              "Cochabamba",
+              "Chuquisaca",
+              "Beni",
+              "La Paz",
+              "Oruro",
+              "Pando",
+              "Tarija"
+            ]
+          },
+          {
+            "name": "Municipios",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "(1) Monteagudo"
+          },
+          {
+            "name": "Comunidade",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": ""
+          },
+          {
+            "name": "N_Familias",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 52,
+              "maximum": 1997
+            }
+          },
+          {
+            "name": "km_MT",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0.47,
+              "maximum": 229.45
+            }
+          },
+          {
+            "name": "km_BT",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1.97,
+              "maximum": 167.09
+            }
+          },
+          {
+            "name": "Mont_Const",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 761085.0,
+              "maximum": 25713800.51
+            }
+          },
+          {
+            "name": "Mont_Sup",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0.0,
+              "maximum": 1285690.03
+            }
+          },
+          {
+            "name": "Mont_Total",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 796911.0,
+              "maximum": 26999490.54
+            }
+          },
+          {
+            "name": "Avan_Fis",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 1
+            }
+          },
+          {
+            "name": "Avan_Fin_O",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 1
+            }
+          },
+          {
+            "name": "Avan_Fin_S",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 1
+            }
+          },
+          {
+            "name": "Observ",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Proyecto que será regularizado por Equipo Técnico del PER II-PEVD, se realizó la verificación en cam"
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
