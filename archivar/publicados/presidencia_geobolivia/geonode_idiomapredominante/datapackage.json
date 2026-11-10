@@ -1,0 +1,85 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_idiomapredominante",
+  "title": "Mapa de predominancia de idiomas por municipio en Bolivia_ 2002",
+  "description": "Este mapa muestra el idioma predominante tales como el uso del castellano, quechua, aymara y guaraní, además de los idiomas extranjeros en Bolivia, las combinaciones de uso de idiomas están referidas a 5 posibles alternativas a nivel municipal que fueron diferenciados en el mapa por tonalidades de color. Elaborado por la Unidad de Ordenamiento Territorial del Ministerio de Planificación del Desarrollo, en el año 2002 a escala 1:1000000.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_idiomapredominante/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 1012127,
+      "hash": "sha256:3b2fafc2f87f3a5ae11068dbc356ad9058ce661a49dcd6a3f29553fc14f83fcb",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "idiomapredominante.110"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 316
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "IdiomaPredominante.110"
+          },
+          {
+            "name": "comb1_",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "castellano-quechua",
+            "categories": [
+              "castellano-quechua",
+              "castellano-aymara",
+              "castellano-otros",
+              "castellano-guaraní",
+              "aymara-quechua"
+            ]
+          },
+          {
+            "name": "codseccio_",
+            "type": "string",
+            "example": "051401"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
