@@ -1,0 +1,135 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_riesgo_de_inundacion_en_la_cuenca_coroico_uewz8",
+  "title": "Riesgo de inundación en la Cuenca Coroico",
+  "description": "El mapa muestra el Riesgo de inundación en la Cuenca Coroico. El mapa muestra la evaluación del riesgo de inundaciones en la cuenca del río Coroico, clasificado en cinco niveles: muy bajo, bajo, medio, alto y muy alto. La representación gráfica incluye áreas de acción, límites municipales y poblaciones principales, proporcionando una visión clara de las zonas más vulnerables.En términos generales, los niveles de riesgo alto y muy alto se concentran en las zonas cercanas a cuerpos de agua y áreas más bajas, donde la topografía y la proximidad a ríos aumentan la exposición a inundaciones. Por el contrario, las áreas de riesgo bajo o muy bajo se encuentran en terrenos elevados o con menor influencia directa de cursos de agua.\nEntre los municipios con mayor proporción de áreas de riesgo muy alto se destacan Teoponte (78%), Caranavi (38%) y Tipuani (35%), lo que los posiciona como los municipios más críticos en términos de vulnerabilidad a inundaciones. En contraste, los municipios como Guanay (26%) y La Paz (19%) presentan una mayor proporción de áreas de bajo riesgo, lo que sugiere una menor exposición general.",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_riesgo_de_inundacion_en_la_cuenca_coroico_uewz8/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 826691,
+      "hash": "sha256:eb14ccddecbca40486267f54fbeb6bb8444e07c98f0ec0563e006a51a2ec4b17",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_riesgo_de_inundacion_en_la_cuenca_coroico_uewz8.353"
+          },
+          {
+            "name": "gridcode",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 5
+            }
+          },
+          {
+            "name": "leyenda",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Muy bajo",
+            "categories": [
+              "Muy alto",
+              "Medio",
+              "Muy bajo"
+            ]
+          },
+          {
+            "name": "sup_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0005,
+              "maximum": 279364.0058
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "LA PAZ",
+            "categories": [
+              "LA PAZ"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Murillo",
+            "categories": [
+              "Larecaja",
+              "Sur Yungas",
+              "Nor Yungas",
+              "Caranavi",
+              "Murillo",
+              "Franz Tamayo",
+              "Los Andes",
+              "Omasuyos"
+            ]
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "El Alto",
+            "categories": [
+              "Guanay",
+              "Teoponte",
+              "Coroico",
+              "Caranavi",
+              "Nuestra Señora de La Paz",
+              "Palos Blancos",
+              "Yanacachi",
+              "Coripata",
+              "La Asunta",
+              "Tipuani",
+              "Apolo",
+              "Mapiri",
+              "Alto Beni",
+              "Sorata",
+              "Chulumani",
+              "Achacachi",
+              "Batallas",
+              "El Alto",
+              "Pucarani"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 11."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
