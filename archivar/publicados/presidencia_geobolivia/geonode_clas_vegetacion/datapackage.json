@@ -1,0 +1,192 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_clas_vegetacion",
+  "title": "Mapa de clasificación de la vegetación del departamento de Chuquisaca_ 2000",
+  "description": "Este mapa temático muestra los diferentes tipos de vegetación existentes en el departamento de Chuquisaca. El mapa trata de organizar la información de variables de vegetación (inventarios florísticos y estructurales) para establecer la clasificación de la aptitud de la tierra, obtenidas mediante un trabajo de campo e información secundaria, identificándose así unidades homogéneas. Elaborado por el Proyecto de Zonificación Agroecológica y Establecimiento de una Base de Datos y Red de Sistema de Información Geográfica en Bolivia (ZONISIG) de la Unidad de Ordenamiento Territorial, en el año 2000 a escala 1:250000.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_clas_vegetacion/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 946523,
+      "hash": "sha256:c5d9a75ac79d8fa8f610a14d8350698bd4122d3cdce5b622775f23b2c963a39a",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "clas_vegetacion.403"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 409
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "clas_vegetacion.403"
+          },
+          {
+            "name": "fid_",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 0
+            }
+          },
+          {
+            "name": "area",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 0
+            }
+          },
+          {
+            "name": "perimeter",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 0
+            }
+          },
+          {
+            "name": "veget_",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 2,
+              "maximum": 410
+            }
+          },
+          {
+            "name": "veget_id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 410
+            }
+          },
+          {
+            "name": "domain",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "54"
+          },
+          {
+            "name": "cod_unesco",
+            "type": "string",
+            "example": "3B5d"
+          },
+          {
+            "name": "c_formaci_",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "MATORRAL",
+            "categories": [
+              "HERBACEA",
+              "BOSQUE RALO",
+              "Areas agr?colas y pasturas (sembradas y de succesi?n secundaria)",
+              "MATORRAL",
+              "BOSQUE DENSO",
+              "Plantaci?n forestal",
+              "MATORRAL ENANO",
+              "Area Urbana",
+              "cuerpo de agua"
+            ]
+          },
+          {
+            "name": "sub_clase",
+            "type": "string",
+            "example": "CADUCIFOLIO",
+            "categories": [
+              "GRAMINOIDE BAJA",
+              "SIEMPRE VERDE",
+              "XEROMORFICO",
+              "CADUCIFOLIO",
+              "GRAMINOIDE INTERMEDIA"
+            ]
+          },
+          {
+            "name": "grupo",
+            "type": "string",
+            "example": "espinoso",
+            "categories": [
+              "sinusio arborea",
+              "estacional",
+              "semideciduo",
+              "espinoso",
+              "sinusia arbustiva",
+              "deciduo por sequia",
+              "mixto o mosaico"
+            ]
+          },
+          {
+            "name": "piso",
+            "type": "string",
+            "example": "subalpino",
+            "categories": [
+              "montano",
+              "submontano",
+              "subalpino",
+              "nublado",
+              "baja altitud",
+              "alpino",
+              "nival"
+            ]
+          },
+          {
+            "name": "subforma",
+            "type": "string",
+            "example": "-",
+            "categories": [
+              "-"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 1."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
