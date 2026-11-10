@@ -1,0 +1,83 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_ecorregiones",
+  "title": "Plan Director Cuenca Río Grande – Ecorregiones",
+  "description": "PDCRG (Plan Director de la Cuenca Rio Grande). Muestra información de cobertura de Ecorregiones en la Cuenca del Plan Director del Río Grande.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_ecorregiones/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 1538392,
+      "hash": "sha256:a64a616fd6da5bcb11d007b03d6182cecf27f165b550c86b715b628de554bcde",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 4."
+          },
+          {
+            "name": "CAT_NEU",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1.1,
+              "maximum": 11.2
+            }
+          },
+          {
+            "name": "SUBECOREG",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "11.2. Puna Semihúmeda"
+          },
+          {
+            "name": "ECOREGION",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Puna Norteña"
+          },
+          {
+            "name": "AREA_KM2",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1549.58,
+              "maximum": 28405.77
+            }
+          },
+          {
+            "name": "CAT_ECORE",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 11
+            }
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
