@@ -1,0 +1,111 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mapbiomas_mapbiomas_argentina_national_protected_areas",
+  "title": "national_protected_areas",
+  "sources": [
+    {
+      "title": "MapBiomas",
+      "path": "https://shared-geoserver.mapbiomas.org/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mapbiomas_mapbiomas_argentina_national_protected_areas/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 568245,
+      "hash": "sha256:22fd3791177fe4999b4d593084a6f93db539e9e39fd4aad8a1c1ce3db0caef56",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "national_protected_areas.52"
+          },
+          {
+            "name": "FEATURE_ID",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 845,
+              "maximum": 896
+            }
+          },
+          {
+            "name": "TERRITORY_",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "area-protegida-nacional",
+            "categories": [
+              "area-protegida-nacional"
+            ]
+          },
+          {
+            "name": "NAME",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "PN Los Glaciares"
+          },
+          {
+            "name": "LEVEL_1",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Argentina",
+            "categories": [
+              "Argentina"
+            ]
+          },
+          {
+            "name": "LEVEL_2",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "PARQUE NACIONAL",
+            "categories": [
+              "PARQUE NACIONAL",
+              "RESERVA NATURAL",
+              "PARQUE INTERJURISDICCIONAL",
+              "RESERVA NACIONAL",
+              "MONUMENTO NATURAL",
+              "RESERVA NATURAL EDUCATIVA"
+            ]
+          },
+          {
+            "name": "NAME_PT_BR",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "PN Los Glaciares [PARQUE NACIONAL] [Argentina]"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 12."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
