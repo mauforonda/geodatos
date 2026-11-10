@@ -1,0 +1,162 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_sim_tblzonapoa",
+  "title": "Zonas POA",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz",
+      "path": "http://sitservicios.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_sim_tblzonapoa/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 699497,
+      "hash": "sha256:bda8d0db242700d7901eaf87e1895856d281d8fb55e9af092f6ced225db74e74",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "tblzonapoa.09   012  2019"
+          },
+          {
+            "name": "cod_zona",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "012  "
+          },
+          {
+            "name": "nombre_zona",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "BAJO BALLIVIAN"
+          },
+          {
+            "name": "cod_distrito",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "09   "
+          },
+          {
+            "name": "cod_censo",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.0,
+              "maximum": 0.0
+            }
+          },
+          {
+            "name": "cod_macro",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "02   ",
+            "categories": [
+              "03   ",
+              "05   ",
+              "02   ",
+              "04   ",
+              "01   ",
+              "09   ",
+              "05",
+              "08   ",
+              "09",
+              "07   ",
+              "02",
+              "08",
+              "01",
+              "03",
+              "06   ",
+              "06",
+              "04",
+              "07"
+            ]
+          },
+          {
+            "name": "nombre_corto",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "BAJO BALLIVIAN"
+          },
+          {
+            "name": "cod_estado",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 2,
+              "maximum": 2
+            }
+          },
+          {
+            "name": "fecha_registro",
+            "type": "datetime",
+            "constraints": {
+              "minimum": "2014-08-04T04:00:00+00:00",
+              "maximum": "2019-09-25T04:00:00+00:00"
+            }
+          },
+          {
+            "name": "cod_anterior",
+            "type": "string",
+            "example": "0312034",
+            "categories": [
+              "0312034",
+              "0519016",
+              "0519021"
+            ]
+          },
+          {
+            "name": "observacion",
+            "type": "string",
+            "example": "POR CAMBIO DE MACRODISTRITO",
+            "categories": [
+              "SE HABILITO EN FECHA 30/08/2017 A SOLICTUD DE SUBALCALDIA SUR PARA POA 2018",
+              "POR CAMBIO DE MACRODISTRITO"
+            ]
+          },
+          {
+            "name": "estado_zona_otb",
+            "type": "integer"
+          },
+          {
+            "name": "gestion",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 2019,
+              "maximum": 2019
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon, Polygon. Filas sin geometría: 1. Geometrías inválidas, conservadas sin reparar: 2."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
