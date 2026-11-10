@@ -1,0 +1,123 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mdpyep_sitap_infraestructura_via_fundamental",
+  "title": "Via_Fundamental",
+  "sources": [
+    {
+      "title": "Sistema Territorial de Apoyo a la Producción (SITAP) del Ministerio de Desarrollo Productivo y Economía Plural",
+      "path": "https://geodata-bolivia.produccion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mdpyep_sitap_infraestructura_via_fundamental/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 1331617,
+      "hash": "sha256:a61b1a3099519d2a2f12c9876427b84743fc67c50038107348f89f462cbe8500",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Via_Fundamental.223"
+          },
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 657
+            }
+          },
+          {
+            "name": "red_vial",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Fundamental",
+            "categories": [
+              "Fundamental"
+            ]
+          },
+          {
+            "name": "tipo_via",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Asfaltado",
+            "categories": [
+              "Asfaltado"
+            ]
+          },
+          {
+            "name": "Inicio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "San Pedro de Quemez"
+          },
+          {
+            "name": "Fin",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Hito LX"
+          },
+          {
+            "name": "transitab",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Todo el año",
+            "categories": [
+              "Todo el año"
+            ]
+          },
+          {
+            "name": "long_m",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 3.46,
+              "maximum": 194959.9
+            }
+          },
+          {
+            "name": "long_km",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 194.96
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
