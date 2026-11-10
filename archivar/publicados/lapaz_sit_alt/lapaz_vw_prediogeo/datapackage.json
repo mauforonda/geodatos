@@ -1,0 +1,192 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_alt_lapaz_vw_prediogeo",
+  "title": "vw_PredioGeo",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)",
+      "path": "http://sitservicios.lapaz.bo/ows38.jsp"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_lapaz_vw_prediogeo/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 715301,
+      "hash": "sha256:a32a5ebc150abc4ca1ae500b710dc2905064c92aa01d5a6bc6c3b8d4623718cc",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "vw_PredioGeo.fid-50b080f7_19e79b2e7c7_-1d9f"
+          },
+          {
+            "name": "IdPredio",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 23168
+            }
+          },
+          {
+            "name": "distrito",
+            "type": "string",
+            "example": "31",
+            "categories": [
+              "34",
+              "20",
+              "28",
+              "31",
+              "44",
+              "47",
+              "46",
+              "24",
+              "2",
+              "33",
+              "27",
+              "35",
+              "45",
+              "12",
+              "14",
+              "17",
+              "36",
+              "444"
+            ]
+          },
+          {
+            "name": "Manzana",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "719"
+          },
+          {
+            "name": "Lote",
+            "type": "string",
+            "example": ""
+          },
+          {
+            "name": "subPredio",
+            "type": "string",
+            "example": "0",
+            "categories": [
+              "0",
+              "1",
+              "2",
+              "3",
+              "4",
+              "",
+              "5"
+            ]
+          },
+          {
+            "name": "idSector",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 2132
+            }
+          },
+          {
+            "name": "nombreSector",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "INCA LLOJETA SECTOR C - ROSAL 2019"
+          },
+          {
+            "name": "idTipologiaSector",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 18
+            }
+          },
+          {
+            "name": "descTipologiaSector",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "RELEVAMIENTO (2019)",
+            "categories": [
+              "MEGADESLIZAMIENTO(2011)",
+              "RELEVAMIENTO (2019)",
+              "RELEVAMIENTO (2020)",
+              "RELEVAMIENTO (2012)",
+              "RELEVAMIENTO (2011)",
+              "RELEVAMIENTO HISTORICO(2009)",
+              "RELEVAMIENTO (2016)",
+              "RELEVAMIENTO (2021)",
+              "RELEVAMIENTO (2017)",
+              "RELEVAMIENTO (2018)"
+            ]
+          },
+          {
+            "name": "empadronado",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.0,
+              "maximum": 1.0
+            }
+          },
+          {
+            "name": "DescFranja",
+            "type": "string",
+            "example": "S/D",
+            "categories": [
+              "COLAPSADO",
+              "EN MONITOREO",
+              "A DEMOLER",
+              "MONITOREO Y SEGURIDAD",
+              "S/D",
+              "FUERA DE FRANJA",
+              "EVALUACION",
+              "DESLIZAMIENTO ACTIVO"
+            ]
+          },
+          {
+            "name": "idFranja",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.0,
+              "maximum": 17.0
+            }
+          },
+          {
+            "name": "idfases",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.0,
+              "maximum": 3.0
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Polygon, MultiPolygon. Geometrías inválidas, conservadas sin reparar: 1."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
