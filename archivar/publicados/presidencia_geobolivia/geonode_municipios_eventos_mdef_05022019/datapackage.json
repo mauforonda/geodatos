@@ -1,0 +1,130 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_municipios_eventos_mdef_05022019",
+  "title": "Eventos y Daños en Municipios por lluvias_ 05 febrero 2019_ Bolivia",
+  "description": "El mapa muestra los eventos y daños producidos por lluvias fuertes en 21 municipios en 7 departamentos: La Paz, Beni, Cochabamba, Santa Cruz, Potosí, Chuquisaca y Tarija, reportados hasta la fecha 05 de febrero del presente año, estos eventos corresponden a: Inundación, Deslizamientos, Riadas y Desbordes, los daños son a: Viviendas, Cultivos, Caminos e Infraestructuras. Información obtenida del reporte diario nacional de alerta de riesgos y afectación SINAGER-SAT Nº 17 del Viceministerio de Defensa Civil, a febrero del 2019.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_municipios_eventos_mdef_05022019/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 1032202,
+      "hash": "sha256:8262b2bc3e099acc584a48141dae7357f08157df662697aeef965575ce5c296c",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 21
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0,
+              "maximum": 20
+            }
+          },
+          {
+            "name": "cod_ut",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "050104"
+          },
+          {
+            "name": "departamen",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Potosí",
+            "categories": [
+              "La Paz",
+              "Beni",
+              "Chuquisaca",
+              "Cochabamba",
+              "Potosí",
+              "Santa Cruz",
+              "Tarija"
+            ]
+          },
+          {
+            "name": "provincia",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Tomás Frías"
+          },
+          {
+            "name": "municipio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Urmiri"
+          },
+          {
+            "name": "capital",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Belén de Urmiri"
+          },
+          {
+            "name": "evento",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Riada",
+            "categories": [
+              "Inundación",
+              "Riada",
+              "Desborde",
+              "Deslizamiento",
+              "Riada y Deslizamiento"
+            ]
+          },
+          {
+            "name": "reporte",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Río Belén de Urmiri afecto cultivos de haba, papa, oca, isaña, cebolla, zanahoria y lechuga. Daños e"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
