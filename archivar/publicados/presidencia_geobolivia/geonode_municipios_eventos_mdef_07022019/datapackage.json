@@ -1,0 +1,133 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_municipios_eventos_mdef_07022019",
+  "title": "Eventos y Daños en Municipios por lluvias_ 07 febrero 2019_ Bolivia",
+  "description": "El mapa muestra los eventos y daños producidos por lluvias fuertes en 26 municipios en 8 departamentos: La Paz, Beni, Santa Cruz, Chuquisaca, Tarija, Cochabamba, Oruro y Potosí, reportados hasta el 07 de febrero del presente año, estos eventos corresponden a: Inundación, Deslizamientos, Riadas, Desbordes, Lluvias, Granizadas, los daños son a: Viviendas, Cultivos, Caminos e Infraestructuras. Información obtenida del reporte diario nacional de alerta de riesgos y afectación SINAGER-SAT Nº 19 del Viceministerio de Defensa Civil, a 07 de febrero del 2019.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_municipios_eventos_mdef_07022019/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 1273054,
+      "hash": "sha256:4363e1881526c47290998d48a562cea1776bd208a29e13242bec2f55be8b2699",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 26
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0,
+              "maximum": 25
+            }
+          },
+          {
+            "name": "cod_ut",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "050104"
+          },
+          {
+            "name": "departamen",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Potosí",
+            "categories": [
+              "La Paz",
+              "Chuquisaca",
+              "Beni",
+              "Cochabamba",
+              "Tarija",
+              "Potosí",
+              "Santa Cruz",
+              "Oruro"
+            ]
+          },
+          {
+            "name": "provincia",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Tomás Frías"
+          },
+          {
+            "name": "municipio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Urmiri"
+          },
+          {
+            "name": "capital",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Belén de Urmiri"
+          },
+          {
+            "name": "evento",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Riada",
+            "categories": [
+              "Riada",
+              "Inundación",
+              "Granizada",
+              "Desborde",
+              "Deslizamiento",
+              "Lluvias",
+              "Riada y Deslizamiento"
+            ]
+          },
+          {
+            "name": "reporte",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Río Belén de Urmiri afecto cultivos de haba, papa, oca, isaña, cebolla, zanahoria y lechuga. Daños e"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
