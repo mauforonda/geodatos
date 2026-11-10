@@ -1,0 +1,74 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_vientos",
+  "title": "Plan Director Cuenca Rio Grande – Vientos",
+  "description": "PDCRG (Plan Director de la Cuenca Rio Grande). La cobertura presenta la distribución espacial de velocidades de viento en el área del Plan Director del Río Grande.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_vientos/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 1286468,
+      "hash": "sha256:812be5d91cc1b474433a50f237a05e1db890d0c41addb33e968c333e596a54de",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "NUEVOS_MUN",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 0
+            }
+          },
+          {
+            "name": "COD",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 9
+            }
+          },
+          {
+            "name": "VEL_MED_AN",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "1.5 - 2.0",
+            "categories": [
+              "3.5 - 4.0",
+              "1.5 - 2.0",
+              "2.5 - 3.0",
+              "2.0 - 2.5",
+              "3.0 - 3.5",
+              "4.5 - 5.0",
+              "0.9 - 1.0",
+              "1.0 - 1.5",
+              "4.0 - 4.5"
+            ]
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
