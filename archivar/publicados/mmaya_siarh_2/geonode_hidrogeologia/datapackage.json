@@ -1,0 +1,106 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_hidrogeologia",
+  "title": "Plan Director Cuenca Rio Grande - Hidrogeología",
+  "description": "PDCRG (Plan Director de la Cuenca Rio Grande). Muestra la zonificación de Unidades Hidrogeológicas en el marco del Plan Director de la Cuenca del Río Grande.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_hidrogeologia/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 1259551,
+      "hash": "sha256:ba50533cbb6aef5fc27077c2d6b9f6325ca931b79814ad117092c95dda8fee64",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "UNIDAD",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Mz Pz",
+            "categories": [
+              "Qc",
+              "Ts",
+              "K",
+              "QTi",
+              "Mz Pz",
+              "Qf",
+              "Qs",
+              "Tvs"
+            ]
+          },
+          {
+            "name": "PERIODO",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Mesozóico a Paleózoico",
+            "categories": [
+              "Cuaternario",
+              "Terciario",
+              "Cretásico",
+              "Cuaternario a Terciario",
+              "Mesozóico a Paleózoico"
+            ]
+          },
+          {
+            "name": "DESCRIP_GL",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Areniscas, cuarcitas, lulitas, limolitas, conglomerados",
+            "categories": [
+              "Areniscas, arcilitas, conglomerados, limolitas, lateritas",
+              "Depósitos aluviales, fluvio-lacustres, glaciales, fluvio-glaciales, coluviales",
+              "Calizas, areniscas, calcareas, margas",
+              "Lavas y tobas riodaciticas, ignimbritas",
+              "Areniscas, cuarcitas, lulitas, limolitas, conglomerados",
+              "Depósitos aluviales, fluviales",
+              "Depósitos de sabanas húmedas",
+              "Flujos de lava con depósitos piroclásticos (v), conglomerados, areniscas, arcillas y yeso(s)"
+            ]
+          },
+          {
+            "name": "DESCRIP_AC",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Acuíferos locales restringidos a zonas fracturadas y ampliados por el  intemperismo, libres o confin"
+          },
+          {
+            "name": "Shape_Area",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0.00337259473192,
+              "maximum": 5.27775966705
+            }
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
