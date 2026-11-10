@@ -1,0 +1,100 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_criogrande_inundacion",
+  "title": "Plan Director de la Cuenca Río Grande - Zonas de Inundación_ Bolivia",
+  "description": "El mapa muestra la georreferenciación de las diferentes zonas de Inundación ubicadas en el área del Plan Director del Río Grande, establece una tipología de zonas; planicie de inundación ocasional, de ocasional a estacional, de inundación permanente, torrenteras, zonas de riesgo alto, medio y bajo. Dato del Viceministerio de Recursos Hídricos y Riego a mayo 2017.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_criogrande_inundacion/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 1150818,
+      "hash": "sha256:de6e952c70650c92774d562dfe511ea0ad1ab7e2f841c3534bbead70399548cd",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "criogrande_inundacion.1"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 14
+            }
+          },
+          {
+            "name": "objectid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 7
+            }
+          },
+          {
+            "name": "descrip",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Planicies de inundación ocasional",
+            "categories": [
+              "Planicies de inundación ocasional",
+              "Planicies de inundación ocasional a estacional",
+              "Planicies de inundación permanente",
+              "Riesgo de inundación Alto",
+              "Riesgo de inundación Bajo",
+              "Riesgo de inundación Medio",
+              "Torrenteras"
+            ]
+          },
+          {
+            "name": "shape_leng",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 1.54997650468,
+              "maximum": 71.6300416412
+            }
+          },
+          {
+            "name": "shape_area",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.016133436161,
+              "maximum": 0.394736390135
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 6."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
