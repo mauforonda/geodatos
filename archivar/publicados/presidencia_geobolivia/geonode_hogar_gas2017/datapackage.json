@@ -1,0 +1,79 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_hogar_gas2017",
+  "title": "Hogares con Gas Natural y/o Licuado 2017, Bolivia",
+  "description": "El mapa muestra el porcentaje de hogares que usan Gas Licuado y/o Gas Natural para cocinar, los departamentos con mayor porcentaje son: Santa Cruz, Cochabamba, La Paz, Tarija y Oruro, información elaborado por el Instituto Nacional de Estadística con información de las Encuestas de Hogares.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_hogar_gas2017/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 2012277,
+      "hash": "sha256:897d7d5d1e0092bd8722177e2d73c158d7b30338ab519885b464c10eba658488",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 9
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "minimum": 0,
+              "maximum": 8
+            }
+          },
+          {
+            "name": "c_ut",
+            "type": "string",
+            "example": "05"
+          },
+          {
+            "name": "departamen",
+            "type": "string",
+            "example": "Potosí"
+          },
+          {
+            "name": "km2",
+            "type": "number",
+            "constraints": {
+              "minimum": 37493.628,
+              "maximum": 374608.544
+            }
+          },
+          {
+            "name": "porcentaje",
+            "type": "number",
+            "constraints": {
+              "minimum": 60.8,
+              "maximum": 86.4
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
