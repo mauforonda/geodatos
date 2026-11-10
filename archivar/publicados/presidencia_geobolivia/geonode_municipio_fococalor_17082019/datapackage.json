@@ -1,0 +1,133 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_municipio_fococalor_17082019",
+  "title": "Focos de Calor por Municipio en el departamento de Santa Cruz el 17 agosto 2019_ Bolivia",
+  "description": "El mapa muestra el número de focos de calor por municipio en el departamento Santa Cruz presentados el 17 de agosto, en esta fecha se tiene la primera mayor cantidad alcanzando 8.461 focos de calor registrados durante este mes, lo que incremento más los incendios forestales, esta información fue procesada por el Ministerio de Medio Ambiente y Agua. Los municipios con mayor focos de calor son: San Ignacio (1.588 focos de calor), San Rafael (1.523), San Matías (1.273) y Charagua (1.092). Dato obtenido del Comando de Incidentes del Ministerio de Defensa el 2 de septiembre del presente año, los límites municipales solo tiene carácter referencial.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_municipio_fococalor_17082019/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 1076895,
+      "hash": "sha256:1031afc5f90bb65f2a0021330cb2ddafcb9370fc02c71e4055e1188f3afe72a8",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 16
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0,
+              "maximum": 15
+            }
+          },
+          {
+            "name": "cod_ut",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "070502"
+          },
+          {
+            "name": "departamen",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Santa Cruz",
+            "categories": [
+              "Santa Cruz"
+            ]
+          },
+          {
+            "name": "provincia",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Chiquitos",
+            "categories": [
+              "Chiquitos",
+              "Guarayos",
+              "Velasco",
+              "Ñuflo De Chávez",
+              "Germán Busch",
+              "Angel Sandoval",
+              "Cordillera"
+            ]
+          },
+          {
+            "name": "municipio",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Pailón"
+          },
+          {
+            "name": "capital",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Pailón"
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Focos de Calor",
+            "categories": [
+              "Focos de Calor"
+            ]
+          },
+          {
+            "name": "dia_17",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0,
+              "maximum": 1588
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
