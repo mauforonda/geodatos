@@ -1,0 +1,126 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_crocha_geomorfologia",
+  "title": "Plan Director Cuenca Río Rocha - Geomorfología_ Bolivia",
+  "description": "El mapa muestra la geomorfología de la Cuenca del Río Rocha que se halla en el departamento de Cochabamba a escala 1:50.000, la cuenca se ubica en la Cordillera Oriental, los paisajes son: Serranías, Morrenas, Colinas, Abanicos Aluviales, Escarpes, Laderas, Llanura Aluvial y Lacustre. Información del Viceministerio de Recursos Hídricos y Riego, ha marzo del 2017.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_crocha_geomorfologia/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 1622350,
+      "hash": "sha256:dec5f907726a12102727de4e54f40464fc0c6dc3c045dd46add42b4ffa1dc139",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "crocha_geomorfologia.240"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 3030
+            }
+          },
+          {
+            "name": "objectid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 3030
+            }
+          },
+          {
+            "name": "geoforma",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Serrania",
+            "categories": [
+              "Serrania",
+              "Ladera",
+              "Llanura Aluvial",
+              "Laguna",
+              "Escarpe",
+              "Abanicos",
+              "Morrenas",
+              "Llanura Lacustre",
+              "Colinas",
+              "Cono",
+              "Drenaje",
+              "Represa La Angostura",
+              "Río Rocha"
+            ]
+          },
+          {
+            "name": "descripcio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Serrania_Redondeada_con_Pendiente_Moderada"
+          },
+          {
+            "name": "ident",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 42
+            }
+          },
+          {
+            "name": "shape_leng",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 144.643778525,
+              "maximum": 88852.7227299
+            }
+          },
+          {
+            "name": "shape_area",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1211.74235678,
+              "maximum": 81943172.2797
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 23."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
