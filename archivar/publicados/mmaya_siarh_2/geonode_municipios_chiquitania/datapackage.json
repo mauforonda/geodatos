@@ -1,0 +1,92 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_municipios_chiquitania",
+  "title": "16 Municipios Chiquitania",
+  "description": "16 Municipios Chiquitania",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_municipios_chiquitania/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 839738,
+      "hash": "sha256:2bbf7dd9cb9590a3218724b0d8610db3a92ba1691f6e18f46a2d7a2a94bb2d2d",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "CAPITAL",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Pailón"
+          },
+          {
+            "name": "MUN_ALTERN",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Pailón"
+          },
+          {
+            "name": "NOM_DEP",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Santa Cruz",
+            "categories": [
+              "Santa Cruz"
+            ]
+          },
+          {
+            "name": "NOM_PROV",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Chiquitos",
+            "categories": [
+              "Chiquitos",
+              "Guarayos",
+              "Velasco",
+              "Ñuflo de Chávez",
+              "Germán Busch",
+              "Angel Sandoval",
+              "Cordillera"
+            ]
+          },
+          {
+            "name": "NOM_MUN",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Pailón"
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
