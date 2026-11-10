@@ -1,0 +1,74 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_cuencas_n6",
+  "title": "Plan Director Cuenca Río Tupiza – Cuencas Nivel 6",
+  "description": "PDCRT (Plan Director de la Cuenca Río Tupiza). Muestra las cuencas nivel 6 delimitado  y codificado por el método pfafstetter , en el marco del Plan Director de la Cuenca del Río Tupiza.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_cuencas_n6/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 1483169,
+      "hash": "sha256:93df4ed8aacf23a7563c9cf0a4b603ea62cffd6ba2d3a2e23fa83393e0c71540",
+      "schema": {
+        "fields": [
+          {
+            "name": "UHG",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "869446"
+          },
+          {
+            "name": "NOMBRE_MC",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Río Machacaya"
+          },
+          {
+            "name": "SUP_KM2",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1.31002961384,
+              "maximum": 159.275873745
+            }
+          },
+          {
+            "name": "SUP_HA",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 131.002961384,
+              "maximum": 15927.5873745
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
