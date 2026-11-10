@@ -1,0 +1,178 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_lapaz_tblzona",
+  "title": "Tabla zonas SIM",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz",
+      "path": "http://sitservicios.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_lapaz_tblzona/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 725127,
+      "hash": "sha256:16764b7208bb87cf53ec2c41de082be0af9949e7d8a68a3975d19236b65c8ec6",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "tblZona.012  .09   .02   .2019"
+          },
+          {
+            "name": "nombre_zona",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "BAJO BALLIVIAN"
+          },
+          {
+            "name": "viewbox",
+            "type": "string",
+            "example": "588467 8176806 209 400"
+          },
+          {
+            "name": "nombre_corto",
+            "type": "string",
+            "example": "BAJO BALLIVIAN"
+          },
+          {
+            "name": "cod_estado",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 2,
+              "maximum": 5
+            }
+          },
+          {
+            "name": "fecha_registro",
+            "type": "datetime",
+            "constraints": {
+              "minimum": "2014-08-04T04:00:00+00:00",
+              "maximum": "2019-09-25T04:00:00+00:00"
+            }
+          },
+          {
+            "name": "cod_anterior",
+            "type": "string",
+            "example": "0312034",
+            "categories": [
+              "0312034",
+              "0518005",
+              "0518006",
+              "0518011",
+              "0518017",
+              "0519002",
+              "0519006",
+              "0519007",
+              "0519008",
+              "0519009",
+              "0519013",
+              "0519016",
+              "0519021",
+              "0519027",
+              "0519029",
+              "0519030",
+              "0519032",
+              "0519034",
+              "0519040",
+              "0519042"
+            ]
+          },
+          {
+            "name": "observacion",
+            "type": "string",
+            "example": "ELIMINADO PORQUE LA ZONA NO CORRESPONDE AL DISTRITO 09 08062018",
+            "categories": [
+              "NUEVA REDISTRITACION QUE SE DIO DE BAJA EN FECHA 30/08/2017 EN POA 2018",
+              "SE HABILITO EN FECHA 30/08/2017 A SOLICTUD DE SUBALCALDIA SUR PARA POA 2018",
+              "ELIMINADO PORQUE LA ZONA NO CORRESPONDE AL DISTRITO 09 08062018",
+              "NUEVA REDISTRITACION QUE SE DIO DE BAJA EN FECHA 26/04/2018",
+              "POR CAMBIO DE MACRODISTRITO"
+            ]
+          },
+          {
+            "name": "gestion",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 2019,
+              "maximum": 2019
+            }
+          },
+          {
+            "name": "cod_macro",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "02   ",
+            "categories": [
+              "03   ",
+              "05   ",
+              "02   ",
+              "04   ",
+              "01   ",
+              "05",
+              "09   ",
+              "08   ",
+              "07   ",
+              "09",
+              "02",
+              "01",
+              "06   ",
+              "03",
+              "08",
+              "04",
+              "06",
+              "07",
+              "50",
+              "50   "
+            ]
+          },
+          {
+            "name": "cod_distrito",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "09   "
+          },
+          {
+            "name": "cod_zona",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "012  "
+          },
+          {
+            "name": "estado_zona_otb",
+            "type": "integer"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Polygon, MultiPolygon. Filas sin geometría: 27. Geometrías inválidas, conservadas sin reparar: 2."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
