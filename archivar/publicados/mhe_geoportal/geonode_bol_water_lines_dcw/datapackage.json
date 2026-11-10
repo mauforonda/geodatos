@@ -1,0 +1,84 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mhe_geoportal_geonode_bol_water_lines_dcw",
+  "title": "BOL_water_lines_dcw",
+  "sources": [
+    {
+      "title": "Geoportal del Viceministerio de Electricidad y Energías Renovables",
+      "path": "https://geoportal.mhe.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mhe_geoportal_geonode_bol_water_lines_dcw/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 835870,
+      "hash": "sha256:b863da3e83c3d6d3d116156a8fdf576439204412991e1e9325bb9e31761c62c1",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 3427
+            }
+          },
+          {
+            "name": "F_CODE_DES",
+            "type": "string",
+            "example": "River/Stream",
+            "categories": [
+              "River/Stream"
+            ]
+          },
+          {
+            "name": "HYC_DESCRI",
+            "type": "string",
+            "example": "Perennial/Permanent",
+            "categories": [
+              "Perennial/Permanent",
+              "Non-Perennial/Intermittent/Fluctuating"
+            ]
+          },
+          {
+            "name": "NAM",
+            "type": "string",
+            "example": "RIO DE CANCOSA"
+          },
+          {
+            "name": "ISO",
+            "type": "string",
+            "example": "BOL",
+            "categories": [
+              "BOL"
+            ]
+          },
+          {
+            "name": "NAME_0",
+            "type": "string",
+            "example": "Bolivia",
+            "categories": [
+              "Bolivia"
+            ]
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
