@@ -1,0 +1,183 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_umsa_iiag_plus_plus_la_paz_bid",
+  "title": "PLUS_LaPaz_BID",
+  "sources": [
+    {
+      "title": "Geoportal del Instituto de Investigaciones y Aplicaciones Geomáticas (IIAG) de la Universidad Mayor de San Andrés (UMSA)",
+      "path": "http://gtggeoportal.umsa.bo:8087/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_umsa_iiag_plus_plus_la_paz_bid/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 742414,
+      "hash": "sha256:1ff73af7fb2df441e7ae3fab56b8857ebe5559b59a4ac43adceb9f0aea95fb25",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "PLUS La Paz BID.138"
+          },
+          {
+            "name": "ZAE_ID",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 156
+            }
+          },
+          {
+            "name": "PLUS",
+            "type": "string",
+            "example": "3.1",
+            "categories": [
+              "4.2UR",
+              "2.1",
+              "4.1",
+              "4.1UR",
+              "4.2",
+              "5.1",
+              "3.1UR",
+              "3.1",
+              "5.6",
+              "2.1UR"
+            ]
+          },
+          {
+            "name": "ZAE",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "3.1",
+            "categories": [
+              "5.4",
+              "2.1",
+              "4.1",
+              "5.3",
+              "5.1",
+              "4.2",
+              "5.2",
+              "3.1",
+              "5.6",
+              "C. de agua"
+            ]
+          },
+          {
+            "name": "DEPTO",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "lp1",
+            "categories": [
+              "lp1"
+            ]
+          },
+          {
+            "name": "ZAEFIN1",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "ASP",
+            "categories": [
+              "Ful",
+              "Ape",
+              "F",
+              "Pul",
+              "ASPul",
+              "ASP",
+              "Ca",
+              "Rfvs"
+            ]
+          },
+          {
+            "name": "PAISAJE",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Llanuras",
+            "categories": [
+              "Llanuras",
+              "Piedemontes",
+              "Serranias",
+              "Colinas",
+              "Cuerpo de agua",
+              "Planicies",
+              "Serranias y Colinas",
+              "Llanuras y Piedemontes",
+              "Montañas y Serranias",
+              "Piedemontes y Llanuras"
+            ]
+          },
+          {
+            "name": "SUBPAISAJE",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Llanuras aluviales",
+            "categories": [
+              "Llanuras aluviales",
+              "Superficies de erosion",
+              "Llanuras de piedemonte",
+              "Colinas bajas",
+              "Llanuras fluviales",
+              "Serranias altas",
+              "Cuerpo de agua",
+              "Planicies bajas disectadas",
+              "Serranias bajas",
+              "Serranias medias",
+              "Llanuras bajas",
+              "Piedemontes",
+              "Llanura aluviales",
+              "Llanuras aluviales y Llanuras dePiedemonte",
+              "Llanuras de piedemontes y Llanuras aluviales",
+              "Montañas medias y Serranias altas, medias",
+              "Planicies altas, bajas y Llanuras aluviales",
+              "Serranias altas y Colinas bajas",
+              "Serranias altas, bajas",
+              "Serranias altas, bajas y Colinas bajas",
+              "Serranias altas, medias y bajas",
+              "Serranias,medias, bajas y Colinas bajas"
+            ]
+          },
+          {
+            "name": "AREA",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1545364,
+              "maximum": 28194101452
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
