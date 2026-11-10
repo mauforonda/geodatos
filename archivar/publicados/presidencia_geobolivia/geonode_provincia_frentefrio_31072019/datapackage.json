@@ -1,0 +1,110 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_provincia_frentefrio_31072019",
+  "title": "Alerta Meteoreológica en Provincias mes Agosto_ Bolivia 2019",
+  "description": "El mapa muestra las 33 provincias de 4 departamentos con alerta meteorológica donde se pronostica el ingreso de un frente frío al territorio nacional, que ocasionará descensos bruscos de temperatura (entre 9º C y 12º C) a ocurrir entre el día Jueves 01 hasta el día domingo 04 de agosto, también probabilidad de heladas desde el día viernes 02 hasta el día domingo 04 de agosto en: Los Valles de Tarija, Chuquisaca y Santa Cruz, el Nivel de Amenaza Meteorológica es NARANJA: Son fenómenos no habituales y con cierto grado de peligro para las actividades usuales del ser humano. Los departamentos y provincias son: Tarija (provincias Gran Chaco, Arce, Cercado, Mendez, Avilez y O' Connor), Chuquisaca (Luis Calvo, Hernando Siles, Azurduy, Tomina, Nor Cinti, Sur Cinti, Yamparaez, Zudañez y Boeto), Santa Cruz (Cordillera, Vallegrande, Florida, Ichilo, Santiesteban, Ibañez, Chiquitos, Warnes, Sara, Guarayos, Ñuflo de Chavez y Velasco), Beni (Moxos, Ballivian, Cercado, Yacuma, Marban y Mamoré). Información obtenida del Servicio Nacional de Meteorología e Hidrología a fecha 30 de julio del 2019.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_provincia_frentefrio_31072019/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 2221650,
+      "hash": "sha256:64ddd582552e7322d13e1686b94a72a968657bfb807664deeb61341a19753bda",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 33
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0,
+              "maximum": 32
+            }
+          },
+          {
+            "name": "c_ut",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "0604"
+          },
+          {
+            "name": "departamen",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Tarija",
+            "categories": [
+              "Santa Cruz",
+              "Chuquisaca",
+              "Beni",
+              "Tarija"
+            ]
+          },
+          {
+            "name": "provincia",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Avilés"
+          },
+          {
+            "name": "amenaza",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Meteorológica Naranja",
+            "categories": [
+              "Meteorológica Naranja"
+            ]
+          },
+          {
+            "name": "fecha",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Del 2 al 4 Aosto 2019",
+            "categories": [
+              "Del 2 al 4 Aosto 2019"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
