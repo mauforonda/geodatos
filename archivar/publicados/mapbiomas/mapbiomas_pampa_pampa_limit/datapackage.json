@@ -1,0 +1,74 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mapbiomas_mapbiomas_pampa_pampa_limit",
+  "title": "pampa-limit",
+  "sources": [
+    {
+      "title": "MapBiomas",
+      "path": "https://shared-geoserver.mapbiomas.org/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mapbiomas_mapbiomas_pampa_pampa_limit/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 776943,
+      "hash": "sha256:914031395ea2aa3bd9003fdc2e9c7f41d199bee5bbdaa7cc22e5a4f8825ebf29",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "example": "pampa-limit.1"
+          },
+          {
+            "name": "feature_id",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 1
+            }
+          },
+          {
+            "name": "territory",
+            "type": "string",
+            "example": "Limite do Pampa"
+          },
+          {
+            "name": "type",
+            "type": "string",
+            "example": "biome"
+          },
+          {
+            "name": "country",
+            "type": "string",
+            "example": ""
+          },
+          {
+            "name": "pol_level1",
+            "type": "string",
+            "example": ""
+          },
+          {
+            "name": "pol_level2",
+            "type": "string",
+            "example": ""
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 1."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
