@@ -1,0 +1,205 @@
+{
+  "type": "Collection",
+  "id": "geodatosbolivia_lapaz_sit_lapaz_areasequipamiento",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json",
+    "https://stac-extensions.github.io/vector/v0.1.0/schema.json",
+    "https://stac-extensions.github.io/projection/v2.0.0/schema.json",
+    "https://stac-extensions.github.io/file/v2.1.0/schema.json",
+    "https://stac-extensions.github.io/web-map-links/v1.3.0/schema.json"
+  ],
+  "title": "Areas de Equipamiento",
+  "description": "Areas de equipamiento general (historico).",
+  "license": "other",
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -68.21751679991623,
+          -16.55800992725078,
+          -68.02876039416455,
+          -16.402066080892823
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "providers": [
+    {
+      "name": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz",
+      "roles": [
+        "producer"
+      ],
+      "url": "http://sitservicios.lapaz.bo/geoserver/ows"
+    },
+    {
+      "name": "Internet Archive",
+      "roles": [
+        "host"
+      ],
+      "url": "https://archive.org/details/geodatosbolivia_lapaz_sit_lapaz_areasequipamiento"
+    }
+  ],
+  "table:primary_geometry": "geometry",
+  "table:row_count": 5000,
+  "table:columns": [
+    {
+      "name": "id",
+      "type": "string"
+    },
+    {
+      "name": "NOMBRE",
+      "type": "string"
+    },
+    {
+      "name": "LINAJE",
+      "type": "string"
+    },
+    {
+      "name": "NOMBRE_ESC",
+      "type": "string"
+    },
+    {
+      "name": "CODUSU",
+      "type": "string"
+    },
+    {
+      "name": "TIPOLOGIA",
+      "type": "string"
+    },
+    {
+      "name": "DESCRIPCIO",
+      "type": "string"
+    },
+    {
+      "name": "TIPO",
+      "type": "string"
+    },
+    {
+      "name": "SUBTIPO",
+      "type": "int32"
+    },
+    {
+      "name": "geometry",
+      "type": "binary",
+      "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 8."
+    }
+  ],
+  "summaries": {
+    "vector:geometry_types": [
+      "MultiPolygon"
+    ]
+  },
+  "assets": {
+    "data": {
+      "href": "https://archive.org/download/geodatosbolivia_lapaz_sit_lapaz_areasequipamiento/dataset.geoparquet",
+      "type": "application/vnd.apache.parquet",
+      "title": "GeoParquet",
+      "roles": [
+        "data"
+      ],
+      "proj:code": "EPSG:4326",
+      "file:size": 1235127,
+      "file:checksum": "122024520f6310418da6ccb6724cad9464d3d1fc394c4942964226506529be2edf9c"
+    },
+    "datapackage": {
+      "href": "./datapackage.json",
+      "type": "application/json",
+      "title": "Data Package: columnas, tipos y categorías",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "pmtiles": {
+      "href": "https://archive.org/download/geodatosbolivia_lapaz_sit_lapaz_areasequipamiento/dataset.pmtiles",
+      "type": "application/vnd.pmtiles",
+      "title": "Teselas vectoriales (PMTiles)",
+      "roles": [
+        "visual"
+      ],
+      "file:size": 348456,
+      "file:checksum": "122048f1dd37169c8f73d47f50c57484134d7b7bd1025c8e03259c3f28e990f02a39"
+    }
+  },
+  "pmtiles:min_zoom": 12,
+  "pmtiles:max_zoom": 14,
+  "pmtiles:tile_type": "mvt",
+  "pmtiles:center": [
+    -68.1231385,
+    -16.480038,
+    13
+  ],
+  "pmtiles:properties": [
+    {
+      "nombre": "LINAJE",
+      "tipo": "string",
+      "categorias": [
+        "EQUIPAMIENTOS",
+        " ",
+        "VACIO",
+        "ESTABLECIMIENTOS EDUCATIVOS PRIVADOS",
+        "ESTABLECIMIENTOS EDUCATIVOS PUBLICOS",
+        "AUXILIAR DE POLIGONOS",
+        "ESTABLECIMIENTOS DE EDUCACION SUPERIOR",
+        "EQUIPAMIENTOS ESPECIALES"
+      ]
+    },
+    {
+      "nombre": "CODUSU",
+      "tipo": "string",
+      "categorias": [
+        " ",
+        "E_OTRO",
+        "UNIV"
+      ]
+    },
+    {
+      "nombre": "DESCRIPCIO",
+      "tipo": "string",
+      "categorias": [
+        " ",
+        "EQUIPAMIENTO",
+        "AREAS DE RECREACION-DEPORTIVAS Y CULTURALES",
+        "Áreas de Provisión de servicios Instituciones del Estado(estatal o municiapal)",
+        "MERCADOS",
+        "Instalaciones Militares / Policiales"
+      ]
+    }
+  ],
+  "links": [
+    {
+      "rel": "root",
+      "href": "../../../catalog.json",
+      "type": "application/json",
+      "title": "Datos geográficos de Bolivia"
+    },
+    {
+      "rel": "parent",
+      "href": "../catalog.json",
+      "type": "application/json",
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz"
+    },
+    {
+      "rel": "via",
+      "href": "http://sitservicios.lapaz.bo/geoserver/ows",
+      "type": "text/html",
+      "title": "Servicio de origen"
+    },
+    {
+      "rel": "pmtiles",
+      "href": "https://archive.org/download/geodatosbolivia_lapaz_sit_lapaz_areasequipamiento/dataset.pmtiles",
+      "type": "application/vnd.pmtiles",
+      "pmtiles:layers": [
+        "dataset"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,163 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_lapaz_areasequipamiento",
+  "title": "Areas de Equipamiento",
+  "description": "Areas de equipamiento general (historico).",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz",
+      "path": "http://sitservicios.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_lapaz_areasequipamiento/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 1235127,
+      "hash": "sha256:24520f6310418da6ccb6724cad9464d3d1fc394c4942964226506529be2edf9c",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "areasequipamiento.1459"
+          },
+          {
+            "name": "NOMBRE",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": " "
+          },
+          {
+            "name": "LINAJE",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": " ",
+            "categories": [
+              "EQUIPAMIENTOS",
+              " ",
+              "VACIO",
+              "ESTABLECIMIENTOS EDUCATIVOS PRIVADOS",
+              "ESTABLECIMIENTOS EDUCATIVOS PUBLICOS",
+              "AUXILIAR DE POLIGONOS",
+              "ESTABLECIMIENTOS DE EDUCACION SUPERIOR",
+              "EQUIPAMIENTOS ESPECIALES"
+            ]
+          },
+          {
+            "name": "NOMBRE_ESC",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": " "
+          },
+          {
+            "name": "CODUSU",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": " ",
+            "categories": [
+              " ",
+              "E_OTRO",
+              "UNIV"
+            ]
+          },
+          {
+            "name": "TIPOLOGIA",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "CENTROS DE SALUD",
+            "categories": [
+              "EQUIPAMIENTO",
+              "AREAS VERDES",
+              "EQUIPAMIENTO DEPORTIVO Y CULTURAL",
+              "UE_PRIVADAS",
+              "AREA VERDE",
+              "UE_PUBLICAS",
+              "EQUIPAMIENTO ESTATAL/MUNICIPAL",
+              "CENTROS DE SALUD",
+              "MERCADOS",
+              "AREA DE EQUIPAMIENTO",
+              "TERMINAL DE BUSES",
+              "EQUIPAMIENTOS DEPORTIVOS",
+              "ESTACION DE SERVICIO",
+              "IGLESIA",
+              "INSTALACIONES MILITARES/POLICIALES",
+              "UNIVERSIDADES",
+              "CEMENTERIOS",
+              "ADMINISTRACION",
+              "EQUIPAMIENTO VARIOS",
+              "CULTURAL",
+              "RELLENO SANITARIO",
+              "RETEN DE EMERGENCIA"
+            ]
+          },
+          {
+            "name": "DESCRIPCIO",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": " ",
+            "categories": [
+              " ",
+              "EQUIPAMIENTO",
+              "AREAS DE RECREACION-DEPORTIVAS Y CULTURALES",
+              "Áreas de Provisión de servicios Instituciones del Estado(estatal o municiapal)",
+              "MERCADOS",
+              "Instalaciones Militares / Policiales"
+            ]
+          },
+          {
+            "name": "TIPO",
+            "type": "string",
+            "example": "SALUD",
+            "categories": [
+              "AREA VERDE",
+              "EDUCACION",
+              "RECREACION",
+              "SALUD",
+              "ABASTO",
+              "TERMINAL ESTACION",
+              "RELIGIOSO",
+              "SEGURIDAD",
+              "PARQUES",
+              "CEMENTERIO",
+              "CULTURAL"
+            ]
+          },
+          {
+            "name": "SUBTIPO",
+            "type": "integer"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 8."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
