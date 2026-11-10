@@ -1,0 +1,174 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_alt_sit_drenaje_urbano",
+  "title": "Drenaje Urbano 2026",
+  "description": "Mapa de Drenaje del Área Urbana del Municipio de La Paz 2026, escala 1:20.000, R.E. 0226/2026, SMRGV",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)",
+      "path": "http://sitservicios.lapaz.bo/ows38.jsp"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_sit_drenaje_urbano/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 1880609,
+      "hash": "sha256:d47ce18c793383c05d515ac62c64446241bc59d0c67bc0b6bfeb45449a455bba",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "drenaje_urbano.1331"
+          },
+          {
+            "name": "OBJECTID",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 2138
+            }
+          },
+          {
+            "name": "LAYER",
+            "type": "string",
+            "example": "Río Achocalla"
+          },
+          {
+            "name": "ID_RIO",
+            "type": "string",
+            "example": "Río Achocalla"
+          },
+          {
+            "name": "TipoEstruc",
+            "type": "string",
+            "example": "canal",
+            "categories": [
+              "lecho natural",
+              "drenaje natural no identificado",
+              "boveda",
+              "canal",
+              "barreras transversales",
+              "torrenteras",
+              "boveda antigua",
+              "lecho natural "
+            ]
+          },
+          {
+            "name": "Material",
+            "type": "string",
+            "example": " ",
+            "categories": [
+              " "
+            ]
+          },
+          {
+            "name": "Ancho",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 0
+            }
+          },
+          {
+            "name": "Pendiente",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 0
+            }
+          },
+          {
+            "name": "Estado",
+            "type": "string",
+            "example": " ",
+            "categories": [
+              " "
+            ]
+          },
+          {
+            "name": "Cuenca",
+            "type": "string",
+            "example": "Achocalla",
+            "categories": [
+              "Choqueyapu",
+              "Irpavi",
+              "Orkojahuira",
+              "Achumani",
+              "Huayñajahuira",
+              "Jilusaya",
+              "Aranjuez",
+              "Achocalla",
+              "Mallasa",
+              "Lipari"
+            ]
+          },
+          {
+            "name": "Long_Km",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.0031906738236529694,
+              "maximum": 20.645654946903612
+            }
+          },
+          {
+            "name": "Long_M",
+            "type": "number",
+            "constraints": {
+              "minimum": 3.1906738236529693,
+              "maximum": 20645.65494690361
+            }
+          },
+          {
+            "name": "Rio_Qda",
+            "type": "string",
+            "example": "R",
+            "categories": [
+              "R",
+              "Q"
+            ]
+          },
+          {
+            "name": "Nro_rios",
+            "type": "number",
+            "constraints": {
+              "minimum": 1.0,
+              "maximum": 2.0
+            }
+          },
+          {
+            "name": "Shape_Length",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 20645.65494690361
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
