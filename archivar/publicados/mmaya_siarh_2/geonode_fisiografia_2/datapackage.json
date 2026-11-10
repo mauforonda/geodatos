@@ -1,0 +1,192 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_fisiografia_2",
+  "title": "Plan Director Cuenca Río Tupiza – Fisiografía",
+  "description": "PDCRT (Plan Director Cuenca Río Tupiza). Muestra la ubicación y la información relevante de la fisiografía de la cuenca, en el marco del Plan Director de la Cuenca del Río Tupiza.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_fisiografia_2/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 979729,
+      "hash": "sha256:4c88487c6ffa4875237015a8f0b25d55ce64fb8f597e6daf98d6555d6ee74afa",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "FISIOGRAFI",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "CCmm",
+            "categories": [
+              "CVll1",
+              "CVll3",
+              "CIim",
+              "CPcf",
+              "CCmf",
+              "CMmf",
+              "CMmm",
+              "CMbm",
+              "CSbf",
+              "CSbm",
+              "CSmf",
+              "CSmm",
+              "CCam",
+              "CCbf",
+              "CCbx",
+              "CCml",
+              "CCmm",
+              "CIim2",
+              "CPnx2",
+              "CSaf",
+              "CSam",
+              "CVll2",
+              "CVll4"
+            ]
+          },
+          {
+            "name": "NO",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 3,
+              "maximum": 36
+            }
+          },
+          {
+            "name": "MAX_ALTITU",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 2900,
+              "maximum": 4600
+            }
+          },
+          {
+            "name": "MIN_ALTITU",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 2250,
+              "maximum": 4100
+            }
+          },
+          {
+            "name": "DESCRIPCIO",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Colina media de diseccion moderada",
+            "categories": [
+              "Valle aluvial, terrazas",
+              "Piedemonte de diseccion moderada",
+              "Valle aluvial, abanicos aluviales",
+              "Cuestas de diseccion fuerte",
+              "Colina media de diseccion fuerte",
+              "Montaña media de diseccion fuerte",
+              "Montaña media de diseccion moderada",
+              "Montaña baja de diseccion moderada",
+              "Serrania baja de diseccion fuerte",
+              "Serrania baja de diseccion moderada",
+              "Serrania media de diseccion fuerte",
+              "Serrania media de diseccion moderada",
+              "Colina alta de diseccion moderada",
+              "Colina baja de diseccion extrema",
+              "Colina baja de diseccion fuerte",
+              "Colina media de diseccion ligera",
+              "Colina media de diseccion moderada",
+              "Serrania alta de diseccion fuerte",
+              "Serrania alta de diseccion moderada",
+              "Superficie de erosion, penillanura",
+              "Valle aluvial, lecho de rio",
+              "Valle aluvial, valle menor"
+            ]
+          },
+          {
+            "name": "LITOLOGIA",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "lutita, pizarra",
+            "categories": [
+              "coluvial, aluvial",
+              "coluvial",
+              "cuarcita, pizarra",
+              "arenisca, conglomerado",
+              "pizarra",
+              "pizarra, lutita",
+              "riolita, cuarcita",
+              "aluvial",
+              "cuarcita",
+              "cuarcita, pizarra, lutita",
+              "lutita, pizarra",
+              "pizarra, cuarcita",
+              "coluvial, fluvial",
+              "lutita, pizarra, coluvio",
+              "pizarra, coluvio"
+            ]
+          },
+          {
+            "name": "RELIEVE",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "fuert inclinado 10-15%",
+            "categories": [
+              "casi plano 0-2%",
+              "escarpado 30-60%",
+              "inclinado 5-10%",
+              "lig inclinado 2-5%",
+              "mod escarpado 15-30%",
+              "fuert inclinado 10-15%",
+              "muy escarpado 90%",
+              "fuertemente inclinado 10-15%"
+            ]
+          },
+          {
+            "name": "SUP_KM2",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0.152938973515,
+              "maximum": 250.201561172
+            }
+          },
+          {
+            "name": "SUP_HA",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 15.2938973515,
+              "maximum": 25020.1561172
+            }
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
