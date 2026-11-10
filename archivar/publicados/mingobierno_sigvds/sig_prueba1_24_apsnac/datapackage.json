@@ -1,0 +1,112 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mingobierno_sigvds_sig_prueba1_24_apsnac",
+  "title": "24_APsNAC",
+  "description": "areas protegidas",
+  "sources": [
+    {
+      "title": "SIG-VDS en Gobierno",
+      "path": "https://sig-vds.mingobierno.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mingobierno_sigvds_sig_prueba1_24_apsnac/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 1633861,
+      "hash": "sha256:723bc5fe8a12fc1d489fff3f3625cc1320e7f6047b28205b5094b7e8a025cec4",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "24_APsNAC.5"
+          },
+          {
+            "name": "objectid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 29
+            }
+          },
+          {
+            "name": "cod_ap",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "AP-05"
+          },
+          {
+            "name": "nombre_ap_",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Eduardo Avaroa"
+          },
+          {
+            "name": "nomb_corto",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Eduardo Avaroa"
+          },
+          {
+            "name": "categoria",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Reserva Nacional de Fauna Andina",
+            "categories": [
+              "Parque Nacional",
+              "Área Natural de Manejo Integrado",
+              "Reserva Nacional de Vida Silvestre",
+              "Parque Nacional y Area de Manejo Integrado",
+              "Parque Nacional y Territorio Indígena",
+              "Reserva Nacional de Fauna Andina",
+              "Reserva Nacional de Flora y Fauna"
+            ]
+          },
+          {
+            "name": "base_leg",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "DS 11239 del 13/12/1973 - DS 19313 del 14/05/1981 - SD 18431 del 26/06/1981"
+          },
+          {
+            "name": "nom_comple",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "RESERVA NACIONAL DE FAUNA ANDINA EDUARDO AVAROA"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
