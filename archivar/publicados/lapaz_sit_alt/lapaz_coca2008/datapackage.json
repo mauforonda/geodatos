@@ -1,0 +1,59 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_alt_lapaz_coca2008",
+  "title": "Monitoreo Coca 2008",
+  "description": "Acuerdo entre Gobierno Nacional y Productores de Hoja de Coca.",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)",
+      "path": "http://sitservicios.lapaz.bo/ows38.jsp"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_lapaz_coca2008/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 2382191,
+      "hash": "sha256:3826fb0e848c29efe4ca95e0a0ff4ae35dce5ed60b4fadb8e2bd10d878646101",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "coca2008.1334"
+          },
+          {
+            "name": "Sup_Ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.02364301,
+              "maximum": 4083.97001325
+            }
+          },
+          {
+            "name": "GDB_GEOMATTR_DATA",
+            "type": "integer"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Polygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
