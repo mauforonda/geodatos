@@ -1,0 +1,118 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mhe_geoportal_geonode_lmt_sistemasrurales_2019",
+  "title": "LMT_SistemasRurales_2019",
+  "sources": [
+    {
+      "title": "Geoportal del Viceministerio de Electricidad y Energías Renovables",
+      "path": "https://geoportal.mhe.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mhe_geoportal_geonode_lmt_sistemasrurales_2019/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 1967410,
+      "hash": "sha256:f115de28ccb764cf8476693fd36d4670bf1561b151369c15e6da09e372549cf2",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 39567
+            }
+          },
+          {
+            "name": "LENGTH",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 103313.815752
+            }
+          },
+          {
+            "name": "FASE",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 5
+            }
+          },
+          {
+            "name": "SISTEMA",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Lipez 1",
+            "categories": [
+              "Ocuri",
+              "Don Diego",
+              "Sacaca",
+              "Llica-Tahua",
+              "Lipez ii",
+              "COTAGAITA",
+              "Punutuma",
+              "Tupiza",
+              "",
+              "PORCO",
+              "Lipez 1",
+              "Chayanta",
+              "QUETENA"
+            ]
+          },
+          {
+            "name": "PROPIEDAD",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "S",
+            "categories": [
+              "",
+              "SEPSA",
+              "S",
+              "P"
+            ]
+          },
+          {
+            "name": "ALIMENTADO",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "San Cristobal",
+            "categories": [
+              "",
+              "OCURI",
+              "TELAMAYU",
+              "Punutuma",
+              "Tupiza",
+              "San Cristobal",
+              "QUETENA"
+            ]
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
