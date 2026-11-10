@@ -1,0 +1,74 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_lpz_region_2018",
+  "title": "Regiones del Departamento de La Paz, Bolivia 2018",
+  "description": "El mapa muestra las 7 regiones geográficas del Departamento de La Paz que son: Amazonia, Valles del Norte, Valle del Sur, Yungas, Metropolitana, Altiplano Norte y Altiplano Sur. Estas regiones geográficas presentan características específicas; en cultura, economía, relieve, clima, política y factores ambientales con sus diferentes especies de flora y fauna. Dato obtenido del Instituto Departamental de Estadística del Gobierno Autónomo Departamental de La Paz, actualizado a junio del 2018.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_lpz_region_2018/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 1209742,
+      "hash": "sha256:72de613b2248224a8f1df347192795eb389f468d7811011340f97d3937e64794",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 8
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 8
+            }
+          },
+          {
+            "name": "departamen",
+            "type": "string",
+            "example": "La Paz",
+            "categories": [
+              "La Paz"
+            ]
+          },
+          {
+            "name": "region",
+            "type": "string",
+            "example": "Altiplano Sur"
+          },
+          {
+            "name": "area_km2",
+            "type": "number",
+            "constraints": {
+              "minimum": 3120.64,
+              "maximum": 63626.49
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
