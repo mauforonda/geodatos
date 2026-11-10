@@ -1,0 +1,81 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_limites_departamentales",
+  "title": "Mapa de limites departamentales de Bolivia",
+  "description": "El mapa muestra las divisiones territoriales contempladas como límites departamentales, unidades político-administrativas del territorio boliviano que de acuerdo a la Constitución Política del Estado poseen ineludiblemente, continuidad territorial.  Información de carácter referencial generada por el Ministerio de Desarrollo Sostenible en el año 2004 y posteriormente publicado por la Unidad Técnica Nacional de Información de la Tierra (SUNIT).",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_limites_departamentales/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 2461352,
+      "hash": "sha256:19b0c1165ad53291c79b92e604e63d416aa5fd891364c6130444afba1196b6cf",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "example": "limites_departamentales.8"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 9
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "example": "Limites_departamentales.8"
+          },
+          {
+            "name": "cod_dep",
+            "type": "string",
+            "example": "5"
+          },
+          {
+            "name": "nom_dep",
+            "type": "string",
+            "example": "Potosi"
+          },
+          {
+            "name": "shape_leng",
+            "type": "number",
+            "constraints": {
+              "minimum": 12.2816310963,
+              "maximum": 36.616997109
+            }
+          },
+          {
+            "name": "shape_area",
+            "type": "number",
+            "constraints": {
+              "minimum": 3.24495926974,
+              "maximum": 31.3590647218
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 2."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
