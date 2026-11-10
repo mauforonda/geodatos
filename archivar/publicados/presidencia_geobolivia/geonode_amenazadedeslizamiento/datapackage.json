@@ -1,0 +1,90 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_amenazadedeslizamiento",
+  "title": "Mapa de zonificacion de áreas con inestabilidad de pendientes en Bolivia, 2012",
+  "description": "Este mapa muestra las áreas de inestabilidad de las pendientes en seis categorías desde muy baja, moderada hasta muy alta, representando la pendiente topográfica y la altura de las laderas que son factores que condicionan el desarrollo de procesos de deslizamiento por su contribución a la inestabilidad de los materiales; tanto es así que son parámetros utilizados sistemáticamente en la mayoría de los métodos de cálculo de estabilidad de taludes. Elaborado por el Ministerio de Planificación del Desarrollo en el año 2012.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_amenazadedeslizamiento/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 1678097,
+      "hash": "sha256:fe11ea952320ec310bbc412ca592bee396035c68bae35537d99b011c49b7d8ab",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "amenazadedeslizamiento.13"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 13
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "AmenazadeDeslizamiento.13"
+          },
+          {
+            "name": "mmfina",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "4"
+          },
+          {
+            "name": "count",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 1046
+            }
+          },
+          {
+            "name": "descrip",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Moderada a Baja"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 6."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
