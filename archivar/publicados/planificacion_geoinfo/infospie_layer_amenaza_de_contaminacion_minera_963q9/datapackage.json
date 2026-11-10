@@ -1,0 +1,130 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_amenaza_de_contaminacion_minera_963q9",
+  "title": "layer_amenaza_de_contaminacion_minera_963q9",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_amenaza_de_contaminacion_minera_963q9/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 1196650,
+      "hash": "sha256:da5ae46194164b2296d288a95b2fc375760717809dbae2e58ca8a5890228ea36",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_amenaza_de_contaminacion_minera_963q9.146"
+          },
+          {
+            "name": "gridcode",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 5
+            }
+          },
+          {
+            "name": "leyenda",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Muy baja",
+            "categories": [
+              "Muy alta",
+              "Alta",
+              "Media",
+              "Baja",
+              "Muy baja"
+            ]
+          },
+          {
+            "name": "sup_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.09,
+              "maximum": 223746.962
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "LA PAZ",
+            "categories": [
+              "LA PAZ"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Los Andes",
+            "categories": [
+              "Larecaja",
+              "Murillo",
+              "Nor Yungas",
+              "Sur Yungas",
+              "Caranavi",
+              "Los Andes"
+            ]
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Pucarani",
+            "categories": [
+              "Guanay",
+              "Nuestra Señora de La Paz",
+              "Coroico",
+              "Mapiri",
+              "Teoponte",
+              "Coripata",
+              "Caranavi",
+              "Tipuani",
+              "Yanacachi",
+              "Chulumani",
+              "Batallas",
+              "Alto Beni",
+              "La Asunta",
+              "Pucarani",
+              "Sorata"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 2."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
