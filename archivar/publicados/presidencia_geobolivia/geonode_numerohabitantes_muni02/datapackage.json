@@ -1,0 +1,118 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_numerohabitantes_muni02",
+  "title": "Mapa de densidad demográfica por municipios_ Bolivia 2002",
+  "description": "El mapa presenta la distribución geográfica del numero de habitantes por municipios, la información empleada tuvo como fuente, datos del INE que fue ordenada de mayor a menor, una categoría que va desde > a 500001 a <a 5000 habitantes y así poder identificar grupos poblacionales que tengan relación con ciertas categorías utilizadas para determinar el tipo asentamiento humano. Elaborado por la Unidad de Ordenamiento Territorial del Ministerio de Planificación del Desarrollo, en el año 2002 a escala 1:1000000.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_numerohabitantes_muni02/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 1144463,
+      "hash": "sha256:3a3e9080812d16a2d3b57937deb768e5e622bd1f74c0e933744ccadb19ad6da2",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "numerohabitantes_muni02.207"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 318
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "NumeroHabitantes_muni02.207"
+          },
+          {
+            "name": "codseccion",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "051401"
+          },
+          {
+            "name": "count",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 1
+            }
+          },
+          {
+            "name": "munide",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 314
+            }
+          },
+          {
+            "name": "area",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 71756
+            }
+          },
+          {
+            "name": "catpob2",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 4
+            }
+          },
+          {
+            "name": "inter",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -4.2,
+              "maximum": 16.43
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
