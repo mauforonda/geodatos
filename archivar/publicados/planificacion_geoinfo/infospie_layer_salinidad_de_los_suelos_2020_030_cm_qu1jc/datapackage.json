@@ -1,0 +1,110 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_salinidad_de_los_suelos_2020_030_cm_qu1jc",
+  "title": "layer_salinidad_de_los_suelos_2020_030_cm_qu1jc",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_salinidad_de_los_suelos_2020_030_cm_qu1jc/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 1110601,
+      "hash": "sha256:3faded30f57f2e38001f03bbac26a6dcdd379c36b06c913a4390ab4938a263cb",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "layer_salinidad_de_los_suelos_2020_030_cm_qu1jc.3717"
+          },
+          {
+            "name": "gridcode",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 11
+            }
+          },
+          {
+            "name": "sup_ha",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 86,
+              "maximum": 102193876
+            }
+          },
+          {
+            "name": "grado",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Salinidad Ligera",
+            "categories": [
+              "Salinidad Ligera",
+              "Sodicidad Ligera",
+              "Salinidad Moderada",
+              "Ninguna",
+              "Salinidad Fuerte",
+              "Salinidad Muy Fuerte",
+              "Salinidad Extrema",
+              "Salino Sodico",
+              "Sodicidad Moderada",
+              "Sodicidad Fuerte",
+              "Sodicidad Muy Fuerte"
+            ]
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "example": "POTOSI",
+            "categories": [
+              "POTOSI",
+              "ORURO",
+              "CHUQUISACA",
+              "TARIJA",
+              "LA PAZ",
+              "BENI",
+              "COCHABAMBA",
+              "SANTA CRUZ",
+              "PANDO",
+              "Cochabamba"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "example": "Daniel Campos"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "example": "Llica"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 121."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
