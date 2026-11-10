@@ -1,0 +1,167 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_abt_geo_abt_import_pdm_19",
+  "title": "import_pdm_19",
+  "sources": [
+    {
+      "title": "GeoServer de la Autoridad de Fiscalización y Control Social de Bosques y Tierra",
+      "path": "https://geo.abt.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_abt_geo_abt_import_pdm_19/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 1728158,
+      "hash": "sha256:6466ab98203761d211fd04ec1507e095ebb2048fcda91f2e9a89411dffab2d25",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 5043,
+              "maximum": 16210
+            }
+          },
+          {
+            "name": "zona",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 19,
+              "maximum": 21
+            }
+          },
+          {
+            "name": "sup_pdm",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 249309.0
+            }
+          },
+          {
+            "name": "uobt",
+            "type": "string",
+            "example": "OLTA"
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "example": "TARIJA",
+            "categories": [
+              "SANTA CRUZ",
+              "LA PAZ",
+              "BENI",
+              "COCHABAMBA",
+              "TARIJA",
+              "PANDO",
+              "CHUQUISACA",
+              "POTOSI"
+            ]
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "PDM.6469"
+          },
+          {
+            "name": "fecha",
+            "type": "datetime",
+            "constraints": {
+              "minimum": "2002-02-22T00:00:00+00:00",
+              "maximum": "2011-12-30T00:00:00+00:00"
+            }
+          },
+          {
+            "name": "codigo_apr",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "RO-OLTA-PDMp-122-2003"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "example": "PADCAYA"
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "example": "ANICETO ARCE"
+          },
+          {
+            "name": "gestion",
+            "type": "string",
+            "example": "2003",
+            "categories": [
+              "2011",
+              "2010",
+              "2009",
+              "2006",
+              "2003",
+              "0",
+              "2004",
+              "2007",
+              "2005",
+              "2008",
+              "2002"
+            ]
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 11168
+            }
+          },
+          {
+            "name": "municipio",
+            "type": "string",
+            "example": "PADCAYA"
+          },
+          {
+            "name": "departamen",
+            "type": "string",
+            "example": "TARIJA",
+            "categories": [
+              "SANTA CRUZ",
+              "LA PAZ",
+              "BENI",
+              "TARIJA",
+              "COCHABAMBA",
+              "PANDO",
+              "CHUQUISACA",
+              "POTOSI"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Filas sin geometría: 12. Geometrías inválidas, conservadas sin reparar: 24."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
