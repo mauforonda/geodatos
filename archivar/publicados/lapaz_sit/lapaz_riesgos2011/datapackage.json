@@ -1,0 +1,81 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_lapaz_riesgos2011",
+  "title": "Mapa de Riesgos 2011",
+  "description": "Mapa de Riesgos 2011 elaborado por la Dirección Especial de Gestión del Riesgo DEGIR.",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz",
+      "path": "http://sitservicios.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_lapaz_riesgos2011/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 676942,
+      "hash": "sha256:f7aab4f9f61e90df622e668abde83b3b95386e4e4576d0b53ff81c0b74a94b24",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "riesgos2011.4973"
+          },
+          {
+            "name": "ID_1",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 5317
+            }
+          },
+          {
+            "name": "GRIDCODE",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 255
+            }
+          },
+          {
+            "name": "GRADO",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Moderado",
+            "categories": [
+              "Alto",
+              "Moderado",
+              "Bajo",
+              "Muy Alto",
+              "Muy Bajo",
+              " "
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 79."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
