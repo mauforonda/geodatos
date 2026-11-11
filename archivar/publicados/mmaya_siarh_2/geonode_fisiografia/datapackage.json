@@ -1,0 +1,170 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_fisiografia",
+  "title": "Plan Director Cuenca Río Grande - Fisiografía",
+  "description": "PDCRG (Plan Director de la Cuenca Río Grande). ). Muestra la georreferenciación e información de unidades fisiográficas del Plan Director de la Cuenca del Río Grande.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_fisiografia/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 1820682,
+      "hash": "sha256:cfec1f531f84a772ad5bdd42117bd29794e86176dc04475983181fbaa524ebdd",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 3."
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Fisiografia.79"
+          },
+          {
+            "name": "CODFIS_S",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "CiiL"
+          },
+          {
+            "name": "IDSJ12",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 54,
+              "maximum": 172
+            }
+          },
+          {
+            "name": "DESCRIPCIO",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Llanuras de Piedemonte, con diseccion Ligera"
+          },
+          {
+            "name": "COD_GEOL",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Q",
+            "categories": [
+              "Q",
+              "T",
+              "O, D,",
+              "O, K,",
+              "",
+              "T, C",
+              "T, Q",
+              "D, C,",
+              "D, O",
+              "D, Q",
+              "D, S",
+              "D, S-D",
+              "O",
+              "O, D",
+              "O, S",
+              "O, S,",
+              "O, S-D",
+              "O, T,",
+              "Q, D,",
+              "Q, O,",
+              "S",
+              "T, C,",
+              "T, K",
+              "Ti, Ti",
+              "Tl",
+              "Tl, Ti"
+            ]
+          },
+          {
+            "name": "COD_VEG",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "VC,VF,IIIB,IVB,"
+          },
+          {
+            "name": "GPAISAJE",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Ci",
+            "categories": [
+              "Sc",
+              "Bl",
+              "Cs",
+              "Ss",
+              "Cm",
+              "Cc",
+              "Cp",
+              "Cl",
+              "Si",
+              "Ci",
+              "Sl",
+              "A",
+              "Bc",
+              "Bi",
+              "Hi",
+              "Ur"
+            ]
+          },
+          {
+            "name": "PAISAJE",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Cii"
+          },
+          {
+            "name": "Leyenda",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "79 - Llanuras de Piedemonte, con diseccion Ligera"
+          },
+          {
+            "name": "Shape_Area",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0.000549717153333,
+              "maximum": 1.02196780681
+            }
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
