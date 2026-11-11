@@ -1,0 +1,101 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_demanda_de_sistemas_fotovoltaicos_knquj",
+  "title": "Demanda de Sistemas Fotovoltaicos",
+  "description": "Sistemas Fotovoltaicos en el Área Rural como resultado de la consultoría: \"Elaboración e Implementación del Plan Integrado Nacional de Electrificación Rural de Bolivia\", ejecutada por la empresa Waya Energy de España, respaldada por la Universidad de Comillas y financiada por el Banco Interamericano de Desarrollo (BID), se aplicó el Modelo de Electrificación de Referencia (REM©MIT & IIT-Comillas).  Los principales objetivos del proyecto fueron:  Identificar zonas sin acceso eléctrico - Crear una plataforma de Electrificación Universal en Bolivia - Elaborar un plan maestro nacional y planes departamentales.",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_demanda_de_sistemas_fotovoltaicos_knquj/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 2995561,
+      "hash": "sha256:597027fc030d5db351cce77a1624395672d806bcdf578a134b36d69084571a07",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "layer_demanda_de_sistemas_fotovoltaicos_knquj.98720"
+          },
+          {
+            "name": "latitud",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -22.8895,
+              "maximum": -9.7161
+            }
+          },
+          {
+            "name": "longitud",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -69.5422,
+              "maximum": -57.5068
+            }
+          },
+          {
+            "name": "system_typ",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "POTOSI_altiplano_isolated_type_1_SK"
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "example": "POTOSI",
+            "categories": [
+              "SANTA CRUZ",
+              "BENI",
+              "LA PAZ",
+              "COCHABAMBA",
+              "CHUQUISACA",
+              "POTOSI",
+              "PANDO",
+              "TARIJA",
+              "ORURO",
+              "Santa Cruz",
+              "La Paz",
+              "Tarija",
+              "Pando"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "example": "Nor Lipez"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "example": "San Pedro de Quemes"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPoint."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
