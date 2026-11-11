@@ -1,0 +1,148 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_alt_geosit_inmueble_actividad_economica",
+  "title": "inmueble_actividad_economica",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)",
+      "path": "http://sitservicios.lapaz.bo/ows38.jsp"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_geosit_inmueble_actividad_economica/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 3247004,
+      "hash": "sha256:9e90e017ee44528a163a72e6aa37509af7aa51c25acc1559550171bc92bbb08c",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "inmueble_actividad_economica.54461"
+          },
+          {
+            "name": "nro_objeto_tributario",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "161728"
+          },
+          {
+            "name": "codigo_catastral",
+            "type": "string",
+            "example": ""
+          },
+          {
+            "name": "fecha_registro",
+            "type": "datetime",
+            "constraints": {
+              "required": true,
+              "minimum": "2019-09-03T14:12:54.890000+00:00",
+              "maximum": "2026-08-04T20:47:41.868000+00:00"
+            }
+          },
+          {
+            "name": "fecha_modificacion",
+            "type": "datetime",
+            "constraints": {
+              "minimum": "2019-09-03T14:54:15.562000+00:00",
+              "maximum": "2026-07-13T18:38:23.117000+00:00"
+            }
+          },
+          {
+            "name": "tipo_objeto_tributario",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "INMUEBLE",
+            "categories": [
+              "INMUEBLE",
+              "ACTIVIDAD ECONOMICA"
+            ]
+          },
+          {
+            "name": "usuario_registro",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "raul.ossio"
+          },
+          {
+            "name": "usuario_modificacion",
+            "type": "string",
+            "example": "brandon.sejas"
+          },
+          {
+            "name": "macrodistrito",
+            "type": "string",
+            "example": "Mallasa",
+            "categories": [
+              "Calacoto",
+              "Cotahuma",
+              "Centro",
+              "Periferica",
+              "Obrajes",
+              "Max Paredes",
+              "San Antonio",
+              "Hampaturi",
+              "Ovejuyo",
+              "Mallasa",
+              "Zongo",
+              ""
+            ]
+          },
+          {
+            "name": "distrito",
+            "type": "string",
+            "example": "20",
+            "categories": [
+              "18",
+              "21",
+              "1",
+              "2",
+              "3",
+              "11",
+              "6",
+              "4",
+              "22",
+              "13",
+              "19",
+              "10",
+              "16",
+              "12",
+              "7",
+              "8",
+              "14",
+              "9",
+              "17",
+              "15",
+              "5",
+              "20",
+              "23"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point. La fuente declaraba EPSG:4326 pero sus coordenadas estaban en EPSG:32719 (sistema inferido por la ubicación de las geometrías en Bolivia); se reproyectaron."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
