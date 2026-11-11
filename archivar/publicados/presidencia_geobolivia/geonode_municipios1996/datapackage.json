@@ -1,0 +1,132 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_municipios1996",
+  "title": "Mapa de limites municipales de Bolivia_ 1996",
+  "description": "El mapa define 311 municipios en que se divide el territorio nacional, estas unidades politico-administrativas corresponden al tercer nivel de división administrativa en Bolivia, que mediante agrupación conforman las provincias. Publicado en 2008 por el Centro de Análisis Espacial IE - UMSA y posteriormente por la Universidad de Texas, en base a información del último censo del Instituto Nacional de Estadísticas (INE) del periodo 1992-1996.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_municipios1996/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 2519224,
+      "hash": "sha256:309706831d07ea2a537bcdbdc8e2782822988f58bab1f764947b7fb3abb7960c",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "municipios1996.271"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 312
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Municipios1996.271"
+          },
+          {
+            "name": "cod_dep",
+            "type": "number",
+            "constraints": {
+              "minimum": 1.0,
+              "maximum": 9.0
+            }
+          },
+          {
+            "name": "cod_mun",
+            "type": "number",
+            "constraints": {
+              "minimum": 1.0,
+              "maximum": 8.0
+            }
+          },
+          {
+            "name": "cod__ine",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 807030
+            }
+          },
+          {
+            "name": "nom_dep",
+            "type": "string",
+            "example": "Potosi",
+            "categories": [
+              "La Paz",
+              "Santa Cruz",
+              "Cochabamba",
+              "Potosi",
+              "Oruro",
+              "Chuquisaca",
+              "Beni",
+              "Pando",
+              "Tarija"
+            ]
+          },
+          {
+            "name": "nom_provin",
+            "type": "string",
+            "example": "Daniel Campos"
+          },
+          {
+            "name": "cat_sec",
+            "type": "string",
+            "example": "PRIMERA",
+            "categories": [
+              "PRIMERA",
+              "SEGUNDA",
+              "TERCERA",
+              "CUARTA",
+              "QUINTA",
+              "CAPITAL",
+              "SEXTA",
+              "SEPTIMA",
+              "OCTAVA"
+            ]
+          },
+          {
+            "name": "nom_munic",
+            "type": "string",
+            "example": "Llica"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
