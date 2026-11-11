@@ -1,0 +1,74 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_ine_idg_degurba_degurba_2024_nivel_l2",
+  "title": "DEGURBA 2024 Nivel L2",
+  "description": "La metodología DEGURBA (Degree of Urbanisation / Grado de Urbanización) es un estándar internacional que clasifica todo el territorio en categorías de urbanización utilizando la densidad de población como criterio principal, aplicado sobre una grilla geo-estadística uniforme (celdas de 1 km2).\r\nEl Nivel L2 del DEGURBA proporciona una subclasificación más detallada que el Nivel L1, combinando dos dimensiones clave: la densidad de población por celda y el tamaño total de la agrupación. Este nivel de detalle permite una diferenciación más precisa de los entornos urbanos y rurales, dividiendo las áreas en 8 categorías que son: Agua, Ciudad, Ciudad densa, Ciudad semidensa, Pueblo, Área rural dispersa, Área rural muy dispersa y Área sub urbana o periurbana. Según datos CPV 2024.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Geoestadísticos del INE",
+      "path": "https://gsn.ine.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_ine_idg_degurba_degurba_2024_nivel_l2/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 2090069,
+      "hash": "sha256:803e0e282682f8c8d9f299c740e64f8f085d36d577360390c78507ab33b79b87",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "dn",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 10,
+              "maximum": 30
+            }
+          },
+          {
+            "name": "descrip",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Área rural dispersa",
+            "categories": [
+              "Área rural dispersa",
+              "Agua",
+              "Pueblo",
+              "Área sub urbana o periurbana",
+              "Área rural muy dispersa",
+              "Ciudad densa",
+              "Ciudad semidensa",
+              "Ciudad"
+            ]
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 16105
+            }
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
