@@ -1,0 +1,103 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_ckylmt_microcuencas_pfasfteter",
+  "title": "Plan Director de la Cuenca Katari y Lago Menor del Titicaca - Microcuencas Bolivia",
+  "description": "El mapa muestra las microcuencas que conforman la Cuenca Katari y Lago Menor del Titicaca, esta delimitación fue realizada por el método Pfasfteter, identificando 147 datos. Información proporcionada por el Viceministerio de Recursos Hídricos y Riego dato a fecha noviembre 2017.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_ckylmt_microcuencas_pfasfteter/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 3209042,
+      "hash": "sha256:4a43d3bb1f5fe3931e9d82a72c630093bf896dbbab2c546d38682c55cfbea9d6",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "ckylmt_microcuencas_pfasfteter.21"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 147
+            }
+          },
+          {
+            "name": "objectid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0,
+              "maximum": 146
+            }
+          },
+          {
+            "name": "area_km2",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0.0363700377558,
+              "maximum": 163.394059002
+            }
+          },
+          {
+            "name": "id_pfasf",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "015742"
+          },
+          {
+            "name": "nivel",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 4,
+              "maximum": 8
+            }
+          },
+          {
+            "name": "area_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 3.63700377558,
+              "maximum": 16339.4058678
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 25."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
