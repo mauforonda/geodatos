@@ -1,0 +1,91 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_alt_uatg_lev_poligono",
+  "title": "lev_poligono",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)",
+      "path": "http://sitservicios.lapaz.bo/ows38.jsp"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_uatg_lev_poligono/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 3245374,
+      "hash": "sha256:effd96ab0158df9650a79b340bf82854cd0a904dc6c3b568e50231c5f11322b6",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "lev_poligono.9249"
+          },
+          {
+            "name": "Layer",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Limite de Lote",
+            "categories": [
+              "Limite de Lote",
+              "Area Cubierta",
+              "Area Verde",
+              "Limite de Manzana",
+              "Area Construida",
+              "Borde de Camino",
+              "Cordon de Acera",
+              "Gradas",
+              "Cancha",
+              "Perimetro de Alambrado",
+              "Muro de Contencion",
+              "Area Observada",
+              "Baranda Peatonal"
+            ]
+          },
+          {
+            "name": "SubClasses",
+            "type": "integer"
+          },
+          {
+            "name": "ExtendedEntity",
+            "type": "integer"
+          },
+          {
+            "name": "Linetype",
+            "type": "string",
+            "example": "Continuous",
+            "categories": [
+              "Continuous"
+            ]
+          },
+          {
+            "name": "EntityHandle",
+            "type": "integer"
+          },
+          {
+            "name": "Text",
+            "type": "integer"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Polygon. Geometrías inválidas, conservadas sin reparar: 35. La fuente declaraba EPSG:4326 pero sus coordenadas estaban en EPSG:32719 (sistema inferido por la ubicación de las geometrías en Bolivia); se reproyectaron."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
