@@ -1,0 +1,233 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_alt_lev_levtramite",
+  "title": "Solicitud Levantamientos",
+  "description": "Solicitudes de levantamientos topográficos general.",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)",
+      "path": "http://sitservicios.lapaz.bo/ows38.jsp"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_lev_levtramite/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 2920840,
+      "hash": "sha256:56e533a763a8efb0753e22dffd56e86bc9e7936ceb5ef69d0e2cfcab4acbc42d",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "levtramite.fid--314a5bbc_19fd3d4592e_-1000"
+          },
+          {
+            "name": "idTramite",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 144478
+            }
+          },
+          {
+            "name": "idMacrodistrito",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 9
+            }
+          },
+          {
+            "name": "idUnidadRegistro",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 25
+            }
+          },
+          {
+            "name": "Sitram",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "41985"
+          },
+          {
+            "name": "Gestion",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 2013,
+              "maximum": 2026
+            }
+          },
+          {
+            "name": "idEstado",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 3
+            }
+          },
+          {
+            "name": "idZona",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 406
+            }
+          },
+          {
+            "name": "idProceso",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 2,
+              "maximum": 5
+            }
+          },
+          {
+            "name": "fechaRegistro",
+            "type": "datetime",
+            "constraints": {
+              "required": true,
+              "minimum": "2013-12-19T04:00:00+00:00",
+              "maximum": "2026-08-05T19:16:10.850000+00:00"
+            }
+          },
+          {
+            "name": "fechaReasigna",
+            "type": "datetime",
+            "constraints": {
+              "required": true,
+              "minimum": "2013-12-27T04:00:00+00:00",
+              "maximum": "2026-08-05T19:53:43.267000+00:00"
+            }
+          },
+          {
+            "name": "Secuencia",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 31
+            }
+          },
+          {
+            "name": "Observacion",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "REVISAR LAYER UBICACION ERONEA "
+          },
+          {
+            "name": "idUsuario",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 3619
+            }
+          },
+          {
+            "name": "IdtipoTramite",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 99
+            }
+          },
+          {
+            "name": "idTramiteCatastro",
+            "type": "number",
+            "constraints": {
+              "minimum": 59610.0,
+              "maximum": 459496.0
+            }
+          },
+          {
+            "name": "IdSupPuntosControl",
+            "type": "string",
+            "example": "1840",
+            "categories": [
+              "1904",
+              "2228",
+              "2310",
+              "2353",
+              "1840",
+              "2166",
+              "1945",
+              "1559",
+              "1442",
+              "1441",
+              "0",
+              "1839",
+              "2075"
+            ]
+          },
+          {
+            "name": "IdSupLevantamiento",
+            "type": "string",
+            "example": "2166",
+            "categories": [
+              "1841",
+              "1559",
+              "1842",
+              "1441",
+              "1442",
+              "2166",
+              "1905",
+              "2353",
+              "1840",
+              "1440",
+              "2310",
+              "2228",
+              "1901",
+              "2075",
+              "1443",
+              "2280",
+              "0",
+              "1838"
+            ]
+          },
+          {
+            "name": "IdTipoLevanta",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 99
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point. Filas sin geometría: 2317."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
