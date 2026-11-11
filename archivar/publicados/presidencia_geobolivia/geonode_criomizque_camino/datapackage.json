@@ -1,0 +1,97 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_criomizque_camino",
+  "title": "Plan Director Cuenca Río Mizque - Camino_ Bolivia",
+  "description": "El mapa muestra la georreferenciación de la red vial en el área del Plan Director de la Cuenca del Río Mizque, información generada a partir de las Cartas Topográficas del IGM. Información obtenida del Viceministerio de Recursos Hídricos y Riego, ha septiembre del 2016.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_criomizque_camino/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 2950023,
+      "hash": "sha256:2bc0152be50c13fb488f8f38d090e1ec10c207f96b7b7d4f82221ddb567fbb38",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "criomizque_camino.2338"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 3505
+            }
+          },
+          {
+            "name": "objectid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 3505
+            }
+          },
+          {
+            "name": "nbvialidad",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Senda, Rodera o Vereda",
+            "categories": [
+              "Senda, Rodera o Vereda",
+              "Secundario o Vecinal",
+              "Principal o Carretero"
+            ]
+          },
+          {
+            "name": "coclasifvi",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 3
+            }
+          },
+          {
+            "name": "leng",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 36.559
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
