@@ -1,0 +1,54 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_minedu_seie_minedu_departamento",
+  "title": "departamento",
+  "sources": [
+    {
+      "title": "Sistema de Estadísticas e Indicadores Educativos (SEIE) del Ministerio de Educación",
+      "path": "https://seie.minedu.gob.bo:8443/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_minedu_seie_minedu_departamento/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 2140301,
+      "hash": "sha256:85570a67df74800ed03a23d6c9c4161cb9937296727e700b8f3b77c651c6c89e",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "example": "departamento.7"
+          },
+          {
+            "name": "departamen",
+            "type": "string",
+            "example": "Potosí"
+          },
+          {
+            "name": "cod_pol_dep",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 9
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
