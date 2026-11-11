@@ -1,0 +1,119 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_municipios_pevd",
+  "title": "Municipios del Programa Electricidad para Vivir con Dignidad (PEVD)_ Bolivia 2018",
+  "description": "El mapa muestra los 88 municipios donde se aplica el Programa Electricidad para Vivir con Dignidad (PVED), que tiene como objetivo contribuir al incremento de la cobertura del servicio eléctrico principalmente en el área rural, hasta lograr el acceso universal, a través de programas de extensión de redes eléctricas en media y baja tensión, densificación de redes, sistemas fotovoltaicos, generadores eólicos, micro centrales hidroeléctricas y pico central hidroeléctricas. El 9 de julio de 2008, el gobierno aprobó el Decreto Supremo N° 29635 para crear el Programa de Electricidad para Vivir con Dignidad (PEVD), dentro del Plan Nacional de Desarrollo, dependiente del Viceministerio de Electricidad y Energías Alternativas con los objetivos de incrementar la cobertura de electricidad en las áreas rural y urbana de Bolivia, mejorar las condiciones de vida, reducir la pobreza, generar empleos y consolidar una estructura productiva, económica y social para todos los bolivianos y cumplir la meta establecida en la Agenda Patriótica 2025. Dato obtenido del PVED a julio del 2018.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_municipios_pevd/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 3069201,
+      "hash": "sha256:975a55827f8139857a6cfa85f1d83ea7ca9eb71c5364e3bda5d790aa41ddaf0c",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 88
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0,
+              "maximum": 87
+            }
+          },
+          {
+            "name": "cod_ine",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 10202,
+              "maximum": 90503
+            }
+          },
+          {
+            "name": "first_depa",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Potosi",
+            "categories": [
+              "La Paz",
+              "Oruro",
+              "Pando",
+              "Potosi",
+              "Santa Cruz",
+              "Chuquisaca",
+              "Beni",
+              "Cochamba"
+            ]
+          },
+          {
+            "name": "first_prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Nor Lí­pez"
+          },
+          {
+            "name": "first_muni",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "San Pedro de Quemes"
+          },
+          {
+            "name": "first_cob_",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 36.776421,
+              "maximum": 99.760383
+            }
+          },
+          {
+            "name": "pevd",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "ACCESO A ENERGIA ELECTRICA Y ENERGIA RENOVABLE  IDTR II"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
