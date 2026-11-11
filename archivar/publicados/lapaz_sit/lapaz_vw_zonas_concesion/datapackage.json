@@ -1,0 +1,119 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_lapaz_vw_zonas_concesion",
+  "title": "vw_zonas_concesion",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz",
+      "path": "http://sitservicios.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_lapaz_vw_zonas_concesion/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 1253396,
+      "hash": "sha256:350d7e9945c91cc9f6255a99844193a2b3d6c5b70b65b13c8cc0164950d46584",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "vw_zonas_concesion.fid-77c9424b_19e7a5731f9_-712f"
+          },
+          {
+            "name": "cod_zona",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "019"
+          },
+          {
+            "name": "cod_distrito",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "09"
+          },
+          {
+            "name": "cod_macro",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "02",
+            "categories": [
+              "03",
+              "05",
+              "02",
+              "04",
+              "01",
+              "09",
+              "08",
+              "03   ",
+              "06",
+              "07",
+              "05   ",
+              "02   ",
+              "04   ",
+              "01   ",
+              "09   ",
+              "08   ",
+              "07   ",
+              "06   "
+            ]
+          },
+          {
+            "name": "nombre_zona",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "PORTADA TRIANGULAR"
+          },
+          {
+            "name": "nombre_corto",
+            "type": "string",
+            "example": "PORTADA TRIANGULAR"
+          },
+          {
+            "name": "cod_zonas",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "019"
+          },
+          {
+            "name": "gestion",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 2019,
+              "maximum": 2026
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon, Polygon, GeometryCollection. Filas sin geometría: 3. Geometrías inválidas, conservadas sin reparar: 17."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
