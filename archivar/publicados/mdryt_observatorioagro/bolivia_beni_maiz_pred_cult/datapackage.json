@@ -1,0 +1,101 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mdryt_observatorioagro_bolivia_beni_maiz_pred_cult",
+  "title": "BENI_MAIZ_PRED_CULT",
+  "sources": [
+    {
+      "title": "Geovisor del Observatorio Agroambiental y Productivo del Ministerio de Desarrollo Rural y Tierras (MDRyT)",
+      "path": "http://geoserver.observatorioagro.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mdryt_observatorioagro_bolivia_beni_maiz_pred_cult/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 2570329,
+      "hash": "sha256:7bcf022354dd4a8658665ae604b8e96b8d3148866a00bc23059ab9107401a460",
+      "schema": {
+        "fields": [
+          {
+            "name": "CODCAT",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "08060266202012"
+          },
+          {
+            "name": "NOMPRED",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "SAN ROQUE"
+          },
+          {
+            "name": "BENEFICIAR",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "CARLOS ALBERTO VILLARROEL LIMA"
+          },
+          {
+            "name": "SUP_PRED",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0.0350079039514,
+              "maximum": 28609.1329138
+            }
+          },
+          {
+            "name": "Sup_Cult",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1.8913479996e-05,
+              "maximum": 1836.90319348
+            }
+          },
+          {
+            "name": "Shape_Leng",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 223.379118139,
+              "maximum": 153322.156176
+            }
+          },
+          {
+            "name": "Shape_Area",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 350.079039514,
+              "maximum": 286091329.138
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
