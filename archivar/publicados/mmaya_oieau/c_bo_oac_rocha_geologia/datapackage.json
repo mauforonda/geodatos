@@ -1,0 +1,153 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_oieau_c_bo_oac_rocha_geologia",
+  "title": "OAC_ENV_Rocha Geologia",
+  "sources": [
+    {
+      "title": "Sistema para la Gestión Integral de Recursos Hídricos desarrollado por la Oficina Internacional del Agua (OiEau)",
+      "path": "https://www.oieau-wiss.org/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_oieau_c_bo_oac_rocha_geologia/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 1419366,
+      "hash": "sha256:fa4feb4450050e6d3fb3f8969dc8af253a52bc85478a4d95036935b5a9892a1e",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Rocha_Geologia.19"
+          },
+          {
+            "name": "objectid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 27
+            }
+          },
+          {
+            "name": "puntos",
+            "type": "string",
+            "example": "Qd"
+          },
+          {
+            "name": "formacion",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Derrumbes"
+          },
+          {
+            "name": "periodo",
+            "type": "string",
+            "example": "Pleistoceno",
+            "categories": [
+              "Pleistoceno",
+              "Ordovícico Superior",
+              "Ordovícico no diferenciado",
+              "Cretácico Superior",
+              "Devónico Inferior",
+              "Silúrico Inferior",
+              "Devónico Medio",
+              "Paleoceno",
+              "Plioceno"
+            ]
+          },
+          {
+            "name": "era",
+            "type": "string",
+            "example": "Cenozoica",
+            "categories": [
+              "Paleozoica",
+              "Cenozoica",
+              "Mesozoica"
+            ]
+          },
+          {
+            "name": "orden_era",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 3
+            }
+          },
+          {
+            "name": "leyenda",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "1, Pleistoceno",
+            "categories": [
+              "1, Pleistoceno",
+              "3, Ordovícico Superior",
+              "3, Ordovícico no diferenciado",
+              "2, Cretácico Superior",
+              "3, Devónico Inferior",
+              "3, Silúrico Inferior",
+              ",",
+              "1, Paleoceno",
+              "1, Plioceno",
+              "3, Devónico Medio"
+            ]
+          },
+          {
+            "name": "shape_leng",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0.110302493176,
+              "maximum": 13.2400414363
+            }
+          },
+          {
+            "name": "shape_area",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 9.91684966146e-05,
+              "maximum": 0.0690237153647
+            }
+          },
+          {
+            "name": "areakm2",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1.2,
+              "maximum": 812.8
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
