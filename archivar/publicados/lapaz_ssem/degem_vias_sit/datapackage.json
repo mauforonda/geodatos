@@ -1,0 +1,129 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_ssem_degem_vias_sit",
+  "title": "vias_sit",
+  "sources": [
+    {
+      "title": "Servicio de Seguimiento Estratégico Municipal del Gobierno Autónomo Municipal de La Paz",
+      "path": "https://ssem.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_ssem_degem_vias_sit/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 2798751,
+      "hash": "sha256:491b98f0d6613cf6e1b72a928fa37a0465accd440bd7368fa1ec2c1bcf10212d",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "vias_sit.17921"
+          },
+          {
+            "name": "idvias",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 157071
+            }
+          },
+          {
+            "name": "nombrevia",
+            "type": "string",
+            "example": "S/N"
+          },
+          {
+            "name": "tipovia",
+            "type": "string",
+            "example": "CALLEJON",
+            "categories": [
+              "CALLE",
+              "AVENIDA",
+              "PASAJE",
+              "CALLEJON",
+              "NO TIPIFICADO",
+              "PASAJE PEATONAL",
+              "OTRAS VIAS (PLAZAS, PARQUES)",
+              "PASAJE VEHICULAR",
+              "AUTOPISTA"
+            ]
+          },
+          {
+            "name": "matvia",
+            "type": "string",
+            "example": "CEMENTO",
+            "categories": [
+              "TIERRA",
+              "ASFALTADO",
+              "PIEDRA",
+              "CEMENTO",
+              "LOSETA",
+              "ADOQUIN",
+              "SIN IDENTIFICAR",
+              "SIN MATERIAL",
+              "RIPIO"
+            ]
+          },
+          {
+            "name": "idmatcalle",
+            "type": "string",
+            "example": "03",
+            "categories": [
+              "07",
+              "01",
+              "05",
+              "03",
+              "04",
+              "02",
+              "0",
+              "99",
+              "06"
+            ]
+          },
+          {
+            "name": "idtipovia",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.0,
+              "maximum": 8.0
+            }
+          },
+          {
+            "name": "instrument",
+            "type": "string",
+            "example": "OM 256/2006"
+          },
+          {
+            "name": "anchovia",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.0,
+              "maximum": 1200.0
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString. Geometrías inválidas, conservadas sin reparar: 1. La fuente declaraba EPSG:4326 pero sus coordenadas estaban en EPSG:3857 (sistema inferido por la ubicación de las geometrías en Bolivia); se reproyectaron."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
