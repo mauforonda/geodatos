@@ -1,0 +1,108 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_minplanifica_infocapa_layer_fghjkln_lkn4j",
+  "title": "layer_fghjkln_lkn4j",
+  "sources": [
+    {
+      "title": "Geoserver del Ministerio de Planificación del Desarollo",
+      "path": "https://geoserver.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_minplanifica_infocapa_layer_fghjkln_lkn4j/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 2179151,
+      "hash": "sha256:7a84c875c8c8d56b8ec4ed43e03b763b062114218ce47e3d1f001d80392acc2e",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_fghjkln_lkn4j.194"
+          },
+          {
+            "name": "producto",
+            "type": "string",
+            "example": "GASODUCTO",
+            "categories": [
+              "GASODUCTO",
+              "OLEODUCTO"
+            ]
+          },
+          {
+            "name": "diametro",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "32 PLG",
+            "categories": [
+              "32 PLG"
+            ]
+          },
+          {
+            "name": "desc_ducto",
+            "type": "string",
+            "example": "Derivada Tarija - La Tablada (Ende)"
+          },
+          {
+            "name": "long_km",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 446
+            }
+          },
+          {
+            "name": "sigla",
+            "type": "string",
+            "example": "DGTT"
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "example": "Tarija",
+            "categories": [
+              "Santa Cruz",
+              "Cochabamba",
+              "Chuquisaca",
+              "Tarija",
+              "La Paz",
+              "Potosi",
+              "Oruro"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "example": "Cercado"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "example": "Tarija"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
