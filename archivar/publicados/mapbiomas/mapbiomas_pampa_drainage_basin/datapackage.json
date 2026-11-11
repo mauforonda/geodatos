@@ -1,0 +1,110 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mapbiomas_mapbiomas_pampa_drainage_basin",
+  "title": "drainage-basin",
+  "sources": [
+    {
+      "title": "MapBiomas",
+      "path": "https://shared-geoserver.mapbiomas.org/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mapbiomas_mapbiomas_pampa_drainage_basin/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 1264663,
+      "hash": "sha256:43ca3823649dc72af83be6e058e7c87d7732bbe38df40caee35bdfb154b231e1",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "drainage-basin.49"
+          },
+          {
+            "name": "feature_id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1175,
+              "maximum": 1239
+            }
+          },
+          {
+            "name": "territory",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "REGION LAGUNERA DEL SO DE BUENOS AIRES (Argentina)"
+          },
+          {
+            "name": "type",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "level_1_drainage_basin",
+            "categories": [
+              "level_1_drainage_basin"
+            ]
+          },
+          {
+            "name": "country",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Argentina",
+            "categories": [
+              "Argentina",
+              "Brasil",
+              "Uruguay"
+            ]
+          },
+          {
+            "name": "pol_level1",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "",
+            "categories": [
+              ""
+            ]
+          },
+          {
+            "name": "pol_level2",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "",
+            "categories": [
+              ""
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 12."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
