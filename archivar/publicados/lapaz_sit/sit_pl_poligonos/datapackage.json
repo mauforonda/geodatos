@@ -1,0 +1,141 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_sit_pl_poligonos",
+  "title": "Planimetria Polígonos",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz",
+      "path": "http://sitservicios.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_sit_pl_poligonos/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 1808647,
+      "hash": "sha256:2521499c1c1a971ef7de2ab6e499f7fa1e51a1b082b5594f28139193f70667b0",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "pl_poligonos.502886"
+          },
+          {
+            "name": "AREA",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 2.058326702361228,
+              "maximum": 90780.21659445533
+            }
+          },
+          {
+            "name": "DWGNAME",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "6019.dwg"
+          },
+          {
+            "name": "LAYER",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "A_FORESTAL",
+            "categories": [
+              "P_LOTE",
+              "P_LINEA_MUNICIPAL",
+              "A_VERDE",
+              "A_OBSERVADA",
+              "A_EQUIPAMIENTO",
+              "A_PASO",
+              "A_FORESTAL",
+              "A_PROPIEDAD_MUNICIPAL",
+              "A_RESIDUAL",
+              "A_EN_RIESGO_NATURAL",
+              "A_PRESERVACION_PAISAJE_NATURAL",
+              "A_AIRES_DE_RIO",
+              "P_LOTE_EN_ASR"
+            ]
+          },
+          {
+            "name": "NOMBRE",
+            "type": "string",
+            "example": "AF-8"
+          },
+          {
+            "name": "SUP",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.0,
+              "maximum": 90727.0
+            }
+          },
+          {
+            "name": "IDENTIFICACION",
+            "type": "string",
+            "example": "  ",
+            "categories": [
+              "  ",
+              "INCLUSION DE LOTE SITRAM Nº 340"
+            ]
+          },
+          {
+            "name": "SUP_LOTE",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.0,
+              "maximum": 4261.0
+            }
+          },
+          {
+            "name": "Manzana",
+            "type": "string",
+            "example": "W 17-121"
+          },
+          {
+            "name": "Lote",
+            "type": "string",
+            "example": "S/N 8"
+          },
+          {
+            "name": "ACTO ADMINISTRATIVO",
+            "type": "integer"
+          },
+          {
+            "name": "FECHA_ACTUALIZACION",
+            "type": "integer"
+          },
+          {
+            "name": "OBS_LEGAL",
+            "type": "integer"
+          },
+          {
+            "name": "OBS_TECNICA",
+            "type": "integer"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Polygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
