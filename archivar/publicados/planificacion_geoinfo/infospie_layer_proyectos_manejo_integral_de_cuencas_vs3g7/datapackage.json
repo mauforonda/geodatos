@@ -1,0 +1,142 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_proyectos_manejo_integral_de_cuencas_vs3g7",
+  "title": "Proyectos manejo integral de cuencas.",
+  "description": "El mapa presenta proyectos de Manejo Integral de Cuencas (MIC) de la Dirección General de Recursos Hídricos, del Viceministerio de Recursos Hídricos y Riego (VRHR) con corte al 30/06/2021 en el territorio nacional.",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_proyectos_manejo_integral_de_cuencas_vs3g7/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 2450049,
+      "hash": "sha256:0f364beb1913c73c6605821b52291c9af77ef12168cfc49762f2bb23dc39b71f",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_proyectos_manejo_integral_de_cuencas_vs3g7.40"
+          },
+          {
+            "name": "nom_proy",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Manejo y Conservación de los Recursos Naturales Cuenca Rio Sevaruyo"
+          },
+          {
+            "name": "nivel_uh",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "01332"
+          },
+          {
+            "name": "fase",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Inversion PNC II",
+            "categories": [
+              "Inversion PNC II"
+            ]
+          },
+          {
+            "name": "med",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "2013-2017",
+            "categories": [
+              "2013-2017",
+              "2018",
+              "2019",
+              "2020",
+              "2021"
+            ]
+          },
+          {
+            "name": "gestion",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 2013,
+              "maximum": 2021
+            }
+          },
+          {
+            "name": "id_cod",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "S/N",
+            "categories": [
+              "S/N"
+            ]
+          },
+          {
+            "name": "sup_ha",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 46396
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "example": "ORURO",
+            "categories": [
+              "LA PAZ",
+              "COCHABAMBA",
+              "CHUQUISACA",
+              "ORURO",
+              "POTOSI",
+              "TARIJA",
+              "SANTA CRUZ",
+              "BENI"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "example": "Sebastian Pagador"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "example": "Santiago de Huari"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
