@@ -1,0 +1,190 @@
+{
+  "type": "Collection",
+  "id": "geodatosbolivia_lapaz_sit_alt_lev_levlinea",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json",
+    "https://stac-extensions.github.io/vector/v0.1.0/schema.json",
+    "https://stac-extensions.github.io/projection/v2.0.0/schema.json",
+    "https://stac-extensions.github.io/file/v2.1.0/schema.json",
+    "https://stac-extensions.github.io/web-map-links/v1.3.0/schema.json"
+  ],
+  "title": "Levantamientos lineales",
+  "description": "Levantamientos lineales como ejes de via, cordones de acera, etc.",
+  "license": "other",
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -68.16594924786737,
+          -16.590886782907383,
+          -68.02271740487264,
+          -16.435855607685856
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "providers": [
+    {
+      "name": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)",
+      "roles": [
+        "producer"
+      ],
+      "url": "http://sitservicios.lapaz.bo/ows38.jsp"
+    },
+    {
+      "name": "Internet Archive",
+      "roles": [
+        "host"
+      ],
+      "url": "https://archive.org/details/geodatosbolivia_lapaz_sit_alt_lev_levlinea"
+    }
+  ],
+  "table:primary_geometry": "geometry",
+  "table:row_count": 100000,
+  "table:columns": [
+    {
+      "name": "id",
+      "type": "string"
+    },
+    {
+      "name": "fecharegistro",
+      "type": "timestamp[us, tz=UTC]"
+    },
+    {
+      "name": "idusuario",
+      "type": "int32"
+    },
+    {
+      "name": "idtipolinea",
+      "type": "int32"
+    },
+    {
+      "name": "idtramite",
+      "type": "int32"
+    },
+    {
+      "name": "gestion",
+      "type": "int32"
+    },
+    {
+      "name": "vigente",
+      "type": "int32"
+    },
+    {
+      "name": "tipofuente",
+      "type": "int32"
+    },
+    {
+      "name": "geometry",
+      "type": "binary",
+      "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: LineString. La fuente declaraba EPSG:4326 pero sus coordenadas estaban en EPSG:32719 (sistema inferido por la ubicación de las geometrías en Bolivia); se reproyectaron."
+    }
+  ],
+  "summaries": {
+    "vector:geometry_types": [
+      "LineString"
+    ]
+  },
+  "assets": {
+    "data": {
+      "href": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_lev_levlinea/dataset.geoparquet",
+      "type": "application/vnd.apache.parquet",
+      "title": "GeoParquet",
+      "roles": [
+        "data"
+      ],
+      "proj:code": "EPSG:4326",
+      "file:size": 3248981,
+      "file:checksum": "1220632a3c0187a68c2b83f5880195d708babf48626d0b5f4bcc87db1d9ec6f84a8e"
+    },
+    "datapackage": {
+      "href": "./datapackage.json",
+      "type": "application/json",
+      "title": "Data Package: columnas, tipos y categorías",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "pmtiles": {
+      "href": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_lev_levlinea/dataset.pmtiles",
+      "type": "application/vnd.pmtiles",
+      "title": "Teselas vectoriales (PMTiles)",
+      "roles": [
+        "visual"
+      ],
+      "file:size": 327571,
+      "file:checksum": "1220f2b0ab3727f648afcabf1a0fc590cdabbfbbc98e4aff8df1fbe35316ed9aec67"
+    }
+  },
+  "pmtiles:min_zoom": 12,
+  "pmtiles:max_zoom": 14,
+  "pmtiles:tile_type": "mvt",
+  "pmtiles:center": [
+    -68.0943333,
+    -16.5133711,
+    13
+  ],
+  "pmtiles:properties": [
+    {
+      "nombre": "idusuario",
+      "tipo": "number",
+      "minimo": 1440.0,
+      "maximo": 2310.0
+    },
+    {
+      "nombre": "tipofuente",
+      "tipo": "number",
+      "minimo": 3.0,
+      "maximo": 9.0
+    },
+    {
+      "nombre": "idtipolinea",
+      "tipo": "number",
+      "minimo": 2.0,
+      "maximo": 45.0
+    },
+    {
+      "nombre": "idtramite",
+      "tipo": "number",
+      "minimo": 79453.0,
+      "maximo": 91627.0
+    }
+  ],
+  "links": [
+    {
+      "rel": "root",
+      "href": "../../../catalog.json",
+      "type": "application/json",
+      "title": "Datos geográficos de Bolivia"
+    },
+    {
+      "rel": "parent",
+      "href": "../catalog.json",
+      "type": "application/json",
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)"
+    },
+    {
+      "rel": "via",
+      "href": "http://sitservicios.lapaz.bo/ows38.jsp",
+      "type": "text/html",
+      "title": "Servicio de origen"
+    },
+    {
+      "rel": "pmtiles",
+      "href": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_lev_levlinea/dataset.pmtiles",
+      "type": "application/vnd.pmtiles",
+      "pmtiles:layers": [
+        "dataset"
+      ]
+    }
+  ]
+}
