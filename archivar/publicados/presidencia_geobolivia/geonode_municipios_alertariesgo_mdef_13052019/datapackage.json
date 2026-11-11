@@ -1,0 +1,119 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_municipios_alertariesgo_mdef_13052019",
+  "title": "Alerta de Riesgo de Inundación_ Deslizamiento_ Desbordes y Riadas por lluvias constantes 13 mayo 2019_ Bolivia",
+  "description": "El mapa muestra los municipios con alerta de riesgo de inundación, deslizamiento, desbordes y riadas por lluvias constantes en el territorio nacional con categorías amarilla y naranja. Sobre la base de los reportes hidrológicos y complementando con los meteorológicos emitidos por el SENAMHI y SNHN, el día 09/05/2019, entre los días viernes 10 al lunes 13 de mayo del 2019, se analiza lo siguiente: Existe Riesgo por lluvias y tormentas eléctricas constantes, generaran la subida de caudales en ríos como el Coroico, Zongo, Boopi, Alto Beni, Tipuani, Mapiri, Rocha, Ichilo, Chapare, Ivirgazama, Chimore, Isiboro, Ichoa, Secure, Mamore, Ibare, Yacuma, Tijamuchi, Maniqui, Tahuamanu y Madre de Dios. Las cuales podría afectar a 100 municipios en los 7 departamentos, existen 51 municipios en alerta amarilla y 49 alerta naranja. Información obtenida del reporte diario nacional de alerta y afectación Nº 105 del Viceministerio de Defensa Civil al 13 de mayo de 2019. Alerta Amarilla: Cuando la proximidad de la ocurrencia de un evento adverso se encuentra en fase inicial de desarrollo o evolución. Alerta Naranja: Cuando se prevé que el evento adverso ocurra y su desarrollo pueda afectar a la población, medios de vida, sistemas productivos, accesibilidad a servicios básicos y otros.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_municipios_alertariesgo_mdef_13052019/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 3101617,
+      "hash": "sha256:0c4a0343d17f2bd5ea475a3c9f2913adc028ea1bada07d5db4a671d33d99f591",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 100
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0,
+              "maximum": 99
+            }
+          },
+          {
+            "name": "cod_ut",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "060201"
+          },
+          {
+            "name": "departamen",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Tarija",
+            "categories": [
+              "Santa Cruz",
+              "La Paz",
+              "Cochabamba",
+              "Beni",
+              "Tarija",
+              "Chuquisaca",
+              "Pando"
+            ]
+          },
+          {
+            "name": "provincia",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Arce"
+          },
+          {
+            "name": "municipio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Padcaya"
+          },
+          {
+            "name": "capital",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Padcaya"
+          },
+          {
+            "name": "alerta",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Alerta Amarilla",
+            "categories": [
+              "Alerta Amarilla",
+              "Alerta Naranja"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
