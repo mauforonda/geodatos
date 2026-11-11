@@ -1,0 +1,160 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_alt_sit_nv_poligonos",
+  "title": "Planimetrias No validadas (poligonos)",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)",
+      "path": "http://sitservicios.lapaz.bo/ows38.jsp"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_sit_nv_poligonos/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 2473419,
+      "hash": "sha256:96f31adf833821de101034b4c71a32de456d05eaa30d633e3974c6b27973192a",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "nv_poligonos.16708"
+          },
+          {
+            "name": "AREA",
+            "type": "number",
+            "constraints": {
+              "minimum": 8006.0,
+              "maximum": 8006.0
+            }
+          },
+          {
+            "name": "DWGNAME",
+            "type": "string",
+            "example": "6023.dwg",
+            "categories": [
+              "8004.dwg",
+              "1093.dwg",
+              "3124.dwg",
+              "6023.dwg",
+              "5239.dwg",
+              "3121.dwg",
+              "3126.dwg",
+              "5242.dwg",
+              "5235.dwg",
+              "4101.dwg",
+              "5238.dwg",
+              "5243.dwg",
+              "8001.dwg",
+              "5240.dwg",
+              "8002.dwg",
+              "4102.dwg",
+              "8005.dwg",
+              "3119.dwg",
+              "5232.dwg",
+              "5231.dwg",
+              "5233.dwg",
+              "1094.dwg",
+              "8006.dwg"
+            ]
+          },
+          {
+            "name": "LAYER",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "P_LINEA_MUNICIPAL",
+            "categories": [
+              "P_LINEA_MUNICIPAL",
+              "A_PROPIEDAD_MUNICIPAL",
+              "A_VERDE",
+              "A_DOMINIO_PUBLICO",
+              "A_EQUIPAMIENTO",
+              "A_PRESERVACION_PAISAJE_NATURAL",
+              "A_RESTRICCION_ADMINISTRATIVA",
+              "A_AIRES_DE_RIO",
+              "A_CONGELADA",
+              "T-curvas",
+              "T-literal"
+            ]
+          },
+          {
+            "name": "NOMBRE",
+            "type": "string",
+            "example": "EQ-2",
+            "categories": [
+              "EQ-1",
+              "EQ-2",
+              "ÁREA CONGELADA"
+            ]
+          },
+          {
+            "name": "IDENTIFICACION",
+            "type": "string",
+            "example": " ",
+            "categories": [
+              " "
+            ]
+          },
+          {
+            "name": "Manzana",
+            "type": "integer"
+          },
+          {
+            "name": "Lote",
+            "type": "integer"
+          },
+          {
+            "name": "ACTO_ADMINISTRATIVO",
+            "type": "string",
+            "example": "Regularizacion de Trazo R.A. SACO 03/2025 de fecha 18 de febrero de 2025",
+            "categories": [
+              "Regularizacion de Trazo R.A. SACO 03/2025 de fecha 18 de febrero de 2025",
+              "Regularización de Trazo R.A. SAH Nº 10/2024 de 27/11/2024",
+              " Actualización de Aires de Río R.A. Nº 02/2024 SMRGV de 06/03/2024"
+            ]
+          },
+          {
+            "name": "FECHA_ACTUALIZACION",
+            "type": "datetime",
+            "constraints": {
+              "minimum": "2023-11-07T00:00:00",
+              "maximum": "2025-09-03T00:00:00"
+            }
+          },
+          {
+            "name": "SUP_LOTE",
+            "type": "integer"
+          },
+          {
+            "name": "SUP",
+            "type": "number",
+            "constraints": {
+              "minimum": 290.0,
+              "maximum": 1759.0
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Polygon. Geometrías inválidas, conservadas sin reparar: 41."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
