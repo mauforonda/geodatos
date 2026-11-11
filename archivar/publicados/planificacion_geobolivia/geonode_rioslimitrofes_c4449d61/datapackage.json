@@ -1,0 +1,88 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geobolivia_geonode_rioslimitrofes_c4449d61",
+  "title": "Ríos limítrofes de Bolivia (2002)",
+  "description": "Información geoespacial de los ríos limítrofes de Bolivia, mostrando su origen y su paso del mismo, en algunos casos estos ríos son límites entre departamentos, ciudades, localidades de Bolivia. Elaborado por la Unidad de Ordenamiento Territorial del Ministerio de Planificación del Desarrollo en el año 2002 a escala 1:1000000.",
+  "sources": [
+    {
+      "title": "Nueva plataforma GeoBolivia",
+      "path": "https://geonode.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geobolivia_geonode_rioslimitrofes_c4449d61/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 2523599,
+      "hash": "sha256:01729a0a85a617293c7638c25b70ae6874f8b7263a85e4633b36b868ecaf876f",
+      "schema": {
+        "fields": [
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 940
+            }
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 940
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "RiosLimitrofes.312"
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 0
+            }
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "example": "Río Capilla"
+          },
+          {
+            "name": "rios_lim",
+            "type": "string",
+            "example": "Río Limitrofe",
+            "categories": [
+              "Río Limitrofe"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
