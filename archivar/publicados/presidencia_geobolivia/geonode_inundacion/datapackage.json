@@ -1,0 +1,73 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_inundacion",
+  "title": "Mapa de riesgo de Inundacion en Bolivia, 2002",
+  "description": "Este mapa representa el riesgo por inundación, donde se puede observar que se presentan de diferentes maneras, en el altiplano ocasiona anegamiento y saturación del suelo por el incremento del nivel freático, en la Cordillera Oriental se presenta un incremento del nivel de los ríos debido a las precipitaciones y en la llanura Chaco Beniana son grandes extensiones inundadas que se mantienen en distintos periodos de tiempo. Elaborado por la Unidad de Ordenamiento Territorial del Ministerio de Planificación del Desarrollo en el año 2002 a escala 1:1000000.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_inundacion/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 2528617,
+      "hash": "sha256:c9f4a8dace99971b8999b67b6e1125db90e6c6ea922f6f1b5067f0d032c14a4f",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "example": "inundacion.6"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 6
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "example": "Inundacion.6"
+          },
+          {
+            "name": "descin3",
+            "type": "string",
+            "example": "TO"
+          },
+          {
+            "name": "count",
+            "type": "integer",
+            "constraints": {
+              "minimum": 23,
+              "maximum": 480
+            }
+          },
+          {
+            "name": "descrip",
+            "type": "string",
+            "example": "Torrenteras"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 5."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
