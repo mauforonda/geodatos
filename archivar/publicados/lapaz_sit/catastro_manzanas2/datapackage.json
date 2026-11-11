@@ -1,0 +1,151 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_catastro_manzanas2",
+  "title": "Compilacion Manzanos 2011",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz",
+      "path": "http://sitservicios.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_catastro_manzanas2/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 2489504,
+      "hash": "sha256:019ac0ccdfa51c4e4e7e366795f0a809162502c4125bea9818c7c971eb2b9ee1",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "manzanas2.1734"
+          },
+          {
+            "name": "DISTCAT",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 47
+            }
+          },
+          {
+            "name": "MANZANA",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 2802
+            }
+          },
+          {
+            "name": "DDMM",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "8-332"
+          },
+          {
+            "name": "SERVICIOS",
+            "type": "string",
+            "example": "111110",
+            "categories": [
+              "111110",
+              "000000",
+              "111111",
+              "100010",
+              "110010",
+              "000010",
+              "100000",
+              "110110",
+              "111010",
+              "100110",
+              "101010",
+              "110000",
+              "111100",
+              "111101",
+              "00000",
+              "010000",
+              "011100",
+              "100100",
+              "101110",
+              "110100",
+              "111000"
+            ]
+          },
+          {
+            "name": "LINAJE",
+            "type": "string",
+            "example": "SERCAT",
+            "categories": [
+              "SERCAT",
+              "DIIM",
+              "2",
+              "3"
+            ]
+          },
+          {
+            "name": "MACRODISTRITO",
+            "type": "number",
+            "constraints": {
+              "minimum": 1.0,
+              "maximum": 9.0
+            }
+          },
+          {
+            "name": "DISTRITOMCPAL",
+            "type": "number",
+            "constraints": {
+              "minimum": 1.0,
+              "maximum": 23.0
+            }
+          },
+          {
+            "name": "DESLINDE_INE",
+            "type": "number",
+            "constraints": {
+              "minimum": 1.0,
+              "maximum": 10.0
+            }
+          },
+          {
+            "name": "TIPO",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 999
+            }
+          },
+          {
+            "name": "AJUSTE",
+            "type": "number",
+            "constraints": {
+              "minimum": 11.0,
+              "maximum": 100.0
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 2."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
