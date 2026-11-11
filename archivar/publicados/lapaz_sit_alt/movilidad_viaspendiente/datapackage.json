@@ -1,0 +1,195 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_alt_movilidad_viaspendiente",
+  "title": "Pendiente Vias Catastro",
+  "description": "Pendiente de Vias Catastro, SMM-DPVTA",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)",
+      "path": "http://sitservicios.lapaz.bo/ows38.jsp"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_movilidad_viaspendiente/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 3055045,
+      "hash": "sha256:39448045b75d8d959cab797b052a3b2fd168b818a52bb39b407af54bca242b0f",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "viaspendiente.16872"
+          },
+          {
+            "name": "idvias",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 155692
+            }
+          },
+          {
+            "name": "classid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 41,
+              "maximum": 41
+            }
+          },
+          {
+            "name": "revisionnu",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 30
+            }
+          },
+          {
+            "name": "nombrevia",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "CAÑADA DE LAS VIZCACHAS"
+          },
+          {
+            "name": "identifica",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 0
+            }
+          },
+          {
+            "name": "idpendient",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "1",
+            "categories": [
+              "1",
+              "2",
+              "3",
+              "0",
+              "9",
+              "4",
+              " "
+            ]
+          },
+          {
+            "name": "idmatcalle",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "5",
+            "categories": [
+              "7",
+              "1",
+              "5",
+              "3",
+              "07",
+              "01",
+              "05",
+              "03",
+              "4",
+              "2",
+              "04",
+              " ",
+              "02",
+              "0",
+              "6",
+              "99"
+            ]
+          },
+          {
+            "name": "anchovia",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 1350
+            }
+          },
+          {
+            "name": "objectid_s",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 131808
+            }
+          },
+          {
+            "name": "idtipovia",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 8
+            }
+          },
+          {
+            "name": "idusuario",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 2134
+            }
+          },
+          {
+            "name": "instrument",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "OM 587/2012"
+          },
+          {
+            "name": "observacio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": " "
+          },
+          {
+            "name": "Pendiente",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 72
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: LineString, MultiLineString. La fuente declaraba EPSG:4326 pero sus coordenadas estaban en EPSG:32719 (sistema inferido por la ubicación de las geometrías en Bolivia); se reproyectaron."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
