@@ -1,0 +1,131 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_vias_gamlp_catastro",
+  "title": "Vías de la Ciudad Nuestra Señora de La Paz, Bolivia",
+  "description": "El mapa muestra las vías que conforman la ciudad de Nuestra Señora de La Paz, información obtenida del Gobierno Autónomo Municipal de La Paz a fecha noviembre del 2020.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_vias_gamlp_catastro/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 2900026,
+      "hash": "sha256:62ad8143291e54f4087364739afb8f0b852168937f1ed77374cf2bd14d908f0a",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 26060
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0,
+              "maximum": 26059
+            }
+          },
+          {
+            "name": "nombrevia",
+            "type": "string",
+            "example": "S/N"
+          },
+          {
+            "name": "tipovia",
+            "type": "string",
+            "example": "CALLEJON",
+            "categories": [
+              "CALLE",
+              "AVENIDA",
+              "PASAJE",
+              "CALLEJON",
+              "NO TIPIFICADO",
+              "PASAJE PEATONAL",
+              "OTRAS VIAS (PLAZAS, PARQUES)",
+              "PASAJE VEHICULAR",
+              "AUTOPISTA"
+            ]
+          },
+          {
+            "name": "matvia",
+            "type": "string",
+            "example": "CEMENTO",
+            "categories": [
+              "TIERRA",
+              "ASFALTADO",
+              "PIEDRA",
+              "CEMENTO",
+              "LOSETA",
+              "ADOQUIN",
+              "SIN IDENTIFICAR",
+              "SIN MATERIAL",
+              "RIPIO"
+            ]
+          },
+          {
+            "name": "idmatcalle",
+            "type": "string",
+            "example": "03",
+            "categories": [
+              "07",
+              "01",
+              "05",
+              "03",
+              "04",
+              "02",
+              "0",
+              "99",
+              "06"
+            ]
+          },
+          {
+            "name": "idtipovia",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.0,
+              "maximum": 8.0
+            }
+          },
+          {
+            "name": "instrument",
+            "type": "string",
+            "example": "OM 256/2006"
+          },
+          {
+            "name": "anchovia",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.0,
+              "maximum": 1200.0
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString. Geometrías inválidas, conservadas sin reparar: 1."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
