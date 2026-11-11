@@ -1,0 +1,112 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_biomasa_subterranea_tbgb900m_en_el_cc38af376685",
+  "title": "Biomasa Subterránea (tBGB/900m) en el Departamento de Oruro",
+  "description": "El mapa muestra la distribución de biomasa subterránea en el departamento de Oruro, expresada en toneladas de biomasa subterránea por píxel de 900 m² (tBGB/900m), representando el carbono almacenado en raíces y otros componentes subterráneos de la vegetación, como insumo para la conservación de ecosistemas, la captura de carbono y la planificación de acciones de mitigación y financiamiento climático.",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_biomasa_subterranea_tbgb900m_en_el_cc38af376685/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 1638742,
+      "hash": "sha256:0d0ba6b11fe310b5fea6665cf9d2b1c1f2045972676cf514f256a7146e312da1",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_biomasa_subterranea_tbgb900m_en_el_departamento_d_0s1m5.48"
+          },
+          {
+            "name": "biomasa",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 3
+            }
+          },
+          {
+            "name": "sup_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.315,
+              "maximum": 575407.98
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "ORURO",
+            "categories": [
+              "ORURO"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Ladislao Cabrera",
+            "categories": [
+              "Cercado",
+              "Litoral",
+              "Mejillones",
+              "Sajama",
+              "Poopo",
+              "Sabaya",
+              "Abaroa",
+              "Carangas",
+              "Ladislao Cabrera",
+              "Pantaleon Dalence",
+              "Sur Carangas",
+              "Salar de Coipasa",
+              "Lago Poopó",
+              "Lago Uru Uru",
+              "Nor Carangas",
+              "San Pedro De Totora",
+              "Saucari",
+              "Sebastian Pagador",
+              "Tomas Barron"
+            ]
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Salinas de Garci Mendoza"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 1."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
