@@ -1,0 +1,86 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mdryt_observatorioagro_bolivia_rios_principales_wgs_84",
+  "title": "rios_principales_wgs_84",
+  "sources": [
+    {
+      "title": "Geovisor del Observatorio Agroambiental y Productivo del Ministerio de Desarrollo Rural y Tierras (MDRyT)",
+      "path": "http://geoserver.observatorioagro.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mdryt_observatorioagro_bolivia_rios_principales_wgs_84/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 2264468,
+      "hash": "sha256:c3f557d9bab7c06edbef0012ba6ad999776c142cfd6bc2a9b6d82947ce5398ab",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "ID",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 0
+            }
+          },
+          {
+            "name": "NOMBRE",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": ""
+          },
+          {
+            "name": "RIOS_LIM",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "",
+            "categories": [
+              "",
+              "Rï¿½o Limitrofe"
+            ]
+          },
+          {
+            "name": "RIO_NAVE",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "",
+            "categories": [
+              "",
+              "Parte Navegable"
+            ]
+          },
+          {
+            "name": "Shape_Leng",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 18.9958999977,
+              "maximum": 960721.060516
+            }
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
