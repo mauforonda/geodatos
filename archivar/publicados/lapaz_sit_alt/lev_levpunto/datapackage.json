@@ -1,0 +1,108 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_alt_lev_levpunto",
+  "title": "Levantamiento punto",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)",
+      "path": "http://sitservicios.lapaz.bo/ows38.jsp"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_lev_levpunto/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 3542140,
+      "hash": "sha256:1ebebd3d27802a4f6d10c8aa9a91b9d88fc419fe4b10a7e727579900a3726c9a",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "levpunto.1896304"
+          },
+          {
+            "name": "fecharegistro",
+            "type": "datetime",
+            "constraints": {
+              "required": true,
+              "minimum": "2019-01-02T22:11:19.030000+00:00",
+              "maximum": "2019-02-07T14:37:07.260000+00:00"
+            }
+          },
+          {
+            "name": "idusuario",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1440,
+              "maximum": 2310
+            }
+          },
+          {
+            "name": "idtipopunto",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 24,
+              "maximum": 43
+            }
+          },
+          {
+            "name": "idtramite",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1354,
+              "maximum": 92268
+            }
+          },
+          {
+            "name": "gestion",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 2019,
+              "maximum": 2019
+            }
+          },
+          {
+            "name": "vigente",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 1
+            }
+          },
+          {
+            "name": "tipofuente",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 9
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point. La fuente declaraba EPSG:4326 pero sus coordenadas estaban en EPSG:32719 (sistema inferido por la ubicación de las geometrías en Bolivia); se reproyectaron."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
