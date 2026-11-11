@@ -1,0 +1,121 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_oieau_c_cv_geologia_santiago",
+  "title": "CV_ENV_geologia_santiago",
+  "sources": [
+    {
+      "title": "Sistema para la Gestión Integral de Recursos Hídricos desarrollado por la Oficina Internacional del Agua (OiEau)",
+      "path": "https://www.oieau-wiss.org/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_oieau_c_cv_geologia_santiago/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 1791760,
+      "hash": "sha256:1b8c4fb9de441193a6337fa60625ea6c79fe1f13509d56712242e9a54ea9b9a6",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "geologia_santiago.479"
+          },
+          {
+            "name": "idade",
+            "type": "string",
+            "example": "Pliocénico-Miocénico",
+            "categories": [
+              "Pliocénico-Miocénico",
+              "Miocénico médio",
+              "Quaternário",
+              "Pliocénico",
+              "Ante-Miocénico médio)",
+              "Ante-Miocénico médio",
+              "Quaternario"
+            ]
+          },
+          {
+            "name": "lit",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Mantos submarinos, inferiores e superiores Piroclastos"
+          },
+          {
+            "name": "cod_form",
+            "type": "string",
+            "example": "MV",
+            "categories": [
+              "PA",
+              "a",
+              "λρ",
+              "CA",
+              "MV",
+              "CB",
+              "φ",
+              "PA1",
+              "CBm",
+              "dv",
+              "cong",
+              "A",
+              "γ",
+              "calc",
+              "chφ",
+              "B",
+              "c",
+              "λρ1",
+              "chb",
+              "dφ",
+              "chy",
+              "A1",
+              "cb",
+              "d",
+              "a dv",
+              "a e",
+              "de"
+            ]
+          },
+          {
+            "name": "ilha",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "SANTIAGO",
+            "categories": [
+              "SANTIAGO"
+            ]
+          },
+          {
+            "name": "grupo",
+            "type": "string",
+            "example": "Complexo eruptivo interno, antigo",
+            "categories": [
+              "Complexo eruptivo interno, antigo",
+              "Fonólitos e traquitos"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 3."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
