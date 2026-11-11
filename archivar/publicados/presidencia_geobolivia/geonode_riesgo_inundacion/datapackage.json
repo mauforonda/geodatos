@@ -1,0 +1,106 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_riesgo_inundacion",
+  "title": "Mapa de riesgo de inundación en el departamento de Santa Cruz, Bolivia 2011",
+  "description": "Este mapa representa el riesgo de inundación, que como resultado de lluvias intensas o continuas, al sobrepasar la capacidad de retención del suelo y de los cauces, se producen desbordes e inundación de terrenos planos adyacentes a los cursos del agua, las inundaciones se presentan ocasionalmente en los ríos de la cordillera Oriental  en los municipios de Saipina (Río Comarapa), Comarapa (Chorro Negro Arriba), Vallegrande (La Ciénaga). Elaborado por el Plan de Ordenamiento Territorial en el Departamento de Santa Cruz en el año 2011 a escala 1:100000.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_riesgo_inundacion/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 2707045,
+      "hash": "sha256:4c03555d22ea2e2d0319fcff5047e7d21c1d3491a4ea7d71ef65d49c1417a207",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "riesgo_inundacion.1555"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 1892
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Riesgo_Inundacion.1555"
+          },
+          {
+            "name": "riesgo",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 3
+            }
+          },
+          {
+            "name": "riesgo_tex",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Alto",
+            "categories": [
+              "sr",
+              "Medio",
+              "Alto",
+              "Bajo"
+            ]
+          },
+          {
+            "name": "shape_area",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 3.607e-09,
+              "maximum": 0.349272065241
+            }
+          },
+          {
+            "name": "shape_len",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.000277379115542,
+              "maximum": 15.9101833694
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 43."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
