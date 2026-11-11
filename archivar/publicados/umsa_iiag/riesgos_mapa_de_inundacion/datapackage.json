@@ -1,0 +1,64 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_umsa_iiag_riesgos_mapa_de_inundacion",
+  "title": "Inundacion",
+  "sources": [
+    {
+      "title": "Geoportal del Instituto de Investigaciones y Aplicaciones Geomáticas (IIAG) de la Universidad Mayor de San Andrés (UMSA)",
+      "path": "http://gtggeoportal.umsa.bo:8087/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_umsa_iiag_riesgos_mapa_de_inundacion/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 2241757,
+      "hash": "sha256:68dc672b350b124a1878023f5cb298fa3618709f1e415cf986235d612b692805",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "example": "Mapa de Inundacion.6"
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "example": "Inundacion.6"
+          },
+          {
+            "name": "DESCIN3",
+            "type": "string",
+            "example": "TO"
+          },
+          {
+            "name": "COUNT",
+            "type": "integer",
+            "constraints": {
+              "minimum": 23,
+              "maximum": 480
+            }
+          },
+          {
+            "name": "DESCRIP",
+            "type": "string",
+            "example": "Torrenteras"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 5."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
