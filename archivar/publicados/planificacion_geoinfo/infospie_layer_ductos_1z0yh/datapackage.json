@@ -1,0 +1,119 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_ductos_1z0yh",
+  "title": "Ductos",
+  "description": "El mapa presenta las infraestructuras de transporte utilizadas para movilizar hidrocarburos, como gas natural y petróleo, desde los campos de producción hasta las plantas de procesamiento, los puntos de distribución y exportación, así como los consumidores finales en el territorio nacional.",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_ductos_1z0yh/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 2179062,
+      "hash": "sha256:4230efcd6bf25fa100512f117ae6266922c41ee6a2839970f60dc48d7a924673",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_ductos_1z0yh.132"
+          },
+          {
+            "name": "sigla",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "DGTT"
+          },
+          {
+            "name": "desc_ducto",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Derivada Tarija - La Tablada (Ende)"
+          },
+          {
+            "name": "producto",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "GASODUCTO",
+            "categories": [
+              "GASODUCTO",
+              "OLEODUCTO",
+              "Sin Dato"
+            ]
+          },
+          {
+            "name": "diametro",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "32 PLG",
+            "categories": [
+              "32 PLG"
+            ]
+          },
+          {
+            "name": "long_km",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 446
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "example": "TARIJA",
+            "categories": [
+              "SANTA CRUZ",
+              "COCHABAMBA",
+              "CHUQUISACA",
+              "TARIJA",
+              "LA PAZ",
+              "POTOSI",
+              "ORURO"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "example": "Cercado"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "example": "Tarija"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
