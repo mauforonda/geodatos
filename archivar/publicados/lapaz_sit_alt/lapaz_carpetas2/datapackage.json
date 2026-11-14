@@ -1,0 +1,67 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_alt_lapaz_carpetas2",
+  "title": "Carpetas de Inversion 2",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)",
+      "path": "http://sitservicios.lapaz.bo/ows38.jsp"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_lapaz_carpetas2/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 4338122,
+      "hash": "sha256:ff288f65e2d525afd58843c9eef0256669e001ff54b2ed576b67946b937b44ed",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "carpetas2.16398"
+          },
+          {
+            "name": "cod_coordcarp",
+            "type": "number",
+            "constraints": {
+              "minimum": 21.0,
+              "maximum": 18839.0
+            }
+          },
+          {
+            "name": "cod_carpeta",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 23,
+              "maximum": 347969
+            }
+          },
+          {
+            "name": "forma2",
+            "type": "string",
+            "example": "MULTIPOINT(583716.25 8159013.5)"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: LineString, Point, Polygon, MultiPoint, MultiPolygon, MultiLineString, GeometryCollection. Filas sin geometría: 552. Geometrías inválidas, conservadas sin reparar: 104. La fuente declaraba EPSG:4326 pero sus coordenadas estaban en EPSG:32719 (sistema inferido por la ubicación de las geometrías en Bolivia); se reproyectaron."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
