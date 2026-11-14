@@ -1,0 +1,113 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_cultivo_de_soya_norte_integrado_bghxd",
+  "title": "Cultivo de soya Norte Integrado",
+  "description": "El mapa muestra las estimaciones de superficie de cultivos priorizados de Soya a través de un análisis multicriterio, elaborado por el Observatorio Agroambiental y Productivo - OAP",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_cultivo_de_soya_norte_integrado_bghxd/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 2819740,
+      "hash": "sha256:cc92faee38bc62a93f7de3414da899cd69b1ec7c4c753a95823165b0169c61ef",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_cultivo_de_soya_norte_integrado_bghxd.42"
+          },
+          {
+            "name": "sup_ha",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 216153
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "SANTA CRUZ",
+            "categories": [
+              "SANTA CRUZ"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Andres Ibañez",
+            "categories": [
+              "Obispo Santisteban",
+              "Ñuflo De Chavez",
+              "Andres Ibañez",
+              "Warnes",
+              "Sara",
+              "Chiquitos",
+              "Guarayos",
+              "Cordillera",
+              "Ichilo"
+            ]
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "La Guardia",
+            "categories": [
+              "San Julián",
+              "San Pedro",
+              "Fernández Alonso",
+              "Mineros",
+              "Cotoca",
+              "Cuatro Cañadas",
+              "El Puente",
+              "General Saavedra",
+              "Okinawa Uno",
+              "Pailón",
+              "Santa Rosa",
+              "Warnes",
+              "Concepción",
+              "Santa Cruz de la Sierra",
+              "Charagua",
+              "La Guardia",
+              "Portachuelo",
+              "San Juan"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
