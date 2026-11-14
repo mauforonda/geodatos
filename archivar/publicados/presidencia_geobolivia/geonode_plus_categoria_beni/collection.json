@@ -1,0 +1,184 @@
+{
+  "type": "Collection",
+  "id": "geodatosbolivia_presidencia_geobolivia_geonode_plus_categoria_beni",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json",
+    "https://stac-extensions.github.io/vector/v0.1.0/schema.json",
+    "https://stac-extensions.github.io/projection/v2.0.0/schema.json",
+    "https://stac-extensions.github.io/file/v2.1.0/schema.json",
+    "https://stac-extensions.github.io/web-map-links/v1.3.0/schema.json"
+  ],
+  "title": "Plan de Uso del Suelo por Categorías de Uso Departamento del Beni_ Bolivia 2019",
+  "description": "El mapa muestra el Plan de Uso del Suelo (PLUS) por categorías de Uso del departamento del Beni que son 6: Tierras de Uso Forestal (14.44%), Tierras de Uso Agrosilvopastoril (4.17%), Tierras de Uso Agropecuario (39.79%), Tierras de uso Restringido (9.71%), Áreas Naturales Protegidas (30.22%) y Cuerpos de Agua (1.66%). El Plan de Uso de Suelo es un instrumento técnico normativo del ordenamiento territorial que delimita espacios geográficos y asigna uso al suelo, tiene como objetivo el manejo y uso sostenible de los recursos naturales. información obtenida del Viceministerio de Tierra a octubre del 2020.",
+  "license": "other",
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -67.56389333,
+          -17.16683425,
+          -61.51578538,
+          -10.38061754
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "providers": [
+    {
+      "name": "GeoBolivia en Presidencia",
+      "roles": [
+        "producer"
+      ],
+      "url": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    },
+    {
+      "name": "Internet Archive",
+      "roles": [
+        "host"
+      ],
+      "url": "https://archive.org/details/geodatosbolivia_presidencia_geobolivia_geonode_plus_categoria_beni"
+    }
+  ],
+  "table:primary_geometry": "geometry",
+  "table:row_count": 6,
+  "table:columns": [
+    {
+      "name": "ogc_fid",
+      "type": "int32"
+    },
+    {
+      "name": "id",
+      "type": "int32"
+    },
+    {
+      "name": "cat_plus",
+      "type": "string"
+    },
+    {
+      "name": "sup_has",
+      "type": "double"
+    },
+    {
+      "name": "plus",
+      "type": "string"
+    },
+    {
+      "name": "geometry",
+      "type": "binary",
+      "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 1."
+    }
+  ],
+  "summaries": {
+    "vector:geometry_types": [
+      "MultiPolygon"
+    ]
+  },
+  "assets": {
+    "data": {
+      "href": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_plus_categoria_beni/dataset.geoparquet",
+      "type": "application/vnd.apache.parquet",
+      "title": "GeoParquet",
+      "roles": [
+        "data"
+      ],
+      "proj:code": "EPSG:4326",
+      "file:size": 3938389,
+      "file:checksum": "1220e1706e71ffc1167d68257f3581ea351ea787f6b36af33d3b3347de597734a937"
+    },
+    "datapackage": {
+      "href": "./datapackage.json",
+      "type": "application/json",
+      "title": "Data Package: columnas, tipos y categorías",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "pmtiles": {
+      "href": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_plus_categoria_beni/dataset.pmtiles",
+      "type": "application/vnd.pmtiles",
+      "title": "Teselas vectoriales (PMTiles)",
+      "roles": [
+        "visual"
+      ],
+      "file:size": 999432,
+      "file:checksum": "12209443207cb1bc867b256fe2ad442669038f62eb8041bc86f0337a003194df8bae"
+    }
+  },
+  "pmtiles:min_zoom": 7,
+  "pmtiles:max_zoom": 10,
+  "pmtiles:tile_type": "mvt",
+  "pmtiles:center": [
+    -64.5398393,
+    -13.7737258,
+    8
+  ],
+  "pmtiles:properties": [
+    {
+      "nombre": "cat_plus",
+      "tipo": "string",
+      "categorias": [
+        "AREAS NATURALES PROTEGIDAS",
+        "CUERPOS DE AGUA",
+        "TIERRAS DE USO AGROPECUARIO",
+        "TIERRAS DE USO AGROSILVOPASTORIL",
+        "TIERRAS DE USO FORESTAL",
+        "TIERRAS DE USO RESTRINGIDO"
+      ]
+    },
+    {
+      "nombre": "plus",
+      "tipo": "string",
+      "categorias": [
+        "0",
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+      ]
+    },
+    {
+      "nombre": "sup_has",
+      "tipo": "number",
+      "minimo": 376852.580133,
+      "maximo": 9025341.90801
+    }
+  ],
+  "links": [
+    {
+      "rel": "root",
+      "href": "../../../catalog.json",
+      "type": "application/json",
+      "title": "Datos geográficos de Bolivia"
+    },
+    {
+      "rel": "parent",
+      "href": "../catalog.json",
+      "type": "application/json",
+      "title": "GeoBolivia en Presidencia"
+    },
+    {
+      "rel": "via",
+      "href": "https://geobolivia.presidencia.gob.bo/geoserver/ows",
+      "type": "text/html",
+      "title": "Servicio de origen"
+    },
+    {
+      "rel": "pmtiles",
+      "href": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_plus_categoria_beni/dataset.pmtiles",
+      "type": "application/vnd.pmtiles",
+      "pmtiles:layers": [
+        "dataset"
+      ]
+    }
+  ]
+}

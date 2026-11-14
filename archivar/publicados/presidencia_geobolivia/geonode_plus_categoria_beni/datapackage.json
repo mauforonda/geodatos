@@ -1,0 +1,71 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_plus_categoria_beni",
+  "title": "Plan de Uso del Suelo por Categorías de Uso Departamento del Beni_ Bolivia 2019",
+  "description": "El mapa muestra el Plan de Uso del Suelo (PLUS) por categorías de Uso del departamento del Beni que son 6: Tierras de Uso Forestal (14.44%), Tierras de Uso Agrosilvopastoril (4.17%), Tierras de Uso Agropecuario (39.79%), Tierras de uso Restringido (9.71%), Áreas Naturales Protegidas (30.22%) y Cuerpos de Agua (1.66%). El Plan de Uso de Suelo es un instrumento técnico normativo del ordenamiento territorial que delimita espacios geográficos y asigna uso al suelo, tiene como objetivo el manejo y uso sostenible de los recursos naturales. información obtenida del Viceministerio de Tierra a octubre del 2020.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_plus_categoria_beni/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 3938389,
+      "hash": "sha256:e1706e71ffc1167d68257f3581ea351ea787f6b36af33d3b3347de597734a937",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 6
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 6
+            }
+          },
+          {
+            "name": "cat_plus",
+            "type": "string",
+            "example": "CUERPOS DE AGUA"
+          },
+          {
+            "name": "sup_has",
+            "type": "number",
+            "constraints": {
+              "minimum": 376852.580133,
+              "maximum": 9025341.90801
+            }
+          },
+          {
+            "name": "plus",
+            "type": "string",
+            "example": "0"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 1."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
