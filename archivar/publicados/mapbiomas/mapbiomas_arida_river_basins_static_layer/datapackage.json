@@ -1,0 +1,127 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mapbiomas_mapbiomas_arida_river_basins_static_layer",
+  "title": "river-basins-static-layer",
+  "sources": [
+    {
+      "title": "MapBiomas",
+      "path": "https://shared-geoserver.mapbiomas.org/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mapbiomas_mapbiomas_arida_river_basins_static_layer/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 1128119,
+      "hash": "sha256:39d54a879ec23437a874abc014ae83f83872f2eddbc8ebeae9176ff4a3816673",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 14558,
+              "maximum": 14700
+            }
+          },
+          {
+            "name": "version",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 1
+            }
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Quaraí"
+          },
+          {
+            "name": "source",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "ANA",
+            "categories": [
+              "ANA"
+            ]
+          },
+          {
+            "name": "inserted_a",
+            "type": "datetime",
+            "constraints": {
+              "required": true,
+              "minimum": "2020-02-07T00:00:00+00:00",
+              "maximum": "2020-02-07T00:00:00+00:00"
+            }
+          },
+          {
+            "name": "updated_at",
+            "type": "datetime",
+            "constraints": {
+              "required": true,
+              "minimum": "2020-02-07T00:00:00+00:00",
+              "maximum": "2020-02-07T00:00:00+00:00"
+            }
+          },
+          {
+            "name": "category",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "level_2_basin",
+            "categories": [
+              "level_2_basin",
+              "level_1_basin"
+            ]
+          },
+          {
+            "name": "category_n",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Bacia Nível 2",
+            "categories": [
+              "Bacia Nível 2",
+              "Bacia Nível 1"
+            ]
+          },
+          {
+            "name": "area_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 310141.23345,
+              "maximum": 385346611.06094
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 23."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
