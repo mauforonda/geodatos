@@ -1,0 +1,78 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mdryt_observatorioagro_bolivia_limite_departamental",
+  "title": "Limite_Departamental",
+  "sources": [
+    {
+      "title": "Geovisor del Observatorio Agroambiental y Productivo del Ministerio de Desarrollo Rural y Tierras (MDRyT)",
+      "path": "http://geoserver.observatorioagro.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mdryt_observatorioagro_bolivia_limite_departamental/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 2604021,
+      "hash": "sha256:5f0d82cfc98d3760d5c59a7e6ebe646037c85cd394a0329b8980bc2e455c4f87",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "OBJECTID",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 11
+            }
+          },
+          {
+            "name": "NOM_DEP",
+            "type": "string",
+            "example": "Potosi"
+          },
+          {
+            "name": "DEPARTAMEN",
+            "type": "string",
+            "example": "POTOSI"
+          },
+          {
+            "name": "SUP_HA",
+            "type": "number",
+            "constraints": {
+              "minimum": 3744093.33927,
+              "maximum": 37482634.9732
+            }
+          },
+          {
+            "name": "SHAPE_Leng",
+            "type": "number",
+            "constraints": {
+              "minimum": 12.282083614,
+              "maximum": 36.6171552473
+            }
+          },
+          {
+            "name": "SHAPE_Area",
+            "type": "number",
+            "constraints": {
+              "minimum": 3.24496022738,
+              "maximum": 31.3590641815
+            }
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
