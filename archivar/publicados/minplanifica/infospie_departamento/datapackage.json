@@ -1,0 +1,95 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_minplanifica_infospie_departamento",
+  "title": "departamento",
+  "sources": [
+    {
+      "title": "Geoserver del Ministerio de Planificación del Desarollo",
+      "path": "https://geoserver.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_minplanifica_infospie_departamento/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 2751507,
+      "hash": "sha256:b561eb4f93d03a259b9adcffbe50f7e0c1c94a52242dd428b6913658e56a5fde",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "example": "departamento.6"
+          },
+          {
+            "name": "departamento",
+            "type": "string",
+            "example": "Potosi"
+          },
+          {
+            "name": "file_name",
+            "type": "integer"
+          },
+          {
+            "name": "original_file_name",
+            "type": "integer"
+          },
+          {
+            "name": "aud_usuario_crea",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 1
+            }
+          },
+          {
+            "name": "aud_fecha_crea",
+            "type": "datetime",
+            "constraints": {
+              "minimum": "2023-08-30T19:13:22.638000+00:00",
+              "maximum": "2023-08-30T19:13:22.638000+00:00"
+            }
+          },
+          {
+            "name": "aud_usuario_elimina",
+            "type": "integer"
+          },
+          {
+            "name": "aud_fecha_modifica",
+            "type": "integer"
+          },
+          {
+            "name": "aud_usuario_modifica",
+            "type": "integer"
+          },
+          {
+            "name": "aud_fecha_elimina",
+            "type": "integer"
+          },
+          {
+            "name": "estado",
+            "type": "boolean"
+          },
+          {
+            "name": "color",
+            "type": "string",
+            "example": "#baa151"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
