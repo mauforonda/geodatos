@@ -1,0 +1,99 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mdryt_observatorioagro_bolivia_uh_nivel1",
+  "title": "UH_Nivel1",
+  "sources": [
+    {
+      "title": "Geovisor del Observatorio Agroambiental y Productivo del Ministerio de Desarrollo Rural y Tierras (MDRyT)",
+      "path": "http://geoserver.observatorioagro.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mdryt_observatorioagro_bolivia_uh_nivel1/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 2553914,
+      "hash": "sha256:a2150b7113264ae96f9fb28ca273d0713dda9810738ea59181393aeab3fffbdf",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "OBJECTID",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 3
+            }
+          },
+          {
+            "name": "Nivel_1",
+            "type": "string",
+            "example": "0"
+          },
+          {
+            "name": "NOMBRE_N1",
+            "type": "string",
+            "example": "Region Hidrografica Altiplano"
+          },
+          {
+            "name": "SUP_N1",
+            "type": "number",
+            "constraints": {
+              "minimum": 149749.246648,
+              "maximum": 707955.880432
+            }
+          },
+          {
+            "name": "TIPO_UH",
+            "type": "string",
+            "example": "Endorreica"
+          },
+          {
+            "name": "CATEGORIA",
+            "type": "string",
+            "example": "Macrocuenca",
+            "categories": [
+              "Macrocuenca"
+            ]
+          },
+          {
+            "name": "Sup_Transf",
+            "type": "number",
+            "constraints": {
+              "minimum": 596700.5,
+              "maximum": 6074270.1
+            }
+          },
+          {
+            "name": "Shape_Leng",
+            "type": "number",
+            "constraints": {
+              "minimum": 28.9457188881,
+              "maximum": 54.8891698336
+            }
+          },
+          {
+            "name": "Shape_Area",
+            "type": "number",
+            "constraints": {
+              "minimum": 12.9300469724,
+              "maximum": 59.9268409415
+            }
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
