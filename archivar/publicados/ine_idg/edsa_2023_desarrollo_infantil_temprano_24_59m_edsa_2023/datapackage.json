@@ -1,0 +1,71 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_ine_idg_edsa_2023_desarrollo_infantil_temprano_24_59m_edsa_2023",
+  "title": "Desarrollo Infantil Temprano (24-59m) – EDSA 2023",
+  "description": "El Índice de Desarrollo Infantil Temprano  (IDIT) es un indicador que mide el nivel de desarrollo adecuado en niñas y  niños entre los 24 a 59 meses de edad, considerando las dimensiones de salud, aprendizaje y bienestar psicosocial.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Geoestadísticos del INE",
+      "path": "https://gsn.ine.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_ine_idg_edsa_2023_desarrollo_infantil_temprano_24_59m_edsa_2023/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 2720248,
+      "hash": "sha256:3f54ce3b1d2a50dff132bede3f8488b857bd3b2f8188aff3dd502b4fb5478504",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "gid",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 9
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 9
+            }
+          },
+          {
+            "name": "cod_depto",
+            "type": "string",
+            "example": "05"
+          },
+          {
+            "name": "depto",
+            "type": "string",
+            "example": "POTOSÍ"
+          },
+          {
+            "name": "_dit_Índi",
+            "type": "number",
+            "constraints": {
+              "minimum": 52.2,
+              "maximum": 78.4
+            }
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
