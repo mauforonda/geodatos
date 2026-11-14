@@ -1,0 +1,89 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_mapa_referencial_de_ubicacion_de_p_4fe54225b16f",
+  "title": "Mapa Referencial de Ubicación de Pueblos Indígenas y Originarios – Viceministerio de Planificación Territorial",
+  "description": "El mapa presenta información sobre la distribución de las etnias en los nueve departamentos, en concordancia con la nueva Constitución Política del Estado, que reconoce la diversidad cultural y lingüística de los pueblos indígenas de Bolivia.",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_mapa_referencial_de_ubicacion_de_p_4fe54225b16f/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 2033566,
+      "hash": "sha256:7f42be8cb0ae3ccb2d999939b50a27fde2e0004849130fa68e70f865ab468cc2",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_mapa_referencial_de_ubicacion_de_pueblos_indigena_m2st5i.533"
+          },
+          {
+            "name": "etnias",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Quechua"
+          },
+          {
+            "name": "sup_ha",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 14,
+              "maximum": 1713071
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "example": "POTOSI",
+            "categories": [
+              "LA PAZ",
+              "BENI",
+              "COCHABAMBA",
+              "SANTA CRUZ",
+              "POTOSI",
+              "ORURO",
+              "CHUQUISACA",
+              "TARIJA",
+              "PANDO"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "example": "Nor Lipez"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "example": "San Pedro de Quemes"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
