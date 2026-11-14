@@ -1,0 +1,191 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_alt_archivo_planimetrias",
+  "title": "planimetriavigente",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)",
+      "path": "http://sitservicios.lapaz.bo/ows38.jsp"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_archivo_planimetrias/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 2443394,
+      "hash": "sha256:6cb2b6cba94b9a6207583d154f5b323128a609344831eaf1be40cf093e8be9a2",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "planimetrias.4"
+          },
+          {
+            "name": "classid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 8,
+              "maximum": 8
+            }
+          },
+          {
+            "name": "revisionnumber",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 6
+            }
+          },
+          {
+            "name": "codigoplanimetria",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "6007"
+          },
+          {
+            "name": "idunidadasigna",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 3
+            }
+          },
+          {
+            "name": "idusuario",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1117,
+              "maximum": 3438
+            }
+          },
+          {
+            "name": "descPlanimetria",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "ESTRUCTURA VIAL DE MALLASA REMODELACIÓN MALLASILLA FASE 1"
+          },
+          {
+            "name": "idCodPlanimetria",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 846
+            }
+          },
+          {
+            "name": "fecharegistro",
+            "type": "datetime",
+            "constraints": {
+              "required": true,
+              "minimum": "2012-06-29T23:07:30.540000+00:00",
+              "maximum": "2026-05-20T15:19:34.517000+00:00"
+            }
+          },
+          {
+            "name": "estado",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 14
+            }
+          },
+          {
+            "name": "superficie",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 1629.787109375,
+              "maximum": 9022796.289550781
+            }
+          },
+          {
+            "name": "macrodistrito",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.0,
+              "maximum": 8.0
+            }
+          },
+          {
+            "name": "distritomunicipal",
+            "type": "number",
+            "constraints": {
+              "minimum": 1.0,
+              "maximum": 22.0
+            }
+          },
+          {
+            "name": "idzona",
+            "type": "string",
+            "example": "087"
+          },
+          {
+            "name": "idtramite",
+            "type": "number",
+            "constraints": {
+              "minimum": 1.0,
+              "maximum": 1.0
+            }
+          },
+          {
+            "name": "idplanimetriatramite",
+            "type": "number",
+            "constraints": {
+              "minimum": 11.0,
+              "maximum": 2998.0
+            }
+          },
+          {
+            "name": "patronasentamiento",
+            "type": "string",
+            "example": "Mallasa 4P"
+          },
+          {
+            "name": "zonasrelacionadas",
+            "type": "string",
+            "example": "MALLASILLA"
+          },
+          {
+            "name": "otbsrurales",
+            "type": "string",
+            "example": "---"
+          },
+          {
+            "name": "otbsurbanas",
+            "type": "string",
+            "example": "MALLASILLA"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Polygon, MultiPolygon. Geometrías inválidas, conservadas sin reparar: 50."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
