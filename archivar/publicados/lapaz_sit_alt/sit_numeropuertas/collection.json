@@ -1,0 +1,213 @@
+{
+  "type": "Collection",
+  "id": "geodatosbolivia_lapaz_sit_alt_sit_numeropuertas",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json",
+    "https://stac-extensions.github.io/vector/v0.1.0/schema.json",
+    "https://stac-extensions.github.io/projection/v2.0.0/schema.json",
+    "https://stac-extensions.github.io/file/v2.1.0/schema.json",
+    "https://stac-extensions.github.io/web-map-links/v1.3.0/schema.json"
+  ],
+  "title": "Numero Puertas",
+  "description": "Direcciones o números de puertas, obtenido a partir de registros catastrales, números de inmueble, otras fuentes.",
+  "license": "other",
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -68.17086991147819,
+          -16.540590441142708,
+          -68.03551826188402,
+          -16.431594259162726
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "providers": [
+    {
+      "name": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)",
+      "roles": [
+        "producer"
+      ],
+      "url": "http://sitservicios.lapaz.bo/ows38.jsp"
+    },
+    {
+      "name": "Internet Archive",
+      "roles": [
+        "host"
+      ],
+      "url": "https://archive.org/details/geodatosbolivia_lapaz_sit_alt_sit_numeropuertas"
+    }
+  ],
+  "table:primary_geometry": "geometry",
+  "table:row_count": 100000,
+  "table:columns": [
+    {
+      "name": "id",
+      "type": "string"
+    },
+    {
+      "name": "cod_sifca",
+      "type": "string"
+    },
+    {
+      "name": "num_puerta",
+      "type": "string"
+    },
+    {
+      "name": "fuente",
+      "type": "string"
+    },
+    {
+      "name": "n_inmueble",
+      "type": "int32"
+    },
+    {
+      "name": "tipo_via",
+      "type": "string"
+    },
+    {
+      "name": "nombre_via",
+      "type": "string"
+    },
+    {
+      "name": "distrito",
+      "type": "int32"
+    },
+    {
+      "name": "otb",
+      "type": "string"
+    },
+    {
+      "name": "zona",
+      "type": "string"
+    },
+    {
+      "name": "geometry",
+      "type": "binary",
+      "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point. La fuente declaraba EPSG:4326 pero sus coordenadas estaban en EPSG:32719 (sistema inferido por la ubicación de las geometrías en Bolivia); se reproyectaron."
+    }
+  ],
+  "summaries": {
+    "vector:geometry_types": [
+      "Point"
+    ]
+  },
+  "assets": {
+    "data": {
+      "href": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_sit_numeropuertas/dataset.geoparquet",
+      "type": "application/vnd.apache.parquet",
+      "title": "GeoParquet",
+      "roles": [
+        "data"
+      ],
+      "proj:code": "EPSG:4326",
+      "file:size": 4579996,
+      "file:checksum": "1220dfa848679d4a626dca5d73ae5449d30c6098db9b3928cb4f7b54bfcf420ab691"
+    },
+    "datapackage": {
+      "href": "./datapackage.json",
+      "type": "application/json",
+      "title": "Data Package: columnas, tipos y categorías",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "pmtiles": {
+      "href": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_sit_numeropuertas/dataset.pmtiles",
+      "type": "application/vnd.pmtiles",
+      "title": "Teselas vectoriales (PMTiles)",
+      "roles": [
+        "visual"
+      ],
+      "file:size": 1770518,
+      "file:checksum": "12209abebc9538026e9d39fe5846c2ef8070cdf2eef3b61e7bcab91a5e69f88ff703"
+    }
+  },
+  "pmtiles:min_zoom": 12,
+  "pmtiles:max_zoom": 14,
+  "pmtiles:tile_type": "mvt",
+  "pmtiles:center": [
+    -68.103194,
+    -16.4860923,
+    13
+  ],
+  "pmtiles:properties": [
+    {
+      "nombre": "fuente",
+      "tipo": "string",
+      "categorias": [
+        " ",
+        "SERCAT",
+        "SIFCA",
+        "INE",
+        "RUAT",
+        "CATASTRO",
+        " CATASTRO"
+      ]
+    },
+    {
+      "nombre": "tipo_via",
+      "tipo": "string",
+      "categorias": [
+        "Calle",
+        "Avenida",
+        " ",
+        "Pasaje Peatonal",
+        "Callejón",
+        "Pasaje Vehicular",
+        "Gradería",
+        "Autopista"
+      ]
+    },
+    {
+      "nombre": "distrito",
+      "tipo": "number",
+      "minimo": 2.0,
+      "maximo": 21.0
+    },
+    {
+      "nombre": "n_inmueble",
+      "tipo": "number",
+      "minimo": 0.0,
+      "maximo": 973866.0
+    }
+  ],
+  "links": [
+    {
+      "rel": "root",
+      "href": "../../../catalog.json",
+      "type": "application/json",
+      "title": "Datos geográficos de Bolivia"
+    },
+    {
+      "rel": "parent",
+      "href": "../catalog.json",
+      "type": "application/json",
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)"
+    },
+    {
+      "rel": "via",
+      "href": "http://sitservicios.lapaz.bo/ows38.jsp",
+      "type": "text/html",
+      "title": "Servicio de origen"
+    },
+    {
+      "rel": "pmtiles",
+      "href": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_sit_numeropuertas/dataset.pmtiles",
+      "type": "application/vnd.pmtiles",
+      "pmtiles:layers": [
+        "dataset"
+      ]
+    }
+  ]
+}
