@@ -1,0 +1,96 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_umsa_iiag_medioambiente_areas_protegidas_regionales",
+  "title": "aps_regionales",
+  "sources": [
+    {
+      "title": "Geoportal del Instituto de Investigaciones y Aplicaciones Geomáticas (IIAG) de la Universidad Mayor de San Andrés (UMSA)",
+      "path": "http://gtggeoportal.umsa.bo:8087/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_umsa_iiag_medioambiente_areas_protegidas_regionales/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 28800,
+      "hash": "sha256:769c8107892dcd55b2aa32769a2ae5278cb4a0dcc7fe847b5b27daae6a460513",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "example": "Areas Protegidas Regionales.2"
+          },
+          {
+            "name": "OBJECTID_1",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 6
+            }
+          },
+          {
+            "name": "ID_1",
+            "type": "integer",
+            "constraints": {
+              "minimum": 10,
+              "maximum": 60
+            }
+          },
+          {
+            "name": "NOMBRE",
+            "type": "string",
+            "example": "Mallasa"
+          },
+          {
+            "name": "CATEGORIA",
+            "type": "string",
+            "example": "Parque Nacional"
+          },
+          {
+            "name": "AREA",
+            "type": "number",
+            "constraints": {
+              "minimum": 2255462.9063,
+              "maximum": 4451777323.91
+            }
+          },
+          {
+            "name": "BASE_LEGAL",
+            "type": "string",
+            "example": "DS 10125 del 18/02/1972"
+          },
+          {
+            "name": "Shape_Leng",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.0552105904641,
+              "maximum": 3.41203367959
+            }
+          },
+          {
+            "name": "Shape_Area",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.000195789348664,
+              "maximum": 0.368677983931
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
