@@ -1,0 +1,126 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_alt_sit_pl_texto",
+  "title": "Texto Planimetrias",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)",
+      "path": "http://sitservicios.lapaz.bo/ows38.jsp"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_sit_pl_texto/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 4772922,
+      "hash": "sha256:ff3d701e1f560839362645109b826b5f27617a62984563ef67d8a7b3848ac1b1",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "pl_texto.210346"
+          },
+          {
+            "name": "LAYER",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "T_NOMBRE_VIA",
+            "categories": [
+              "T_COTA_VIA",
+              "T_COTA_OCHAVE",
+              "T_NOMBRE_VIA",
+              "T_VIA_PLANIFICADA"
+            ]
+          },
+          {
+            "name": "DWGNAME",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "1083.dwg"
+          },
+          {
+            "name": "TEXT_SIZE",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.03,
+              "maximum": 4.07273
+            }
+          },
+          {
+            "name": "TEXT_ANGLE",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 360.0
+            }
+          },
+          {
+            "name": "ROTATION",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.0,
+              "maximum": 0.0
+            }
+          },
+          {
+            "name": "TEXTSTRING",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "PASAJE S/N 1"
+          },
+          {
+            "name": "ACTO ADMINISTRATIVO",
+            "type": "string",
+            "example": "O.M. GAMLP Nº 098/2024 de fecha 11 de diciembre de 2024",
+            "categories": [
+              "Nominació de Espacios Públicos O.M. GAMLP Nº 94/2024 de fecha 19 de diciembre de 2024",
+              "Informe SMMSC/DPIM/UDVTIM Nº 155/2023 de 02/06/2023",
+              "Nominación de Espacios Públicos O.M  Nº 008/2025 de fecha 04/04/2025",
+              "Nominación de Espacios Públicos R.A. Nº 250/2025 de 21/08/2025",
+              " Nominacion de Espacios Pubilcos O.M. GAMLP Nº 094/2024 de fecha 19 de diciembre de 2024",
+              "Actualización Nombre de Vía SMP-DDAT-UDUT Nº 789/2024",
+              "ACTA 133/2024 NOMINACION DE ESPACIOS PUBLICOS SMP-DDAT-UDUT Nº 1303/2024 de 07/10/2024",
+              "Nominación de Espacios Públicos O.M.Nº 04/2025 de fecha 17/03/2025",
+              " Nominació de Espacios Públicos O.M. GAMLP Nº 94/2024 de fecha 19 de diciembre de 2024",
+              "Nominación de Espacio Publico OM. de fecha 25/07/1950",
+              "O.M. GAMLP Nº 098/2024 de fecha 11 de diciembre de 2024"
+            ]
+          },
+          {
+            "name": "FECHA_ACTUALIZACION",
+            "type": "datetime",
+            "constraints": {
+              "minimum": "2023-09-26T00:00:00",
+              "maximum": "2025-09-10T00:00:00"
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point. Filas sin geometría: 3. La fuente declaraba EPSG:4326 pero sus coordenadas estaban en EPSG:32719 (sistema inferido por la ubicación de las geometrías en Bolivia); se reproyectaron."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
