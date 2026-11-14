@@ -1,0 +1,96 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_minplanifica_infocapa_layer_demanda_de_sistemas_fotovoltaicos_fxgyl",
+  "title": "layer_demanda_de_sistemas_fotovoltaicos_fxgyl",
+  "sources": [
+    {
+      "title": "Geoserver del Ministerio de Planificación del Desarollo",
+      "path": "https://geoserver.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_minplanifica_infocapa_layer_demanda_de_sistemas_fotovoltaicos_fxgyl/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 2995692,
+      "hash": "sha256:ae4ecd736b27c94eac076f4ed1e906855cb6c82101cf566e1ede9e48743cb4e4",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "layer_demanda_de_sistemas_fotovoltaicos_fxgyl.69544"
+          },
+          {
+            "name": "latitud",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -22.8895,
+              "maximum": -9.7161
+            }
+          },
+          {
+            "name": "longitud",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -69.5422,
+              "maximum": -57.5068
+            }
+          },
+          {
+            "name": "system_typ",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "POTOSI_altiplano_isolated_type_1_SK"
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "example": "Potosi",
+            "categories": [
+              "Santa Cruz",
+              "Beni",
+              "La Paz",
+              "Cochabamba",
+              "Chuquisaca",
+              "Potosi",
+              "Pando",
+              "Tarija",
+              "Oruro"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "example": "Nor Lipez"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "example": "Colcha \"K\""
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPoint."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
