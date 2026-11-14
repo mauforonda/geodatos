@@ -1,0 +1,78 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_geologia",
+  "title": "Mapa geologico de Bolivia_ 2000",
+  "description": "El conjunto de datos presenta la información geológica y estructural del Estado Plurinacional de Bolivia. Representación a escala de las características geológicas del país, distribución de los distintos tipos de roca y afloramientos en la superficie, su forma y relaciones entre ellos, además de las estructuras geológicas que aparecen, como fallas, pliegues y discordancias, edad geológica, mineralogía y su estructura tectónica. Elaborado por el Servicio Nacional de Geología y Técnico de Minas (SERGEOTECMIN) en el año 2000 a escala 1:1000000.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_geologia/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 4500040,
+      "hash": "sha256:63dd13883f16fb8897217027dde383d108b9debdf23dd0525a2e065aa057cff0",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "geologia.1547"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 2658
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Geologia.1547"
+          },
+          {
+            "name": "provincias",
+            "type": "string",
+            "example": "Qv1"
+          },
+          {
+            "name": "simbolo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Qv"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Filas sin geometría: 2. Geometrías inválidas, conservadas sin reparar: 55."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
