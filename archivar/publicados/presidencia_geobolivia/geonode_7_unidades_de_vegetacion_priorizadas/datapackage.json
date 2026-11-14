@@ -1,0 +1,63 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_7_unidades_de_vegetacion_priorizadas",
+  "title": "Unidades de Vegetación Priorizadas",
+  "description": "Información geográfica que muestra los diferentes tipos de vegetación que fueron priorizados en discusión con especialistas: bosques de queñua, pradera altiplánica, praderas nativas altoandinas, bofedales, tolares, bosques de montaña secos interandinos, praderas y tundras montañosas, sabanas inundables.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_7_unidades_de_vegetacion_priorizadas/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 3948034,
+      "hash": "sha256:ccceee49868fbf9491c2c898c95ea9548ca7f0d7c6b6d98b47d0f4cec12a6e4f",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "example": "7_unidades_de_vegetacion_priorizadas.1"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 1
+            }
+          },
+          {
+            "name": "desc_sis",
+            "type": "string",
+            "example": "Vegetacion prioritaria"
+          },
+          {
+            "name": "objetic",
+            "type": "integer",
+            "constraints": {
+              "minimum": 0,
+              "maximum": 0
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 1."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
