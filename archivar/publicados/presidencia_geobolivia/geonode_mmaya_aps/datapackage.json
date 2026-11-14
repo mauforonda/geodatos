@@ -1,0 +1,120 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_mmaya_aps",
+  "title": "Áreas Protegidas de Bolivia - Gestión 2024",
+  "description": "Información Geográfica de las Áreas protegidas Nacionales, actualizadas a año 2023 con la incorporación del área protegida El Cardón. Y de las Áreas protegidas departamentales y municipales.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_mmaya_aps/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 3616879,
+      "hash": "sha256:438dff6da1b865d5e5f0a987c16b5f6bd7a757a76636751d086698d30b1e9056",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "mmaya_aps.68"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 192
+            }
+          },
+          {
+            "name": "objectid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 244
+            }
+          },
+          {
+            "name": "jurisdicci",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Departamental",
+            "categories": [
+              "Municipal",
+              "Departamental",
+              "Nacional",
+              "Privada"
+            ]
+          },
+          {
+            "name": "depto",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Potosi",
+            "categories": [
+              "Santa Cruz",
+              "La Paz",
+              "Beni",
+              "Cochabamba",
+              "Chuquisaca",
+              "Pando",
+              "Oruro",
+              "Tarija",
+              "Potosi"
+            ]
+          },
+          {
+            "name": "depto_2",
+            "type": "string",
+            "example": "Beni",
+            "categories": [
+              "Beni",
+              "Cochabamba"
+            ]
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Llica"
+          },
+          {
+            "name": "designa",
+            "type": "string",
+            "example": "Parque Nacional"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 6."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
