@@ -1,0 +1,152 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_oieau_c_bo_oac_rocha_geomorfologia",
+  "title": "OAC_ENV_Rocha Geomorfologia",
+  "sources": [
+    {
+      "title": "Sistema para la Gestión Integral de Recursos Hídricos desarrollado por la Oficina Internacional del Agua (OiEau)",
+      "path": "https://www.oieau-wiss.org/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_oieau_c_bo_oac_rocha_geomorfologia/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 3025173,
+      "hash": "sha256:f6c455c29055898bb188dbc1f2bd7e74f790ec8da88e92494bc9e5cdb8db78a7",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Rocha_Geomorfologia.8"
+          },
+          {
+            "name": "objectid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 19
+            }
+          },
+          {
+            "name": "gemorfolog",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Llanuras Coluviales Mod. a Fuertemente Disectadas"
+          },
+          {
+            "name": "norec",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 5
+            }
+          },
+          {
+            "name": "descrecarg",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Alta (2.5 - 5 l/s/m2)",
+            "categories": [
+              "Muy Alta (>5 l/s/m2)",
+              "Baja (0.5 - 1 l/s/m2)",
+              "Muy Baja (< 0.5 l/s/m2)",
+              "Alta (2.5 - 5 l/s/m2)",
+              "Cuerpos de agua",
+              "Moderada (1 - 2.5 l/s/m2)"
+            ]
+          },
+          {
+            "name": "noriesgo",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 5
+            }
+          },
+          {
+            "name": "descriesgo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Bajo",
+            "categories": [
+              "Bajo",
+              "Moderado",
+              "Alto",
+              "Muy Bajo",
+              "Cuerpos agua",
+              "Muy Alto"
+            ]
+          },
+          {
+            "name": "shape_leng",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1.32296120613,
+              "maximum": 6.88762043209
+            }
+          },
+          {
+            "name": "shape_area",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0.00205702215271,
+              "maximum": 0.0365287740424
+            }
+          },
+          {
+            "name": "geomgrupo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Llanuras"
+          },
+          {
+            "name": "areakm2",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 24.2,
+              "maximum": 430.0
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 1."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
