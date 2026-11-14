@@ -1,0 +1,152 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_alt_catastro_vias_sc",
+  "title": "Catastro vias",
+  "description": "Catastro vias fuera de linea",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)",
+      "path": "http://sitservicios.lapaz.bo/ows38.jsp"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_catastro_vias_sc/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 3156919,
+      "hash": "sha256:69dbd487586e25c87fef93457f7955d5d43c6eeeb8f8601979b22633a5e856d4",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "vias_SC.52658"
+          },
+          {
+            "name": "classid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 41,
+              "maximum": 41
+            }
+          },
+          {
+            "name": "revisionnumber",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 30
+            }
+          },
+          {
+            "name": "nombrevia",
+            "type": "string",
+            "example": "11"
+          },
+          {
+            "name": "identificador",
+            "type": "integer"
+          },
+          {
+            "name": "idpendientevia",
+            "type": "string",
+            "example": "1",
+            "categories": [
+              "1",
+              "2",
+              "3",
+              "0",
+              "9",
+              "4"
+            ]
+          },
+          {
+            "name": "idmatcalle",
+            "type": "string",
+            "example": "4",
+            "categories": [
+              "7",
+              "1",
+              "3",
+              "5",
+              "4",
+              "2",
+              "0",
+              "",
+              "99",
+              "6"
+            ]
+          },
+          {
+            "name": "anchovia",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.0,
+              "maximum": 1520.0
+            }
+          },
+          {
+            "name": "objectid_sercat",
+            "type": "number",
+            "constraints": {
+              "minimum": 1.0,
+              "maximum": 131808.0
+            }
+          },
+          {
+            "name": "idtipovia",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.0,
+              "maximum": 8.0
+            }
+          },
+          {
+            "name": "idusuario",
+            "type": "number",
+            "constraints": {
+              "minimum": 1313.0,
+              "maximum": 3616.0
+            }
+          },
+          {
+            "name": "instrumentoaprobacion",
+            "type": "string",
+            "example": "OM 461/2013"
+          },
+          {
+            "name": "observacion",
+            "type": "string",
+            "example": "NOMBRE ANTERIOR 7"
+          },
+          {
+            "name": "pendientevia",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.0,
+              "maximum": 72.0
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString. La fuente declaraba EPSG:4326 pero sus coordenadas estaban en EPSG:32719 (sistema inferido por la ubicación de las geometrías en Bolivia); se reproyectaron."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
