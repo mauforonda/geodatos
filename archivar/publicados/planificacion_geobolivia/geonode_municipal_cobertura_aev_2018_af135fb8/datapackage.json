@@ -1,0 +1,121 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geobolivia_geonode_municipal_cobertura_aev_2018_af135fb8",
+  "title": "Municipios Atendidos en Viviendas Sociales por Departamento desde 2006 al 2018, Bolivia",
+  "description": "Información geoespacial de la cantidad de municipios atendidos por departamento desde el año 2006 al 2018, alcanzado una cobertura del 100% en los departamentos de Beni, Chuquisaca, Cochabamba, Potosí y Tarija, 98% en Santa Cruz, 97% en Oruro, 95% en La Paz y 73% en Pando. A nivel nacional se logro atender a 329 municipios que representa el 97 % de cobertura respecto a los 339 municipios del Estado Plurinacional de Bolivia, con los programas de vivienda social: Programa de Vivienda Social y Solidaria (PVS), Unidad Ejecutora de Viviendas de Emergencia (UEVE) y Agencia Estatal de Vivienda (AEVIVIENDA) . Dato de la Agencia Estatal de Vivienda a diciembre 2018.",
+  "sources": [
+    {
+      "title": "Nueva plataforma GeoBolivia",
+      "path": "https://geonode.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geobolivia_geonode_municipal_cobertura_aev_2018_af135fb8/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 2836893,
+      "hash": "sha256:4579d043f2083b9a9fa494c66d012dc4085cf11c6ac3ea943809f3660c5cb752",
+      "schema": {
+        "fields": [
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 14
+            }
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 14
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0,
+              "maximum": 13
+            }
+          },
+          {
+            "name": "cod_dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "0"
+          },
+          {
+            "name": "nom_dep",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Salar Uyuni"
+          },
+          {
+            "name": "descrip",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Salar",
+            "categories": [
+              "Departamento",
+              "Lago",
+              "Salar"
+            ]
+          },
+          {
+            "name": "municipios",
+            "type": "number",
+            "constraints": {
+              "minimum": 11.0,
+              "maximum": 87.0
+            }
+          },
+          {
+            "name": "atendidos",
+            "type": "number",
+            "constraints": {
+              "minimum": 11.0,
+              "maximum": 83.0
+            }
+          },
+          {
+            "name": "porcentaje",
+            "type": "number",
+            "constraints": {
+              "minimum": 73.0,
+              "maximum": 100.0
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
