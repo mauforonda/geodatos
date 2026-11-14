@@ -1,0 +1,77 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_pdclp_caminos",
+  "title": "Plan Director Cuenca Lago Poopó - Caminos",
+  "description": "PDCLP (Plan Director de la Cuenca Lago Poopó) Muestra la georreferenciación y la información relevante  de Caminos en la cuenca del Plan Director de la Cuenca Lago Poopó.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_pdclp_caminos/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 2290660,
+      "hash": "sha256:7ffa1d7352e0f6a7860b5bf96932a243f4d3e3ad2ef1dcd80ed99f5b536ed514",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "ID_OSM",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "314507556"
+          },
+          {
+            "name": "VIALIDAD",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Terciario",
+            "categories": [
+              "Senda, Rodera o Vereda",
+              "Principal o Carretero",
+              "Terciario",
+              "Secundario o Vecinal"
+            ]
+          },
+          {
+            "name": "NOMBRE",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": ""
+          },
+          {
+            "name": "DIST_M",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 1.01,
+              "maximum": 37884.13
+            }
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
