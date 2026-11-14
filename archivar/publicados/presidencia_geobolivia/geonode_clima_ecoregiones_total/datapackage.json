@@ -1,0 +1,79 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_clima_ecoregiones_total",
+  "title": "Ecorregiones Pronóstico del Tiempo, Bolivia 2020",
+  "description": "El mapa muestra las coberturas de las ecorregiones para ser aplicado para el pronóstico del tiempo en el territorio nacional, estas son: Altiplano, Cordillera, Valles, Chaco, Chiquitania, Yungas, Subandino, Norte Integrado, información obtenida del Viceministerio de Defensa Civil a septiembre del 2020.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_clima_ecoregiones_total/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 3332608,
+      "hash": "sha256:b56693e00f586c1afae9d61eb11634b3ab1a04f1f51dd4a322fe6250658343f4",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "clima_ecoregiones_total.10"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 25
+            }
+          },
+          {
+            "name": "piso_clima",
+            "type": "string",
+            "example": "POTOSI",
+            "categories": [
+              "SANTA CRUZ",
+              "CHUQUISACA",
+              "COCHABAMBA",
+              "TARIJA",
+              "LA PAZ",
+              "ORURO",
+              "PANDO",
+              "POTOSI"
+            ]
+          },
+          {
+            "name": "piso_cli_1",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "ALTIPLANO"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 6."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
