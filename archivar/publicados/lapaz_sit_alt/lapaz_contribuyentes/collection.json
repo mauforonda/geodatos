@@ -1,0 +1,204 @@
+{
+  "type": "Collection",
+  "id": "geodatosbolivia_lapaz_sit_alt_lapaz_contribuyentes",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json",
+    "https://stac-extensions.github.io/vector/v0.1.0/schema.json",
+    "https://stac-extensions.github.io/projection/v2.0.0/schema.json",
+    "https://stac-extensions.github.io/file/v2.1.0/schema.json",
+    "https://stac-extensions.github.io/web-map-links/v1.3.0/schema.json"
+  ],
+  "title": "Ubicacion Contribuyentes",
+  "description": "Ubicacion Contribuyentes",
+  "license": "other",
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -68.17372790507353,
+          -16.627450082407915,
+          -67.86530331180009,
+          -15.995689887190732
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "providers": [
+    {
+      "name": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)",
+      "roles": [
+        "producer"
+      ],
+      "url": "http://sitservicios.lapaz.bo/ows38.jsp"
+    },
+    {
+      "name": "Internet Archive",
+      "roles": [
+        "host"
+      ],
+      "url": "https://archive.org/details/geodatosbolivia_lapaz_sit_alt_lapaz_contribuyentes"
+    }
+  ],
+  "table:primary_geometry": "geometry",
+  "table:row_count": 100000,
+  "table:columns": [
+    {
+      "name": "id",
+      "type": "string"
+    },
+    {
+      "name": "codcat",
+      "type": "string"
+    },
+    {
+      "name": "inmueble",
+      "type": "int32"
+    },
+    {
+      "name": "acteco",
+      "type": "int32"
+    },
+    {
+      "name": "placa",
+      "type": "string"
+    },
+    {
+      "name": "posesion",
+      "type": "int32"
+    },
+    {
+      "name": "distritomunicipal",
+      "type": "double"
+    },
+    {
+      "name": "macrodistrito",
+      "type": "double"
+    },
+    {
+      "name": "usuario",
+      "type": "string"
+    },
+    {
+      "name": "fecha",
+      "type": "timestamp[us, tz=UTC]"
+    },
+    {
+      "name": "geometry",
+      "type": "binary",
+      "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point. La fuente declaraba EPSG:4326 pero sus coordenadas estaban en EPSG:32719 (sistema inferido por la ubicación de las geometrías en Bolivia); se reproyectaron."
+    }
+  ],
+  "summaries": {
+    "vector:geometry_types": [
+      "Point"
+    ]
+  },
+  "assets": {
+    "data": {
+      "href": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_lapaz_contribuyentes/dataset.geoparquet",
+      "type": "application/vnd.apache.parquet",
+      "title": "GeoParquet",
+      "roles": [
+        "data"
+      ],
+      "proj:code": "EPSG:4326",
+      "file:size": 5309934,
+      "file:checksum": "1220606aa134cbb8d6f6f795722315a11b4a32ceb07871bc261bbd0e36805e8acbb6"
+    },
+    "datapackage": {
+      "href": "./datapackage.json",
+      "type": "application/json",
+      "title": "Data Package: columnas, tipos y categorías",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "pmtiles": {
+      "href": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_lapaz_contribuyentes/dataset.pmtiles",
+      "type": "application/vnd.pmtiles",
+      "title": "Teselas vectoriales (PMTiles)",
+      "roles": [
+        "visual"
+      ],
+      "file:size": 1574212,
+      "file:checksum": "12201b6543f10a28fb82a962d759dc65004c2ba04068ba06674f3ff0c4a1d468381d"
+    }
+  },
+  "pmtiles:min_zoom": 10,
+  "pmtiles:max_zoom": 13,
+  "pmtiles:tile_type": "mvt",
+  "pmtiles:center": [
+    -68.0195156,
+    -16.3115699,
+    11
+  ],
+  "pmtiles:properties": [
+    {
+      "nombre": "posesion",
+      "tipo": "number",
+      "minimo": 0.0,
+      "maximo": 3.0
+    },
+    {
+      "nombre": "macrodistrito",
+      "tipo": "number",
+      "minimo": 1.0,
+      "maximo": 9.0
+    },
+    {
+      "nombre": "distritomunicipal",
+      "tipo": "number",
+      "minimo": 1.0,
+      "maximo": 23.0
+    },
+    {
+      "nombre": "acteco",
+      "tipo": "number",
+      "minimo": 0.0,
+      "maximo": 2014315018.0
+    },
+    {
+      "nombre": "inmueble",
+      "tipo": "number",
+      "minimo": 0.0,
+      "maximo": 1510280087.0
+    }
+  ],
+  "links": [
+    {
+      "rel": "root",
+      "href": "../../../catalog.json",
+      "type": "application/json",
+      "title": "Datos geográficos de Bolivia"
+    },
+    {
+      "rel": "parent",
+      "href": "../catalog.json",
+      "type": "application/json",
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)"
+    },
+    {
+      "rel": "via",
+      "href": "http://sitservicios.lapaz.bo/ows38.jsp",
+      "type": "text/html",
+      "title": "Servicio de origen"
+    },
+    {
+      "rel": "pmtiles",
+      "href": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_lapaz_contribuyentes/dataset.pmtiles",
+      "type": "application/vnd.pmtiles",
+      "pmtiles:layers": [
+        "dataset"
+      ]
+    }
+  ]
+}
