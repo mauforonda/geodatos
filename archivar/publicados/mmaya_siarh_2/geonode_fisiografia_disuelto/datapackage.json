@@ -1,0 +1,72 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_fisiografia_disuelto",
+  "title": "Plan Director Cuenca Río Pampa Huari – Fisiografía",
+  "description": "PDCRPH (Plan Director de la Cuenca Rio Pampa Hua Describe las unidades fisiográficas en la cuenca como planicies, llanuras, colinas altas, serranías medias, montañas bajas, montañas medias, montañas altas.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_fisiografia_disuelto/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 2233040,
+      "hash": "sha256:55b5bcead3a4e53d8d47ed106e48f65ac69d3590224e73346385553f70ea4da4",
+      "schema": {
+        "fields": [
+          {
+            "name": "GPAISAJE",
+            "type": "string",
+            "example": "Cpn"
+          },
+          {
+            "name": "PROVFISDES",
+            "type": "string",
+            "example": "Cordillera Oriental",
+            "categories": [
+              "Cordillera Oriental",
+              "Urbano"
+            ]
+          },
+          {
+            "name": "Descripcio",
+            "type": "string",
+            "example": "Planicies"
+          },
+          {
+            "name": "SUP_KM2",
+            "type": "number",
+            "constraints": {
+              "minimum": 31.88383759,
+              "maximum": 390.150948849
+            }
+          },
+          {
+            "name": "SUP_HA",
+            "type": "number",
+            "constraints": {
+              "minimum": 3188.383759,
+              "maximum": 39015.0948849
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 2."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
