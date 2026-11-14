@@ -90,7 +90,8 @@ def conversion_falla_por_geometria(error: Exception) -> bool:
 
 def hash_atributos(path: Path, info: dict) -> tuple[int, str]:
     columnas = [c for c in info["columnas"] if c not in {info["geometria"], "bbox"}]
-    return suma_hashes(path, columnas)
+    # Por posicion: la conversion renombra columnas que solo difieren en mayusculas (`id` e `Id` pasan a `id` e `Id_1`)
+    return suma_hashes(path, columnas, ordenar=False)
 
 
 def normalizar_archivo(

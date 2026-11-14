@@ -16,7 +16,10 @@ import json
 import math
 import re
 import shutil
+import subprocess
+import sys
 import tempfile
+import time
 from pathlib import Path
 from typing import Optional
 
@@ -39,6 +42,11 @@ MAX_BYTES_TESELA = 400_000
 MAX_BYTES_ZOOM = 60_000_000
 MAX_BYTES_PMTILES = 150_000_000
 MAX_INTENTOS_ZOOM = 3
+# Una geometria con cientos de miles de vertices se recorta en cada tesela que cubre y el teselado puede tardar horas
+MAX_SEGUNDOS_TESELADO = 300
+MAX_SEGUNDOS_PMTILES = 900
+MIN_SEGUNDOS_TESELADO = 60
+CODIGO_SIN_GEOMETRIAS = 3
 MAX_CATEGORIAS = 9
 MAX_PROPIEDADES = 8
 MAX_LARGO_CATEGORIA = 100
@@ -56,6 +64,10 @@ NOMBRE_IDENTIFICADOR = re.compile(
 )
 TIPOS_ENTEROS = ("TINYINT", "SMALLINT", "INTEGER", "BIGINT", "UTINYINT", "USMALLINT", "UINTEGER", "UBIGINT")
 TIPOS_DECIMALES = ("FLOAT", "DOUBLE", "DECIMAL", "REAL")
+
+
+class TeseladoLento(RuntimeError):
+    """El teselado excedio su tiempo y se cancelo."""
 
 
 class PmtilesOmitido(RuntimeError):
@@ -214,7 +226,7 @@ def leer_cabecera(path: Path) -> dict:
     }
 
 
-def construir_teselas(entrada: Path, destino: Path, minimo: int, maximo: int) -> None:
+def teselar(entrada: Path, destino: Path, minimo: int, maximo: int) -> None:
     resumen = destino.with_suffix(".overview.parquet")
     try:
         tylertoo.overview(str(entrada), str(resumen), min_zoom=minimo, max_zoom=maximo, **OPCIONES_OVERVIEW)
@@ -227,12 +239,50 @@ def construir_teselas(entrada: Path, destino: Path, minimo: int, maximo: int) ->
         resumen.unlink(missing_ok=True)
 
 
+def construir_teselas(entrada: Path, destino: Path, minimo: int, maximo: int, segundos: float) -> None:
+    """Teselado en un proceso aparte: tylertoo es codigo nativo y una senal de Python no lo interrumpe."""
+    try:
+        resultado = subprocess.run(
+            [sys.executable, "-m", "archivar.pmtiles", str(entrada), str(destino), str(minimo), str(maximo)],
+            cwd=Path(__file__).resolve().parent.parent,
+            capture_output=True,
+            text=True,
+            timeout=segundos,
+        )
+    except subprocess.TimeoutExpired as e:
+        raise TeseladoLento(f"el teselado de los zooms {minimo} a {maximo} excedio {int(segundos)} s") from e
+    if resultado.returncode == CODIGO_SIN_GEOMETRIAS:
+        raise PmtilesOmitido("ninguna geometria sobrevive a la generalizacion")
+    if resultado.returncode:
+        raise RuntimeError(f"fallo el teselado: {resultado.stderr.strip()[-300:]}")
+
+
 def sha256_archivo(path: Path) -> str:
     h = hashlib.sha256()
     with open(path, "rb") as f:
         for bloque in iter(lambda: f.read(1024 * 1024), b""):
             h.update(bloque)
     return h.hexdigest()
+
+
+def reducir_propiedades(construir, propiedades: list[dict], elegido: dict) -> tuple[list[dict], dict]:
+    """Las propiedades no deben pesar mas del doble que la geometria sola: se descartan primero las numericas caras."""
+    if not propiedades or elegido["bytes"] <= MIN_BYTES_FACTOR:
+        return propiedades, elegido
+    try:
+        base = construir(elegido["zoom_max"], [], "geometria")
+        baratas = [p for p in propiedades if p["tipo"] == "string" or p["distintos"] <= MAX_VALORES_NUMERO_BARATO]
+        categorias = [p for p in propiedades if p["tipo"] == "string"]
+        for reducidas in (baratas, categorias):
+            if elegido["bytes"] <= FACTOR_PROPIEDADES * base["bytes"]:
+                break
+            if len(reducidas) == len(propiedades):
+                continue
+            elegido = construir(elegido["zoom_max"], reducidas, "reducida") if reducidas else base
+            propiedades = reducidas
+    except TeseladoLento:
+        pass
+    return propiedades, elegido
 
 
 def construir_pmtiles(geoparquet: Path, destino: Path, propiedades: Optional[list[dict]] = None) -> dict:
@@ -254,11 +304,18 @@ def construir_pmtiles(geoparquet: Path, destino: Path, propiedades: Optional[lis
     with tempfile.TemporaryDirectory(prefix="geodatos-pmtiles-") as tmpdir:
         tmp = Path(tmpdir)
 
+        limite = time.monotonic() + MAX_SEGUNDOS_PMTILES
+
         def construir(zoom_max: int, props: list[dict], nombre: str) -> dict:
+            restante = limite - time.monotonic()
+            if restante < MIN_SEGUNDOS_TESELADO:
+                raise TeseladoLento("se agoto el tiempo para teselar")
             entrada, salida = tmp / f"{nombre}.parquet", tmp / f"{nombre}.pmtiles"
             escribir_subconjunto(geoparquet, entrada, info["geometria"], [p["nombre"] for p in props])
-            construir_teselas(entrada, salida, minimo, zoom_max)
-            entrada.unlink()
+            try:
+                construir_teselas(entrada, salida, minimo, zoom_max, min(MAX_SEGUNDOS_TESELADO, restante))
+            finally:
+                entrada.unlink(missing_ok=True)
             return {"zoom_max": zoom_max, "path": salida, "bytes": salida.stat().st_size, **estadisticas_teselas(salida)}
 
         def aceptable(r: dict) -> bool:
@@ -266,9 +323,21 @@ def construir_pmtiles(geoparquet: Path, destino: Path, propiedades: Optional[lis
 
         # Se ajusta el zoom final al tamano real de las teselas
         intentos = []
-        for n in range(MAX_INTENTOS_ZOOM):
-            r = construir(maximo, propiedades, f"zoom{n}")
+        for n in range(MAX_INTENTOS_ZOOM + 3):
+            try:
+                r = construir(maximo, propiedades, f"zoom{n}")
+            except TeseladoLento as e:
+                # Se reducen a la mitad los niveles extra hasta que el teselado termine a tiempo
+                menor = minimo + (maximo - minimo) // 2
+                if intentos or menor == maximo:
+                    if intentos:
+                        break
+                    raise PmtilesOmitido(str(e)) from e
+                maximo = menor
+                continue
             intentos.append(r)
+            if len(intentos) == MAX_INTENTOS_ZOOM:
+                break
             if aceptable(r):
                 break
             if r["max_bytes_tesela"] > MAX_BYTES_TESELA and maximo < ZOOM_MAXIMO_VISOR and r["bytes"] <= MAX_BYTES_ZOOM:
@@ -279,20 +348,12 @@ def construir_pmtiles(geoparquet: Path, destino: Path, propiedades: Optional[lis
                 break
             if any(i["zoom_max"] == maximo for i in intentos):
                 break
+        if not intentos:
+            raise PmtilesOmitido("el teselado excedio el tiempo en todos los niveles")
         elegido = next((r for r in intentos if aceptable(r)), min(intentos, key=lambda r: r["bytes"]))
 
         # Las propiedades no deben pesar mas que la geometria misma
-        if propiedades and elegido["bytes"] > MIN_BYTES_FACTOR:
-            base = construir(elegido["zoom_max"], [], "geometria")
-            baratas = [p for p in propiedades if p["tipo"] == "string" or p["distintos"] <= MAX_VALORES_NUMERO_BARATO]
-            categorias = [p for p in propiedades if p["tipo"] == "string"]
-            for reducidas in (baratas, categorias):
-                if elegido["bytes"] <= FACTOR_PROPIEDADES * base["bytes"]:
-                    break
-                if len(reducidas) == len(propiedades):
-                    continue
-                propiedades = reducidas
-                elegido = construir(elegido["zoom_max"], propiedades, "reducida") if propiedades else base
+        propiedades, elegido = reducir_propiedades(construir, propiedades, elegido)
         if elegido["bytes"] > MAX_BYTES_PMTILES:
             raise PmtilesOmitido(f"el archivo pesa {elegido['bytes']} bytes, mas que el maximo {MAX_BYTES_PMTILES}")
         shutil.copyfile(elegido["path"], destino)
@@ -310,3 +371,12 @@ def construir_pmtiles(geoparquet: Path, destino: Path, propiedades: Optional[lis
             {k: p[k] for k in ("nombre", "tipo", "categorias", "minimo", "maximo") if k in p} for p in propiedades
         ],
     }
+
+
+if __name__ == "__main__":
+    # Uso interno de `construir_teselas`: entrada salida zoom_minimo zoom_maximo
+    argumentos = sys.argv[1:]
+    try:
+        teselar(Path(argumentos[0]), Path(argumentos[1]), int(argumentos[2]), int(argumentos[3]))
+    except PmtilesOmitido:
+        raise SystemExit(CODIGO_SIN_GEOMETRIAS) from None

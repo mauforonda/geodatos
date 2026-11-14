@@ -104,6 +104,29 @@ def test_crs_nulo_prefiere_el_epsg_declarado(tmp_path):
     assert esta_normalizado(inspeccionar(destino))
 
 
+def test_epsg_declarado_inexistente_se_ignora_y_se_infiere(tmp_path):
+    from pyproj import Transformer
+
+    x, y = Transformer.from_crs("EPSG:4326", "EPSG:32719", always_xy=True).transform([-67.5, -67.3], [-21.5, -21.4])
+    origen = tmp_path / "origen.parquet"
+    gdf = gpd.GeoDataFrame({"id": [1, 2]}, geometry=[Point(a, b) for a, b in zip(x, y, strict=True)], crs="EPSG:4326")
+    gdf.to_parquet(origen, index=False)
+    resultado = normalizar_archivo(origen, tmp_path / "dataset.geoparquet", epsg_declarado=404000)
+    assert resultado["crs_inferido"] == "EPSG:32719"
+
+
+def test_columnas_que_solo_difieren_en_mayusculas_se_renombran_sin_perder_datos(tmp_path):
+    origen = tmp_path / "origen.parquet"
+    gdf = gpd.GeoDataFrame(
+        {"id": ["a", "b"], "Id": [1, 2], "nombre": ["x", "y"]}, geometry=[Point(-65, -17), Point(-64, -16)], crs="EPSG:4326"
+    )
+    gdf.to_parquet(origen, index=False, compression="snappy")
+    destino = tmp_path / "dataset.geoparquet"
+    normalizar_archivo(origen, destino)
+    salida = gpd.read_parquet(destino)
+    assert list(salida["nombre"]) == ["x", "y"] and sorted(set(salida.columns) - {"bbox"}) == sorted(["id", "Id_1", "nombre", "geometry"])
+
+
 def test_datapackage_y_hash(tmp_path):
     origen = tmp_path / "origen.parquet"
     geoparquet_legado(origen, "EPSG:4326", grados=True)

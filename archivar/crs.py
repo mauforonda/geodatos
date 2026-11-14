@@ -22,7 +22,8 @@ from typing import Optional
 import numpy as np
 import pyarrow.parquet as pq
 import shapely
-from pyproj import Transformer
+from pyproj import CRS, Transformer
+from pyproj.exceptions import CRSError
 
 LIMITE = Path(__file__).resolve().parent / "limite_bolivia.geojson"
 CAPAS = Path(__file__).resolve().parent.parent / "descubrir" / "capas.csv"
@@ -82,6 +83,14 @@ def extensiones_validas_por_geoserver(path: Path = CAPAS) -> dict[str, np.ndarra
     return {geoserver: np.array(cajas) for geoserver, cajas in por_geoserver.items()}
 
 
+def crs_valido(crs: str) -> bool:
+    try:
+        CRS.from_user_input(crs)
+    except CRSError:
+        return False
+    return True
+
+
 def fraccion_dentro(crs: str, x: np.ndarray, y: np.ndarray) -> float:
     lon, lat = Transformer.from_crs(crs, "EPSG:4326", always_xy=True).transform(x, y)
     dentro = np.isfinite(lon) & np.isfinite(lat)
@@ -113,7 +122,8 @@ def inferir_crs(
         return None, []
     x = np.concatenate([limites[:, 0], limites[:, 0], limites[:, 2], limites[:, 2]])
     y = np.concatenate([limites[:, 1], limites[:, 3], limites[:, 1], limites[:, 3]])
-    preferidos = preferidos or []
+    # Algunas fuentes declaran codigos EPSG que no existen (p. ej. EPSG:404000)
+    preferidos = [crs for crs in preferidos or [] if crs_valido(crs)]
     fracciones = {crs: fraccion_dentro(crs, x, y) for crs in dict.fromkeys([*preferidos, *CANDIDATOS])}
     plausibles = [crs for crs, f in fracciones.items() if f >= FRACCION_PLAUSIBLE]
     elegido = next((crs for crs in preferidos if fracciones[crs] == 1.0), None)

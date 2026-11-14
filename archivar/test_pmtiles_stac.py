@@ -1,10 +1,12 @@
 import json
+import subprocess
 
 import geopandas as gpd
 import pytest
 from pmtiles.reader import MmapSource, Reader
 from shapely.geometry import GeometryCollection, LineString, Point, Polygon
 
+from archivar import pmtiles as modulo_pmtiles
 from archivar import stac
 from archivar.normalizar import normalizar_archivo
 from archivar.paquete_datos import perfilar
@@ -96,6 +98,46 @@ def test_pmtiles_acepta_geometrias_mixtas_y_nulas(tmp_path):
     )
     meta = construir_pmtiles(normalizado(tmp_path, gdf), tmp_path / "dataset.pmtiles")
     assert meta["bytes"] > 0
+
+
+def test_teselado_lento_baja_los_niveles_extra_hasta_terminar(tmp_path, monkeypatch):
+    ruta = normalizado(tmp_path, puntos())
+    original = modulo_pmtiles.construir_teselas
+    pedidos = []
+
+    def lento_en_los_niveles_altos(entrada, destino, minimo, maximo, segundos):
+        pedidos.append(maximo)
+        if maximo > minimo + 1:
+            raise modulo_pmtiles.TeseladoLento("lento")
+        original(entrada, destino, minimo, maximo, segundos)
+
+    monkeypatch.setattr(modulo_pmtiles, "construir_teselas", lento_en_los_niveles_altos)
+    meta = construir_pmtiles(ruta, tmp_path / "dataset.pmtiles")
+    assert meta["max_zoom"] == meta["min_zoom"] + 1 and len(pedidos) >= 2
+
+
+def test_teselado_que_nunca_termina_se_omite(tmp_path, monkeypatch):
+    ruta = normalizado(tmp_path, puntos())
+
+    def siempre_lento(*args, **kwargs):
+        raise modulo_pmtiles.TeseladoLento("lento")
+
+    monkeypatch.setattr(modulo_pmtiles, "construir_teselas", siempre_lento)
+    with pytest.raises(PmtilesOmitido):
+        construir_pmtiles(ruta, tmp_path / "dataset.pmtiles")
+
+
+def test_teselado_se_cancela_al_pasar_el_tiempo(tmp_path, monkeypatch):
+    ruta = normalizado(tmp_path, puntos())
+    real = subprocess.run
+
+    def con_espera(comando, **kwargs):
+        # Un proceso que no termina en el tiempo dado
+        return real([comando[0], "-c", "import time; time.sleep(30)"], **kwargs)
+
+    monkeypatch.setattr(subprocess, "run", con_espera)
+    with pytest.raises(modulo_pmtiles.TeseladoLento):
+        modulo_pmtiles.construir_teselas(ruta, tmp_path / "x.pmtiles", 5, 7, 1)
 
 
 def test_pmtiles_omite_capas_sin_geometrias(tmp_path):

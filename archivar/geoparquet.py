@@ -70,12 +70,23 @@ def comillas(nombre: str) -> str:
     return '"' + nombre.replace('"', '""') + '"'
 
 
-def suma_hashes(path: Path, columnas: list[str]) -> tuple[int, str]:
-    """Numero de filas y suma de hashes de las columnas dadas (independiente del orden de filas)."""
+def suma_hashes(path: Path, columnas: list[str], ordenar: bool = True) -> tuple[int, str]:
+    """Numero de filas y suma de hashes de las columnas dadas (independiente del orden de filas).
+
+    Con `ordenar=False` el hash depende de la posicion de las columnas y no de sus nombres. DuckDB renombra al leer
+    las columnas que solo difieren en mayusculas (`id` e `Id` pasan a `id` e `Id_1`), asi que se usan sus nombres.
+    """
     con = duckdb.connect()
     try:
-        if columnas:
-            lista = ", ".join(comillas(c) for c in sorted(columnas))
+        if columnas and ordenar:
+            nombres = sorted(columnas)
+        elif columnas:
+            leidos = [fila[0] for fila in con.execute("DESCRIBE SELECT * FROM read_parquet(?)", [str(path)]).fetchall()]
+            nombres = [leido for original, leido in zip(pq.read_schema(path).names, leidos, strict=True) if original in columnas]
+        else:
+            nombres = []
+        if nombres:
+            lista = ", ".join(comillas(c) for c in nombres)
             expresion = f"coalesce(sum(hash({lista})::HUGEINT), 0)"
         else:
             expresion = "0"
