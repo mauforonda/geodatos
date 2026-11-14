@@ -1,0 +1,90 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_tierra_de_produccion_forestal_permanente_yi4rr",
+  "title": "Tierra de Producción Forestal Permanente",
+  "description": "El mapa presenta la distribución de las tierras de producción forestal permanente en la cual son permitidas principalmente el aprovechamiento forestal con Planes de Manejo Forestal aprobados por la Superintendencia Forestal; el otorgamiento de concesiones forestales; la autorización de aprovechamiento forestal en áreas Protegidas por el SERNAP en coordinación con la superintendencia forestal; y la utilización forestal en tierras de propiedad privada en el territorio nacional.",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_tierra_de_produccion_forestal_permanente_yi4rr/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 3079897,
+      "hash": "sha256:7ca41a7d72803026adac5fc0f048603612c943ffe8908afd24e83595de1bfe1c",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_tierra_de_produccion_forestal_permanente_yi4rr.99"
+          },
+          {
+            "name": "etiquet",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Tierra de producción forestal permanente",
+            "categories": [
+              "Tierra de producción forestal permanente"
+            ]
+          },
+          {
+            "name": "sup_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.096,
+              "maximum": 2600000.0
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "example": "TARIJA",
+            "categories": [
+              "BENI",
+              "SANTA CRUZ",
+              "LA PAZ",
+              "PANDO",
+              "CHUQUISACA",
+              "COCHABAMBA",
+              "TARIJA"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "example": "Arce"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "example": "Padcaya"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 1."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
