@@ -1,0 +1,85 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geobolivia_geonode_curvas_municipiowgs84_1d91b48e",
+  "title": "Curvas de Nivel (200 metros) del Municipio de La Paz (2013)",
+  "description": "Información geoespacial de las curvas de nivel cada 200 metros del municipio de La Paz. Elaborado por Oficialía Mayor de Planificación para el Desarrollo (OMPD) del Gobierno Autónomo Municipal de La Paz, en el año 2013.",
+  "sources": [
+    {
+      "title": "Nueva plataforma GeoBolivia",
+      "path": "https://geonode.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geobolivia_geonode_curvas_municipiowgs84_1d91b48e/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 3390791,
+      "hash": "sha256:0e3a9ad458094347899cd49f57ac19c029c769ee06a5c5c351139aa668a4f263",
+      "schema": {
+        "fields": [
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 757
+            }
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 757
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "curvas_municipiowgs84.655"
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 417,
+              "maximum": 3718
+            }
+          },
+          {
+            "name": "contour",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 600,
+              "maximum": 6000
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
