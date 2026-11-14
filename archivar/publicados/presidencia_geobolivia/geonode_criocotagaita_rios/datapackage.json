@@ -1,0 +1,90 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_criocotagaita_rios",
+  "title": "Plan Director Cuenca Río Cotagaita - Ríos_ Bolivia",
+  "description": "El mapa muestra la información relevante y la georreferenciación de la red hídrica en el marco del Plan Director de la Cuenca del Río Cotagaita. Información obtenida del Viceministerio de Recursos Hídricos y Riego, ha enero del 2019.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_criocotagaita_rios/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 3694441,
+      "hash": "sha256:8b91852a3e84263a37f8d368917918165918b2bc1723ca34a1ab4e8f6143f315",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 3111
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0,
+              "maximum": 3110
+            }
+          },
+          {
+            "name": "cuenca",
+            "type": "string",
+            "example": "PLATA",
+            "categories": [
+              "PLATA",
+              "?"
+            ]
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "example": "Rio Tuctacani"
+          },
+          {
+            "name": "tipo",
+            "type": "string",
+            "example": "Intermitente",
+            "categories": [
+              "Intermitente",
+              "Permanente",
+              "?"
+            ]
+          },
+          {
+            "name": "cod_pfafst",
+            "type": "string",
+            "example": "8",
+            "categories": [
+              "8",
+              "?"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString. Filas sin geometría: 1. Geometrías inválidas, conservadas sin reparar: 125."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
