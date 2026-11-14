@@ -1,0 +1,138 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_raisg_ama_serv_ecos_cuencas_de_interes",
+  "title": "Cuencas_de_interes",
+  "sources": [
+    {
+      "title": "RAISG - AMA",
+      "path": "https://ama.raisg.org:8443/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_raisg_ama_serv_ecos_cuencas_de_interes/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 3404622,
+      "hash": "sha256:5b32fc70344f616292c625c5daaa725cbe4f6ec8241a4d86b7298834f8f3065e",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Cuencas_de_interes.45"
+          },
+          {
+            "name": "OBJECTID_1",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 82
+            }
+          },
+          {
+            "name": "OBJECTID",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 82
+            }
+          },
+          {
+            "name": "BASIN_NAME",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Amazonas",
+            "categories": [
+              "Amazonas",
+              "Orinoco",
+              "",
+              "Barima",
+              "CuyunÃ­"
+            ]
+          },
+          {
+            "name": "SUB_NAME_3",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Tambo"
+          },
+          {
+            "name": "Area_km2_2",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 159865.0
+            }
+          },
+          {
+            "name": "ID_CPVH",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 82
+            }
+          },
+          {
+            "name": "Shape_Leng",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 4.18012730372,
+              "maximum": 90.3750837974
+            }
+          },
+          {
+            "name": "Shape_Le_1",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 4.18012730477,
+              "maximum": 90.3750835225
+            }
+          },
+          {
+            "name": "Shape_Area",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0.357786788483,
+              "maximum": 63.6974188793
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon, Polygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
