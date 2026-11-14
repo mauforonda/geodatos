@@ -1,0 +1,198 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_movilidad_rutas_recorridos_2025",
+  "title": "Rutas recorridos 2025",
+  "description": "Rutas y recorridos de transporte público 2025, fuente Secretaria Municipal de Movilidad y Seguridad Ciudadana (SMMSC)",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz",
+      "path": "http://sitservicios.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_movilidad_rutas_recorridos_2025/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 1468022,
+      "hash": "sha256:427a3ab9cc92e2d782908174242721ebfbae38e5f7252a81063a08fa35b517d7",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "rutas_recorridos_2025.304"
+          },
+          {
+            "name": "objectid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 979
+            }
+          },
+          {
+            "name": "ruta",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "823"
+          },
+          {
+            "name": "codruta",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "m823v"
+          },
+          {
+            "name": "tiporuta",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Intermunicipal",
+            "categories": [
+              "Urbana",
+              "Intermunicipal",
+              "Metropolitana LP - EA",
+              "Metropolitana LP - P",
+              "Metropolitana LP - MC"
+            ]
+          },
+          {
+            "name": "tipovehicu",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Minibus",
+            "categories": [
+              "Minibus",
+              "Carry",
+              "Trufi",
+              "Micro",
+              "Bus"
+            ]
+          },
+          {
+            "name": "digitoante",
+            "type": "string",
+            "example": "475"
+          },
+          {
+            "name": "sentido",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "v",
+            "categories": [
+              "i",
+              "v",
+              "c"
+            ]
+          },
+          {
+            "name": "recorrido",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Límite Jurisdicción Municipio La Paz, Av. Principal (La Paz-Lipari), Av. La Florida, Av. Valle de La"
+          },
+          {
+            "name": "operabilid",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Ratificada",
+            "categories": [
+              "Ratificada",
+              "Modificacion",
+              "Nueva"
+            ]
+          },
+          {
+            "name": "operador",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Sindicato Río Abajo Y Palca"
+          },
+          {
+            "name": "longitud_t",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 48.58
+            }
+          },
+          {
+            "name": "longitud_s",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0.826011925168332,
+              "maximum": 38.74692421290874
+            }
+          },
+          {
+            "name": "ley_457",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 0
+            }
+          },
+          {
+            "name": "shape_leng",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 826.0119251683324,
+              "maximum": 38746.924212908736
+            }
+          },
+          {
+            "name": "fuente",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Dirección de Planificación Integral de la Movilidad",
+            "categories": [
+              "Dirección de Planificación Integral de la Movilidad"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
