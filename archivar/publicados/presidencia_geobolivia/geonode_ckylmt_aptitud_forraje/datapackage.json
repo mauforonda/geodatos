@@ -1,0 +1,60 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_ckylmt_aptitud_forraje",
+  "title": "Plan Director de la Cuenca Katari y Lago Menor del Titicaca - Cobertura Aptitud Forraje_ Bolivia 2018",
+  "description": "El mapa muestra la cobertura de aptitud de forraje en el área de la Cuenca Katari y Lago Menor del Titicaca escala 1:250.000, el forraje se compone de las plantas cultivadas para dar de comer al ganado. Información obtenida del Viceministerio de Recursos Hídricos y Riego, a octubre del 2018.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_ckylmt_aptitud_forraje/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 4661915,
+      "hash": "sha256:56900df30005c551ea4769119388c6933cff56807c7a6cb1225bc59d54ffa016",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "example": "ckylmt_aptitud_forraje.5"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 7
+            }
+          },
+          {
+            "name": "aptitud",
+            "type": "string",
+            "example": "Cuerpo de Agua"
+          },
+          {
+            "name": "codigo",
+            "type": "string",
+            "example": "CA"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 4."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
