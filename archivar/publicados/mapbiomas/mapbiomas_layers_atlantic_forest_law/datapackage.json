@@ -1,0 +1,75 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mapbiomas_mapbiomas_layers_atlantic_forest_law",
+  "title": "atlantic_forest_law",
+  "sources": [
+    {
+      "title": "MapBiomas",
+      "path": "https://shared-geoserver.mapbiomas.org/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mapbiomas_mapbiomas_layers_atlantic_forest_law/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 2161789,
+      "hash": "sha256:64acd6a5ca61e0d96fa51d70c58980e57047327991b6c76fdd162ef7153c02aa",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "minimum": 30623,
+              "maximum": 30623
+            }
+          },
+          {
+            "name": "version",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 1
+            }
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "example": "Lei da Mata Atlântica"
+          },
+          {
+            "name": "category",
+            "type": "string",
+            "example": "special_territory"
+          },
+          {
+            "name": "source",
+            "type": "string",
+            "example": "SOS Mata Atlântica"
+          },
+          {
+            "name": "source_id_value",
+            "type": "integer"
+          },
+          {
+            "name": "enabled",
+            "type": "boolean"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 1."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
