@@ -1,0 +1,141 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_municipios_alertariesgo_mdef_06022019",
+  "title": "Alerta de Riesgo de Inundación_ Deslizamiento_ Desbordes y Riadas por lluvias constantes 05 febrero_ Bolivia 2019",
+  "description": "El mapa muestra los municipios con alerta de riesgo de inundación, deslizamiento, desbordes y riadas por lluvias constantes en el territorio nacional con categorías amarilla, naranja y roja, sobre la base de los reportes hidrológicos y complementando con los meteorológicos emitidos por el SENAMHI y SNHN, el día 02/02/2019 los días domingo 03 febrero al martes 05 de febrero del 2019, se analiza lo siguiente: Existe riesgo por lluvias y tormentas eléctricas moderadas y fuertes, que generaran la subida de caudales en ríos como: Rocha, Ichilo, Chapare, Ivirgarzama, Chimore, Coroico, Zongo, Boopi, Alto Beni, Tipuani, Mapiri, Isiboro, Ichoa, Secure, Mamore, Ibare, Yacuma, Tijamuchi y Maniqui, Madre de dios, Cuevo, Parapeti, Tupiza y San Juan del oro, las cuales podría afectar a 126 municipios en los 9 departamentos, existen 51 municipios en alerta amarilla, 64 alerta naranja y 11 alerta roja. Información obtenida del reporte diario nacional de alerta de riesgos y afectación SINAGER-SAT Nº 17 del Viceministerio de Defensa Civil, a 05 de febrero del 2019. Alerta Amarilla: Cuando la proximidad de la ocurrencia de un evento adverso se encuentra en fase inicial de desarrollo o evolución. Alerta Naranja: Cuando se prevé que el evento adverso ocurra y su desarrollo pueda afectar a la población, medios de vida, sistemas productivos, accesibilidad a servicios básicos y otros. Alerta Roja: Cuando se ha confirmado la presencia del evento adverso y por su magnitud o intensidad puede afectar y causar daños a la población, medios de vida, sistemas productivos, accesibilidad, servicios y otros.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_municipios_alertariesgo_mdef_06022019/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 3944001,
+      "hash": "sha256:5f96a1f1ac23a5a21f9478b28c0459a7d9e99156d237c0062a87dcffdd514da3",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 126
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0,
+              "maximum": 125
+            }
+          },
+          {
+            "name": "cod_ut",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "051601"
+          },
+          {
+            "name": "departamen",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Potosí",
+            "categories": [
+              "Santa Cruz",
+              "Cochabamba",
+              "La Paz",
+              "Oruro",
+              "Beni",
+              "Tarija",
+              "Chuquisaca",
+              "Potosí",
+              "Pando"
+            ]
+          },
+          {
+            "name": "provincia",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Enrique Baldivieso"
+          },
+          {
+            "name": "municipio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "San Agustín"
+          },
+          {
+            "name": "capital",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "San Agustín"
+          },
+          {
+            "name": "riesgo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Alerta Amarilla",
+            "categories": [
+              "Alerta Naranja",
+              "Alerta Amarilla",
+              "Alerta Roja"
+            ]
+          },
+          {
+            "name": "poblacion",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1684,
+              "maximum": 1454539
+            }
+          },
+          {
+            "name": "vivienda",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 489,
+              "maximum": 362877
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
