@@ -1,0 +1,108 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_vegetacion",
+  "title": "Mapa de vegetacion de Bolivia_ 2007",
+  "description": "El mapa muestra los diferentes tipos de vegetación existentes en la región. Para su elaboración, se han interpretado y dibujado nuevamente los mosaicos de imágenes, los mapas topográficos y el modelo digital de elevación, para la totalidad del país. Se ha incorporado nueva información de campo, con una base más homogénea para la interpretación, como los mosaicos GEOCOVER y el modelo digital de elevación de la NASA; en este contexto, se ha vuelto a recorrer la mayor parte del país para la toma de numerosos inventarios adicionales de la vegetación en el campo, siendo una herramienta que ofrece información precisa sobre el potencial forestal ecológico y las orientaciones para la protección de la vegetación. Resultado del contrato de servicios 171 511 3000 entre THE NATURE CONSERVANCY y la empresa RUMBOL, S.R.L 2004-2006, para la elaboración del Mapa de Vegetación de Bolivia a escala 1:250 000 por Wanderley Ferreira y Gonzalo Navarro, con contraparte del Ministerio de Planificación del Desarrollo en el año 2007.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_vegetacion/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 12461896,
+      "hash": "sha256:becbb2331c77847ac5a1629e54e874d77b7a9317bedc676eef0883bca51560f2",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "vegetacion.44"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 46
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "vegetacion.44"
+          },
+          {
+            "name": "codveg",
+            "type": "string",
+            "example": "VFv"
+          },
+          {
+            "name": "tipos_veg",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Herbacea graminoide baja, (v)"
+          },
+          {
+            "name": "id_c",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 46
+            }
+          },
+          {
+            "name": "shape_leng",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 9461.2806217,
+              "maximum": 75008666.1553
+            }
+          },
+          {
+            "name": "shape_area",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 3055507.54773,
+              "maximum": 317784056350.0
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 7."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
