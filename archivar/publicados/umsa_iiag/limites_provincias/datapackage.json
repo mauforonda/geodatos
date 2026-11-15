@@ -1,0 +1,77 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_umsa_iiag_limites_provincias",
+  "title": "provincias",
+  "sources": [
+    {
+      "title": "Geoportal del Instituto de Investigaciones y Aplicaciones Geomáticas (IIAG) de la Universidad Mayor de San Andrés (UMSA)",
+      "path": "http://gtggeoportal.umsa.bo:8087/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_umsa_iiag_limites_provincias/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 5074790,
+      "hash": "sha256:727ebae083e7920895f06876194bf2b536e0504b1ca5c42de44b7d519bf2f587",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "provincias.5"
+          },
+          {
+            "name": "c_ut",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "051401"
+          },
+          {
+            "name": "departamen",
+            "type": "string",
+            "example": "POTOSI",
+            "categories": [
+              "LA PAZ",
+              "COCHABAMBA",
+              "ORURO",
+              "POTOSI",
+              "SANTA CRUZ",
+              "CHUQUISACA",
+              "BENI",
+              "TARIJA",
+              "PANDO"
+            ]
+          },
+          {
+            "name": "provincia",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Daniel Campos"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
