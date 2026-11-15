@@ -1,0 +1,172 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_cobertura_de_agua_por_municipio_del_2024_gxlez",
+  "title": "Cobertura de agua por municipio del 2024",
+  "description": "El mapa presenta la cobertura de acceso a fuentes mejoradas de agua por municipio, actualizado al mes de abril de 2024.",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_cobertura_de_agua_por_municipio_del_2024_gxlez/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 7351018,
+      "hash": "sha256:a8492e6c0e8389132836222e110dd66a6deab7f27bc5b7aca046c3b814fb2c08",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_cobertura_de_agua_por_municipio_del_2024_gxlez.4"
+          },
+          {
+            "name": "codigo",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 10101,
+              "maximum": 90503
+            }
+          },
+          {
+            "name": "pt_est_tot",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 560,
+              "maximum": 1826181
+            }
+          },
+          {
+            "name": "pt_est_urb",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 1813913
+            }
+          },
+          {
+            "name": "pt_est_rur",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 65431
+            }
+          },
+          {
+            "name": "pt_serv_to",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 308,
+              "maximum": 1823716
+            }
+          },
+          {
+            "name": "pt_serv_ur",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 1812099
+            }
+          },
+          {
+            "name": "pt_serv_ru",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 35200
+            }
+          },
+          {
+            "name": "cob_agu_to",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 8.7,
+              "maximum": 99.9
+            }
+          },
+          {
+            "name": "cob_agu_ur",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 100.0
+            }
+          },
+          {
+            "name": "cob_agu_ru",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 99.1
+            }
+          },
+          {
+            "name": "sup_ha",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1287,
+              "maximum": 7077881
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "example": "POTOSI",
+            "categories": [
+              "LA PAZ",
+              "SANTA CRUZ",
+              "COCHABAMBA",
+              "POTOSI",
+              "ORURO",
+              "CHUQUISACA",
+              "BENI",
+              "PANDO",
+              "TARIJA"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "example": "Daniel Campos"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "example": "Llica"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
