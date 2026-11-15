@@ -1,0 +1,165 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_pob_equino",
+  "title": "pob_equino",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_pob_equino/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 6641722,
+      "hash": "sha256:ab2219ba17b8e20236d53b1311c117732e0cd9e12096d0e57269b26719a16dd7",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "pob_equino.192"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 285
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Pob_equino.192"
+          },
+          {
+            "name": "codseccion",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "050901"
+          },
+          {
+            "name": "departamen",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Potosi",
+            "categories": [
+              "La Paz",
+              "Santa Cruz",
+              "Cochabamba",
+              "Chuquisaca",
+              "Oruro",
+              "Potosi",
+              "Beni",
+              "Pando",
+              "Tarija"
+            ]
+          },
+          {
+            "name": "provincia",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Nor Lipez"
+          },
+          {
+            "name": "municipio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Colcha\"K\" (V.Martin)"
+          },
+          {
+            "name": "zonas_agro",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Altiplano Sur",
+            "categories": [
+              "Altiplano Central",
+              "Valles del Norte",
+              "Altiplano Norte",
+              "Valles Centrales",
+              "Valles Cerrados",
+              "Amazonia",
+              "Valles del Sur",
+              "Yungas del Norte",
+              "Chaco Serrano",
+              "Guarayo Chiquitano",
+              "Norte Integrado Santa Cruz",
+              "Pampa Inundable de Moxos",
+              "Pampa de Moxos",
+              "Altiplano Sur",
+              "Llanos de Santa Cruz",
+              "Llanos del Chaco",
+              "Yungas del Sur - Chapare",
+              "Yungas del Sur"
+            ]
+          },
+          {
+            "name": "equino",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 2,
+              "maximum": 9789
+            }
+          },
+          {
+            "name": "shape_leng",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0.152992272145,
+              "maximum": 13.4660107679
+            }
+          },
+          {
+            "name": "shape_area",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0.00104973219826,
+              "maximum": 6.12606166281
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon, Polygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
