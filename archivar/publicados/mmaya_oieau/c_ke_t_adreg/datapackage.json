@@ -1,0 +1,88 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_oieau_c_ke_t_adreg",
+  "title": "KE_AD_Administrative units",
+  "sources": [
+    {
+      "title": "Sistema para la Gestión Integral de Recursos Hídricos desarrollado por la Oficina Internacional del Agua (OiEau)",
+      "path": "https://www.oieau-wiss.org/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_oieau_c_ke_t_adreg/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 2101031,
+      "hash": "sha256:d8a675e960daf2c394490c507763e30e086dec36df7a1e96cf9152e354092244",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "t_adreg.ADR_KE_KE034187"
+          },
+          {
+            "name": "adrgcodex",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "KE034187"
+          },
+          {
+            "name": "adrglevel",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "R2",
+            "categories": [
+              "R2",
+              "R1",
+              "R0"
+            ]
+          },
+          {
+            "name": "rgadcncode",
+            "type": "integer"
+          },
+          {
+            "name": "rgadrgcode",
+            "type": "string",
+            "example": "KE034"
+          },
+          {
+            "name": "adrgname",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Kajiado South"
+          },
+          {
+            "name": "adrgname2",
+            "type": "integer"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 1."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
