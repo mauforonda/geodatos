@@ -1,0 +1,47 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_curvas_100_smooth_30_disolv",
+  "title": "Plan Director Cuenca Río Pampa Huari – Curvas de Nivel",
+  "description": "PDCRPH (Plan Director de la Cuenca Rio Pampa Huari) Describe la formación de curvas de nivel en la cuenca de Rio Pampa Huari de intervalo cada 100.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_curvas_100_smooth_30_disolv/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 12260862,
+      "hash": "sha256:6b3a97eac75ffc9fe4e8d4df2396ea23970c4a8981f070875c04d424cdcc61d9",
+      "schema": {
+        "fields": [
+          {
+            "name": "CONTOUR",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 3300,
+              "maximum": 5000
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
