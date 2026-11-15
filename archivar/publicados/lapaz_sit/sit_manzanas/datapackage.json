@@ -1,0 +1,152 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_sit_manzanas",
+  "title": "Manzanas ciudad de La Paz",
+  "description": "Recopilación de manzanas de fuentes varias, para el mapa de La Paz.",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz",
+      "path": "http://sitservicios.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_sit_manzanas/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 5408528,
+      "hash": "sha256:a7ac311305c6deb47c08ed901358029c520287762e1650b56e6732bdd5800479",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "manzanas.16760"
+          },
+          {
+            "name": "distcat",
+            "type": "number",
+            "constraints": {
+              "minimum": 1.0,
+              "maximum": 47.0
+            }
+          },
+          {
+            "name": "manzana",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.0,
+              "maximum": 55555.0
+            }
+          },
+          {
+            "name": "ddmm",
+            "type": "string",
+            "example": "46-371"
+          },
+          {
+            "name": "servicios",
+            "type": "string",
+            "example": "111110",
+            "categories": [
+              "111110",
+              "000000",
+              "111111",
+              "000010",
+              "110010",
+              "110110",
+              "100010",
+              "110000",
+              "111010",
+              "",
+              "100000",
+              "100110",
+              "101010",
+              "18-270",
+              "4"
+            ]
+          },
+          {
+            "name": "linaje",
+            "type": "string",
+            "example": "DATC",
+            "categories": [
+              "SERCAT",
+              "SERCAT2",
+              "DATC",
+              "DIIM",
+              "5",
+              "3",
+              "2"
+            ]
+          },
+          {
+            "name": "macrodistrito",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 9
+            }
+          },
+          {
+            "name": "distritomcpal",
+            "type": "number",
+            "constraints": {
+              "minimum": 1.0,
+              "maximum": 23.0
+            }
+          },
+          {
+            "name": "deslinde_ine",
+            "type": "number",
+            "constraints": {
+              "minimum": 1.0,
+              "maximum": 100.0
+            }
+          },
+          {
+            "name": "tipo",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.0,
+              "maximum": 999.0
+            }
+          },
+          {
+            "name": "ajuste",
+            "type": "number",
+            "constraints": {
+              "minimum": 11.0,
+              "maximum": 100.0
+            }
+          },
+          {
+            "name": "shape_length",
+            "type": "integer"
+          },
+          {
+            "name": "shape_area",
+            "type": "integer"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 22."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
