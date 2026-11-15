@@ -1,0 +1,165 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_deforestacion_2022_24nyp",
+  "title": "Deforestación 2022",
+  "description": "El mapa presenta la superficie en hectáreas (ha) de deforestación en el año 2022, con el fin de realizar un seguimiento y monitoreo de la pérdida de bosque en el territorio nacional.",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_deforestacion_2022_24nyp/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 6322704,
+      "hash": "sha256:7874d0183f14af168479d64c78ad0ba2f9ece5ac42d26ec1f0c1dce7971f1aea",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "layer_deforestacion_2022_24nyp.32106"
+          },
+          {
+            "name": "nombre_rf",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Sin reserva forestal",
+            "categories": [
+              "Sin reserva forestal",
+              "GUARAYOS",
+              "EL CHORE",
+              "ITENEZ",
+              "ITURRALDE",
+              "BAJO PARAGUA",
+              "RESERVA RIOS BLANCO Y NEGRO",
+              "CUENCA DEL RIO BOOPI",
+              "COVENDO",
+              "CHAPARE",
+              "RIO GRANDE MASICURI",
+              "QUINERAS DEL ATEN",
+              "SERRANIAS DE BELLA VISTA",
+              "EVA EVA MOSETENES",
+              "RIO EL NUEVE"
+            ]
+          },
+          {
+            "name": "nombre_ap",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Sin area protegida",
+            "categories": [
+              "Sin area protegida",
+              "Kaa-iya del Gran Chaco",
+              "San Matias",
+              "Otuquis",
+              "Carrasco",
+              "Isiboro Securé",
+              "Apolobamba",
+              "Amboró",
+              "Noel Kempff Mercado",
+              "Pilón Lajas",
+              "Madidi",
+              "Iñao",
+              "Manuripi",
+              "El Palmar",
+              "Tunari",
+              "Tariquía",
+              "Estación Biológica del Beni",
+              "Aguarague",
+              "Serranía del Aguarague",
+              "Cotapata"
+            ]
+          },
+          {
+            "name": "tipo_bos",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Bosque Seco Interandino",
+            "categories": [
+              "Bosque Chiquitano",
+              "Bosque Chaqueño",
+              "Bosque Amazónico",
+              "Bosque de Llanuras Inundables",
+              "Bosque de Yungas",
+              "Bosque del Pantanal",
+              "Bosque Tucumano-Boliviano",
+              "Bosque Seco Interandino",
+              "Bosque Andino",
+              "Sin dato"
+            ]
+          },
+          {
+            "name": "sup_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 2975.527
+            }
+          },
+          {
+            "name": "etiquet",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Deforestación en 2022",
+            "categories": [
+              "Deforestación en 2022"
+            ]
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "example": "POTOSI",
+            "categories": [
+              "SANTA CRUZ",
+              "BENI",
+              "LA PAZ",
+              "COCHABAMBA",
+              "TARIJA",
+              "CHUQUISACA",
+              "PANDO",
+              "POTOSI"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "example": "Modesto Omiste"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "example": "Villazón"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 10909."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
