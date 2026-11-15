@@ -1,0 +1,146 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_indice_salud_municipal_2016",
+  "title": "Índice de Salud Municipal de Bolivia_ 2016",
+  "description": "El mapa presenta el Índice de Salud Municipal \"ISM\" que orienta sobre la situación global de salud en los municipios (339) de Bolivia. El mismo posibilita establecer respecto a logros relativos un conjunto de indicadores que derivan en la asignación de valores entre 0 y 1, más alto en tanto mejor es la situación relativa de salud del municipio. La clasificación del ISM es: Muy Bajo (0,00 a 0,25), Bajo (0,25 a 0,50), Medio (0,50 a 0,75) y Alto (0,75 a 1,00), solo 17 municipios de un total de 339 tienen el ISM Alto. Elaborado por el Sistema Nacional de Información de Salud (SNIS) del Ministerio de Salud y Deportes para la gestión 2016 en base a un mismo procedimiento metodológico.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_indice_salud_municipal_2016/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 8184513,
+      "hash": "sha256:791c536cdafe311541a2b658c550f8eee37efd9e9f16560a57ee7c7623c70185",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 344
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 344
+            }
+          },
+          {
+            "name": "objectid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 724,
+              "maximum": 2554
+            }
+          },
+          {
+            "name": "c_ut",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "051401"
+          },
+          {
+            "name": "departamen",
+            "type": "string",
+            "example": "Potosí",
+            "categories": [
+              "La Paz",
+              "Santa Cruz",
+              "Cochabamba",
+              "Potosí",
+              "Oruro",
+              "Chuquisaca",
+              "Beni",
+              "Pando",
+              "Tarija"
+            ]
+          },
+          {
+            "name": "provincia",
+            "type": "string",
+            "example": "Daniel Campos"
+          },
+          {
+            "name": "municipio",
+            "type": "string",
+            "example": "Llica"
+          },
+          {
+            "name": "capital",
+            "type": "string",
+            "example": "Llica"
+          },
+          {
+            "name": "indice",
+            "type": "string",
+            "example": "0.25 - 0.50",
+            "categories": [
+              "0.50 - 0.75",
+              "0.25 - 0.50",
+              "0.75 - 1.00"
+            ]
+          },
+          {
+            "name": "ism",
+            "type": "string",
+            "example": "ISM Bajo",
+            "categories": [
+              "ISM Medio",
+              "ISM Bajo",
+              "ISM Alto"
+            ]
+          },
+          {
+            "name": "shape_leng",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 18634.687414,
+              "maximum": 1407361.18559
+            }
+          },
+          {
+            "name": "shape_area",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 12821764.7414,
+              "maximum": 70558733450.0
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
