@@ -1,0 +1,101 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mapbiomas_mapbiomas_amazonia_political_level_1",
+  "title": "political-level-1",
+  "sources": [
+    {
+      "title": "MapBiomas",
+      "path": "https://shared-geoserver.mapbiomas.org/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mapbiomas_mapbiomas_amazonia_political_level_1/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 7189457,
+      "hash": "sha256:f4e6870417b810ab82345e58bdd27891c90a1aeb351ea6be03c3cbed8096cea2",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "political-level-1.86"
+          },
+          {
+            "name": "feature_id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 18,
+              "maximum": 108
+            }
+          },
+          {
+            "name": "name_es",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "AYACUCHO (Perú)"
+          },
+          {
+            "name": "pais",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Perú",
+            "categories": [
+              "Perú",
+              "Ecuador",
+              "Brasil",
+              "Colombia",
+              "Guyana",
+              "Suriname",
+              "Bolivia",
+              "Venezuela",
+              "Guyane Française"
+            ]
+          },
+          {
+            "name": "nomedep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "AYACUCHO"
+          },
+          {
+            "name": "nomemun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "",
+            "categories": [
+              ""
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon, GeometryCollection, Polygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
