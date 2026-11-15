@@ -1,0 +1,120 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_cat_access",
+  "title": "Categoria de accesibilidad de comunidades a centros poblados_ 2013",
+  "description": "Tiempo de viaje desde las comunidades hacia centros poblados, y categorías de accesibilidad. Datos derivados del modelo de accesibilidad de Boillat et al. (2013).",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_cat_access/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 9299284,
+      "hash": "sha256:bb82567087924971a62182c3c1c3f712f84a78e7c5733642aed8327fa98e7aba",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "cat_access.11372"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 14459
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "cat_access.11372"
+          },
+          {
+            "name": "cod10dig",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "5140102002"
+          },
+          {
+            "name": "a_500000",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -4987.17346,
+              "maximum": 47.75951
+            }
+          },
+          {
+            "name": "a_50000",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -4991.08421,
+              "maximum": 47.75951
+            }
+          },
+          {
+            "name": "a_1000",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -4993.41353,
+              "maximum": 44.59551
+            }
+          },
+          {
+            "name": "a_camino",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -4995.23046,
+              "maximum": 43.86584
+            }
+          },
+          {
+            "name": "urbanorura",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "ruralaislado",
+            "categories": [
+              "ruralconect",
+              "ruralaislado",
+              "periurbano",
+              "metropol"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 80."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
