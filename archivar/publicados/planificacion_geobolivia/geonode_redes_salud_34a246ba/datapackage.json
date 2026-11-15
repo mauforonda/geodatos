@@ -1,0 +1,133 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geobolivia_geonode_redes_salud_34a246ba",
+  "title": "Redes de Salud en Bolivia (2024)",
+  "description": "Muestra la delimitación de las redes de salud en Bolivia, presentando la estructura del sistema de salud en los distintos niveles a tiempo de responder a las exigencias emergentes de las políticas de salud del país. Elaborado por el Ministerio de Salud con datos actualizados al año 2024.",
+  "sources": [
+    {
+      "title": "Nueva plataforma GeoBolivia",
+      "path": "https://geonode.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geobolivia_geonode_redes_salud_34a246ba/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 4167376,
+      "hash": "sha256:99d4c136499d873e6b93c615feaa1d31b8b9d21e442fb15eb7ac572233b16cc7",
+      "schema": {
+        "fields": [
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 106
+            }
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 106
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 106
+            }
+          },
+          {
+            "name": "codredsal",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1001,
+              "maximum": 9009
+            }
+          },
+          {
+            "name": "nombrered",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "UYUNI"
+          },
+          {
+            "name": "coddepto",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "050000",
+            "categories": [
+              "020000",
+              "070000",
+              "030000",
+              "050000",
+              "060000",
+              "080000",
+              "010000",
+              "040000",
+              "090000"
+            ]
+          },
+          {
+            "name": "nomdepto",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Potosi",
+            "categories": [
+              "La Paz",
+              "Santa Cruz",
+              "Cochabamba",
+              "Potosi",
+              "Tarija",
+              "Beni",
+              "Chuquisaca",
+              "Oruro",
+              "Pando"
+            ]
+          },
+          {
+            "name": "nombre_imp",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "UYUNI"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
