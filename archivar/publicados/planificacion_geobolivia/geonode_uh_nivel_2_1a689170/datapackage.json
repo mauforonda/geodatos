@@ -1,0 +1,120 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geobolivia_geonode_uh_nivel_2_1a689170",
+  "title": "Unidades hidrográficas de Bolivia Nivel 2",
+  "description": "Delimitación de unidades hidrográficas de Bolivia, tipo cuenca en un sistema jerárquico de nivel 2. En este trabajo se utilizaron técnicas de análisis espacial raster para la delimitación de acuerdo al método Pfafstetter para la división y codificación de unidades hidrográficas. Las mismas que se generaron con el uso de sistemas de información geográfica (SIG), modelos digitales de elevación (DEM) y redes de drenaje para la obtención de los watersheds o cuencas. Este proceso comienza con la determinación del río principal, selección de cuatro redes de drenaje de mayor tamaño para la generación de dichas cuencas en formato raster para posteriormente ser convertida en vector. Elaborado por el Viceministerio de Recursos Hídricos y Riego (VRHR) y el Programa de Desarrollo Agropecuario Sustentable (PROAGRO) en el año 2010 a escala 1: 250000",
+  "sources": [
+    {
+      "title": "Nueva plataforma GeoBolivia",
+      "path": "https://geonode.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geobolivia_geonode_uh_nivel_2_1a689170/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 3726791,
+      "hash": "sha256:85db5bc8477ce902a586826f3f2f5b2005b50a567d109a6178396859034d80fc",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "uh_nivel_2_1a689170.2"
+          },
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 14
+            }
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 14
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "UH_Nivel_2.2"
+          },
+          {
+            "name": "nivel_2",
+            "type": "string",
+            "example": "02"
+          },
+          {
+            "name": "nivel_1",
+            "type": "string",
+            "example": "0",
+            "categories": [
+              "8",
+              "0",
+              "4"
+            ]
+          },
+          {
+            "name": "sup_km2",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 112.000023949,
+              "maximum": 654333.19582
+            }
+          },
+          {
+            "name": "shape_leng",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 69788.825314,
+              "maximum": 5871451.97778
+            }
+          },
+          {
+            "name": "shape_area",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 123341691.238,
+              "maximum": 706009012775.0
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
