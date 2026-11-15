@@ -1,0 +1,123 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_minplanifica_infocapa_layer_rios_secundarios_3_9snmm",
+  "title": "layer_rios_secundarios_3_9snmm",
+  "sources": [
+    {
+      "title": "Geoserver del Ministerio de Planificación del Desarollo",
+      "path": "https://geoserver.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_minplanifica_infocapa_layer_rios_secundarios_3_9snmm/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 6865484,
+      "hash": "sha256:df1776c5cb851216cbec9a12aaedfd75af4fd0b1855049b9d714ea12650bb722",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "layer_rios_secundarios_3_9snmm.31104"
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "s/n"
+          },
+          {
+            "name": "tipo_des",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Intermitente",
+            "categories": [
+              "Permanente",
+              "Intermitente"
+            ]
+          },
+          {
+            "name": "categ_des",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Terciario",
+            "categories": [
+              "Terciario",
+              "Secundario",
+              "Principal"
+            ]
+          },
+          {
+            "name": "long_km",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 132
+            }
+          },
+          {
+            "name": "sup_ha",
+            "type": "integer"
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "example": "Potosi",
+            "categories": [
+              "Santa Cruz",
+              "La Paz",
+              "Potosi",
+              "Beni",
+              "Cochabamba",
+              "Chuquisaca",
+              "Pando",
+              "Oruro",
+              "Tarija",
+              "SANTA CRUZ",
+              "POTOSI",
+              "PANDO",
+              "LA PAZ"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Nor Lipez"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "example": "San Pedro de Quemes"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString. Geometrías inválidas, conservadas sin reparar: 5469."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
