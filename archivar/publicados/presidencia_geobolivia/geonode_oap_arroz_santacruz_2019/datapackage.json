@@ -1,0 +1,106 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_oap_arroz_santacruz_2019",
+  "title": "Zonas Productoras de Arroz en 17 Municipios - Departamento de Santa Cruz, Bolivia 2019",
+  "description": "El mapa muestra las áreas de cultivo de arroz identificado en los municipios de: Ascención de Guarayos, Cabezas, Cotoca, Cuatro Cañadas, El Puente, Fernandez Alonzo, Okinawa Uno, Pailon, San Carlos, San Juan, San Julian, San Pedro, Santa Cruz de la Sierra, Santa Rosa, Urubicha, Warnes y Yapacani del Departamento de Santa Cruz.. Este trabajo fue realizado con uso de imágenes satelitales y monitoreos de campo; a una escala 1:50.000, consolidando información de años 2017, 2018 y 2019.  Información del Observatorio Agroambiental y Productivo del Ministerio de Desarrollo Rural de Tierras a fecha 09 octubre 2019.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_oap_arroz_santacruz_2019/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 7185787,
+      "hash": "sha256:cd244aae2b4ba935c3fa7b020f3955624626c0103e55e53ba42abf82bffbb641",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 17
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0,
+              "maximum": 16
+            }
+          },
+          {
+            "name": "departamen",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Santa Cruz",
+            "categories": [
+              "Santa Cruz"
+            ]
+          },
+          {
+            "name": "provincia",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Ichilo"
+          },
+          {
+            "name": "municipio",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "San Carlos"
+          },
+          {
+            "name": "cultivo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Arroz",
+            "categories": [
+              "Arroz"
+            ]
+          },
+          {
+            "name": "sup_has",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 33.129409,
+              "maximum": 26487.1568481
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 8."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
