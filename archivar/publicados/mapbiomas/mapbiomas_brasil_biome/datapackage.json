@@ -1,0 +1,111 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mapbiomas_mapbiomas_brasil_biome",
+  "title": "biome",
+  "sources": [
+    {
+      "title": "MapBiomas",
+      "path": "https://shared-geoserver.mapbiomas.org/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mapbiomas_mapbiomas_brasil_biome/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 6392632,
+      "hash": "sha256:30d30e1b111dc97601856019c5d4a8aaa7da8133ea70f5c16ff6fe2e7437d3c9",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "example": "biome.5"
+          },
+          {
+            "name": "FEATURE_ID",
+            "type": "integer",
+            "constraints": {
+              "minimum": 2,
+              "maximum": 7
+            }
+          },
+          {
+            "name": "NAME",
+            "type": "string",
+            "example": "Pampa"
+          },
+          {
+            "name": "LEVEL_1",
+            "type": "string",
+            "example": "",
+            "categories": [
+              ""
+            ]
+          },
+          {
+            "name": "COUNTRY",
+            "type": "string",
+            "example": "",
+            "categories": [
+              ""
+            ]
+          },
+          {
+            "name": "GEOCODE",
+            "type": "integer"
+          },
+          {
+            "name": "CATEGORY",
+            "type": "string",
+            "example": "refined_biome",
+            "categories": [
+              "refined_biome"
+            ]
+          },
+          {
+            "name": "CATEGORY_N",
+            "type": "string",
+            "example": "Bioma refinado",
+            "categories": [
+              "Bioma refinado"
+            ]
+          },
+          {
+            "name": "VERSION",
+            "type": "integer",
+            "constraints": {
+              "minimum": 2,
+              "maximum": 2
+            }
+          },
+          {
+            "name": "SOURCE",
+            "type": "string",
+            "example": "IBGE",
+            "categories": [
+              "IBGE"
+            ]
+          },
+          {
+            "name": "NAME_PT_BR",
+            "type": "string",
+            "example": "Pampa"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 5."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
