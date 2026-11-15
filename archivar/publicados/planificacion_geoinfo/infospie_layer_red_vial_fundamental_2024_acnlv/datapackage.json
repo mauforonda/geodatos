@@ -1,0 +1,144 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_red_vial_fundamental_2024_acnlv",
+  "title": "Red Vial Fundamental 2024",
+  "description": "El mapa presenta la Red Vial Fundamental en el territorio nacional, la longitud se encuentra en kilómetros, vinculan las capitales políticas de los departamentos o permiten la vinculación de carácter internacional conectándose con las carreteras principales existentes de los países limítrofes y/o conectan en los puntos adecuados dos o más carreteras de Red Fundamental.",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_red_vial_fundamental_2024_acnlv/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 6871784,
+      "hash": "sha256:8d8f38ffc92d7778759d615c70328fa09452abc00e8b2641cc4dca18ec709835",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_red_vial_fundamental_2024_acnlv.144"
+          },
+          {
+            "name": "ruta",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 48
+            }
+          },
+          {
+            "name": "rodadura",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Ripio",
+            "categories": [
+              "Pavimentada",
+              "Ripio",
+              "Pavimentada Doble Via",
+              "Pavimento en Construccion",
+              "Pavimentada y Pav. en Construccion",
+              "Urbano",
+              "Pavimento en Construccion Doble Via",
+              "En Definicion"
+            ]
+          },
+          {
+            "name": "tipo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "CARRETERA",
+            "categories": [
+              "CARRETERA",
+              "DOBLE VIA",
+              "CARRETERA_C",
+              "EN DEFINICION"
+            ]
+          },
+          {
+            "name": "de",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "HITO LX"
+          },
+          {
+            "name": "a",
+            "type": "string",
+            "example": "UYUNNI"
+          },
+          {
+            "name": "long_km",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 327
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "POTOSI",
+            "categories": [
+              "SANTA CRUZ",
+              "LA PAZ",
+              "TARIJA",
+              "COCHABAMBA",
+              "POTOSI",
+              "ORURO",
+              "BENI",
+              "CHUQUISACA",
+              "PANDO"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Nor Lipez"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Colcha \"K\""
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
