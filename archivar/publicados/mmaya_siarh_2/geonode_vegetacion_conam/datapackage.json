@@ -1,0 +1,81 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_vegetacion_conam",
+  "title": "Plan Director Cuenca Río Rocha - Vegetación",
+  "description": "PDCRR (Plan Director de la Cuenca Río Rocha). Muestra la informacion relevante de la cobertura vegetal, en el marco del Plan Director Cuenca Rio Rocha.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_vegetacion_conam/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 5021760,
+      "hash": "sha256:1b42b2d7b584c5eb767b0d9878737dec97417dc874ba2c8a9a70f44616057775",
+      "schema": {
+        "fields": [
+          {
+            "name": "VEGET",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "AC"
+          },
+          {
+            "name": "NRO",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 34
+            }
+          },
+          {
+            "name": "DESCRIPCIO",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Areas de cultivos"
+          },
+          {
+            "name": "AREA",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 2146.699,
+              "maximum": 748891486.985
+            }
+          },
+          {
+            "name": "HECTARES",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.215,
+              "maximum": 74889.149
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Filas sin geometría: 3. Geometrías inválidas, conservadas sin reparar: 19."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
