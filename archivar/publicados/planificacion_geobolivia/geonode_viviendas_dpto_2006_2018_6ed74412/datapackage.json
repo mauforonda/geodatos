@@ -1,0 +1,137 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geobolivia_geonode_viviendas_dpto_2006_2018_6ed74412",
+  "title": "Viviendas Sociales Entregadas por Departamento desde 2006 al 2018, Bolivia",
+  "description": "Información geoespacial que identifica un total de 151.058 viviendas entregadas en los 9 departamentos del país en 13 años de gestión desde el año 2006 al 2018: La Paz con 26.831, Santa Cruz 25.870, Cochabamba 21.119, Tarija 21.097, Chuquisaca 18.404, Potosí 13.274, Oruro 10.080, Beni 9.511 y Pando 4.872, estas soluciones habitacionales mejoran la calidad de vida de la población boliviana. Los programas de viviendas sociales implementados son: El Programa de Vivienda Social y Solidaria (PVS) con un total de 53.227 viviendas concluidas, la Unidad Ejecutora de Viviendas de Emergencia (UEVE) con un total 1.066 viviendas y la Agencia Estatal de Vivienda con un total de 96.765 viviendas concluidas. Dato obtenido de Agencia Estatal de Viviendas a diciembre 2018.",
+  "sources": [
+    {
+      "title": "Nueva plataforma GeoBolivia",
+      "path": "https://geonode.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geobolivia_geonode_viviendas_dpto_2006_2018_6ed74412/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 2837264,
+      "hash": "sha256:91a7cc14778fecf51cf44dcf8adfd05a92282278f1d5d136ca7393459d74cf6f",
+      "schema": {
+        "fields": [
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 14
+            }
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 14
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0,
+              "maximum": 13
+            }
+          },
+          {
+            "name": "cod_dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "0"
+          },
+          {
+            "name": "nom_dep",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Salar Uyuni"
+          },
+          {
+            "name": "descrip",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Salar",
+            "categories": [
+              "Departamento",
+              "Lago",
+              "Salar"
+            ]
+          },
+          {
+            "name": "pvs",
+            "type": "number",
+            "constraints": {
+              "minimum": 652.0,
+              "maximum": 14172.0
+            }
+          },
+          {
+            "name": "ueve",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.0,
+              "maximum": 603.0
+            }
+          },
+          {
+            "name": "aevivienda",
+            "type": "number",
+            "constraints": {
+              "minimum": 4114.0,
+              "maximum": 19556.0
+            }
+          },
+          {
+            "name": "total",
+            "type": "number",
+            "constraints": {
+              "minimum": 4872.0,
+              "maximum": 26831.0
+            }
+          },
+          {
+            "name": "porcentaje",
+            "type": "number",
+            "constraints": {
+              "minimum": 3.0,
+              "maximum": 18.0
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
