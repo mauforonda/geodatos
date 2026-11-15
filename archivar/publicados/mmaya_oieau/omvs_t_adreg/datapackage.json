@@ -1,0 +1,131 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_oieau_omvs_t_adreg",
+  "title": "OMVS_AD_Unites Aministratives",
+  "description": "Découpage administratif aux échelles R1 et R2 des quatre États membres de l'OMVS.",
+  "sources": [
+    {
+      "title": "Sistema para la Gestión Integral de Recursos Hídricos desarrollado por la Oficina Internacional del Agua (OiEau)",
+      "path": "https://www.oieau-wiss.org/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_oieau_omvs_t_adreg/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 1023721,
+      "hash": "sha256:3c7563f1c9e9abd13dcd9ebb0c3c6bd2740a863868f0195b35bb9603b5164929",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "t_adreg.fid-75f29474_19d840cd59a_-6af3"
+          },
+          {
+            "name": "adrgcode",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "ADR_GN_5_17"
+          },
+          {
+            "name": "adrgcodex",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Null",
+            "categories": [
+              "Null"
+            ]
+          },
+          {
+            "name": "adrglevel",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "R2",
+            "categories": [
+              "R2",
+              "R1",
+              "R0"
+            ]
+          },
+          {
+            "name": "rgadcncode",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "5",
+            "categories": [
+              "5",
+              "8",
+              "3",
+              "7",
+              "6",
+              "1",
+              "2",
+              "4",
+              "9",
+              "13",
+              "12",
+              "11",
+              "10",
+              "14",
+              "138",
+              "142",
+              "201",
+              "97"
+            ]
+          },
+          {
+            "name": "rgadrgcode",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Null",
+            "categories": [
+              "Null"
+            ]
+          },
+          {
+            "name": "adrgname",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Dubréka"
+          },
+          {
+            "name": "adrgname2",
+            "type": "string",
+            "example": "Guékédou"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 1."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
