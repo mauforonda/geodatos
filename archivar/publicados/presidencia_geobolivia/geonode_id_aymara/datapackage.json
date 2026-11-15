@@ -1,0 +1,97 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_id_aymara",
+  "title": "Mapa de comunidades que hablan Aymara_ 2001",
+  "description": "Población hablante, por comunidad, capaz de expresarse en Aymara (datos del Censo Nacional de Población y Vivienda 2001). Creado por el Centro para el Desarrollo y el Medio Ambiente de la Universidad de Berna (Suiza) en el marco de una consultoría para el Programa Nacional BioCulturas, apoyado por la Agencia Suiza para el Desarrollo y la Cooperación COSUDE.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_id_aymara/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 9052618,
+      "hash": "sha256:0ec66941d8795a4ee26125950a7a37521e5ffa1ad7bef629ae292e789afd3b56",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "id_aymara.11372"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 14459
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "id_aymara.11372"
+          },
+          {
+            "name": "cod10dig",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "5140102002"
+          },
+          {
+            "name": "ptotal",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 1113582
+            }
+          },
+          {
+            "name": "aymara",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 296251
+            }
+          },
+          {
+            "name": "paymara",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 100.0
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 80."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
