@@ -1,0 +1,231 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_alt_catastro_tributocatastroruat",
+  "title": "Catastro y RUAT 2",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)",
+      "path": "http://sitservicios.lapaz.bo/ows38.jsp"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_catastro_tributocatastroruat/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 5238381,
+      "hash": "sha256:ea57caf9e5b1dccef7d5152b44af113667938a3242c415d60e803f71b69c6854",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "TributoCatastroRuat.95042"
+          },
+          {
+            "name": "GestionRegistro",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1978,
+              "maximum": 2026
+            }
+          },
+          {
+            "name": "Superficie",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.0,
+              "maximum": 2608600.0
+            }
+          },
+          {
+            "name": "ZonaTributaria",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 11,
+              "maximum": 41
+            }
+          },
+          {
+            "name": "Servicios",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "AGUA, LUZ, TELEFONO",
+            "categories": [
+              "AGUA, ALCANTARILLADO, LUZ, TELEFONO",
+              "NO CORRESPONDE",
+              "LUZ",
+              "MINIMO",
+              "AGUA, LUZ",
+              "AGUA, ALCANTARILLADO, LUZ",
+              "AGUA, LUZ, TELEFONO",
+              "LUZ, TELEFONO",
+              "AGUA, ALCANTARILLADO, TELEFONO",
+              "ALCANTARILLADO, LUZ",
+              "AGUA, TELEFONO",
+              "AGUA",
+              "ALCANTARILLADO, LUZ, TELEFONO",
+              "AGUA, ALCANTARILLADO",
+              "TELEFONO",
+              "ALCANTARILLADO",
+              "ALCANTARILLADO, TELEFONO"
+            ]
+          },
+          {
+            "name": "MaterialVia",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "TIERRA",
+            "categories": [
+              "ASFALTO",
+              "PIEDRA",
+              "TIERRA",
+              "CEMENTO",
+              "LOSETA",
+              "NO CORRESPONDE",
+              "ADOQUIN",
+              "RIPIO"
+            ]
+          },
+          {
+            "name": "InclinacionVia",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "MUY INCLINADO",
+            "categories": [
+              "PLANO",
+              "INCLINADO",
+              "MUY INCLINADO",
+              "NO CORRESPONDE"
+            ]
+          },
+          {
+            "name": "ClaseInmueble",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "VU",
+            "categories": [
+              "VU",
+              "TE",
+              "PH",
+              "PA"
+            ]
+          },
+          {
+            "name": "Color",
+            "type": "string",
+            "example": "AZUL",
+            "categories": [
+              "AZUL",
+              "VERDE",
+              "AMARILLO",
+              "NARANJA",
+              "ROJO"
+            ]
+          },
+          {
+            "name": "NumInmueble",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "205196"
+          },
+          {
+            "name": "CodigoCatastral",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "031025400090000"
+          },
+          {
+            "name": "IdCodigo",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 5,
+              "maximum": 276019
+            }
+          },
+          {
+            "name": "NumPuerta",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "S/N"
+          },
+          {
+            "name": "PredioMunicipal",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "N",
+            "categories": [
+              "N",
+              "S"
+            ]
+          },
+          {
+            "name": "CodigoCat",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "031025400090000"
+          },
+          {
+            "name": "macrodistrito",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "1",
+            "categories": [
+              "5",
+              "2",
+              "3",
+              "1",
+              "4",
+              "7",
+              "8",
+              "6",
+              "9"
+            ]
+          },
+          {
+            "name": "distritomunicipal",
+            "type": "integer"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point. La fuente declaraba EPSG:4326 pero sus coordenadas estaban en EPSG:32719 (sistema inferido por la ubicación de las geometrías en Bolivia); se reproyectaron."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
