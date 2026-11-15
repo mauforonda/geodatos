@@ -1,0 +1,72 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_udape_sig_atlas2025_pg_deptos_lim",
+  "title": "pg_deptos_lim",
+  "description": "pg_deptos_lim",
+  "sources": [
+    {
+      "title": "SIG UDAPE",
+      "path": "https://sigudape.udape.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_udape_sig_atlas2025_pg_deptos_lim/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 2906361,
+      "hash": "sha256:840f04d8937d48bc9c48ee3318167ad3a9a9454d69dbb5888252c5733c61144c",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "pg_deptos_lim.6"
+          },
+          {
+            "name": "c_ut",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "11"
+          },
+          {
+            "name": "departamen",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Salar de Uyuni"
+          },
+          {
+            "name": "id_ut",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 15
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
