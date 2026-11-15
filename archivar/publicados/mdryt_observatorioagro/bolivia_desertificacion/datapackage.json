@@ -1,0 +1,133 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mdryt_observatorioagro_bolivia_desertificacion",
+  "title": "Desertificacion",
+  "sources": [
+    {
+      "title": "Geovisor del Observatorio Agroambiental y Productivo del Ministerio de Desarrollo Rural y Tierras (MDRyT)",
+      "path": "http://geoserver.observatorioagro.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mdryt_observatorioagro_bolivia_desertificacion/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 3648201,
+      "hash": "sha256:7ab6dc297d6627e143f77171c3e6f45f20c64efdf5609b07b94c0cc89aef1ebe",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "CODIGO",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "050902"
+          },
+          {
+            "name": "INDICE",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "LAGUANI",
+            "categories": [
+              "CLASE DE INDICE DE DESERTIFICACION ALTA",
+              "CLASE DE INDICE DE DESERTIFICACION MUY ALTA",
+              "CLASE DE INDICE DE DESERTIFICACION MODERADA",
+              "CLASE DE INDICE DE DESERTIFICACION MEDIA",
+              "CLASE DE INDICE DE DESERTIFICACION BAJA",
+              "TITICACA",
+              "CLASE DE INDICE DE DESERTIFICACION GRAVE",
+              "SALAR",
+              "UYUNI",
+              "CHIGUANA",
+              "LAGO",
+              "CHALVIRI",
+              "EMPEXA",
+              "LAGUANI"
+            ]
+          },
+          {
+            "name": "cod",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "SAL",
+            "categories": [
+              "ID3C",
+              "ID3A",
+              "ID2C",
+              "ID4C",
+              "ID4A",
+              "ID2A",
+              "ID2S",
+              "ID3V",
+              "ID4V",
+              "LAGO",
+              "ID3S",
+              "SAL",
+              "ID1L",
+              "ID2L",
+              "ID1S",
+              "ID2V",
+              "ID1C",
+              "ID3L",
+              "ID5A",
+              "ID4L",
+              "ID4S",
+              "ID5C"
+            ]
+          },
+          {
+            "name": "DEPARTAMEN",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Potosi",
+            "categories": [
+              "La Paz",
+              "Potosi",
+              "Oruro",
+              "Cochabamba",
+              "Chuquisaca",
+              "Santa Cruz",
+              "Tarija"
+            ]
+          },
+          {
+            "name": "PROVINCIA",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Nor Lipez"
+          },
+          {
+            "name": "MUNICIPIO",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "San Pedro de Quemes"
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
