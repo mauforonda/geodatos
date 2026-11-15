@@ -1,0 +1,107 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_oieau_bo_satd_katari_river",
+  "title": "river",
+  "sources": [
+    {
+      "title": "Sistema para la Gestión Integral de Recursos Hídricos desarrollado por la Oficina Internacional del Agua (OiEau)",
+      "path": "https://www.oieau-wiss.org/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_oieau_bo_satd_katari_river/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 4744340,
+      "hash": "sha256:b13f777309b7186e0f53b01c71cf271d6508873338cf1aed489df8f85814a738",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "river.8627"
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "example": "Qda. Challapujo"
+          },
+          {
+            "name": "area",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 84.8601494117
+            }
+          },
+          {
+            "name": "hu_name",
+            "type": "string",
+            "example": "Cuenca Katari",
+            "categories": [
+              "Cuenca Katari"
+            ]
+          },
+          {
+            "name": "type",
+            "type": "string",
+            "example": "Secundario",
+            "categories": [
+              "Secundario",
+              "Principal"
+            ]
+          },
+          {
+            "name": "flow",
+            "type": "string",
+            "example": "Intermitente",
+            "categories": [
+              "Intermitente",
+              "Continuo"
+            ]
+          },
+          {
+            "name": "alias",
+            "type": "string",
+            "example": "Qda. Challapujo"
+          },
+          {
+            "name": "last_edited_date",
+            "type": "datetime",
+            "constraints": {
+              "required": true,
+              "minimum": "2022-03-11T11:56:26+00:00",
+              "maximum": "2022-03-11T11:56:26+00:00"
+            }
+          },
+          {
+            "name": "last_edited_user",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 1
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
