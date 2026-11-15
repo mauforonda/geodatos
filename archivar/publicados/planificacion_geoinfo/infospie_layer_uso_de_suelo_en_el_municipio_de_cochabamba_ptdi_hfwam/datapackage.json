@@ -1,0 +1,107 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_uso_de_suelo_en_el_municipio_de_co_38b9ef3764bb",
+  "title": "Uso de suelo en el municipio de Cochabamba - PTDI",
+  "description": "El mapa muestra el uso actual del suelo en el Municipio de Cochabamba.",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_uso_de_suelo_en_el_municipio_de_co_38b9ef3764bb/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 8712741,
+      "hash": "sha256:cbc245ae741eea841071109c682031a368443b7a08b0f285948fbc636ed0aedd",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "layer_uso_de_suelo_en_el_municipio_de_cochabamba__ptdi_hfwam.7104"
+          },
+          {
+            "name": "uso_suelo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Residencial",
+            "categories": [
+              "Residencial",
+              "Áreas Verdes y de Recreación",
+              "Área de Equipamientos Sociales",
+              "Área de Mitigación Ambiental y Jerarquización de la Estructura Natural",
+              "Área Agropecuaria",
+              "Área Industrial",
+              "Área de Equipamientos Urbano Regionales",
+              "Área de Equipamientos Especiales",
+              "Área forestal",
+              "Área de Preservación Natural y Dinamización Cultural",
+              "Área de Preservación e Integración Paisajística",
+              "Área de Protección y Bioregulación Ambiental",
+              "Área de Equipamiento Especial y Preservación Paisajística Ambiental"
+            ]
+          },
+          {
+            "name": "sup_ha",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.0,
+              "maximum": 329.749
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "example": "COCHABAMBA",
+            "categories": [
+              "COCHABAMBA"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "example": "Cercado",
+            "categories": [
+              "Cercado",
+              "Chapare",
+              "Quillacollo",
+              "Esteban Arze"
+            ]
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "example": "Cochabamba",
+            "categories": [
+              "Cochabamba",
+              "Sacaba",
+              "Tiquipaya",
+              "Colcapirhua",
+              "Arbieto"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Filas sin geometría: 19. Geometrías inválidas, conservadas sin reparar: 68."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
