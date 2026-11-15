@@ -1,0 +1,78 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mapbiomas_mapbiomas_bosque_col3_watershed",
+  "title": "watershed",
+  "sources": [
+    {
+      "title": "MapBiomas",
+      "path": "https://shared-geoserver.mapbiomas.org/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mapbiomas_mapbiomas_bosque_col3_watershed/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 2834636,
+      "hash": "sha256:28c5cc4738064d880cc8c7f646d6796da409ed92ffa5bd3ff98e80b5cf141b6f",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "watershed.2"
+          },
+          {
+            "name": "feature_id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 3777,
+              "maximum": 3845
+            }
+          },
+          {
+            "name": "name_es",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "RIO TEBICUARY (Paraguay)"
+          },
+          {
+            "name": "key",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "level_2_drainage_basin",
+            "categories": [
+              "level_2_drainage_basin"
+            ]
+          },
+          {
+            "name": "parent_id",
+            "type": "integer"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 20."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
