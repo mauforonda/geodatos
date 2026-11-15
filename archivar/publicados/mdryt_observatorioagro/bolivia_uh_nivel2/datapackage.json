@@ -1,0 +1,113 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mdryt_observatorioagro_bolivia_uh_nivel2",
+  "title": "UH_Nivel2",
+  "sources": [
+    {
+      "title": "Geovisor del Observatorio Agroambiental y Productivo del Ministerio de Desarrollo Rural y Tierras (MDRyT)",
+      "path": "http://geoserver.observatorioagro.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mdryt_observatorioagro_bolivia_uh_nivel2/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 3724522,
+      "hash": "sha256:9f87ba2bdd1eb8ab25a4088d4d4bdd10181161b204bf9b53193a30a5b7c4aed3",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "NIVEL_1",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "0",
+            "categories": [
+              "0",
+              "8",
+              "4"
+            ]
+          },
+          {
+            "name": "NIVEL_2",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "02"
+          },
+          {
+            "name": "NOMBRE",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Salar de Uyuni"
+          },
+          {
+            "name": "SUP_KM2",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 123.34,
+              "maximum": 705996.73
+            }
+          },
+          {
+            "name": "TIPO",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Endorreica",
+            "categories": [
+              "Exorreica",
+              "Endorreica"
+            ]
+          },
+          {
+            "name": "CLASIFIC",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Cuenca",
+            "categories": [
+              "Gran Cuenca",
+              "",
+              "Macrocuenca",
+              "Mesocuenca",
+              "Cuenca",
+              "SubCuenca"
+            ]
+          },
+          {
+            "name": "ID",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 14
+            }
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
