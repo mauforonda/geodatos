@@ -1,0 +1,112 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geobolivia_geonode_ckylmt_rios_cd86e5d0",
+  "title": "Plan Director de la Cuenca Katari y Lago Menor del Titicaca - ríos Bolivia",
+  "description": "Información geoespacial de los ríos que conforman la Cuenca Katari y Lago Menor del Titicaca, a escala 1:50.000, información actualizada en base a imágenes satelitales Bing Maps 2016, dato del Viceministerio de Recursos Hídricos y Riego a fecha noviembre 2017.",
+  "sources": [
+    {
+      "title": "Nueva plataforma GeoBolivia",
+      "path": "https://geonode.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geobolivia_geonode_ckylmt_rios_cd86e5d0/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 5216455,
+      "hash": "sha256:58fac950459aae4aecb121e87da674dbb511ac98a2f9def3bfa38110e6b24569",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "ckylmt_rios_cd86e5d0.4651"
+          },
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 8780
+            }
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 8780
+            }
+          },
+          {
+            "name": "objectid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 8779
+            }
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "example": "Qda. Wila"
+          },
+          {
+            "name": "tipo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Qda.",
+            "categories": [
+              "Qda.",
+              "Rio"
+            ]
+          },
+          {
+            "name": "long_km",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.192891187204,
+              "maximum": 84860.1494117
+            }
+          },
+          {
+            "name": "observacio",
+            "type": "string",
+            "example": "Nombre repetido",
+            "categories": [
+              "No se nota",
+              "Zona nubosa",
+              "Nombre repetido",
+              "Pasa por terrenos",
+              "Nombre repetido, Zona nubosa",
+              "Solo en tiempo de lluvia",
+              "Conecta dos lagunas"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
