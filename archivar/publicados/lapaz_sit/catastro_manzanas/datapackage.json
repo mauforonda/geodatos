@@ -1,0 +1,165 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_catastro_manzanas",
+  "title": "Catastro manzanas",
+  "description": "Catastro Manzanas fuera de linea",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz",
+      "path": "http://sitservicios.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_catastro_manzanas/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 6587626,
+      "hash": "sha256:f1a8b10df45e8bfb3523696f24dc360a786b7294e94a4df6375591cfcef5b66d",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "manzanas.10451"
+          },
+          {
+            "name": "classid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 40,
+              "maximum": 40
+            }
+          },
+          {
+            "name": "revisionnumber",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 27
+            }
+          },
+          {
+            "name": "manzana",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 3494
+            }
+          },
+          {
+            "name": "macrodistrito",
+            "type": "number",
+            "constraints": {
+              "minimum": 1.0,
+              "maximum": 9.0
+            }
+          },
+          {
+            "name": "idzona",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "171"
+          },
+          {
+            "name": "idusuario",
+            "type": "number",
+            "constraints": {
+              "minimum": 1313.0,
+              "maximum": 3616.0
+            }
+          },
+          {
+            "name": "fecharegistro",
+            "type": "datetime",
+            "constraints": {
+              "minimum": "2012-04-02T21:12:37.990000+00:00",
+              "maximum": "2026-08-05T00:41:45.530000+00:00"
+            }
+          },
+          {
+            "name": "distritocatastral",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 47
+            }
+          },
+          {
+            "name": "valorbitservicio",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 255
+            }
+          },
+          {
+            "name": "objectid_sercat",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.0,
+              "maximum": 69338.0
+            }
+          },
+          {
+            "name": "distritomanzana_ant",
+            "type": "string",
+            "example": "31397",
+            "categories": [
+              "111000",
+              "137",
+              "15",
+              "17198",
+              "17393",
+              "20175",
+              "202222",
+              "2077",
+              "27125",
+              "31397",
+              "33197",
+              "34100",
+              "34359",
+              "3490",
+              "371000",
+              "441133",
+              "442722",
+              "449999",
+              "4548",
+              "4710",
+              "47175",
+              "5100",
+              "61125",
+              "61572",
+              "61763",
+              "6512",
+              "6887"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 32."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
