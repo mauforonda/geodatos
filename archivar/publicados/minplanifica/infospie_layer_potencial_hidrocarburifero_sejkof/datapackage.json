@@ -1,0 +1,99 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_minplanifica_infospie_layer_potencial_hidrocarburifero_sejkof",
+  "title": "layer_potencial_hidrocarburifero_sejkof",
+  "sources": [
+    {
+      "title": "Geoserver del Ministerio de Planificación del Desarollo",
+      "path": "https://geoserver.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_minplanifica_infospie_layer_potencial_hidrocarburifero_sejkof/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 7202298,
+      "hash": "sha256:fc0bc57b751c2c07d63cd33f8e59c3dfa0fda323e754830205e58b499db6def2",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_potencial_hidrocarburifero_sejkof.6"
+          },
+          {
+            "name": "descrip",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Bajo",
+            "categories": [
+              "Bajo",
+              "Medio",
+              "Alto",
+              "Muy Alto"
+            ]
+          },
+          {
+            "name": "sup_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 15.53077844714,
+              "maximum": 6095500.975534254
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "example": "Potosi",
+            "categories": [
+              "La Paz",
+              "Santa Cruz",
+              "Cochabamba",
+              "Potosi",
+              "Oruro",
+              "Chuquisaca",
+              "Beni",
+              "Tarija",
+              "Pando",
+              "POTOSI"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Daniel Campos"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "example": "Llica"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 18."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
