@@ -1,0 +1,100 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_fisiografia_4",
+  "title": "Plan Director Cuenca Katari y Lago Menor del Titicaca - Fisiografia",
+  "description": "PDCKyLMT (Plan Director Cuenca Katari y Lago Menor del Titicaca). Muestra la información relevante de la fisiografia en el marco del Plan Director Cuenca Katari y Lago Menor del Titicaca.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_fisiografia_4/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 3897658,
+      "hash": "sha256:c9b111854a9edb37bcde1a72eef4c30e04777cd40d972ce496f96dc4a67a8b90",
+      "schema": {
+        "fields": [
+          {
+            "name": "TPI_Fisio",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Altiplano, Serrania,LM"
+          },
+          {
+            "name": "Provincia_",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Altiplano",
+            "categories": [
+              "Altiplano",
+              "Cordillera Oriental",
+              "Cuerpo de Agua",
+              "Nevados",
+              "Urbano"
+            ]
+          },
+          {
+            "name": "Gran_Paisa",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Serrania",
+            "categories": [
+              "Serrania",
+              "Colina",
+              "Llanura",
+              "Penillanura",
+              "Piedemonte",
+              "Cuerpo de Agua",
+              "Depresion",
+              "Meseta",
+              "Nevados",
+              "Terraza",
+              "Urbano",
+              "Valle Glacial"
+            ]
+          },
+          {
+            "name": "Paisaje",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Serrania, Ladera Media"
+          },
+          {
+            "name": "Codigo",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "ASLM"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 13."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
