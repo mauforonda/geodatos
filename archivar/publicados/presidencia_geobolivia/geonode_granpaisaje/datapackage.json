@@ -1,0 +1,122 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_granpaisaje",
+  "title": "Mapa del gran paisaje fisiografico de Bolivia_ 2002",
+  "description": "En este mapa se pueden observar las diferentes características fisograficas del territorio boliviano, considerando los atributos de geología, vegetación, suelos, zonas de vida de Holdrige, limitaciones y riesgos, identificando las unidades de terreno o paisaje siguiendo la secuencia donde la primera letra identifica la provincia fisiográfica y la segunda letra identifica el gran paisaje. Elaborado por la Unidad de Ordenamiento Territorial del Ministerio de Planificación del Desarrollo, en el año 2002 a escala 1:1000000.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_granpaisaje/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 9997914,
+      "hash": "sha256:3344b9279157bbdbe68dd2072fd47a279a5004f8da6d644e0ef77f4b3d810d18",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "granpaisaje.40"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 44
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "GranPaisaje.40"
+          },
+          {
+            "name": "gpaisaje",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Vl"
+          },
+          {
+            "name": "count",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 9
+            }
+          },
+          {
+            "name": "provfisdes",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Cordillera Occidental",
+            "categories": [
+              "Altiplano",
+              "Cordillera Occidental",
+              "Cordillera Oriental",
+              "Escudo Precambrico",
+              "Llanura Chaco-Beniana (H)",
+              "Subandino",
+              "Llanura Chacho-Beniana (B)",
+              "Llanura Chaco-Beniana (O)",
+              "Cuerpo de Agua",
+              "Nevados",
+              "Salar",
+              "Urbano"
+            ]
+          },
+          {
+            "name": "gpais_des",
+            "type": "string",
+            "example": "LLanuras",
+            "categories": [
+              "Colinas",
+              "Llanuras",
+              "Piedemontes",
+              "Planicies",
+              "Serranias",
+              "Montañas",
+              "Cuerpo de agua",
+              "LLanuras",
+              "Nevados",
+              "Urbano"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 11."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
