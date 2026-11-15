@@ -1,0 +1,130 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mapbiomas_mapbiomas_layers_states",
+  "title": "states",
+  "sources": [
+    {
+      "title": "MapBiomas",
+      "path": "https://shared-geoserver.mapbiomas.org/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mapbiomas_mapbiomas_layers_states/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 4310892,
+      "hash": "sha256:a25b46a91d33965cd15440fba6b113326b55b15d75523822f5104627fe3ed0c9",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "states.fid-1430c10_19d8c76b459_6122"
+          },
+          {
+            "name": "CD_UF",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "43"
+          },
+          {
+            "name": "NM_UF",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Rio Grande do Sul"
+          },
+          {
+            "name": "SIGLA_UF",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "RS"
+          },
+          {
+            "name": "NM_REGIAO",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Sul\n",
+            "categories": [
+              "Nordeste\n",
+              "Norte",
+              "Centro-oeste\n",
+              "Sudeste\n",
+              "Sul\n"
+            ]
+          },
+          {
+            "name": "AREA_KM2",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 5760.784,
+              "maximum": 1559255.881
+            }
+          },
+          {
+            "name": "geometry_analysis",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Valid Geometry",
+            "categories": [
+              "Valid Geometry"
+            ]
+          },
+          {
+            "name": "category",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "state",
+            "categories": [
+              "state"
+            ]
+          },
+          {
+            "name": "source",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "IBGE",
+            "categories": [
+              "IBGE"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 22."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
