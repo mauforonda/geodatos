@@ -1,0 +1,123 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_azero_potencial_productivo",
+  "title": "Plan Director Cuenca Río Azero - Potencial Productivo",
+  "description": "PDCRA (Plan Director de la Cuenca Río Azero). Muestra la información geográfica sobre el potencial productivo en sus diferentes rubros, procesados a través de la Unidad de Análisis Productivo (UDAPRO) y plasmados en el Sistema de Información Territorial de Apoyo a la Producción (SITAP)",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_azero_potencial_productivo/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 3007563,
+      "hash": "sha256:6b5b167b537a7638f9b08193345dcd857ff5b16ab5aef691a5d8ed78589c78b0",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 24."
+          },
+          {
+            "name": "LEYENDA",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "PASTOREO EXTENSIVO",
+            "categories": [
+              "AGROPECUARIO",
+              "CULTIVOS AGRICOLAS MERCADO LOCAL",
+              "FORESTAL MADERABLE",
+              "EXPLOTACION DE YACIMIENTOS MINEROS",
+              "EXTRACTIVO FORESTAL Y PETROLERO",
+              "PASTOREO EXTENSIVO",
+              "CULTIVOS AGRICOLAS",
+              "TURISTICO ESCENICO",
+              "PISCICOLA Y CAPTACION DE AGUA",
+              "ZONA  URBANA",
+              "SILVOPASTORIL LIMITADO"
+            ]
+          },
+          {
+            "name": "Subbasin",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 8
+            }
+          },
+          {
+            "name": "Nivel6",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "466948",
+            "categories": [
+              "466944",
+              "466945",
+              "466949",
+              "466942",
+              "466948",
+              "466941-466943",
+              "466946",
+              "466947"
+            ]
+          },
+          {
+            "name": "Nombre",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Cruz Mayu",
+            "categories": [
+              "Azero Alto",
+              "Mojo Torilllo",
+              "Marcani",
+              "Cruz Mayu",
+              "Pescado",
+              "Azero Bajo",
+              "Casas",
+              "Yotala"
+            ]
+          },
+          {
+            "name": "Shape_Leng",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0.00793714734809,
+              "maximum": 11.6759379921
+            }
+          },
+          {
+            "name": "Shape_Area",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 4.19069741876e-06,
+              "maximum": 0.0508377217159
+            }
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
