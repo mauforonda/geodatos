@@ -1,0 +1,97 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_aut_quechua",
+  "title": "Mapa de autoidentificación quechua por comunidades, 2001",
+  "description": "Población mayor de 15 años según autoidentificacion con pueblos originarios e indígenas quechuas (datos del Censo Nacional de Población y Vivienda 2001), por comunidad. Creado por el Centro para el Desarrollo y el Medio Ambiente de la Universidad de Berna (Suiza) en el marco de una consultoría para el Programa Nacional BioCulturas, apoyado por la Agencia Suiza para el Desarrollo y la Cooperación COSUDE.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_aut_quechua/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 9040194,
+      "hash": "sha256:d52e30cf32e8127dacf62ff48415b9eff0925a837e966f8680049e1c6a9dc5c9",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "aut_quechua.11372"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 14459
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "aut_quechua.11372"
+          },
+          {
+            "name": "cod10dig",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "5140102002"
+          },
+          {
+            "name": "ptotal15",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 699233
+            }
+          },
+          {
+            "name": "quechua",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 167573
+            }
+          },
+          {
+            "name": "pquechua",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 100.0
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 80."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
