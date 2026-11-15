@@ -1,0 +1,70 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_voc_agro_mun",
+  "title": "Plan Director Cuenca Lago Poopó - Vocación Agroproductiva",
+  "description": "PDCLP (Plan Director de la Cuenca Lago Poopó). Muestra la informacion relevante de la vocacion productiva de la cuenca Lago Poopó, en el marco del Plan Director de la Cuenca del Lago Poopó.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_voc_agro_mun/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 6317598,
+      "hash": "sha256:3f00576fa40f1854f7afd1948aa4bc45decb543e23ff0d784eccd88a1322cb3f",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 51."
+          },
+          {
+            "name": "MUNICIPIO",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Andamarca"
+          },
+          {
+            "name": "Potencial",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Suelo desnudo",
+            "categories": [
+              "Pecuaria",
+              "Suelo desnudo",
+              "Lagos, lagunas y zonas inundables",
+              "Agricola",
+              "Afloramientos salinos",
+              "Zona urbana"
+            ]
+          },
+          {
+            "name": "Sup_km2",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.01,
+              "maximum": 2242.64
+            }
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
