@@ -1,0 +1,123 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_alt_catastro_manzanas2",
+  "title": "Compilacion Manzanos 2011",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)",
+      "path": "http://sitservicios.lapaz.bo/ows38.jsp"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_catastro_manzanas2/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 5087803,
+      "hash": "sha256:597b6fb44ecbc761a6874f26cf1e41393295c4df42b388020e843380461413a5",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "manzanas2.1371"
+          },
+          {
+            "name": "DISTCAT",
+            "type": "number",
+            "constraints": {
+              "minimum": 1.0,
+              "maximum": 47.0
+            }
+          },
+          {
+            "name": "MANZANA",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.0,
+              "maximum": 2833.0
+            }
+          },
+          {
+            "name": "DDMM",
+            "type": "string",
+            "example": "31-813"
+          },
+          {
+            "name": "SERVICIOS",
+            "type": "string",
+            "example": "000010"
+          },
+          {
+            "name": "LINAJE",
+            "type": "string",
+            "example": "SERCAT",
+            "categories": [
+              "SERCAT",
+              "DIIM",
+              "3",
+              "5",
+              "2"
+            ]
+          },
+          {
+            "name": "MACRODISTRITO",
+            "type": "number",
+            "constraints": {
+              "minimum": 1.0,
+              "maximum": 9.0
+            }
+          },
+          {
+            "name": "DISTRITOMCPAL",
+            "type": "number",
+            "constraints": {
+              "minimum": 1.0,
+              "maximum": 23.0
+            }
+          },
+          {
+            "name": "DESLINDE_INE",
+            "type": "number",
+            "constraints": {
+              "minimum": 1.0,
+              "maximum": 10.0
+            }
+          },
+          {
+            "name": "TIPO",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 999
+            }
+          },
+          {
+            "name": "AJUSTE",
+            "type": "number",
+            "constraints": {
+              "minimum": 11.0,
+              "maximum": 100.0
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 5. La fuente declaraba EPSG:4326 pero sus coordenadas estaban en EPSG:32719 (sistema inferido por la ubicación de las geometrías en Bolivia); se reproyectaron."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
