@@ -1,0 +1,75 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mapbiomas_mapbiomas_venezuela_biome",
+  "title": "biome",
+  "sources": [
+    {
+      "title": "MapBiomas",
+      "path": "https://shared-geoserver.mapbiomas.org/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mapbiomas_mapbiomas_venezuela_biome/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 6316080,
+      "hash": "sha256:a9df53615c3e9a33970098a2f1e843b50e6c3aa71d7e12c482694c5458cee646",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "example": "biome.1"
+          },
+          {
+            "name": "shape_Leng",
+            "type": "number",
+            "constraints": {
+              "minimum": 9.07795536622,
+              "maximum": 140.36290525
+            }
+          },
+          {
+            "name": "Shape_Le_1",
+            "type": "number",
+            "constraints": {
+              "minimum": 9.07795540559,
+              "maximum": 140.362905317
+            }
+          },
+          {
+            "name": "Shape_Area",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.50995606343,
+              "maximum": 38.2761974196
+            }
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "example": "Llanos"
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "example": "Llanos (Savannas)"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: GeometryCollection, MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
