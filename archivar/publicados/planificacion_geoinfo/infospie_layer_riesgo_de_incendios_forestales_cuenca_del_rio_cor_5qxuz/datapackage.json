@@ -1,0 +1,131 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_riesgo_de_incendios_forestales_cue_558ddae02736",
+  "title": "layer_riesgo_de_incendios_forestales_cuenca_del_rio_cor_5qxuz",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_riesgo_de_incendios_forestales_cue_558ddae02736/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 6033320,
+      "hash": "sha256:1adce05e92c19ac4bcb927328bd4c03b5712571be4c2aacd75e857f00bce7a56",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_riesgo_de_incendios_forestales_cuenca_del_rio_cor_5qxuz.595"
+          },
+          {
+            "name": "gridecode",
+            "type": "integer"
+          },
+          {
+            "name": "riesgo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Medio",
+            "categories": [
+              "Medio",
+              "Bajo",
+              "Alto",
+              "Muy alto",
+              "Muy bajo"
+            ]
+          },
+          {
+            "name": "sup_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 4.824,
+              "maximum": 290000.0
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "LA PAZ",
+            "categories": [
+              "LA PAZ"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Los Andes",
+            "categories": [
+              "Larecaja",
+              "Nor Yungas",
+              "Caranavi",
+              "Murillo",
+              "Sur Yungas",
+              "Franz Tamayo",
+              "Los Andes",
+              "Omasuyos"
+            ]
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Batallas",
+            "categories": [
+              "Guanay",
+              "Caranavi",
+              "Teoponte",
+              "Nuestra Señora de La Paz",
+              "Coroico",
+              "Coripata",
+              "Mapiri",
+              "Yanacachi",
+              "Tipuani",
+              "Alto Beni",
+              "Apolo",
+              "Sorata",
+              "Palos Blancos",
+              "Chulumani",
+              "Batallas",
+              "La Asunta",
+              "Pucarani",
+              "El Alto",
+              "Achacachi"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 41."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
