@@ -1,0 +1,165 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_pob_porcinos",
+  "title": "pob_porcinos",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_pob_porcinos/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 7209517,
+      "hash": "sha256:09bcc3628c711c82bc32c41b61cf04527938871d95a8159ce58f0b686048d7e4",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "pob_porcinos.213"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 303
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Pob_porcinos.213"
+          },
+          {
+            "name": "codseccion",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "051401"
+          },
+          {
+            "name": "departamen",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Potosi",
+            "categories": [
+              "La Paz",
+              "Cochabamba",
+              "Santa Cruz",
+              "Potosi",
+              "Chuquisaca",
+              "Oruro",
+              "Beni",
+              "Pando",
+              "Tarija"
+            ]
+          },
+          {
+            "name": "provincia",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Daniel Campos"
+          },
+          {
+            "name": "municipio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Llica"
+          },
+          {
+            "name": "zonas_agro",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Altiplano Sur",
+            "categories": [
+              "Altiplano Central",
+              "Valles del Norte",
+              "Altiplano Norte",
+              "Valles Centrales",
+              "Valles Cerrados",
+              "Amazonia",
+              "Valles del Sur",
+              "Yungas del Norte",
+              "Altiplano Sur",
+              "Chaco Serrano",
+              "Norte Integrado Santa Cruz",
+              "Guarayo Chiquitano",
+              "Pampa Inundable de Moxos",
+              "Pampa de Moxos",
+              "Llanos de Santa Cruz",
+              "Llanos del Chaco",
+              "Yungas del Sur - Chapare",
+              "Yungas del Sur"
+            ]
+          },
+          {
+            "name": "porcino",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 3,
+              "maximum": 59854
+            }
+          },
+          {
+            "name": "shape_leng",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0.152992272145,
+              "maximum": 13.4660107679
+            }
+          },
+          {
+            "name": "shape_area",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0.00104973219826,
+              "maximum": 6.12606166281
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon, Polygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
