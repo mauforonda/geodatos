@@ -1,0 +1,76 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mdryt_observatorioagro_bolivia_santa_cruz_trigo",
+  "title": "SANTA_CRUZ_TRIGO",
+  "sources": [
+    {
+      "title": "Geovisor del Observatorio Agroambiental y Productivo del Ministerio de Desarrollo Rural y Tierras (MDRyT)",
+      "path": "http://geoserver.observatorioagro.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mdryt_observatorioagro_bolivia_santa_cruz_trigo/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 3820801,
+      "hash": "sha256:86e23885ce2e3dd1d9d2f4d005bd17e84a4dbd4d7ac672804632d15736ba6437",
+      "schema": {
+        "fields": [
+          {
+            "name": "Id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 9395,
+              "maximum": 970445
+            }
+          },
+          {
+            "name": "SUP_HA",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0.404762295677,
+              "maximum": 1381.6385608
+            }
+          },
+          {
+            "name": "Shape_Leng",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 291.288202138,
+              "maximum": 410843.054574
+            }
+          },
+          {
+            "name": "Shape_Area",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 4047.62331807,
+              "maximum": 13816385.6491
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 929."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
