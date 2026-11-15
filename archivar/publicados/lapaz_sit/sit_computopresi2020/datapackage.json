@@ -1,0 +1,143 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_sit_computopresi2020",
+  "title": "Municipio computo elecciones2020",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz",
+      "path": "http://sitservicios.lapaz.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_sit_computopresi2020/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 5993148,
+      "hash": "sha256:276fe21518820ac1df59048cc28192bed9b4a6c4b8be9fd9fb2419f0d7c94db3",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "computopresi2020.334"
+          },
+          {
+            "name": "c_ut",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "051401"
+          },
+          {
+            "name": "provincia",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Daniel Campos"
+          },
+          {
+            "name": "municipio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Llica"
+          },
+          {
+            "name": "departamen",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Potosí",
+            "categories": [
+              "La Paz",
+              "Santa Cruz",
+              "Cochabamba",
+              "Potosí",
+              "Oruro",
+              "Chuquisaca",
+              "Beni",
+              "Pando",
+              "Tarija"
+            ]
+          },
+          {
+            "name": "CREEMOS",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 477554
+            }
+          },
+          {
+            "name": "MAS_IPSP",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 65,
+              "maximum": 492597
+            }
+          },
+          {
+            "name": "FPV",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 11647
+            }
+          },
+          {
+            "name": "PAN_BOL",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 3783
+            }
+          },
+          {
+            "name": "CC",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 9,
+              "maximum": 296098
+            }
+          },
+          {
+            "name": "VOTO_VALIDO",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 94,
+              "maximum": 925904
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Polygon. Geometrías inválidas, conservadas sin reparar: 8."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
