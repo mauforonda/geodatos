@@ -1,0 +1,115 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_usca_final",
+  "title": "Mapa de etnicidad y la tenencia de la tierra_ 2001",
+  "description": "El mapa presenta una clasificación de unidades socioculturales básicas (comunidades rurales) en unidades socioculturales agregadas en base a la etnicidad y la tenencia de la tierra, acorde a la metodología detallada en la nota explicativa. El mapa fue creado por el Centro para el Desarrollo y el Medio Ambiente de la Universidad de Berna (Suiza) en el marco de una consultoría para el Programa Nacional BioCulturas, apoyado por la Agencia Suiza para el Desarrollo y la Cooperación COSUDE.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_usca_final/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 10024511,
+      "hash": "sha256:303bca99059b757d8718a4f6bc903f36c843373a598d42eadaf283ad899f00c6",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "usca_final.10090"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 14426
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "usca_final.10090"
+          },
+          {
+            "name": "cod10dig",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "5140102002"
+          },
+          {
+            "name": "eth_tie_fi",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "ANDcom",
+            "categories": [
+              "ANDcom",
+              "ANDpeq",
+              "TCOATCO",
+              "NAIcom",
+              "NAIpeq",
+              "NAIgran",
+              "TCOBTCO",
+              "ITBgran",
+              "ITBcom",
+              "NAIfisc",
+              "ITBfisc",
+              "ANDfisc"
+            ]
+          },
+          {
+            "name": "usc_agreg",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "ANDcom",
+            "categories": [
+              "ANDcom",
+              "ANDpeq",
+              "TCOATCO",
+              "NAIcom",
+              "NAIpeq",
+              "NAIgran",
+              "TCOBTCO",
+              "ITBgran",
+              "ITBcom",
+              "NAIotr",
+              "ANDotr",
+              "ITBotr",
+              "Urbano"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 241."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
