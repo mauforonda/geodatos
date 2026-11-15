@@ -1,0 +1,104 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mdpyep_sitap_prodagropiscifores_castana_beni",
+  "title": "castana_Beni",
+  "sources": [
+    {
+      "title": "Sistema Territorial de Apoyo a la Producción (SITAP) del Ministerio de Desarrollo Productivo y Economía Plural",
+      "path": "https://geodata-bolivia.produccion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mdpyep_sitap_prodagropiscifores_castana_beni/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 6664792,
+      "hash": "sha256:95093a7b588df9d1d443c4730d547b79c0701e9c0aa7bf9b99a21b318f016b2e",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "castana_beni.13042"
+          },
+          {
+            "name": "OBJECTID_1",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 14918
+            }
+          },
+          {
+            "name": "OBJECTID",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 329931,
+              "maximum": 750368
+            }
+          },
+          {
+            "name": "supha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 3.995e-05,
+              "maximum": 147426.769826
+            }
+          },
+          {
+            "name": "gridcode",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 21
+            }
+          },
+          {
+            "name": "descripcio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "5-10 arboles/hectarea",
+            "categories": [
+              "5-10 arboles/hectarea",
+              "< 5 arboles/hectarea"
+            ]
+          },
+          {
+            "name": "sup_Ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 147425.31
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 94."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
