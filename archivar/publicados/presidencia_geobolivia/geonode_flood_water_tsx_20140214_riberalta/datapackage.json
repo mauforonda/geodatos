@@ -1,0 +1,83 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_flood_water_tsx_20140214_riberalta",
+  "title": "Inundaciones en Riberalta, Departamento de Beni, Bolivia Febrero 2014",
+  "description": "Este mapa representa áreas inundadas detectadas por satélite en los alrededores de la ciudad de Riberalta, en el departamento de Beni, Bolivia, usando datos de TerraSAR-X obtenidos el 13 de Febrero de 2014. Las signaturas de agua han sido detectadas principalmente en los alrededores de la ciudad, no habiéndose observado masas de agua en el interior de la misma. Es probable que la extensión de las inundaciones haya sido infra estimada a lo largo de las zonas construidas, dadas las especiales características de la imagen de satélite utilizada. Este es un análisis preliminar que aún no ha sido validado en el terreno, elaborado por UNITAR /UNOSAT, instituto de entrenamiento e investigación de la Organización de Naciones Unidas.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_flood_water_tsx_20140214_riberalta/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 6094471,
+      "hash": "sha256:7d230f19bc780f7df6ff79b53a035f9c48e57f07cfe1aff9db350f73f59b42fc",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 2607
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Flood_Water_TSX_20140214_Riberalta.2296"
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 129182
+            }
+          },
+          {
+            "name": "grid_code",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 1
+            }
+          },
+          {
+            "name": "orig_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 129182
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 61."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
