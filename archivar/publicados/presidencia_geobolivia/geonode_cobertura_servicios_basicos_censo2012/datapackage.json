@@ -1,0 +1,145 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_cobertura_servicios_basicos_censo2012",
+  "title": "Indicadores Municipales de Cobertura de Servicios Básicos_ Bolivia 2012",
+  "description": "El mapa muestra los indicadores municipales de cobertura de servicios básicos como ser; agua, saneamiento básico y energía eléctrica, elaborado en base a los datos del Censo 2012 por GeoBolivia y con datos obtenidos del Instituto Nacional de Estadística. Cabe mencionar que los límites municipales solo son de carácter \"referencial\" y no tiene ningún valor jurídico legal.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_cobertura_servicios_basicos_censo2012/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 7435911,
+      "hash": "sha256:39af50b0b0febec24d5adfcf0f16a4789e06e6f503ed59765b2da2c944cc5a5d",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 339
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0,
+              "maximum": 338
+            }
+          },
+          {
+            "name": "c_ut",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "051401"
+          },
+          {
+            "name": "departamen",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Potosí",
+            "categories": [
+              "La Paz",
+              "Santa Cruz",
+              "Cochabamba",
+              "Potosí",
+              "Oruro",
+              "Chuquisaca",
+              "Beni",
+              "Pando",
+              "Tarija"
+            ]
+          },
+          {
+            "name": "provincia",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Daniel Campos"
+          },
+          {
+            "name": "municipio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Llica"
+          },
+          {
+            "name": "capital",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Llica"
+          },
+          {
+            "name": "pob_reside",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 507,
+              "maximum": 1421286
+            }
+          },
+          {
+            "name": "cob_agua",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 1.5,
+              "maximum": 99.2
+            }
+          },
+          {
+            "name": "sane_basic",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 1.5,
+              "maximum": 91.0
+            }
+          },
+          {
+            "name": "e_electric",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 14.7,
+              "maximum": 99.4
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 2."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
