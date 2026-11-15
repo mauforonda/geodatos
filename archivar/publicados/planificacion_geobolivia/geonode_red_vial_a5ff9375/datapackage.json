@@ -1,0 +1,92 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geobolivia_geonode_red_vial_a5ff9375",
+  "title": "PDC Cuenca Alta del río La Paz - Red Víal",
+  "description": "Información geoespacial del conjunto de caminos que estructuran el territorio boliviano, información consensuada con la Administradora Boliviana de Carreteras en la sección de cartografía del Instituto Geográfico Militar – IGM Bolivia. Este dato fue obtenido de su geoportal del Ministerio de Medio Ambiente y Agua en fecha septiembre del 2022.",
+  "sources": [
+    {
+      "title": "Nueva plataforma GeoBolivia",
+      "path": "https://geonode.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geobolivia_geonode_red_vial_a5ff9375/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 3827463,
+      "hash": "sha256:a11c1b5802013c5f59c318e40ecb64539ea0c6c933d8f7c5338a5ab924d95071",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "red_vial_a5ff9375.266"
+          },
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 534
+            }
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 534
+            }
+          },
+          {
+            "name": "tipo",
+            "type": "string",
+            "example": "C. vereda",
+            "categories": [
+              "C. vereda",
+              "C. revestimiento suelto",
+              "C. rodera",
+              "C. afirmado solido 2 o mas vias",
+              "Pavimentada",
+              "Urbano",
+              "C. revestimiento suelto 1 vÃ­a",
+              "Pavimento en Construccion"
+            ]
+          },
+          {
+            "name": "depto",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "La Paz",
+            "categories": [
+              "La Paz"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
