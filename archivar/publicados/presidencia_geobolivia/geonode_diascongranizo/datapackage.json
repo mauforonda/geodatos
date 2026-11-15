@@ -1,0 +1,114 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_diascongranizo",
+  "title": "Mapa de zonas afectadas por granizo_ 2002",
+  "description": "Este mapa temático presenta cinco clases de ocurrencia de granizada que están en relación con el numero de días promedio por año en el que se presenta este fenómeno atmosférico reportados por las diferentes estaciones meteorológicas. Elaborado por la Unidad de Ordenamiento Territorial del Ministerio de Planificación del Desarrollo en el año 2003 a escala 1:1000000.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_diascongranizo/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 8036987,
+      "hash": "sha256:ddc48bea40736ecfc9a23cdc7ea1fcdb9ce072acb613a0fcfc8fd373c0b5bfee",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "diascongranizo.4158"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 4204
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "DiasConGranizo.4158"
+          },
+          {
+            "name": "grapnt",
+            "type": "string",
+            "example": "4",
+            "categories": [
+              "4",
+              "5",
+              "2",
+              "1",
+              "12",
+              "7",
+              "6",
+              "3",
+              "15"
+            ]
+          },
+          {
+            "name": "count",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 1538
+            }
+          },
+          {
+            "name": "mierda",
+            "type": "string",
+            "example": "9",
+            "categories": [
+              "1",
+              "9",
+              "2",
+              "8",
+              "3",
+              "4",
+              "5",
+              "?"
+            ]
+          },
+          {
+            "name": "clasgra",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 15
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 13."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
