@@ -1,0 +1,87 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_raisg_ama_serv_ecos_pendiente_media_por_subcuenca",
+  "title": "Pendiente_media_por_subcuenca",
+  "sources": [
+    {
+      "title": "RAISG - AMA",
+      "path": "https://ama.raisg.org:8443/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_raisg_ama_serv_ecos_pendiente_media_por_subcuenca/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 13754318,
+      "hash": "sha256:f022e5d16cf0ff3f84e5256d8468d5e938b219f9657d52c94b7519b78b515c35",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Pendiente_media_por_subcuenca.3012"
+          },
+          {
+            "name": "pendienteC",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 57.92134569130837
+            }
+          },
+          {
+            "name": "area_km2",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.38,
+              "maximum": 9059.37
+            }
+          },
+          {
+            "name": "HYBAS_ID",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 6080004040,
+              "maximum": 6081161260
+            }
+          },
+          {
+            "name": "cuenca_n3",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Cuenca del rÃ­o Amazonas",
+            "categories": [
+              "Cuenca del rÃ­o Amazonas",
+              "Cuenca del rÃ­o Tocantis",
+              "Cuenca Costera del Norte",
+              "Cuenca Costera del Sur",
+              "Cuenca del rÃ­o Orinoco",
+              "Cuenca del rÃ­o ParanÃ¡"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
