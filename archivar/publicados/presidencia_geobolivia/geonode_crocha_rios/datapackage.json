@@ -1,0 +1,80 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_crocha_rios",
+  "title": "Plan Director Cuenca Río Rocha - Ríos a escala 50.000_ Bolivia",
+  "description": "El mapa muestra la red de ríos que conforman la Cuenca del Río Rocha ha escala 1:50.000, el río discurre por los valles centrales del Departamento de Cochabamba, nace en la cordillera de los Andes, al este de la ciudad de Sacaba y cruza la ciudad de Cochabamba, concluye con el río Arque a un altura de 2.350 m.s.n.m y forman el río Caine, tiene una longitud aproximada de 115 Km, esta información es parte del Plan Director de Cuenca, dato obtenido del Viceministerio de Recursos Hídricos y Riego, ha marzo del 2017.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_crocha_rios/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 6325048,
+      "hash": "sha256:bca23ed2d1128bfe0e6072b22bc8f670e943468eb2388d6bc1927a94561a340e",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 1854
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0,
+              "maximum": 1853
+            }
+          },
+          {
+            "name": "nombre_",
+            "type": "string",
+            "example": "Qda. Chilichi"
+          },
+          {
+            "name": "long_km",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0454183579805,
+              "maximum": 73.4475780362
+            }
+          },
+          {
+            "name": "shape_leng",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 3.17289198651,
+              "maximum": 52576.9995275
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
