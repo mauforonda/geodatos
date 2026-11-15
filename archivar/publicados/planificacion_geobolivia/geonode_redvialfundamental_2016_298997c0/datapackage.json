@@ -1,0 +1,88 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geobolivia_geonode_redvialfundamental_2016_298997c0",
+  "title": "Red Vial Fundamental de Bolivia (2016)",
+  "description": "Dato de las carreteras que conforman la RVF (Red Vial Fundamental), lo que esta bajo responsabilidad de la Administradora Boliviana de Carreteras ABC . Tomar en cuenta que existen dos niveles debajo de la RVF que son las Redes departamentales y las Redes Municipales según el decreto supremo 25134, los cuales no se los toma en cuenta. Una carretera o ruta es una vía de dominio y uso público, proyectada y construida fundamentalmente para la circulación de vehículos automóviles. Las carreteras se distinguen de un simple camino porque están especialmente concebidas para la circulación de vehículos de transporte.",
+  "sources": [
+    {
+      "title": "Nueva plataforma GeoBolivia",
+      "path": "https://geonode.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geobolivia_geonode_redvialfundamental_2016_298997c0/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 4948816,
+      "hash": "sha256:fdcd29cc941ecd21a8cb555dce1b1b30206ca60e24e6cdee6343f05f37a6fd7d",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "redvialfundamental_2016_298997c0.68"
+          },
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 296
+            }
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 296
+            }
+          },
+          {
+            "name": "ruta",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "5"
+          },
+          {
+            "name": "descripcio",
+            "type": "string",
+            "example": "Lago Titicaca",
+            "categories": [
+              "No Definido",
+              "Lago Titicaca"
+            ]
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "example": "F 5"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
