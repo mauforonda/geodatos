@@ -1,0 +1,78 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_gran_chaco_sequia",
+  "title": "Mapa de amenaza de sequías de la macroregión del chaco boliviano_ 2006",
+  "description": "El mapa muestra el grado de amenaza al primer y más grande adversario del chaco boliviano que es la sequía, fenómeno recurrente del clima, aunque se trata de una anomalía temporal se refiere a la insuficiente disponibilidad de agua en la región, la cual no cubre los requerimientos de agua para el uso agropecuario y el consumo de la población. Para su estimación se determinó el número de meses con déficit hídrico, identificando 5 categorías de amenaza: muy alta, alta, media, baja y muy baja.Elaborado por el proyecto \"Plan de ordenamiento territorial del chaco boliviano\" (PLANCHACO) en el año 2006, producto del esfuerzo del Estado Boliviano, a través del Ministerio de Planificación del Desarrollo, mediante el Viceministerio de Planificación Territorial y Medio Ambiente en coordinación con la Mancomunidad de Municipios del Chaco Boliviano (MANCHABOL) con el apoyo financiero del PNUD.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_gran_chaco_sequia/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 5795109,
+      "hash": "sha256:fb7609cdcec73a85be512cde445371719afcc131a800b70c07cbd335347f7914",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "gran_chaco_sequia.35529"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 35765
+            }
+          },
+          {
+            "name": "dn",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 5
+            }
+          },
+          {
+            "name": "clas_sequi",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Baja",
+            "categories": [
+              "Media",
+              "Alta",
+              "Baja",
+              "Muy baja",
+              "Muy alta"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 663."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
