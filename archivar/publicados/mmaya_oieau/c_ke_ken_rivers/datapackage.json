@@ -1,0 +1,49 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_oieau_c_ke_ken_rivers",
+  "title": "KE_SW_Rivers",
+  "sources": [
+    {
+      "title": "Sistema para la Gestión Integral de Recursos Hídricos desarrollado por la Oficina Internacional del Agua (OiEau)",
+      "path": "https://www.oieau-wiss.org/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_oieau_c_ke_ken_rivers/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 4494757,
+      "hash": "sha256:191e6ad9fb25a24f535d063b95f8bb14c0faea51d6272624b2d81ea73c9b8a31",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "KEN_Rivers.13170"
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "example": "Lumi"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
