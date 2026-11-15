@@ -1,0 +1,172 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_alt_ubi_ubipredio",
+  "title": "Predio Unidad de Bienes Inmuebles",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)",
+      "path": "http://sitservicios.lapaz.bo/ows38.jsp"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_ubi_ubipredio/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 6608394,
+      "hash": "sha256:2119a5abb30cd9564b0b1966b9794cf83668c27465e5197bcd0413e9ff1793e5",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "ubipredio.4657"
+          },
+          {
+            "name": "classid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 5,
+              "maximum": 5
+            }
+          },
+          {
+            "name": "revisionnumber",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 7
+            }
+          },
+          {
+            "name": "saneado",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.0,
+              "maximum": 1.0
+            }
+          },
+          {
+            "name": "observacion",
+            "type": "string",
+            "example": ""
+          },
+          {
+            "name": "codigocatastral",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "031124700010000"
+          },
+          {
+            "name": "idpredioalf",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.0,
+              "maximum": 11509.0
+            }
+          },
+          {
+            "name": "idzona",
+            "type": "string",
+            "example": "284"
+          },
+          {
+            "name": "distrito",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.0,
+              "maximum": 23.0
+            }
+          },
+          {
+            "name": "macrodistrito",
+            "type": "number",
+            "constraints": {
+              "minimum": 1.0,
+              "maximum": 9.0
+            }
+          },
+          {
+            "name": "superficielevantada",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 1775404.32
+            }
+          },
+          {
+            "name": "idusuario",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1037,
+              "maximum": 3586
+            }
+          },
+          {
+            "name": "fecharegistro",
+            "type": "datetime",
+            "constraints": {
+              "minimum": "2008-08-25T04:00:00+00:00",
+              "maximum": "2026-07-30T21:17:13.720000+00:00"
+            }
+          },
+          {
+            "name": "idtipopredio",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.0,
+              "maximum": 2.0
+            }
+          },
+          {
+            "name": "superficielegal",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.0,
+              "maximum": 2353000.0
+            }
+          },
+          {
+            "name": "prediohistorico",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.0,
+              "maximum": 0.0
+            }
+          },
+          {
+            "name": "idestado",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 6
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Polygon, MultiPolygon. Geometrías inválidas, conservadas sin reparar: 46. La fuente declaraba EPSG:4326 pero sus coordenadas estaban en EPSG:32719 (sistema inferido por la ubicación de las geometrías en Bolivia); se reproyectaron."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
