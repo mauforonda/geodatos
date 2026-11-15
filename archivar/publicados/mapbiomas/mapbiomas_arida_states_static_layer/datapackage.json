@@ -1,0 +1,125 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mapbiomas_mapbiomas_arida_states_static_layer",
+  "title": "states-static-layer",
+  "sources": [
+    {
+      "title": "MapBiomas",
+      "path": "https://shared-geoserver.mapbiomas.org/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mapbiomas_mapbiomas_arida_states_static_layer/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 2903725,
+      "hash": "sha256:605da57534715cbb4d7b2b77c376f1251106077271e13ee96fcd316adfd8a1b4",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 18348,
+              "maximum": 18412
+            }
+          },
+          {
+            "name": "version",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 1
+            }
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "RIO GRANDE DO SUL"
+          },
+          {
+            "name": "source",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "IBGE",
+            "categories": [
+              "IBGE"
+            ]
+          },
+          {
+            "name": "inserted_a",
+            "type": "datetime",
+            "constraints": {
+              "required": true,
+              "minimum": "2020-02-07T00:00:00+00:00",
+              "maximum": "2020-02-07T00:00:00+00:00"
+            }
+          },
+          {
+            "name": "updated_at",
+            "type": "datetime",
+            "constraints": {
+              "required": true,
+              "minimum": "2020-02-07T00:00:00+00:00",
+              "maximum": "2020-02-07T00:00:00+00:00"
+            }
+          },
+          {
+            "name": "category",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "state",
+            "categories": [
+              "state"
+            ]
+          },
+          {
+            "name": "category_n",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Estado",
+            "categories": [
+              "Estado"
+            ]
+          },
+          {
+            "name": "area_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 576082.35729,
+              "maximum": 155917911.10977
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 20."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
