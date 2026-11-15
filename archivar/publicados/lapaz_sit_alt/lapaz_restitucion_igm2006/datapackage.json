@@ -1,0 +1,136 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_alt_lapaz_restitucion_igm2006",
+  "title": "Restitucion IGM 2006",
+  "description": "Restitucion 2006, Catatrografía basem, IGM",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)",
+      "path": "http://sitservicios.lapaz.bo/ows38.jsp"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_lapaz_restitucion_igm2006/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 7931256,
+      "hash": "sha256:aa7ebc2388b6a1c42889a723c64cb67386b300ab5543bd560a092bc5e9615f10",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "restitucion_igm2006.99762"
+          },
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 5001,
+              "maximum": 100000
+            }
+          },
+          {
+            "name": "COLOR",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 256,
+              "maximum": 256
+            }
+          },
+          {
+            "name": "LAYER",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Terraza",
+            "categories": [
+              "Techo de Edificacion",
+              "Terraza",
+              "Contorno de Edificacion",
+              "Jardinera",
+              "Campo Deportivo",
+              "Alcantarillado",
+              "Parque",
+              "Construccion Embovedado",
+              "Muro de Gavion",
+              "Plaza",
+              "Area no Visible",
+              "Torre de Energia",
+              "Rotonda",
+              "Puente",
+              "Estanque de Agua",
+              "Pasarela",
+              "Mirador",
+              "Sub Estacion Electrica",
+              "Cementerio",
+              "Piscina"
+            ]
+          },
+          {
+            "name": "LINETYPE",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "ByLayer",
+            "categories": [
+              "ByLayer"
+            ]
+          },
+          {
+            "name": "TYPE",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "LWPOLYLINE",
+            "categories": [
+              "LWPOLYLINE",
+              "LINE"
+            ]
+          },
+          {
+            "name": "PARTE",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "I",
+            "categories": [
+              "I"
+            ]
+          },
+          {
+            "name": "Nivel",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 50
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString. La fuente declaraba EPSG:4326 pero sus coordenadas estaban en EPSG:32719 (sistema inferido por la ubicación de las geometrías en Bolivia); se reproyectaron."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
