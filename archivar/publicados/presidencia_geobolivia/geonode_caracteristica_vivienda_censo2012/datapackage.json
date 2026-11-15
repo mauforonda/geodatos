@@ -1,0 +1,190 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_caracteristica_vivienda_censo2012",
+  "title": "Tenencia de la Vivienda según Municipio Censo 2012_ Bolivia",
+  "description": "El mapa muestra las características de la tenencia de vivienda según Municipio como ser; total de vivienda, particular, colectiva, propia, alquilada, en contrato anticrético y alquiler, cedida por servicios, prestada por parientes o amigos y otra, elaborado en base a los datos del Censo 2012 por GeoBolivia y con datos obtenidos del Instituto Nacional de Estadística. Cabe mencionar que los límites municipales solo son de carácter \"referencial\" y no tiene ningún valor jurídico legal.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_caracteristica_vivienda_censo2012/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 7439101,
+      "hash": "sha256:ea70f36ac629085697edc9da788020774a9879de3689097311219521b1340630",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 339
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0,
+              "maximum": 338
+            }
+          },
+          {
+            "name": "c_ut",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "051401"
+          },
+          {
+            "name": "departamen",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Potosí",
+            "categories": [
+              "La Paz",
+              "Santa Cruz",
+              "Cochabamba",
+              "Potosí",
+              "Oruro",
+              "Chuquisaca",
+              "Beni",
+              "Pando",
+              "Tarija"
+            ]
+          },
+          {
+            "name": "provincia",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Daniel Campos"
+          },
+          {
+            "name": "municipio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Llica"
+          },
+          {
+            "name": "capital",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Llica"
+          },
+          {
+            "name": "totviviend",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 189,
+              "maximum": 395373
+            }
+          },
+          {
+            "name": "particular",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 189,
+              "maximum": 388996
+            }
+          },
+          {
+            "name": "colectivas",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 6377
+            }
+          },
+          {
+            "name": "propia",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 28.8,
+              "maximum": 98.7
+            }
+          },
+          {
+            "name": "alquilada",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 29.9
+            }
+          },
+          {
+            "name": "antiyalqui",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 1.5
+            }
+          },
+          {
+            "name": "c_servicio",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.1,
+              "maximum": 42.7
+            }
+          },
+          {
+            "name": "prestada",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.4,
+              "maximum": 15.8
+            }
+          },
+          {
+            "name": "otra",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 10.9
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 2."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
