@@ -1,0 +1,192 @@
+{
+  "type": "Collection",
+  "id": "geodatosbolivia_lapaz_sit_alt_geosit_inmueble_consolidado_total",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json",
+    "https://stac-extensions.github.io/vector/v0.1.0/schema.json",
+    "https://stac-extensions.github.io/projection/v2.0.0/schema.json",
+    "https://stac-extensions.github.io/file/v2.1.0/schema.json",
+    "https://stac-extensions.github.io/web-map-links/v1.3.0/schema.json"
+  ],
+  "title": "Ubicacion inmuebles total",
+  "description": "Ubicacion inmuebles ATM + Catastro",
+  "license": "other",
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -68.17372790507353,
+          -16.634782803091994,
+          -67.92830253913071,
+          -15.975647715766707
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "providers": [
+    {
+      "name": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)",
+      "roles": [
+        "producer"
+      ],
+      "url": "http://sitservicios.lapaz.bo/ows38.jsp"
+    },
+    {
+      "name": "Internet Archive",
+      "roles": [
+        "host"
+      ],
+      "url": "https://archive.org/details/geodatosbolivia_lapaz_sit_alt_geosit_inmueble_consolidado_total"
+    }
+  ],
+  "table:primary_geometry": "geometry",
+  "table:row_count": 100000,
+  "table:columns": [
+    {
+      "name": "id",
+      "type": "string"
+    },
+    {
+      "name": "id_inmueble_actividad_economica",
+      "type": "double"
+    },
+    {
+      "name": "nro_objeto_tributario",
+      "type": "string"
+    },
+    {
+      "name": "codigo_catastral",
+      "type": "string"
+    },
+    {
+      "name": "fecha_registro",
+      "type": "timestamp[us, tz=UTC]"
+    },
+    {
+      "name": "tipo_objeto_tributario",
+      "type": "string"
+    },
+    {
+      "name": "usuario_registro",
+      "type": "string"
+    },
+    {
+      "name": "codigocatastral",
+      "type": "string"
+    },
+    {
+      "name": "cod_temp",
+      "type": "string"
+    },
+    {
+      "name": "distrito",
+      "type": "string"
+    },
+    {
+      "name": "macrodistrito",
+      "type": "string"
+    },
+    {
+      "name": "CodigoCatPH",
+      "type": "string"
+    },
+    {
+      "name": "geometry",
+      "type": "binary",
+      "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+    }
+  ],
+  "summaries": {
+    "vector:geometry_types": [
+      "Point"
+    ]
+  },
+  "assets": {
+    "data": {
+      "href": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_geosit_inmueble_consolidado_total/dataset.geoparquet",
+      "type": "application/vnd.apache.parquet",
+      "title": "GeoParquet",
+      "roles": [
+        "data"
+      ],
+      "proj:code": "EPSG:4326",
+      "file:size": 6228895,
+      "file:checksum": "12200044830bc55b9129ffef89d7d8c270b9ed4d527a7a9cccf8d63f19290a17db46"
+    },
+    "datapackage": {
+      "href": "./datapackage.json",
+      "type": "application/json",
+      "title": "Data Package: columnas, tipos y categorías",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "pmtiles": {
+      "href": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_geosit_inmueble_consolidado_total/dataset.pmtiles",
+      "type": "application/vnd.pmtiles",
+      "title": "Teselas vectoriales (PMTiles)",
+      "roles": [
+        "visual"
+      ],
+      "file:size": 957523,
+      "file:checksum": "1220c6a638d3a0900c4384fbd20b5614901ae9dfe0a91f4229561bf34892dde26c0f"
+    }
+  },
+  "pmtiles:min_zoom": 10,
+  "pmtiles:max_zoom": 13,
+  "pmtiles:tile_type": "mvt",
+  "pmtiles:center": [
+    -68.0510152,
+    -16.3052152,
+    11
+  ],
+  "pmtiles:properties": [
+    {
+      "nombre": "tipo_objeto_tributario",
+      "tipo": "string",
+      "categorias": [
+        "INMUEBLE_SITv2",
+        "CatastroPH",
+        "INMUEBLE_SITv3",
+        "CatastroPredio"
+      ]
+    }
+  ],
+  "links": [
+    {
+      "rel": "root",
+      "href": "../../../catalog.json",
+      "type": "application/json",
+      "title": "Datos geográficos de Bolivia"
+    },
+    {
+      "rel": "parent",
+      "href": "../catalog.json",
+      "type": "application/json",
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)"
+    },
+    {
+      "rel": "via",
+      "href": "http://sitservicios.lapaz.bo/ows38.jsp",
+      "type": "text/html",
+      "title": "Servicio de origen"
+    },
+    {
+      "rel": "pmtiles",
+      "href": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_geosit_inmueble_consolidado_total/dataset.pmtiles",
+      "type": "application/vnd.pmtiles",
+      "pmtiles:layers": [
+        "dataset"
+      ]
+    }
+  ]
+}
