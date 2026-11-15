@@ -1,0 +1,121 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_alt_catastro_cotas",
+  "title": "ViewCatastroCotas",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)",
+      "path": "http://sitservicios.lapaz.bo/ows38.jsp"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_catastro_cotas/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 6133067,
+      "hash": "sha256:ace60b68b6c9e5bfa70d2f7bdd2ad257894bf9ba667f4e02c9b1a1680576a8f4",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "cotas.fid--314a5bbc_19fd48774d0_-63cc"
+          },
+          {
+            "name": "idcotas",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 8,
+              "maximum": 367692
+            }
+          },
+          {
+            "name": "altura",
+            "type": "number",
+            "constraints": {
+              "minimum": 1.0,
+              "maximum": 1.0
+            }
+          },
+          {
+            "name": "angulo",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.0,
+              "maximum": 360.0
+            }
+          },
+          {
+            "name": "angulo2",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.0,
+              "maximum": 360.0
+            }
+          },
+          {
+            "name": "codigocatastral",
+            "type": "string",
+            "example": "012011900040000"
+          },
+          {
+            "name": "idusuario",
+            "type": "number",
+            "constraints": {
+              "minimum": 615.0,
+              "maximum": 1915.0
+            }
+          },
+          {
+            "name": "texto",
+            "type": "string",
+            "example": "8197174.28"
+          },
+          {
+            "name": "idrol",
+            "type": "number",
+            "constraints": {
+              "minimum": 23.0,
+              "maximum": 23.0
+            }
+          },
+          {
+            "name": "idcodigo",
+            "type": "number",
+            "constraints": {
+              "minimum": 1.0,
+              "maximum": 275043.0
+            }
+          },
+          {
+            "name": "fecharegistro",
+            "type": "datetime",
+            "constraints": {
+              "minimum": "2012-03-09T01:22:02.260000+00:00",
+              "maximum": "2015-02-11T12:12:39.470000+00:00"
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point, MultiPoint."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
