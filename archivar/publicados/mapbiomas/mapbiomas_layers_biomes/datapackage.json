@@ -1,0 +1,78 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mapbiomas_mapbiomas_layers_biomes",
+  "title": "biomes",
+  "sources": [
+    {
+      "title": "MapBiomas",
+      "path": "https://shared-geoserver.mapbiomas.org/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mapbiomas_mapbiomas_layers_biomes/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 6391921,
+      "hash": "sha256:3e8ee29899872db18bd48c9443f3af756a2b325d2e4a8825fd853c5a624e91ef",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "example": "biomes.fid-1430c10_19d8c7b9d0f_1b2b"
+          },
+          {
+            "name": "Bioma",
+            "type": "string",
+            "example": "Pampa"
+          },
+          {
+            "name": "CD_Bioma",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 6
+            }
+          },
+          {
+            "name": "geometry_analysis",
+            "type": "string",
+            "example": "Valid Geometry",
+            "categories": [
+              "Valid Geometry"
+            ]
+          },
+          {
+            "name": "source",
+            "type": "string",
+            "example": "IBGE",
+            "categories": [
+              "IBGE"
+            ]
+          },
+          {
+            "name": "category",
+            "type": "string",
+            "example": "refined_biome",
+            "categories": [
+              "refined_biome"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 5."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
