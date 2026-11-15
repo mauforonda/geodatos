@@ -1,0 +1,139 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_abc_red_vial_fundamental_2024",
+  "title": "Red Vial Fundamental 2024",
+  "description": "Presenta la referencia de cobertura de la Red Vial Fundamental.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_abc_red_vial_fundamental_2024/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 8149242,
+      "hash": "sha256:01becbb73d8d25f8d612153ff65eba7127d9dfd723c0267be29abfd99903ec38",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "abc_red_vial_fundamental_2024.132"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 316
+            }
+          },
+          {
+            "name": "ruta",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 48
+            }
+          },
+          {
+            "name": "rodadura",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Ripio",
+            "categories": [
+              "Pavimentada",
+              "Ripio",
+              "Pavimentada Doble Via",
+              "Pavimento en Construccion",
+              "Pavimentada y Pav. en Construccion",
+              "Urbano",
+              "Pavimento en Construccion Doble Via",
+              "En Definicion"
+            ]
+          },
+          {
+            "name": "tipo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "CARRETERA",
+            "categories": [
+              "CARRETERA",
+              "DOBLE VIA",
+              "CARRETERA_C",
+              "EN DEFINICION"
+            ]
+          },
+          {
+            "name": "depto",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "POTOSI",
+            "categories": [
+              "SANTA CRUZ",
+              "LA PAZ",
+              "TARIJA",
+              "COCHABAMBA",
+              "ORURO",
+              "POTOSI",
+              "BENI",
+              "CHUQUISACA",
+              "PANDO"
+            ]
+          },
+          {
+            "name": "de",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "HITO LX"
+          },
+          {
+            "name": "a",
+            "type": "string",
+            "example": "UYUNNI"
+          },
+          {
+            "name": "longitud",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1.03001587065,
+              "maximum": 326.504551161
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
