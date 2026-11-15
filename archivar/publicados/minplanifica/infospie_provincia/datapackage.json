@@ -1,0 +1,120 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_minplanifica_infospie_provincia",
+  "title": "provincia",
+  "sources": [
+    {
+      "title": "Geoserver del Ministerio de Planificación del Desarollo",
+      "path": "https://geoserver.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_minplanifica_infospie_provincia/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 5147629,
+      "hash": "sha256:b3e27611fcad8a45feb2cb968b70d2a6cc8f8a74a192733aaa5ed32e694634a1",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "provincia.77"
+          },
+          {
+            "name": "provincia",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Daniel Campos"
+          },
+          {
+            "name": "id_departamento",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 9
+            }
+          },
+          {
+            "name": "file_name",
+            "type": "integer"
+          },
+          {
+            "name": "original_file_name",
+            "type": "integer"
+          },
+          {
+            "name": "aud_usuario_crea",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 1
+            }
+          },
+          {
+            "name": "aud_fecha_crea",
+            "type": "datetime",
+            "constraints": {
+              "required": true,
+              "minimum": "2023-08-30T19:13:25.727000+00:00",
+              "maximum": "2023-08-30T19:13:25.727000+00:00"
+            }
+          },
+          {
+            "name": "aud_usuario_elimina",
+            "type": "integer"
+          },
+          {
+            "name": "aud_fecha_modifica",
+            "type": "integer"
+          },
+          {
+            "name": "aud_usuario_modifica",
+            "type": "integer"
+          },
+          {
+            "name": "aud_fecha_elimina",
+            "type": "integer"
+          },
+          {
+            "name": "estado",
+            "type": "boolean",
+            "constraints": {
+              "required": true
+            }
+          },
+          {
+            "name": "color",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "#7d6608"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
