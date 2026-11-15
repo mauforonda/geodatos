@@ -1,0 +1,81 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mapbiomas_mapbiomas_layers_biosphere_reserve",
+  "title": "biosphere_reserve",
+  "sources": [
+    {
+      "title": "MapBiomas",
+      "path": "https://shared-geoserver.mapbiomas.org/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mapbiomas_mapbiomas_layers_biosphere_reserve/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 3292516,
+      "hash": "sha256:499d2901d8c358c02c86bdf8e13c033adc896cdddbb69bd6a2b023046c2d7f2e",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "minimum": 30624,
+              "maximum": 30630
+            }
+          },
+          {
+            "name": "version",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 1
+            }
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "example": "Pantanal"
+          },
+          {
+            "name": "category",
+            "type": "string",
+            "example": "biosphere_reserve",
+            "categories": [
+              "biosphere_reserve"
+            ]
+          },
+          {
+            "name": "source",
+            "type": "string",
+            "example": "CNUC/MMA",
+            "categories": [
+              "CNUC/MMA"
+            ]
+          },
+          {
+            "name": "source_id_value",
+            "type": "integer"
+          },
+          {
+            "name": "enabled",
+            "type": "boolean"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 3."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
