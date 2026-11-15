@@ -1,0 +1,127 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_limite_municipios_2018_wgs",
+  "title": "Limites municipales",
+  "description": "Limites referenciales municipales (2018) del Viceministerio de Autonomías",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_limite_municipios_2018_wgs/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 6939939,
+      "hash": "sha256:94d92e1602ead25e448081edb6fa60a4da2e80a8018bce3396af438cd4448d56",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "DEPARTAMEN",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Potosí",
+            "categories": [
+              "La Paz",
+              "Santa Cruz",
+              "Cochabamba",
+              "Potosí",
+              "Oruro",
+              "Chuquisaca",
+              "Beni",
+              "Pando",
+              "Tarija",
+              ""
+            ]
+          },
+          {
+            "name": "PROVINCIA",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Daniel Campos"
+          },
+          {
+            "name": "MUNICIPIO",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Llica"
+          },
+          {
+            "name": "CAPITAL",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Llica"
+          },
+          {
+            "name": "F_LEY_PROV",
+            "type": "string",
+            "example": "1949-12-26T04:00:00Z"
+          },
+          {
+            "name": "LEY_MUN",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "CSL"
+          },
+          {
+            "name": "F_LEY_MUN",
+            "type": "string",
+            "example": "1924-09-20T04:32:36Z"
+          },
+          {
+            "name": "X",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": -69.4804557014,
+              "maximum": 0.0
+            }
+          },
+          {
+            "name": "Y",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": -22.6731242026,
+              "maximum": 0.0
+            }
+          },
+          {
+            "name": "MUN_ALTERN",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Llica"
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
