@@ -1,0 +1,121 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geobolivia_geonode_servicios_financieros_asfi_2007_786ba5ee",
+  "title": "Cobertura de Servicios Financieros por Municipio a Diciembre 2007, Bolivia",
+  "description": "Cobertura de servicios financieros por municipio en el territorio nacional hasta diciembre del año 2007, donde se observa 79 municipios con cobertura financiera (color verde) y 260 con nula cobertura financiera, la cobertura financiera en ese tiempo alcanzaba al 25%. Información obtenida de la Autoridad de Supervisión del Sistema Financiero (ASFI) al 16 de septiembre del 2019.",
+  "sources": [
+    {
+      "title": "Nueva plataforma GeoBolivia",
+      "path": "https://geonode.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geobolivia_geonode_servicios_financieros_asfi_2007_786ba5ee/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 6440351,
+      "hash": "sha256:ce8959b431a51a0282111fb58d8082f94099dbf7388f74688ef1334beafe522e",
+      "schema": {
+        "fields": [
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 344
+            }
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 344
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 344
+            }
+          },
+          {
+            "name": "cod_ine",
+            "type": "number",
+            "constraints": {
+              "minimum": 10101.0,
+              "maximum": 90503.0
+            }
+          },
+          {
+            "name": "departamen",
+            "type": "string",
+            "example": "Potosí",
+            "categories": [
+              "La Paz",
+              "Santa Cruz",
+              "Cochabamba",
+              "Potosí",
+              "Oruro",
+              "Chuquisaca",
+              "Beni",
+              "Pando",
+              "Tarija"
+            ]
+          },
+          {
+            "name": "provincia",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Daniel Campos"
+          },
+          {
+            "name": "municipio",
+            "type": "string",
+            "example": "Llica"
+          },
+          {
+            "name": "capital",
+            "type": "string",
+            "example": "Llica"
+          },
+          {
+            "name": "clasificac",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Nula Cobertura Financiera",
+            "categories": [
+              "Nula Cobertura Financiera",
+              "Con Cobertura Financiera"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
