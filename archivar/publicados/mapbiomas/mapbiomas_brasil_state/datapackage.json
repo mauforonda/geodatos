@@ -1,0 +1,141 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mapbiomas_mapbiomas_brasil_state",
+  "title": "state",
+  "sources": [
+    {
+      "title": "MapBiomas",
+      "path": "https://shared-geoserver.mapbiomas.org/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mapbiomas_mapbiomas_brasil_state/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 4248530,
+      "hash": "sha256:7975a4a192abd6c96f36779185a548055a11e4c740fd529726d1a0d639ee1b51",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "state.23"
+          },
+          {
+            "name": "FEATURE_ID",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 8,
+              "maximum": 34
+            }
+          },
+          {
+            "name": "NAME",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Rio Grande do Sul"
+          },
+          {
+            "name": "LEVEL_1",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "",
+            "categories": [
+              ""
+            ]
+          },
+          {
+            "name": "COUNTRY",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Brasil",
+            "categories": [
+              "Brasil"
+            ]
+          },
+          {
+            "name": "GEOCODE",
+            "type": "integer"
+          },
+          {
+            "name": "CATEGORY",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "state",
+            "categories": [
+              "state"
+            ]
+          },
+          {
+            "name": "CATEGORY_N",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Estado",
+            "categories": [
+              "Estado"
+            ]
+          },
+          {
+            "name": "VERSION",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 2,
+              "maximum": 2
+            }
+          },
+          {
+            "name": "SOURCE",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "IBGE",
+            "categories": [
+              "IBGE"
+            ]
+          },
+          {
+            "name": "NAME_PT_BR",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Rio Grande do Sul"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 21."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
