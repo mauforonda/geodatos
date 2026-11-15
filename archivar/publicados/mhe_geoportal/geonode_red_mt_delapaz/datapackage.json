@@ -1,0 +1,76 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mhe_geoportal_geonode_red_mt_delapaz",
+  "title": "Red_MT_DELAPAZ",
+  "sources": [
+    {
+      "title": "Geoportal del Viceministerio de Electricidad y Energías Renovables",
+      "path": "https://geoportal.mhe.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mhe_geoportal_geonode_red_mt_delapaz/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 7510218,
+      "hash": "sha256:7fa903f9a3b9f6319f4b61985042dca0a402162817a9398564adadac39b9f5b9",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString. Geometrías inválidas, conservadas sin reparar: 1."
+          },
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 150670
+            }
+          },
+          {
+            "name": "alimentado",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "CC"
+          },
+          {
+            "name": "nombre_ali",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "COROCORO"
+          },
+          {
+            "name": "sistema",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "nuevo",
+            "categories": [
+              "nuevo",
+              "mayor",
+              "aroma",
+              "norte"
+            ]
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
