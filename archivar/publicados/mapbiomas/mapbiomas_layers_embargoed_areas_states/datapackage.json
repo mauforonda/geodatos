@@ -1,0 +1,66 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mapbiomas_mapbiomas_layers_embargoed_areas_states",
+  "title": "embargoed_areas_states",
+  "sources": [
+    {
+      "title": "MapBiomas",
+      "path": "https://shared-geoserver.mapbiomas.org/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mapbiomas_mapbiomas_layers_embargoed_areas_states/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 7065191,
+      "hash": "sha256:e0c266b8e6a620ed34da86f3b9973be30a8cb540b11b32704cc013718fc0084d",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "embargoed_areas_states.36512"
+          },
+          {
+            "name": "data_uf",
+            "type": "string",
+            "example": "2021/10/28"
+          },
+          {
+            "name": "estado",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "RIO GRANDE DO SUL",
+            "categories": [
+              "MATO GROSSO",
+              "PARÁ",
+              "RIO GRANDE DO SUL",
+              "GOIÁS",
+              "CEARÁ",
+              "TOCANTINS",
+              "RONDÔNIA"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Polygon, LineString. Geometrías inválidas, conservadas sin reparar: 5080."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
