@@ -1,0 +1,219 @@
+{
+  "type": "Collection",
+  "id": "geodatosbolivia_lapaz_sit_lapaz_geologia2025",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json",
+    "https://stac-extensions.github.io/vector/v0.1.0/schema.json",
+    "https://stac-extensions.github.io/projection/v2.0.0/schema.json",
+    "https://stac-extensions.github.io/file/v2.1.0/schema.json",
+    "https://stac-extensions.github.io/web-map-links/v1.3.0/schema.json"
+  ],
+  "title": "Mapa Geológico 2025",
+  "description": "Mapa Geológico 2025, escalas 1:2500 urbano y 1:30000 rural, fuente SMRGV.",
+  "license": "other",
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -68.25354519028892,
+          -16.667724076775762,
+          -67.62213066388982,
+          -15.587996537713673
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "providers": [
+    {
+      "name": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz",
+      "roles": [
+        "producer"
+      ],
+      "url": "http://sitservicios.lapaz.bo/geoserver/ows"
+    },
+    {
+      "name": "Internet Archive",
+      "roles": [
+        "host"
+      ],
+      "url": "https://archive.org/details/geodatosbolivia_lapaz_sit_lapaz_geologia2025"
+    }
+  ],
+  "table:primary_geometry": "geometry",
+  "table:row_count": 5000,
+  "table:columns": [
+    {
+      "name": "id",
+      "type": "string"
+    },
+    {
+      "name": "simb",
+      "type": "string"
+    },
+    {
+      "name": "unidad",
+      "type": "string"
+    },
+    {
+      "name": "descrip",
+      "type": "string"
+    },
+    {
+      "name": "periodo",
+      "type": "string"
+    },
+    {
+      "name": "epoca",
+      "type": "string"
+    },
+    {
+      "name": "compl",
+      "type": "string"
+    },
+    {
+      "name": "r",
+      "type": "int32"
+    },
+    {
+      "name": "g",
+      "type": "int32"
+    },
+    {
+      "name": "b",
+      "type": "int32"
+    },
+    {
+      "name": "escala",
+      "type": "string"
+    },
+    {
+      "name": "geometry",
+      "type": "binary",
+      "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 3."
+    }
+  ],
+  "summaries": {
+    "vector:geometry_types": [
+      "MultiPolygon"
+    ]
+  },
+  "assets": {
+    "data": {
+      "href": "https://archive.org/download/geodatosbolivia_lapaz_sit_lapaz_geologia2025/dataset.geoparquet",
+      "type": "application/vnd.apache.parquet",
+      "title": "GeoParquet",
+      "roles": [
+        "data"
+      ],
+      "proj:code": "EPSG:4326",
+      "file:size": 7251968,
+      "file:checksum": "12200a1a5201575fe7fbda793f151974113bb25816dff4eb58e3da0cbd7981397251"
+    },
+    "datapackage": {
+      "href": "./datapackage.json",
+      "type": "application/json",
+      "title": "Data Package: columnas, tipos y categorías",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "pmtiles": {
+      "href": "https://archive.org/download/geodatosbolivia_lapaz_sit_lapaz_geologia2025/dataset.pmtiles",
+      "type": "application/vnd.pmtiles",
+      "title": "Teselas vectoriales (PMTiles)",
+      "roles": [
+        "visual"
+      ],
+      "file:size": 1062504,
+      "file:checksum": "122028c663098771d59587d82528092b3d122b984849e579c2dc4f5d4760f27836ec"
+    }
+  },
+  "pmtiles:min_zoom": 10,
+  "pmtiles:max_zoom": 13,
+  "pmtiles:tile_type": "mvt",
+  "pmtiles:center": [
+    -67.9378379,
+    -16.1278603,
+    11
+  ],
+  "pmtiles:properties": [
+    {
+      "nombre": "periodo",
+      "tipo": "string",
+      "categorias": [
+        "Cuaternario",
+        "-",
+        "Ordovícico",
+        "Neógeno",
+        "Devónico",
+        "Silúrico",
+        "Paleógeno?",
+        "Superior"
+      ]
+    },
+    {
+      "nombre": "escala",
+      "tipo": "string",
+      "categorias": [
+        "1:2500",
+        "1:100000",
+        "1:30000"
+      ]
+    },
+    {
+      "nombre": "b",
+      "tipo": "number",
+      "minimo": 0.0,
+      "maximo": 255.0
+    },
+    {
+      "nombre": "g",
+      "tipo": "number",
+      "minimo": 0.0,
+      "maximo": 255.0
+    },
+    {
+      "nombre": "r",
+      "tipo": "number",
+      "minimo": 56.0,
+      "maximo": 255.0
+    }
+  ],
+  "links": [
+    {
+      "rel": "root",
+      "href": "../../../catalog.json",
+      "type": "application/json",
+      "title": "Datos geográficos de Bolivia"
+    },
+    {
+      "rel": "parent",
+      "href": "../catalog.json",
+      "type": "application/json",
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz"
+    },
+    {
+      "rel": "via",
+      "href": "http://sitservicios.lapaz.bo/geoserver/ows",
+      "type": "text/html",
+      "title": "Servicio de origen"
+    },
+    {
+      "rel": "pmtiles",
+      "href": "https://archive.org/download/geodatosbolivia_lapaz_sit_lapaz_geologia2025/dataset.pmtiles",
+      "type": "application/vnd.pmtiles",
+      "pmtiles:layers": [
+        "dataset"
+      ]
+    }
+  ]
+}
