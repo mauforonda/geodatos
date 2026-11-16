@@ -1,0 +1,101 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_ine_idg_censo_2024_e_prevalencia_de_discapacidad_seg_n_municipio_2024",
+  "title": "Prevalencia de Discapacidad según Municipio 2024",
+  "description": "Porcentaje de población de 5 o más años de edad con alguna dificultad permanente (mucha o total) en alguno de los cuatro dominios.\r\n\r\nSiguiendo los Principios y Recomendaciones para los Censo de Población y Vivienda Rev. 3 (Parte 4, Capítulo I, sección D, numeral 4.9) basados en el set corto de preguntas del Grupo de Washington, recomiendan considerar cuatro dominios esenciales, para determinar la condición de discapacidad a partir de los datos del censo de una manera que permitiría la comparación internacional entre países.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Geoestadísticos del INE",
+      "path": "https://gsn.ine.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_ine_idg_censo_2024_e_prevalencia_de_discapacidad_seg_n_municipio_2024/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 8047346,
+      "hash": "sha256:1e1ef422ed6faf9a39c87b48b441c1104d6df5b71218ee774828a3d70bf344f8",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "conmpio",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "051401"
+          },
+          {
+            "name": "mpio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Llica"
+          },
+          {
+            "name": "cod_depto",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "05",
+            "categories": [
+              "02",
+              "07",
+              "03",
+              "05",
+              "04",
+              "01",
+              "08",
+              "09",
+              "06"
+            ]
+          },
+          {
+            "name": "depto",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Potosí",
+            "categories": [
+              "La Paz",
+              "Santa Cruz",
+              "Cochabamba",
+              "Potosí",
+              "Oruro",
+              "Chuquisaca",
+              "Beni",
+              "Pando",
+              "Tarija"
+            ]
+          },
+          {
+            "name": "ta_dis24",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 2.0,
+              "maximum": 13.9
+            }
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
