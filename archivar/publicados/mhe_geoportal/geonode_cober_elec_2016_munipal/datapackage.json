@@ -1,0 +1,117 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mhe_geoportal_geonode_cober_elec_2016_munipal",
+  "title": "Cober_Elec_2016_Munipal",
+  "sources": [
+    {
+      "title": "Geoportal del Viceministerio de Electricidad y Energías Renovables",
+      "path": "https://geoportal.mhe.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mhe_geoportal_geonode_cober_elec_2016_munipal/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 7729400,
+      "hash": "sha256:7fb06ca8d96c5f992b4c5f4dad1723ca1942ae7ba3ea78b92aa485dba9cbad5a",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 484
+            }
+          },
+          {
+            "name": "Cod_INE",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 10101,
+              "maximum": 90503
+            }
+          },
+          {
+            "name": "Departamen",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Potosí",
+            "categories": [
+              "La Paz",
+              "Potosí",
+              "Oruro",
+              "Santa Cruz",
+              "Cochamba",
+              "Chuquisaca",
+              "Beni",
+              "Pando",
+              "Tarija"
+            ]
+          },
+          {
+            "name": "Provincia",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Daniel Campos"
+          },
+          {
+            "name": "Municipio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Primera Sección -Llica"
+          },
+          {
+            "name": "Hog_2016",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 183,
+              "maximum": 409021
+            }
+          },
+          {
+            "name": "Hog_Elec",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 120.0,
+              "maximum": 408964.1
+            }
+          },
+          {
+            "name": "Cob_2016",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 16.747573,
+              "maximum": 100.022213
+            }
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
