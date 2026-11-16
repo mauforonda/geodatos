@@ -1,0 +1,137 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_ine_idg_censo_2012_e_tasa_global_de_participaci_n_seg_n_municipio_2012",
+  "title": "Tasa Global de Participación según Municipio 2012",
+  "description": "Porcentaje de la población económicamente activa entre la población en edad de trabajar que mide el porcentaje de participación en el mercado laboral respecto al total de población que se encuentra en edad de trabajo.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Geoestadísticos del INE",
+      "path": "https://gsn.ine.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_ine_idg_censo_2012_e_tasa_global_de_participaci_n_seg_n_municipio_2012/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 8050955,
+      "hash": "sha256:a51f5ba7a9d3a157cae0ae5b718c35b9de513e13242331a00f05074546514060",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "conmpio",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "051401"
+          },
+          {
+            "name": "mpio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Llica"
+          },
+          {
+            "name": "cod_depto",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "05",
+            "categories": [
+              "02",
+              "07",
+              "03",
+              "05",
+              "04",
+              "01",
+              "08",
+              "09",
+              "06"
+            ]
+          },
+          {
+            "name": "depto",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Potosí",
+            "categories": [
+              "La Paz",
+              "Santa Cruz",
+              "Cochabamba",
+              "Potosí",
+              "Oruro",
+              "Chuquisaca",
+              "Beni",
+              "Pando",
+              "Tarija"
+            ]
+          },
+          {
+            "name": "ta_bru12",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 31.3,
+              "maximum": 63.9
+            }
+          },
+          {
+            "name": "ta_glo12",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 42.4,
+              "maximum": 86.5
+            }
+          },
+          {
+            "name": "ta_pot12",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 57.4,
+              "maximum": 83.6
+            }
+          },
+          {
+            "name": "ind_ec12",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.16,
+              "maximum": 1.36
+            }
+          },
+          {
+            "name": "ta_ocu12",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 41.5,
+              "maximum": 86.4
+            }
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
