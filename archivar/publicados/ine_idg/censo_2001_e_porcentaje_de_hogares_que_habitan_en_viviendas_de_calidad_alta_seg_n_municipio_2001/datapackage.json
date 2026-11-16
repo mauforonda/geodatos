@@ -1,0 +1,119 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_ine_idg_censo_2001_e_porcentaje_de_hogares_que_habitan_en_viviendas_de_912d63b3fe70",
+  "title": "Porcentaje de Hogares que Habitan en Viviendas de Calidad Alta según Municipio 2001",
+  "description": "Promedio de tres indicadores: indicador de calidad alta de la construcción, habitabilidad y servicios básicos.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Geoestadísticos del INE",
+      "path": "https://gsn.ine.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_ine_idg_censo_2001_e_porcentaje_de_hogares_que_habitan_en_viviendas_de_912d63b3fe70/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 8049871,
+      "hash": "sha256:52fe5095fcd34558a6d2ffeceb08ff51db3011adc174b3ea847d58e87287a199",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Porcentaje de Hogares que Habitan en Viviendas de Calidad Alta según Municipio 2001.fid--61c3575_19f"
+          },
+          {
+            "name": "conmpio",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "051401"
+          },
+          {
+            "name": "mpio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Llica"
+          },
+          {
+            "name": "cod_depto",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "05",
+            "categories": [
+              "02",
+              "07",
+              "03",
+              "05",
+              "04",
+              "01",
+              "08",
+              "09",
+              "06"
+            ]
+          },
+          {
+            "name": "depto",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Potosí",
+            "categories": [
+              "La Paz",
+              "Santa Cruz",
+              "Cochabamba",
+              "Potosí",
+              "Oruro",
+              "Chuquisaca",
+              "Beni",
+              "Pando",
+              "Tarija"
+            ]
+          },
+          {
+            "name": "hog_co01",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 37.5,
+              "maximum": 91.3
+            }
+          },
+          {
+            "name": "hog_ca01",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 73.2
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
