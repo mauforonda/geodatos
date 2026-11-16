@@ -1,0 +1,101 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_minplanifica_infocapa_layer_amenaza_de_presencia_de_helada_por_dias_ccvch",
+  "title": "layer_amenaza_de_presencia_de_helada_por_dias_ccvch",
+  "sources": [
+    {
+      "title": "Geoserver del Ministerio de Planificación del Desarollo",
+      "path": "https://geoserver.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_minplanifica_infocapa_layer_amenaza_de_presencia_de_helada_por_dias_ccvch/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 7752750,
+      "hash": "sha256:4c701dbc27cdb32f6dd337d05921adfd605f53441aa3ccbf2db743dda3447ed2",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_amenaza_de_presencia_de_helada_por_dias_ccvch.26"
+          },
+          {
+            "name": "descrip",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Sin eventos",
+            "categories": [
+              "Sin eventos",
+              "Numero de dias 60",
+              "Numero de dias 40",
+              "Numero de dias 120",
+              "Numero de dias 80",
+              "Numero de dias 20",
+              "Numero de dias 240",
+              "Numero de dias 180",
+              "Numero de dias Mayor a 240",
+              "Cuerpos de Agua",
+              "Salares"
+            ]
+          },
+          {
+            "name": "sup_ha",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 7039226
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "example": "Potosi",
+            "categories": [
+              "La Paz",
+              "Potosi",
+              "Oruro",
+              "Cochabamba",
+              "Chuquisaca",
+              "Santa Cruz",
+              "Pando",
+              "Tarija",
+              "Beni"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "example": "Daniel Campos"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "example": "Llica"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
