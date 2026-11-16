@@ -1,0 +1,115 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_macroregiones_2026_pnot_twzmq",
+  "title": "Macroregiones 2026 - PNOT",
+  "description": "El mapa muestra la delimitación de las macroregiones de Bolivia definidas en el marco del Plan Nacional de Ordenamiento Territorial (PNOT), identificando unidades territoriales con características biofísicas, ambientales, socioeconómicas y funcionales similares, como base para la planificación y gestión integral del territorio.",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_macroregiones_2026_pnot_twzmq/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 8250011,
+      "hash": "sha256:7a57a7867aa5814befd07932c4ca558f9758500f3019c035e9147cf0d79c3aa5",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_macroregiones_2026__pnot_twzmq.5"
+          },
+          {
+            "name": "macroregio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "ALTIPLANO",
+            "categories": [
+              "VALLES",
+              "ALTIPLANO",
+              "LLANOS ORIENTALES",
+              "YUNGAS Y VALLES INTERANDINOS",
+              "AMAZONICA",
+              "LLANOS DE MOXOS",
+              "CHACO"
+            ]
+          },
+          {
+            "name": "regiones",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Sudoeste de Potosí"
+          },
+          {
+            "name": "sup_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 1359.836,
+              "maximum": 7000000.0
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "POTOSI",
+            "categories": [
+              "LA PAZ",
+              "SANTA CRUZ",
+              "COCHABAMBA",
+              "POTOSI",
+              "ORURO",
+              "CHUQUISACA",
+              "BENI",
+              "PANDO",
+              "TARIJA"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Daniel Campos"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Llica"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
