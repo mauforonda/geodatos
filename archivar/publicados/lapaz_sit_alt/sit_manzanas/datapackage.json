@@ -1,0 +1,156 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_alt_sit_manzanas",
+  "title": "Manzanas ciudad de La Paz",
+  "description": "Recopilación de manzanas de fuentes varias, para el mapa de La Paz.",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)",
+      "path": "http://sitservicios.lapaz.bo/ows38.jsp"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_sit_manzanas/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 11265322,
+      "hash": "sha256:fcdf159d2f742e5f81a391c404c58abeb4a56bdf883b20da74316d056a43ff3c",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "manzanas.1244"
+          },
+          {
+            "name": "distcat",
+            "type": "number",
+            "constraints": {
+              "minimum": 1.0,
+              "maximum": 47.0
+            }
+          },
+          {
+            "name": "manzana",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.0,
+              "maximum": 55555.0
+            }
+          },
+          {
+            "name": "ddmm",
+            "type": "string",
+            "example": "31-813"
+          },
+          {
+            "name": "servicios",
+            "type": "string",
+            "example": "000010",
+            "categories": [
+              "111110",
+              "000000",
+              "111111",
+              "100010",
+              "000010",
+              "100000",
+              "110010",
+              "100110",
+              "110000",
+              "110110",
+              "111010",
+              "",
+              "101010",
+              "111101",
+              "011100",
+              "101110",
+              "110100",
+              "111100",
+              "4"
+            ]
+          },
+          {
+            "name": "linaje",
+            "type": "string",
+            "example": "SERCAT",
+            "categories": [
+              "SERCAT",
+              "SERCAT2",
+              "DATC",
+              "DIIM",
+              "3",
+              "5",
+              "2",
+              "DATC "
+            ]
+          },
+          {
+            "name": "macrodistrito",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 9
+            }
+          },
+          {
+            "name": "distritomcpal",
+            "type": "number",
+            "constraints": {
+              "minimum": 1.0,
+              "maximum": 23.0
+            }
+          },
+          {
+            "name": "deslinde_ine",
+            "type": "number",
+            "constraints": {
+              "minimum": 1.0,
+              "maximum": 100.0
+            }
+          },
+          {
+            "name": "tipo",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.0,
+              "maximum": 999.0
+            }
+          },
+          {
+            "name": "ajuste",
+            "type": "number",
+            "constraints": {
+              "minimum": 11.0,
+              "maximum": 100.0
+            }
+          },
+          {
+            "name": "shape_length",
+            "type": "integer"
+          },
+          {
+            "name": "shape_area",
+            "type": "integer"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 56. La fuente declaraba EPSG:4326 pero sus coordenadas estaban en EPSG:32719 (sistema inferido por la ubicación de las geometrías en Bolivia); se reproyectaron."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
