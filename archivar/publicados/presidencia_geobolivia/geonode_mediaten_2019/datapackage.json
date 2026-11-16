@@ -1,0 +1,123 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_mediaten_2019",
+  "title": "Líneas de Media Tensión 2019_ Bolivia",
+  "description": "El mapa muestra las líneas de Media Tensión del Sistema Interconectado Nacional (SIN) y los Sistemas Aislados. Elaborado por el Viceministerio de Electricidad y Energías Alternativas (VMEEA), mediante la solicitud a las Empresas Distribuidoras y Cooperativas, para el año 2019.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_mediaten_2019/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 16977345,
+      "hash": "sha256:36e0ce637547f3f2a86b632f38b15b97ee4b5a672d2820e23c1f1028ce265c2b",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "mediaten_2019.432"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 515
+            }
+          },
+          {
+            "name": "objectid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 515
+            }
+          },
+          {
+            "name": "operador",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "SEPSA",
+            "categories": [
+              "DELAPAZ",
+              "DELBENI",
+              "ELFEC",
+              "ENDE DEORURO",
+              "CESSA",
+              "SEPSA",
+              "CRE",
+              "SETAR",
+              "ENDE Cobija",
+              "15 de Nov",
+              "ATOCHA",
+              "CER",
+              "COOPELECT R.L.",
+              "COOPSEL",
+              "COSEGUA",
+              "COSEP",
+              "COSERMO",
+              "EMDEECRUZ",
+              "ENDE CAMARGO",
+              "ENDE Guaracachi",
+              "ENDE UYUNI",
+              "GAM Uncia",
+              "Gob Oruro",
+              "HB",
+              "Sinchi Wayra SA"
+            ]
+          },
+          {
+            "name": "sin",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "SIN",
+            "categories": [
+              "SIN",
+              "Sist. Ais."
+            ]
+          },
+          {
+            "name": "shape_leng",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1.41909629209e-05,
+              "maximum": 116.105455376
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
