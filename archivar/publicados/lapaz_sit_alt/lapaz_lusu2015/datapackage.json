@@ -1,0 +1,159 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_alt_lapaz_lusu2015",
+  "title": "Ley Uso Urbano del Suelo 2015",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)",
+      "path": "http://sitservicios.lapaz.bo/ows38.jsp"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_lapaz_lusu2015/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 15093392,
+      "hash": "sha256:526cf1bacf98a5690ef04e4e6ce63ebd2ecc8c12830602d77dd4e0b18ba34a45",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "lusu2015.47696"
+          },
+          {
+            "name": "objectid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 5490,
+              "maximum": 135624
+            }
+          },
+          {
+            "name": "uspa_fina",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "P1"
+          },
+          {
+            "name": "codusu",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "P1",
+            "categories": [
+              "CH1",
+              "Av",
+              "AF",
+              "AR",
+              "Eq",
+              "ASE",
+              "R1-R2-R3",
+              "E",
+              "P2",
+              "P1",
+              "A2",
+              "O1-O2",
+              "S2-S3-S4",
+              "C1-C2",
+              "T1-T2-T4",
+              "I1",
+              "M",
+              "IMP2",
+              "A1",
+              "RS",
+              "FS",
+              "TP",
+              "I2",
+              "IMP1",
+              "RN",
+              "TC1-2"
+            ]
+          },
+          {
+            "name": "disuspa",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 24
+            }
+          },
+          {
+            "name": "distrito",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 21
+            }
+          },
+          {
+            "name": "sup",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 6.0,
+              "maximum": 5633234.967
+            }
+          },
+          {
+            "name": "layer_",
+            "type": "string",
+            "example": "Propiedad Municipal",
+            "categories": [
+              "LÃ­nea Municipal",
+              "0",
+              "A-Verde",
+              "A-Equipamiento",
+              "A-Forestal",
+              "Propiedad Municipal",
+              "Jardineras",
+              "Ãrea Observada"
+            ]
+          },
+          {
+            "name": "shape_leng",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 9.12218689904,
+              "maximum": 22473.7978831
+            }
+          },
+          {
+            "name": "shape_area",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 6.00143499675,
+              "maximum": 5633234.96681
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 56. La fuente declaraba EPSG:4326 pero sus coordenadas estaban en EPSG:32719 (sistema inferido por la ubicación de las geometrías en Bolivia); se reproyectaron."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
