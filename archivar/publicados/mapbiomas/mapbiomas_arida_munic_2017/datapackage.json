@@ -1,0 +1,131 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mapbiomas_mapbiomas_arida_munic_2017",
+  "title": "munic_2017",
+  "sources": [
+    {
+      "title": "MapBiomas",
+      "path": "https://shared-geoserver.mapbiomas.org/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mapbiomas_mapbiomas_arida_munic_2017/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 7656047,
+      "hash": "sha256:065f0d0db1ce8db9032e5e3c09aa412fb5547493b212082528624e2d58290722",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "munic_2017.117"
+          },
+          {
+            "name": "nome",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Fronteira"
+          },
+          {
+            "name": "nomeabrev",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": ""
+          },
+          {
+            "name": "geometriaa",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Não",
+            "categories": [
+              "Não",
+              "Sim",
+              ""
+            ]
+          },
+          {
+            "name": "geocodigo",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "3127008"
+          },
+          {
+            "name": "anoderefer",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 0
+            }
+          },
+          {
+            "name": "id_produto",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 250014
+            }
+          },
+          {
+            "name": "id_element",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 0
+            }
+          },
+          {
+            "name": "geoc_uf",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "31",
+            "categories": [
+              "31",
+              "29",
+              "22",
+              "25",
+              "21",
+              "26",
+              "23",
+              "24",
+              "27",
+              "32",
+              "28"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 20."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
