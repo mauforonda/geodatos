@@ -1,0 +1,145 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_aetn_mapas_henrry_areas_operacion",
+  "title": "AREAS_OPERACION",
+  "description": "ÁREAS OPERACIÓN",
+  "sources": [
+    {
+      "title": "Mapas de la Autoridad de Fiscalización de Electricidad y Energía Nuclear",
+      "path": "https://mapas.aetn.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_aetn_mapas_henrry_areas_operacion/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 2131305,
+      "hash": "sha256:345b1c44eb92a5c98cc710b559add6943ee490fd9dae3b51ea0f5bd574fab61f",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "AREAS OPERACION.78"
+          },
+          {
+            "name": "empresa",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Servicios ElÃ©ctricos PotosÃ­ S.A. (SEPSA)"
+          },
+          {
+            "name": "codigo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "SIN",
+            "categories": [
+              "SIN",
+              "AIS"
+            ]
+          },
+          {
+            "name": "sistema",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "RURAL"
+          },
+          {
+            "name": "tipo_servi",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "DistribuciÃ³n",
+            "categories": [
+              "DistribuciÃ³n",
+              "DistribuciÃ³n Ais"
+            ]
+          },
+          {
+            "name": "departamen",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "POTOSI",
+            "categories": [
+              "LA PAZ",
+              "POTOSI",
+              "TARIJA",
+              "Oruro",
+              "SANTA CRUZ",
+              "BENI",
+              "PotosÃ­",
+              "Beni",
+              "ORURO",
+              "COCHABAMBA",
+              "CHUQUISACA",
+              "Santa Cruz",
+              "PANDO",
+              "LA PAZ-ORURO"
+            ]
+          },
+          {
+            "name": "gdb_ae_gis",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "LIPEZ I"
+          },
+          {
+            "name": "sup_km2",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.01735368,
+              "maximum": 8682.45761686
+            }
+          },
+          {
+            "name": "st_area_sh",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 1.473181912e-06,
+              "maximum": 0.72813045854
+            }
+          },
+          {
+            "name": "st_length_",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.00520872263299,
+              "maximum": 147.430622976
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 20."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
