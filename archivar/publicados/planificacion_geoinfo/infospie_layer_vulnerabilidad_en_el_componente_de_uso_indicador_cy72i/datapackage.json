@@ -1,0 +1,92 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_vulnerabilidad_en_el_componente_de_ebf442d1b6c9",
+  "title": "Vulnerabilidad en el componente de uso - Indicadores de Contexto de Seguridad Alimentaria \"ICA - 2020\"",
+  "description": "La vulnerabilidad en el componente de uso se refiere a la susceptibilidad de los hogares o individuos para utilizar los alimentos de manera efectiva, asegurando una nutrición adecuada y un bienestar general. En el contexto de los Indicadores de Contexto de Seguridad Alimentaria (ICA - 2020),",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_vulnerabilidad_en_el_componente_de_ebf442d1b6c9/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 7897097,
+      "hash": "sha256:c415552fe88f6648ebc10d28c3c3b8a16f2bd7e70c477d9013df90d24326a91b",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_vulnerabilidad_en_el_componente_de_uso__indicador_cy72i.247"
+          },
+          {
+            "name": "uso",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 1.0
+            }
+          },
+          {
+            "name": "sup_ha",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": -54,
+              "maximum": 6400242
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "example": "POTOSI",
+            "categories": [
+              "LA PAZ",
+              "SANTA CRUZ",
+              "COCHABAMBA",
+              "POTOSI",
+              "CHUQUISACA",
+              "ORURO",
+              "BENI",
+              "TARIJA",
+              "PANDO",
+              "Cochabamba",
+              "Potosi"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "example": "Daniel Campos"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "example": "Llica"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
