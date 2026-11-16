@@ -1,0 +1,136 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_amenaza_de_deforestacion_en_la_cue_86c7aba46f55",
+  "title": "Amenaza de deforestación en la Cuenca Coroico",
+  "description": "El mapa muestra la amenaza de deforestación. La deforestación es una de las principales amenazas a los ecosistemas, impulsada \nprincipalmente por la expansión agrícola, la tala ilegal y el desarrollo urbano. Este proceso causa una pérdida significativa de biodiversidad, reduce la capacidad de los suelos para almacenar agua y carbono, y contribuye al cambio climático. La deforestación también puede aumentar la vulnerabilidad de las comunidades locales a eventos climáticos extremos, como inundaciones y deslizamientos de tierra.\nEste mapa muestra las áreas de amenaza de deforestación en la cuenca del Río Coroico durante el período 2001-2022. Las tonalidades indican la intensidad de la deforestación:\nMuy alta (en rojo): Representa zonas con mayor pérdida de cobertura forestal, \nconcentradas principalmente en las proximidades de municipios como Guanay, Teoponte, Caranavi y Coripata. Estas áreas son las más afectadas por actividades humanas como la agricultura, la expansión urbana y la extracción de recursos.\nAlta a media (en tonos naranjas y amarillos): Muestran áreas con niveles moderados a deforestación, estas áreas suelen ubicarse cerca de caminos y ríos, lo que siguiera la presencia de actividad humana, áreas de agricultura, transporte tala o minería.\nBaja y muy baja (en verde claro y oscuro): Zonas con mayor preservación de cobertura forestal, ubicadas principalmente en áreas montañosas",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_amenaza_de_deforestacion_en_la_cue_86c7aba46f55/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 9533719,
+      "hash": "sha256:4346c503a9223bdb6109540ffdfe1aaecf8314d6d46c3b6fac34b0d699d48122",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "layer_amenaza_de_deforestacion_en_la_cuenca_coroico_b8hfe.8464"
+          },
+          {
+            "name": "gridcode",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 5
+            }
+          },
+          {
+            "name": "leyenda",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Muy alta",
+            "categories": [
+              "Alta",
+              "Muy alta",
+              "Media",
+              "Baja",
+              "Muy baja"
+            ]
+          },
+          {
+            "name": "sup_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 119398.6442
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "LA PAZ",
+            "categories": [
+              "LA PAZ"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Los Andes",
+            "categories": [
+              "Larecaja",
+              "Caranavi",
+              "Nor Yungas",
+              "Murillo",
+              "Sur Yungas",
+              "Franz Tamayo",
+              "Los Andes",
+              "Omasuyos"
+            ]
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Batallas",
+            "categories": [
+              "Guanay",
+              "Caranavi",
+              "Teoponte",
+              "Coroico",
+              "Nuestra Señora de La Paz",
+              "Coripata",
+              "Tipuani",
+              "La Asunta",
+              "Alto Beni",
+              "Mapiri",
+              "Yanacachi",
+              "Palos Blancos",
+              "Apolo",
+              "Chulumani",
+              "Sorata",
+              "Batallas",
+              "Achacachi",
+              "Pucarani",
+              "El Alto"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 246."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
