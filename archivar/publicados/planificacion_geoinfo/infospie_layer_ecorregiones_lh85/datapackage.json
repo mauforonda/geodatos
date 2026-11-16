@@ -1,0 +1,117 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_ecorregiones_lh85",
+  "title": "Ecorregiones",
+  "description": "El mapa presenta la descripción general de ecorregiones en el territorio nacional.",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_ecorregiones_lh85/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 7846776,
+      "hash": "sha256:77fbfb647b97340e1ea9203a9008ce54ae0cad5c7f7535e6281529ff027abe6a",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_ecorregiones_lh85.407"
+          },
+          {
+            "name": "descripcio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Tierras Altas (Cordilleras, Praderas Altoandinas, Punas y Páramo Yungueño)"
+          },
+          {
+            "name": "sup_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 2.019,
+              "maximum": 7002384.8
+            }
+          },
+          {
+            "name": "codigo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "ER-01",
+            "categories": [
+              "ER-01",
+              "ER-04",
+              "ER-02",
+              "ER-13",
+              "ER-03",
+              "ER-06",
+              "ER-05",
+              "ER-10",
+              "ER-15",
+              "ER-16",
+              "ER-07",
+              "ER-14",
+              "ER-08",
+              "ER-12",
+              "ER-11",
+              "ER-09",
+              "ER-17"
+            ]
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "example": "POTOSI",
+            "categories": [
+              "LA PAZ",
+              "SANTA CRUZ",
+              "COCHABAMBA",
+              "BENI",
+              "CHUQUISACA",
+              "POTOSI",
+              "ORURO",
+              "PANDO",
+              "TARIJA"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "example": "Daniel Campos"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "example": "Llica"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
