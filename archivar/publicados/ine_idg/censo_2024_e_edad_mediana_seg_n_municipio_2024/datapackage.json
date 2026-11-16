@@ -1,0 +1,173 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_ine_idg_censo_2024_e_edad_mediana_seg_n_municipio_2024",
+  "title": "Edad Mediana según Municipio 2024",
+  "description": "Es la edad que divide en dos grupos a la población.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Geoestadísticos del INE",
+      "path": "https://gsn.ine.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_ine_idg_censo_2024_e_edad_mediana_seg_n_municipio_2024/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 8053959,
+      "hash": "sha256:ff99997ac01a401fda0ea42aa0f8f2f16cf1005e618456600381fb40b1c8ff6a",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "conmpio",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "051401"
+          },
+          {
+            "name": "mpio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Llica"
+          },
+          {
+            "name": "cod_depto",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "05",
+            "categories": [
+              "02",
+              "07",
+              "03",
+              "05",
+              "04",
+              "01",
+              "08",
+              "09",
+              "06"
+            ]
+          },
+          {
+            "name": "depto",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Potosí",
+            "categories": [
+              "La Paz",
+              "Santa Cruz",
+              "Cochabamba",
+              "Potosí",
+              "Oruro",
+              "Chuquisaca",
+              "Beni",
+              "Pando",
+              "Tarija"
+            ]
+          },
+          {
+            "name": "pob_2024",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 875,
+              "maximum": 1610982
+            }
+          },
+          {
+            "name": "crec1224",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -3.0,
+              "maximum": 16.5
+            }
+          },
+          {
+            "name": "pob_ur24",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 100.0
+            }
+          },
+          {
+            "name": "ed_med24",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 19,
+              "maximum": 42
+            }
+          },
+          {
+            "name": "id_mas24",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 88.3,
+              "maximum": 145.9
+            }
+          },
+          {
+            "name": "id_juv24",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 98.2,
+              "maximum": 1650.9
+            }
+          },
+          {
+            "name": "demo_24",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 22.8,
+              "maximum": 77.2
+            }
+          },
+          {
+            "name": "id_enj24",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 6.1,
+              "maximum": 101.8
+            }
+          },
+          {
+            "name": "edad_med_24",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 19.0,
+              "maximum": 42.0
+            }
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
