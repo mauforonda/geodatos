@@ -1,0 +1,103 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_distritos_j_aa_l61ms",
+  "title": "layer_distritos_j_aa_l61ms",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_distritos_j_aa_l61ms/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 7986856,
+      "hash": "sha256:ddd69f1308fbc4b11a18d152a4d15315e1b6369a2d9e17459676b457e28e4492",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_distritos_j_aa_l61ms.102"
+          },
+          {
+            "name": "distritos",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "J-A POTOSÍ"
+          },
+          {
+            "name": "j_a_juez",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Tito Baspineiro Paniagua"
+          },
+          {
+            "name": "telefono",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 1025572504
+            }
+          },
+          {
+            "name": "dirección",
+            "type": "integer"
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "example": "POTOSI",
+            "categories": [
+              "LA PAZ",
+              "SANTA CRUZ",
+              "COCHABAMBA",
+              "POTOSI",
+              "ORURO",
+              "CHUQUISACA",
+              "TARIJA",
+              "BENI",
+              "PANDO"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Daniel Campos"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "example": "Llica"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
