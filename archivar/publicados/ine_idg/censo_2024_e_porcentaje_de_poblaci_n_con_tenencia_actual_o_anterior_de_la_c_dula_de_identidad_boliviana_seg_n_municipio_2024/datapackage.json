@@ -1,0 +1,128 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_ine_idg_censo_2024_e_porcentaje_de_poblaci_n_con_tenencia_actual_o_ante_112c2c81f507",
+  "title": "Porcentaje de Población con Tenencia Actual o Anterior de la Cédula de Identidad Boliviana según Municipio 2024",
+  "description": "Porcentaje de personas que se encuentran registradas en la oficialía de identificación y cuentan con cedula de identidad boliviana o cedula boliviana de extranjero.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Geoestadísticos del INE",
+      "path": "https://gsn.ine.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_ine_idg_censo_2024_e_porcentaje_de_poblaci_n_con_tenencia_actual_o_ante_112c2c81f507/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 8050447,
+      "hash": "sha256:c376426998a16b7a46a13ad4eb2cf7e4d3708fb6465a8a542dada84f707cec50",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Porcentaje de Población con Tenencia Actual o Anterior de la Cédula de Identidad Boliviana según Mun"
+          },
+          {
+            "name": "conmpio",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "051401"
+          },
+          {
+            "name": "mpio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Llica"
+          },
+          {
+            "name": "cod_depto",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "05",
+            "categories": [
+              "02",
+              "07",
+              "03",
+              "05",
+              "04",
+              "01",
+              "08",
+              "09",
+              "06"
+            ]
+          },
+          {
+            "name": "depto",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Potosí",
+            "categories": [
+              "La Paz",
+              "Santa Cruz",
+              "Cochabamba",
+              "Potosí",
+              "Oruro",
+              "Chuquisaca",
+              "Beni",
+              "Pando",
+              "Tarija"
+            ]
+          },
+          {
+            "name": "pob_re24",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 88.6,
+              "maximum": 99.9
+            }
+          },
+          {
+            "name": "pob_ce24",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 89.2,
+              "maximum": 99.9
+            }
+          },
+          {
+            "name": "pob_un24",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 42.4,
+              "maximum": 67.0
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
