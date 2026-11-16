@@ -1,0 +1,129 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_lineas_mt",
+  "title": "Red eléctrica de media tensión en Bolivia_ 2016",
+  "description": "Este mapa representa la distribución espacial de la red eléctrica de media tensión para el suministro de energía en Bolivia. Elaborado por la Autoridad de fiscalización y control de electricidad (AE) con datos actualizados a marzo de 2016 a escala 1:4500000.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_lineas_mt/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 16829427,
+      "hash": "sha256:e69ce528181707103da0ff4069b328fe542c69a2d22fe17ee3b6975fece4315a",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 212579
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 212579
+            }
+          },
+          {
+            "name": "objectid_1",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 236359
+            }
+          },
+          {
+            "name": "empresa",
+            "type": "string",
+            "example": "Servicios Eléctricos Potosí S.A. (SEPSA)"
+          },
+          {
+            "name": "alimentado",
+            "type": "string",
+            "example": "LIPEZ 1"
+          },
+          {
+            "name": "fase",
+            "type": "string",
+            "example": "0",
+            "categories": [
+              "Monofásico",
+              "Trifásico",
+              "Trifásica",
+              "Monofásica",
+              "0",
+              "Bifásico"
+            ]
+          },
+          {
+            "name": "nivel_volt",
+            "type": "string",
+            "example": "24,9",
+            "categories": [
+              "14,4",
+              "24,9",
+              "24.9",
+              "14.4",
+              "19,9",
+              "10",
+              "10.5",
+              "34,5",
+              "6,6",
+              "34.5",
+              "19.9",
+              "69.0",
+              "6,9"
+            ]
+          },
+          {
+            "name": "sistema",
+            "type": "string",
+            "example": "SISTEMA LIPEZ 1"
+          },
+          {
+            "name": "nota",
+            "type": "string",
+            "example": "SIN",
+            "categories": [
+              "SIN",
+              "Aislado"
+            ]
+          },
+          {
+            "name": "st_length_",
+            "type": "number",
+            "constraints": {
+              "minimum": 1.221e-08,
+              "maximum": 13.3664859155
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
