@@ -1,0 +1,139 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_estado_proteccion_vegetacion",
+  "title": "Mapa estado de protección de la vegetación en el departamento de Santa Cruz, Bolivia 2008",
+  "description": "Este mapa representa las áreas que indican el estado de conservación de la vegetación, representando en categorías que van desde zonas vulnerables, en peligro, en estado critico, zonas no amenazadas y extinto. Elaborado por el Plan de Ordenamiento Territorial en el Departamento de Santa Cruz en el año 2008 a escala 1:100000.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_estado_proteccion_vegetacion/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 15543002,
+      "hash": "sha256:5ec3e231edf3e978822903a6d207c5e691cd6f8a14c44bdd74b4b587d75884de",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "estado_proteccion_vegetacion.8195"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 12727
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Estado_Proteccion_Vegetacion.8195"
+          },
+          {
+            "name": "protecciÃ³",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "VU",
+            "categories": [
+              "EN",
+              "VU",
+              "VU a EN",
+              "EX",
+              "LC a VU",
+              "DD",
+              "LC",
+              "VU a LC",
+              "CR",
+              "VU a NT",
+              "EN a CR",
+              "NTa VU",
+              "NT",
+              "NE",
+              "CR a EN"
+            ]
+          },
+          {
+            "name": "desc_prote",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "VU - Vulnerable",
+            "categories": [
+              "EN - En peligro",
+              "VU - Vulnerable",
+              "VU - Vulnerable a EN - En peligro",
+              "Extinto",
+              "LC - Preocupación menor a VU - Vulnerable",
+              "Datos deficientes",
+              "LC - Preocupación menor",
+              "VU - Vulnerable a LC - Preocupación menor",
+              "CR - En peligro crítico",
+              "VU - Vulnerable a NT - No amenazado",
+              "EN - En peligro a CR - En peligro crítico",
+              "NT - No amenazado a VU - Vulnerable",
+              "NT - No amenazado",
+              "NE - No evaluado",
+              "CR - En peligro crítico a EN - En peligro"
+            ]
+          },
+          {
+            "name": "orig_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 14
+            }
+          },
+          {
+            "name": "shape_area",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 20.39799825,
+              "maximum": 88409969618.1
+            }
+          },
+          {
+            "name": "shape_len",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 40.6537162665,
+              "maximum": 49365749.3181
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 72."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
