@@ -1,0 +1,113 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_umsa_iiag_vegetacion_mapa_de_vegetacion",
+  "title": "vegetacion",
+  "sources": [
+    {
+      "title": "Geoportal del Instituto de Investigaciones y Aplicaciones Geomáticas (IIAG) de la Universidad Mayor de San Andrés (UMSA)",
+      "path": "http://gtggeoportal.umsa.bo:8087/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_umsa_iiag_vegetacion_mapa_de_vegetacion/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 8353497,
+      "hash": "sha256:d010838261a0563fa32da533146c847c1b9ff049de4ec5a0c550d6cae0d5bf15",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Mapa de Vegetacion.44"
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "vegetacion.44"
+          },
+          {
+            "name": "codveg",
+            "type": "string",
+            "example": "VFv"
+          },
+          {
+            "name": "tipos_veg",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Herbacea graminoide baja, (v)"
+          },
+          {
+            "name": "id_c",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 46
+            }
+          },
+          {
+            "name": "shape_leng",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 9461.2806217,
+              "maximum": 75008666.1553
+            }
+          },
+          {
+            "name": "shape_area",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 3055507.54773,
+              "maximum": 317784056350.0
+            }
+          },
+          {
+            "name": "tipo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Herbacea graminoide baja, (v)"
+          },
+          {
+            "name": "leyenda",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Herbacea graminoide baja, (v)"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 7."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
