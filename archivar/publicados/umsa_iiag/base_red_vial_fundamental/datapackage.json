@@ -1,0 +1,110 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_umsa_iiag_base_red_vial_fundamental",
+  "title": "Red_Vial_Fundamental",
+  "sources": [
+    {
+      "title": "Geoportal del Instituto de Investigaciones y Aplicaciones Geomáticas (IIAG) de la Universidad Mayor de San Andrés (UMSA)",
+      "path": "http://gtggeoportal.umsa.bo:8087/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_umsa_iiag_base_red_vial_fundamental/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 13453681,
+      "hash": "sha256:3acbc4f3f0f47ad84841a2b5d65569e83486d2a009c2fcd13ba1979aea56d73f",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Red_Vial_Fundamental.37"
+          },
+          {
+            "name": "long2d",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 433.390288516
+            }
+          },
+          {
+            "name": "tipo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "CARRETERA",
+            "categories": [
+              "CARRETERA",
+              "DOBLE VIA",
+              "ACCESO",
+              "ROTONDA",
+              "RETORNOS"
+            ]
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Ruta 5"
+          },
+          {
+            "name": "cod_ruta",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 55
+            }
+          },
+          {
+            "name": "longitud",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 433.609586008
+            }
+          },
+          {
+            "name": "rodadura",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Ripio",
+            "categories": [
+              "Pavimentada",
+              "Ripio",
+              "Pavimento en Construccion",
+              "En Definicion",
+              "No es parte de RVF"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
