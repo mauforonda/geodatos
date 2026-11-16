@@ -1,0 +1,94 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_inra_sinacar_sinacar_layer_amenaza_de_helada_5gi7s",
+  "title": "layer_amenaza_de_helada_5gi7s",
+  "sources": [
+    {
+      "title": "Sistema Nacional de Catastro Rural Ambiental (SINACAR) del Instituto Nacional de Reforma Agraria (INRA)",
+      "path": "https://geoserver.inra.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_inra_sinacar_sinacar_layer_amenaza_de_helada_5gi7s/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 7384651,
+      "hash": "sha256:ece5fb2235fa598348b89fc79bb4fa314bb3f9948388f0bb0e15f6af8f8bf382",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 1."
+          },
+          {
+            "name": "gridcode",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 3
+            }
+          },
+          {
+            "name": "grado_ame",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Alta",
+            "categories": [
+              "Sin amenaza",
+              "Media",
+              "Baja",
+              "Alta"
+            ]
+          },
+          {
+            "name": "sup_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 7017400.0
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "example": "POTOSI",
+            "categories": [
+              "LA PAZ",
+              "POTOSI",
+              "COCHABAMBA",
+              "ORURO",
+              "SANTA CRUZ",
+              "CHUQUISACA",
+              "BENI",
+              "TARIJA",
+              "PANDO"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "example": "DANIEL CAMPOS"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "example": "LLICA"
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
