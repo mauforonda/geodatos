@@ -1,0 +1,137 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_ine_idg_censo_2024_e_tasa_bruta_de_participaci_n_seg_n_municipio_2024",
+  "title": "Tasa Bruta de Participación según Municipio 2024",
+  "description": "Porcentaje de la población económicamente activa entre la población total, que mide el porcentaje de participación en el mercado laboral respecto al total de la población.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Geoestadísticos del INE",
+      "path": "https://gsn.ine.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_ine_idg_censo_2024_e_tasa_bruta_de_participaci_n_seg_n_municipio_2024/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 8050809,
+      "hash": "sha256:b8af3c2216eda0e2f09b054bde3a54cf752d607dd3f45e4bcb121794f46c291b",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "conmpio",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "051401"
+          },
+          {
+            "name": "mpio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Llica"
+          },
+          {
+            "name": "cod_depto",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "05",
+            "categories": [
+              "02",
+              "07",
+              "03",
+              "05",
+              "04",
+              "01",
+              "08",
+              "09",
+              "06"
+            ]
+          },
+          {
+            "name": "depto",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Potosí",
+            "categories": [
+              "La Paz",
+              "Santa Cruz",
+              "Cochabamba",
+              "Potosí",
+              "Oruro",
+              "Chuquisaca",
+              "Beni",
+              "Pando",
+              "Tarija"
+            ]
+          },
+          {
+            "name": "ta_bru24",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 40.7,
+              "maximum": 70.9
+            }
+          },
+          {
+            "name": "ta_glo24",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 63.5,
+              "maximum": 91.3
+            }
+          },
+          {
+            "name": "ta_pot24",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 58.8,
+              "maximum": 84.4
+            }
+          },
+          {
+            "name": "ta_ocu24",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 61.6,
+              "maximum": 90.4
+            }
+          },
+          {
+            "name": "ind_ec24",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.1,
+              "maximum": 0.58
+            }
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
