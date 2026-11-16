@@ -1,0 +1,119 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_ine_idg_censo_2012_e_tasa_de_migraci_n_neta_seg_n_municipio_2012",
+  "title": "Tasa de Migración Neta según Municipio 2012",
+  "description": "Cociente entre el saldo migratorio respecto al promedio de la población media, del periodo de referencia (hace cinco años) multiplicado por 1.000",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Geoestadísticos del INE",
+      "path": "https://gsn.ine.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_ine_idg_censo_2012_e_tasa_de_migraci_n_neta_seg_n_municipio_2012/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 8049247,
+      "hash": "sha256:585fa83d6c7fc656750726bb8db8712ed5cdc4d5d21c65513053b70b87ee2372",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "conmpio",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "051401"
+          },
+          {
+            "name": "mpio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Llica"
+          },
+          {
+            "name": "cod_depto",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "05",
+            "categories": [
+              "02",
+              "07",
+              "03",
+              "05",
+              "04",
+              "01",
+              "08",
+              "09",
+              "06"
+            ]
+          },
+          {
+            "name": "depto",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Potosí",
+            "categories": [
+              "La Paz",
+              "Santa Cruz",
+              "Cochabamba",
+              "Potosí",
+              "Oruro",
+              "Chuquisaca",
+              "Beni",
+              "Pando",
+              "Tarija"
+            ]
+          },
+          {
+            "name": "ta_inm12",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 1.5,
+              "maximum": 134.8
+            }
+          },
+          {
+            "name": "ta_emi12",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.6,
+              "maximum": 94.7
+            }
+          },
+          {
+            "name": "ta_mig12",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -80.7,
+              "maximum": 131.3
+            }
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
