@@ -1,0 +1,180 @@
+{
+  "type": "Collection",
+  "id": "geodatosbolivia_mmaya_siarh_2_geonode_r_eolico_ultimo",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json",
+    "https://stac-extensions.github.io/vector/v0.1.0/schema.json",
+    "https://stac-extensions.github.io/projection/v2.0.0/schema.json",
+    "https://stac-extensions.github.io/file/v2.1.0/schema.json",
+    "https://stac-extensions.github.io/web-map-links/v1.3.0/schema.json"
+  ],
+  "title": "Plan Director Cuenca Lago Poopó - Erosión Eólica",
+  "description": "PDCLP (Plan Director de la Cuenca Lago Poopó). Muestra la información relevante de las áreas con erosión eólica, en el marco del Plan Director de la Cuenca del Lago Poopó.",
+  "license": "other",
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -68.06377559,
+          -20.01509894,
+          -66.34382057,
+          -17.13419157
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "providers": [
+    {
+      "name": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "roles": [
+        "producer"
+      ],
+      "url": "https://sig02.siarh.gob.bo/geoserver/ows"
+    },
+    {
+      "name": "Internet Archive",
+      "roles": [
+        "host"
+      ],
+      "url": "https://archive.org/details/geodatosbolivia_mmaya_siarh_2_geonode_r_eolico_ultimo"
+    }
+  ],
+  "table:primary_geometry": "geometry",
+  "table:row_count": 8,
+  "table:columns": [
+    {
+      "name": "geometry",
+      "type": "binary",
+      "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 7."
+    },
+    {
+      "name": "RER_ugtD",
+      "type": "int64"
+    },
+    {
+      "name": "descripcio",
+      "type": "string"
+    },
+    {
+      "name": "area_m2",
+      "type": "double"
+    },
+    {
+      "name": "area_km2",
+      "type": "double"
+    }
+  ],
+  "summaries": {
+    "vector:geometry_types": [
+      "MultiPolygon"
+    ]
+  },
+  "assets": {
+    "data": {
+      "href": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_r_eolico_ultimo/dataset.geoparquet",
+      "type": "application/vnd.apache.parquet",
+      "title": "GeoParquet",
+      "roles": [
+        "data"
+      ],
+      "proj:code": "EPSG:4326",
+      "file:size": 11694335,
+      "file:checksum": "1220acc4230d5e8ae8052456d6604c0f172d762acdecf057ec55f53dec963d6efc1d"
+    },
+    "datapackage": {
+      "href": "./datapackage.json",
+      "type": "application/json",
+      "title": "Data Package: columnas, tipos y categorías",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "pmtiles": {
+      "href": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_r_eolico_ultimo/dataset.pmtiles",
+      "type": "application/vnd.pmtiles",
+      "title": "Teselas vectoriales (PMTiles)",
+      "roles": [
+        "visual"
+      ],
+      "file:size": 4991681,
+      "file:checksum": "12204d8b361cd4af205debdbc413ca1965f6555b60db35f87116206a741c21985740"
+    }
+  },
+  "pmtiles:min_zoom": 8,
+  "pmtiles:max_zoom": 12,
+  "pmtiles:tile_type": "mvt",
+  "pmtiles:center": [
+    -67.203798,
+    -18.5746452,
+    10
+  ],
+  "pmtiles:properties": [
+    {
+      "nombre": "descripcio",
+      "tipo": "string",
+      "categorias": [
+        "1. Grado ligero",
+        "2. Grado moderado",
+        "3. Grado severo",
+        "4. Grado extremo",
+        "Centros urbanos",
+        "Lagos y lagunas"
+      ]
+    },
+    {
+      "nombre": "area_m2",
+      "tipo": "number",
+      "minimo": 73100000.0,
+      "maximo": 10019500000.0
+    },
+    {
+      "nombre": "RER_ugtD",
+      "tipo": "number",
+      "minimo": 1.0,
+      "maximo": 6.0
+    },
+    {
+      "nombre": "area_km2",
+      "tipo": "number",
+      "minimo": 73.1,
+      "maximo": 10019.5
+    }
+  ],
+  "links": [
+    {
+      "rel": "root",
+      "href": "../../../catalog.json",
+      "type": "application/json",
+      "title": "Datos geográficos de Bolivia"
+    },
+    {
+      "rel": "parent",
+      "href": "../catalog.json",
+      "type": "application/json",
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)"
+    },
+    {
+      "rel": "via",
+      "href": "https://sig02.siarh.gob.bo/geoserver/ows",
+      "type": "text/html",
+      "title": "Servicio de origen"
+    },
+    {
+      "rel": "pmtiles",
+      "href": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_r_eolico_ultimo/dataset.pmtiles",
+      "type": "application/vnd.pmtiles",
+      "pmtiles:layers": [
+        "dataset"
+      ]
+    }
+  ]
+}
