@@ -1,0 +1,79 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_alt_lapaz_lusu_2012",
+  "title": "Ley de Uso Urbano del Suelo 2012",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)",
+      "path": "http://sitservicios.lapaz.bo/ows38.jsp"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_lapaz_lusu_2012/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 14265451,
+      "hash": "sha256:9df20a67dcf11ab4fc2244a68b5a9586e29e2f2a444f5919a609e91dcd2df5c3",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "lusu_2012.69377"
+          },
+          {
+            "name": "USPA_FINA",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "P1"
+          },
+          {
+            "name": "DISTRITO",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 21
+            }
+          },
+          {
+            "name": "COD_SIFCA",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": " "
+          },
+          {
+            "name": "SUP",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.137,
+              "maximum": 5633234.967
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 72. La fuente declaraba EPSG:4326 pero sus coordenadas estaban en EPSG:32719 (sistema inferido por la ubicación de las geometrías en Bolivia); se reproyectaron."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
