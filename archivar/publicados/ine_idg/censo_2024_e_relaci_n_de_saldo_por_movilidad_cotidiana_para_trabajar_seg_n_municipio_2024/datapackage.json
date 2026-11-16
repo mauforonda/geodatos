@@ -1,0 +1,146 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_ine_idg_censo_2024_e_relaci_n_de_saldo_por_movilidad_cotidiana_para_tra_c8e206aaefff",
+  "title": "Relación de saldo por Movilidad cotidiana para Trabajar según Municipio 2024",
+  "description": "Es la razón entre el saldo de movilidad y los residentes habituales de la ubicación geográfica seleccionada. Este representa la llegada o salida de ocupados al lugar, por cada 100 ocupados de 14 o más años de edad que son residentes habituales.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Geoestadísticos del INE",
+      "path": "https://gsn.ine.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_ine_idg_censo_2024_e_relaci_n_de_saldo_por_movilidad_cotidiana_para_tra_c8e206aaefff/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 8052263,
+      "hash": "sha256:5a306304a6680d6ad460413f8811eb75147e6d9f63025a06f8ba11594eaee11d",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Relación de saldo por Movilidad cotidiana para Trabajar según Municipio 2024.fid--61c3575_19fd4c130f"
+          },
+          {
+            "name": "conmpio",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "051401"
+          },
+          {
+            "name": "mpio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Llica"
+          },
+          {
+            "name": "cod_depto",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "05",
+            "categories": [
+              "02",
+              "07",
+              "03",
+              "05",
+              "04",
+              "01",
+              "08",
+              "09",
+              "06"
+            ]
+          },
+          {
+            "name": "depto",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Potosí",
+            "categories": [
+              "La Paz",
+              "Santa Cruz",
+              "Cochabamba",
+              "Potosí",
+              "Oruro",
+              "Chuquisaca",
+              "Beni",
+              "Pando",
+              "Tarija"
+            ]
+          },
+          {
+            "name": "ta_inm24",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 1.1,
+              "maximum": 61.6
+            }
+          },
+          {
+            "name": "ta_emi24",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 1.7,
+              "maximum": 31.7
+            }
+          },
+          {
+            "name": "ta_mig24",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -22.7,
+              "maximum": 51.8
+            }
+          },
+          {
+            "name": "mov_la24",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -38.1,
+              "maximum": 22.3
+            }
+          },
+          {
+            "name": "mov_co24",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 1.3,
+              "maximum": 47.3
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
