@@ -1,0 +1,120 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_lagos_snhn2016",
+  "title": "Lagos y Lagunas, Bolivia 2016",
+  "description": "El mapa muestra los lagos y lagunas permanentes e intermitentes en las tres cuencas hidrográficas del Estado Plurinacional de Bolivia, información del Servicio Nacional de Hidrografía Nacional y actualizado al año 2015.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_lagos_snhn2016/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 18087507,
+      "hash": "sha256:cc82d2a36b92285c694b242842e4a0b9cea13e5ffc5a0435cae3c52b8ac02c3c",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "lagos_snhn2016.199"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 8509
+            }
+          },
+          {
+            "name": "objectid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 9567
+            }
+          },
+          {
+            "name": "hyp",
+            "type": "string",
+            "example": "INTERMITENTE",
+            "categories": [
+              "INTERMITENTE",
+              "PERENE"
+            ]
+          },
+          {
+            "name": "cod_hyp",
+            "type": "string",
+            "example": "HYP002",
+            "categories": [
+              "HYP002",
+              "HYP001",
+              "HYPINTERMITENTE002",
+              "INTERMITENTE"
+            ]
+          },
+          {
+            "name": "objeto",
+            "type": "string",
+            "example": "LAGO",
+            "categories": [
+              "LAGO"
+            ]
+          },
+          {
+            "name": "cod_objeto",
+            "type": "string",
+            "example": "BH080",
+            "categories": [
+              "BH080"
+            ]
+          },
+          {
+            "name": "tema",
+            "type": "string",
+            "example": "HIDROGRAFIA",
+            "categories": [
+              "HIDROGRAFIA"
+            ]
+          },
+          {
+            "name": "cod_tema",
+            "type": "string",
+            "example": "BH",
+            "categories": [
+              "BH"
+            ]
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "example": "Laguna Yapi"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Filas sin geometría: 2. Geometrías inválidas, conservadas sin reparar: 7."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
