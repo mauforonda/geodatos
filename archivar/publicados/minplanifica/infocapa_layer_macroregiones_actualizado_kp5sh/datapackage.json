@@ -1,0 +1,112 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_minplanifica_infocapa_layer_macroregiones_actualizado_kp5sh",
+  "title": "layer_macroregiones_actualizado_kp5sh",
+  "sources": [
+    {
+      "title": "Geoserver del Ministerio de Planificación del Desarollo",
+      "path": "https://geoserver.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_minplanifica_infocapa_layer_macroregiones_actualizado_kp5sh/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 7546762,
+      "hash": "sha256:6388b1efd19807c44a006c7247edeabf80fe137aface3e13c263869d1d65d1a2",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_macroregiones_actualizado_kp5sh.7"
+          },
+          {
+            "name": "macroregio",
+            "type": "string",
+            "example": "ALTIPLANO",
+            "categories": [
+              "VALLES",
+              "ALTIPLANO",
+              "CHIQUITANIA-PANTANAL",
+              "YUNGAS-CHAPARE",
+              "AMAZONICA",
+              "CHACO",
+              "LLANURAS-SABANAS"
+            ]
+          },
+          {
+            "name": "region",
+            "type": "string",
+            "example": "Lipez",
+            "categories": [
+              "Norte Potosi",
+              "Lipez",
+              "Norte Integrado",
+              "Yungas",
+              "Amazonica-Tahuamano",
+              "Gran Chaco",
+              "Itenez Mamore"
+            ]
+          },
+          {
+            "name": "sup_ha",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1277,
+              "maximum": 7039226
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "example": "POTOSI",
+            "categories": [
+              "LA PAZ",
+              "SANTA CRUZ",
+              "COCHABAMBA",
+              "POTOSI",
+              "ORURO",
+              "CHUQUISACA",
+              "BENI",
+              "PANDO",
+              "TARIJA"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Daniel Campos"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "example": "Llica"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
