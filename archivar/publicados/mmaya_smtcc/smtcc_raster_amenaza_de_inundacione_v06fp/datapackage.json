@@ -1,0 +1,99 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_smtcc_smtcc_raster_amenaza_de_inundacione_v06fp",
+  "title": "raster_amenaza_de_inundacione_v06fp",
+  "sources": [
+    {
+      "title": "Sistema de Monitoreo de La Madre Tierra y Cambio Climático del Ministerio de Medio Ambiente y Agua (MMAyA)",
+      "path": "https://geoserver.madretierra.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_smtcc_smtcc_raster_amenaza_de_inundacione_v06fp/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 8958342,
+      "hash": "sha256:245361ed3ad5d719b8e207a0f847af0ce677d54cc7295f99f7e05df5c6c75b7d",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "raster_amenaza_de_inundacione_v06fp.2256"
+          },
+          {
+            "name": "grado_ame",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Sin amenaza",
+            "categories": [
+              "Sin amenaza",
+              "Media",
+              "Baja",
+              "Alta"
+            ]
+          },
+          {
+            "name": "sup_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 5741415.0
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "example": "Potosi",
+            "categories": [
+              "Beni",
+              "Santa Cruz",
+              "Pando",
+              "La Paz",
+              "Oruro",
+              "Potosi",
+              "Cochabamba",
+              "Chuquisaca",
+              "Tarija",
+              "POTOSI",
+              "BENI",
+              "SANTA CRUZ",
+              "ORURO",
+              "PANDO",
+              "LA PAZ"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "example": "Daniel Campos"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "example": "Llica"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 135."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
