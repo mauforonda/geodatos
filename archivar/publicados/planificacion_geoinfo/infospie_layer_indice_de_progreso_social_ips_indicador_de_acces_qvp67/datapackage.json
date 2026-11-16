@@ -1,0 +1,107 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_indice_de_progreso_social_ips_indi_62f55341d0d1",
+  "title": "Índice de Progreso Social (IPS) - Indicador de Acceso a Conocimientos Básicos",
+  "description": "El mapa muestra el componente Acceso a Conocimientos Básicos del Índice de Progreso Social (IPS) a nivel municipal en Bolivia, perteneciente a la dimensión Fundamentos del Bienestar. Este componente evalúa el acceso y permanencia de la población en el sistema educativo mediante indicadores relacionados con alfabetización, conclusión de estudios primarios y secundarios, abandono escolar y brechas de género en la educación.",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_indice_de_progreso_social_ips_indi_62f55341d0d1/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 8252401,
+      "hash": "sha256:0a1454ce9e34d2e89215bcab93488419bcf52fb54c1de9ce9f283766cff8c9d1",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_indice_de_progreso_social_ips__indicador_de_acces_qvp67.5"
+          },
+          {
+            "name": "cod",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "051401"
+          },
+          {
+            "name": "acb",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 85.271495
+            }
+          },
+          {
+            "name": "sup_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 1359.836,
+              "maximum": 7000000.0
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "POTOSI",
+            "categories": [
+              "LA PAZ",
+              "SANTA CRUZ",
+              "COCHABAMBA",
+              "POTOSI",
+              "ORURO",
+              "CHUQUISACA",
+              "BENI",
+              "PANDO",
+              "TARIJA"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Daniel Campos"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Llica"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
