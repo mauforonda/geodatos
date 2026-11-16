@@ -1,0 +1,110 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_smtcc_smtcc_raster_amenaza_de_presencia_de_helada_por_dias_lgx8c",
+  "title": "raster_amenaza_de_presencia_de_helada_por_dias_lgx8c",
+  "sources": [
+    {
+      "title": "Sistema de Monitoreo de La Madre Tierra y Cambio Climático del Ministerio de Medio Ambiente y Agua (MMAyA)",
+      "path": "https://geoserver.madretierra.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_smtcc_smtcc_raster_amenaza_de_presencia_de_helada_por_dias_lgx8c/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 8439799,
+      "hash": "sha256:ad5e60efc8128b696b3ca9a45d71e5ca5e92ed92e656a121c63c56995a4441fa",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "raster_amenaza_de_presencia_de_helada_por_dias_lgx8c.2189"
+          },
+          {
+            "name": "descripcio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Sin eventos",
+            "categories": [
+              "Sin eventos",
+              "Numero de dias 120",
+              "Numero de dias 40",
+              "Numero de dias 60",
+              "Numero de dias 20",
+              "Numero de dias 240",
+              "Numero de dias 80",
+              "Numero de dias 180",
+              "Salares",
+              "Numero de dias Mayor a 240",
+              "Cuerpos de Agua"
+            ]
+          },
+          {
+            "name": "sup_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 8.9e-09,
+              "maximum": 7045281.316130001
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "example": "Potosi",
+            "categories": [
+              "La Paz",
+              "Potosi",
+              "Oruro",
+              "Cochabamba",
+              "Chuquisaca",
+              "Santa Cruz",
+              "Tarija",
+              "Beni",
+              "POTOSI",
+              "Pando",
+              "LA PAZ",
+              "ORURO",
+              "SANTA CRUZ",
+              "BENI"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Nor Lipez"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "example": "San Pedro de Quemes"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 56."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
