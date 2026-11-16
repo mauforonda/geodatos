@@ -1,0 +1,95 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_amenaza_de_sequia_eni34",
+  "title": "Amenaza de Sequía",
+  "description": "El mapa presenta la distribución de las zonas amenazadas por sequías en el territorio nacional, identificando áreas de mayor afectación y otras de menor.",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_amenaza_de_sequia_eni34/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 7301610,
+      "hash": "sha256:3c1d39d24d09c46943d391d80770b92dc465c57f047f2e5156031c7b3fe1b1cb",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_amenaza_de_sequia_eni34.487"
+          },
+          {
+            "name": "grado_ame",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Alta",
+            "categories": [
+              "Media",
+              "Alta",
+              "Baja",
+              "Sin amenaza"
+            ]
+          },
+          {
+            "name": "sup_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.001,
+              "maximum": 3800000.0
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "example": "POTOSI",
+            "categories": [
+              "LA PAZ",
+              "POTOSI",
+              "SANTA CRUZ",
+              "COCHABAMBA",
+              "CHUQUISACA",
+              "BENI",
+              "ORURO",
+              "PANDO",
+              "TARIJA"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "example": "Nor Lipez"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "example": "San Pedro de Quemes"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 1."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
