@@ -1,0 +1,121 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_red_vial_fundamental_abc_2017",
+  "title": "Red Vial Fundamental de Bolivia 2017",
+  "description": "El mapa muestra la Red Vial Fundamental en el territorio nacional, la longitud se encuentra en kilómetros, los tipos son: Acceso, Carretera, Doble Vía, Retornos y Rotonda. La rodadura la componen: En definición (Carreteras cuyo eje aún no esta consolidado), Pavimentada (Carretera asfaltada), Pavimento en construcción (Carreteras en proceso de pavimentación), Ripio (Carreteras de tierra). Esta comprendida por carreteras cuando cumplen una o más de las siguientes funciones: Vinculan las capitales políticas de los departamentos o permiten la vinculación de carácter internacional conectándose con las carreteras principales existentes de los países limítrofes, o conectan en los puntos adecuados dos o más carreteras de Red Fundamental, o cumplen con las condiciones de protección ambiental. Las carreteras que conforman parte de la Red Vial Fundamental son aquellas que cumplen con los requisitos técnico-legales descritos en el Decreto Supremo N° 25134 de 21 de agosto de 1998. Información proporcionada por la Gerencia Nacional Técnica de la Administradora Boliviana de Carreteras (ABC), actualizado hasta el año 2017.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_red_vial_fundamental_abc_2017/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 14693152,
+      "hash": "sha256:5a16ed834eda2e25c73d712171f52919b9df6ea331ba569fa8033dd428f17f4a",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 368
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 301
+            }
+          },
+          {
+            "name": "long2d",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 433.390288516
+            }
+          },
+          {
+            "name": "tipo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "CARRETERA",
+            "categories": [
+              "CARRETERA",
+              "DOBLE VIA",
+              "ACCESO",
+              "ROTONDA",
+              "RETORNOS"
+            ]
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Ruta 5"
+          },
+          {
+            "name": "cod_ruta",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 55
+            }
+          },
+          {
+            "name": "longitud",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 433.609586008
+            }
+          },
+          {
+            "name": "rodadura",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Ripio",
+            "categories": [
+              "Pavimentada",
+              "Ripio",
+              "Pavimento en Construccion",
+              "En Definicion",
+              "No es parte de RVF"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
