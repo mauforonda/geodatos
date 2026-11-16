@@ -1,0 +1,108 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_alt_lapaz_geotecnico",
+  "title": "Geotecnico",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)",
+      "path": "http://sitservicios.lapaz.bo/ows38.jsp"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_lapaz_geotecnico/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 10821408,
+      "hash": "sha256:41face9116d029cc18b044222e49999bbdacae7467d8933158084e39b5e59ca6",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "geotecnico.4742"
+          },
+          {
+            "name": "glg",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Qdz-a"
+          },
+          {
+            "name": "weigth",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 5
+            }
+          },
+          {
+            "name": "peso",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 5
+            }
+          },
+          {
+            "name": "geotecnia",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Debil",
+            "categories": [
+              "Debil",
+              "Media a debil",
+              "Debil a nula",
+              "Media a pobre",
+              "Excelente a buena",
+              "Media a buena",
+              "Buena",
+              "Media",
+              "Pobre",
+              "Pobre a media",
+              "Nula",
+              "Pobre a buena",
+              "Excelente",
+              "Buena a pobre",
+              "Debil  a pobre",
+              "Buena a media",
+              "Buena a excelente",
+              "Pobre a nula"
+            ]
+          },
+          {
+            "name": "evento",
+            "type": "string",
+            "example": "Holoceno",
+            "categories": [
+              "Holoceno",
+              "Formaciones del Altiplano, Terraza más antigua"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 6."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
