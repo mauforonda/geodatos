@@ -1,0 +1,107 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_azero_cobuso2010",
+  "title": "Plan Director Cuenca Rió Azero – Cobertura vegetal y uso de suelo 2010",
+  "description": "PDCRA (Plan Director de la Cuenca Rió Azero). Muestra la cobertura vegetal y Uso de suelo, realizado por el Viceministerio de Tierras dependiente del MDRyT, aplicando el sistema de clasificación de cobertura de la FAO (2008), fue publicado el 2011, a una escala 1:100.000.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_azero_cobuso2010/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 7682002,
+      "hash": "sha256:9bc41f9f25fd3b06a8d8d477d05b3276192f8fde57be49ad0daf529527f7ba4f",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 35."
+          },
+          {
+            "name": "Subbasin",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 8
+            }
+          },
+          {
+            "name": "Nivel6",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "466948",
+            "categories": [
+              "466944",
+              "466945",
+              "466941-466943",
+              "466942",
+              "466946",
+              "466949",
+              "466947",
+              "466948"
+            ]
+          },
+          {
+            "name": "Nombre",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Cruz Mayu",
+            "categories": [
+              "Azero Alto",
+              "Mojo Torilllo",
+              "Azero Bajo",
+              "Pescado",
+              "Casas",
+              "Marcani",
+              "Yotala",
+              "Cruz Mayu"
+            ]
+          },
+          {
+            "name": "GRIDCODE",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 9,
+              "maximum": 53
+            }
+          },
+          {
+            "name": "FIRST_COBE",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Depósitos de Arena Playas y Dunas"
+          },
+          {
+            "name": "FIRST_USO",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Recreativo: Escénico, Turístico"
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
