@@ -1,0 +1,142 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_ecoregiones_fan",
+  "title": "Mapa de ecorregiones de Bolivia - FAN 2003",
+  "description": "El mapa presenta las diferentes ecoregiones de Bolivia en función de las características de comunidades naturales que comparten taxa, dinámicas ecológicas y condiciones ambientales, tienen una mayor interrelación e interdependencia biológica y ecológica entre sí, que con las comunidades que se encuentran fuera de ella, además muestra patrones comunes para la producción de biomasa, incluyendo la forestal y la agropecuaria. Diferenciando tres regiones/pisos altitudinales principales: 1) Tierras Bajas con cinco ecorregiones, 2) Vertiente Oriental Andina (Pisos Andinos; incluyendo Valles interandinos) con cinco ecorregiones, y 3) las Cordilleras Altas y el Altiplano con dos ecorregiones. Elaborado por la Fundación de Amigos por la Naturaleza en el año 2003.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_ecoregiones_fan/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 18641411,
+      "hash": "sha256:4599d55dc28e94969eb28ca85ab389a27209b5e5d178a1a5078a4b9458930df9",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "ecoregiones_fan.13"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 24
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Ecoregiones_FAN.13"
+          },
+          {
+            "name": "cat_neu",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0.0,
+              "maximum": 12.2
+            }
+          },
+          {
+            "name": "subecoreg",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "12.2. Puna Desértica con Pisos Nivales y Subnivales de la Cordillera Occidental"
+          },
+          {
+            "name": "ecoregion",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Puna Sureña"
+          },
+          {
+            "name": "area_km2",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 3577.83,
+              "maximum": 105006.08
+            }
+          },
+          {
+            "name": "id_c",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 24
+            }
+          },
+          {
+            "name": "shape_leng",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 617659.527816,
+              "maximum": 28947463.3331
+            }
+          },
+          {
+            "name": "shape_le_1",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 617659.527816,
+              "maximum": 28947463.3331
+            }
+          },
+          {
+            "name": "shape_area",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 3577828960.69,
+              "maximum": 105006080730.0
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 7."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
