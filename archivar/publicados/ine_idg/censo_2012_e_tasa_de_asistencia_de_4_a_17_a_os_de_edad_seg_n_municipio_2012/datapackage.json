@@ -1,0 +1,128 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_ine_idg_censo_2012_e_tasa_de_asistencia_de_4_a_17_a_os_de_edad_seg_n_municipio_2012",
+  "title": "Tasa de Asistencia de 4 a 17 años de Edad según Municipio 2012",
+  "description": "Porcentaje de la población entre 4 y 17 años que asiste a algún establecimiento educativo.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Geoestadísticos del INE",
+      "path": "https://gsn.ine.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_ine_idg_censo_2012_e_tasa_de_asistencia_de_4_a_17_a_os_de_edad_seg_n_municipio_2012/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 8049651,
+      "hash": "sha256:b74a0fc22aacfb34a26714ca5446414efdecf8348d60241108ebe115db0b2347",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "conmpio",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "051401"
+          },
+          {
+            "name": "mpio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Llica"
+          },
+          {
+            "name": "cod_depto",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "05",
+            "categories": [
+              "02",
+              "07",
+              "03",
+              "05",
+              "04",
+              "01",
+              "08",
+              "09",
+              "06"
+            ]
+          },
+          {
+            "name": "depto",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Potosí",
+            "categories": [
+              "La Paz",
+              "Santa Cruz",
+              "Cochabamba",
+              "Potosí",
+              "Oruro",
+              "Chuquisaca",
+              "Beni",
+              "Pando",
+              "Tarija"
+            ]
+          },
+          {
+            "name": "ta_alf12",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 68.1,
+              "maximum": 100.0
+            }
+          },
+          {
+            "name": "ta_ed12",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 94.0,
+              "maximum": 100.0
+            }
+          },
+          {
+            "name": "pob_ed12",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 3.0,
+              "maximum": 12.0
+            }
+          },
+          {
+            "name": "asi_es12",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 70.0,
+              "maximum": 93.0
+            }
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
