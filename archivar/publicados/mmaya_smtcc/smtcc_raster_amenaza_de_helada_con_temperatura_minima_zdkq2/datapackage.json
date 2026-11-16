@@ -1,0 +1,97 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_smtcc_smtcc_raster_amenaza_de_helada_con_temperatura_minima_zdkq2",
+  "title": "raster_amenaza_de_helada_con_temperatura_minima_zdkq2",
+  "sources": [
+    {
+      "title": "Sistema de Monitoreo de La Madre Tierra y Cambio Climático del Ministerio de Medio Ambiente y Agua (MMAyA)",
+      "path": "https://geoserver.madretierra.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_smtcc_smtcc_raster_amenaza_de_helada_con_temperatura_minima_zdkq2/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 7422874,
+      "hash": "sha256:d3a6b003375aa070ec1d130aa036db5ec4b3ac26a1b44e8509889cee046623a2",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "raster_amenaza_de_helada_con_temperatura_minima_zdkq2.522"
+          },
+          {
+            "name": "grado_ame",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Muy Alta",
+            "categories": [
+              "Muy Baja",
+              "Alta",
+              "Baja",
+              "Muy Alta",
+              "Media"
+            ]
+          },
+          {
+            "name": "sup_ha",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 7017400
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "example": "Potosi",
+            "categories": [
+              "La Paz",
+              "Potosi",
+              "Cochabamba",
+              "Santa Cruz",
+              "Oruro",
+              "Chuquisaca",
+              "Tarija",
+              "Beni",
+              "Pando",
+              "LA PAZ",
+              "POTOSI"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "example": "Daniel Campos"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "example": "Llica"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
