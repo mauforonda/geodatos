@@ -1,0 +1,138 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geobolivia_geonode_cobertura_electric_2016_municipal_ecdd8647",
+  "title": "Cobertura Municipal de Energía eléctrica Bolivia (2016)",
+  "description": "Información geoespacial del Servicio Básico de Electricidad a nivel Municipal en Bolivia para el año 2016, se determinó el dato del número de hogares de cada municipio a partir de las proyecciones realizadas por el Instituto Nacional de Estadística INE y el número de hogares con electricidad a partir de los datos de número de usuarios de la categoría residencial enviados por las empresas distribuidoras a noviembre de 2016. Elaborado por el Viceministerio de Electricidad y Energías Alternativas.",
+  "sources": [
+    {
+      "title": "Nueva plataforma GeoBolivia",
+      "path": "https://geonode.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geobolivia_geonode_cobertura_electric_2016_municipal_ecdd8647/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 7731064,
+      "hash": "sha256:a3f8b5512e5852110dd3e3585d9acbf32e70c98f5873de4d3eedbdf1b533a114",
+      "schema": {
+        "fields": [
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 484
+            }
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 484
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0,
+              "maximum": 483
+            }
+          },
+          {
+            "name": "cod_ine",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 10101,
+              "maximum": 90503
+            }
+          },
+          {
+            "name": "departamen",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Potosí",
+            "categories": [
+              "La Paz",
+              "Potosí",
+              "Oruro",
+              "Santa Cruz",
+              "Cochamba",
+              "Chuquisaca",
+              "Beni",
+              "Pando",
+              "Tarija"
+            ]
+          },
+          {
+            "name": "provincia",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Daniel Campos"
+          },
+          {
+            "name": "municipio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Primera Sección -Llica"
+          },
+          {
+            "name": "hog_2016",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 183,
+              "maximum": 409021
+            }
+          },
+          {
+            "name": "hog_elec",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 120.0,
+              "maximum": 408964.1
+            }
+          },
+          {
+            "name": "cob_2016",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 16.747573,
+              "maximum": 100.022213
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
