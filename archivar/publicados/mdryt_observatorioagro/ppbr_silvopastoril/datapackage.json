@@ -1,0 +1,145 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mdryt_observatorioagro_ppbr_silvopastoril",
+  "title": "SILVOPASTORIL",
+  "sources": [
+    {
+      "title": "Geovisor del Observatorio Agroambiental y Productivo del Ministerio de Desarrollo Rural y Tierras (MDRyT)",
+      "path": "http://geoserver.observatorioagro.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mdryt_observatorioagro_ppbr_silvopastoril/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 10826144,
+      "hash": "sha256:76ac3973869d28e212143e48b362cd474a28b3fae00b8a8bbe68212d1c327bef",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 12."
+          },
+          {
+            "name": "OBJECTID",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 86,
+              "maximum": 2931
+            }
+          },
+          {
+            "name": "LEYENDA2",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "SILVOPASTORIL",
+            "categories": [
+              "SILVOPASTORIL"
+            ]
+          },
+          {
+            "name": "CODIGO",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "060301"
+          },
+          {
+            "name": "HECTAREAS",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0.03004086725,
+              "maximum": 880614.951889
+            }
+          },
+          {
+            "name": "Shape_Leng",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0.00411789789,
+              "maximum": 157.029851803
+            }
+          },
+          {
+            "name": "Shape_Area",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 2.6e-08,
+              "maximum": 0.75692485314
+            }
+          },
+          {
+            "name": "COD_REG",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 6
+            }
+          },
+          {
+            "name": "COD_DEP",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 7
+            }
+          },
+          {
+            "name": "REGION",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Gran Chaco",
+            "categories": [
+              "Chiquitania",
+              "Chaco CruceÃ±o",
+              "Chaco ChuquisaqueÃ±o",
+              "Gran Chaco",
+              "Metropolitana Santa Cruz",
+              "Norte Integrado",
+              "Pantanal",
+              "Valles de  Tarija"
+            ]
+          },
+          {
+            "name": "NOM_DEP",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "TARIJA",
+            "categories": [
+              "SANTA CRUZ",
+              "TARIJA",
+              "CHUQUISACA"
+            ]
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
