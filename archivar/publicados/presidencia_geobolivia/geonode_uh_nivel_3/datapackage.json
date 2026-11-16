@@ -1,0 +1,171 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_uh_nivel_3",
+  "title": "Unidades hidrograficas de Bolivia Nivel 3",
+  "description": "Este mapa muestra la delimitación de unidades hidrográficas de Bolivia, tipo cuenca en un sistema jerárquico de nivel 3. En este trabajo se utilizaron técnicas de análisis espacial raster para la delimitación de acuerdo al método Pfafstetter para la división y codificación de unidades hidrográficas. Las mismas que se generaron con el uso de sistemas de información geográfica (SIG), modelos digitales de elevación (DEM) y redes de drenaje para la obtención de los watersheds o cuencas. Este proceso comienza con la determinación del río principal, selección de cuatro redes de drenaje de mayor tamaño para la generación de dichas cuencas en formato raster para posteriormente ser convertida en vector. Elaborado por el Viceministerio de Recursos Hídricos y Riego (VRHR) y el Programa de Desarrollo Agropecuario Sustentable (PROAGRO)  en el año 2010 a escala 1: 250000.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_uh_nivel_3/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 15844533,
+      "hash": "sha256:558a5eb66aecfef1e8fc0ad7103afb6123e78caf3b8dbe7415e41a70a91ddfa2",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "uh_nivel_3.25"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 67
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "UH_Nivel_3.25"
+          },
+          {
+            "name": "nivel_3",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "130"
+          },
+          {
+            "name": "nivel_1",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "1",
+            "categories": [
+              "8",
+              "0",
+              "4",
+              "1"
+            ]
+          },
+          {
+            "name": "nivel_2",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "13",
+            "categories": [
+              "02",
+              "80",
+              "89",
+              "86",
+              "01",
+              "46",
+              "87",
+              "03",
+              "12",
+              "13",
+              "85",
+              "05",
+              "10",
+              "49"
+            ]
+          },
+          {
+            "name": "area_km2",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 5.29,
+              "maximum": 234738.16
+            }
+          },
+          {
+            "name": "nombre_n3",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "UNIDAD HIDROGRAFICA 130"
+          },
+          {
+            "name": "color",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "0",
+            "categories": [
+              "1",
+              "2",
+              "3",
+              "9",
+              "4",
+              "5",
+              "8",
+              "7",
+              "6",
+              "0"
+            ]
+          },
+          {
+            "name": "shape_leng",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 11814.227965,
+              "maximum": 4231178.22603
+            }
+          },
+          {
+            "name": "shape_area",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 5297381.77053,
+              "maximum": 233193867454.0
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
