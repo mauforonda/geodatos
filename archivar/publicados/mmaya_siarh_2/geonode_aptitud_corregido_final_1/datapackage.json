@@ -1,0 +1,66 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_aptitud_corregido_final_1",
+  "title": "Plan Director Cuenca Río Pampa Huari - Aptitud de la Tierra",
+  "description": "PDCRPH (Plan Director de la Cuenca Río Pampa Huari). Muestra la georreferenciación e información relevante de las aptitudes de la tierra, en el marco del Plan Director de la Cuenca del Río Pampa Huari.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_aptitud_corregido_final_1/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 19622170,
+      "hash": "sha256:559a2f4eab5dabc0f2b5a83b20cf58dbb95a8931a8d893113bee81e9be4c2c15",
+      "schema": {
+        "fields": [
+          {
+            "name": "Uso_actual",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Uso forestal múltiple limitado"
+          },
+          {
+            "name": "SUP_KM2",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0.498526776087,
+              "maximum": 481.299114826
+            }
+          },
+          {
+            "name": "SUP_Ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 49.8526776087,
+              "maximum": 48129.9114826
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 9."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
