@@ -1,0 +1,99 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mdryt_observatorioagro_bolivia_santa_cruz_maiz_pred_cult",
+  "title": "SANTA_CRUZ_MAIZ_PRED_CULT",
+  "sources": [
+    {
+      "title": "Geovisor del Observatorio Agroambiental y Productivo del Ministerio de Desarrollo Rural y Tierras (MDRyT)",
+      "path": "http://geoserver.observatorioagro.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mdryt_observatorioagro_bolivia_santa_cruz_maiz_pred_cult/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 19780505,
+      "hash": "sha256:a329de69a624b7d2faae015caebe4960a913b1d1f134d3eec6e4dc3ccff57c59",
+      "schema": {
+        "fields": [
+          {
+            "name": "CODCAT",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "07070502553011"
+          },
+          {
+            "name": "NOMPRED",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "ALEMANIA"
+          },
+          {
+            "name": "BENEFICIAR",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "SEGUNDA CEREZO VDA. DE HERRERA, MARCELINO, CAMILO, JAVIER, HILSEN, WILBERTH, HEINRICHT, BAIGELT, EFR"
+          },
+          {
+            "name": "SUP_PRED",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0.00323619314982,
+              "maximum": 55170.3347599
+            }
+          },
+          {
+            "name": "Sup_Cult",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 4594.57980725
+            }
+          },
+          {
+            "name": "Shape_Leng",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 28.8428297834,
+              "maximum": 293065.026478
+            }
+          },
+          {
+            "name": "Shape_Area",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 32.3619314982,
+              "maximum": 551703347.599
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 3."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
