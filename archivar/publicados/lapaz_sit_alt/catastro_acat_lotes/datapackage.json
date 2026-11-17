@@ -1,0 +1,200 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_alt_catastro_acat_lotes",
+  "title": "analisis lotes catastro",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)",
+      "path": "http://sitservicios.lapaz.bo/ows38.jsp"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_catastro_acat_lotes/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 18841669,
+      "hash": "sha256:9524de3c2098ecb137bb9d8eb9d524df439d9f488b67e1f24a12e904f220c6bb",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "acat_lotes.67669"
+          },
+          {
+            "name": "idpredio",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 4559,
+              "maximum": 431129
+            }
+          },
+          {
+            "name": "codigocatastral",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "046036300140000"
+          },
+          {
+            "name": "estadopredio",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.0,
+              "maximum": 15.0
+            }
+          },
+          {
+            "name": "codlote",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "04603630014"
+          },
+          {
+            "name": "superficie",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.5249122593581687,
+              "maximum": 1175339.6767495058
+            }
+          },
+          {
+            "name": "IdTipoPredio",
+            "type": "string",
+            "example": "2",
+            "categories": [
+              "2",
+              "4"
+            ]
+          },
+          {
+            "name": "CuentaBloques",
+            "type": "number",
+            "constraints": {
+              "minimum": 1.0,
+              "maximum": 32.0
+            }
+          },
+          {
+            "name": "MaximoPisos",
+            "type": "number",
+            "constraints": {
+              "minimum": 1.0,
+              "maximum": 40.0
+            }
+          },
+          {
+            "name": "TotalNiveles",
+            "type": "number",
+            "constraints": {
+              "minimum": 1.0,
+              "maximum": 60.0
+            }
+          },
+          {
+            "name": "SupEdificada",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.0,
+              "maximum": 143807.56
+            }
+          },
+          {
+            "name": "SupResid",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.0,
+              "maximum": 38144.903999999995
+            }
+          },
+          {
+            "name": "PorcenResid",
+            "type": "number",
+            "constraints": {
+              "minimum": 5.0,
+              "maximum": 100.0
+            }
+          },
+          {
+            "name": "ConteoUsoRes",
+            "type": "number",
+            "constraints": {
+              "minimum": 1.0,
+              "maximum": 636.0
+            }
+          },
+          {
+            "name": "SupComercial",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.0,
+              "maximum": 86261.71199999998
+            }
+          },
+          {
+            "name": "PorcenComer",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.0,
+              "maximum": 130.0
+            }
+          },
+          {
+            "name": "ConteoUsoCom",
+            "type": "number",
+            "constraints": {
+              "minimum": 1.0,
+              "maximum": 152.0
+            }
+          },
+          {
+            "name": "SupGubername",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.0,
+              "maximum": 33318.46
+            }
+          },
+          {
+            "name": "PorcGubern",
+            "type": "number",
+            "constraints": {
+              "minimum": 5.0,
+              "maximum": 100.0
+            }
+          },
+          {
+            "name": "ConteoUsoGob",
+            "type": "number",
+            "constraints": {
+              "minimum": 1.0,
+              "maximum": 23.0
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 105. La fuente declaraba EPSG:4326 pero sus coordenadas estaban en EPSG:32719 (sistema inferido por la ubicación de las geometrías en Bolivia); se reproyectaron."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
