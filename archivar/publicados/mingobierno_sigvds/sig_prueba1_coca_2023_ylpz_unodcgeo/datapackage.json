@@ -1,0 +1,53 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mingobierno_sigvds_sig_prueba1_coca_2023_ylpz_unodcgeo",
+  "title": "COCA_2023_YLPZ_UNODCgeo",
+  "sources": [
+    {
+      "title": "SIG-VDS en Gobierno",
+      "path": "https://sig-vds.mingobierno.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mingobierno_sigvds_sig_prueba1_coca_2023_ylpz_unodcgeo/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 28989173,
+      "hash": "sha256:37753dd65dc52897a921be04bd6d7a1f2254a6001967bc6fd18cdb3343a4bd51",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "COCA_2023_YLPZ_UNODCgeo.5639"
+          },
+          {
+            "name": "sup_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 1.4962e-06,
+              "maximum": 66.29269757422
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Polygon. Geometrías inválidas, conservadas sin reparar: 1. La fuente declaraba EPSG:4326 pero sus coordenadas estaban en EPSG:32719 (sistema inferido por la ubicación de las geometrías en Bolivia); se reproyectaron."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
