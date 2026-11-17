@@ -1,0 +1,120 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_zonas_agroproductivas_68wu4",
+  "title": "Zonas agroproductivas",
+  "description": "El mapa presenta  las zonas agroproductivas según el Ministerio de Desarrollo Rural y Tierras categorizadas por su tipo en territorio nacional.",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_zonas_agroproductivas_68wu4/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 9017877,
+      "hash": "sha256:5ea02aad987ad734ead6df856aaa874cf3d1a8aab7e7c961d786a4b8279ff34f",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "layer_zonas_agroproductivas_68wu4.9"
+          },
+          {
+            "name": "zona_agrop",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "ALTIPLANO SUR",
+            "categories": [
+              "AMAZONIA",
+              "LLANOS DE SANTA CRUZ",
+              "GUARAYO CHIQUITANO",
+              "VALLES DEL NORTE",
+              "ALTIPLANO CENTRAL",
+              "ALTIPLANO SUR",
+              "VALLES CENTRALES",
+              "ALTIPLANO NORTE",
+              "NORTE INTEGRADO DE SANTA CRUZ",
+              "CHACO SERRANO",
+              "PAMPA DE MOXOS",
+              "VALLES DEL SUR",
+              "VALLES CERRADOS",
+              "YUNGAS DEL NORTE",
+              "CHAPARE",
+              "YUNGAS DEL SUR",
+              "PAMPA INUNDABLE DE MOXOS",
+              "CHACO LLANOS",
+              "CHACO KAA - IYA"
+            ]
+          },
+          {
+            "name": "sup_ha",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 4873486
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "example": "POTOSI",
+            "categories": [
+              "SANTA CRUZ",
+              "LA PAZ",
+              "COCHABAMBA",
+              "POTOSI",
+              "CHUQUISACA",
+              "BENI",
+              "PANDO",
+              "ORURO",
+              "TARIJA",
+              "La Paz",
+              "Potosi",
+              "Tarija",
+              "Santa Cruz",
+              "Beni",
+              "Pando",
+              "Cochabamba",
+              "Oruro"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "DANIEL CAMPOS"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "example": "LLICA"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 4197."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
