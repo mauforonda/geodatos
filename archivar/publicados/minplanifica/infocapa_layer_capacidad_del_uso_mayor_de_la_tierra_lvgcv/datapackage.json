@@ -1,0 +1,125 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_minplanifica_infocapa_layer_capacidad_del_uso_mayor_de_la_tierra_lvgcv",
+  "title": "layer_capacidad_del_uso_mayor_de_la_tierra_lvgcv",
+  "sources": [
+    {
+      "title": "Geoserver del Ministerio de Planificación del Desarollo",
+      "path": "https://geoserver.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_minplanifica_infocapa_layer_capacidad_del_uso_mayor_de_la_tierra_lvgcv/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 12834570,
+      "hash": "sha256:2ca83b026ba04220cfd4837863df2cb0a67496e5332889e15b8d8509e5c72290",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_capacidad_del_uso_mayor_de_la_tierra_lvgcv.1169"
+          },
+          {
+            "name": "cumat",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Salares",
+            "categories": [
+              "GPE",
+              "CAE",
+              "TPR",
+              "CPE",
+              "BPL",
+              "BNM",
+              "CAI",
+              "Lagos y Lagunas",
+              "Ríos",
+              "CPI",
+              "Nevados",
+              "Salares",
+              "Area Urbana"
+            ]
+          },
+          {
+            "name": "uni_gra",
+            "type": "integer"
+          },
+          {
+            "name": "sup_ha",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": -116,
+              "maximum": 4267757
+            }
+          },
+          {
+            "name": "descr",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Salares"
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "example": "Potosi",
+            "categories": [
+              "La Paz",
+              "Santa Cruz",
+              "Cochabamba",
+              "Potosi",
+              "Oruro",
+              "Beni",
+              "Chuquisaca",
+              "Tarija",
+              "Pando",
+              "LA PAZ",
+              "POTOSI",
+              "ORURO",
+              "PANDO",
+              "BENI",
+              "SANTA CRUZ",
+              "TARIJA"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Daniel Campos"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "example": "Llica"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 318."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
