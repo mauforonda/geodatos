@@ -1,0 +1,117 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_zonificacion_agro_ecologica_con_plus_pnot_ssy5f",
+  "title": "layer_zonificacion_agro_ecologica_con_plus_pnot_ssy5f",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_zonificacion_agro_ecologica_con_plus_pnot_ssy5f/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 18152954,
+      "hash": "sha256:099fb73e5beaac1aedb1b8d9417b48764f186b3444d14f6880e9bd225b82d7ab",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_zonificacion_agro_ecologica_con_plus_pnot_ssy5f.2395"
+          },
+          {
+            "name": "zae_plus",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Salares"
+          },
+          {
+            "name": "categorias",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "INTERES PATRIMONIAL Y TURISTICO",
+            "categories": [
+              "PROTECCION CON USO RESTRINGIDO",
+              "AGROPECUARIO EXTENSIVO",
+              "CUERPOS DE AGUA",
+              "AGROPECUARIO INTENSIVO",
+              "AREAS PROTEGIDAS",
+              "FORESTAL",
+              "AGROSILVOPASTORIL",
+              "URBANO",
+              "INTERES PATRIMONIAL Y TURISTICO",
+              "OTROS",
+              "CAMPOS DE NIEVE"
+            ]
+          },
+          {
+            "name": "subcategor",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Salares"
+          },
+          {
+            "name": "sup_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 2900000.0
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "example": "POTOSI",
+            "categories": [
+              "LA PAZ",
+              "SANTA CRUZ",
+              "COCHABAMBA",
+              "POTOSI",
+              "CHUQUISACA",
+              "ORURO",
+              "BENI",
+              "PANDO",
+              "TARIJA"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "example": "Daniel Campos"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "example": "Llica"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 12."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
