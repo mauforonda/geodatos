@@ -1,0 +1,95 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_minplanifica_pnot_vias_secundarias",
+  "title": "vias_secundarias",
+  "sources": [
+    {
+      "title": "Geoserver del Ministerio de Planificación del Desarollo",
+      "path": "https://geoserver.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_minplanifica_pnot_vias_secundarias/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 12456774,
+      "hash": "sha256:ef4510d8b872426d80b0a03320a2503bd65a8d1ab01c92cee84aebf22066ac57",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "vias_secundarias.13"
+          },
+          {
+            "name": "long_km",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 4878
+            }
+          },
+          {
+            "name": "nombr",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Desconocido"
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "example": "POTOSI",
+            "categories": [
+              "Cochabamba",
+              "Santa Cruz",
+              "La Paz",
+              "Potosi",
+              "Oruro",
+              "Beni",
+              "Chuquisaca",
+              "Tarija",
+              "Pando",
+              "LA PAZ",
+              "POTOSI",
+              "SANTA CRUZ",
+              "ORURO",
+              "TARIJA"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "DANIEL CAMPOS"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "example": "LLICA"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString. Geometrías inválidas, conservadas sin reparar: 1011."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
