@@ -1,0 +1,111 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_alt_catastro_lotes_sc",
+  "title": "Lotes fuera de linea",
+  "description": "Lotes de catastro fuera de linea.",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)",
+      "path": "http://sitservicios.lapaz.bo/ows38.jsp"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_catastro_lotes_sc/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 20931900,
+      "hash": "sha256:66be2b24350beec45a735834067b68b811fccc5972550a2261526d8d5d904b73",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "lotes_SC.143906"
+          },
+          {
+            "name": "codigocatastral",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "031124700010000"
+          },
+          {
+            "name": "distritocatastral",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 47
+            }
+          },
+          {
+            "name": "manzana",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 3414
+            }
+          },
+          {
+            "name": "predio",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 1283
+            }
+          },
+          {
+            "name": "estadopredio",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.0,
+              "maximum": 15.0
+            }
+          },
+          {
+            "name": "fuente",
+            "type": "string",
+            "example": "EXTERNO",
+            "categories": [
+              "EXTERNO",
+              "PROYECTO",
+              "LEVANTAMIENTO",
+              "SIT",
+              "MIGRACION SIFCA"
+            ]
+          },
+          {
+            "name": "fechamodificacion",
+            "type": "datetime",
+            "constraints": {
+              "required": true,
+              "minimum": "2008-08-23T04:30:00+00:00",
+              "maximum": "2026-08-05T00:41:43.773000+00:00"
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 132. La fuente declaraba EPSG:4326 pero sus coordenadas estaban en EPSG:32719 (sistema inferido por la ubicación de las geometrías en Bolivia); se reproyectaron."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
