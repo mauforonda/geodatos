@@ -1,0 +1,95 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_potencial_productivo_pando2013",
+  "title": "Potencialidades Productivas Departamento de Pando_ Bolivia",
+  "description": "El mapa muestra las potencialidades productivas del departamento de Pando, que son: Cultivos Agrícolas, Ganadería, Pastoreo, Forestal Maderable y No Maderable, Piscícola, Protección y Vida Silvestre, Turismo, Zona Urbana. Elaborado por el Ministerio de Desarrollo Productivo y Economía Plural, a través de la Unidad de Análisis Productivo (UDAPRO) y el Sistema de Información Territorial de Apoyo a la Producción (SITAP) a escala 1:100000 en el año 2013.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_potencial_productivo_pando2013/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 30177715,
+      "hash": "sha256:bc7cea249a89b20c8bedea9ff334febb954a882a2d31ca50ccda7e30f8084159",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "potencial_productivo_pando2013.1"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 13
+            }
+          },
+          {
+            "name": "objectid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0,
+              "maximum": 12
+            }
+          },
+          {
+            "name": "cod_dep",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 9,
+              "maximum": 9
+            }
+          },
+          {
+            "name": "nom_dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "PANDO",
+            "categories": [
+              "PANDO"
+            ]
+          },
+          {
+            "name": "leyenda",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "TURISTICO ESCENICO"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 6."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
