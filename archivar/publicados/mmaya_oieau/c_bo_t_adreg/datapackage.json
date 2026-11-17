@@ -1,0 +1,96 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_oieau_c_bo_t_adreg",
+  "title": "BO_AD_Unidades administrativas",
+  "sources": [
+    {
+      "title": "Sistema para la Gestión Integral de Recursos Hídricos desarrollado por la Oficina Internacional del Agua (OiEau)",
+      "path": "https://www.oieau-wiss.org/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_oieau_c_bo_t_adreg/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 6818076,
+      "hash": "sha256:4e212df6e09950153e901da246bd30d9d76713aaa75a70b4c0b30dd349524d5b",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "t_adreg.fid-75f29474_19d8f837e74_-cd"
+          },
+          {
+            "name": "adrgcode",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "ADR_BO_BO0514"
+          },
+          {
+            "name": "adrgcodex",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "BO0514"
+          },
+          {
+            "name": "adrglevel",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "R2",
+            "categories": [
+              "R3",
+              "R2",
+              "R1"
+            ]
+          },
+          {
+            "name": "rgadcncode",
+            "type": "integer"
+          },
+          {
+            "name": "rgadrgcode",
+            "type": "integer"
+          },
+          {
+            "name": "adrgname",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Daniel Campos"
+          },
+          {
+            "name": "adrgname2",
+            "type": "integer"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
