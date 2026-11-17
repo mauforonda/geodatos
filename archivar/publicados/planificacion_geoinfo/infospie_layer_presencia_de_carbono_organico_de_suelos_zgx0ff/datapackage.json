@@ -1,0 +1,109 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_presencia_de_carbono_organico_de_suelos_zgx0ff",
+  "title": "Presencia de carbono orgánico de suelos",
+  "description": "El mapa de presencia de carbono orgánico del suelo es esencial para el manejo sostenible del suelo. Lugares con alto contenido de carbono orgánico requieren protección para evitar la pérdida de carbono, mientras que aquellos con menos carbono y potencial de almacenamiento deben promover prácticas para el secuestro de carbono y mejorar la productividad del suelo.",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_presencia_de_carbono_organico_de_suelos_zgx0ff/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 17127387,
+      "hash": "sha256:d86ae465b73c36d3bebceb00dc1d8a00fece2a71a2955323b801afa85e293de9",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "layer_presencia_de_carbono_organico_de_suelos_zgx0ff.92"
+          },
+          {
+            "name": "valor",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Alto",
+            "categories": [
+              "Medio",
+              "Alto",
+              "Bajo",
+              "Muy Alto",
+              "Muy Bajo"
+            ]
+          },
+          {
+            "name": "codigo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "051401"
+          },
+          {
+            "name": "sup_ha",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 6646893
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "example": "POTOSI",
+            "categories": [
+              "LA PAZ",
+              "SANTA CRUZ",
+              "COCHABAMBA",
+              "POTOSI",
+              "ORURO",
+              "CHUQUISACA",
+              "BENI",
+              "PANDO",
+              "TARIJA",
+              "Cochabamba",
+              "Potosi",
+              "La Paz"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "DANIEL CAMPOS"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "example": "LLICA"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 61."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
