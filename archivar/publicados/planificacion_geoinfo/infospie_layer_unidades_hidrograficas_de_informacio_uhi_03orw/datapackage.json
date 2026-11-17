@@ -1,0 +1,113 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_unidades_hidrograficas_de_informacio_uhi_03orw",
+  "title": "Unidades Hidrograficas de Informacion (UHI)",
+  "description": "El mapa presenta las Unidades Hidrográficas de Información (UHI). En el Plan Plurinacional de Recursos Hídricos 2021-2025 (PPRH 2021-2025) se han discriminado diferentes tipos de Unidades Hidrográficas (UHs). En el PPRH 2021-2025 se definen a las unidades hidrográficas como áreas de drenaje limitadas por líneas divisorias de aguas o (parteaguas). Las Unidades Hidrográficas de Información (UHI) tienen características interdepartamentales debido al drenaje natural, sujetos de desarrollo de estudios biofísicos y socioeconómicos con carácter estratégico. Son 51 Unidades Hidrográficas a Nivel Pfafstetter 1 y 2.",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_unidades_hidrograficas_de_informacio_uhi_03orw/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 18530782,
+      "hash": "sha256:793156fa93b17913c4495abf91f4d850c1bf87145318e98aca8c0658b237a5d7",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_unidades_hidrograficas_de_informacio_uhi_03orw.59"
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Cuenca Qda. Camacho - Laguna"
+          },
+          {
+            "name": "tipo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Cuenca Endorreica",
+            "categories": [
+              "Cuenca Amazonica",
+              "Cuenca de la Plata",
+              "Cuenca Endorreica"
+            ]
+          },
+          {
+            "name": "sup_ha",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 17950,
+              "maximum": 6566061
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "POTOSI",
+            "categories": [
+              "SANTA CRUZ",
+              "POTOSI",
+              "BENI",
+              "LA PAZ",
+              "TARIJA",
+              "COCHABAMBA",
+              "PANDO",
+              "CHUQUISACA",
+              "ORURO"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Daniel Campos"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Llica"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
