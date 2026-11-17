@@ -1,0 +1,130 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_caminos_igm250000",
+  "title": "Mapa de caminos de Bolivia -  IGM escala 1:250.000",
+  "description": "Este mapa muestra el conjunto de caminos que estructuran el territorio boliviano, digitalizado en el año 2003, en la sección de cartografía del Instituto Geográfico Militar – IGM Bolivia en base a mapas de presición de la carta nacional a escala 250000.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_caminos_igm250000/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 52968633,
+      "hash": "sha256:b22d7cebf4bf3c631a4b5c0688bb605369287c0178196a6fa921e632fae662ee",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "caminos_igm250000.16024"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 45834
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "caminos_igm250000.16024"
+          },
+          {
+            "name": "codigo",
+            "type": "string",
+            "example": "AP030",
+            "categories": [
+              "AP030",
+              "AP0305",
+              "AP0304",
+              "AP0303",
+              "?AP030",
+              "AP0302",
+              "PA030"
+            ]
+          },
+          {
+            "name": "descripcio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "HERRADURA O BRECHA",
+            "categories": [
+              "VEREDA",
+              "HERRADURA O BRECHA",
+              "CARRETERA SIN PAVIMENTO UNA VIA",
+              "CARRETERA SIN PAVIMENTO 2 O MAS VIAS",
+              "CARRETERA NO DEFINIDA",
+              "CARRETERA PAVIMENTADA 2 O MAS VIAS"
+            ]
+          },
+          {
+            "name": "categoria",
+            "type": "string",
+            "example": "CULTURA",
+            "categories": [
+              "CULTURA",
+              "?CULTURA"
+            ]
+          },
+          {
+            "name": "subcategor",
+            "type": "string",
+            "example": "TRANSPORTE",
+            "categories": [
+              "TRANSPORTE",
+              "TRANSP?RTE",
+              "HIDROGRAFIA",
+              "CULTURA",
+              "VEREDA"
+            ]
+          },
+          {
+            "name": "codigo_obj",
+            "type": "string",
+            "example": "AP0304",
+            "categories": [
+              "AP0305",
+              "AP0304",
+              "AP0303",
+              "AP0302",
+              "AP0301",
+              "APO304",
+              "?AP0305",
+              "APO301",
+              "AP030",
+              "AP0307"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString. Geometrías inválidas, conservadas sin reparar: 3. Atención: la fuente declara EPSG:4326 pero las coordenadas no son longitud y latitud, y no conocemos el sistema real."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
