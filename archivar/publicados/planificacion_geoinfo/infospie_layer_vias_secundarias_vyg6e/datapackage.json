@@ -1,0 +1,88 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_vias_secundarias_vyg6e",
+  "title": "Vías secundarias",
+  "description": "El mapa presenta la distribución geográfica de las vías secundarias en el territorio nacional de transitabilidad, uniendo las cabeceras municipales entre sí y que conectan con una carretera primaria.",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_vias_secundarias_vyg6e/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 12456106,
+      "hash": "sha256:3953a2ffc4781c8ad72c081ecc4554e3b23377afdea4e5f328f663a1f1208111",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "layer_vias_secundarias_vyg6e.13"
+          },
+          {
+            "name": "nombr",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Desconocido"
+          },
+          {
+            "name": "long_km",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 4878
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "example": "POTOSI",
+            "categories": [
+              "COCHABAMBA",
+              "SANTA CRUZ",
+              "LA PAZ",
+              "POTOSI",
+              "ORURO",
+              "BENI",
+              "CHUQUISACA",
+              "TARIJA",
+              "PANDO"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "example": "Daniel Campos"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "example": "Llica"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString. Geometrías inválidas, conservadas sin reparar: 1012."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
