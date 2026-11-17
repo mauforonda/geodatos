@@ -1,0 +1,138 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_lineas_mt_2020",
+  "title": "Red eléctrica de media tensión en Bolivia_ 2020",
+  "description": "Este mapa representa la distribución espacial de la red eléctrica de media tensión para el suministro de energía en Bolivia, a escala 1:4.500.000. Elaborado por la Autoridad de Fiscalización de Electricidad y Tecnología Nuclear (AETN) con datos actualizados a marzo de 2020.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_lineas_mt_2020/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 17699743,
+      "hash": "sha256:59eaf8e4950b983cd3ea30303716fb764e923a15a70f395f57010c82c796564b",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 290193
+            }
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 290192
+            }
+          },
+          {
+            "name": "empresa",
+            "type": "string",
+            "example": "Servicios Eléctricos Potosí S.A. (SEPSA)"
+          },
+          {
+            "name": "alimentado",
+            "type": "string",
+            "example": "Llica - Tahua"
+          },
+          {
+            "name": "fase",
+            "type": "string",
+            "example": "1",
+            "categories": [
+              "Monofásico",
+              "Trifásica",
+              "1",
+              "R",
+              "Trifásico",
+              "3",
+              "RST",
+              "Trifasica",
+              "Monofásica",
+              "0",
+              "2",
+              "Bifásico"
+            ]
+          },
+          {
+            "name": "nivel_volt",
+            "type": "string",
+            "example": "14,4",
+            "categories": [
+              "14,4",
+              "24,9",
+              "19,9",
+              "10",
+              "34,5",
+              "24.9",
+              "6,6",
+              "69.0",
+              "14.4",
+              "34.5",
+              "6,9"
+            ]
+          },
+          {
+            "name": "tipo_condu",
+            "type": "string",
+            "example": "CU-4",
+            "categories": [
+              "2/0",
+              "CU-4",
+              "ACSR - 3 # 4/0 AWG",
+              "2",
+              "1/0",
+              "ACSR - 3 # 4/0 AWG (2 AWG)",
+              "2/4 (Fase/Neutro) ACSR"
+            ]
+          },
+          {
+            "name": "material_c",
+            "type": "string",
+            "example": "1A",
+            "categories": [
+              "1A"
+            ]
+          },
+          {
+            "name": "distancia1",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 933392.66038
+            }
+          },
+          {
+            "name": "sistema",
+            "type": "string",
+            "example": "Llica - Tahua"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString. Filas sin geometría: 1."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
