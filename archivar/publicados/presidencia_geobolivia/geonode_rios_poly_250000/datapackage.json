@@ -1,0 +1,121 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_rios_poly_250000",
+  "title": "Mapa de rios principales de Bolivia -  IGM escala 250000",
+  "description": "Este mapa presenta la distribución y características de los principales afluentes del territorio nacional.  Elaborado y digitalizado en el  año 2003, en la sección de cartografía del Instituto Geográfico Militar – IGM Bolivia,  en base a mapas de presición de la carta nacional a escala 250000.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_rios_poly_250000/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 29642036,
+      "hash": "sha256:bfc417477b1610490fa29086125bcbf0336b9d1788d184a2df90ef69e0e32d7b",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "rios_poly_250000.678"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 784
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "rios_poly_250000.678"
+          },
+          {
+            "name": "codigo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "BH1403",
+            "categories": [
+              "BH140",
+              "BH1403",
+              "BH1404"
+            ]
+          },
+          {
+            "name": "descripcio",
+            "type": "string",
+            "example": "RIOS DOBLES",
+            "categories": [
+              "RIOS DOBLES",
+              "RIO DOBLE",
+              "ISLA",
+              "RIO PERMANENTE"
+            ]
+          },
+          {
+            "name": "categoria",
+            "type": "string",
+            "example": "HIDROGRAFIA",
+            "categories": [
+              "HIDROGRAFIA"
+            ]
+          },
+          {
+            "name": "subcategor",
+            "type": "string",
+            "example": "HIDROGRAFIA CONTINENTAL",
+            "categories": [
+              "HIDROGRAFIA CONTINENTAL",
+              "HIDROGRAFIA CONTIN*"
+            ]
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "example": "RIO SANJA EL SALTO"
+          },
+          {
+            "name": "codigo_obj",
+            "type": "string",
+            "example": "BH1403",
+            "categories": [
+              "BH1403",
+              "BH1403S",
+              "BH1404"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
