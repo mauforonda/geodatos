@@ -1,0 +1,112 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mhe_geoportal_geonode_mediaten_2017",
+  "title": "MediaTen_2017",
+  "sources": [
+    {
+      "title": "Geoportal del Viceministerio de Electricidad y Energías Renovables",
+      "path": "https://geoportal.mhe.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mhe_geoportal_geonode_mediaten_2017/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 16382798,
+      "hash": "sha256:9eb64f973b9238ca6920507fbcb56d3b8127aeb704e96556024ea4846acab5ba",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString. Filas sin geometría: 3. Geometrías inválidas, conservadas sin reparar: 11."
+          },
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 77397
+            }
+          },
+          {
+            "name": "OBJECTID",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 808612
+            }
+          },
+          {
+            "name": "Propietari",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "SEPSA",
+            "categories": [
+              "ENDE",
+              "ENDE DELBENI",
+              "DELAPAZ",
+              "Gob Potosí",
+              "Gob Oruro",
+              "ENDE ORURO",
+              "CER",
+              "COOPSEL",
+              "COSEGUA",
+              "Sinchi Wayra SA",
+              "COOPELECT",
+              "COSEP",
+              "EMDEECRUZ",
+              "EGSA",
+              "ELFEC",
+              "ATOCHA",
+              "COSERMO",
+              "15 de Nov",
+              "SEPSA",
+              "CRE",
+              "ENDE DEORURO",
+              "SETAR",
+              "GAM Uncia",
+              "HB",
+              "CESSA"
+            ]
+          },
+          {
+            "name": "SIN",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Si",
+            "categories": [
+              "Si",
+              "No"
+            ]
+          },
+          {
+            "name": "SHAPE_Leng",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 108.344681893
+            }
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
