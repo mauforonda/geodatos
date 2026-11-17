@@ -1,0 +1,148 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_alt_catastro_lotesestados",
+  "title": "Lotes catastro según estados",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)",
+      "path": "http://sitservicios.lapaz.bo/ows38.jsp"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_catastro_lotesestados/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 21320987,
+      "hash": "sha256:7b21ea6741a9acdfbcc5b691c94d9404fbb1f975614ebf8b158453cbf8797a5d",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "lotesestados.fid-50b080f7_19e7b1a6f6d_113d"
+          },
+          {
+            "name": "idpredio",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 4559,
+              "maximum": 365783
+            }
+          },
+          {
+            "name": "codigocatastral",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "046036300130000"
+          },
+          {
+            "name": "distritocatastral",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 47
+            }
+          },
+          {
+            "name": "manzana",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 3414
+            }
+          },
+          {
+            "name": "predio",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 1283
+            }
+          },
+          {
+            "name": "estadopredio",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.0,
+              "maximum": 15.0
+            }
+          },
+          {
+            "name": "fuente",
+            "type": "string",
+            "example": "PROYECTO",
+            "categories": [
+              "EXTERNO",
+              "PROYECTO",
+              "LEVANTAMIENTO",
+              "MIGRACION SIFCA",
+              "SIT"
+            ]
+          },
+          {
+            "name": "IdTipoPredio",
+            "type": "string",
+            "example": "1",
+            "categories": [
+              "2",
+              "1",
+              "5",
+              "3"
+            ]
+          },
+          {
+            "name": "AnioConstruccion",
+            "type": "number",
+            "constraints": {
+              "minimum": 0.0,
+              "maximum": 2024.0
+            }
+          },
+          {
+            "name": "NumInmueble",
+            "type": "string",
+            "example": "0"
+          },
+          {
+            "name": "nzona",
+            "type": "string",
+            "example": "MALLASILLA"
+          },
+          {
+            "name": "Direcccion",
+            "type": "string",
+            "example": "CALLE S/N Nro. S/N"
+          },
+          {
+            "name": "NombreEdificio",
+            "type": "string",
+            "example": "ZARCE"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Polygon, MultiPolygon. Geometrías inválidas, conservadas sin reparar: 133."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
