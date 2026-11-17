@@ -1,0 +1,123 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_uh_bal_hdr_geo",
+  "title": "Mapa de Balance Hídrico Promedio Anual de Bolivia, 2016",
+  "description": "La presente cobertura de Balance Hídrico promedio anual muestra los valores de Precipitación, Evapotranspiración real y Escorrentía media anual por Unidad Hidrográfica, los valores obtenidos para cada una de las Unidades Hidrográficas de las tres grandes regiones hidrográficas están agrupados por niveles de clasificación según la metodología Pfafstetter. Comprende los periodos 1998/99 y 2010/11.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_uh_bal_hdr_geo/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 25399663,
+      "hash": "sha256:2c04beeb631c171df75c4100443dde0a0537a22672476ab9c062f95dd38e8597",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "uh_bal_hdr_geo.87"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 89
+            }
+          },
+          {
+            "name": "u_h",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "E011"
+          },
+          {
+            "name": "superf_km2",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 30.1704277774,
+              "maximum": 119559.534271
+            }
+          },
+          {
+            "name": "tipo",
+            "type": "string",
+            "example": "p",
+            "categories": [
+              "p"
+            ]
+          },
+          {
+            "name": "transf",
+            "type": "string",
+            "example": "t",
+            "categories": [
+              "t"
+            ]
+          },
+          {
+            "name": "uh",
+            "type": "string",
+            "example": "E011"
+          },
+          {
+            "name": "p",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 235,
+              "maximum": 3200
+            }
+          },
+          {
+            "name": "etr",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 3,
+              "maximum": 1405
+            }
+          },
+          {
+            "name": "esc",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 17,
+              "maximum": 2006
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
