@@ -1,0 +1,121 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_biomasa_aerea_mgha_en_el_departame_231c7ba016a1",
+  "title": "Biomasa Aérea (Mg/ha) en el Departamento de Oruro",
+  "description": "El mapa muestra la distribución de biomasa aérea en el departamento de Cochabamba, expresada en megagramos por hectárea (Mg/ha), identificando el carbono almacenado en los ecosistemas forestales como base para el análisis de conservación forestal, captura de carbono y planificación de medidas de mitigación y financiamiento climático.",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_biomasa_aerea_mgha_en_el_departame_231c7ba016a1/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 12605963,
+      "hash": "sha256:7e2f3f0ac7839770e7ed239da385a9c2818051c700578b759e9e068d986c3abe",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "layer_biomasa_aerea_mgha_en_el_departamento_de_oruro_4a4qp.105882"
+          },
+          {
+            "name": "biomasa",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 236
+            }
+          },
+          {
+            "name": "sup_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 190000.0
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "ORURO",
+            "categories": [
+              "ORURO",
+              "LA PAZ",
+              "POTOSI"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Sabaya",
+            "categories": [
+              "Sajama",
+              "Ladislao Cabrera",
+              "Carangas",
+              "Cercado",
+              "Abaroa",
+              "Sabaya",
+              "Sur Carangas",
+              "Sebastian Pagador",
+              "Litoral",
+              "Saucari",
+              "Poopo",
+              "San Pedro De Totora",
+              "Nor Carangas",
+              "Pantaleon Dalence",
+              "Mejillones",
+              "Salar de Coipasa",
+              "Tomas Barron",
+              "Lago Uru Uru",
+              "Lago Poopó",
+              "Pacajes",
+              "Gualberto Villarroel",
+              "Tomas Frias",
+              "Chayanta",
+              "Antonio Quijarro",
+              "Alonso de Ibañez",
+              "Daniel Campos",
+              "Loayza"
+            ]
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Sabaya"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
