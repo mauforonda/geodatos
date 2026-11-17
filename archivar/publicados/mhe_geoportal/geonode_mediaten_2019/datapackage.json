@@ -1,0 +1,113 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mhe_geoportal_geonode_mediaten_2019",
+  "title": "MediaTen_2019",
+  "sources": [
+    {
+      "title": "Geoportal del Viceministerio de Electricidad y Energías Renovables",
+      "path": "https://geoportal.mhe.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mhe_geoportal_geonode_mediaten_2019/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 14888674,
+      "hash": "sha256:79366266f2a654d80fe859a58cbe791cf03dca823256238c6f016b66c99263a5",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 515
+            }
+          },
+          {
+            "name": "OBJECTID",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 515
+            }
+          },
+          {
+            "name": "Operador",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "SEPSA",
+            "categories": [
+              "DELAPAZ",
+              "DELBENI",
+              "ELFEC",
+              "ENDE DEORURO",
+              "CESSA",
+              "SEPSA",
+              "CRE",
+              "SETAR",
+              "ENDE Cobija",
+              "15 de Nov",
+              "ATOCHA",
+              "CER",
+              "COOPELECT R.L.",
+              "COOPSEL",
+              "COSEGUA",
+              "COSEP",
+              "COSERMO",
+              "EMDEECRUZ",
+              "ENDE CAMARGO",
+              "ENDE Guaracachi",
+              "ENDE UYUNI",
+              "GAM Uncia",
+              "Gob Oruro",
+              "HB",
+              "Sinchi Wayra SA"
+            ]
+          },
+          {
+            "name": "SIN",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "SIN",
+            "categories": [
+              "SIN",
+              "Sist. Ais."
+            ]
+          },
+          {
+            "name": "SHAPE_Leng",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1.41909629209e-05,
+              "maximum": 116.105455376
+            }
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
