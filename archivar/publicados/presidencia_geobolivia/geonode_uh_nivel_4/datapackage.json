@@ -1,0 +1,146 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_uh_nivel_4",
+  "title": "Unidades hidrograficas de Bolivia Nivel 4",
+  "description": "Este mapa muestra la delimitación de unidades hidrográficas de Bolivia, tipo cuenca en un sistema jerárquico de nivel 4 (menor orden). En este trabajo se utilizaron técnicas de análisis espacial raster para la delimitación de acuerdo al método Pfafstetter para la división y codificación de unidades hidrográficas. Las mismas que se generaron con el uso de sistemas de información geográfica (SIG), modelos digitales de elevación (DEM) y redes de drenaje para la obtención de los watersheds o cuencas. Este proceso comienza con la determinación del río principal, selección de cuatro redes de drenaje de mayor tamaño para la generación de dichas cuencas en formato raster para posteriormente ser convertida en vector. Elaborado por el Viceministerio de Recursos Hídricos y Riego (VRHR) y el Programa de Desarrollo Agropecuario Sustentable (PROAGRO)  en el año 2010 a escala 1: 250000.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_uh_nivel_4/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 43153198,
+      "hash": "sha256:22f03236b01feb1669b28bbe72a9c7141c812b59a18b2af7a7bbeacc3557a1e9",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "uh_nivel_4.58"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 329
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "UH_Nivel_4.58"
+          },
+          {
+            "name": "nivel_4",
+            "type": "string",
+            "example": "0214"
+          },
+          {
+            "name": "nomb_cuenc",
+            "type": "string",
+            "example": "Rio Laguna"
+          },
+          {
+            "name": "observ",
+            "type": "string",
+            "example": "Sin Nombre",
+            "categories": [
+              "Fuente PPPNC-2004",
+              "Fuente INE",
+              "Sin Nombre",
+              "fuente INE",
+              "verificar"
+            ]
+          },
+          {
+            "name": "verificado",
+            "type": "string",
+            "example": "LISTO",
+            "categories": [
+              "LISTO"
+            ]
+          },
+          {
+            "name": "observac_1",
+            "type": "string",
+            "example": "Verificar",
+            "categories": [
+              "Verificar",
+              "Cabecera de Cuenca",
+              "Verficar",
+              "Transfronterizo",
+              "Rio Limitrofe",
+              "(Cuenca Transfronteriza)",
+              "Cabecera del Rio Itenez",
+              "Comprende la La Laguna Mercedes",
+              "Comprende la Laguna Mirin",
+              "ComprendelasLagunasConsuelo y Benedito",
+              "Cuenca Transfronteriza",
+              "Transfronterizo Comprende a la Laguna Mandiore",
+              "TransfronterizoComprende Laguna Isabel",
+              "TransfronterizoComprendeLagunaGaibamirin"
+            ]
+          },
+          {
+            "name": "sup_km2",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0.0222740892481,
+              "maximum": 119559.534233
+            }
+          },
+          {
+            "name": "shape_leng",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 822.009071028,
+              "maximum": 3178814.69249
+            }
+          },
+          {
+            "name": "shape_area",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 21982.3786357,
+              "maximum": 118271888399.0
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
