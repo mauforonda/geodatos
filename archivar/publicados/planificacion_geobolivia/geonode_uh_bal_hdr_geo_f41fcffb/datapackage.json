@@ -1,0 +1,133 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geobolivia_geonode_uh_bal_hdr_geo_f41fcffb",
+  "title": "Balance Hídrico Promedio Anual de Bolivia (2016)",
+  "description": "La presente cobertura de Balance Hídrico promedio anual muestra los valores de Precipitación, Evapotranspiración real y Escorrentía media anual por Unidad Hidrográfica, los valores obtenidos para cada una de las Unidades Hidrográficas de las tres grandes regiones hidrográficas están agrupados por niveles de clasificación según la metodología Pfafstetter. Comprende los periodos 1998/99 y 2010/11.",
+  "sources": [
+    {
+      "title": "Nueva plataforma GeoBolivia",
+      "path": "https://geonode.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geobolivia_geonode_uh_bal_hdr_geo_f41fcffb/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 16214396,
+      "hash": "sha256:6679b1a67928771eb7346d8b4b8204da76799f1d11ebb23182ec1245bed4f347",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "uh_bal_hdr_geo_f41fcffb.87"
+          },
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 89
+            }
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 89
+            }
+          },
+          {
+            "name": "u_h",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "E011"
+          },
+          {
+            "name": "superf_km2",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 30.1704277774,
+              "maximum": 119559.534271
+            }
+          },
+          {
+            "name": "tipo",
+            "type": "string",
+            "example": "p",
+            "categories": [
+              "p"
+            ]
+          },
+          {
+            "name": "transf",
+            "type": "string",
+            "example": "t",
+            "categories": [
+              "t"
+            ]
+          },
+          {
+            "name": "uh",
+            "type": "string",
+            "example": "E011"
+          },
+          {
+            "name": "p",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 235,
+              "maximum": 3200
+            }
+          },
+          {
+            "name": "etr",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 3,
+              "maximum": 1405
+            }
+          },
+          {
+            "name": "esc",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 17,
+              "maximum": 2006
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
