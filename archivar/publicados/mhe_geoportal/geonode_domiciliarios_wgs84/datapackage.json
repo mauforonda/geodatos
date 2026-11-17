@@ -1,0 +1,107 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mhe_geoportal_geonode_domiciliarios_wgs84",
+  "title": "domiciliarios_WGS84",
+  "sources": [
+    {
+      "title": "Geoportal del Viceministerio de Electricidad y Energías Renovables",
+      "path": "https://geoportal.mhe.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mhe_geoportal_geonode_domiciliarios_wgs84/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 21852912,
+      "hash": "sha256:c7582bea5fe546bedf90358266a7c743fcb173304a51c04a5749317ecf44ba63",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPoint. Filas sin geometría: 2337."
+          },
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 473355
+            }
+          },
+          {
+            "name": "CATEGORIA1",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "PDBT",
+            "categories": [
+              "PDBT",
+              "PDMT",
+              "MDBT",
+              "MDMT"
+            ]
+          },
+          {
+            "name": "IDSUMINIST",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "465579"
+          },
+          {
+            "name": "NROSUM",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 100100718.0,
+              "maximum": 9606065000.0
+            }
+          },
+          {
+            "name": "CAT_ANT",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "RES",
+            "categories": [
+              "RES"
+            ]
+          },
+          {
+            "name": "Id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 473355
+            }
+          },
+          {
+            "name": "GMRotation",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 359.999999135771
+            }
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
