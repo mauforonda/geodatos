@@ -1,0 +1,124 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mapbiomas_mapbiomas_arida_conservation_unit_static_layer",
+  "title": "conservation-unit-static-layer",
+  "sources": [
+    {
+      "title": "MapBiomas",
+      "path": "https://shared-geoserver.mapbiomas.org/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mapbiomas_mapbiomas_arida_conservation_unit_static_layer/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 11272719,
+      "hash": "sha256:8d9bfa55f022ca410534412c7c94d3617cfdd71c6b1d9aaffd6e2c124d0a7e8d",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 12538,
+              "maximum": 14658
+            }
+          },
+          {
+            "name": "version",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 1
+            }
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "PARQUE ESTADUAL DO ESPINILHO"
+          },
+          {
+            "name": "source",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "CNUC/MMA",
+            "categories": [
+              "CNUC/MMA"
+            ]
+          },
+          {
+            "name": "inserted_a",
+            "type": "datetime",
+            "constraints": {
+              "required": true,
+              "minimum": "2020-02-07T00:00:00+00:00",
+              "maximum": "2020-02-07T00:00:00+00:00"
+            }
+          },
+          {
+            "name": "updated_at",
+            "type": "datetime",
+            "constraints": {
+              "required": true,
+              "minimum": "2020-02-07T00:00:00+00:00",
+              "maximum": "2020-02-07T00:00:00+00:00"
+            }
+          },
+          {
+            "name": "category",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "conservation_unit",
+            "categories": [
+              "conservation_unit"
+            ]
+          },
+          {
+            "name": "category_n",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Unidade de Conservação",
+            "categories": [
+              "Unidade de Conservação"
+            ]
+          },
+          {
+            "name": "area_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0.04213,
+              "maximum": 40384968.62415
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 319."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
