@@ -1,0 +1,121 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_biomasa_aerea_mgha_en_el_departame_c1ad3531df8a",
+  "title": "Biomasa Aérea (Mg/ha) en el Departamento de Cochabamba",
+  "description": "El mapa muestra la distribución de biomasa aérea en el departamento de Cochabamba, expresada en megagramos por hectárea (Mg/ha), identificando el carbono almacenado en los ecosistemas forestales como base para el análisis de conservación forestal, captura de carbono y planificación de medidas de mitigación y financiamiento climático.",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_biomasa_aerea_mgha_en_el_departame_c1ad3531df8a/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 14663543,
+      "hash": "sha256:c8e25e7869f5e51c18c9457f625e031ca435aa54b29201886c82c8c51295fad1",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "layer_biomasa_aerea_mgha_en_el_departamento_de_cochabam_4bn59.160931"
+          },
+          {
+            "name": "biomasa",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 384
+            }
+          },
+          {
+            "name": "sup_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 110000.0
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "COCHABAMBA",
+            "categories": [
+              "COCHABAMBA",
+              "LA PAZ",
+              "POTOSI",
+              "SANTA CRUZ",
+              "CHUQUISACA",
+              "ORURO"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Bolivar",
+            "categories": [
+              "Chapare",
+              "Carrasco",
+              "Ayopaya",
+              "Campero",
+              "Tiraque",
+              "Mizque",
+              "Esteban Arze",
+              "Tapacari",
+              "Arque",
+              "Capinota",
+              "Quillacollo",
+              "Bolivar",
+              "Punata",
+              "German Jordan",
+              "Cercado",
+              "Arani",
+              "Cuerpo de Agua",
+              "Inquisivi",
+              "General Bernardino Bilbao",
+              "Charcas",
+              "Ichilo",
+              "Manuel María Caballero",
+              "Oropeza",
+              "Sur Yungas",
+              "Valle Grande",
+              "Zudañez",
+              "Alonso de Ibañez"
+            ]
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "example": "Bolivar"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
