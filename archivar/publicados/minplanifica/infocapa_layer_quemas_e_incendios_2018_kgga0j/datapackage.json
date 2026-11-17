@@ -1,0 +1,91 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_minplanifica_infocapa_layer_quemas_e_incendios_2018_kgga0j",
+  "title": "layer_quemas_e_incendios_2018_kgga0j",
+  "sources": [
+    {
+      "title": "Geoserver del Ministerio de Planificación del Desarollo",
+      "path": "https://geoserver.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_minplanifica_infocapa_layer_quemas_e_incendios_2018_kgga0j/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 11765351,
+      "hash": "sha256:ea1aa305c5b0ca492b8e55bd85858550f03674c06e6794a91b7d8aa20323f548",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "layer_quemas_e_incendios_2018_kgga0j.8550"
+          },
+          {
+            "name": "sup_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 58653.607
+            }
+          },
+          {
+            "name": "clase",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Quema",
+            "categories": [
+              "Incendio",
+              "Quema"
+            ]
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "example": "Oruro",
+            "categories": [
+              "Santa Cruz",
+              "Beni",
+              "La Paz",
+              "Tarija",
+              "Cochabamba",
+              "Pando",
+              "Chuquisaca",
+              "Oruro",
+              "Potosi"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "example": "Ladislao Cabrera"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "example": "Salinas de Garci Mendoza"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 5461."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
