@@ -1,0 +1,181 @@
+{
+  "type": "Collection",
+  "id": "geodatosbolivia_lapaz_sit_alt_catastro_trazos",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json",
+    "https://stac-extensions.github.io/vector/v0.1.0/schema.json",
+    "https://stac-extensions.github.io/projection/v2.0.0/schema.json",
+    "https://stac-extensions.github.io/file/v2.1.0/schema.json",
+    "https://stac-extensions.github.io/web-map-links/v1.3.0/schema.json"
+  ],
+  "title": "catastrotrazos",
+  "description": "catastrotrazos",
+  "license": "other",
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -68.17100837660244,
+          -16.600878495298282,
+          -68.01032600692466,
+          -16.436963791077428
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "providers": [
+    {
+      "name": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)",
+      "roles": [
+        "producer"
+      ],
+      "url": "http://sitservicios.lapaz.bo/ows38.jsp"
+    },
+    {
+      "name": "Internet Archive",
+      "roles": [
+        "host"
+      ],
+      "url": "https://archive.org/details/geodatosbolivia_lapaz_sit_alt_catastro_trazos"
+    }
+  ],
+  "table:primary_geometry": "geometry",
+  "table:row_count": 12428,
+  "table:columns": [
+    {
+      "name": "id",
+      "type": "string"
+    },
+    {
+      "name": "classid",
+      "type": "int32"
+    },
+    {
+      "name": "revisionnumber",
+      "type": "int32"
+    },
+    {
+      "name": "observaciones",
+      "type": "string"
+    },
+    {
+      "name": "objectid_sercat",
+      "type": "double"
+    },
+    {
+      "name": "IdUsuario",
+      "type": "double"
+    },
+    {
+      "name": "FechaRegistro",
+      "type": "timestamp[us, tz=UTC]"
+    },
+    {
+      "name": "geometry",
+      "type": "binary",
+      "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: LineString, MultiLineString. La fuente declaraba EPSG:4326 pero sus coordenadas estaban en EPSG:32719 (sistema inferido por la ubicación de las geometrías en Bolivia); se reproyectaron."
+    }
+  ],
+  "summaries": {
+    "vector:geometry_types": [
+      "LineString",
+      "MultiLineString"
+    ]
+  },
+  "assets": {
+    "data": {
+      "href": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_catastro_trazos/dataset.geoparquet",
+      "type": "application/vnd.apache.parquet",
+      "title": "GeoParquet",
+      "roles": [
+        "data"
+      ],
+      "proj:code": "EPSG:4326",
+      "file:size": 26807757,
+      "file:checksum": "12203f5e62b4462d507f4275d2a3890b6ceb49651b8b38ac117c07c66650d732c9a8"
+    },
+    "datapackage": {
+      "href": "./datapackage.json",
+      "type": "application/json",
+      "title": "Data Package: columnas, tipos y categorías",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "pmtiles": {
+      "href": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_catastro_trazos/dataset.pmtiles",
+      "type": "application/vnd.pmtiles",
+      "title": "Teselas vectoriales (PMTiles)",
+      "roles": [
+        "visual"
+      ],
+      "file:size": 1735305,
+      "file:checksum": "12206e12e6490b54aa002d3b7cddd6e0ca6904892ef1146ce1f4123f4c6bbec2fbd4"
+    }
+  },
+  "pmtiles:min_zoom": 12,
+  "pmtiles:max_zoom": 14,
+  "pmtiles:tile_type": "mvt",
+  "pmtiles:center": [
+    -68.0906671,
+    -16.5189211,
+    13
+  ],
+  "pmtiles:properties": [
+    {
+      "nombre": "classid",
+      "tipo": "number",
+      "minimo": 41.0,
+      "maximo": 44.0
+    },
+    {
+      "nombre": "revisionnumber",
+      "tipo": "number",
+      "minimo": 0.0,
+      "maximo": 6.0
+    },
+    {
+      "nombre": "IdUsuario",
+      "tipo": "number",
+      "minimo": 615.0,
+      "maximo": 3489.0
+    }
+  ],
+  "links": [
+    {
+      "rel": "root",
+      "href": "../../../catalog.json",
+      "type": "application/json",
+      "title": "Datos geográficos de Bolivia"
+    },
+    {
+      "rel": "parent",
+      "href": "../catalog.json",
+      "type": "application/json",
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)"
+    },
+    {
+      "rel": "via",
+      "href": "http://sitservicios.lapaz.bo/ows38.jsp",
+      "type": "text/html",
+      "title": "Servicio de origen"
+    },
+    {
+      "rel": "pmtiles",
+      "href": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_catastro_trazos/dataset.pmtiles",
+      "type": "application/vnd.pmtiles",
+      "pmtiles:layers": [
+        "dataset"
+      ]
+    }
+  ]
+}

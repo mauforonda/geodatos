@@ -1,0 +1,92 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_alt_catastro_trazos",
+  "title": "catastrotrazos",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)",
+      "path": "http://sitservicios.lapaz.bo/ows38.jsp"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_catastro_trazos/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 26807757,
+      "hash": "sha256:3f5e62b4462d507f4275d2a3890b6ceb49651b8b38ac117c07c66650d732c9a8",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "trazos.10286"
+          },
+          {
+            "name": "classid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 41,
+              "maximum": 44
+            }
+          },
+          {
+            "name": "revisionnumber",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 6
+            }
+          },
+          {
+            "name": "observaciones",
+            "type": "string",
+            "example": "PVAP"
+          },
+          {
+            "name": "objectid_sercat",
+            "type": "number",
+            "constraints": {
+              "minimum": 1.0,
+              "maximum": 125657.0
+            }
+          },
+          {
+            "name": "IdUsuario",
+            "type": "number",
+            "constraints": {
+              "minimum": 615.0,
+              "maximum": 3489.0
+            }
+          },
+          {
+            "name": "FechaRegistro",
+            "type": "datetime",
+            "constraints": {
+              "minimum": "2012-08-31T20:07:34.423000+00:00",
+              "maximum": "2026-05-29T17:39:14.783000+00:00"
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: LineString, MultiLineString. La fuente declaraba EPSG:4326 pero sus coordenadas estaban en EPSG:32719 (sistema inferido por la ubicación de las geometrías en Bolivia); se reproyectaron."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
