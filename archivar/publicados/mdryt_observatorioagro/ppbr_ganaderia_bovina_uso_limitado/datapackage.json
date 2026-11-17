@@ -1,0 +1,147 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mdryt_observatorioagro_ppbr_ganaderia_bovina_uso_limitado",
+  "title": "GANADERIA_BOVINA_USO_LIMITADO",
+  "sources": [
+    {
+      "title": "Geovisor del Observatorio Agroambiental y Productivo del Ministerio de Desarrollo Rural y Tierras (MDRyT)",
+      "path": "http://geoserver.observatorioagro.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mdryt_observatorioagro_ppbr_ganaderia_bovina_uso_limitado/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 25001648,
+      "hash": "sha256:e26997caee801d678de6df9d696e715afffff7b7eb05e77734d9cfa5bb177994",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 17."
+          },
+          {
+            "name": "OBJECTID",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 387,
+              "maximum": 3162
+            }
+          },
+          {
+            "name": "LEYENDA2",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "GANADERIA BOVINA USO LIMITADO",
+            "categories": [
+              "GANADERIA BOVINA USO LIMITADO"
+            ]
+          },
+          {
+            "name": "CODIGO",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "020701"
+          },
+          {
+            "name": "HECTAREAS",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0.01241573554,
+              "maximum": 1441413.62104
+            }
+          },
+          {
+            "name": "Shape_Leng",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0.00105878693,
+              "maximum": 223.027441953
+            }
+          },
+          {
+            "name": "Shape_Area",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1.043e-08,
+              "maximum": 1.19872550319
+            }
+          },
+          {
+            "name": "COD_REG",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 4
+            }
+          },
+          {
+            "name": "COD_DEP",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 9
+            }
+          },
+          {
+            "name": "REGION",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Amazonica La Paz",
+            "categories": [
+              "Amazonica Beni",
+              "Itenez Mamore",
+              "Mojena",
+              "Amazonica La Paz",
+              "Amazonia-Madre de Dios",
+              "Chaco CruceÃ±o",
+              "Yacuma",
+              "Chaco ChuquisaqueÃ±o"
+            ]
+          },
+          {
+            "name": "NOM_DEP",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "LA PAZ",
+            "categories": [
+              "BENI",
+              "LA PAZ",
+              "PANDO",
+              "SANTA CRUZ",
+              "CHUQUISACA"
+            ]
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
