@@ -1,0 +1,125 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_minplanifica_infocapa_layer_macroregiones_ms5y6",
+  "title": "layer_macroregiones_ms5y6",
+  "sources": [
+    {
+      "title": "Geoserver del Ministerio de Planificación del Desarollo",
+      "path": "https://geoserver.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_minplanifica_infocapa_layer_macroregiones_ms5y6/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 9876790,
+      "hash": "sha256:b284c1d59ac16f14459999f81d495cf4b6d50388a5d5e29b99f00bd4f137a7bb",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_macroregiones_ms5y6.194"
+          },
+          {
+            "name": "region",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Lipez",
+            "categories": [
+              "Norte Potosi",
+              "Lipez",
+              "Yungas de La Paz",
+              "Norte integrado",
+              "Gran Chaco Tarijeño",
+              "Amazonica-Tahuamano",
+              "Itenez-Mamore",
+              "Sin Dato"
+            ]
+          },
+          {
+            "name": "macroregio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "ALTIPLANO",
+            "categories": [
+              "VALLES",
+              "ALTIPLANO",
+              "YUNGAS-CHAPARE",
+              "CHIQUITANIA-PANTANAL",
+              "CHACO",
+              "AMAZONICA",
+              "LLANURAS-SABANAS",
+              "Sin Datos"
+            ]
+          },
+          {
+            "name": "sup_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 7036413.52081
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "example": "POTOSI",
+            "categories": [
+              "La Paz",
+              "Santa Cruz",
+              "Cochabamba",
+              "Potosi",
+              "Oruro",
+              "Chuquisaca",
+              "Beni",
+              "Tarija",
+              "Pando",
+              "LA PAZ",
+              "ORURO",
+              "POTOSI",
+              "SANTA CRUZ",
+              "BENI",
+              "PANDO"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "DANIEL CAMPOS"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "example": "LLICA"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Filas sin geometría: 33. Geometrías inválidas, conservadas sin reparar: 1367."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
