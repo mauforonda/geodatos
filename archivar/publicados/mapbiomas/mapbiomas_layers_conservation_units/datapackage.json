@@ -1,0 +1,221 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mapbiomas_mapbiomas_layers_conservation_units",
+  "title": "conservation_units",
+  "sources": [
+    {
+      "title": "MapBiomas",
+      "path": "https://shared-geoserver.mapbiomas.org/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mapbiomas_mapbiomas_layers_conservation_units/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 12694496,
+      "hash": "sha256:870dfafc35a5e884fffc36af742845dd0c64f07c02c69e7268bb28fe55c42674",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "number",
+            "constraints": {
+              "minimum": 30631.0,
+              "maximum": 32815.0
+            }
+          },
+          {
+            "name": "id_uc",
+            "type": "string",
+            "example": "1020"
+          },
+          {
+            "name": "nome_uc",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "PARQUE ESTADUAL DO ESPINILHO"
+          },
+          {
+            "name": "categoria_uc",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Parque",
+            "categories": [
+              "Reserva Particular do Patrimônio Natural",
+              "Parque",
+              "Área de Proteção Ambiental",
+              "Refúgio de Vida Silvestre",
+              "Monumento Natural",
+              "Área de Relevante Interesse Ecológico",
+              "PARNA",
+              "Estação Ecológica",
+              "FLONA",
+              "RESEX",
+              "Reserva de Desenvolvimento Sustentável",
+              "APA",
+              "Floresta",
+              "Reserva Biológica",
+              "REBIO",
+              "ESEC",
+              "Reserva Extrativista",
+              "ARIE",
+              "REVIS",
+              "MONA",
+              "RDS"
+            ]
+          },
+          {
+            "name": "grupo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Proteção Integral",
+            "categories": [
+              "Uso Sustentável",
+              "Proteção Integral",
+              "US",
+              "PI"
+            ]
+          },
+          {
+            "name": "esfera",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Estadual",
+            "categories": [
+              "Estadual",
+              "Federal",
+              "Municipal"
+            ]
+          },
+          {
+            "name": "ano_criacao",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "12-03-1975"
+          },
+          {
+            "name": "qualidade",
+            "type": "string",
+            "example": "Polígono corresponde ao memorial descritivo",
+            "categories": [
+              "Polígono corresponde ao memorial descritivo",
+              "Polígono é uma estimativa dos limites da UC",
+              "Polígono é uma representação esquemática da localização da UC"
+            ]
+          },
+          {
+            "name": "ato_legal",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Decreto 23798 de 12-03-1975"
+          },
+          {
+            "name": "dt_atualiz",
+            "type": "integer"
+          },
+          {
+            "name": "codigo_uc",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "0000.43.1020"
+          },
+          {
+            "name": "source",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "ibama",
+            "categories": [
+              "ibama",
+              "icmbio"
+            ]
+          },
+          {
+            "name": "category",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "state_protected_area_integral_protection",
+            "categories": [
+              "federal_protected_area_sustainable_use",
+              "state_protected_area_sustainable_use",
+              "state_protected_area_integral_protection",
+              "municipality_protected_area_integral_protection",
+              "municipality_protected_area_sustainable_use",
+              "federal_protected_area_integral_protection"
+            ]
+          },
+          {
+            "name": "geohash",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "6dxh"
+          },
+          {
+            "name": "_name",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "parqueestadualespinilho"
+          },
+          {
+            "name": "version",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 4
+            }
+          },
+          {
+            "name": "name_eq",
+            "type": "boolean",
+            "constraints": {
+              "required": true
+            }
+          },
+          {
+            "name": "geom_eq",
+            "type": "boolean",
+            "constraints": {
+              "required": true
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 397."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
