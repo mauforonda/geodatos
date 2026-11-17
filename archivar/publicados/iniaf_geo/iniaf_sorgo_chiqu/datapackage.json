@@ -1,0 +1,123 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_iniaf_geo_iniaf_sorgo_chiqu",
+  "title": "sorgo_chiqu",
+  "sources": [
+    {
+      "title": "GeoServer del Instituto Nacional de Innovación Agropecuaria y Forestal",
+      "path": "https://geoserver.iniaf.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_iniaf_geo_iniaf_sorgo_chiqu/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 23856401,
+      "hash": "sha256:c5ff490783636790deab40541e88c2a3c4817c36b6a773c8f518ebaac2e82462",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "sorgo_chiqu.4505"
+          },
+          {
+            "name": "proyecto",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Chiquitania",
+            "categories": [
+              "Chiquitania"
+            ]
+          },
+          {
+            "name": "aptitud",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Muy Apto",
+            "categories": [
+              "Muy Apto"
+            ]
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "SANTA CRUZ",
+            "categories": [
+              "SANTA CRUZ",
+              "BENI"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Ñuflo De Chavez",
+            "categories": [
+              "Velasco",
+              "Ñuflo De Chavez",
+              "Guarayos",
+              "Marban"
+            ]
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "San Julián",
+            "categories": [
+              "San Ignacio",
+              "El Puente",
+              "San Julián",
+              "San Rafael",
+              "Cuatro Cañadas",
+              "San Miguel",
+              "Urubicha",
+              "San Andrés",
+              "Loreto",
+              "San Javier",
+              "San Ramón"
+            ]
+          },
+          {
+            "name": "sup_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 396143.59
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 44."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
