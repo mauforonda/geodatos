@@ -1,0 +1,197 @@
+{
+  "type": "Collection",
+  "id": "geodatosbolivia_lapaz_sit_alt_catastro_lotes",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json",
+    "https://stac-extensions.github.io/vector/v0.1.0/schema.json",
+    "https://stac-extensions.github.io/projection/v2.0.0/schema.json",
+    "https://stac-extensions.github.io/file/v2.1.0/schema.json",
+    "https://stac-extensions.github.io/web-map-links/v1.3.0/schema.json"
+  ],
+  "title": "catastrolotes",
+  "description": "catastrolotes",
+  "license": "other",
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -68.17093352758052,
+          -16.608152275915646,
+          -67.72634472360001,
+          -15.861864030151882
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "providers": [
+    {
+      "name": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)",
+      "roles": [
+        "producer"
+      ],
+      "url": "http://sitservicios.lapaz.bo/ows38.jsp"
+    },
+    {
+      "name": "Internet Archive",
+      "roles": [
+        "host"
+      ],
+      "url": "https://archive.org/details/geodatosbolivia_lapaz_sit_alt_catastro_lotes"
+    }
+  ],
+  "table:primary_geometry": "geometry",
+  "table:row_count": 100000,
+  "table:columns": [
+    {
+      "name": "id",
+      "type": "string"
+    },
+    {
+      "name": "codigocatastral",
+      "type": "string"
+    },
+    {
+      "name": "distritocatastral",
+      "type": "int32"
+    },
+    {
+      "name": "manzana",
+      "type": "int32"
+    },
+    {
+      "name": "predio",
+      "type": "int32"
+    },
+    {
+      "name": "estadopredio",
+      "type": "double"
+    },
+    {
+      "name": "fuente",
+      "type": "string"
+    },
+    {
+      "name": "geometry",
+      "type": "binary",
+      "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 133. La fuente declaraba EPSG:4326 pero sus coordenadas estaban en EPSG:32719 (sistema inferido por la ubicación de las geometrías en Bolivia); se reproyectaron."
+    }
+  ],
+  "summaries": {
+    "vector:geometry_types": [
+      "MultiPolygon"
+    ]
+  },
+  "assets": {
+    "data": {
+      "href": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_catastro_lotes/dataset.geoparquet",
+      "type": "application/vnd.apache.parquet",
+      "title": "GeoParquet",
+      "roles": [
+        "data"
+      ],
+      "proj:code": "EPSG:4326",
+      "file:size": 20394997,
+      "file:checksum": "12202594ff032011e12be6423de9e6326d703f84c8e8f68174305aecc8e568c6a7a7"
+    },
+    "datapackage": {
+      "href": "./datapackage.json",
+      "type": "application/json",
+      "title": "Data Package: columnas, tipos y categorías",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "pmtiles": {
+      "href": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_catastro_lotes/dataset.pmtiles",
+      "type": "application/vnd.pmtiles",
+      "title": "Teselas vectoriales (PMTiles)",
+      "roles": [
+        "visual"
+      ],
+      "file:size": 5259036,
+      "file:checksum": "1220733df77b9f7c1f16a60e8e69da53164a4f9f540729ff16a3cd742edbcdd43985"
+    }
+  },
+  "pmtiles:min_zoom": 10,
+  "pmtiles:max_zoom": 14,
+  "pmtiles:tile_type": "mvt",
+  "pmtiles:center": [
+    -67.9486645,
+    -16.2350081,
+    12
+  ],
+  "pmtiles:properties": [
+    {
+      "nombre": "fuente",
+      "tipo": "string",
+      "categorias": [
+        "EXTERNO",
+        "PROYECTO",
+        "LEVANTAMIENTO",
+        "MIGRACION SIFCA",
+        "SIT"
+      ]
+    },
+    {
+      "nombre": "estadopredio",
+      "tipo": "number",
+      "minimo": 0.0,
+      "maximo": 15.0
+    },
+    {
+      "nombre": "distritocatastral",
+      "tipo": "number",
+      "minimo": 0.0,
+      "maximo": 47.0
+    },
+    {
+      "nombre": "predio",
+      "tipo": "number",
+      "minimo": 0.0,
+      "maximo": 1283.0
+    },
+    {
+      "nombre": "manzana",
+      "tipo": "number",
+      "minimo": 0.0,
+      "maximo": 3414.0
+    }
+  ],
+  "links": [
+    {
+      "rel": "root",
+      "href": "../../../catalog.json",
+      "type": "application/json",
+      "title": "Datos geográficos de Bolivia"
+    },
+    {
+      "rel": "parent",
+      "href": "../catalog.json",
+      "type": "application/json",
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)"
+    },
+    {
+      "rel": "via",
+      "href": "http://sitservicios.lapaz.bo/ows38.jsp",
+      "type": "text/html",
+      "title": "Servicio de origen"
+    },
+    {
+      "rel": "pmtiles",
+      "href": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_catastro_lotes/dataset.pmtiles",
+      "type": "application/vnd.pmtiles",
+      "pmtiles:layers": [
+        "dataset"
+      ]
+    }
+  ]
+}
