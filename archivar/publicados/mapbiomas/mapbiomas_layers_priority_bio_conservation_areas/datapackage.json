@@ -1,0 +1,98 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mapbiomas_mapbiomas_layers_priority_bio_conservation_areas",
+  "title": "priority_bio_conservation_areas",
+  "sources": [
+    {
+      "title": "MapBiomas",
+      "path": "https://shared-geoserver.mapbiomas.org/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mapbiomas_mapbiomas_layers_priority_bio_conservation_areas/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 16579203,
+      "hash": "sha256:66a0e2b920fabc1120cdff38a0557745663413ca0f1b7101ff8ab098280e1b73",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "priority_bio_conservation_areas.fid-1430c10_19d8c81ddf5_-4111"
+          },
+          {
+            "name": "COD_area",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "PA019"
+          },
+          {
+            "name": "Import_bio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Muito alta",
+            "categories": [
+              "Extremamente alta",
+              "Alta",
+              "Muito alta"
+            ]
+          },
+          {
+            "name": "Prior_acao",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Muito alta",
+            "categories": [
+              "Extremamente alta",
+              "Muito alta",
+              "Alta"
+            ]
+          },
+          {
+            "name": "Area_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0.45254205908,
+              "maximum": 2040559.31
+            }
+          },
+          {
+            "name": "geometry_analysis",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Valid Geometry"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon, Polygon. Geometrías inválidas, conservadas sin reparar: 304."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
