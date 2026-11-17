@@ -1,0 +1,46 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_raisg_ama_layer_foco_calor_ama_fecha_hora",
+  "title": "foco_calor_ama_fecha_hora",
+  "sources": [
+    {
+      "title": "RAISG - AMA",
+      "path": "https://ama.raisg.org:8443/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_raisg_ama_layer_foco_calor_ama_fecha_hora/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 24886420,
+      "hash": "sha256:d2784ddb9bc90c96bab0560e0dacb93e2a1e34fff173f3ac8c81e1b6938d90e8",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1343303,
+              "maximum": 54966101
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Point."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
