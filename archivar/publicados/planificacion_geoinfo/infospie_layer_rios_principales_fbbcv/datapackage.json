@@ -1,0 +1,101 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_rios_principales_fbbcv",
+  "title": "Ríos principales",
+  "description": "El mapa muestra la distribución de los ríos principales existentes en territorio nacional. La información fue producida por el Servicio Nacional de Hidrografia Naval.",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_rios_principales_fbbcv/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 24868999,
+      "hash": "sha256:96525ce65e79b8b8448079bdf368a9f768e85599d1859a4015227ba0383ad45d",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_rios_principales_fbbcv.222"
+          },
+          {
+            "name": "tipo_des",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Permanente",
+            "categories": [
+              "Permanente"
+            ]
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "RIO MULATO"
+          },
+          {
+            "name": "sup_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0.008,
+              "maximum": 61417.752
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "example": "POTOSI",
+            "categories": [
+              "POTOSI",
+              "LA PAZ",
+              "CHUQUISACA",
+              "BENI",
+              "COCHABAMBA",
+              "SANTA CRUZ",
+              "ORURO",
+              "PANDO",
+              "TARIJA"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "example": "Antonio Quijarro"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "example": "Uyuni"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 7."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
