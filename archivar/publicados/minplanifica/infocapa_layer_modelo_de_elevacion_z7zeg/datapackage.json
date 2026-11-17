@@ -1,0 +1,111 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_minplanifica_infocapa_layer_modelo_de_elevacion_z7zeg",
+  "title": "layer_modelo_de_elevacion_z7zeg",
+  "sources": [
+    {
+      "title": "Geoserver del Ministerio de Planificación del Desarollo",
+      "path": "https://geoserver.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_minplanifica_infocapa_layer_modelo_de_elevacion_z7zeg/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 19108459,
+      "hash": "sha256:d0ce6743cc64e7035998dc1fd4c39cee02cc294f15344935503fb9c679c86e49",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_modelo_de_elevacion_z7zeg.794"
+          },
+          {
+            "name": "altura",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "3.389 - 3.930 msnm",
+            "categories": [
+              "3.389 - 3.930 msnm",
+              "3.931 - 4.417 msnm",
+              "2.695 - 3.388 msnm",
+              "4.418 - 6.549 msnm",
+              "2.000 - 2.694 msnm",
+              "1.346 - 1.999 msnm",
+              "735 - 1.345 msnm",
+              "318 - 734 msnm",
+              "20 - 317 msnm"
+            ]
+          },
+          {
+            "name": "sup_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0.0781848146685,
+              "maximum": 4571306.6462
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Potosi",
+            "categories": [
+              "La Paz",
+              "Cochabamba",
+              "Potosi",
+              "Santa Cruz",
+              "Chuquisaca",
+              "Oruro",
+              "Tarija",
+              "Beni",
+              "Pando",
+              "LA PAZ",
+              "POTOSI"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Daniel Campos"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Llica"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 883."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
