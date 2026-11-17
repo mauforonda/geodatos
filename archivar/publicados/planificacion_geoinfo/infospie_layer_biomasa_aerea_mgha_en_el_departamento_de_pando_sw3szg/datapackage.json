@@ -1,0 +1,117 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_biomasa_aerea_mgha_en_el_departame_eb68c92fc3d5",
+  "title": "Biomasa Aérea (Mg/ha) en el Departamento de Pando",
+  "description": "El mapa muestra la distribución de biomasa aérea en el departamento de Pando, expresada en megagramos por hectárea (Mg/ha), identificando el carbono almacenado en los ecosistemas forestales como base para el análisis de conservación forestal, captura de carbono y planificación de medidas de mitigación y financiamiento climático.",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_biomasa_aerea_mgha_en_el_departame_eb68c92fc3d5/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 16592249,
+      "hash": "sha256:edfbe9a23fda597384e094000d188919d9df2326e31d331a8d061876a10e5cb2",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "layer_biomasa_aerea_mgha_en_el_departamento_de_pando_sw3szg.241045"
+          },
+          {
+            "name": "biomasa",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 406
+            }
+          },
+          {
+            "name": "sup_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 773.244
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "PANDO",
+            "categories": [
+              "PANDO",
+              "BENI"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Manuripi",
+            "categories": [
+              "Manuripi",
+              "Federico Roman",
+              "Madre De Dios",
+              "Abuná",
+              "Nicolas Suarez",
+              "Vaca Diez"
+            ]
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Filadelfia",
+            "categories": [
+              "Filadelfia",
+              "Sena",
+              "Santos Mercado",
+              "Ingavi",
+              "Bella Flor",
+              "Puerto Rico",
+              "Santa Rosa",
+              "Nueva Esperanza",
+              "San Lorenzo",
+              "Villa Nueva",
+              "San Pedro",
+              "Bolpebra",
+              "Puerto Gonzalo Moreno",
+              "Porvenir",
+              "Cobija",
+              "Riberalta"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
