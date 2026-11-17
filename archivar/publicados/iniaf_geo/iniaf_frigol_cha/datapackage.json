@@ -1,0 +1,138 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_iniaf_geo_iniaf_frigol_cha",
+  "title": "frigol_cha",
+  "sources": [
+    {
+      "title": "GeoServer del Instituto Nacional de Innovación Agropecuaria y Forestal",
+      "path": "https://geoserver.iniaf.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_iniaf_geo_iniaf_frigol_cha/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 16819794,
+      "hash": "sha256:87c0e0c783077af86afc67352882ee7340fc514ea78528d523645f4e5cef8795",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "frigol_cha.2"
+          },
+          {
+            "name": "proyecto",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Chaco",
+            "categories": [
+              "Chaco"
+            ]
+          },
+          {
+            "name": "aptitud",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Muy Apto",
+            "categories": [
+              "Muy Apto"
+            ]
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "CHUQUISACA",
+            "categories": [
+              "SANTA CRUZ",
+              "CHUQUISACA",
+              "TARIJA"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Hernando Siles",
+            "categories": [
+              "Cordillera",
+              "Gran Chaco",
+              "Luis Calvo",
+              "Valle Grande",
+              "Florida",
+              "Hernando Siles",
+              "Manuel María Caballero",
+              "O'Connor"
+            ]
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Monteagudo"
+          },
+          {
+            "name": "zona",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "20",
+            "categories": [
+              "20",
+              "20_21"
+            ]
+          },
+          {
+            "name": "capital",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Monteagudo"
+          },
+          {
+            "name": "sup_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 46.53,
+              "maximum": 124315.66
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 18."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
