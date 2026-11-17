@@ -1,0 +1,115 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_ph_en_los_suelos_h1hmm",
+  "title": "PH en los suelos",
+  "description": "El mapa presenta el pH (potencial de hidrógeno) el cual indica el nivel de alcalinidad o acidez de distintas sustancias, en las  diferentes regiones que contienen una concentración de hidrógeno en el territorio nacional.",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_ph_en_los_suelos_h1hmm/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 16664882,
+      "hash": "sha256:628a3e7be5639f2ffccf87fa8c4026501f525ec3fb95a6c0e60ec9ff4800612f",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "layer_ph_en_los_suelos_h1hmm.3956"
+          },
+          {
+            "name": "ph",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Ligeramente acido",
+            "categories": [
+              "Ligeramente alcalino",
+              "Neutro",
+              "Ligeramente acido",
+              "Moderadamente acido",
+              "acido fuerte",
+              "acido muy fuerte",
+              "Moderadamente alcalino",
+              "Alcalino fuerte",
+              "acido extremo",
+              "Ultra acido",
+              "Alcalino muy fuerte"
+            ]
+          },
+          {
+            "name": "codigo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "050902"
+          },
+          {
+            "name": "sup_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 3254955.413
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "example": "POTOSI",
+            "categories": [
+              "LA PAZ",
+              "SANTA CRUZ",
+              "COCHABAMBA",
+              "POTOSI",
+              "CHUQUISACA",
+              "ORURO",
+              "BENI",
+              "TARIJA",
+              "PANDO",
+              "Cochabamba",
+              "Potosi",
+              "La Paz"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Nor Lipez"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "example": "San Pedro de Quemes"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 60."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
