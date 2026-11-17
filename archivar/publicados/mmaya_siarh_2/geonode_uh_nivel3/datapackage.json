@@ -1,0 +1,128 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_uh_nivel3",
+  "title": "Unidades Hidrograficas - Nivel 3",
+  "description": "Limite de unidades hidrográficas nivel 3 con codificación pfafstetter",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_uh_nivel3/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 10540018,
+      "hash": "sha256:d80f0dc27a4c34f44c2680cd58c82eb598ac6c161c9f33f3d173ba67b40c7639",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "NIVEL_1",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "",
+            "categories": [
+              "8",
+              "0",
+              "4",
+              ""
+            ]
+          },
+          {
+            "name": "NIVEL_2",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "",
+            "categories": [
+              "02",
+              "80",
+              "86",
+              "89",
+              "01",
+              "46",
+              "",
+              "03",
+              "87",
+              "05",
+              "49",
+              "85"
+            ]
+          },
+          {
+            "name": "NIVEL_3",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": ""
+          },
+          {
+            "name": "NOMBRE",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": ""
+          },
+          {
+            "name": "SUP_KM2",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 5.3,
+              "maximum": 233193.42
+            }
+          },
+          {
+            "name": "TIPO",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Arreica",
+            "categories": [
+              "Exorreica",
+              "Endorreica",
+              "Arreica"
+            ]
+          },
+          {
+            "name": "CLASIFIC",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Cuenca",
+            "categories": [
+              "Cuenca",
+              "Mesocuenca",
+              "SubCuenca",
+              "Microcuenca",
+              "Gran Cuenca",
+              "GranCuenca"
+            ]
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
