@@ -1,0 +1,91 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_smtcc_smtcc_raster_carbono_del_suelo_organico_sddl7",
+  "title": "raster_carbono_del_suelo_organico_sddl7",
+  "sources": [
+    {
+      "title": "Sistema de Monitoreo de La Madre Tierra y Cambio Climático del Ministerio de Medio Ambiente y Agua (MMAyA)",
+      "path": "https://geoserver.madretierra.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_smtcc_smtcc_raster_carbono_del_suelo_organico_sddl7/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 14347344,
+      "hash": "sha256:dc65f7a036f8821c9540c68f2a848fc893cd353d682274743df806a6221c31b3",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "raster_carbono_del_suelo_organico_sddl7.69317"
+          },
+          {
+            "name": "gridcode",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 8
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "example": "POTOSI",
+            "categories": [
+              "SANTA CRUZ",
+              "PANDO",
+              "BENI",
+              "LA PAZ",
+              "POTOSI",
+              "TARIJA",
+              "ORURO",
+              "COCHABAMBA",
+              "CHUQUISACA"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Nor Lipez"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "example": "San Pedro de Quemes"
+          },
+          {
+            "name": "sup_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 5853945.49016
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Filas sin geometría: 1. Geometrías inválidas, conservadas sin reparar: 5."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
