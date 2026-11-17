@@ -1,0 +1,92 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_minplanifica_infospie_layer_tasa_neta_de_migracion_por_municipio_xo96l",
+  "title": "layer_tasa_neta_de_migracion_por_municipio_xo96l",
+  "sources": [
+    {
+      "title": "Geoserver del Ministerio de Planificación del Desarollo",
+      "path": "https://geoserver.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_minplanifica_infospie_layer_tasa_neta_de_migracion_por_municipio_xo96l/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 14455320,
+      "hash": "sha256:0ca6da4d3e4cf9da501d2e35e627243462efa470fe3cb5746691a12ccbdeeaa1",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_tasa_neta_de_migracion_por_municipio_xo96l.1137"
+          },
+          {
+            "name": "tasa_neta",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -28.655719,
+              "maximum": 49.41452
+            }
+          },
+          {
+            "name": "sup_ha",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": -814,
+              "maximum": 7030201
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "example": "Potosi",
+            "categories": [
+              "La Paz",
+              "Santa Cruz",
+              "Cochabamba",
+              "Potosi",
+              "Oruro",
+              "Chuquisaca",
+              "Beni",
+              "Tarija",
+              "Pando",
+              "LA PAZ",
+              "POTOSI",
+              "ORURO"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "example": "Daniel Campos"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "example": "Llica"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
