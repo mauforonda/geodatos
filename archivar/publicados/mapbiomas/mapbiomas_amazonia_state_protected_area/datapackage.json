@@ -1,0 +1,82 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mapbiomas_mapbiomas_amazonia_state_protected_area",
+  "title": "state-protected-area",
+  "sources": [
+    {
+      "title": "MapBiomas",
+      "path": "https://shared-geoserver.mapbiomas.org/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mapbiomas_mapbiomas_amazonia_state_protected_area/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 10457486,
+      "hash": "sha256:408a9d5b6b8b7bf6a2f87cca776a4104983adde0f307ecbc85519851341a19e3",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "state-protected-area.96"
+          },
+          {
+            "name": "feature_id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 10475,
+              "maximum": 11195
+            }
+          },
+          {
+            "name": "name_es",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "de la Pampa de Ayacucho (uso indirecto) (Perú)"
+          },
+          {
+            "name": "pais",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Perú",
+            "categories": [
+              "Ecuador",
+              "Brasil",
+              "Perú",
+              "Venezuela",
+              "Guyane Française",
+              "Colombia",
+              "Bolivia",
+              "Suriname",
+              "Guyana"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 292."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
