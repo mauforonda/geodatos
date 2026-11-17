@@ -1,0 +1,153 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_minplanifica_infocapa_layer_precipitacion_anual_por_unidad_hidrografica_rwt5g",
+  "title": "layer_precipitacion_anual_por_unidad_hidrografica_rwt5g",
+  "sources": [
+    {
+      "title": "Geoserver del Ministerio de Planificación del Desarollo",
+      "path": "https://geoserver.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_minplanifica_infocapa_layer_precipitacion_anual_por_unidad_hidrografica_rwt5g/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 18532895,
+      "hash": "sha256:f187eeb2dff226af241d80395e29341ad937efc470ebfc9af5622a8e10bc310d",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_precipitacion_anual_por_unidad_hidrografica_rwt5g.59"
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Cuenca Qda. Camacho - Laguna"
+          },
+          {
+            "name": "precipitac",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 3018.99
+            }
+          },
+          {
+            "name": "evapotra",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 1412.67
+            }
+          },
+          {
+            "name": "scurerim",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 1785.99
+            }
+          },
+          {
+            "name": "caudal_esp",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 56.63
+            }
+          },
+          {
+            "name": "coeficient",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 0.63
+            }
+          },
+          {
+            "name": "aridez",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 0.91
+            }
+          },
+          {
+            "name": "sup_ha",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 17950,
+              "maximum": 6566061
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Potosi",
+            "categories": [
+              "Santa Cruz",
+              "Potosi",
+              "Beni",
+              "La Paz",
+              "Tarija",
+              "Cochabamba",
+              "Pando",
+              "Chuquisaca",
+              "Oruro"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Daniel Campos"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Llica"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
