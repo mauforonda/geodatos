@@ -1,0 +1,123 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_biomasa_aerea_mgha_en_el_departame_303ebbf21e9c",
+  "title": "Biomasa Aérea (Mg/ha) en el Departamento de Tarija",
+  "description": "El mapa muestra la distribución de biomasa aérea en el departamento de Tarija, expresada en megagramos por hectárea (Mg/ha), identificando el carbono almacenado en los ecosistemas forestales como base para el análisis de conservación forestal, captura de carbono y planificación de medidas de mitigación y financiamiento climático.",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_biomasa_aerea_mgha_en_el_departame_303ebbf21e9c/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 12789822,
+      "hash": "sha256:befc1513b13772a1c36af5fd53fe72933fdd88095620539f984766209940a390",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "layer_biomasa_aerea_mgha_en_el_departamento_de_tarija_o0alz.749"
+          },
+          {
+            "name": "biomasa",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 352
+            }
+          },
+          {
+            "name": "sup_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 120000.0
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "TARIJA",
+            "categories": [
+              "TARIJA",
+              "CHUQUISACA",
+              "POTOSI"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Arce",
+            "categories": [
+              "Gran Chaco",
+              "O'Connor",
+              "Arce",
+              "Mendez",
+              "Avilez",
+              "Cercado",
+              "Sud Cinti",
+              "Sur Chichas",
+              "Hernando Siles",
+              "Modesto Omiste"
+            ]
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Bermejo",
+            "categories": [
+              "Villa Montes",
+              "Entre Ríos",
+              "Padcaya",
+              "Yacuiba",
+              "Caraparí",
+              "El Puente",
+              "Yunchará",
+              "San Lorenzo",
+              "Tarija",
+              "Uriondo",
+              "Bermejo",
+              "Culpina",
+              "Tupiza",
+              "Huacareta",
+              "Las Carreras",
+              "Villa Abecia",
+              "Villazón"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 2."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
