@@ -1,0 +1,117 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_biomasa_subterranea_tbgb900m_en_el_6c09204ffd12",
+  "title": "Biomasa Subterránea (tBGB/900m) en el Departamento de La Paz",
+  "description": "El mapa muestra la distribución de biomasa subterránea en el departamento de La Paz, expresada en toneladas de biomasa subterránea por píxel de 900 m² (tBGB/900m), representando el carbono almacenado en raíces y otros componentes subterráneos de la vegetación, como insumo para la conservación de ecosistemas, la captura de carbono y la planificación de acciones de mitigación y financiamiento climático.",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_biomasa_subterranea_tbgb900m_en_el_6c09204ffd12/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 40488009,
+      "hash": "sha256:6ec96dc8b32299e4f7f8effe8af2dcff97c4b7af5e645b03b5aac00f75f341b5",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "layer_biomasa_subterranea_tbgb900m_en_el_departamento_d_iwq5h.526021"
+          },
+          {
+            "name": "biomasa",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 5
+            }
+          },
+          {
+            "name": "sup_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 380000.0
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "LA PAZ",
+            "categories": [
+              "LA PAZ",
+              "BENI",
+              "COCHABAMBA"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "General Jose Manuel",
+            "categories": [
+              "Abel Iturralde",
+              "Franz Tamayo",
+              "Sur Yungas",
+              "Larecaja",
+              "Caranavi",
+              "Inquisivi",
+              "Nor Yungas",
+              "Bautista Saavedra",
+              "Murillo",
+              "Muñecas",
+              "Lago Titicaca",
+              "Camacho",
+              "Los Andes",
+              "Loayza",
+              "General José Ballivían",
+              "Omasuyos",
+              "Ayopaya",
+              "Pacajes",
+              "Ingavi",
+              "Aroma",
+              "Manco Kapac",
+              "General Jose Manuel",
+              "Gualberto Villarroel"
+            ]
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Catacora"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
