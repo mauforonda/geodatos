@@ -1,0 +1,97 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mapbiomas_mapbiomas_layers_municipalities",
+  "title": "municipalities",
+  "sources": [
+    {
+      "title": "MapBiomas",
+      "path": "https://shared-geoserver.mapbiomas.org/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mapbiomas_mapbiomas_layers_municipalities/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 57672883,
+      "hash": "sha256:1a159eb44848197d1997d9dd92a04ea4ee776b25ed75bda23eb6bcc88c2fb862",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 12647,
+              "maximum": 32840
+            }
+          },
+          {
+            "name": "version",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 3
+            }
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Barra do Quaraí"
+          },
+          {
+            "name": "category",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "city",
+            "categories": [
+              "city"
+            ]
+          },
+          {
+            "name": "source",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "IBGE",
+            "categories": [
+              "IBGE"
+            ]
+          },
+          {
+            "name": "source_id_value",
+            "type": "string",
+            "example": "4301875"
+          },
+          {
+            "name": "enabled",
+            "type": "boolean",
+            "constraints": {
+              "required": true
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 848."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
