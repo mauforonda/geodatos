@@ -1,0 +1,153 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_cobertura_y_uso_actual_de_la_tierr_3f01e51a749b",
+  "title": "Cobertura y Uso Actual de la Tierra - Departamento de Oruro",
+  "description": "El mapa muestra la cobertura y uso actual de la tierra en el Departamento de Oruro, elaborado a partir de información ráster de la plataforma MapBiomas. La capa identifica la distribución espacial de las principales coberturas y usos del suelo, tales como bosques, áreas agropecuarias, cuerpos de agua, vegetación natural y áreas urbanizadas, constituyéndose en un insumo para el análisis de cambios de uso del suelo, la planificación territorial y la gestión sostenible de los recursos naturales.",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_cobertura_y_uso_actual_de_la_tierr_3f01e51a749b/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 48469636,
+      "hash": "sha256:dff65f2310287da85641ed0a84cbd6474d587b5332b04fda0859cf81b9c2db63",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "layer_cobertura_y_uso_actual_de_la_tierra__departamento_1ata9.618627"
+          },
+          {
+            "name": "dn_categ",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 255
+            }
+          },
+          {
+            "name": "clasif",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Matorral",
+            "categories": [
+              "Pajonal y arbustal andino",
+              "Matorral",
+              "Mosaico de usos",
+              "Otra área natural sin vegetación",
+              "Pajonal y arbustal andino inundable",
+              "Afloramiento rocoso",
+              "Río, lago",
+              "Playa, duna y banco de arena",
+              "Salar",
+              "Otra área antrópica sin vegetación",
+              "Otros cultivos",
+              "Infraestructura urbana",
+              "Minería",
+              "Glaciar",
+              "Pastura",
+              "Otra formación natural no forestal",
+              "Herbazal/arbustal inundable",
+              "Sin datos",
+              "Bosque",
+              "Herbazal/arbustal"
+            ]
+          },
+          {
+            "name": "sup_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 380000.0
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "ORURO",
+            "categories": [
+              "ORURO",
+              "LA PAZ",
+              "POTOSI",
+              "COCHABAMBA"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Sabaya",
+            "categories": [
+              "Cercado",
+              "Ladislao Cabrera",
+              "Sajama",
+              "Carangas",
+              "Saucari",
+              "Abaroa",
+              "Sabaya",
+              "San Pedro De Totora",
+              "Sur Carangas",
+              "Poopo",
+              "Litoral",
+              "Nor Carangas",
+              "Pantaleon Dalence",
+              "Sebastian Pagador",
+              "Salar de Coipasa",
+              "Tomas Barron",
+              "Mejillones",
+              "Lago Uru Uru",
+              "Lago Poopó",
+              "Gualberto Villarroel",
+              "Chayanta",
+              "Pacajes",
+              "Tomas Frias",
+              "Alonso de Ibañez",
+              "Antonio Quijarro",
+              "Rafael Bustillo",
+              "Daniel Campos",
+              "Bolivar"
+            ]
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Sabaya"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
