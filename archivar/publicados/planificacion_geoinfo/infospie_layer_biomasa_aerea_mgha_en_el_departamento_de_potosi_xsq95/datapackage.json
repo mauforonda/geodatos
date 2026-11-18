@@ -1,0 +1,125 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_biomasa_aerea_mgha_en_el_departame_db3e8c4f8c50",
+  "title": "Biomasa Aérea (Mg/ha) en el Departamento de Potosí",
+  "description": "El mapa muestra la distribución de biomasa aérea en el departamento de Potosí expresada en megagramos por hectárea (Mg/ha), identificando el carbono almacenado en los ecosistemas forestales como base para el análisis de conservación forestal, captura de carbono y planificación de medidas de mitigación y financiamiento climático.",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_biomasa_aerea_mgha_en_el_departame_db3e8c4f8c50/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 28094512,
+      "hash": "sha256:037307e89e3628ca3e98f70b28b826f88365f2a39f6d1c528fb08d012cc346b8",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "layer_biomasa_aerea_mgha_en_el_departamento_de_potosi_xsq95.110181"
+          },
+          {
+            "name": "biomasa",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 230
+            }
+          },
+          {
+            "name": "sup_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 680000.0
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "POTOSI",
+            "categories": [
+              "POTOSI",
+              "ORURO",
+              "COCHABAMBA",
+              "CHUQUISACA",
+              "TARIJA"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Sur Lipez",
+            "categories": [
+              "Antonio Quijarro",
+              "Nor Lipez",
+              "Sur Chichas",
+              "Nor Chichas",
+              "Sur Lipez",
+              "Jose Maria Linares",
+              "Tomas Frias",
+              "Daniel Campos",
+              "Chayanta",
+              "Cornelio Saavedra",
+              "Charcas",
+              "Modesto Omiste",
+              "Rafael Bustillo",
+              "Enrique Baldivieso",
+              "Alonso de Ibañez",
+              "General Bernardino Bilbao",
+              "Abaroa",
+              "Pantaleon Dalence",
+              "Esteban Arze",
+              "Mizque",
+              "Sebastian Pagador",
+              "Nor Cinti",
+              "Ladislao Cabrera",
+              "Oropeza",
+              "Avilez",
+              "Bolivar",
+              "Sud Cinti",
+              "Capinota",
+              "Zudañez"
+            ]
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "San Pablo"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
