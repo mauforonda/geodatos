@@ -1,0 +1,166 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_alt_lapaz_geologia2025",
+  "title": "Mapa Geológico 2025",
+  "description": "Mapa Geológico 2025, escalas 1:2500 urbano y 1:30000 rural, fuente SMRGV.",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)",
+      "path": "http://sitservicios.lapaz.bo/ows38.jsp"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_lapaz_geologia2025/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 30239593,
+      "hash": "sha256:fdf12fdd93765d4489ad8eb288b4c34ee0a9bcd3901965da164ce90bd57f363e",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "geologia2025.14677"
+          },
+          {
+            "name": "simb",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "N-Lp"
+          },
+          {
+            "name": "unidad",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Formación La Paz.  Miembro inferior y medio"
+          },
+          {
+            "name": "descrip",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Arcillas, limos, arenas (localmente lentes de areniscas calcáreas), lentes de gravas polimícticas\ny "
+          },
+          {
+            "name": "periodo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Neógeno",
+            "categories": [
+              "Cuaternario",
+              "-",
+              "Neógeno",
+              "Ordovícico",
+              "Silúrico",
+              "Devónico",
+              "Triásico",
+              "Paleógeno",
+              "Pérmico sup. - Triásico",
+              "Superior",
+              "Jurásico",
+              "Paleógeno?"
+            ]
+          },
+          {
+            "name": "epoca",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Mioceno superior - Plioceno",
+            "categories": [
+              "Holoceno",
+              "-",
+              "Mioceno superior - Plioceno",
+              "Superior",
+              "Pleistoceno inferior",
+              "Pleistoceno superior - Holoceno",
+              "Medio",
+              "Inferior",
+              "Holoceno inferior?",
+              "Pleistoceno superior",
+              "Mioceno",
+              "Medio - Superior",
+              "Pleistoceno superior?",
+              "Pleistoceno medio?",
+              "Oligoceno superior",
+              "Mioceno?",
+              "Holoceno inferior"
+            ]
+          },
+          {
+            "name": "compl",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Limos, arcillas y arenas estratificados, con lentes gravosos depositados en ambiente fluviolacustre,"
+          },
+          {
+            "name": "r",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 255
+            }
+          },
+          {
+            "name": "g",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 255
+            }
+          },
+          {
+            "name": "b",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 255
+            }
+          },
+          {
+            "name": "escala",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "1:2500",
+            "categories": [
+              "1:2500",
+              "1:100000",
+              "1:30000"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 33. La fuente declaraba EPSG:4326 pero sus coordenadas estaban en EPSG:32719 (sistema inferido por la ubicación de las geometrías en Bolivia); se reproyectaron."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
