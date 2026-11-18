@@ -1,0 +1,98 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mdryt_observatorioagro_bolivia_chuquisaca_trigo_pred_cult",
+  "title": "CHUQUISACA_TRIGO_PRED_CULT",
+  "sources": [
+    {
+      "title": "Geovisor del Observatorio Agroambiental y Productivo del Ministerio de Desarrollo Rural y Tierras (MDRyT)",
+      "path": "http://geoserver.observatorioagro.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mdryt_observatorioagro_bolivia_chuquisaca_trigo_pred_cult/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 120157178,
+      "hash": "sha256:9fb60c6d5a5bfbde322382bb0e70e41f15a41914eeab2947d49e28fca8516acd",
+      "schema": {
+        "fields": [
+          {
+            "name": "CODCAT",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "01090207012010"
+          },
+          {
+            "name": "NOMPRED",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "QUISANA CEN. ALTO PARCELA 010"
+          },
+          {
+            "name": "BENEFICIAR",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "CARMELA GUERRERO CAZON Y OTROS"
+          },
+          {
+            "name": "SUP_PRED",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 47927.5161
+            }
+          },
+          {
+            "name": "Sup_Cult",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 254.241531063
+            }
+          },
+          {
+            "name": "Shape_Leng",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 15.8182838177,
+              "maximum": 318332.632385
+            }
+          },
+          {
+            "name": "Shape_Area",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 15.3467899978,
+              "maximum": 201404420.007
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 187."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
