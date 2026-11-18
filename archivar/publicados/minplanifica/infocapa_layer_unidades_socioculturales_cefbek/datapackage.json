@@ -1,0 +1,114 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_minplanifica_infocapa_layer_unidades_socioculturales_cefbek",
+  "title": "layer_unidades_socioculturales_cefbek",
+  "sources": [
+    {
+      "title": "Geoserver del Ministerio de Planificación del Desarollo",
+      "path": "https://geoserver.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_minplanifica_infocapa_layer_unidades_socioculturales_cefbek/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 65875951,
+      "hash": "sha256:536a00c8274697593c690f27a175c5ab9ccab8687bf759d8ef3871f39be602e5",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_unidades_socioculturales_cefbek.1116"
+          },
+          {
+            "name": "u_socio_cu",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Comunidades Originarias",
+            "categories": [
+              "Comunidades Campesinas",
+              "Propietario Campesino",
+              "Comunidades",
+              "Asociacion Comunitaria",
+              "Propietario Ganadero",
+              "Comunidades Indigenas",
+              "Conglomerados Urbanos",
+              "Indigenas",
+              "Comunidades Originarias",
+              "Empresarios Ganaderos",
+              "Interculturales",
+              "Originarios",
+              "Predios Militares",
+              "Empresarios Agropecuarios",
+              "Comunidades Forestales",
+              "Afrobolivianos",
+              "Empresarios Forestales",
+              "Propietario Forestal"
+            ]
+          },
+          {
+            "name": "sup_ha",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 1614438
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "example": "Potosi",
+            "categories": [
+              "Santa Cruz",
+              "La Paz",
+              "Cochabamba",
+              "Chuquisaca",
+              "Beni",
+              "Oruro",
+              "Potosi",
+              "Pando",
+              "Tarija"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Daniel Campos"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Llica"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 1044."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
