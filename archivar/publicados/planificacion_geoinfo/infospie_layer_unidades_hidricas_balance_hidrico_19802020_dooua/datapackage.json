@@ -1,0 +1,104 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_unidades_hidricas_balance_hidrico_19802020_dooua",
+  "title": "Unidades Hídricas (Balance Hidrico 1980-2020)",
+  "description": "El mapa presenta información de cobertura de Balance Hídrico, clasificada por precipitación.",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_unidades_hidricas_balance_hidrico_19802020_dooua/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 21798076,
+      "hash": "sha256:089a9eb9f3a548fe1ef84b515cd4aa4a00438c003e1c006461c7596fb09ae589",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_unidades_hidricas_balance_hidrico_19802020_dooua.70"
+          },
+          {
+            "name": "clasificac",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "<400",
+            "categories": [
+              "400.01 - 800",
+              "800.01 - 1500",
+              "<400",
+              "1500.01 - 2500",
+              ">2500"
+            ]
+          },
+          {
+            "name": "uh",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "011"
+          },
+          {
+            "name": "sup_ha",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 2675302
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "example": "POTOSI",
+            "categories": [
+              "SANTA CRUZ",
+              "LA PAZ",
+              "POTOSI",
+              "BENI",
+              "COCHABAMBA",
+              "CHUQUISACA",
+              "ORURO",
+              "PANDO",
+              "TARIJA"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "example": "Daniel Campos"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "example": "Llica"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
