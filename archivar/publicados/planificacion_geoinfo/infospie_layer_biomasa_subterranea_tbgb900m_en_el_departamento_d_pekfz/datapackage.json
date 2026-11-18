@@ -1,0 +1,111 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_biomasa_subterranea_tbgb900m_en_el_1dc7d8eceebf",
+  "title": "Biomasa Subterránea (tBGB/900m) en el Departamento de Santa Cruz",
+  "description": "El mapa muestra la distribución de biomasa subterránea en el departamento de Santa Cruz, expresada en toneladas de biomasa subterránea por píxel de 900 m² (tBGB/900m), representando el carbono almacenado en raíces y otros componentes subterráneos de la vegetación, como insumo para la conservación de ecosistemas, la captura de carbono y la planificación de acciones de mitigación y financiamiento climático.",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_biomasa_subterranea_tbgb900m_en_el_1dc7d8eceebf/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 74373186,
+      "hash": "sha256:110dca26a2102cf6d8c0e80cfcb9296874130b8b55fc8b65647d4b97f050f409",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "layer_biomasa_subterranea_tbgb900m_en_el_departamento_d_pekfz.785642"
+          },
+          {
+            "name": "biomasa",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 5
+            }
+          },
+          {
+            "name": "sup_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 4900000.0
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "SANTA CRUZ",
+            "categories": [
+              "SANTA CRUZ",
+              "COCHABAMBA",
+              "BENI"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Valle Grande",
+            "categories": [
+              "Guarayos",
+              "Ñuflo De Chavez",
+              "Velasco",
+              "Ichilo",
+              "Cordillera",
+              "Chiquitos",
+              "Angel Sandoval",
+              "German Busch",
+              "Valle Grande",
+              "Florida",
+              "Sara",
+              "Andres Ibañez",
+              "Manuel María Caballero",
+              "Obispo Santisteban",
+              "Warnes",
+              "Carrasco",
+              "Marban"
+            ]
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Pucará"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
