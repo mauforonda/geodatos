@@ -1,0 +1,117 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_cicatriz_incendio_abt2020",
+  "title": "Cicatrices de Incendio Bolivia 2020_ ABT",
+  "description": "Se muestra las coberturas de las cicatrices de incendios originados en el territorio nacional en la gestión 2020 de marzo hasta comienzos de octubre, localizándose en los municipios y áreas protegidas nacionales, dato de la Autoridad y Fiscalización y Control Social de Bosques y Tierra (ABT). Información obtenida del Viceministerio de Defensa Civil a fecha 7 octubre del 2020.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_cicatriz_incendio_abt2020/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 43063366,
+      "hash": "sha256:eac5634bdf23cd9e12300ff434bb4f93824ea769c2fe96349c8e4c823125a47a",
+      "schema": {
+        "fields": [
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 264
+            }
+          },
+          {
+            "name": "incendio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Municipio Padcaya Comunidad Cañas Tarija"
+          },
+          {
+            "name": "sup",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 7.4,
+              "maximum": 103362.0
+            }
+          },
+          {
+            "name": "fecha",
+            "type": "datetime",
+            "constraints": {
+              "required": true,
+              "minimum": "2020-03-14T00:00:00",
+              "maximum": "2020-10-02T00:00:00"
+            }
+          },
+          {
+            "name": "nro_evento",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "1er Evento",
+            "categories": [
+              "1er Evento",
+              "1er evento",
+              "2do Evento",
+              "2do evento",
+              "3er Evento",
+              "3er evento",
+              "4to Evento",
+              "4to evento"
+            ]
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 245
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Tarija",
+            "categories": [
+              "Santa Cruz",
+              "Beni",
+              "Cochabamba",
+              "Chuquisaca",
+              "La Paz",
+              "Tarija",
+              "Oruro"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 149."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
