@@ -1,0 +1,131 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_biomasa_aerea_mgha_en_el_departame_dd5b99fc9a2b",
+  "title": "Biomasa Aérea (Mg/ha) en el Departamento de Beni",
+  "description": "El mapa muestra la distribución de biomasa aérea en el departamento de Beni, expresada en megagramos por hectárea (Mg/ha), identificando el carbono almacenado en los ecosistemas forestales como base para el análisis de conservación forestal, captura de carbono y planificación de medidas de mitigación y financiamiento climático.",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_biomasa_aerea_mgha_en_el_departame_dd5b99fc9a2b/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 56835117,
+      "hash": "sha256:66d7581f51c43a119e537453d8e5c082b6175e2165231e5b67599a093d1f5f31",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "layer_biomasa_aerea_mgha_en_el_departamento_de_beni_isemz.734677"
+          },
+          {
+            "name": "biomasa",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 403
+            }
+          },
+          {
+            "name": "sup_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 67947.685
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "BENI",
+            "categories": [
+              "BENI",
+              "LA PAZ",
+              "SANTA CRUZ",
+              "PANDO"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "example": "Moxos",
+            "categories": [
+              "Itenez",
+              "Yacuma",
+              "General José Ballivían",
+              "Moxos",
+              "Vaca Diez",
+              "Mamore",
+              "Marban",
+              "Cercado",
+              "Territorio Indigena Multi",
+              "Sur Yungas",
+              "Guarayos",
+              "Franz Tamayo",
+              "Federico Roman"
+            ]
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "San Ignacio",
+            "categories": [
+              "San Ignacio",
+              "Baures",
+              "Exaltación",
+              "Santa Ana",
+              "Riberalta",
+              "Magdalena",
+              "Reyes",
+              "San Javier",
+              "San Andrés",
+              "San Borja",
+              "San Joaquín",
+              "Santa Rosa",
+              "San Ramón",
+              "Loreto",
+              "TIOC-TIM",
+              "Guayaramerín",
+              "Huacaraje",
+              "Puerto Siles",
+              "Trinidad",
+              "Puerto Menor de Rurrenabaque",
+              "Palos Blancos",
+              "Ascención de Guarayos",
+              "Apolo",
+              "Villa Nueva"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
