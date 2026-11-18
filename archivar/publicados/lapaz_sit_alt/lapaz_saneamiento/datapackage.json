@@ -1,0 +1,122 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_lapaz_sit_alt_lapaz_saneamiento",
+  "title": "Saneamiento en el Municipio de La Paz",
+  "description": "Estado de Saneamiento en el Municipio de La Paz, Instituto Nacional de Reforma Agraria 2014.",
+  "sources": [
+    {
+      "title": "Sistema de Información Territorial del Gobierno Autónomo Municipal de La Paz (alternativo)",
+      "path": "http://sitservicios.lapaz.bo/ows38.jsp"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_lapaz_sit_alt_lapaz_saneamiento/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 51506182,
+      "hash": "sha256:f6f9301d665a0b125a8ccb81ec64d5216d674f976cec3fd023d4c6d276df754c",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "saneamiento.17281"
+          },
+          {
+            "name": "SUP_CC",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.00011464,
+              "maximum": 24309.4537465
+            }
+          },
+          {
+            "name": "Modalidad",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "SAN-SIM",
+            "categories": [
+              "SAN-SIM",
+              "CAT-SAN",
+              "SDP",
+              "SAN-TCO",
+              " "
+            ]
+          },
+          {
+            "name": "Calificaci",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Agropecuaria",
+            "categories": [
+              "Agricola",
+              "Agrícola",
+              "Ganadera",
+              "Otros",
+              " ",
+              "AGRICOLA",
+              "Agropecuaria",
+              "Ninguna",
+              "PEQUEÑA",
+              "OTROS",
+              "COLECTIVO"
+            ]
+          },
+          {
+            "name": "EstAgr",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "CONFLICTO DEPARTAMENTAL",
+            "categories": [
+              "TITULADO",
+              "PROCESO DEPARTAMENTAL",
+              "PROCESO NACIONAL",
+              "PARALIZADO DEPARTAMENTAL",
+              "CONFLICTO DEPARTAMENTAL",
+              "CONFLICTO NACIONAL",
+              "AREA POR INTERVENIR",
+              "PARALIZADO NACIONAL",
+              "TIERRA FISCAL"
+            ]
+          },
+          {
+            "name": "NombrePred",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": " "
+          },
+          {
+            "name": "GDB_GEOMATTR_DATA",
+            "type": "integer"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Polygon, MultiPolygon. Geometrías inválidas, conservadas sin reparar: 38. La fuente declaraba EPSG:4326 pero sus coordenadas estaban en EPSG:32719 (sistema inferido por la ubicación de las geometrías en Bolivia); se reproyectaron."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
