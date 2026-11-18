@@ -1,0 +1,104 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_unidades_hidrograficas_de_gestion_uhg_1ix95",
+  "title": "Unidades Hidrograficas de Gestión (UHG)",
+  "description": "El mapa presenta las Unidades Hidrográficas de Gestión (UHG). En el Plan Plurinacional de Recursos Hídricos 2021-2025 (PPRH 2021-2025) se han discriminado diferentes tipos de Unidades Hidrográficas (UHs). En el PPRH 2021-2025 se definen a las unidades hidrográficas como áreas de drenaje limitadas por líneas divisorias de aguas o (parteaguas). Las Unidades Hidrográficas de Gestión (UHG) tienen clasificación estratégica para una gestión y gobernanza por Plataformas Interinstitucionales y con apoyo de las Unidades Gestoras de Cuenca. Son 170 Unidades Hidrográficas a Nivel Pfafstetter 3 y 4.",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_unidades_hidrograficas_de_gestion_uhg_1ix95/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 29779951,
+      "hash": "sha256:df467ff35b312d1aa61eae5d1b517032d7b922c8e52aea4b22d765182eb5ab87",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_unidades_hidrograficas_de_gestion_uhg_1ix95.155"
+          },
+          {
+            "name": "nombre",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Cuenca Qda. Camacho - Laguna"
+          },
+          {
+            "name": "macro_cuen",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Cuenca Endorreica",
+            "categories": [
+              "Cuenca Amazonica",
+              "Cuenca de la plata",
+              "Cuenca Endorreica"
+            ]
+          },
+          {
+            "name": "sup_ha",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 17950,
+              "maximum": 1754660
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "example": "POTOSI",
+            "categories": [
+              "SANTA CRUZ",
+              "BENI",
+              "POTOSI",
+              "LA PAZ",
+              "COCHABAMBA",
+              "PANDO",
+              "CHUQUISACA",
+              "ORURO",
+              "TARIJA"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "example": "Daniel Campos"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "example": "Llica"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 1."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
