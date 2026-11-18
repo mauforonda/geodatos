@@ -1,0 +1,149 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_cuencas_y_microcuencas_hidrograficas_ple9m",
+  "title": "Cuencas y Microcuencas Hidrográficas",
+  "description": "El mapa muestra la cobertura de unidades hidrográficas correspondientes a cuencas y microcuencas organizadas jerárquicamente mediante niveles hidrográficos.",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_cuencas_y_microcuencas_hidrograficas_ple9m/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 66423747,
+      "hash": "sha256:2a134f0cf86f9c9ece116b791838c822dfee469ae76a7bb21fd7ac489a0ab355",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_cuencas_y_microcuencas_hidrograficas_ple9m.1381"
+          },
+          {
+            "name": "nivel_4",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "0272"
+          },
+          {
+            "name": "nivel_5",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 89999
+            }
+          },
+          {
+            "name": "nombre_uh",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Qda. Canabe"
+          },
+          {
+            "name": "sup_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 1259531.273
+            }
+          },
+          {
+            "name": "nivel_1",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "0",
+            "categories": [
+              "8",
+              "0",
+              "4"
+            ]
+          },
+          {
+            "name": "nivel_2",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "02",
+            "categories": [
+              "46",
+              "01",
+              "86",
+              "89",
+              "02",
+              "87",
+              "85",
+              "03",
+              "80",
+              "0",
+              "05",
+              "49"
+            ]
+          },
+          {
+            "name": "nivel_3",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "027"
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "example": "POTOSI",
+            "categories": [
+              "SANTA CRUZ",
+              "POTOSI",
+              "LA PAZ",
+              "ORURO",
+              "CHUQUISACA",
+              "BENI",
+              "TARIJA",
+              "COCHABAMBA",
+              "PANDO"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "example": "Nor Lipez"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "example": "San Pedro de Quemes"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 1."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
