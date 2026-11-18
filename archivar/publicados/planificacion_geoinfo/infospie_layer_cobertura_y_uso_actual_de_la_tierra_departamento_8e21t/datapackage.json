@@ -1,0 +1,141 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_cobertura_y_uso_actual_de_la_tierr_7774e4636e76",
+  "title": "Cobertura y Uso Actual de la Tierra - Departamento de Chuquisaca",
+  "description": "El mapa muestra la cobertura y uso actual de la tierra en el Departamento de Chuquisaca, elaborado a partir de información ráster de la plataforma MapBiomas. La capa identifica la distribución espacial de las principales coberturas y usos del suelo, tales como bosques, áreas agropecuarias, cuerpos de agua, vegetación natural y áreas urbanizadas, constituyéndose en un insumo para el análisis de cambios de uso del suelo, la planificación territorial y la gestión sostenible de los recursos naturales.",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_cobertura_y_uso_actual_de_la_tierr_7774e4636e76/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 50114126,
+      "hash": "sha256:6729c97f699aa58053fa781420c29f87344cb9e5dbb66becca632d058299b3b6",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_cobertura_y_uso_actual_de_la_tierra__departamento_8e21t.328"
+          },
+          {
+            "name": "dn_categ",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 255
+            }
+          },
+          {
+            "name": "clasif",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Pajonal y arbustal andino",
+            "categories": [
+              "Bosque",
+              "Herbazal/arbustal",
+              "Infraestructura urbana",
+              "Mosaico de usos",
+              "Otra formación natural no forestal",
+              "Otros cultivos",
+              "Río, lago",
+              "Otra área natural sin vegetación",
+              "Otra área antrópica sin vegetación",
+              "Pastura",
+              "Playa, duna y banco de arena",
+              "Matorral",
+              "Pajonal y arbustal andino",
+              "Afloramiento rocoso",
+              "Sin datos",
+              "Herbazal/arbustal inundable",
+              "Pajonal y arbustal andino inundable",
+              "Soya (beta)"
+            ]
+          },
+          {
+            "name": "sup_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.335,
+              "maximum": 726765.53
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "CHUQUISACA",
+            "categories": [
+              "CHUQUISACA",
+              "POTOSI",
+              "SANTA CRUZ",
+              "TARIJA",
+              "COCHABAMBA"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Sud Cinti",
+            "categories": [
+              "Tomina",
+              "Nor Cinti",
+              "Zudañez",
+              "Sud Cinti",
+              "Oropeza",
+              "Luis Calvo",
+              "Azurduy",
+              "Yamparaez",
+              "Hernando Siles",
+              "Belisario Boeto",
+              "Chayanta",
+              "Jose Maria Linares",
+              "Valle Grande",
+              "Campero",
+              "Mendez",
+              "O'Connor"
+            ]
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Las Carreras"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 80."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
