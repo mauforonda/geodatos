@@ -1,0 +1,105 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_oieau_c_spea_orgareg",
+  "title": "orgareg",
+  "sources": [
+    {
+      "title": "Sistema para la Gestión Integral de Recursos Hídricos desarrollado por la Oficina Internacional del Agua (OiEau)",
+      "path": "https://www.oieau-wiss.org/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_oieau_c_spea_orgareg/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 14402853,
+      "hash": "sha256:7cda50ad5a2cc284f52476a6678c2b6a32bd0f838ba958671061c545ef333107",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "orgareg.fid-7e025d5e_19e1e35e1bb_-294f"
+          },
+          {
+            "name": "oradorcode",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "FRORG000250901444bas"
+          },
+          {
+            "name": "adorname",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "SIVE de la Haute Bellongue"
+          },
+          {
+            "name": "adtcode",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 201,
+              "maximum": 212
+            }
+          },
+          {
+            "name": "adtname2",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Syndicat Intercommunal à Vocation Unique",
+            "categories": [
+              "Syndicat Intercommunal à Vocation Unique",
+              "Syndicat Intercommunal à Vocations Multiples",
+              "Communauté de Communes",
+              "Syndicat Mixte Fermé",
+              "Syndicat Mixte Ouvert",
+              "Communauté d’Agglomération",
+              "Métropole"
+            ]
+          },
+          {
+            "name": "orgareg_codes",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "ADR_FR_R3_09027, ADR_FR_R3_09069, ADR_FR_R3_09129, ADR_FR_R3_09141, ADR_FR_R3_09219, ADR_FR_R3_09263"
+          },
+          {
+            "name": "communes",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Augirein, Buzan, Galey, Illartein, Orgibet, Saint-Jean-du-Castillonnais, Saint-Lary, Villeneuve"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: Polygon, MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
