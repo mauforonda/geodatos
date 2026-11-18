@@ -1,0 +1,169 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_areas_conservacion",
+  "title": "Mapa Área de Conservación Sudamérica COSIPLAN_ 2015",
+  "description": "Polígonos que representan la ubicación y extensión geográfica de las áreas de conservación. Incluye áreas bajo status de conservación legal (Parques nacionales, reservas naturales, paisajes y ecosistemas protegidos entre otras. No incluye áreas de Pueblos Originarios. Brinda información acerca de: nombre, categoría de conservación y gestión, situación internacional, etc.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_areas_conservacion/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 84118788,
+      "hash": "sha256:3976a72adf834de29e126083223f8387dfddb1a923321ca39697cf9dada3812f",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "areas_conservacion.1109"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 2449
+            }
+          },
+          {
+            "name": "idusco",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 13001000001.0,
+              "maximum": 13012000171.0
+            }
+          },
+          {
+            "name": "acc",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": -1,
+              "maximum": 7
+            }
+          },
+          {
+            "name": "cam",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Información no disponible"
+          },
+          {
+            "name": "nam",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Río Batchelor"
+          },
+          {
+            "name": "zin",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Información no disponible",
+            "categories": [
+              "No",
+              "Información no disponible",
+              "Sitio Ramsar",
+              "Reserva de Biosfera",
+              "-1",
+              "Sitio Ramsar, Reserva de Biosfera",
+              "Information not available",
+              "Sitio RAMSAR",
+              "Reserva de Biósfera"
+            ]
+          },
+          {
+            "name": "zpp",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 12
+            }
+          },
+          {
+            "name": "acc_lbl",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Exacta",
+            "categories": [
+              "Exacta",
+              "Información no disponible",
+              "Aproximada",
+              "EXACTA",
+              "APROXIMADA",
+              "Approximate",
+              "PRECISA"
+            ]
+          },
+          {
+            "name": "zpp_lbl",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "CHL",
+            "categories": [
+              "BRA",
+              "COL",
+              "VEN",
+              "CHL",
+              "PER",
+              "PRY",
+              "ARG",
+              "BOL",
+              "ECU",
+              "SUR",
+              "URY",
+              "GUY"
+            ]
+          },
+          {
+            "name": "obs",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Oficial - Validada",
+            "categories": [
+              "Oficial - Validada",
+              "No Oficial - Validada"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 284."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
