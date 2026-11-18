@@ -1,0 +1,111 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_caminos",
+  "title": "Mapa Caminos principales y secundarios de Bolivia_ 2012",
+  "description": "El mapa presenta información sobre los caminos principales y secundarios que se encuentran en el territorio Boliviano, nos muestra las rutas que existen, además podemos ver las conexiones que existen en cada departamento y como ser las rutas provinciales y también existen las rutas departamentales las cuales tienen conexión entre departamentos, nos muestra los principales flujos, lo cual indica que existe un mayor movimiento, mayores flujos, esto debido a diferentes factores tanto económicos como sociales, los cuales determinaran la construcción de una carretera principal como una secundaria esta información fue publicada por el Sistema Único Nacional de Información de la Tierra (SUNIT)",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_caminos/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 63745134,
+      "hash": "sha256:f9382d1a02d869e0312667cfa4592371912a56b6db900a4ac3515b0f18d0755e",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "caminos.63170"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 100125
+            }
+          },
+          {
+            "name": "gml_id",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Caminos.63170"
+          },
+          {
+            "name": "nbvialidad",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Senda, Rodera o Vereda",
+            "categories": [
+              "Senda, Rodera o Vereda",
+              "Secundario o Vecinal",
+              "Principal o Carretero"
+            ]
+          },
+          {
+            "name": "idelemento",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 100297
+            }
+          },
+          {
+            "name": "coclasifvi",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 3
+            }
+          },
+          {
+            "name": "coescala",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 2,
+              "maximum": 2
+            }
+          },
+          {
+            "name": "shape_leng",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 5.07410043e-07,
+              "maximum": 2.7812428368
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
