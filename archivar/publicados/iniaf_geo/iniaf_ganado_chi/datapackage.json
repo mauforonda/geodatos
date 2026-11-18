@@ -1,0 +1,166 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_iniaf_geo_iniaf_ganado_chi",
+  "title": "ganado_chi",
+  "sources": [
+    {
+      "title": "GeoServer del Instituto Nacional de Innovación Agropecuaria y Forestal",
+      "path": "https://geoserver.iniaf.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_iniaf_geo_iniaf_ganado_chi/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 32032846,
+      "hash": "sha256:251a6fe56e82195e7141ed9e59c6ef6b74171c2f67c1534331560dd056f7107f",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "ganado_chi.9"
+          },
+          {
+            "name": "proyecto",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Chiquitania",
+            "categories": [
+              "Chiquitania"
+            ]
+          },
+          {
+            "name": "gridcode",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 2,
+              "maximum": 3
+            }
+          },
+          {
+            "name": "aptit",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Muy Apto",
+            "categories": [
+              "Muy Apto"
+            ]
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "SANTA CRUZ",
+            "categories": [
+              "SANTA CRUZ",
+              "BENI"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Ñuflo De Chavez",
+            "categories": [
+              "Ñuflo De Chavez",
+              "Velasco",
+              "Guarayos",
+              "Marban"
+            ]
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "San Julián",
+            "categories": [
+              "Cuatro Cañadas",
+              "El Puente",
+              "Loreto",
+              "San Andrés",
+              "San Ignacio",
+              "San Javier",
+              "San Julián",
+              "San Miguel",
+              "San Rafael",
+              "San Ramón",
+              "Urubicha"
+            ]
+          },
+          {
+            "name": "zona",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "20",
+            "categories": [
+              "20",
+              "20_21"
+            ]
+          },
+          {
+            "name": "capital",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "San Julián",
+            "categories": [
+              "Cuatro Cañadas",
+              "El Puente",
+              "Loreto",
+              "San Andrés",
+              "San Ignacio",
+              "San Javier",
+              "San Julián",
+              "San Miguel",
+              "San Rafael",
+              "San Ramón",
+              "Urubicha"
+            ]
+          },
+          {
+            "name": "sup_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0.01,
+              "maximum": 274743.32
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 16."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
