@@ -1,0 +1,81 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mapbiomas_mapbiomas_amazonia_indigenous_land",
+  "title": "indigenous-land",
+  "sources": [
+    {
+      "title": "MapBiomas",
+      "path": "https://shared-geoserver.mapbiomas.org/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mapbiomas_mapbiomas_amazonia_indigenous_land/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 21422430,
+      "hash": "sha256:2e3473883819fee6488fea9838fc2610e09bb77edbb6d932fcf5b51d4e04da4b",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "indigenous-land.4980"
+          },
+          {
+            "name": "feature_id",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 2527,
+              "maximum": 10029
+            }
+          },
+          {
+            "name": "name_es",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Yauricocha (Perú)"
+          },
+          {
+            "name": "pais",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Perú",
+            "categories": [
+              "Perú",
+              "Ecuador",
+              "Brasil",
+              "Colombia",
+              "Bolivia",
+              "Guyana",
+              "Venezuela",
+              "Guyane Française"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 851."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
