@@ -1,0 +1,126 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_umsa_iiag_hidrografia_mapa_de_cuencas_nivel_5",
+  "title": "UH_NIVEL5_NOMBRES",
+  "sources": [
+    {
+      "title": "Geoportal del Instituto de Investigaciones y Aplicaciones Geomáticas (IIAG) de la Universidad Mayor de San Andrés (UMSA)",
+      "path": "http://gtggeoportal.umsa.bo:8087/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_umsa_iiag_hidrografia_mapa_de_cuencas_nivel_5/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 60305111,
+      "hash": "sha256:ea2374ac0e227906441e5eac36b1fe363b99c09b876f7a85ef993b9bc8cffe80",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Mapa de Cuencas Nivel 5.595"
+          },
+          {
+            "name": "OBJECTID_1",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 1996
+            }
+          },
+          {
+            "name": "OBJECTID",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1,
+              "maximum": 1996
+            }
+          },
+          {
+            "name": "NIVEL_1",
+            "type": "string",
+            "example": "0",
+            "categories": [
+              "8",
+              "0",
+              "4"
+            ]
+          },
+          {
+            "name": "NIVEL_2",
+            "type": "string",
+            "example": "02",
+            "categories": [
+              "89",
+              "86",
+              "01",
+              "46",
+              "02",
+              "87",
+              "03",
+              "85",
+              "80",
+              "05",
+              "49"
+            ]
+          },
+          {
+            "name": "NIVEL_3",
+            "type": "string",
+            "example": "027"
+          },
+          {
+            "name": "NIVEL_4",
+            "type": "string",
+            "example": "0272"
+          },
+          {
+            "name": "NIVEL_5",
+            "type": "string",
+            "example": "02728"
+          },
+          {
+            "name": "Nombre_UH",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Qda. Canabe"
+          },
+          {
+            "name": "Area_km2",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0.001416,
+              "maximum": 24535.359706
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 1."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
