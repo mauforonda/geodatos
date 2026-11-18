@@ -1,0 +1,153 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_deforest2015",
+  "title": "Deforestación del 2011 al 2015 Bolivia - ABT, 2016",
+  "description": "El mapa muestra la superficie deforestada Legal e Ilegal de los periodos 2011-2015, a nivel municipal y nivel predial de los departamentos con mayor cobertura boscosa. Metodología empleada explicada en las respectivas leyendas explicativas de cada año e informes técnicos.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_deforest2015/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 63062850,
+      "hash": "sha256:bf4febb1a6945a8ed1f67e6e14588c18b370be224c77511a9390a666e15928b8",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "deforest2015.411"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 92159
+            }
+          },
+          {
+            "name": "ges",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 2011,
+              "maximum": 2015
+            }
+          },
+          {
+            "name": "est_leg",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "SIN_DATO",
+            "categories": [
+              "SIN_DATO",
+              "ILEGAL",
+              "LEGAL"
+            ]
+          },
+          {
+            "name": "sup_hec",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 1473782.995
+            }
+          },
+          {
+            "name": "nom_dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "TARIJA",
+            "categories": [
+              "SANTA CRUZ",
+              "COCHABAMBA",
+              "BENI",
+              "CHUQUISACA",
+              "LA PAZ",
+              "PANDO",
+              "TARIJA",
+              "POTOSÍ"
+            ]
+          },
+          {
+            "name": "cod_dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "06",
+            "categories": [
+              "07",
+              "03",
+              "08",
+              "01",
+              "02",
+              "09",
+              "06",
+              "05"
+            ]
+          },
+          {
+            "name": "nom_prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "ARCE"
+          },
+          {
+            "name": "cod_prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "0602"
+          },
+          {
+            "name": "nom_mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "PADCAYA"
+          },
+          {
+            "name": "cod_mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "060201"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 706."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
