@@ -1,0 +1,123 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_minplanifica_infocapa_layer_balance_hidrico_ckf83",
+  "title": "layer_balance_hidrico_ckf83",
+  "sources": [
+    {
+      "title": "Geoserver del Ministerio de Planificación del Desarollo",
+      "path": "https://geoserver.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_minplanifica_infocapa_layer_balance_hidrico_ckf83/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 21802122,
+      "hash": "sha256:51b1a65f84dc8212a4245d9005f83a8cd39b4f66ac5bf9f11be99985b2e8a7ac",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_balance_hidrico_ckf83.33"
+          },
+          {
+            "name": "clasificac",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "<400",
+            "categories": [
+              "400.01 - 800",
+              "800.01 - 1500",
+              "<400",
+              "1500.01 - 2500",
+              ">2500"
+            ]
+          },
+          {
+            "name": "p",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 235,
+              "maximum": 3200
+            }
+          },
+          {
+            "name": "uh",
+            "type": "string",
+            "example": "011"
+          },
+          {
+            "name": "sup_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 0.00915351895,
+              "maximum": 2675301.96739
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Potosi",
+            "categories": [
+              "Santa Cruz",
+              "La Paz",
+              "Potosi",
+              "Beni",
+              "Cochabamba",
+              "Chuquisaca",
+              "Oruro",
+              "Tarija",
+              "Pando",
+              "ORURO",
+              "LA PAZ",
+              "POTOSI",
+              "PANDO"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Daniel Campos"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Llica"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
