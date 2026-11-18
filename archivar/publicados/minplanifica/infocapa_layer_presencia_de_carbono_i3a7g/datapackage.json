@@ -1,0 +1,110 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_minplanifica_infocapa_layer_presencia_de_carbono_i3a7g",
+  "title": "layer_presencia_de_carbono_i3a7g",
+  "sources": [
+    {
+      "title": "Geoserver del Ministerio de Planificación del Desarollo",
+      "path": "https://geoserver.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_minplanifica_infocapa_layer_presencia_de_carbono_i3a7g/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 17111329,
+      "hash": "sha256:90c039b291d022c475dd86a4ad8ce7133d4074d0f1efa21c492770f5cfb0a0fd",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "layer_presencia_de_carbono_i3a7g.719"
+          },
+          {
+            "name": "codigo",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "051401"
+          },
+          {
+            "name": "valor",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Alto",
+            "categories": [
+              "Medio",
+              "Alto",
+              "Bajo",
+              "Muy Alto",
+              "Muy Bajo"
+            ]
+          },
+          {
+            "name": "sup_ha",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 6646893
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "example": "POTOSI",
+            "categories": [
+              "La Paz",
+              "Santa Cruz",
+              "Cochabamba",
+              "Potosi",
+              "Oruro",
+              "Chuquisaca",
+              "Beni",
+              "Pando",
+              "Tarija",
+              "POTOSI",
+              "LA PAZ",
+              "BENI",
+              "ORURO",
+              "SANTA CRUZ"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "DANIEL CAMPOS"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "example": "LLICA"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 61."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
