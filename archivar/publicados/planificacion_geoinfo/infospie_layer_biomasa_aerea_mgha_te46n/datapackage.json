@@ -1,0 +1,118 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_biomasa_aerea_mgha_te46n",
+  "title": "layer_biomasa_aerea_mgha_te46n",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_biomasa_aerea_mgha_te46n/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 32406387,
+      "hash": "sha256:97f85c7ccdad900240686ab52a0cd3411a95d0a285080eedb4eb8d0a59c13202",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "layer_biomasa_aerea_mgha_te46n.411544"
+          },
+          {
+            "name": "objet",
+            "type": "integer"
+          },
+          {
+            "name": "biomasa",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 380
+            }
+          },
+          {
+            "name": "sup_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 1500000.0
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "example": "LA PAZ",
+            "categories": [
+              "LA PAZ",
+              "ORURO",
+              "COCHABAMBA",
+              "BENI",
+              "PANDO"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "example": "Pacajes",
+            "categories": [
+              "Abel Iturralde",
+              "Franz Tamayo",
+              "Sur Yungas",
+              "Larecaja",
+              "Pacajes",
+              "Inquisivi",
+              "Caranavi",
+              "Aroma",
+              "Murillo",
+              "Bautista Saavedra",
+              "Nor Yungas",
+              "Ingavi",
+              "Loayza",
+              "General Jose Manuel",
+              "Gualberto Villarroel",
+              "Muñecas",
+              "Los Andes",
+              "Omasuyos",
+              "Camacho",
+              "Manco Kapac",
+              "Nor Carangas",
+              "Sajama",
+              "General José Ballivían",
+              "Ayopaya",
+              "Tapacari",
+              "Cercado",
+              "San Pedro De Totora",
+              "Manuripi"
+            ]
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "example": "Charaña"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 1."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
