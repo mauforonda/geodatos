@@ -1,0 +1,172 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mapbiomas_mapbiomas_brasil_municipality",
+  "title": "municipality",
+  "sources": [
+    {
+      "title": "MapBiomas",
+      "path": "https://shared-geoserver.mapbiomas.org/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mapbiomas_mapbiomas_brasil_municipality/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 57756540,
+      "hash": "sha256:c54a5c42864909959b77a98f8383c137264bd716f308f0613b3fbe8924445ee0",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "municipality.4645"
+          },
+          {
+            "name": "FEATURE_ID",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 35,
+              "maximum": 5606
+            }
+          },
+          {
+            "name": "NAME",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Barra do Quara�"
+          },
+          {
+            "name": "LEVEL_1",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "RS",
+            "categories": [
+              "MG",
+              "SP",
+              "RS",
+              "BA",
+              "PR",
+              "SC",
+              "GO",
+              "PI",
+              "PB",
+              "MA",
+              "PE",
+              "CE",
+              "RN",
+              "PA",
+              "MT",
+              "TO",
+              "AL",
+              "RJ",
+              "MS",
+              "ES",
+              "SE",
+              "AM",
+              "RO",
+              "AC",
+              "AP",
+              "RR",
+              "DF"
+            ]
+          },
+          {
+            "name": "COUNTRY",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Brasil",
+            "categories": [
+              "Brasil"
+            ]
+          },
+          {
+            "name": "GEOCODE",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1100015,
+              "maximum": 5300108
+            }
+          },
+          {
+            "name": "CATEGORY",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "city",
+            "categories": [
+              "city"
+            ]
+          },
+          {
+            "name": "CATEGORY_N",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Munic�pio",
+            "categories": [
+              "Munic�pio"
+            ]
+          },
+          {
+            "name": "VERSION",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 2,
+              "maximum": 2
+            }
+          },
+          {
+            "name": "SOURCE",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "IBGE",
+            "categories": [
+              "IBGE"
+            ]
+          },
+          {
+            "name": "NAME_PT_BR",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "Barra do Quara� [RS] [4301875]"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 848."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
