@@ -1,0 +1,96 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_geomorfologico_m5vfw",
+  "title": "Geomorfológico",
+  "description": "El mapa presenta las formas de relieve y las características del paisaje en el territorio nacional  identifica y clasifica diferentes unidades geomorfológicas, como montañas, valles, mesetas, llanuras, entre otros elementos del relieve, así como también las características geológicas y geomorfológicas asociadas a cada unidad.",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_geomorfologico_m5vfw/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 18418607,
+      "hash": "sha256:26f99af7accead434e8ba7780d55012918feef802638031a936073ee591d2ab0",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "layer_geomorfologico_m5vfw.4018"
+          },
+          {
+            "name": "caracteris",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Rocas ígneas extrusivas que constituyen los diferentes conos volcánicos."
+          },
+          {
+            "name": "procesos_1",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "01_PROCESO_VOLCANICO"
+          },
+          {
+            "name": "sup_ha",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 5081974
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "example": "POTOSI",
+            "categories": [
+              "LA PAZ",
+              "POTOSI",
+              "ORURO",
+              "SANTA CRUZ",
+              "COCHABAMBA",
+              "BENI",
+              "TARIJA",
+              "CHUQUISACA",
+              "PANDO"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "example": "Nor Lipez"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "example": "San Pedro de Quemes"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 1417."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
