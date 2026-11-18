@@ -1,0 +1,97 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_abt_geo_abt_layer_areas_quemadas_2021_2q64m",
+  "title": "layer_areas_quemadas_2021_2q64m",
+  "sources": [
+    {
+      "title": "GeoServer de la Autoridad de Fiscalización y Control Social de Bosques y Tierra",
+      "path": "https://geo.abt.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_abt_geo_abt_layer_areas_quemadas_2021_2q64m/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 78752256,
+      "hash": "sha256:e7e01da012cc621a9dd5341d19140a0897cf38a2481cbfd60b3bc52cfe817f29",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "layer_areas_quemadas_2021_2q64m.108"
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "POTOSI",
+            "categories": [
+              "BENI",
+              "SANTA CRUZ",
+              "LA PAZ",
+              "PANDO",
+              "TARIJA",
+              "COCHABAMBA",
+              "CHUQUISACA",
+              "POTOSI",
+              "ORURO"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "ANTONIO QUIJARRO"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "TOMAVE"
+          },
+          {
+            "name": "ges",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 2021,
+              "maximum": 2021
+            }
+          },
+          {
+            "name": "sup_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 170841.31
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
