@@ -1,0 +1,129 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_biomasa_aerea_mgha_en_el_departame_39c3511e0ee9",
+  "title": "Biomasa Aérea (Mg/ha) en el Departamento de La Paz",
+  "description": "El mapa muestra la distribución de biomasa aérea a nivel nacional en Bolivia, expresada en megagramos por hectárea (Mg/ha), identificando el carbono almacenado en los ecosistemas forestales como base para el análisis de conservación forestal, captura de carbono y planificación de medidas de mitigación y financiamiento climático.",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_biomasa_aerea_mgha_en_el_departame_39c3511e0ee9/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 35293681,
+      "hash": "sha256:7bd2504abe26413a5f0b9296f6d55467e47c596764f8544c1f8b0d860a13fd06",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "layer_biomasa_aerea_mgha_en_el_departamento_de_la_paz_z6b2e.465006"
+          },
+          {
+            "name": "objet",
+            "type": "integer"
+          },
+          {
+            "name": "biomasa",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 380
+            }
+          },
+          {
+            "name": "sup_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 280000.0
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "LA PAZ",
+            "categories": [
+              "LA PAZ",
+              "ORURO",
+              "COCHABAMBA",
+              "BENI",
+              "PANDO"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Pacajes",
+            "categories": [
+              "Abel Iturralde",
+              "Franz Tamayo",
+              "Larecaja",
+              "Sur Yungas",
+              "Pacajes",
+              "Inquisivi",
+              "Caranavi",
+              "Aroma",
+              "Bautista Saavedra",
+              "Murillo",
+              "Nor Yungas",
+              "Ingavi",
+              "Loayza",
+              "General Jose Manuel",
+              "Gualberto Villarroel",
+              "Muñecas",
+              "Los Andes",
+              "Lago Titicaca",
+              "Omasuyos",
+              "Camacho",
+              "Manco Kapac",
+              "Nor Carangas",
+              "Sajama",
+              "General José Ballivían",
+              "Ayopaya",
+              "Tapacari",
+              "Cercado",
+              "San Pedro De Totora",
+              "Manuripi"
+            ]
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Charaña"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 1."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
