@@ -1,0 +1,141 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_cobertura_y_uso_actual_de_la_tierr_04633ec89939",
+  "title": "Cobertura y Uso Actual de la Tierra - Departamento de Pando",
+  "description": "El mapa muestra la cobertura y uso actual de la tierra en el Departamento de Pando, elaborado a partir de información ráster de la plataforma MapBiomas. La capa identifica la distribución espacial de las principales coberturas y usos del suelo, tales como bosques, áreas agropecuarias, cuerpos de agua, vegetación natural y áreas urbanizadas, constituyéndose en un insumo para el análisis de cambios de uso del suelo, la planificación territorial y la gestión sostenible de los recursos naturales.",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_cobertura_y_uso_actual_de_la_tierr_04633ec89939/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 36244141,
+      "hash": "sha256:51c4de5f16800f0c419de2faf6b910c458744fcc80bcc8291184bccd2ea109cb",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "layer_cobertura_y_uso_actual_de_la_tierra__departamento_gp9oz.305242"
+          },
+          {
+            "name": "dn_categ",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 255
+            }
+          },
+          {
+            "name": "clasif",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Sin datos",
+            "categories": [
+              "Bosque",
+              "Bosque inundable",
+              "Pastura",
+              "Herbazal/arbustal inundable",
+              "Herbazal/arbustal",
+              "Río, lago",
+              "Playa, duna y banco de arena",
+              "Sin datos",
+              "Mosaico de usos",
+              "Infraestructura urbana",
+              "Otra área antrópica sin vegetación",
+              "Otra área natural sin vegetación"
+            ]
+          },
+          {
+            "name": "sup_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 360000.0
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "PANDO",
+            "categories": [
+              "PANDO",
+              "BENI"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Manuripi",
+            "categories": [
+              "Manuripi",
+              "Madre De Dios",
+              "Nicolas Suarez",
+              "Federico Roman",
+              "Abuná",
+              "Vaca Diez",
+              "General José Ballivían"
+            ]
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Filadelfia",
+            "categories": [
+              "Filadelfia",
+              "Bella Flor",
+              "Sena",
+              "Puerto Rico",
+              "San Pedro",
+              "San Lorenzo",
+              "Santos Mercado",
+              "Ingavi",
+              "Puerto Gonzalo Moreno",
+              "Santa Rosa",
+              "Villa Nueva",
+              "Nueva Esperanza",
+              "Bolpebra",
+              "Porvenir",
+              "Cobija",
+              "Riberalta",
+              "Reyes"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
