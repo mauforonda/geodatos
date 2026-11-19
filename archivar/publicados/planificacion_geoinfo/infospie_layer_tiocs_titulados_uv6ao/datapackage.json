@@ -1,0 +1,141 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_tiocs_titulados_uv6ao",
+  "title": "TIOCs Titulados",
+  "description": "El mapa presenta información gráfica de predios titulados a nivel nacional por su clasificación, dentro las TIOC",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_tiocs_titulados_uv6ao/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 116107049,
+      "hash": "sha256:f2f37e610b958748ae505b484f5479b420bb2e3ae2dece0d26cd82c166f23030",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "layer_tiocs_titulados_uv6ao.1232"
+          },
+          {
+            "name": "calificaci",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Otros",
+            "categories": [
+              "Otros",
+              "Mixta",
+              "Agrícola",
+              "Ganadera"
+            ]
+          },
+          {
+            "name": "clasificac",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Territorio Indígena Originario Campesino",
+            "categories": [
+              "Tierra Comunitaria de Origen",
+              "Territorio Indígena Originario Campesino"
+            ]
+          },
+          {
+            "name": "nro_docume",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "TIOCNAL000183"
+          },
+          {
+            "name": "fecha_docu",
+            "type": "datetime",
+            "constraints": {
+              "required": true,
+              "minimum": "1999-10-28T00:00:00",
+              "maximum": "2022-07-06T00:00:00"
+            }
+          },
+          {
+            "name": "parcela",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "MARCKA LLICA CON SU AYLLU HORNILLO, AYLLU GRANDE, AYLLU CAHUANA Y AYLLU HUANAQUE (POLIGONO 2)"
+          },
+          {
+            "name": "clase_titu",
+            "type": "string",
+            "example": "Colectivo",
+            "categories": [
+              "Colectivo",
+              "Individual",
+              "Copropiedad"
+            ]
+          },
+          {
+            "name": "sup_ha",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "24079.8"
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "example": "POTOSI",
+            "categories": [
+              "ORURO",
+              "POTOSI",
+              "SANTA CRUZ",
+              "LA PAZ",
+              "BENI",
+              "CHUQUISACA",
+              "COCHABAMBA",
+              "TARIJA",
+              "PANDO"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "example": "Daniel Campos"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "example": "Llica"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 30."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
