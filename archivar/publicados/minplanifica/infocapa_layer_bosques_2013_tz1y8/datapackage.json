@@ -1,0 +1,104 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_minplanifica_infocapa_layer_bosques_2013_tz1y8",
+  "title": "layer_bosques_2013_tz1y8",
+  "sources": [
+    {
+      "title": "Geoserver del Ministerio de Planificación del Desarollo",
+      "path": "https://geoserver.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_minplanifica_infocapa_layer_bosques_2013_tz1y8/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 125547708,
+      "hash": "sha256:a9e758b757ebba70fdd12b04c522decf0412110dafa426421d0873d8af8882c5",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "layer_bosques_2013_tz1y8.182362"
+          },
+          {
+            "name": "descripcio",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Bosque Andino",
+            "categories": [
+              "Bosque de Llanura Inundable",
+              "Bosque Amazonico",
+              "Bosque Chaqueño",
+              "Bosque Tucumano-Boliviano",
+              "Bosque Chiquitano",
+              "Bosque Seco Interandino",
+              "Bosque de Yungas",
+              "Bosque de Pantanal",
+              "Bosque Andino"
+            ]
+          },
+          {
+            "name": "sup_ha",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 0,
+              "maximum": 4354738
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "example": "Potosi",
+            "categories": [
+              "Santa Cruz",
+              "Beni",
+              "Chuquisaca",
+              "Tarija",
+              "La Paz",
+              "Cochabamba",
+              "Pando",
+              "Potosi",
+              "PANDO",
+              "LA PAZ",
+              "BENI",
+              "SANTA CRUZ"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Sur Chichas"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "example": "Tupiza"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Filas sin geometría: 10. Geometrías inválidas, conservadas sin reparar: 7048."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
