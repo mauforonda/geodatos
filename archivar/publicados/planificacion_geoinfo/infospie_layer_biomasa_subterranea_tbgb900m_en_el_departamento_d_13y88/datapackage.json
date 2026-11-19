@@ -1,0 +1,140 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_planificacion_geoinfo_infospie_layer_biomasa_subterranea_tbgb900m_en_el_d9eed9cc0697",
+  "title": "Biomasa Subterránea (tBGB/900m) en el Departamento de Beni",
+  "description": "El mapa muestra la distribución de biomasa subterránea en el departamento de Beni, expresada en toneladas de biomasa subterránea por píxel de 900 m² (tBGB/900m), representando el carbono almacenado en raíces y otros componentes subterráneos de la vegetación, como insumo para la conservación de ecosistemas, la captura de carbono y la planificación de acciones de mitigación y financiamiento climático.",
+  "sources": [
+    {
+      "title": "Sistema GeoInfo del Ministerio de Planificación",
+      "path": "https://geoinfo.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_planificacion_geoinfo_infospie_layer_biomasa_subterranea_tbgb900m_en_el_d9eed9cc0697/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 69686252,
+      "hash": "sha256:667d70569829708e7c0866bdd77f5fa90113e86c17d5bd84f6175402c7a73d96",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "layer_biomasa_subterranea_tbgb900m_en_el_departamento_d_13y88.854273"
+          },
+          {
+            "name": "biomasa",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 5
+            }
+          },
+          {
+            "name": "sup_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 1600000.0
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "BENI",
+            "categories": [
+              "BENI",
+              "LA PAZ",
+              "PANDO",
+              "SANTA CRUZ"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Moxos",
+            "categories": [
+              "General José Ballivían",
+              "Itenez",
+              "Yacuma",
+              "Moxos",
+              "Vaca Diez",
+              "Marban",
+              "Mamore",
+              "Cercado",
+              "Territorio Indigena Multi",
+              "Abel Iturralde",
+              "Madre De Dios",
+              "Sur Yungas",
+              "Guarayos",
+              "Federico Roman",
+              "Franz Tamayo"
+            ]
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "San Ignacio",
+            "categories": [
+              "San Ignacio",
+              "Baures",
+              "Santa Ana",
+              "Exaltación",
+              "Riberalta",
+              "Reyes",
+              "San Borja",
+              "Magdalena",
+              "San Andrés",
+              "TIOC-TIM",
+              "San Javier",
+              "Guayaramerín",
+              "Santa Rosa",
+              "Loreto",
+              "San Joaquín",
+              "Puerto Menor de Rurrenabaque",
+              "Huacaraje",
+              "San Ramón",
+              "Puerto Siles",
+              "Trinidad",
+              "Ixiamas",
+              "San Lorenzo",
+              "Palos Blancos",
+              "Ascención de Guarayos",
+              "Puerto Gonzalo Moreno",
+              "San Buenaventura",
+              "Apolo",
+              "Villa Nueva"
+            ]
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 1."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
