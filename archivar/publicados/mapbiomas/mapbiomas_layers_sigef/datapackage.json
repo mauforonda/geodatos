@@ -1,0 +1,169 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mapbiomas_mapbiomas_layers_sigef",
+  "title": "sigef",
+  "sources": [
+    {
+      "title": "MapBiomas",
+      "path": "https://shared-geoserver.mapbiomas.org/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mapbiomas_mapbiomas_layers_sigef/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 179220600,
+      "hash": "sha256:4458c6de2b4fae0a7e2296c77db45f74a4e46e9586f7bd66f1e75c10e89fefa1",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "example": "7948185"
+          },
+          {
+            "name": "name_eq",
+            "type": "boolean",
+            "constraints": {
+              "required": true
+            }
+          },
+          {
+            "name": "geom_eq",
+            "type": "boolean",
+            "constraints": {
+              "required": true
+            }
+          },
+          {
+            "name": "property_code",
+            "type": "string",
+            "example": "9501737300929"
+          },
+          {
+            "name": "property_updated_at",
+            "type": "datetime",
+            "constraints": {
+              "minimum": "2013-11-19T00:00:00",
+              "maximum": "2024-03-18T00:00:00"
+            }
+          },
+          {
+            "name": "property_type",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "SIGEF_PRIVADO",
+            "categories": [
+              "SIGEF_PRIVADO",
+              "SIGEF_PUBLICO"
+            ]
+          },
+          {
+            "name": "state_acronym",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "RS",
+            "categories": [
+              "MG",
+              "SP",
+              "GO",
+              "PR",
+              "MT",
+              "RS",
+              "BA",
+              "SC",
+              "MA",
+              "TO",
+              "MS",
+              "PA",
+              "PB",
+              "PI",
+              "RO",
+              "CE",
+              "PE",
+              "AM",
+              "RN",
+              "ES",
+              "RR",
+              "RJ",
+              "SE",
+              "DF",
+              "AL",
+              "AC",
+              "AP"
+            ]
+          },
+          {
+            "name": "sigef_status",
+            "type": "string",
+            "example": "REGISTRADA",
+            "categories": [
+              "CERTIFICADA",
+              "REGISTRADA"
+            ]
+          },
+          {
+            "name": "sigef_situation",
+            "type": "string",
+            "example": "REGISTRADA",
+            "categories": [
+              "REGISTRADA",
+              "NAOTITULADA",
+              "TITULADANAOREGISTRADA"
+            ]
+          },
+          {
+            "name": "geohash",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "6f3"
+          },
+          {
+            "name": "_name",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "9501737300929"
+          },
+          {
+            "name": "geohash_state",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "6f3_rs"
+          },
+          {
+            "name": "version",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 3
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 48434."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
