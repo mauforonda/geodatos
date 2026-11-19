@@ -1,0 +1,106 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mapbiomas_mapbiomas_layers_sicar",
+  "title": "sicar",
+  "sources": [
+    {
+      "title": "MapBiomas",
+      "path": "https://shared-geoserver.mapbiomas.org/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mapbiomas_mapbiomas_layers_sicar/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 102698743,
+      "hash": "sha256:60ef91c1a3a71dec136c5ef836c5eb3616f22decd1e66297d4b6648ae2055828",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "example": "7765872"
+          },
+          {
+            "name": "cod_imovel",
+            "type": "string",
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "example": "AC-1200351-B99AD8613C1F4825BF9CFFD1037B3C39"
+          },
+          {
+            "name": "area",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "63.7355"
+          },
+          {
+            "name": "status",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "AT",
+            "categories": [
+              "AT",
+              "PE"
+            ]
+          },
+          {
+            "name": "uf",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "AC",
+            "categories": [
+              "CE",
+              "BA",
+              "AL",
+              "SP",
+              "AM",
+              "AC",
+              "SE",
+              "TO",
+              "PE",
+              "MA",
+              "ES",
+              "RO",
+              "PA",
+              "MG",
+              "PI",
+              "MT",
+              "GO"
+            ]
+          },
+          {
+            "name": "version",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 4
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 19123."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
