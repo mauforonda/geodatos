@@ -1,0 +1,140 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_quemas2015",
+  "title": "Quemas del 2013 al 2015 Bolivia - ABT_ 2016",
+  "description": "Esta plantilla presenta los descriptores para la catalogación de datos vectoriales en GeoBolivia, elaborada en base al Perfil Nacional de Metadatos Geográficos de la IDE-EPB v1.2 de junio de 2015.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_quemas2015/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 205488936,
+      "hash": "sha256:7f1dfa28724828ac030fd625b92ac3d3141c94c511fd2e065cc357098361f75c",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "quemas2015.238072"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 397019
+            }
+          },
+          {
+            "name": "ges",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 2013,
+              "maximum": 2015
+            }
+          },
+          {
+            "name": "sup_hec",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 1.61685e-06,
+              "maximum": 42001.4074178
+            }
+          },
+          {
+            "name": "nom_dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "POTOSÍ",
+            "categories": [
+              "BENI",
+              "SANTA CRUZ",
+              "COCHABAMBA",
+              "LA PAZ",
+              "PANDO",
+              "TARIJA",
+              "CHUQUISACA",
+              "POTOSÍ"
+            ]
+          },
+          {
+            "name": "cod_dep",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "05",
+            "categories": [
+              "08",
+              "07",
+              "03",
+              "02",
+              "09",
+              "06",
+              "01",
+              "05"
+            ]
+          },
+          {
+            "name": "nom_prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "MODESTO OMISTE"
+          },
+          {
+            "name": "cod_prov",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "0515"
+          },
+          {
+            "name": "nom_mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "VILLAZÓN"
+          },
+          {
+            "name": "cod_mun",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "051501"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 36467."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
