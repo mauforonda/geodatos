@@ -1,0 +1,109 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_presidencia_geobolivia_geonode_bosque2015",
+  "title": "Mapa de Bosques de Bolivia_ 2015",
+  "description": "Este mapa presenta una clasificación por tipo de Bosque según ecosistema, determinando con mayor precisión los límites entre ecosistemas, identificándose 9 tipos de bosques: bosque amazónico, bosque chiquitano, bosque seco interandino, bosque boliviano tucumano, bosque chaqueño, bosque de llanuras inundables, bosque de pantanal, bosque de yungas y bosque andino. Elaborado en el marco del proyecto de “Monitoreo de la Deforestación en la Región Amazónica” por la Sala de Observación Bolivia / OTCA (SoB / OTCA), en coordinación con la Dirección General de Gestión y Desarrollo Forestal (DGGDF) del Ministerio de Medio Ambiente y Agua (MMAyA) con datos para el año 2015.",
+  "sources": [
+    {
+      "title": "GeoBolivia en Presidencia",
+      "path": "https://geobolivia.presidencia.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_presidencia_geobolivia_geonode_bosque2015/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 253682328,
+      "hash": "sha256:200642dcb4dca96b8c4b3cadf9b5714d2525d79600fe9829bb963cb7bcbf0420",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "bosque2015.10016"
+          },
+          {
+            "name": "ogc_fid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 216972
+            }
+          },
+          {
+            "name": "objectid",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 1,
+              "maximum": 216975
+            }
+          },
+          {
+            "name": "supha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": -1.042929e-05,
+              "maximum": 1503173.01912
+            }
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Bosque Andino",
+            "categories": [
+              "Bosque de Yungas",
+              "Bosque Amazónico",
+              "Bosque de Llanuras Inundables",
+              "Bosque Chaqueño",
+              "Bosque Chiquitano",
+              "Bosque Tucumano Boliviano",
+              "Bosque de Pantanal",
+              "Bosque Seco Interandino",
+              "Bosque Andino"
+            ]
+          },
+          {
+            "name": "shape_leng",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 1.5788e-07,
+              "maximum": 126.310440443
+            }
+          },
+          {
+            "name": "shape_area",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 1.26166265516
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 2997."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
