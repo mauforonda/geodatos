@@ -1,0 +1,95 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_minplanifica_infocapa_layer_quemas_e_incendios_2016_islwy",
+  "title": "layer_quemas_e_incendios_2016_islwy",
+  "sources": [
+    {
+      "title": "Geoserver del Ministerio de Planificación del Desarollo",
+      "path": "https://geoserver.planificacion.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_minplanifica_infocapa_layer_quemas_e_incendios_2016_islwy/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 83446521,
+      "hash": "sha256:c3ea7389302c2b029da9598b5b66e4e341cc97b501350e6ebdc813543999bcff",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "layer_quemas_e_incendios_2016_islwy.124"
+          },
+          {
+            "name": "clase",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Quema",
+            "categories": [
+              "Incendio",
+              "Quema"
+            ]
+          },
+          {
+            "name": "sup_ha",
+            "type": "number",
+            "constraints": {
+              "required": true,
+              "minimum": 0.0,
+              "maximum": 93141.5
+            }
+          },
+          {
+            "name": "dep",
+            "type": "string",
+            "example": "Potosi",
+            "categories": [
+              "Santa Cruz",
+              "Beni",
+              "La Paz",
+              "Cochabamba",
+              "Tarija",
+              "Pando",
+              "Chuquisaca",
+              "Potosi",
+              "Oruro",
+              "SANTA CRUZ",
+              "TARIJA",
+              "BENI",
+              "LA PAZ"
+            ]
+          },
+          {
+            "name": "prov",
+            "type": "string",
+            "example": "Daniel Campos"
+          },
+          {
+            "name": "mun",
+            "type": "string",
+            "example": "Llica"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon. Geometrías inválidas, conservadas sin reparar: 18922."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
