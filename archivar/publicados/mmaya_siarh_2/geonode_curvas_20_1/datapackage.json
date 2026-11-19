@@ -1,0 +1,56 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_siarh_2_geonode_curvas_20_1",
+  "title": "Plan Director Cuenca Lago Poopó - Curvas de Nivel 20 m",
+  "description": "PDCLP (Plan Director de la Cuenca Lago Poopó). Muestra las curvas de nivel cada 20 metros de la cuenca Lago Poopó, en el marco del Plan Director de la Cuenca del Lago Poopó.",
+  "sources": [
+    {
+      "title": "Infraestructura de Datos Espaciales del Sistema de Información Ambiental y de Recursos Hídricos (SIARH) (2)",
+      "path": "https://sig02.siarh.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_siarh_2_geonode_curvas_20_1/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 190340051,
+      "hash": "sha256:a028e71fc2df9191a630e9ea159fd2bb120f9bd26ade02912ca30b5dee3f1d03",
+      "schema": {
+        "fields": [
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiLineString."
+          },
+          {
+            "name": "ID",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "minimum": 1272,
+              "maximum": 295456
+            }
+          },
+          {
+            "name": "CONTOUR",
+            "type": "integer",
+            "constraints": {
+              "required": true,
+              "minimum": 3580,
+              "maximum": 5420
+            }
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
