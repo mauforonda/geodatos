@@ -1,0 +1,91 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_mmaya_oieau_c_spea_t_adreg",
+  "title": "FR_AD_Unité administrative",
+  "sources": [
+    {
+      "title": "Sistema para la Gestión Integral de Recursos Hídricos desarrollado por la Oficina Internacional del Agua (OiEau)",
+      "path": "https://www.oieau-wiss.org/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_mmaya_oieau_c_spea_t_adreg/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 232203827,
+      "hash": "sha256:1bc19f968ea9758b51160654915dc1142e252191bc4727e0b09d01cdc1157e4a",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "t_adreg.ADR_FR_R3_97309"
+          },
+          {
+            "name": "adrgcodex",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "97309"
+          },
+          {
+            "name": "adrglevel",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "R3",
+            "categories": [
+              "R3",
+              "R4"
+            ]
+          },
+          {
+            "name": "rgadcncode",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "FR",
+            "categories": [
+              "FR"
+            ]
+          },
+          {
+            "name": "rgadrgcode",
+            "type": "integer"
+          },
+          {
+            "name": "adrgname",
+            "type": "string",
+            "constraints": {
+              "required": true
+            },
+            "example": "Remire-Montjoly"
+          },
+          {
+            "name": "adrgname2",
+            "type": "integer"
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
