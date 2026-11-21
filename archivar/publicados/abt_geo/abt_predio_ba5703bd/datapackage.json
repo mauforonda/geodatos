@@ -1,0 +1,49 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_abt_geo_abt_predio_ba5703bd",
+  "title": "predio_ba5703bd",
+  "sources": [
+    {
+      "title": "GeoServer de la Autoridad de Fiscalización y Control Social de Bosques y Tierra",
+      "path": "https://geo.abt.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_abt_geo_abt_predio_ba5703bd/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 2020,
+      "hash": "sha256:1e70778bfc4421d27e364f043e424e41dcf15cfca7184aaa4030905c5408c295",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "example": "predio_ba5703bd.1"
+          },
+          {
+            "name": "fid",
+            "type": "integer",
+            "constraints": {
+              "minimum": 0,
+              "maximum": 0
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
