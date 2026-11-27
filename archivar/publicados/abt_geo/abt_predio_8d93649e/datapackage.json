@@ -1,0 +1,87 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_abt_geo_abt_predio_8d93649e",
+  "title": "predio_8d93649e",
+  "sources": [
+    {
+      "title": "GeoServer de la Autoridad de Fiscalización y Control Social de Bosques y Tierra",
+      "path": "https://geo.abt.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_abt_geo_abt_predio_8d93649e/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 3661,
+      "hash": "sha256:d87042f593096f370588596ff85413d6cb7c3149a103ba81e4a8af410798ac37",
+      "schema": {
+        "fields": [
+          {
+            "name": "num_rodal",
+            "type": "integer"
+          },
+          {
+            "name": "num_roda_1",
+            "type": "string",
+            "example": "Rodal-1"
+          },
+          {
+            "name": "sup_ha",
+            "type": "number",
+            "constraints": {
+              "minimum": 2.42105273833,
+              "maximum": 2.42105273833
+            }
+          },
+          {
+            "name": "fecha_plan",
+            "type": "datetime",
+            "constraints": {
+              "minimum": "1986-11-21T00:00:00",
+              "maximum": "1986-11-21T00:00:00"
+            }
+          },
+          {
+            "name": "especie",
+            "type": "string",
+            "example": "Eucalipto"
+          },
+          {
+            "name": "distanciam",
+            "type": "string",
+            "example": "3X3 m"
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "constraints": {
+              "minimum": 1,
+              "maximum": 1
+            }
+          },
+          {
+            "name": "densidad_1",
+            "type": "integer",
+            "constraints": {
+              "minimum": 2950,
+              "maximum": 2950
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
