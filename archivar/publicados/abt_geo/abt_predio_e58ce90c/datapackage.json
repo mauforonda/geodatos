@@ -1,0 +1,62 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "geodatosbolivia_abt_geo_abt_predio_e58ce90c",
+  "title": "predio_e58ce90c",
+  "sources": [
+    {
+      "title": "GeoServer de la Autoridad de Fiscalización y Control Social de Bosques y Tierra",
+      "path": "https://geo.abt.gob.bo/geoserver/ows"
+    }
+  ],
+  "resources": [
+    {
+      "name": "dataset",
+      "type": "table",
+      "path": "https://archive.org/download/geodatosbolivia_abt_geo_abt_predio_e58ce90c/dataset.geoparquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 6272,
+      "hash": "sha256:3c8b0747605aa1c69e8d218779a0085e5f5d79b9ddfcf85603fcdcd04eedc5f3",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "example": "predio_e58ce90c.2"
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "example": "RODAL 6"
+          },
+          {
+            "name": "sup",
+            "type": "number",
+            "constraints": {
+              "minimum": 2.27836,
+              "maximum": 27.0587
+            }
+          },
+          {
+            "name": "aÑo_plant",
+            "type": "datetime",
+            "constraints": {
+              "minimum": "2006-10-01T00:00:00",
+              "maximum": "2007-10-01T00:00:00"
+            }
+          },
+          {
+            "name": "geometry",
+            "type": "any",
+            "description": "Geometría en WKB, EPSG:4326 (longitud, latitud). Tipos: MultiPolygon."
+          },
+          {
+            "name": "bbox",
+            "type": "object",
+            "description": "Extensión de la geometría (xmin, ymin, xmax, ymax). Filtrar por esta columna permite leer solo los grupos de filas que intersectan el área de interés."
+          }
+        ]
+      }
+    }
+  ]
+}
